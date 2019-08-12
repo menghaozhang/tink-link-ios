@@ -1,0 +1,260 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "se.tink.grpc.v1.services";
+option java_outer_classname = "Protos";
+option go_package = "proto";
+
+import "rpc.proto";
+import "google/api/annotations.proto";
+
+service AbnAmroAuthenticationService {
+    rpc Authenticate (AbnAmroAuthenticationRequest) returns (AbnAmroAuthenticationResponse) {}
+    // This call will authenticate a phone number and return an access_token with a limited access scope.
+    rpc AuthenticatePhoneNumber (AbnAmroAuthenticatePhoneNumberRequest) returns (AbnAmroAuthenticatePhoneNumberResponse) {}
+}
+
+service AbnAmroResetPin6ByThirdPartyAppService {
+    // Initialize a reset of the PIN 6 by a third party app (like ABN AMRO Mobile Banking)
+    rpc InitializePin6ResetByThirdPartyApp (InitializePin6ResetByThirdPartyAppRequest) returns (InitializePin6ResetByThirdPartyAppResponse) {}
+}
+
+service AbnAmroMigrationService {
+    rpc Migrate (AbnAmroMigrationRequest) returns (AbnAmroMigrationResponse) {}
+}
+
+service AccountService {
+    rpc ListAccounts (ListAccountsRequest) returns (ListAccountsResponse) {}
+    rpc UpdateAccount (UpdateAccountRequest) returns (UpdateAccountResponse) {}
+}
+
+service ActivityService {
+    rpc ListHtml (ListActivityHtmlRequest) returns (ListActivityHtmlResponse) {}
+    rpc HtmlHead (ActivityHtmlHeadRequest) returns (ActivityHtmlHeadResponse) {}
+}
+
+service ApplicationService {
+    rpc CreateApplication (CreateApplicationRequest) returns (CreateApplicationResponse) {}
+    rpc GetApplication (GetApplicationRequest) returns (GetApplicationResponse) {}
+    rpc DeleteApplication (DeleteApplicationRequest) returns (DeleteApplicationResponse) {}
+    rpc GetApplicationSummary (GetApplicationSummaryRequest) returns (GetApplicationSummaryResponse) {}
+    rpc GetApplicationSummaryList (GetApplicationSummaryListRequest) returns (GetApplicationSummaryListResponse) {}
+    rpc SubmitApplicationForm (SubmitApplicationFormRequest) returns (SubmitApplicationFormResponse) {}
+    rpc SubmitApplication (SubmitApplicationRequest) returns (SubmitApplicationResponse) {}
+    rpc GetEligibleApplicationTypes (GetEligibleApplicationTypesRequest) returns (GetEligibleApplicationTypesResponse) {}
+}
+
+service AuthenticationService {
+    rpc Login (LoginRequest) returns (LoginResponse) {}
+    rpc Register (RegisterRequest) returns (RegisterResponse) {}
+    rpc Logout (LogoutRequest) returns (LogoutResponse) {}
+}
+
+service BudgetService {
+    rpc CreateBudget (CreateBudgetRequest) returns (CreateBudgetResponse) {}
+    rpc UpdateBudget (UpdateBudgetRequest) returns (UpdateBudgetResponse) {}
+    rpc DeleteBudget (DeleteBudgetRequest) returns (DeleteBudgetResponse) {}
+    rpc ArchiveBudget (ArchiveBudgetRequest) returns (ArchiveBudgetResponse) {}
+    rpc ListBudgets (ListBudgetsRequest) returns (ListBudgetsResponse) {}
+    rpc GetBudgetPeriodDetails (GetBudgetPeriodDetailsRequest) returns (GetBudgetPeriodDetailsResponse) {}
+    rpc GetBudgetTransactions (GetBudgetTransactionsRequest) returns (GetBudgetTransactionsResponse) {}
+}
+
+service CalendarService {
+    rpc GetBusinessDays (ListBusinessDaysRequest) returns (ListBusinessDaysResponse) {}
+}
+
+service CategoryService {
+    rpc ListCategories (ListCategoriesRequest) returns (ListCategoriesResponse) {}
+}
+
+service ConsentService {
+    rpc ListConsents (ListConsentsRequest) returns (ListConsentsResponse) {}
+    rpc ConsentDetails (ConsentDetailsRequest) returns (ConsentDetailsResponse) {}
+    rpc AvailableConsents (AvailableConsentsRequest) returns (AvailableConsentsResponse) {}
+    rpc ListUserConsents (UserConsentsListRequest) returns (UserConsentsListResponse) {}
+    rpc GiveConsent (GiveConsentRequest) returns (GiveConsentResponse) {}
+    rpc UserConsentDetails (UserConsentDetailsRequest) returns (UserConsentDetailsResponse) {}
+}
+
+service CredentialService {
+    rpc ListCredentials (ListCredentialsRequest) returns (ListCredentialsResponse) {}
+    rpc CreateCredential (CreateCredentialRequest) returns (CreateCredentialResponse) {}
+    rpc DeleteCredential (DeleteCredentialRequest) returns (DeleteCredentialResponse) {}
+    rpc UpdateCredential (UpdateCredentialRequest) returns (UpdateCredentialResponse) {}
+    rpc RefreshCredentials (RefreshCredentialsRequest) returns (RefreshCredentialsResponse) {}
+    rpc SupplementInformation (SupplementInformationRequest) returns (SupplementInformationResponse) {}
+    rpc CancelSupplementInformation (CancelSupplementInformationRequest) returns (CancelSupplementInformationResponse) {}
+    rpc EnableCredential (EnableCredentialRequest) returns (EnableCredentialResponse) {}
+    rpc DisableCredential (DisableCredentialRequest) returns (DisableCredentialResponse) {}
+    rpc ThirdPartyCallback (ThirdPartyCallbackRequest) returns (ThirdPartyCallbackResponse) {}
+}
+
+service DeviceService {
+    rpc RegisterPushNotificationToken (RegisterPushNotificationTokenRequest) returns (RegisterPushNotificationTokenResponse) {}
+    rpc GetDeviceConfiguration (GetDeviceConfigurationRequest) returns (DeviceConfigurationResponse) {}
+    rpc SetOrigin (SetOriginRequest) returns (SetOriginResponse) {}
+    rpc DeleteDevice (DeleteDeviceRequest) returns (DeleteDeviceResponse) {}
+    rpc ListDevices (ListDevicesRequest) returns (ListDevicesResponse) {}
+}
+
+service EmailAndPasswordAuthenticationService {
+    rpc EmailAndPasswordAuthentication (EmailAndPasswordAuthenticationRequest) returns (EmailAndPasswordAuthenticationResponse) {}
+    rpc ForgotPassword (ForgotPasswordRequest) returns (ForgotPasswordResponse) {}
+    rpc ResetPassword (ResetPasswordRequest) returns (ResetPasswordResponse) {}
+    rpc UpdatePassword (UpdatePasswordRequest) returns (UpdatePasswordResponse) {}
+    rpc UpdateEmail (UpdateEmailRequest) returns (UpdateEmailResponse) {}
+}
+
+service FollowService {
+    rpc CreateFollowItem (CreateFollowItemRequest) returns (CreateFollowItemResponse) {}
+    rpc UpdateFollowItem (UpdateFollowItemRequest) returns (UpdateFollowItemResponse) {}
+    rpc GetFollowItem (GetFollowItemRequest) returns (GetFollowItemResponse) {}
+    rpc GetFollowItemHistory (GetFollowItemHistoryRequest) returns (GetFollowItemHistoryResponse) {}
+    rpc DeleteFollowItem (DeleteFollowItemRequest) returns (DeleteFollowItemResponse) {}
+    rpc ListFollowItem (ListFollowItemRequest) returns (ListFollowItemResponse) {}
+    rpc SuggestFollowItem (SuggestFollowItemRequest) returns (SuggestFollowItemResponse) {}
+}
+
+service IdentityService {
+    rpc GetIdentityEvent (GetIdentityEventRequest) returns (IdentityEventResponse) {}
+    rpc GetIdentityEventSummaryList (IdentityEventListRequest) returns (IdentityEventListResponse) {}
+    rpc SeenIdentityEvents (SeenIdentityEventRequest) returns (SeenIdentityEventResponse) {}
+    rpc AnswerIdentityEvent (AnswerIdentityEventRequest) returns (AnswerIdentityEventResponse) {}
+    rpc GetIdentityState (IdentityStateRequest) returns (IdentityStateResponse) {}
+    rpc ActivateIdentityService (ActivateIdentityServiceRequest) returns (ActivateIdentityServiceResponse) {}
+}
+
+service InsightsService {
+    rpc ListInsights (ListInsightsRequest) returns (ListInsightsResponse) {}
+    rpc ListArchivedInsights (ListInsightsRequest) returns (ListArchivedInsightsResponse) {}
+    rpc SelectAction (SelectInsightActionRequest) returns (SelectInsightActionResponse) {}
+}
+
+service LoanService {
+    rpc ListLoans (ListLoansRequest) returns (ListLoansResponse) {}
+}
+
+service MobileBankIdAuthenticationService {
+    rpc InitiateBankIdAuthentication (InitiateBankIdAuthenticationRequest) returns (InitiateBankIdAuthenticationResponse) {}
+    rpc CollectBankIdAuthentication (CollectBankIdAuthenticationRequest) returns (CollectBankIdAuthenticationResponse) {}
+}
+
+service PhoneNumberAndPin6AuthenticationService {
+    rpc SmsOtpAndPin6Authentication (SmsOtpAndPin6AuthenticationRequest) returns (SmsOtpAndPin6AuthenticationResponse) {}
+    rpc PhoneNumberAndPin6Authentication (PhoneNumberAndPin6AuthenticationRequest) returns (PhoneNumberAndPin6AuthenticationResponse) {}
+    rpc UpdatePin6 (UpdatePin6Request) returns (UpdatePin6Response) {}
+    rpc UpdatePhoneNumber (UpdatePhoneNumberRequest) returns (UpdatePhoneNumberResponse) {}
+    rpc ResetPin6 (ResetPin6Request) returns (ResetPin6Response) {}
+}
+
+service PhoneNumberAuthenticationService {
+    rpc InitiateSmsOtp (InitiateSmsOtpRequest) returns (InitiateSmsOtpResponse) {}
+    rpc VerifySmsOtp (VerifySmsOtpRequest) returns (VerifySmsOtpResponse) {}
+}
+
+service PingService {
+    rpc Ping (PingRequest) returns (PingResponse) {}
+}
+
+service PropertyService {
+    rpc ListProperties (ListPropertiesRequest) returns (ListPropertiesResponse) {}
+    rpc GetProperty (GetPropertyRequest) returns (GetPropertyResponse) {}
+    rpc UpdateProperty (UpdatePropertyRequest) returns (UpdatePropertyResponse) {}
+    rpc DeleteValuation (DeleteValuationRequest) returns (DeleteValuationResponse) {}
+    rpc GetValuationEvents (GetValuationEventsRequest) returns (GetValuationEventsResponse) {}
+    rpc GetValuationSummary (GetValuationSummaryRequest) returns (GetValuationSummaryResponse) {}
+}
+
+service MarketService {
+    rpc ListMarkets (ListMarketsRequest) returns (ListMarketsResponse) {}
+}
+
+service ProviderService {
+    rpc ListProviders (ProviderListRequest) returns (ListProvidersResponse) {}
+    rpc ListProvidersForMarkets (ProviderListForMarketsRequest) returns (ListProvidersForMarketsResponse) {}
+    rpc ListProviderMarkets (ProviderMarketListRequest) returns (ProviderMarketListResponse) {}
+    rpc Suggest (ProviderSuggestRequest) returns (ListProvidersResponse) {}
+}
+
+service RecurringTransactionsService {
+    rpc ListRecurringTransactions (ListRecurringTransactionsRequest) returns (ListRecurringTransactionsResponse) {}
+    rpc ListRecurringTransactionGroups (ListRecurringTransactionGroupsRequest) returns (ListRecurringTransactionGroupsResponse) {}
+    rpc CreateRecurringTransactionGroup (CreateRecurringTransactionGroupRequest) returns (CreateRecurringTransactionGroupResponse) {}
+    rpc ExcludeRecurringTransactionFromGroup (ExcludeRecurringTransactionFromGroupRequest) returns (ExcludeRecurringTransactionFromGroupResponse) {}
+    rpc IncludeRecurringTransactionInGroup (IncludeRecurringTransactionInGroupRequest) returns (IncludeRecurringTransactionInGroupResponse) {}
+    rpc DisableRecurringTransactionGroup (DisableRecurringTransactionGroupRequest) returns (DisableRecurringTransactionGroupResponse) {}
+    rpc ActivateRecurringTransactionGroup (ActivateRecurringTransactionGroupRequest) returns (ActivateRecurringTransactionGroupResponse) {}
+    rpc UpdateRecurringTransactionGroup (UpdateRecurringTransactionGroupRequest) returns (UpdateRecurringTransactionGroupResponse) {}
+    rpc ListRecurringTransactionPeriodSummaries (ListRecurringTransactionPeriodSummariesRequest) returns (ListRecurringTransactionPeriodSummariesResponse) {}
+}
+
+service SettingsService {
+    rpc GetNotificationSettings (NotificationSettingsRequest) returns (NotificationSettingsResponse) {}
+    rpc UpdateNotificationSettings (UpdateNotificationSettingsRequest) returns (NotificationSettingsResponse) {}
+    rpc GetPeriodSettings (PeriodSettingsRequest) returns (PeriodSettingsResponse) {}
+    rpc UpdatePeriodSettings (UpdatePeriodSettingsRequest) returns (PeriodSettingsResponse) {}
+    rpc UpdateI18NSettings (UpdateI18NSettingsRequest)  returns (UpdateI18NSettingsResponse) {}
+}
+
+service StatisticService {
+    rpc QueryStatistics (QueryStatisticsRequest) returns (QueryStatisticsResponse) {}
+    rpc GetInsights (GetInsightsRequest) returns (InsightsResponse) {}
+    rpc GetStatistics (GetStatisticsRequest) returns (StatisticsResponse) {}
+}
+
+service StreamingService {
+    rpc Stream (stream StreamingRequest) returns (stream StreamingResponse) {}
+}
+
+service TrackingService {
+    rpc GetTrackingConfiguration (GetTrackingConfigurationRequest) returns (GetTrackingConfigurationResponse) {}
+    rpc CreateSession (TrackingSessionRequest) returns (TrackingSessionResponse) {}
+    rpc TrackData (TrackingRequest) returns (TrackingResponse) {}
+}
+
+service TransactionService {
+    rpc QueryTransactions (QueryTransactionsRequest) returns (QueryTransactionsResponse) {}
+    rpc UpdateTransaction (UpdateTransactionRequest) returns (UpdateTransactionResponse) {}
+    rpc GetTransaction (GetTransactionRequest) returns (GetTransactionResponse) {}
+    rpc CategorizeTransactions (CategorizeTransactionsRequest) returns (CategorizeTransactionsResponse) {}
+    rpc GetSimilarTransactions (GetSimilarTransactionsRequest) returns (GetSimilarTransactionsResponse) {}
+    rpc SuggestTransactions (SuggestTransactionsRequest) returns (SuggestTransactionsResponse) {}
+    rpc SuggestCounterparts (SuggestCounterpartsRequest) returns (SuggestCounterpartsResponse) {}
+    rpc CreatePartAndCounterpart (CreatePartAndCounterpartRequest) returns (CreatePartAndCounterpartResponse) {}
+    rpc UpdatePartAndCounterpart (UpdatePartAndCounterpartRequest) returns (UpdatePartAndCounterpartResponse) {}
+    rpc DeletePartAndCounterpart (DeletePartAndCounterpartRequest) returns (DeletePartAndCounterpartResponse) {}
+}
+
+service TransferService {
+    rpc ListTransfers (TransferListRequest) returns (TransferListResponse) {}
+    rpc GetTransfer (TransferGetRequest) returns (TransferGetResponse) {}
+    rpc CreateTransfer (CreateTransferRequest) returns (CreateTransferResponse) {}
+    rpc UpdateTransfer (UpdateTransferRequest) returns (UpdateTransferResponse) {}
+    rpc LookupGiro (GiroLookupRequest) returns (GiroLookupResponse) {}
+    rpc LookupClearing (ClearingLookupRequest) returns (ClearingLookupResponse) {}
+    rpc LookupSortCode (SortCodeLookupRequest) returns (SortCodeLookupResponse) {}
+    rpc CreateTransferDestination (CreateTransferDestinationRequest) returns (CreateTransferDestinationResponse) {}
+    rpc GetAccountsForTransfer (GetAccountsForTransferRequest) returns (GetAccountsForTransferResponse) {}
+    rpc GetTransferDestinations (GetTransferDestinationsRequest) returns (GetTransferDestinationsResponse) {}
+}
+
+service TransferKycService {
+    rpc StoreKyc (StoreTransferKycRequest) returns (StoreTransferKycResponse) {}
+    rpc GetKyc (GetTransferKycRequest) returns (GetTransferKycResponse) {}
+    rpc IsCompliant (IsTransferKycCompliantRequest) returns (IsTransferKycCompliantResponse) {}
+}
+
+service UserService {
+    rpc GetProfile (GetProfileRequest) returns (GetProfileResponse) {}
+    rpc DeleteUser (DeleteUserRequest) returns (DeleteUserResponse) {}
+    rpc RateApp (RateAppRequest) returns (RateAppResponse) {}
+}
+
+service ChallengeResponseAuthenticationService {
+    rpc ListAuthenticationKeys (ListAuthenticationKeysRequest) returns (ListAuthenticationKeysResponse) {}
+    rpc StoreAuthenticationKey (StoreAuthenticationKeyRequest) returns (StoreAuthenticationKeyResponse) {}
+    rpc DeleteAuthenticationKey (DeleteAuthenticationKeyRequest) returns (DeleteAuthenticationKeyResponse) {}
+    rpc GetAuthenticationChallenge (GetAuthenticationChallengeRequest) returns (GetAuthenticationChallengeResponse) {}
+    rpc SignedChallengeAuthentication (SignedChallengeAuthenticationRequest) returns (SignedChallengeAuthenticationResponse) {}
+}

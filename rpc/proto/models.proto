@@ -1,0 +1,1433 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "se.tink.grpc.v1.models";
+option java_outer_classname = "Protos";
+option go_package = "proto";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+
+
+message Credential {
+    enum Status {
+        STATUS_UNKNOWN = 0;
+        STATUS_CREATED = 1;
+        STATUS_AUTHENTICATING = 2;
+        STATUS_UPDATING = 3;
+        STATUS_UPDATED = 4;
+        STATUS_TEMPORARY_ERROR = 5;
+        STATUS_AUTHENTICATION_ERROR = 6;
+        STATUS_PERMANENT_ERROR = 7;
+        // Will be deprecated and replaced by "STATUS_AWAITING_THIRD_PARTY_APP_AUTHENTICATION".
+        STATUS_AWAITING_MOBILE_BANKID_AUTHENTICATION = 8 [deprecated = true];
+        STATUS_AWAITING_SUPPLEMENTAL_INFORMATION = 9;
+        STATUS_DISABLED = 10;
+        STATUS_AWAITING_THIRD_PARTY_APP_AUTHENTICATION = 11;
+        STATUS_SESSION_EXPIRED = 12;
+    }
+
+    enum Type {
+        TYPE_UNKNOWN = 0;
+        TYPE_PASSWORD = 1;
+        // Will be deprecated and replaced by "TYPE_THIRD_PARTY_AUTHENTICATION".
+        TYPE_MOBILE_BANKID = 2 [deprecated = true];
+        TYPE_KEYFOB = 3;
+        TYPE_FRAUD = 4;
+        TYPE_THIRD_PARTY_AUTHENTICATION = 5;
+    }
+
+    string id = 1;
+    string provider_name = 2;
+    Type type = 3;
+    Status status = 4;
+    string status_payload = 5;
+    google.protobuf.Timestamp status_updated = 6;
+    google.protobuf.Timestamp updated = 7;
+    map<string, string> fields = 8;
+    repeated ProviderFieldSpecification supplemental_information_fields = 9;
+    ThirdPartyAppAuthentication third_party_app_authentication = 10;
+    google.protobuf.Timestamp sessionExpiryDate = 11;
+}
+
+message Account {
+    enum Type {
+        TYPE_UNKNOWN = 0;
+        TYPE_CHECKING = 1;
+        TYPE_SAVINGS = 2;
+        TYPE_INVESTMENT = 3;
+        TYPE_MORTGAGE = 4;
+        TYPE_CREDIT_CARD = 5;
+        TYPE_LOAN = 6;
+        TYPE_DUMMY = 7;
+        TYPE_PENSION = 8;
+        TYPE_OTHER = 9;
+        TYPE_EXTERNAL = 10;
+    }
+
+    enum Exclusion {
+        UNKOWN = 0;
+        AGGREGATION = 4;
+        PFM_AND_SEARCH = 1;
+        PFM_DATA = 2;
+        NONE = 3;
+    }
+
+    enum AccountFlag {
+        UNKNOWN = 0;
+        BUSINESS = 1;
+        MANDATE = 2;
+    }
+
+    string id = 1;
+    CurrencyDenominatedAmount balance = 2;
+    string account_number = 3;
+    string credential_id = 4;
+    bool excluded = 5;
+    bool favored = 6;
+    bool transactional = 7;
+    string name = 8;
+    ExactNumber ownership = 9;
+    Type type = 10;
+    Images images = 11;
+    bool closed = 12;
+    repeated string identifiers = 13;
+    Exclusion exclusionType = 14;
+    repeated AccountFlag flags = 15;
+}
+
+message Tag {
+    string name = 1;
+}
+
+message Transaction {
+    string account_id = 1;
+    CurrencyDenominatedAmount amount = 2;
+    string category_code = 3;
+    CurrencyDenominatedAmount original_amount = 4;
+    google.protobuf.Timestamp date = 5;
+    string description = 6;
+    string id = 7;
+    string notes = 8;
+    repeated Tag tags = 15;
+    google.protobuf.Timestamp original_date = 9;
+    string original_description = 10;
+    TransactionDetails details = 11;
+    bool pending = 12;
+    bool upcoming = 13;
+    Type type = 14;
+    string secondary_description = 16;
+    google.protobuf.Timestamp inserted = 17;
+    repeated Part parts = 18;
+    CurrencyDenominatedAmount dispensable_amount = 19;
+
+    message TransactionDetails {
+        // Mapping of fields coming from the payload
+        string transfer_id = 1;
+    }
+
+    enum Type {
+        TYPE_UNKNOWN = 0;
+        TYPE_DEFAULT = 1;
+        TYPE_CREDIT_CARD = 2;
+        TYPE_PAYMENT = 3;
+        TYPE_TRANSFER = 4;
+        TYPE_WITHDRAWAL = 5;
+    }
+
+    message Part {
+        string id = 1;
+        CurrencyDenominatedAmount amount = 2;
+        string category_code = 3;
+        Counterpart counterpart = 4;
+    }
+
+    message Counterpart {
+        string id = 1;
+        string transaction_id = 2;
+        CurrencyDenominatedAmount transaction_amount = 3;
+        string transaction_description = 4;
+    }
+
+}
+
+message Provider {
+    string name = 1;
+    string display_name = 2;
+
+    enum Type {
+        TYPE_UNKNOWN = 0;
+        TYPE_BANK = 1;
+        TYPE_CREDIT_CARD = 2;
+        TYPE_BROKER = 3;
+        TYPE_OTHER = 4;
+        TYPE_TEST = 5;
+        TYPE_FRAUD = 6;
+    }
+
+    Type type = 3;
+
+    enum Status {
+        STATUS_UNKNOWN = 0;
+        STATUS_ENABLED = 1;
+        STATUS_DISABLED = 2;
+        STATUS_TEMPORARY_DISABLED = 3;
+        STATUS_OBSOLETE = 4;
+    }
+
+    Status status = 4;
+    Credential.Type credential_type = 5;
+    string help_text = 6;
+    bool popular = 7;
+    repeated ProviderFieldSpecification fields = 8;
+    string group_display_name = 9;
+    Images images = 10;
+    string display_description = 11;
+
+    enum Capability {
+        CAPABILITY_UNKNOWN = 0;
+        CAPABILITY_TRANSFERS = 1;
+        CAPABILITY_MORTGAGE_AGGREGATION = 2;
+        CAPABILITY_CHECKING_ACCOUNTS = 3;
+        CAPABILITY_SAVINGS_ACCOUNTS = 4;
+        CAPABILITY_CREDIT_CARDS = 5;
+        CAPABILITY_INVESTMENTS = 6;
+        CAPABILITY_LOANS = 7;
+        CAPABILITY_PAYMENTS = 8;
+        CAPABILITY_MORTGAGE_LOAN = 9;
+        CAPABILITY_IDENTITY_DATA = 10;
+    }
+    repeated Capability capabilities = 12;
+
+    string market_code = 13;
+
+    enum AccessType {
+        ACCESS_TYPE_UNKNOWN = 0;
+        ACCESS_TYPE_OPEN_BANKING = 1;
+        ACCESS_TYPE_OTHER = 2;
+    }
+
+    AccessType access_type = 14;
+    // ASS-247: 15 and 16 is removed in favor of 17 and 18
+    string financial_institution_id = 17;
+    string financial_institution_name = 18;
+  
+    enum AuthenticationFlow {
+        AUTHENTICATION_FLOW_UNKNOWN = 0;
+        AUTHENTICATION_FLOW_EMBEDDED = 1;
+        AUTHENTICATION_FLOW_REDIRECT= 2;
+        AUTHENTICATION_FLOW_DECOUPLED = 3;
+    }
+
+    AuthenticationFlow authentication_flow = 19;
+}
+
+message CurrencyDenominatedAmount {
+    ExactNumber value = 1;
+    string currency_code = 2;
+}
+
+message ExactNumber {
+    int64 unscaledValue = 1;
+    int64 scale = 2;
+}
+
+message Period {
+    uint32 year = 1;
+    uint32 month = 2;
+    uint32 week = 3;
+    uint32 day = 4;
+    google.protobuf.Timestamp start = 5;
+    google.protobuf.Timestamp stop = 6;
+}
+
+message PeriodDescription {
+    uint32 year = 1;
+    uint32 month = 2;
+    uint32 week = 3;
+    uint32 day = 4;
+}
+
+message StatisticTree {
+    enum Type {
+        TYPE_UNKNOWN = 0;
+        TYPE_BALANCES_BY_ACCOUNT_ID = 1;
+        TYPE_BALANCES_BY_ACCOUNT_GROUP_TYPE = 2;
+        TYPE_LEFT_TO_SPEND = 3;
+        TYPE_EXPENCES_BY_CATEGORY_CODE = 4;
+        TYPE_INCOME_BY_CATEGORY_CODE = 5;
+    }
+
+    map<string, StatisticNode> balances_by_account_id = 1;
+    map<string, StatisticNode> balances_by_account_group_type = 2;
+    map<string, StatisticNode> left_to_spend = 3;
+    map<string, StatisticNode> expenses_by_category_code = 5;
+    map<string, StatisticNode> income_by_category_code = 6;
+    map<string, StatisticNode> loan_rates_by_property = 7;
+    map<string, StatisticNode> loan_balances_by_property = 8;
+}
+
+message StatisticNode {
+    Period period = 1;
+    oneof node_value {
+        // Used if the value on the node is related to a currency, like "balances by account"
+        CurrencyDenominatedAmount amount = 2;
+        // Used if the value on the node isn't related to a currency, like "loan rate by property"
+        ExactNumber value = 4;
+    }
+    map<string, StatisticNode> children = 3;
+}
+
+message FollowItem {
+    oneof criteria {
+        ExpensesFollowCriteria expenses_criteria = 1;
+        SearchFollowCriteria search_criteria = 2;
+        SavingsFollowCriteria saving_criteria = 3;
+    }
+    FollowData data = 4;
+    string id = 5;
+    string name = 6;
+    google.protobuf.Timestamp created_date = 7;
+}
+
+message FollowItemHistory {
+    repeated PeriodExactNumberPair historical_amounts = 1;
+}
+
+message ExpensesFollowCriteria {
+    ExactNumber target_amount = 1;
+    repeated string category_codes = 2;
+}
+
+message SearchFollowCriteria {
+    ExactNumber target_amount = 1;
+    string query = 2;
+}
+
+message SavingsFollowCriteria {
+    ExactNumber target_amount = 1;
+    repeated string account_ids = 2;
+    string period = 3;
+}
+
+message FollowData {
+    repeated PeriodExactNumberPair historical_amounts = 1;
+    Period period = 2;
+    reserved 4;
+}
+
+message PeriodExactNumberPair {
+    Period period = 1;
+    ExactNumber value = 2;
+}
+
+message Budget {
+    message Specification {
+        string id = 1;
+        string name = 2;
+        string description = 3;
+        CurrencyDenominatedAmount amount = 4;
+        oneof periodicity {
+            RecurringPeriodicity recurring_periodicity = 5;
+            OneOffPeriodicity one_off_periodicity = 6;
+        }
+        bool archived = 7;
+        Filter filter = 8;
+    }
+
+    message Filter {
+        repeated Account accounts = 1;
+        repeated Category categories = 2;
+        repeated Tag tags = 3;
+        string free_text_query = 4;
+
+        message Account {
+            string id = 1;
+        }
+
+        message Category {
+            string code = 1;
+        }
+
+        message Tag {
+            string key = 1;
+        }
+    }
+
+    message OneOffPeriodicity {
+        google.protobuf.Timestamp start = 1;
+        google.protobuf.Timestamp end = 2;
+    }
+
+    message RecurringPeriodicity {
+        PeriodUnit period_unit = 1;
+
+        enum PeriodUnit {
+            PERIOD_UNIT_UNKNOWN = 0;
+            PERIOD_UNIT_WEEK = 1;
+            PERIOD_UNIT_MONTH = 2;
+            PERIOD_UNIT_YEAR = 3;
+        }
+    }
+
+    message Period {
+        google.protobuf.Timestamp start = 1;
+        google.protobuf.Timestamp end = 2;
+        CurrencyDenominatedAmount spent_amount = 3;
+        CurrencyDenominatedAmount budget_amount = 4;
+    }
+
+    message Summary {
+        Specification budget_specification = 1;
+        Period current_budget_period = 2;
+    }
+
+    message Transaction {
+        string id = 1;
+        CurrencyDenominatedAmount amount = 2;
+        CurrencyDenominatedAmount dispensable_amount = 3;
+        google.protobuf.Timestamp date = 4;
+        string description = 5;
+        string category_code = 6;
+        string account_id = 7;
+    }
+}
+
+message Currency {
+    string code = 1;
+    ExactNumber factor = 2;
+    bool prefixed = 3;
+    string symbol = 4;
+}
+
+message Loan {
+    string account_id = 1;
+    ExactNumber interest = 2;
+    int32 number_of_months_bound = 3;
+    Type type = 4;
+
+    enum Type {
+        TYPE_UNKNOWN = 0;
+        TYPE_MORTGAGE = 1;
+        TYPE_BLANCO = 2;
+        TYPE_MEMBERSHIP = 3;
+        TYPE_VEHICLE = 4;
+        TYPE_LAND = 5;
+        TYPE_STUDENT = 6;
+        TYPE_OTHER = 7;
+    }
+}
+
+message CategoryTree {
+    CategoryNode expenses = 1;
+    CategoryNode income = 2;
+    CategoryNode transfers = 3;
+}
+
+message CategoryNode {
+    string code = 1;
+    string id = 2;
+    string name = 3;
+    repeated CategoryNode children = 4;
+    int32 sort_order = 5;
+    bool default_child = 6;
+}
+
+message Device {
+    string id = 1;
+    string notification_token = 2;
+    string notification_public_key = 3;
+}
+
+message DeviceAppsFlyerOrigin {
+    string extra_param_1 = 1;
+    string extra_param_2 = 2;
+    string extra_param_3 = 3;
+    string extra_param_4 = 4;
+    string extra_param_5 = 5;
+}
+
+message DeviceFacebookOrigin {
+    string campaign_id = 1;
+    string ad_group_id = 2;
+    string ad_group_name = 3;
+    string ad_set_id = 4;
+    string ad_set_name = 5;
+    string ad_id = 6;
+}
+
+message ProviderFieldSpecification {
+    string description = 1;
+    string hint = 2;
+    int32 max_length = 3;
+    int32 min_length = 4;
+    bool masked = 5;
+    bool numeric = 6;
+    bool immutable = 7;
+    bool optional = 8;
+    string name = 9;
+    string value = 10;
+    string pattern = 11;
+    string pattern_error = 12;
+    string help_text = 13;
+
+    //    Type type = 14;
+    //    repeated Field children = 15;
+    //    repeated string options = 16;
+}
+
+message GiroLookupEntity {
+    string display_name = 1;
+    string identifier = 2;
+    Images images = 3;
+    string display_number = 4;
+}
+
+message Images {
+    string icon_url = 1;
+    string banner_url = 2;
+}
+
+message SignableOperation {
+    google.protobuf.Timestamp created = 1;
+    string id = 2;
+
+    enum Status {
+        STATUS_UNKNOWN = 0;
+        STATUS_CREATED = 1;
+        STATUS_EXECUTING = 2;
+        STATUS_AWAITING_CREDENTIALS = 3;
+        STATUS_CANCELLED = 4;
+        STATUS_FAILED = 5;
+        STATUS_EXECUTED = 6;
+        STATUS_AWAITING_THIRD_PARTY_APP_AUTHENTICATION = 7;
+    }
+
+    Status status = 3;
+
+    string status_message = 4;
+
+    enum Type {
+        TYPE_UNKNOWN = 0;
+        TYPE_TRANSFER = 1;
+        TYPE_ACCOUNT_CREATE = 2;
+        TYPE_APPLICATION = 3;
+    }
+
+    Type type = 5;
+    string underlying_id = 6;
+    google.protobuf.Timestamp updated = 7;
+    string credential_id = 8;
+    ThirdPartyAppAuthentication third_party_app_authentication = 9;
+}
+
+enum MarketStatus {
+    MARKET_STATUS_UNKNOWN = 0;
+    MARKET_STATUS_BETA = 1;
+    MARKET_STATUS_DISABLED = 2;
+    MARKET_STATUS_ENABLED = 3;
+}
+
+message TrackingEvent {
+    google.protobuf.Timestamp date = 1;
+    string category = 2;
+    string action = 3;
+    string label = 4;
+    int64 default_value = 5;
+}
+
+message TrackingTiming {
+    google.protobuf.Timestamp date = 1;
+    string category = 2;
+    google.protobuf.Timestamp time = 3;
+    string label = 4;
+    string name = 5;
+}
+
+message TrackingView {
+    google.protobuf.Timestamp date = 1;
+    string name = 2;
+}
+
+message TransactionCluster {
+    string description = 1;
+    repeated Transaction transactions = 2;
+    ExactNumber score = 3;
+    ExactNumber categorization_improvement = 4;
+}
+
+message TransferDestination {
+    string uri = 1;
+    string name = 2;
+    CurrencyDenominatedAmount balance = 3;
+    string display_bank_name = 4;
+    Account.Type type = 5;
+    Images images = 6;
+    string display_account_number = 7;
+    bool matches_multiple = 8;
+}
+
+message TransferDestinationPerAccount {
+    string account_id = 1;
+    repeated TransferDestination destinations = 2;
+}
+
+message Transfer {
+    CurrencyDenominatedAmount amount = 1;
+    string credential_id = 2;
+    string destination_uri = 3;
+    string destination_message = 4;
+    string id = 5;
+    string source_uri = 6;
+
+    enum Type {
+        TYPE_UNKNOWN = 0;
+        TYPE_EINVOICE = 1;
+        TYPE_PAYMENT = 2;
+        TYPE_BANK_TRANSFER = 3;
+    }
+    string source_message = 7;
+    Type type = 8;
+    google.protobuf.Timestamp due_date = 9;
+}
+
+message UserProfile {
+    string username = 1;
+    string national_id = 2;
+    // The login methods that the user is authorized to use, for example `BANKID`.
+    repeated AuthenticationMethod authorized_login_methods = 3;
+    // The login methods that are available on the market, for example `EMAIL_AND_PASSWORD` and `BANKID`.
+    repeated AuthenticationMethod available_login_methods = 4;
+    google.protobuf.Timestamp created_date = 5;
+}
+
+message UserConfiguration {
+    repeated string flags = 1;
+    I18NConfiguration i18n_configuration = 2;
+    string user_id = 3;
+
+    message I18NConfiguration {
+        string currency_code = 1;
+        string locale_code = 2;
+        string market_code = 3;
+        string timezone_code = 4;
+    }
+}
+
+message I18NSettings {
+    string locale_code = 1;
+}
+
+message PeriodSettings {
+    PeriodDateBreakType period_date_break_type = 1;
+    int32 monthly_adjusted_day = 2;
+}
+
+enum PeriodDateBreakType {
+    PERIOD_DATE_BREAK_TYPE_UNKNOWN = 0;
+    PERIOD_DATE_BREAK_TYPE_MONTHLY = 1;
+    PERIOD_DATE_BREAK_TYPE_MONTHLY_ADJUSTED = 2;
+}
+
+enum PeriodMode {
+    PERIOD_MODE_UNKNOWN = 0;
+    PERIOD_MODE_DAILY = 1;
+    PERIOD_MODE_MONTHLY = 2;
+    PERIOD_MODE_WEEKLY = 3;
+    PERIOD_MODE_YEARLY = 4;
+    PERIOD_MODE_ALL = 5;
+}
+
+message NotificationSettings {
+    repeated NotificationGroup groups = 1;
+}
+
+message NotificationGroup {
+    string title = 1;
+    repeated NotificationType notification_types = 2;
+}
+
+message NotificationType {
+    string key = 1;
+    string title = 2;
+    bool enabled = 3;
+}
+
+message UserOrigin {
+    string id = 1;
+    string serviceName = 2;
+    bool organic = 3;
+    string external_service_id = 4;
+    string media_source = 5;
+    string campaign = 6;
+    string agency = 7;
+    google.protobuf.Timestamp click_time = 8;
+    google.protobuf.Timestamp install_time = 9;
+    string extra_param1 = 10;
+    string extra_param2 = 11;
+    string extra_param3 = 12;
+    string extra_param4 = 13;
+    string extra_param5 = 14;
+    FacebookAd facebook_ad = 15;
+}
+
+message FacebookAd {
+    string group_id = 1;
+    string group_name = 2;
+    string campaign_id = 3;
+    string ad_set_id = 4;
+    string ad_set_name = 5;
+    string id = 6;
+}
+
+enum BankIdAuthenticationStatus {
+    BANK_ID_AUTHENTICATION_STATUS_UNKNOWN = 0;
+    BANK_ID_AUTHENTICATION_STATUS_AUTHENTICATED = 1;
+    BANK_ID_AUTHENTICATION_STATUS_AUTHENTICATION_ERROR = 2;
+    BANK_ID_AUTHENTICATION_STATUS_AWAITING_BANKID_AUTHENTICATION = 3;
+    BANK_ID_AUTHENTICATION_STATUS_NO_USER = 4;
+}
+
+enum AuthenticationStatus {
+    AUTHENTICATION_STATUS_UNKNOWN = 0;
+    AUTHENTICATION_STATUS_AUTHENTICATED = 1;
+    AUTHENTICATION_STATUS_AUTHENTICATION_ERROR = 2;
+    AUTHENTICATION_STATUS_NO_USER = 4;
+    AUTHENTICATION_STATUS_USER_BLOCKED = 5;
+    AUTHENTICATION_STATUS_AUTHENTICATED_UNAUTHORIZED_DEVICE = 6;
+    AUTHENTICATION_STATUS_AUTHENTICATION_ERROR_UNAUTHORIZED_DEVICE = 7;
+}
+
+enum AuthenticationKeyType {
+    KEY_TYPE_UNKNOWN = 0;
+    KEY_TYPE_RSA = 1;
+    KEY_TYPE_ECDSA = 2;
+}
+
+enum AuthenticationSource {
+    AUTHENTICATION_SOURCE_UNKNOWN = 0;
+    AUTHENTICATION_SOURCE_TOUCHID = 1;
+    AUTHENTICATION_SOURCE_FINGERPRINT = 2;
+    AUTHENTICATION_SOURCE_FACEID = 3;
+}
+
+message AuthenticationKey {
+    AuthenticationKeyType key_type = 1;
+    string id = 2;
+    string key = 3;
+    AuthenticationSource source = 4;
+}
+
+message IdentityEventAnswer {
+    string label = 1;
+    IdentityAnswerKey key = 2;
+}
+
+message IdentityEvent {
+    string id = 1;
+    google.protobuf.Timestamp date = 2;
+    string description = 3;
+    bool seen = 4;
+    string question = 5;
+    repeated IdentityEventAnswer potential_answers = 6;
+    IdentityDocumentedAnswer answer = 7;
+    IdentityEventDocumentation documentation = 8;
+    repeated Transaction transactions = 9;
+}
+
+message IdentityEventSummary {
+    string id = 1;
+    google.protobuf.Timestamp date = 2;
+    string description = 3;
+    bool seen = 4;
+    IdentityDocumentedAnswer answer = 5;
+}
+
+message IdentityEventDocumentation {
+    string source = 1;
+    string info_title = 2;
+    string info_body = 3;
+    string help_title = 4;
+    string help_body = 5;
+}
+
+message IdentityStateAddress {
+    string name = 1;
+    string postal_code = 2;
+    string city = 3;
+    string community = 4;
+}
+
+message IdentityStateProperty {
+    string name = 1;
+    string municipality = 2;
+    string number = 3;
+    google.protobuf.Timestamp acquisition_date = 4;
+}
+
+message IdentityStateCompany {
+    string name = 1;
+    string number = 2;
+}
+
+message IdentityStateRole {
+    string name = 1;
+}
+
+message IdentityStateCompanyEngagement {
+    IdentityStateCompany company = 1;
+    repeated IdentityStateRole roles = 2;
+    google.protobuf.Timestamp date_in = 4;
+}
+
+message IdentityStateCreditScore {
+    string text = 1;
+    int32 score = 2;
+    int32 max_score = 3;
+}
+
+message IdentityStateTaxDeclaration {
+    CurrencyDenominatedAmount final_tax = 1;
+    CurrencyDenominatedAmount total_income = 2;
+    CurrencyDenominatedAmount income_by_service = 3;
+    CurrencyDenominatedAmount income_by_capital = 4;
+    int32 year = 5;
+    google.protobuf.Timestamp registered_date = 6;
+}
+
+message IdentityStateRecordOfNonPayment {
+    string name = 1;
+    CurrencyDenominatedAmount amount = 2;
+    google.protobuf.Timestamp registered_date = 3;
+}
+
+message IdentityStateOutstandingDebt {
+    CurrencyDenominatedAmount amount = 1;
+    int32 number = 2;
+    google.protobuf.Timestamp registered_date = 3;
+}
+
+message IdentityState {
+    string first_name = 1;
+    string last_name = 2;
+    string national_id = 3;
+    IdentityStateAddress address = 4;
+    repeated IdentityStateProperty properties = 5;
+    repeated IdentityStateCompanyEngagement company_engagements = 6;
+    IdentityStateCreditScore credit_score = 7;
+    IdentityStateTaxDeclaration most_recent_tax_declaration = 8;
+    repeated IdentityStateRecordOfNonPayment records_of_non_payment = 9;
+    IdentityStateOutstandingDebt outstanding_debt = 10;
+}
+
+message IdentityDocumentedAnswer {
+    IdentityAnswerKey answer = 1;
+}
+
+enum IdentityAnswerKey {
+    IDENTITY_ANSWER_KEY_UNKNOWN = 0;
+    IDENTITY_ANSWER_KEY_OK = 1;
+    IDENTITY_ANSWER_KEY_FRAUDULENT = 2;
+}
+
+message Consent {
+    string key = 1;
+    string version = 2;
+    string title = 3;
+    string body = 4;
+    string checksum = 5;
+    repeated ConsentMessage messages = 6;
+    map<string, string> attachments = 7;
+}
+
+message UserConsent {
+    string id = 1;
+    string key = 2;
+    string version = 3;
+    ConsentAction action = 4;
+    google.protobuf.Timestamp timestamp = 5;
+}
+
+enum ConsentAction {
+    CONSENT_ACTION_UNKNOWN = 0;
+    CONSENT_ACTION_ACCEPTED = 1;
+    CONSENT_ACTION_DECLINED = 2;
+}
+
+message ConsentMessage {
+    string message = 1;
+    repeated ConsentMessageLink links = 2;
+}
+
+message ConsentMessageLink {
+    string to = 1;
+    int32 start = 2;
+    int32 end = 3;
+}
+
+enum SmsOtpStatus {
+    SMS_OTP_STATUS_UNKNOWN = 0;
+    SMS_OTP_STATUS_CORRECT = 1;
+    SMS_OTP_STATUS_INCORRECT = 2;
+    SMS_OTP_STATUS_EXPIRED = 3;
+    SMS_OTP_STATUS_TOO_MANY_ATTEMPTS = 4;
+}
+
+enum RateAppStatus {
+    RATE_APP_STATUS_UNKNOWN = 0;
+    RATE_APP_STATUS_CLICKED_IGNORE = 1;
+    RATE_APP_STATUS_CLICKED_RATE_IN_STORE = 2;
+}
+
+message ThirdPartyAppAuthentication {
+    string download_title = 1;
+    string download_message = 2;
+    string upgrade_title = 3;
+    string upgrade_message = 4;
+    Ios ios = 5;
+    Android android = 6;
+    Web web = 7;
+
+    message Ios {
+        string app_store_url = 1;
+        string scheme = 2;
+        string deep_link_url = 3;
+    }
+
+    message Android {
+        string package_name = 1;
+        int32 required_minimum_version = 2;
+        string intent = 3;
+    }
+
+    message Web {
+        string url = 1;
+    }
+}
+
+// Wrap lists in objects, Only used in streaming
+// Since we stream lists, we have to encapsulate them in objects so we can see the difference between empty lists that need action and those that don't
+message Credentials {
+    repeated Credential credential = 1;
+}
+
+message Accounts {
+    repeated Account account = 1;
+}
+
+message Transactions {
+    repeated Transaction transaction = 1;
+}
+
+message Providers {
+    repeated Provider provider = 1;
+}
+
+message Periods {
+    map<string, Period> period = 1;
+}
+
+message FollowItems {
+    repeated FollowItem follow_item = 1;
+}
+
+message SignableOperations {
+    repeated SignableOperation signable_operation = 1;
+}
+
+message BudgetSummaries {
+    repeated Budget.Summary budget_summaries = 1;
+}
+
+message Insights {
+    repeated Insight insights = 1;
+}
+
+// End of objects only used in streaming.
+
+message InsightsCategories {
+    string title = 1;
+    string body = 2;
+    repeated AmountByCategoryCode amount_by_category_code = 3;
+
+    message AmountByCategoryCode {
+        string category_code = 1;
+        CurrencyDenominatedAmount amount = 2;
+    }
+}
+
+message InsightsMortgage {
+    string title = 1;
+    string body = 2;
+    repeated HistogramBucket distribution = 3;
+    double interest_rate = 4;
+
+    message HistogramBucket {
+        double lower_endpoint = 1;
+        double upper_endpoint = 2;
+        double frequency = 3;
+    }
+}
+
+message InsightsSavings {
+    string title = 1;
+    string body = 2;
+    CurrencyDenominatedAmount amount = 3;
+}
+
+message InsightsDailySpend {
+    string title = 1;
+    string body = 2;
+    repeated AmountByWeekday amount_by_weekday = 3;
+
+    message AmountByWeekday {
+        string weekday = 1;
+        CurrencyDenominatedAmount amount = 2;
+    }
+}
+
+message InsightsLeftToSpend {
+    string title = 1;
+    string body = 2;
+    repeated LeftToSpendByPeriod left_to_spend_by_period = 3;
+
+    message LeftToSpendByPeriod {
+        string period = 1;
+        double percentage = 2;
+    }
+}
+
+enum AuthenticationMethod {
+    AUTHENTICATION_METHOD_UNKNOWN = 0;
+    AUTHENTICATION_METHOD_BANKID = 1;
+    AUTHENTICATION_METHOD_EMAIL_AND_PASSWORD = 2;
+    AUTHENTICATION_METHOD_SMS_OTP_AND_PIN6 = 3;
+    AUTHENTICATION_METHOD_PHONE_NUMBER_AND_PIN6 = 4;
+    AUTHENTICATION_METHOD_ABN_AMRO_PIN5 = 5;
+}
+
+message Application {
+    string id = 1;
+    ApplicationForms forms = 2;
+    ApplicationStatus status = 3;
+    int32 steps = 4;
+    string title = 5;
+    ApplicationType type = 6;
+}
+
+enum ApplicationType {
+    APPLICATION_TYPE_UNKNOWN = 0;
+    APPLICATION_TYPE_SWITCH_MORTGAGE_PROVIDER = 1;
+    APPLICATION_TYPE_OPEN_SAVINGS_ACCOUNT = 2;
+    APPLICATION_TYPE_RESIDENCE_VALUATION = 3;
+    APPLICATION_TYPE_SOLICIT_UNSECURED_LOANS = 4;
+    APPLICATION_TYPE_ACCEPT_UNSECURED_LOANS = 5;
+}
+
+message ApplicationSummary {
+    string description = 1;
+    string id = 2;
+    string image_url = 3;
+    double progress = 4;
+    string provider = 5;
+    ApplicationSummaryStatus status = 6;
+    string title = 7;
+    ApplicationType type = 8;
+}
+
+message ApplicationSummaryStatus {
+    ApplicationStatusKey key = 1;
+    string body = 2;
+    string payload = 3;
+    string title = 4;
+}
+
+message ApplicationForms {
+    repeated ApplicationForm form = 1;
+}
+
+message ApplicationForm {
+    string id = 1;
+    string application_id = 2;
+    string description = 3;
+    ApplicationFormFields fields = 4;
+    ApplicationFormStatus status = 5;
+    string type = 6;
+    string title = 7;
+    string serialized_payload = 8;
+    string name = 9;
+}
+
+message RequestApplicationForm {
+    string id = 1;
+    RequestApplicationFormFields fields = 2;
+}
+
+message RequestApplicationFormFields {
+    repeated RequestApplicationFormField field = 1;
+}
+
+message RequestApplicationFormField {
+    string name = 1;
+    google.protobuf.StringValue value = 2;
+}
+
+message ApplicationFormFields {
+    repeated ApplicationFormField field = 1;
+}
+
+message ApplicationFormField {
+    google.protobuf.StringValue default_value = 1;
+    string description = 2;
+    ApplicationFormFieldErrors errors = 3;
+    string display_error = 4;
+    string label = 5;
+    string name = 6;
+    ApplicationFormFieldOptions options = 7;
+    string pattern = 8;
+    ApplicationFieldType type = 9;
+    google.protobuf.StringValue value = 10;
+    bool required = 11;
+    bool readOnly = 12;
+    string dependency = 13;
+    string info_title = 14;
+    string info_body = 15;
+    string introduction = 16;
+}
+
+message ApplicationFormFieldOptions {
+    repeated ApplicationFormFieldOption option = 1;
+}
+
+message ApplicationFormFieldOption {
+    string value = 1;
+    string label = 2;
+    string description = 3;
+    string serialized_payload = 4;
+}
+
+enum ApplicationFieldType {
+    APPLICATION_FIELD_TYPE_UNKNOWN = 0;
+    APPLICATION_FIELD_TYPE_CHECKBOX = 1;
+    APPLICATION_FIELD_TYPE_DATE = 2;
+    APPLICATION_FIELD_TYPE_EMAIL = 3;
+    APPLICATION_FIELD_TYPE_HIDDEN = 4;
+    APPLICATION_FIELD_TYPE_MULTI_SELECT = 5;
+    APPLICATION_FIELD_TYPE_NUMBER = 6;
+    APPLICATION_FIELD_TYPE_NUMERIC = 7;
+    APPLICATION_FIELD_TYPE_SELECT = 8;
+    APPLICATION_FIELD_TYPE_SIGNATURE = 9;
+    APPLICATION_FIELD_TYPE_TEXT = 10;
+}
+
+message ApplicationFormFieldErrors {
+    repeated ApplicationFormFieldError error = 1;
+}
+
+message ApplicationFormFieldError {
+    string message = 1;
+}
+
+message ApplicationStatus {
+    ApplicationStatusKey key = 1;
+    string message = 2;
+    google.protobuf.Timestamp updated = 3;
+}
+
+message ApplicationFormStatus {
+    ApplicationFormStatusKey key = 1;
+    string message = 2;
+    google.protobuf.Timestamp updated = 3;
+}
+
+enum ApplicationStatusKey {
+    APPLICATION_STATUS_UNKNOWN = 0;
+    APPLICATION_STATUS_CREATED = 1;
+    APPLICATION_STATUS_IN_PROGRESS = 2;
+    APPLICATION_STATUS_DELETED = 3;
+    APPLICATION_STATUS_ERROR = 4;
+    APPLICATION_STATUS_EXPIRED = 5;
+    APPLICATION_STATUS_DISQUALIFIED = 6;
+    APPLICATION_STATUS_COMPLETED = 7;
+    APPLICATION_STATUS_SIGNED = 8;
+    APPLICATION_STATUS_SUPPLEMENTAL_INFORMATION_REQUIRED = 9;
+    APPLICATION_STATUS_REJECTED = 10;
+    APPLICATION_STATUS_APPROVED = 11;
+    APPLICATION_STATUS_ABORTED = 12;
+    APPLICATION_STATUS_EXECUTED = 13;
+    APPLICATION_STATUS_PENDING = 14;
+}
+
+enum ApplicationFormStatusKey {
+    APPLICATION_FORM_STATUS_UNKNOWN = 0;
+    APPLICATION_FORM_STATUS_CREATED = 1;
+    APPLICATION_FORM_STATUS_COMPLETED = 2;
+    APPLICATION_FORM_STATUS_IN_PROGRESS = 3;
+    APPLICATION_FORM_STATUS_ERROR = 4;
+    APPLICATION_FORM_STATUS_DISQUALIFIED = 5;
+    APPLICATION_FORM_STATUS_AUTO_SAVED = 6;
+}
+
+message BusinessDays {
+    uint32 year = 1;
+    uint32 month = 2;
+    repeated uint32 days = 3;
+}
+
+message ErrorCode {
+    string code = 1;
+}
+
+message Property {
+    string property_id = 1;
+    string address = 2;
+    string postal_code = 3;
+    string city = 4;
+    string community = 5;
+    double latitude = 6;
+    double longitude = 7;
+    Type type = 8;
+    int32 number_of_rooms = 9;
+    int32 number_of_square_meters = 10;
+    int32 valuation = 11 [deprecated = true]; // Deprecated, use "valuation_amount"
+    repeated string loan_account_ids = 12;
+    bool registered_address = 13;
+    bool user_modified_loan_account_ids = 14;
+
+    enum Type {
+        PROPERTY_TYPE_UNKNOWN = 0;
+        PROPERTY_TYPE_HOUSE = 1;
+        PROPERTY_TYPE_APARTMENT = 2;
+        PROPERTY_TYPE_VACATION_HOUSE = 3;
+    }
+
+    CurrencyDenominatedAmount valuation_amount = 15;
+    CurrencyDenominatedAmount total_loan_amount = 16;
+    ExactNumber average_interest_rate = 17;
+}
+
+message Market {
+    string code = 1;
+    string label = 2;
+    MarketStatus status = 3;
+}
+
+message ProviderMarket {
+    string code = 1;
+}
+
+message PropertyValuationEvent {
+    string property_id = 1;
+    google.protobuf.Timestamp date = 2;
+    CurrencyDenominatedAmount valuation_amount = 3;
+}
+
+message PropertyValuationSummary {
+    string property_id = 1;
+    google.protobuf.Timestamp from = 2;
+    google.protobuf.Timestamp to = 3;
+    CurrencyDenominatedAmount from_valuation_amount = 4;
+    CurrencyDenominatedAmount to_valuation_amount = 5;
+}
+
+message Insight {
+    string id = 1;
+    string user_id = 2;
+    string type = 3;
+    InsightGroup group = 4;
+    ExactNumber score = 5;
+    string title = 6;
+    string description = 7;
+    google.protobuf.Timestamp created = 8;
+    google.protobuf.Timestamp expiration_date = 9;
+    repeated InsightDataSet data_sets = 10;
+    repeated InsightAction actions = 11;
+    repeated ReferenceId reference_ids = 12;
+}
+
+message ArchivedInsight {
+    string id = 1;
+    string user_id = 2;
+    string type = 3;
+    InsightGroup group = 4;
+    ExactNumber score = 5;
+    string title = 6;
+    string description = 7;
+    google.protobuf.Timestamp insight_created_date = 8;
+    google.protobuf.Timestamp insight_archived_date = 9;
+    repeated InsightDataSet data_sets = 10;
+    InsightAction action = 11;
+    repeated ReferenceId reference_ids = 12;
+}
+
+message InsightDataSet {
+    string name = 1;
+    repeated DataSeries data_series = 2;
+
+    message DataSeries {
+        string name = 1;
+        string type = 2;
+        repeated DataPoint data_points = 3;
+
+        message DataPoint {
+            double x = 1;
+            double y = 2;
+        }
+    }
+}
+
+message InsightAction {
+    string label = 1;
+    string target = 2;
+    Type type = 3;
+    Method method = 4;
+    InsightGroup group = 5;
+
+
+    enum Type {
+        TYPE_UNKNOWN = 0;
+        TYPE_PRIMARY = 1;
+        TYPE_SECONDARY = 2;
+    }
+
+    enum Method {
+        METHOD_UNKNOWN = 0;
+        METHOD_ACKNOWLEDGE = 1;
+        METHOD_CREATE = 2;
+        METHOD_ADD = 3;
+        METHOD_GO_TO = 4;
+        METHOD_EDIT = 5;
+        METHOD_NOT_NOW = 6;
+        METHOD_DISMISS = 7;
+    }
+}
+
+enum InsightGroup {
+    GROUP_UNKNOWN = 0;
+    GROUP_EDUCATING = 1;
+    GROUP_ENCOURAGING = 2;
+    GROUP_FUN_FACT = 3;
+    GROUP_PRODUCT_SUGGEST = 4;
+    GROUP_PROMOTION = 5;
+    GROUP_REMINDER = 6;
+    GROUP_SOURCE_DATA = 7;
+    GROUP_SUGGESTION = 8;
+    GROUP_SUMMARY = 9;
+    GROUP_WARNING = 10;
+    GROUP_BUDGET = 11;
+    GROUP_ACCOUNT = 12;
+    GROUP_CATEGORIZATION = 13;
+    GROUP_CREDENTIALS = 14;
+    GROUP_INVOICE = 15;
+    GROUP_FRAUD = 16;
+    GROUP_LEFT_TO_SPEND = 17;
+}
+
+message ReferenceId {
+    string id = 1;
+    Type type = 2;
+
+    enum Type {
+        TYPE_UNKNOWN = 0;
+        TYPE_ACCOUNT = 1;
+        TYPE_BUDGET = 2;
+        TYPE_CREDENTIALS = 3;
+        TYPE_SAVINGS_GOAL = 4;
+        TYPE_TRANSACTION = 5;
+        TYPE_TRANSFER = 6;
+    }
+}
+
+enum SortType {
+    SORT_TYPE_UNKNOWN = 0;
+    SORT_TYPE_SCORE = 1;
+    SORT_TYPE_DATE = 2;
+    SORT_TYPE_ACCOUNT = 3;
+    SORT_TYPE_DESCRIPTION = 4;
+    SORT_TYPE_AMOUNT = 5;
+    SORT_TYPE_CATEGORY = 6;
+}
+
+enum OrderType {
+    ORDER_TYPE_UNKNOWN = 0;
+    ORDER_TYPE_ASC = 1;
+    ORDER_TYPE_DESC = 2;
+}
+
+enum Theme {
+    THEME_UNKNOWN = 0;
+    THEME_LIGHT = 1;
+    THEME_BLACK = 2;
+    THEME_DARK = 3;
+}
+
+message RecurringTransaction {
+    message Transaction {
+        string transaction_id = 1;
+        Type type = 2;
+        google.protobuf.Timestamp date = 3;
+        string description = 4;
+        CurrencyDenominatedAmount amount = 5;
+        Category category = 6;
+        string group_id = 7;
+        Source source = 8;
+
+        enum Type {
+            TYPE_UNKNOWN = 0;
+            TYPE_PREDICTED = 1;
+            TYPE_EXISTING = 2;
+        }
+
+        enum Source {
+            SOURCE_UNKNOWN = 0;
+            SOURCE_USER_ADDED = 1;
+            SOURCE_GENERATED = 2;
+        }
+    }
+
+    message Category {
+        Type type = 1;
+        string code = 2;
+        string primary_name = 3;
+        string secondary_name = 4;
+
+        enum Type {
+            TYPE_UNKNOWN = 0;
+            TYPE_INCOME = 1;
+            TYPE_EXPENSE = 2;
+            TYPE_TRANSFER = 3;
+        }
+    }
+
+    message Group {
+        string id = 1;
+        string name = 2;
+        string qualifier = 3;
+        RecurringPeriodicity periodicity = 4;
+        Category.Type category_type = 5;
+
+        enum State {
+            STATE_UNKNOWN = 0;
+            STATE_DISABLED = 1;
+            STATE_ACTIVE = 2;
+        }
+
+        enum RecurringPeriodicity {
+            RECURRING_PERIODICITY_UNKNOWN = 0;
+            RECURRING_PERIODICITY_MONTHLY = 1;
+            RECURRING_PERIODICITY_QUARTERLY = 2;
+            RECURRING_PERIODICITY_YEARLY = 3;
+        }
+    }
+
+    message PeriodSummary {
+        CurrencyDenominatedAmount total_amount = 1;
+        google.protobuf.Timestamp start = 2;
+        google.protobuf.Timestamp end = 3;
+    }
+}
+
+message KycQuestion {
+    string reference = 1;
+    string answer = 2;
+}
