@@ -19,6 +19,8 @@
 		20ED854B2303FD85006213BB /* CgRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85472303FD85006213BB /* CgRPC.framework */; };
 		20ED854C2303FD85006213BB /* SwiftProtobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85482303FD85006213BB /* SwiftProtobuf.framework */; };
 		20ED854D2303FD85006213BB /* SwiftGRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85492303FD85006213BB /* SwiftGRPC.framework */; };
+		20ED856D23040025006213BB /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED856C23040025006213BB /* Client.swift */; };
+		20ED8588230408E6006213BB /* ClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED8587230408E6006213BB /* ClientTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		20ED85472303FD85006213BB /* CgRPC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CgRPC.framework; path = Carthage/Build/iOS/CgRPC.framework; sourceTree = "<group>"; };
 		20ED85482303FD85006213BB /* SwiftProtobuf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftProtobuf.framework; path = Carthage/Build/iOS/SwiftProtobuf.framework; sourceTree = "<group>"; };
 		20ED85492303FD85006213BB /* SwiftGRPC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftGRPC.framework; path = Carthage/Build/iOS/SwiftGRPC.framework; sourceTree = "<group>"; };
+		20ED856C23040025006213BB /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		20ED8587230408E6006213BB /* ClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +100,7 @@
 			children = (
 				20ED85232303FA48006213BB /* TinkLink.h */,
 				20ED853A2303FAD9006213BB /* TinkLink.swift */,
+				20ED856C23040025006213BB /* Client.swift */,
 				20ED853C2303FAEC006213BB /* GRPC */,
 				20ED85242303FA48006213BB /* Info.plist */,
 			);
@@ -107,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				20ED852E2303FA48006213BB /* TinkLinkTests.swift */,
+				20ED8587230408E6006213BB /* ClientTests.swift */,
 				20ED85302303FA48006213BB /* Info.plist */,
 			);
 			name = TinkLinkTests;
@@ -246,6 +252,7 @@
 			files = (
 				20ED85432303FAEC006213BB /* services.grpc.swift in Sources */,
 				20ED85442303FAEC006213BB /* services.pb.swift in Sources */,
+				20ED856D23040025006213BB /* Client.swift in Sources */,
 				20ED85412303FAEC006213BB /* rpc.pb.swift in Sources */,
 				20ED853B2303FAD9006213BB /* TinkLink.swift in Sources */,
 				20ED85422303FAEC006213BB /* models.pb.swift in Sources */,
@@ -256,6 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20ED8588230408E6006213BB /* ClientTests.swift in Sources */,
 				20ED852F2303FA48006213BB /* TinkLinkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
