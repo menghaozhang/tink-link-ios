@@ -259,200 +259,6 @@ public final class ActivityServiceServiceClient: ServiceClientBase, ActivityServ
   }
 
 }
-public protocol ApplicationServiceCreateApplicationCall: ClientCallUnary {}
-
-fileprivate final class ApplicationServiceCreateApplicationCallBase: ClientCallUnaryBase<CreateApplicationRequest, CreateApplicationResponse>, ApplicationServiceCreateApplicationCall {
-  override class var method: String { return "/ApplicationService/CreateApplication" }
-}
-
-public protocol ApplicationServiceGetApplicationCall: ClientCallUnary {}
-
-fileprivate final class ApplicationServiceGetApplicationCallBase: ClientCallUnaryBase<GetApplicationRequest, GetApplicationResponse>, ApplicationServiceGetApplicationCall {
-  override class var method: String { return "/ApplicationService/GetApplication" }
-}
-
-public protocol ApplicationServiceDeleteApplicationCall: ClientCallUnary {}
-
-fileprivate final class ApplicationServiceDeleteApplicationCallBase: ClientCallUnaryBase<DeleteApplicationRequest, DeleteApplicationResponse>, ApplicationServiceDeleteApplicationCall {
-  override class var method: String { return "/ApplicationService/DeleteApplication" }
-}
-
-public protocol ApplicationServiceGetApplicationSummaryCall: ClientCallUnary {}
-
-fileprivate final class ApplicationServiceGetApplicationSummaryCallBase: ClientCallUnaryBase<GetApplicationSummaryRequest, GetApplicationSummaryResponse>, ApplicationServiceGetApplicationSummaryCall {
-  override class var method: String { return "/ApplicationService/GetApplicationSummary" }
-}
-
-public protocol ApplicationServiceGetApplicationSummaryListCall: ClientCallUnary {}
-
-fileprivate final class ApplicationServiceGetApplicationSummaryListCallBase: ClientCallUnaryBase<GetApplicationSummaryListRequest, GetApplicationSummaryListResponse>, ApplicationServiceGetApplicationSummaryListCall {
-  override class var method: String { return "/ApplicationService/GetApplicationSummaryList" }
-}
-
-public protocol ApplicationServiceSubmitApplicationFormCall: ClientCallUnary {}
-
-fileprivate final class ApplicationServiceSubmitApplicationFormCallBase: ClientCallUnaryBase<SubmitApplicationFormRequest, SubmitApplicationFormResponse>, ApplicationServiceSubmitApplicationFormCall {
-  override class var method: String { return "/ApplicationService/SubmitApplicationForm" }
-}
-
-public protocol ApplicationServiceSubmitApplicationCall: ClientCallUnary {}
-
-fileprivate final class ApplicationServiceSubmitApplicationCallBase: ClientCallUnaryBase<SubmitApplicationRequest, SubmitApplicationResponse>, ApplicationServiceSubmitApplicationCall {
-  override class var method: String { return "/ApplicationService/SubmitApplication" }
-}
-
-public protocol ApplicationServiceGetEligibleApplicationTypesCall: ClientCallUnary {}
-
-fileprivate final class ApplicationServiceGetEligibleApplicationTypesCallBase: ClientCallUnaryBase<GetEligibleApplicationTypesRequest, GetEligibleApplicationTypesResponse>, ApplicationServiceGetEligibleApplicationTypesCall {
-  override class var method: String { return "/ApplicationService/GetEligibleApplicationTypes" }
-}
-
-
-/// Instantiate ApplicationServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol ApplicationServiceService: ServiceClient {
-  /// Asynchronous. Unary.
-  @discardableResult
-  func createApplication(_ request: CreateApplicationRequest, metadata customMetadata: Metadata, completion: @escaping (CreateApplicationResponse?, CallResult) -> Void) throws -> ApplicationServiceCreateApplicationCall
-
-  /// Asynchronous. Unary.
-  @discardableResult
-  func getApplication(_ request: GetApplicationRequest, metadata customMetadata: Metadata, completion: @escaping (GetApplicationResponse?, CallResult) -> Void) throws -> ApplicationServiceGetApplicationCall
-
-  /// Asynchronous. Unary.
-  @discardableResult
-  func deleteApplication(_ request: DeleteApplicationRequest, metadata customMetadata: Metadata, completion: @escaping (DeleteApplicationResponse?, CallResult) -> Void) throws -> ApplicationServiceDeleteApplicationCall
-
-  /// Asynchronous. Unary.
-  @discardableResult
-  func getApplicationSummary(_ request: GetApplicationSummaryRequest, metadata customMetadata: Metadata, completion: @escaping (GetApplicationSummaryResponse?, CallResult) -> Void) throws -> ApplicationServiceGetApplicationSummaryCall
-
-  /// Asynchronous. Unary.
-  @discardableResult
-  func getApplicationSummaryList(_ request: GetApplicationSummaryListRequest, metadata customMetadata: Metadata, completion: @escaping (GetApplicationSummaryListResponse?, CallResult) -> Void) throws -> ApplicationServiceGetApplicationSummaryListCall
-
-  /// Asynchronous. Unary.
-  @discardableResult
-  func submitApplicationForm(_ request: SubmitApplicationFormRequest, metadata customMetadata: Metadata, completion: @escaping (SubmitApplicationFormResponse?, CallResult) -> Void) throws -> ApplicationServiceSubmitApplicationFormCall
-
-  /// Asynchronous. Unary.
-  @discardableResult
-  func submitApplication(_ request: SubmitApplicationRequest, metadata customMetadata: Metadata, completion: @escaping (SubmitApplicationResponse?, CallResult) -> Void) throws -> ApplicationServiceSubmitApplicationCall
-
-  /// Asynchronous. Unary.
-  @discardableResult
-  func getEligibleApplicationTypes(_ request: GetEligibleApplicationTypesRequest, metadata customMetadata: Metadata, completion: @escaping (GetEligibleApplicationTypesResponse?, CallResult) -> Void) throws -> ApplicationServiceGetEligibleApplicationTypesCall
-
-}
-
-public extension ApplicationServiceService {
-  /// Asynchronous. Unary.
-  @discardableResult
-  func createApplication(_ request: CreateApplicationRequest, completion: @escaping (CreateApplicationResponse?, CallResult) -> Void) throws -> ApplicationServiceCreateApplicationCall {
-    return try self.createApplication(request, metadata: self.metadata, completion: completion)
-  }
-
-  /// Asynchronous. Unary.
-  @discardableResult
-  func getApplication(_ request: GetApplicationRequest, completion: @escaping (GetApplicationResponse?, CallResult) -> Void) throws -> ApplicationServiceGetApplicationCall {
-    return try self.getApplication(request, metadata: self.metadata, completion: completion)
-  }
-
-  /// Asynchronous. Unary.
-  @discardableResult
-  func deleteApplication(_ request: DeleteApplicationRequest, completion: @escaping (DeleteApplicationResponse?, CallResult) -> Void) throws -> ApplicationServiceDeleteApplicationCall {
-    return try self.deleteApplication(request, metadata: self.metadata, completion: completion)
-  }
-
-  /// Asynchronous. Unary.
-  @discardableResult
-  func getApplicationSummary(_ request: GetApplicationSummaryRequest, completion: @escaping (GetApplicationSummaryResponse?, CallResult) -> Void) throws -> ApplicationServiceGetApplicationSummaryCall {
-    return try self.getApplicationSummary(request, metadata: self.metadata, completion: completion)
-  }
-
-  /// Asynchronous. Unary.
-  @discardableResult
-  func getApplicationSummaryList(_ request: GetApplicationSummaryListRequest, completion: @escaping (GetApplicationSummaryListResponse?, CallResult) -> Void) throws -> ApplicationServiceGetApplicationSummaryListCall {
-    return try self.getApplicationSummaryList(request, metadata: self.metadata, completion: completion)
-  }
-
-  /// Asynchronous. Unary.
-  @discardableResult
-  func submitApplicationForm(_ request: SubmitApplicationFormRequest, completion: @escaping (SubmitApplicationFormResponse?, CallResult) -> Void) throws -> ApplicationServiceSubmitApplicationFormCall {
-    return try self.submitApplicationForm(request, metadata: self.metadata, completion: completion)
-  }
-
-  /// Asynchronous. Unary.
-  @discardableResult
-  func submitApplication(_ request: SubmitApplicationRequest, completion: @escaping (SubmitApplicationResponse?, CallResult) -> Void) throws -> ApplicationServiceSubmitApplicationCall {
-    return try self.submitApplication(request, metadata: self.metadata, completion: completion)
-  }
-
-  /// Asynchronous. Unary.
-  @discardableResult
-  func getEligibleApplicationTypes(_ request: GetEligibleApplicationTypesRequest, completion: @escaping (GetEligibleApplicationTypesResponse?, CallResult) -> Void) throws -> ApplicationServiceGetEligibleApplicationTypesCall {
-    return try self.getEligibleApplicationTypes(request, metadata: self.metadata, completion: completion)
-  }
-
-}
-
-public final class ApplicationServiceServiceClient: ServiceClientBase, ApplicationServiceService {
-  /// Asynchronous. Unary.
-  @discardableResult
-  public func createApplication(_ request: CreateApplicationRequest, metadata customMetadata: Metadata, completion: @escaping (CreateApplicationResponse?, CallResult) -> Void) throws -> ApplicationServiceCreateApplicationCall {
-    return try ApplicationServiceCreateApplicationCallBase(channel)
-      .start(request: request, metadata: customMetadata, completion: completion)
-  }
-
-  /// Asynchronous. Unary.
-  @discardableResult
-  public func getApplication(_ request: GetApplicationRequest, metadata customMetadata: Metadata, completion: @escaping (GetApplicationResponse?, CallResult) -> Void) throws -> ApplicationServiceGetApplicationCall {
-    return try ApplicationServiceGetApplicationCallBase(channel)
-      .start(request: request, metadata: customMetadata, completion: completion)
-  }
-
-  /// Asynchronous. Unary.
-  @discardableResult
-  public func deleteApplication(_ request: DeleteApplicationRequest, metadata customMetadata: Metadata, completion: @escaping (DeleteApplicationResponse?, CallResult) -> Void) throws -> ApplicationServiceDeleteApplicationCall {
-    return try ApplicationServiceDeleteApplicationCallBase(channel)
-      .start(request: request, metadata: customMetadata, completion: completion)
-  }
-
-  /// Asynchronous. Unary.
-  @discardableResult
-  public func getApplicationSummary(_ request: GetApplicationSummaryRequest, metadata customMetadata: Metadata, completion: @escaping (GetApplicationSummaryResponse?, CallResult) -> Void) throws -> ApplicationServiceGetApplicationSummaryCall {
-    return try ApplicationServiceGetApplicationSummaryCallBase(channel)
-      .start(request: request, metadata: customMetadata, completion: completion)
-  }
-
-  /// Asynchronous. Unary.
-  @discardableResult
-  public func getApplicationSummaryList(_ request: GetApplicationSummaryListRequest, metadata customMetadata: Metadata, completion: @escaping (GetApplicationSummaryListResponse?, CallResult) -> Void) throws -> ApplicationServiceGetApplicationSummaryListCall {
-    return try ApplicationServiceGetApplicationSummaryListCallBase(channel)
-      .start(request: request, metadata: customMetadata, completion: completion)
-  }
-
-  /// Asynchronous. Unary.
-  @discardableResult
-  public func submitApplicationForm(_ request: SubmitApplicationFormRequest, metadata customMetadata: Metadata, completion: @escaping (SubmitApplicationFormResponse?, CallResult) -> Void) throws -> ApplicationServiceSubmitApplicationFormCall {
-    return try ApplicationServiceSubmitApplicationFormCallBase(channel)
-      .start(request: request, metadata: customMetadata, completion: completion)
-  }
-
-  /// Asynchronous. Unary.
-  @discardableResult
-  public func submitApplication(_ request: SubmitApplicationRequest, metadata customMetadata: Metadata, completion: @escaping (SubmitApplicationResponse?, CallResult) -> Void) throws -> ApplicationServiceSubmitApplicationCall {
-    return try ApplicationServiceSubmitApplicationCallBase(channel)
-      .start(request: request, metadata: customMetadata, completion: completion)
-  }
-
-  /// Asynchronous. Unary.
-  @discardableResult
-  public func getEligibleApplicationTypes(_ request: GetEligibleApplicationTypesRequest, metadata customMetadata: Metadata, completion: @escaping (GetEligibleApplicationTypesResponse?, CallResult) -> Void) throws -> ApplicationServiceGetEligibleApplicationTypesCall {
-    return try ApplicationServiceGetEligibleApplicationTypesCallBase(channel)
-      .start(request: request, metadata: customMetadata, completion: completion)
-  }
-
-}
 public protocol AuthenticationServiceLoginCall: ClientCallUnary {}
 
 fileprivate final class AuthenticationServiceLoginCallBase: ClientCallUnaryBase<LoginRequest, LoginResponse>, AuthenticationServiceLoginCall {
@@ -471,6 +277,12 @@ fileprivate final class AuthenticationServiceLogoutCallBase: ClientCallUnaryBase
   override class var method: String { return "/AuthenticationService/Logout" }
 }
 
+public protocol AuthenticationServiceDescribeOAuth2ClientCall: ClientCallUnary {}
+
+fileprivate final class AuthenticationServiceDescribeOAuth2ClientCallBase: ClientCallUnaryBase<DescribeOAuth2ClientRequest, DescribeOAuth2ClientResponse>, AuthenticationServiceDescribeOAuth2ClientCall {
+  override class var method: String { return "/AuthenticationService/DescribeOAuth2Client" }
+}
+
 
 /// Instantiate AuthenticationServiceServiceClient, then call methods of this protocol to make API calls.
 public protocol AuthenticationServiceService: ServiceClient {
@@ -485,6 +297,10 @@ public protocol AuthenticationServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func logout(_ request: LogoutRequest, metadata customMetadata: Metadata, completion: @escaping (LogoutResponse?, CallResult) -> Void) throws -> AuthenticationServiceLogoutCall
+
+  /// Asynchronous. Unary.
+  @discardableResult
+  func describeOAuth2Client(_ request: DescribeOAuth2ClientRequest, metadata customMetadata: Metadata, completion: @escaping (DescribeOAuth2ClientResponse?, CallResult) -> Void) throws -> AuthenticationServiceDescribeOAuth2ClientCall
 
 }
 
@@ -505,6 +321,12 @@ public extension AuthenticationServiceService {
   @discardableResult
   func logout(_ request: LogoutRequest, completion: @escaping (LogoutResponse?, CallResult) -> Void) throws -> AuthenticationServiceLogoutCall {
     return try self.logout(request, metadata: self.metadata, completion: completion)
+  }
+
+  /// Asynchronous. Unary.
+  @discardableResult
+  func describeOAuth2Client(_ request: DescribeOAuth2ClientRequest, completion: @escaping (DescribeOAuth2ClientResponse?, CallResult) -> Void) throws -> AuthenticationServiceDescribeOAuth2ClientCall {
+    return try self.describeOAuth2Client(request, metadata: self.metadata, completion: completion)
   }
 
 }
@@ -528,6 +350,13 @@ public final class AuthenticationServiceServiceClient: ServiceClientBase, Authen
   @discardableResult
   public func logout(_ request: LogoutRequest, metadata customMetadata: Metadata, completion: @escaping (LogoutResponse?, CallResult) -> Void) throws -> AuthenticationServiceLogoutCall {
     return try AuthenticationServiceLogoutCallBase(channel)
+      .start(request: request, metadata: customMetadata, completion: completion)
+  }
+
+  /// Asynchronous. Unary.
+  @discardableResult
+  public func describeOAuth2Client(_ request: DescribeOAuth2ClientRequest, metadata customMetadata: Metadata, completion: @escaping (DescribeOAuth2ClientResponse?, CallResult) -> Void) throws -> AuthenticationServiceDescribeOAuth2ClientCall {
+    return try AuthenticationServiceDescribeOAuth2ClientCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
@@ -977,6 +806,12 @@ fileprivate final class CredentialServiceThirdPartyCallbackCallBase: ClientCallU
   override class var method: String { return "/CredentialService/ThirdPartyCallback" }
 }
 
+public protocol CredentialServiceManualAuthenticationCall: ClientCallUnary {}
+
+fileprivate final class CredentialServiceManualAuthenticationCallBase: ClientCallUnaryBase<ManualAuthenticationRequest, ManualAuthenticationResponse>, CredentialServiceManualAuthenticationCall {
+  override class var method: String { return "/CredentialService/ManualAuthentication" }
+}
+
 
 /// Instantiate CredentialServiceServiceClient, then call methods of this protocol to make API calls.
 public protocol CredentialServiceService: ServiceClient {
@@ -1019,6 +854,10 @@ public protocol CredentialServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func thirdPartyCallback(_ request: ThirdPartyCallbackRequest, metadata customMetadata: Metadata, completion: @escaping (ThirdPartyCallbackResponse?, CallResult) -> Void) throws -> CredentialServiceThirdPartyCallbackCall
+
+  /// Asynchronous. Unary.
+  @discardableResult
+  func manualAuthentication(_ request: ManualAuthenticationRequest, metadata customMetadata: Metadata, completion: @escaping (ManualAuthenticationResponse?, CallResult) -> Void) throws -> CredentialServiceManualAuthenticationCall
 
 }
 
@@ -1081,6 +920,12 @@ public extension CredentialServiceService {
   @discardableResult
   func thirdPartyCallback(_ request: ThirdPartyCallbackRequest, completion: @escaping (ThirdPartyCallbackResponse?, CallResult) -> Void) throws -> CredentialServiceThirdPartyCallbackCall {
     return try self.thirdPartyCallback(request, metadata: self.metadata, completion: completion)
+  }
+
+  /// Asynchronous. Unary.
+  @discardableResult
+  func manualAuthentication(_ request: ManualAuthenticationRequest, completion: @escaping (ManualAuthenticationResponse?, CallResult) -> Void) throws -> CredentialServiceManualAuthenticationCall {
+    return try self.manualAuthentication(request, metadata: self.metadata, completion: completion)
   }
 
 }
@@ -1153,6 +998,13 @@ public final class CredentialServiceServiceClient: ServiceClientBase, Credential
   @discardableResult
   public func thirdPartyCallback(_ request: ThirdPartyCallbackRequest, metadata customMetadata: Metadata, completion: @escaping (ThirdPartyCallbackResponse?, CallResult) -> Void) throws -> CredentialServiceThirdPartyCallbackCall {
     return try CredentialServiceThirdPartyCallbackCallBase(channel)
+      .start(request: request, metadata: customMetadata, completion: completion)
+  }
+
+  /// Asynchronous. Unary.
+  @discardableResult
+  public func manualAuthentication(_ request: ManualAuthenticationRequest, metadata customMetadata: Metadata, completion: @escaping (ManualAuthenticationResponse?, CallResult) -> Void) throws -> CredentialServiceManualAuthenticationCall {
+    return try CredentialServiceManualAuthenticationCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
@@ -3509,6 +3361,12 @@ public final class TransferKycServiceServiceClient: ServiceClientBase, TransferK
   }
 
 }
+public protocol UserServiceCreateAnonymousCall: ClientCallUnary {}
+
+fileprivate final class UserServiceCreateAnonymousCallBase: ClientCallUnaryBase<CreateAnonymousRequest, CreateAnonymousResponse>, UserServiceCreateAnonymousCall {
+  override class var method: String { return "/UserService/CreateAnonymous" }
+}
+
 public protocol UserServiceGetProfileCall: ClientCallUnary {}
 
 fileprivate final class UserServiceGetProfileCallBase: ClientCallUnaryBase<GetProfileRequest, GetProfileResponse>, UserServiceGetProfileCall {
@@ -3532,6 +3390,10 @@ fileprivate final class UserServiceRateAppCallBase: ClientCallUnaryBase<RateAppR
 public protocol UserServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
+  func createAnonymous(_ request: CreateAnonymousRequest, metadata customMetadata: Metadata, completion: @escaping (CreateAnonymousResponse?, CallResult) -> Void) throws -> UserServiceCreateAnonymousCall
+
+  /// Asynchronous. Unary.
+  @discardableResult
   func getProfile(_ request: GetProfileRequest, metadata customMetadata: Metadata, completion: @escaping (GetProfileResponse?, CallResult) -> Void) throws -> UserServiceGetProfileCall
 
   /// Asynchronous. Unary.
@@ -3545,6 +3407,12 @@ public protocol UserServiceService: ServiceClient {
 }
 
 public extension UserServiceService {
+  /// Asynchronous. Unary.
+  @discardableResult
+  func createAnonymous(_ request: CreateAnonymousRequest, completion: @escaping (CreateAnonymousResponse?, CallResult) -> Void) throws -> UserServiceCreateAnonymousCall {
+    return try self.createAnonymous(request, metadata: self.metadata, completion: completion)
+  }
+
   /// Asynchronous. Unary.
   @discardableResult
   func getProfile(_ request: GetProfileRequest, completion: @escaping (GetProfileResponse?, CallResult) -> Void) throws -> UserServiceGetProfileCall {
@@ -3566,6 +3434,13 @@ public extension UserServiceService {
 }
 
 public final class UserServiceServiceClient: ServiceClientBase, UserServiceService {
+  /// Asynchronous. Unary.
+  @discardableResult
+  public func createAnonymous(_ request: CreateAnonymousRequest, metadata customMetadata: Metadata, completion: @escaping (CreateAnonymousResponse?, CallResult) -> Void) throws -> UserServiceCreateAnonymousCall {
+    return try UserServiceCreateAnonymousCallBase(channel)
+      .start(request: request, metadata: customMetadata, completion: completion)
+  }
+
   /// Asynchronous. Unary.
   @discardableResult
   public func getProfile(_ request: GetProfileRequest, metadata customMetadata: Metadata, completion: @escaping (GetProfileResponse?, CallResult) -> Void) throws -> UserServiceGetProfileCall {

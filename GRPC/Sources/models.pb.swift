@@ -611,394 +611,6 @@ extension AuthenticationMethod: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-public enum ApplicationType: SwiftProtobuf.Enum {
-  public typealias RawValue = Int
-  case unknown // = 0
-  case switchMortgageProvider // = 1
-  case openSavingsAccount // = 2
-  case residenceValuation // = 3
-  case solicitUnsecuredLoans // = 4
-  case acceptUnsecuredLoans // = 5
-  case UNRECOGNIZED(Int)
-
-  public init() {
-    self = .unknown
-  }
-
-  public init?(rawValue: Int) {
-    switch rawValue {
-    case 0: self = .unknown
-    case 1: self = .switchMortgageProvider
-    case 2: self = .openSavingsAccount
-    case 3: self = .residenceValuation
-    case 4: self = .solicitUnsecuredLoans
-    case 5: self = .acceptUnsecuredLoans
-    default: self = .UNRECOGNIZED(rawValue)
-    }
-  }
-
-  public var rawValue: Int {
-    switch self {
-    case .unknown: return 0
-    case .switchMortgageProvider: return 1
-    case .openSavingsAccount: return 2
-    case .residenceValuation: return 3
-    case .solicitUnsecuredLoans: return 4
-    case .acceptUnsecuredLoans: return 5
-    case .UNRECOGNIZED(let i): return i
-    }
-  }
-
-}
-
-#if swift(>=4.2)
-
-extension ApplicationType: CaseIterable {
-  // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [ApplicationType] = [
-    .unknown,
-    .switchMortgageProvider,
-    .openSavingsAccount,
-    .residenceValuation,
-    .solicitUnsecuredLoans,
-    .acceptUnsecuredLoans,
-  ]
-}
-
-#endif  // swift(>=4.2)
-
-public enum ApplicationFieldType: SwiftProtobuf.Enum {
-  public typealias RawValue = Int
-  case unknown // = 0
-  case checkbox // = 1
-  case date // = 2
-  case email // = 3
-  case hidden // = 4
-  case multiSelect // = 5
-  case number // = 6
-  case numeric // = 7
-  case select // = 8
-  case signature // = 9
-  case text // = 10
-  case UNRECOGNIZED(Int)
-
-  public init() {
-    self = .unknown
-  }
-
-  public init?(rawValue: Int) {
-    switch rawValue {
-    case 0: self = .unknown
-    case 1: self = .checkbox
-    case 2: self = .date
-    case 3: self = .email
-    case 4: self = .hidden
-    case 5: self = .multiSelect
-    case 6: self = .number
-    case 7: self = .numeric
-    case 8: self = .select
-    case 9: self = .signature
-    case 10: self = .text
-    default: self = .UNRECOGNIZED(rawValue)
-    }
-  }
-
-  public var rawValue: Int {
-    switch self {
-    case .unknown: return 0
-    case .checkbox: return 1
-    case .date: return 2
-    case .email: return 3
-    case .hidden: return 4
-    case .multiSelect: return 5
-    case .number: return 6
-    case .numeric: return 7
-    case .select: return 8
-    case .signature: return 9
-    case .text: return 10
-    case .UNRECOGNIZED(let i): return i
-    }
-  }
-
-}
-
-#if swift(>=4.2)
-
-extension ApplicationFieldType: CaseIterable {
-  // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [ApplicationFieldType] = [
-    .unknown,
-    .checkbox,
-    .date,
-    .email,
-    .hidden,
-    .multiSelect,
-    .number,
-    .numeric,
-    .select,
-    .signature,
-    .text,
-  ]
-}
-
-#endif  // swift(>=4.2)
-
-public enum ApplicationStatusKey: SwiftProtobuf.Enum {
-  public typealias RawValue = Int
-  case applicationStatusUnknown // = 0
-  case applicationStatusCreated // = 1
-  case applicationStatusInProgress // = 2
-  case applicationStatusDeleted // = 3
-  case applicationStatusError // = 4
-  case applicationStatusExpired // = 5
-  case applicationStatusDisqualified // = 6
-  case applicationStatusCompleted // = 7
-  case applicationStatusSigned // = 8
-  case applicationStatusSupplementalInformationRequired // = 9
-  case applicationStatusRejected // = 10
-  case applicationStatusApproved // = 11
-  case applicationStatusAborted // = 12
-  case applicationStatusExecuted // = 13
-  case applicationStatusPending // = 14
-  case UNRECOGNIZED(Int)
-
-  public init() {
-    self = .applicationStatusUnknown
-  }
-
-  public init?(rawValue: Int) {
-    switch rawValue {
-    case 0: self = .applicationStatusUnknown
-    case 1: self = .applicationStatusCreated
-    case 2: self = .applicationStatusInProgress
-    case 3: self = .applicationStatusDeleted
-    case 4: self = .applicationStatusError
-    case 5: self = .applicationStatusExpired
-    case 6: self = .applicationStatusDisqualified
-    case 7: self = .applicationStatusCompleted
-    case 8: self = .applicationStatusSigned
-    case 9: self = .applicationStatusSupplementalInformationRequired
-    case 10: self = .applicationStatusRejected
-    case 11: self = .applicationStatusApproved
-    case 12: self = .applicationStatusAborted
-    case 13: self = .applicationStatusExecuted
-    case 14: self = .applicationStatusPending
-    default: self = .UNRECOGNIZED(rawValue)
-    }
-  }
-
-  public var rawValue: Int {
-    switch self {
-    case .applicationStatusUnknown: return 0
-    case .applicationStatusCreated: return 1
-    case .applicationStatusInProgress: return 2
-    case .applicationStatusDeleted: return 3
-    case .applicationStatusError: return 4
-    case .applicationStatusExpired: return 5
-    case .applicationStatusDisqualified: return 6
-    case .applicationStatusCompleted: return 7
-    case .applicationStatusSigned: return 8
-    case .applicationStatusSupplementalInformationRequired: return 9
-    case .applicationStatusRejected: return 10
-    case .applicationStatusApproved: return 11
-    case .applicationStatusAborted: return 12
-    case .applicationStatusExecuted: return 13
-    case .applicationStatusPending: return 14
-    case .UNRECOGNIZED(let i): return i
-    }
-  }
-
-}
-
-#if swift(>=4.2)
-
-extension ApplicationStatusKey: CaseIterable {
-  // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [ApplicationStatusKey] = [
-    .applicationStatusUnknown,
-    .applicationStatusCreated,
-    .applicationStatusInProgress,
-    .applicationStatusDeleted,
-    .applicationStatusError,
-    .applicationStatusExpired,
-    .applicationStatusDisqualified,
-    .applicationStatusCompleted,
-    .applicationStatusSigned,
-    .applicationStatusSupplementalInformationRequired,
-    .applicationStatusRejected,
-    .applicationStatusApproved,
-    .applicationStatusAborted,
-    .applicationStatusExecuted,
-    .applicationStatusPending,
-  ]
-}
-
-#endif  // swift(>=4.2)
-
-public enum ApplicationFormStatusKey: SwiftProtobuf.Enum {
-  public typealias RawValue = Int
-  case applicationFormStatusUnknown // = 0
-  case applicationFormStatusCreated // = 1
-  case applicationFormStatusCompleted // = 2
-  case applicationFormStatusInProgress // = 3
-  case applicationFormStatusError // = 4
-  case applicationFormStatusDisqualified // = 5
-  case applicationFormStatusAutoSaved // = 6
-  case UNRECOGNIZED(Int)
-
-  public init() {
-    self = .applicationFormStatusUnknown
-  }
-
-  public init?(rawValue: Int) {
-    switch rawValue {
-    case 0: self = .applicationFormStatusUnknown
-    case 1: self = .applicationFormStatusCreated
-    case 2: self = .applicationFormStatusCompleted
-    case 3: self = .applicationFormStatusInProgress
-    case 4: self = .applicationFormStatusError
-    case 5: self = .applicationFormStatusDisqualified
-    case 6: self = .applicationFormStatusAutoSaved
-    default: self = .UNRECOGNIZED(rawValue)
-    }
-  }
-
-  public var rawValue: Int {
-    switch self {
-    case .applicationFormStatusUnknown: return 0
-    case .applicationFormStatusCreated: return 1
-    case .applicationFormStatusCompleted: return 2
-    case .applicationFormStatusInProgress: return 3
-    case .applicationFormStatusError: return 4
-    case .applicationFormStatusDisqualified: return 5
-    case .applicationFormStatusAutoSaved: return 6
-    case .UNRECOGNIZED(let i): return i
-    }
-  }
-
-}
-
-#if swift(>=4.2)
-
-extension ApplicationFormStatusKey: CaseIterable {
-  // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [ApplicationFormStatusKey] = [
-    .applicationFormStatusUnknown,
-    .applicationFormStatusCreated,
-    .applicationFormStatusCompleted,
-    .applicationFormStatusInProgress,
-    .applicationFormStatusError,
-    .applicationFormStatusDisqualified,
-    .applicationFormStatusAutoSaved,
-  ]
-}
-
-#endif  // swift(>=4.2)
-
-public enum InsightGroup: SwiftProtobuf.Enum {
-  public typealias RawValue = Int
-  case groupUnknown // = 0
-  case groupEducating // = 1
-  case groupEncouraging // = 2
-  case groupFunFact // = 3
-  case groupProductSuggest // = 4
-  case groupPromotion // = 5
-  case groupReminder // = 6
-  case groupSourceData // = 7
-  case groupSuggestion // = 8
-  case groupSummary // = 9
-  case groupWarning // = 10
-  case groupBudget // = 11
-  case groupAccount // = 12
-  case groupCategorization // = 13
-  case groupCredentials // = 14
-  case groupInvoice // = 15
-  case groupFraud // = 16
-  case groupLeftToSpend // = 17
-  case UNRECOGNIZED(Int)
-
-  public init() {
-    self = .groupUnknown
-  }
-
-  public init?(rawValue: Int) {
-    switch rawValue {
-    case 0: self = .groupUnknown
-    case 1: self = .groupEducating
-    case 2: self = .groupEncouraging
-    case 3: self = .groupFunFact
-    case 4: self = .groupProductSuggest
-    case 5: self = .groupPromotion
-    case 6: self = .groupReminder
-    case 7: self = .groupSourceData
-    case 8: self = .groupSuggestion
-    case 9: self = .groupSummary
-    case 10: self = .groupWarning
-    case 11: self = .groupBudget
-    case 12: self = .groupAccount
-    case 13: self = .groupCategorization
-    case 14: self = .groupCredentials
-    case 15: self = .groupInvoice
-    case 16: self = .groupFraud
-    case 17: self = .groupLeftToSpend
-    default: self = .UNRECOGNIZED(rawValue)
-    }
-  }
-
-  public var rawValue: Int {
-    switch self {
-    case .groupUnknown: return 0
-    case .groupEducating: return 1
-    case .groupEncouraging: return 2
-    case .groupFunFact: return 3
-    case .groupProductSuggest: return 4
-    case .groupPromotion: return 5
-    case .groupReminder: return 6
-    case .groupSourceData: return 7
-    case .groupSuggestion: return 8
-    case .groupSummary: return 9
-    case .groupWarning: return 10
-    case .groupBudget: return 11
-    case .groupAccount: return 12
-    case .groupCategorization: return 13
-    case .groupCredentials: return 14
-    case .groupInvoice: return 15
-    case .groupFraud: return 16
-    case .groupLeftToSpend: return 17
-    case .UNRECOGNIZED(let i): return i
-    }
-  }
-
-}
-
-#if swift(>=4.2)
-
-extension InsightGroup: CaseIterable {
-  // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [InsightGroup] = [
-    .groupUnknown,
-    .groupEducating,
-    .groupEncouraging,
-    .groupFunFact,
-    .groupProductSuggest,
-    .groupPromotion,
-    .groupReminder,
-    .groupSourceData,
-    .groupSuggestion,
-    .groupSummary,
-    .groupWarning,
-    .groupBudget,
-    .groupAccount,
-    .groupCategorization,
-    .groupCredentials,
-    .groupInvoice,
-    .groupFraud,
-    .groupLeftToSpend,
-  ]
-}
-
-#endif  // swift(>=4.2)
-
 public enum SortType: SwiftProtobuf.Enum {
   public typealias RawValue = Int
   case unknown // = 0
@@ -3605,7 +3217,6 @@ public struct SignableOperation {
     case unknown // = 0
     case transfer // = 1
     case accountCreate // = 2
-    case application // = 3
     case UNRECOGNIZED(Int)
 
     public init() {
@@ -3617,7 +3228,6 @@ public struct SignableOperation {
       case 0: self = .unknown
       case 1: self = .transfer
       case 2: self = .accountCreate
-      case 3: self = .application
       default: self = .UNRECOGNIZED(rawValue)
       }
     }
@@ -3627,7 +3237,6 @@ public struct SignableOperation {
       case .unknown: return 0
       case .transfer: return 1
       case .accountCreate: return 2
-      case .application: return 3
       case .UNRECOGNIZED(let i): return i
       }
     }
@@ -3661,7 +3270,6 @@ extension SignableOperation.TypeEnum: CaseIterable {
     .unknown,
     .transfer,
     .accountCreate,
-    .application,
   ]
 }
 
@@ -5293,507 +4901,6 @@ public struct InsightsLeftToSpend {
   public init() {}
 }
 
-public struct Application {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  public var id: String {
-    get {return _storage._id}
-    set {_uniqueStorage()._id = newValue}
-  }
-
-  public var forms: ApplicationForms {
-    get {return _storage._forms ?? ApplicationForms()}
-    set {_uniqueStorage()._forms = newValue}
-  }
-  /// Returns true if `forms` has been explicitly set.
-  public var hasForms: Bool {return _storage._forms != nil}
-  /// Clears the value of `forms`. Subsequent reads from it will return its default value.
-  public mutating func clearForms() {_uniqueStorage()._forms = nil}
-
-  public var status: ApplicationStatus {
-    get {return _storage._status ?? ApplicationStatus()}
-    set {_uniqueStorage()._status = newValue}
-  }
-  /// Returns true if `status` has been explicitly set.
-  public var hasStatus: Bool {return _storage._status != nil}
-  /// Clears the value of `status`. Subsequent reads from it will return its default value.
-  public mutating func clearStatus() {_uniqueStorage()._status = nil}
-
-  public var steps: Int32 {
-    get {return _storage._steps}
-    set {_uniqueStorage()._steps = newValue}
-  }
-
-  public var title: String {
-    get {return _storage._title}
-    set {_uniqueStorage()._title = newValue}
-  }
-
-  public var type: ApplicationType {
-    get {return _storage._type}
-    set {_uniqueStorage()._type = newValue}
-  }
-
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  public init() {}
-
-  fileprivate var _storage = _StorageClass.defaultInstance
-}
-
-public struct ApplicationSummary {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  public var description_p: String {
-    get {return _storage._description_p}
-    set {_uniqueStorage()._description_p = newValue}
-  }
-
-  public var id: String {
-    get {return _storage._id}
-    set {_uniqueStorage()._id = newValue}
-  }
-
-  public var imageURL: String {
-    get {return _storage._imageURL}
-    set {_uniqueStorage()._imageURL = newValue}
-  }
-
-  public var progress: Double {
-    get {return _storage._progress}
-    set {_uniqueStorage()._progress = newValue}
-  }
-
-  public var provider: String {
-    get {return _storage._provider}
-    set {_uniqueStorage()._provider = newValue}
-  }
-
-  public var status: ApplicationSummaryStatus {
-    get {return _storage._status ?? ApplicationSummaryStatus()}
-    set {_uniqueStorage()._status = newValue}
-  }
-  /// Returns true if `status` has been explicitly set.
-  public var hasStatus: Bool {return _storage._status != nil}
-  /// Clears the value of `status`. Subsequent reads from it will return its default value.
-  public mutating func clearStatus() {_uniqueStorage()._status = nil}
-
-  public var title: String {
-    get {return _storage._title}
-    set {_uniqueStorage()._title = newValue}
-  }
-
-  public var type: ApplicationType {
-    get {return _storage._type}
-    set {_uniqueStorage()._type = newValue}
-  }
-
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  public init() {}
-
-  fileprivate var _storage = _StorageClass.defaultInstance
-}
-
-public struct ApplicationSummaryStatus {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  public var key: ApplicationStatusKey = .applicationStatusUnknown
-
-  public var body: String = String()
-
-  public var payload: String = String()
-
-  public var title: String = String()
-
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  public init() {}
-}
-
-public struct ApplicationForms {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  public var form: [ApplicationForm] = []
-
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  public init() {}
-}
-
-public struct ApplicationForm {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  public var id: String {
-    get {return _storage._id}
-    set {_uniqueStorage()._id = newValue}
-  }
-
-  public var applicationID: String {
-    get {return _storage._applicationID}
-    set {_uniqueStorage()._applicationID = newValue}
-  }
-
-  public var description_p: String {
-    get {return _storage._description_p}
-    set {_uniqueStorage()._description_p = newValue}
-  }
-
-  public var fields: ApplicationFormFields {
-    get {return _storage._fields ?? ApplicationFormFields()}
-    set {_uniqueStorage()._fields = newValue}
-  }
-  /// Returns true if `fields` has been explicitly set.
-  public var hasFields: Bool {return _storage._fields != nil}
-  /// Clears the value of `fields`. Subsequent reads from it will return its default value.
-  public mutating func clearFields() {_uniqueStorage()._fields = nil}
-
-  public var status: ApplicationFormStatus {
-    get {return _storage._status ?? ApplicationFormStatus()}
-    set {_uniqueStorage()._status = newValue}
-  }
-  /// Returns true if `status` has been explicitly set.
-  public var hasStatus: Bool {return _storage._status != nil}
-  /// Clears the value of `status`. Subsequent reads from it will return its default value.
-  public mutating func clearStatus() {_uniqueStorage()._status = nil}
-
-  public var type: String {
-    get {return _storage._type}
-    set {_uniqueStorage()._type = newValue}
-  }
-
-  public var title: String {
-    get {return _storage._title}
-    set {_uniqueStorage()._title = newValue}
-  }
-
-  public var serializedPayload: String {
-    get {return _storage._serializedPayload}
-    set {_uniqueStorage()._serializedPayload = newValue}
-  }
-
-  public var name: String {
-    get {return _storage._name}
-    set {_uniqueStorage()._name = newValue}
-  }
-
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  public init() {}
-
-  fileprivate var _storage = _StorageClass.defaultInstance
-}
-
-public struct RequestApplicationForm {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  public var id: String {
-    get {return _storage._id}
-    set {_uniqueStorage()._id = newValue}
-  }
-
-  public var fields: RequestApplicationFormFields {
-    get {return _storage._fields ?? RequestApplicationFormFields()}
-    set {_uniqueStorage()._fields = newValue}
-  }
-  /// Returns true if `fields` has been explicitly set.
-  public var hasFields: Bool {return _storage._fields != nil}
-  /// Clears the value of `fields`. Subsequent reads from it will return its default value.
-  public mutating func clearFields() {_uniqueStorage()._fields = nil}
-
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  public init() {}
-
-  fileprivate var _storage = _StorageClass.defaultInstance
-}
-
-public struct RequestApplicationFormFields {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  public var field: [RequestApplicationFormField] = []
-
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  public init() {}
-}
-
-public struct RequestApplicationFormField {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  public var name: String {
-    get {return _storage._name}
-    set {_uniqueStorage()._name = newValue}
-  }
-
-  public var value: SwiftProtobuf.Google_Protobuf_StringValue {
-    get {return _storage._value ?? SwiftProtobuf.Google_Protobuf_StringValue()}
-    set {_uniqueStorage()._value = newValue}
-  }
-  /// Returns true if `value` has been explicitly set.
-  public var hasValue: Bool {return _storage._value != nil}
-  /// Clears the value of `value`. Subsequent reads from it will return its default value.
-  public mutating func clearValue() {_uniqueStorage()._value = nil}
-
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  public init() {}
-
-  fileprivate var _storage = _StorageClass.defaultInstance
-}
-
-public struct ApplicationFormFields {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  public var field: [ApplicationFormField] = []
-
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  public init() {}
-}
-
-public struct ApplicationFormField {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  public var defaultValue: SwiftProtobuf.Google_Protobuf_StringValue {
-    get {return _storage._defaultValue ?? SwiftProtobuf.Google_Protobuf_StringValue()}
-    set {_uniqueStorage()._defaultValue = newValue}
-  }
-  /// Returns true if `defaultValue` has been explicitly set.
-  public var hasDefaultValue: Bool {return _storage._defaultValue != nil}
-  /// Clears the value of `defaultValue`. Subsequent reads from it will return its default value.
-  public mutating func clearDefaultValue() {_uniqueStorage()._defaultValue = nil}
-
-  public var description_p: String {
-    get {return _storage._description_p}
-    set {_uniqueStorage()._description_p = newValue}
-  }
-
-  public var errors: ApplicationFormFieldErrors {
-    get {return _storage._errors ?? ApplicationFormFieldErrors()}
-    set {_uniqueStorage()._errors = newValue}
-  }
-  /// Returns true if `errors` has been explicitly set.
-  public var hasErrors: Bool {return _storage._errors != nil}
-  /// Clears the value of `errors`. Subsequent reads from it will return its default value.
-  public mutating func clearErrors() {_uniqueStorage()._errors = nil}
-
-  public var displayError: String {
-    get {return _storage._displayError}
-    set {_uniqueStorage()._displayError = newValue}
-  }
-
-  public var label: String {
-    get {return _storage._label}
-    set {_uniqueStorage()._label = newValue}
-  }
-
-  public var name: String {
-    get {return _storage._name}
-    set {_uniqueStorage()._name = newValue}
-  }
-
-  public var options: ApplicationFormFieldOptions {
-    get {return _storage._options ?? ApplicationFormFieldOptions()}
-    set {_uniqueStorage()._options = newValue}
-  }
-  /// Returns true if `options` has been explicitly set.
-  public var hasOptions: Bool {return _storage._options != nil}
-  /// Clears the value of `options`. Subsequent reads from it will return its default value.
-  public mutating func clearOptions() {_uniqueStorage()._options = nil}
-
-  public var pattern: String {
-    get {return _storage._pattern}
-    set {_uniqueStorage()._pattern = newValue}
-  }
-
-  public var type: ApplicationFieldType {
-    get {return _storage._type}
-    set {_uniqueStorage()._type = newValue}
-  }
-
-  public var value: SwiftProtobuf.Google_Protobuf_StringValue {
-    get {return _storage._value ?? SwiftProtobuf.Google_Protobuf_StringValue()}
-    set {_uniqueStorage()._value = newValue}
-  }
-  /// Returns true if `value` has been explicitly set.
-  public var hasValue: Bool {return _storage._value != nil}
-  /// Clears the value of `value`. Subsequent reads from it will return its default value.
-  public mutating func clearValue() {_uniqueStorage()._value = nil}
-
-  public var required: Bool {
-    get {return _storage._required}
-    set {_uniqueStorage()._required = newValue}
-  }
-
-  public var readOnly: Bool {
-    get {return _storage._readOnly}
-    set {_uniqueStorage()._readOnly = newValue}
-  }
-
-  public var dependency: String {
-    get {return _storage._dependency}
-    set {_uniqueStorage()._dependency = newValue}
-  }
-
-  public var infoTitle: String {
-    get {return _storage._infoTitle}
-    set {_uniqueStorage()._infoTitle = newValue}
-  }
-
-  public var infoBody: String {
-    get {return _storage._infoBody}
-    set {_uniqueStorage()._infoBody = newValue}
-  }
-
-  public var introduction: String {
-    get {return _storage._introduction}
-    set {_uniqueStorage()._introduction = newValue}
-  }
-
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  public init() {}
-
-  fileprivate var _storage = _StorageClass.defaultInstance
-}
-
-public struct ApplicationFormFieldOptions {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  public var option: [ApplicationFormFieldOption] = []
-
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  public init() {}
-}
-
-public struct ApplicationFormFieldOption {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  public var value: String = String()
-
-  public var label: String = String()
-
-  public var description_p: String = String()
-
-  public var serializedPayload: String = String()
-
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  public init() {}
-}
-
-public struct ApplicationFormFieldErrors {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  public var error: [ApplicationFormFieldError] = []
-
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  public init() {}
-}
-
-public struct ApplicationFormFieldError {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  public var message: String = String()
-
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  public init() {}
-}
-
-public struct ApplicationStatus {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  public var key: ApplicationStatusKey {
-    get {return _storage._key}
-    set {_uniqueStorage()._key = newValue}
-  }
-
-  public var message: String {
-    get {return _storage._message}
-    set {_uniqueStorage()._message = newValue}
-  }
-
-  public var updated: SwiftProtobuf.Google_Protobuf_Timestamp {
-    get {return _storage._updated ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
-    set {_uniqueStorage()._updated = newValue}
-  }
-  /// Returns true if `updated` has been explicitly set.
-  public var hasUpdated: Bool {return _storage._updated != nil}
-  /// Clears the value of `updated`. Subsequent reads from it will return its default value.
-  public mutating func clearUpdated() {_uniqueStorage()._updated = nil}
-
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  public init() {}
-
-  fileprivate var _storage = _StorageClass.defaultInstance
-}
-
-public struct ApplicationFormStatus {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  public var key: ApplicationFormStatusKey {
-    get {return _storage._key}
-    set {_uniqueStorage()._key = newValue}
-  }
-
-  public var message: String {
-    get {return _storage._message}
-    set {_uniqueStorage()._message = newValue}
-  }
-
-  public var updated: SwiftProtobuf.Google_Protobuf_Timestamp {
-    get {return _storage._updated ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
-    set {_uniqueStorage()._updated = newValue}
-  }
-  /// Returns true if `updated` has been explicitly set.
-  public var hasUpdated: Bool {return _storage._updated != nil}
-  /// Clears the value of `updated`. Subsequent reads from it will return its default value.
-  public mutating func clearUpdated() {_uniqueStorage()._updated = nil}
-
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  public init() {}
-
-  fileprivate var _storage = _StorageClass.defaultInstance
-}
-
 public struct BusinessDays {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
@@ -6106,19 +5213,9 @@ public struct Insight {
     set {_uniqueStorage()._id = newValue}
   }
 
-  public var userID: String {
-    get {return _storage._userID}
-    set {_uniqueStorage()._userID = newValue}
-  }
-
   public var type: String {
     get {return _storage._type}
     set {_uniqueStorage()._type = newValue}
-  }
-
-  public var group: InsightGroup {
-    get {return _storage._group}
-    set {_uniqueStorage()._group = newValue}
   }
 
   public var score: ExactNumber {
@@ -6140,23 +5237,23 @@ public struct Insight {
     set {_uniqueStorage()._description_p = newValue}
   }
 
-  public var created: SwiftProtobuf.Google_Protobuf_Timestamp {
-    get {return _storage._created ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
-    set {_uniqueStorage()._created = newValue}
+  public var createdTime: SwiftProtobuf.Google_Protobuf_Timestamp {
+    get {return _storage._createdTime ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
+    set {_uniqueStorage()._createdTime = newValue}
   }
-  /// Returns true if `created` has been explicitly set.
-  public var hasCreated: Bool {return _storage._created != nil}
-  /// Clears the value of `created`. Subsequent reads from it will return its default value.
-  public mutating func clearCreated() {_uniqueStorage()._created = nil}
+  /// Returns true if `createdTime` has been explicitly set.
+  public var hasCreatedTime: Bool {return _storage._createdTime != nil}
+  /// Clears the value of `createdTime`. Subsequent reads from it will return its default value.
+  public mutating func clearCreatedTime() {_uniqueStorage()._createdTime = nil}
 
-  public var expirationDate: SwiftProtobuf.Google_Protobuf_Timestamp {
-    get {return _storage._expirationDate ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
-    set {_uniqueStorage()._expirationDate = newValue}
+  public var expirationTime: SwiftProtobuf.Google_Protobuf_Timestamp {
+    get {return _storage._expirationTime ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
+    set {_uniqueStorage()._expirationTime = newValue}
   }
-  /// Returns true if `expirationDate` has been explicitly set.
-  public var hasExpirationDate: Bool {return _storage._expirationDate != nil}
-  /// Clears the value of `expirationDate`. Subsequent reads from it will return its default value.
-  public mutating func clearExpirationDate() {_uniqueStorage()._expirationDate = nil}
+  /// Returns true if `expirationTime` has been explicitly set.
+  public var hasExpirationTime: Bool {return _storage._expirationTime != nil}
+  /// Clears the value of `expirationTime`. Subsequent reads from it will return its default value.
+  public mutating func clearExpirationTime() {_uniqueStorage()._expirationTime = nil}
 
   public var dataSets: [InsightDataSet] {
     get {return _storage._dataSets}
@@ -6166,11 +5263,6 @@ public struct Insight {
   public var actions: [InsightAction] {
     get {return _storage._actions}
     set {_uniqueStorage()._actions = newValue}
-  }
-
-  public var referenceIds: [ReferenceId] {
-    get {return _storage._referenceIds}
-    set {_uniqueStorage()._referenceIds = newValue}
   }
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
@@ -6190,19 +5282,9 @@ public struct ArchivedInsight {
     set {_uniqueStorage()._id = newValue}
   }
 
-  public var userID: String {
-    get {return _storage._userID}
-    set {_uniqueStorage()._userID = newValue}
-  }
-
   public var type: String {
     get {return _storage._type}
     set {_uniqueStorage()._type = newValue}
-  }
-
-  public var group: InsightGroup {
-    get {return _storage._group}
-    set {_uniqueStorage()._group = newValue}
   }
 
   public var score: ExactNumber {
@@ -6224,23 +5306,23 @@ public struct ArchivedInsight {
     set {_uniqueStorage()._description_p = newValue}
   }
 
-  public var insightCreatedDate: SwiftProtobuf.Google_Protobuf_Timestamp {
-    get {return _storage._insightCreatedDate ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
-    set {_uniqueStorage()._insightCreatedDate = newValue}
+  public var createdTime: SwiftProtobuf.Google_Protobuf_Timestamp {
+    get {return _storage._createdTime ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
+    set {_uniqueStorage()._createdTime = newValue}
   }
-  /// Returns true if `insightCreatedDate` has been explicitly set.
-  public var hasInsightCreatedDate: Bool {return _storage._insightCreatedDate != nil}
-  /// Clears the value of `insightCreatedDate`. Subsequent reads from it will return its default value.
-  public mutating func clearInsightCreatedDate() {_uniqueStorage()._insightCreatedDate = nil}
+  /// Returns true if `createdTime` has been explicitly set.
+  public var hasCreatedTime: Bool {return _storage._createdTime != nil}
+  /// Clears the value of `createdTime`. Subsequent reads from it will return its default value.
+  public mutating func clearCreatedTime() {_uniqueStorage()._createdTime = nil}
 
-  public var insightArchivedDate: SwiftProtobuf.Google_Protobuf_Timestamp {
-    get {return _storage._insightArchivedDate ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
-    set {_uniqueStorage()._insightArchivedDate = newValue}
+  public var archivedTime: SwiftProtobuf.Google_Protobuf_Timestamp {
+    get {return _storage._archivedTime ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
+    set {_uniqueStorage()._archivedTime = newValue}
   }
-  /// Returns true if `insightArchivedDate` has been explicitly set.
-  public var hasInsightArchivedDate: Bool {return _storage._insightArchivedDate != nil}
-  /// Clears the value of `insightArchivedDate`. Subsequent reads from it will return its default value.
-  public mutating func clearInsightArchivedDate() {_uniqueStorage()._insightArchivedDate = nil}
+  /// Returns true if `archivedTime` has been explicitly set.
+  public var hasArchivedTime: Bool {return _storage._archivedTime != nil}
+  /// Clears the value of `archivedTime`. Subsequent reads from it will return its default value.
+  public mutating func clearArchivedTime() {_uniqueStorage()._archivedTime = nil}
 
   public var dataSets: [InsightDataSet] {
     get {return _storage._dataSets}
@@ -6255,11 +5337,6 @@ public struct ArchivedInsight {
   public var hasAction: Bool {return _storage._action != nil}
   /// Clears the value of `action`. Subsequent reads from it will return its default value.
   public mutating func clearAction() {_uniqueStorage()._action = nil}
-
-  public var referenceIds: [ReferenceId] {
-    get {return _storage._referenceIds}
-    set {_uniqueStorage()._referenceIds = newValue}
-  }
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -6325,7 +5402,7 @@ public struct InsightAction {
 
   public var method: InsightAction.Method = .unknown
 
-  public var group: InsightGroup = .groupUnknown
+  public var group: InsightAction.Group = .unknown
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -6406,6 +5483,85 @@ public struct InsightAction {
 
   }
 
+  public enum Group: SwiftProtobuf.Enum {
+    public typealias RawValue = Int
+    case unknown // = 0
+    case educating // = 1
+    case encouraging // = 2
+    case funFact // = 3
+    case productSuggest // = 4
+    case promotion // = 5
+    case reminder // = 6
+    case sourceData // = 7
+    case suggestion // = 8
+    case summary // = 9
+    case warning // = 10
+    case budget // = 11
+    case account // = 12
+    case categorization // = 13
+    case credentials // = 14
+    case invoice // = 15
+    case fraud // = 16
+    case leftToSpend // = 17
+    case transfer // = 18
+    case UNRECOGNIZED(Int)
+
+    public init() {
+      self = .unknown
+    }
+
+    public init?(rawValue: Int) {
+      switch rawValue {
+      case 0: self = .unknown
+      case 1: self = .educating
+      case 2: self = .encouraging
+      case 3: self = .funFact
+      case 4: self = .productSuggest
+      case 5: self = .promotion
+      case 6: self = .reminder
+      case 7: self = .sourceData
+      case 8: self = .suggestion
+      case 9: self = .summary
+      case 10: self = .warning
+      case 11: self = .budget
+      case 12: self = .account
+      case 13: self = .categorization
+      case 14: self = .credentials
+      case 15: self = .invoice
+      case 16: self = .fraud
+      case 17: self = .leftToSpend
+      case 18: self = .transfer
+      default: self = .UNRECOGNIZED(rawValue)
+      }
+    }
+
+    public var rawValue: Int {
+      switch self {
+      case .unknown: return 0
+      case .educating: return 1
+      case .encouraging: return 2
+      case .funFact: return 3
+      case .productSuggest: return 4
+      case .promotion: return 5
+      case .reminder: return 6
+      case .sourceData: return 7
+      case .suggestion: return 8
+      case .summary: return 9
+      case .warning: return 10
+      case .budget: return 11
+      case .account: return 12
+      case .categorization: return 13
+      case .credentials: return 14
+      case .invoice: return 15
+      case .fraud: return 16
+      case .leftToSpend: return 17
+      case .transfer: return 18
+      case .UNRECOGNIZED(let i): return i
+      }
+    }
+
+  }
+
   public init() {}
 }
 
@@ -6434,76 +5590,27 @@ extension InsightAction.Method: CaseIterable {
   ]
 }
 
-#endif  // swift(>=4.2)
-
-public struct ReferenceId {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  public var id: String = String()
-
-  public var type: ReferenceId.TypeEnum = .unknown
-
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  public enum TypeEnum: SwiftProtobuf.Enum {
-    public typealias RawValue = Int
-    case unknown // = 0
-    case account // = 1
-    case budget // = 2
-    case credentials // = 3
-    case savingsGoal // = 4
-    case transaction // = 5
-    case transfer // = 6
-    case UNRECOGNIZED(Int)
-
-    public init() {
-      self = .unknown
-    }
-
-    public init?(rawValue: Int) {
-      switch rawValue {
-      case 0: self = .unknown
-      case 1: self = .account
-      case 2: self = .budget
-      case 3: self = .credentials
-      case 4: self = .savingsGoal
-      case 5: self = .transaction
-      case 6: self = .transfer
-      default: self = .UNRECOGNIZED(rawValue)
-      }
-    }
-
-    public var rawValue: Int {
-      switch self {
-      case .unknown: return 0
-      case .account: return 1
-      case .budget: return 2
-      case .credentials: return 3
-      case .savingsGoal: return 4
-      case .transaction: return 5
-      case .transfer: return 6
-      case .UNRECOGNIZED(let i): return i
-      }
-    }
-
-  }
-
-  public init() {}
-}
-
-#if swift(>=4.2)
-
-extension ReferenceId.TypeEnum: CaseIterable {
+extension InsightAction.Group: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [ReferenceId.TypeEnum] = [
+  public static var allCases: [InsightAction.Group] = [
     .unknown,
-    .account,
+    .educating,
+    .encouraging,
+    .funFact,
+    .productSuggest,
+    .promotion,
+    .reminder,
+    .sourceData,
+    .suggestion,
+    .summary,
+    .warning,
     .budget,
+    .account,
+    .categorization,
     .credentials,
-    .savingsGoal,
-    .transaction,
+    .invoice,
+    .fraud,
+    .leftToSpend,
     .transfer,
   ]
 }
@@ -6836,6 +5943,20 @@ public struct KycQuestion {
   public init() {}
 }
 
+public struct OAuth2ScopeDescription {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  public var title: String = String()
+
+  public var description_p: String = String()
+
+  public var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  public init() {}
+}
+
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 extension MarketStatus: SwiftProtobuf._ProtoNameProviding {
@@ -6947,88 +6068,6 @@ extension AuthenticationMethod: SwiftProtobuf._ProtoNameProviding {
     3: .same(proto: "AUTHENTICATION_METHOD_SMS_OTP_AND_PIN6"),
     4: .same(proto: "AUTHENTICATION_METHOD_PHONE_NUMBER_AND_PIN6"),
     5: .same(proto: "AUTHENTICATION_METHOD_ABN_AMRO_PIN5"),
-  ]
-}
-
-extension ApplicationType: SwiftProtobuf._ProtoNameProviding {
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "APPLICATION_TYPE_UNKNOWN"),
-    1: .same(proto: "APPLICATION_TYPE_SWITCH_MORTGAGE_PROVIDER"),
-    2: .same(proto: "APPLICATION_TYPE_OPEN_SAVINGS_ACCOUNT"),
-    3: .same(proto: "APPLICATION_TYPE_RESIDENCE_VALUATION"),
-    4: .same(proto: "APPLICATION_TYPE_SOLICIT_UNSECURED_LOANS"),
-    5: .same(proto: "APPLICATION_TYPE_ACCEPT_UNSECURED_LOANS"),
-  ]
-}
-
-extension ApplicationFieldType: SwiftProtobuf._ProtoNameProviding {
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "APPLICATION_FIELD_TYPE_UNKNOWN"),
-    1: .same(proto: "APPLICATION_FIELD_TYPE_CHECKBOX"),
-    2: .same(proto: "APPLICATION_FIELD_TYPE_DATE"),
-    3: .same(proto: "APPLICATION_FIELD_TYPE_EMAIL"),
-    4: .same(proto: "APPLICATION_FIELD_TYPE_HIDDEN"),
-    5: .same(proto: "APPLICATION_FIELD_TYPE_MULTI_SELECT"),
-    6: .same(proto: "APPLICATION_FIELD_TYPE_NUMBER"),
-    7: .same(proto: "APPLICATION_FIELD_TYPE_NUMERIC"),
-    8: .same(proto: "APPLICATION_FIELD_TYPE_SELECT"),
-    9: .same(proto: "APPLICATION_FIELD_TYPE_SIGNATURE"),
-    10: .same(proto: "APPLICATION_FIELD_TYPE_TEXT"),
-  ]
-}
-
-extension ApplicationStatusKey: SwiftProtobuf._ProtoNameProviding {
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "APPLICATION_STATUS_UNKNOWN"),
-    1: .same(proto: "APPLICATION_STATUS_CREATED"),
-    2: .same(proto: "APPLICATION_STATUS_IN_PROGRESS"),
-    3: .same(proto: "APPLICATION_STATUS_DELETED"),
-    4: .same(proto: "APPLICATION_STATUS_ERROR"),
-    5: .same(proto: "APPLICATION_STATUS_EXPIRED"),
-    6: .same(proto: "APPLICATION_STATUS_DISQUALIFIED"),
-    7: .same(proto: "APPLICATION_STATUS_COMPLETED"),
-    8: .same(proto: "APPLICATION_STATUS_SIGNED"),
-    9: .same(proto: "APPLICATION_STATUS_SUPPLEMENTAL_INFORMATION_REQUIRED"),
-    10: .same(proto: "APPLICATION_STATUS_REJECTED"),
-    11: .same(proto: "APPLICATION_STATUS_APPROVED"),
-    12: .same(proto: "APPLICATION_STATUS_ABORTED"),
-    13: .same(proto: "APPLICATION_STATUS_EXECUTED"),
-    14: .same(proto: "APPLICATION_STATUS_PENDING"),
-  ]
-}
-
-extension ApplicationFormStatusKey: SwiftProtobuf._ProtoNameProviding {
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "APPLICATION_FORM_STATUS_UNKNOWN"),
-    1: .same(proto: "APPLICATION_FORM_STATUS_CREATED"),
-    2: .same(proto: "APPLICATION_FORM_STATUS_COMPLETED"),
-    3: .same(proto: "APPLICATION_FORM_STATUS_IN_PROGRESS"),
-    4: .same(proto: "APPLICATION_FORM_STATUS_ERROR"),
-    5: .same(proto: "APPLICATION_FORM_STATUS_DISQUALIFIED"),
-    6: .same(proto: "APPLICATION_FORM_STATUS_AUTO_SAVED"),
-  ]
-}
-
-extension InsightGroup: SwiftProtobuf._ProtoNameProviding {
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "GROUP_UNKNOWN"),
-    1: .same(proto: "GROUP_EDUCATING"),
-    2: .same(proto: "GROUP_ENCOURAGING"),
-    3: .same(proto: "GROUP_FUN_FACT"),
-    4: .same(proto: "GROUP_PRODUCT_SUGGEST"),
-    5: .same(proto: "GROUP_PROMOTION"),
-    6: .same(proto: "GROUP_REMINDER"),
-    7: .same(proto: "GROUP_SOURCE_DATA"),
-    8: .same(proto: "GROUP_SUGGESTION"),
-    9: .same(proto: "GROUP_SUMMARY"),
-    10: .same(proto: "GROUP_WARNING"),
-    11: .same(proto: "GROUP_BUDGET"),
-    12: .same(proto: "GROUP_ACCOUNT"),
-    13: .same(proto: "GROUP_CATEGORIZATION"),
-    14: .same(proto: "GROUP_CREDENTIALS"),
-    15: .same(proto: "GROUP_INVOICE"),
-    16: .same(proto: "GROUP_FRAUD"),
-    17: .same(proto: "GROUP_LEFT_TO_SPEND"),
   ]
 }
 
@@ -10544,7 +9583,6 @@ extension SignableOperation.TypeEnum: SwiftProtobuf._ProtoNameProviding {
     0: .same(proto: "TYPE_UNKNOWN"),
     1: .same(proto: "TYPE_TRANSFER"),
     2: .same(proto: "TYPE_ACCOUNT_CREATE"),
-    3: .same(proto: "TYPE_APPLICATION"),
   ]
 }
 
@@ -14052,1090 +13090,6 @@ extension InsightsLeftToSpend.LeftToSpendByPeriod: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension Application: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "Application"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "id"),
-    2: .same(proto: "forms"),
-    3: .same(proto: "status"),
-    4: .same(proto: "steps"),
-    5: .same(proto: "title"),
-    6: .same(proto: "type"),
-  ]
-
-  fileprivate class _StorageClass {
-    var _id: String = String()
-    var _forms: ApplicationForms? = nil
-    var _status: ApplicationStatus? = nil
-    var _steps: Int32 = 0
-    var _title: String = String()
-    var _type: ApplicationType = .unknown
-
-    static let defaultInstance = _StorageClass()
-
-    private init() {}
-
-    init(copying source: _StorageClass) {
-      _id = source._id
-      _forms = source._forms
-      _status = source._status
-      _steps = source._steps
-      _title = source._title
-      _type = source._type
-    }
-  }
-
-  fileprivate mutating func _uniqueStorage() -> _StorageClass {
-    if !isKnownUniquelyReferenced(&_storage) {
-      _storage = _StorageClass(copying: _storage)
-    }
-    return _storage
-  }
-
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    _ = _uniqueStorage()
-    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      while let fieldNumber = try decoder.nextFieldNumber() {
-        switch fieldNumber {
-        case 1: try decoder.decodeSingularStringField(value: &_storage._id)
-        case 2: try decoder.decodeSingularMessageField(value: &_storage._forms)
-        case 3: try decoder.decodeSingularMessageField(value: &_storage._status)
-        case 4: try decoder.decodeSingularInt32Field(value: &_storage._steps)
-        case 5: try decoder.decodeSingularStringField(value: &_storage._title)
-        case 6: try decoder.decodeSingularEnumField(value: &_storage._type)
-        default: break
-        }
-      }
-    }
-  }
-
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      if !_storage._id.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._id, fieldNumber: 1)
-      }
-      if let v = _storage._forms {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
-      }
-      if let v = _storage._status {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
-      }
-      if _storage._steps != 0 {
-        try visitor.visitSingularInt32Field(value: _storage._steps, fieldNumber: 4)
-      }
-      if !_storage._title.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._title, fieldNumber: 5)
-      }
-      if _storage._type != .unknown {
-        try visitor.visitSingularEnumField(value: _storage._type, fieldNumber: 6)
-      }
-    }
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  public static func ==(lhs: Application, rhs: Application) -> Bool {
-    if lhs._storage !== rhs._storage {
-      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
-        let _storage = _args.0
-        let rhs_storage = _args.1
-        if _storage._id != rhs_storage._id {return false}
-        if _storage._forms != rhs_storage._forms {return false}
-        if _storage._status != rhs_storage._status {return false}
-        if _storage._steps != rhs_storage._steps {return false}
-        if _storage._title != rhs_storage._title {return false}
-        if _storage._type != rhs_storage._type {return false}
-        return true
-      }
-      if !storagesAreEqual {return false}
-    }
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-extension ApplicationSummary: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ApplicationSummary"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "description"),
-    2: .same(proto: "id"),
-    3: .standard(proto: "image_url"),
-    4: .same(proto: "progress"),
-    5: .same(proto: "provider"),
-    6: .same(proto: "status"),
-    7: .same(proto: "title"),
-    8: .same(proto: "type"),
-  ]
-
-  fileprivate class _StorageClass {
-    var _description_p: String = String()
-    var _id: String = String()
-    var _imageURL: String = String()
-    var _progress: Double = 0
-    var _provider: String = String()
-    var _status: ApplicationSummaryStatus? = nil
-    var _title: String = String()
-    var _type: ApplicationType = .unknown
-
-    static let defaultInstance = _StorageClass()
-
-    private init() {}
-
-    init(copying source: _StorageClass) {
-      _description_p = source._description_p
-      _id = source._id
-      _imageURL = source._imageURL
-      _progress = source._progress
-      _provider = source._provider
-      _status = source._status
-      _title = source._title
-      _type = source._type
-    }
-  }
-
-  fileprivate mutating func _uniqueStorage() -> _StorageClass {
-    if !isKnownUniquelyReferenced(&_storage) {
-      _storage = _StorageClass(copying: _storage)
-    }
-    return _storage
-  }
-
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    _ = _uniqueStorage()
-    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      while let fieldNumber = try decoder.nextFieldNumber() {
-        switch fieldNumber {
-        case 1: try decoder.decodeSingularStringField(value: &_storage._description_p)
-        case 2: try decoder.decodeSingularStringField(value: &_storage._id)
-        case 3: try decoder.decodeSingularStringField(value: &_storage._imageURL)
-        case 4: try decoder.decodeSingularDoubleField(value: &_storage._progress)
-        case 5: try decoder.decodeSingularStringField(value: &_storage._provider)
-        case 6: try decoder.decodeSingularMessageField(value: &_storage._status)
-        case 7: try decoder.decodeSingularStringField(value: &_storage._title)
-        case 8: try decoder.decodeSingularEnumField(value: &_storage._type)
-        default: break
-        }
-      }
-    }
-  }
-
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      if !_storage._description_p.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._description_p, fieldNumber: 1)
-      }
-      if !_storage._id.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._id, fieldNumber: 2)
-      }
-      if !_storage._imageURL.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._imageURL, fieldNumber: 3)
-      }
-      if _storage._progress != 0 {
-        try visitor.visitSingularDoubleField(value: _storage._progress, fieldNumber: 4)
-      }
-      if !_storage._provider.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._provider, fieldNumber: 5)
-      }
-      if let v = _storage._status {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
-      }
-      if !_storage._title.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._title, fieldNumber: 7)
-      }
-      if _storage._type != .unknown {
-        try visitor.visitSingularEnumField(value: _storage._type, fieldNumber: 8)
-      }
-    }
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  public static func ==(lhs: ApplicationSummary, rhs: ApplicationSummary) -> Bool {
-    if lhs._storage !== rhs._storage {
-      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
-        let _storage = _args.0
-        let rhs_storage = _args.1
-        if _storage._description_p != rhs_storage._description_p {return false}
-        if _storage._id != rhs_storage._id {return false}
-        if _storage._imageURL != rhs_storage._imageURL {return false}
-        if _storage._progress != rhs_storage._progress {return false}
-        if _storage._provider != rhs_storage._provider {return false}
-        if _storage._status != rhs_storage._status {return false}
-        if _storage._title != rhs_storage._title {return false}
-        if _storage._type != rhs_storage._type {return false}
-        return true
-      }
-      if !storagesAreEqual {return false}
-    }
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-extension ApplicationSummaryStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ApplicationSummaryStatus"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "key"),
-    2: .same(proto: "body"),
-    3: .same(proto: "payload"),
-    4: .same(proto: "title"),
-  ]
-
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      switch fieldNumber {
-      case 1: try decoder.decodeSingularEnumField(value: &self.key)
-      case 2: try decoder.decodeSingularStringField(value: &self.body)
-      case 3: try decoder.decodeSingularStringField(value: &self.payload)
-      case 4: try decoder.decodeSingularStringField(value: &self.title)
-      default: break
-      }
-    }
-  }
-
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if self.key != .applicationStatusUnknown {
-      try visitor.visitSingularEnumField(value: self.key, fieldNumber: 1)
-    }
-    if !self.body.isEmpty {
-      try visitor.visitSingularStringField(value: self.body, fieldNumber: 2)
-    }
-    if !self.payload.isEmpty {
-      try visitor.visitSingularStringField(value: self.payload, fieldNumber: 3)
-    }
-    if !self.title.isEmpty {
-      try visitor.visitSingularStringField(value: self.title, fieldNumber: 4)
-    }
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  public static func ==(lhs: ApplicationSummaryStatus, rhs: ApplicationSummaryStatus) -> Bool {
-    if lhs.key != rhs.key {return false}
-    if lhs.body != rhs.body {return false}
-    if lhs.payload != rhs.payload {return false}
-    if lhs.title != rhs.title {return false}
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-extension ApplicationForms: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ApplicationForms"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "form"),
-  ]
-
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      switch fieldNumber {
-      case 1: try decoder.decodeRepeatedMessageField(value: &self.form)
-      default: break
-      }
-    }
-  }
-
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if !self.form.isEmpty {
-      try visitor.visitRepeatedMessageField(value: self.form, fieldNumber: 1)
-    }
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  public static func ==(lhs: ApplicationForms, rhs: ApplicationForms) -> Bool {
-    if lhs.form != rhs.form {return false}
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-extension ApplicationForm: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ApplicationForm"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "id"),
-    2: .standard(proto: "application_id"),
-    3: .same(proto: "description"),
-    4: .same(proto: "fields"),
-    5: .same(proto: "status"),
-    6: .same(proto: "type"),
-    7: .same(proto: "title"),
-    8: .standard(proto: "serialized_payload"),
-    9: .same(proto: "name"),
-  ]
-
-  fileprivate class _StorageClass {
-    var _id: String = String()
-    var _applicationID: String = String()
-    var _description_p: String = String()
-    var _fields: ApplicationFormFields? = nil
-    var _status: ApplicationFormStatus? = nil
-    var _type: String = String()
-    var _title: String = String()
-    var _serializedPayload: String = String()
-    var _name: String = String()
-
-    static let defaultInstance = _StorageClass()
-
-    private init() {}
-
-    init(copying source: _StorageClass) {
-      _id = source._id
-      _applicationID = source._applicationID
-      _description_p = source._description_p
-      _fields = source._fields
-      _status = source._status
-      _type = source._type
-      _title = source._title
-      _serializedPayload = source._serializedPayload
-      _name = source._name
-    }
-  }
-
-  fileprivate mutating func _uniqueStorage() -> _StorageClass {
-    if !isKnownUniquelyReferenced(&_storage) {
-      _storage = _StorageClass(copying: _storage)
-    }
-    return _storage
-  }
-
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    _ = _uniqueStorage()
-    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      while let fieldNumber = try decoder.nextFieldNumber() {
-        switch fieldNumber {
-        case 1: try decoder.decodeSingularStringField(value: &_storage._id)
-        case 2: try decoder.decodeSingularStringField(value: &_storage._applicationID)
-        case 3: try decoder.decodeSingularStringField(value: &_storage._description_p)
-        case 4: try decoder.decodeSingularMessageField(value: &_storage._fields)
-        case 5: try decoder.decodeSingularMessageField(value: &_storage._status)
-        case 6: try decoder.decodeSingularStringField(value: &_storage._type)
-        case 7: try decoder.decodeSingularStringField(value: &_storage._title)
-        case 8: try decoder.decodeSingularStringField(value: &_storage._serializedPayload)
-        case 9: try decoder.decodeSingularStringField(value: &_storage._name)
-        default: break
-        }
-      }
-    }
-  }
-
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      if !_storage._id.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._id, fieldNumber: 1)
-      }
-      if !_storage._applicationID.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._applicationID, fieldNumber: 2)
-      }
-      if !_storage._description_p.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._description_p, fieldNumber: 3)
-      }
-      if let v = _storage._fields {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
-      }
-      if let v = _storage._status {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
-      }
-      if !_storage._type.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._type, fieldNumber: 6)
-      }
-      if !_storage._title.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._title, fieldNumber: 7)
-      }
-      if !_storage._serializedPayload.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._serializedPayload, fieldNumber: 8)
-      }
-      if !_storage._name.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._name, fieldNumber: 9)
-      }
-    }
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  public static func ==(lhs: ApplicationForm, rhs: ApplicationForm) -> Bool {
-    if lhs._storage !== rhs._storage {
-      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
-        let _storage = _args.0
-        let rhs_storage = _args.1
-        if _storage._id != rhs_storage._id {return false}
-        if _storage._applicationID != rhs_storage._applicationID {return false}
-        if _storage._description_p != rhs_storage._description_p {return false}
-        if _storage._fields != rhs_storage._fields {return false}
-        if _storage._status != rhs_storage._status {return false}
-        if _storage._type != rhs_storage._type {return false}
-        if _storage._title != rhs_storage._title {return false}
-        if _storage._serializedPayload != rhs_storage._serializedPayload {return false}
-        if _storage._name != rhs_storage._name {return false}
-        return true
-      }
-      if !storagesAreEqual {return false}
-    }
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-extension RequestApplicationForm: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "RequestApplicationForm"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "id"),
-    2: .same(proto: "fields"),
-  ]
-
-  fileprivate class _StorageClass {
-    var _id: String = String()
-    var _fields: RequestApplicationFormFields? = nil
-
-    static let defaultInstance = _StorageClass()
-
-    private init() {}
-
-    init(copying source: _StorageClass) {
-      _id = source._id
-      _fields = source._fields
-    }
-  }
-
-  fileprivate mutating func _uniqueStorage() -> _StorageClass {
-    if !isKnownUniquelyReferenced(&_storage) {
-      _storage = _StorageClass(copying: _storage)
-    }
-    return _storage
-  }
-
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    _ = _uniqueStorage()
-    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      while let fieldNumber = try decoder.nextFieldNumber() {
-        switch fieldNumber {
-        case 1: try decoder.decodeSingularStringField(value: &_storage._id)
-        case 2: try decoder.decodeSingularMessageField(value: &_storage._fields)
-        default: break
-        }
-      }
-    }
-  }
-
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      if !_storage._id.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._id, fieldNumber: 1)
-      }
-      if let v = _storage._fields {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
-      }
-    }
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  public static func ==(lhs: RequestApplicationForm, rhs: RequestApplicationForm) -> Bool {
-    if lhs._storage !== rhs._storage {
-      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
-        let _storage = _args.0
-        let rhs_storage = _args.1
-        if _storage._id != rhs_storage._id {return false}
-        if _storage._fields != rhs_storage._fields {return false}
-        return true
-      }
-      if !storagesAreEqual {return false}
-    }
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-extension RequestApplicationFormFields: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "RequestApplicationFormFields"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "field"),
-  ]
-
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      switch fieldNumber {
-      case 1: try decoder.decodeRepeatedMessageField(value: &self.field)
-      default: break
-      }
-    }
-  }
-
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if !self.field.isEmpty {
-      try visitor.visitRepeatedMessageField(value: self.field, fieldNumber: 1)
-    }
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  public static func ==(lhs: RequestApplicationFormFields, rhs: RequestApplicationFormFields) -> Bool {
-    if lhs.field != rhs.field {return false}
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-extension RequestApplicationFormField: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "RequestApplicationFormField"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "name"),
-    2: .same(proto: "value"),
-  ]
-
-  fileprivate class _StorageClass {
-    var _name: String = String()
-    var _value: SwiftProtobuf.Google_Protobuf_StringValue? = nil
-
-    static let defaultInstance = _StorageClass()
-
-    private init() {}
-
-    init(copying source: _StorageClass) {
-      _name = source._name
-      _value = source._value
-    }
-  }
-
-  fileprivate mutating func _uniqueStorage() -> _StorageClass {
-    if !isKnownUniquelyReferenced(&_storage) {
-      _storage = _StorageClass(copying: _storage)
-    }
-    return _storage
-  }
-
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    _ = _uniqueStorage()
-    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      while let fieldNumber = try decoder.nextFieldNumber() {
-        switch fieldNumber {
-        case 1: try decoder.decodeSingularStringField(value: &_storage._name)
-        case 2: try decoder.decodeSingularMessageField(value: &_storage._value)
-        default: break
-        }
-      }
-    }
-  }
-
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      if !_storage._name.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._name, fieldNumber: 1)
-      }
-      if let v = _storage._value {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
-      }
-    }
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  public static func ==(lhs: RequestApplicationFormField, rhs: RequestApplicationFormField) -> Bool {
-    if lhs._storage !== rhs._storage {
-      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
-        let _storage = _args.0
-        let rhs_storage = _args.1
-        if _storage._name != rhs_storage._name {return false}
-        if _storage._value != rhs_storage._value {return false}
-        return true
-      }
-      if !storagesAreEqual {return false}
-    }
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-extension ApplicationFormFields: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ApplicationFormFields"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "field"),
-  ]
-
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      switch fieldNumber {
-      case 1: try decoder.decodeRepeatedMessageField(value: &self.field)
-      default: break
-      }
-    }
-  }
-
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if !self.field.isEmpty {
-      try visitor.visitRepeatedMessageField(value: self.field, fieldNumber: 1)
-    }
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  public static func ==(lhs: ApplicationFormFields, rhs: ApplicationFormFields) -> Bool {
-    if lhs.field != rhs.field {return false}
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-extension ApplicationFormField: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ApplicationFormField"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "default_value"),
-    2: .same(proto: "description"),
-    3: .same(proto: "errors"),
-    4: .standard(proto: "display_error"),
-    5: .same(proto: "label"),
-    6: .same(proto: "name"),
-    7: .same(proto: "options"),
-    8: .same(proto: "pattern"),
-    9: .same(proto: "type"),
-    10: .same(proto: "value"),
-    11: .same(proto: "required"),
-    12: .same(proto: "readOnly"),
-    13: .same(proto: "dependency"),
-    14: .standard(proto: "info_title"),
-    15: .standard(proto: "info_body"),
-    16: .same(proto: "introduction"),
-  ]
-
-  fileprivate class _StorageClass {
-    var _defaultValue: SwiftProtobuf.Google_Protobuf_StringValue? = nil
-    var _description_p: String = String()
-    var _errors: ApplicationFormFieldErrors? = nil
-    var _displayError: String = String()
-    var _label: String = String()
-    var _name: String = String()
-    var _options: ApplicationFormFieldOptions? = nil
-    var _pattern: String = String()
-    var _type: ApplicationFieldType = .unknown
-    var _value: SwiftProtobuf.Google_Protobuf_StringValue? = nil
-    var _required: Bool = false
-    var _readOnly: Bool = false
-    var _dependency: String = String()
-    var _infoTitle: String = String()
-    var _infoBody: String = String()
-    var _introduction: String = String()
-
-    static let defaultInstance = _StorageClass()
-
-    private init() {}
-
-    init(copying source: _StorageClass) {
-      _defaultValue = source._defaultValue
-      _description_p = source._description_p
-      _errors = source._errors
-      _displayError = source._displayError
-      _label = source._label
-      _name = source._name
-      _options = source._options
-      _pattern = source._pattern
-      _type = source._type
-      _value = source._value
-      _required = source._required
-      _readOnly = source._readOnly
-      _dependency = source._dependency
-      _infoTitle = source._infoTitle
-      _infoBody = source._infoBody
-      _introduction = source._introduction
-    }
-  }
-
-  fileprivate mutating func _uniqueStorage() -> _StorageClass {
-    if !isKnownUniquelyReferenced(&_storage) {
-      _storage = _StorageClass(copying: _storage)
-    }
-    return _storage
-  }
-
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    _ = _uniqueStorage()
-    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      while let fieldNumber = try decoder.nextFieldNumber() {
-        switch fieldNumber {
-        case 1: try decoder.decodeSingularMessageField(value: &_storage._defaultValue)
-        case 2: try decoder.decodeSingularStringField(value: &_storage._description_p)
-        case 3: try decoder.decodeSingularMessageField(value: &_storage._errors)
-        case 4: try decoder.decodeSingularStringField(value: &_storage._displayError)
-        case 5: try decoder.decodeSingularStringField(value: &_storage._label)
-        case 6: try decoder.decodeSingularStringField(value: &_storage._name)
-        case 7: try decoder.decodeSingularMessageField(value: &_storage._options)
-        case 8: try decoder.decodeSingularStringField(value: &_storage._pattern)
-        case 9: try decoder.decodeSingularEnumField(value: &_storage._type)
-        case 10: try decoder.decodeSingularMessageField(value: &_storage._value)
-        case 11: try decoder.decodeSingularBoolField(value: &_storage._required)
-        case 12: try decoder.decodeSingularBoolField(value: &_storage._readOnly)
-        case 13: try decoder.decodeSingularStringField(value: &_storage._dependency)
-        case 14: try decoder.decodeSingularStringField(value: &_storage._infoTitle)
-        case 15: try decoder.decodeSingularStringField(value: &_storage._infoBody)
-        case 16: try decoder.decodeSingularStringField(value: &_storage._introduction)
-        default: break
-        }
-      }
-    }
-  }
-
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      if let v = _storage._defaultValue {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
-      }
-      if !_storage._description_p.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._description_p, fieldNumber: 2)
-      }
-      if let v = _storage._errors {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
-      }
-      if !_storage._displayError.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._displayError, fieldNumber: 4)
-      }
-      if !_storage._label.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._label, fieldNumber: 5)
-      }
-      if !_storage._name.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._name, fieldNumber: 6)
-      }
-      if let v = _storage._options {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
-      }
-      if !_storage._pattern.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._pattern, fieldNumber: 8)
-      }
-      if _storage._type != .unknown {
-        try visitor.visitSingularEnumField(value: _storage._type, fieldNumber: 9)
-      }
-      if let v = _storage._value {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 10)
-      }
-      if _storage._required != false {
-        try visitor.visitSingularBoolField(value: _storage._required, fieldNumber: 11)
-      }
-      if _storage._readOnly != false {
-        try visitor.visitSingularBoolField(value: _storage._readOnly, fieldNumber: 12)
-      }
-      if !_storage._dependency.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._dependency, fieldNumber: 13)
-      }
-      if !_storage._infoTitle.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._infoTitle, fieldNumber: 14)
-      }
-      if !_storage._infoBody.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._infoBody, fieldNumber: 15)
-      }
-      if !_storage._introduction.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._introduction, fieldNumber: 16)
-      }
-    }
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  public static func ==(lhs: ApplicationFormField, rhs: ApplicationFormField) -> Bool {
-    if lhs._storage !== rhs._storage {
-      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
-        let _storage = _args.0
-        let rhs_storage = _args.1
-        if _storage._defaultValue != rhs_storage._defaultValue {return false}
-        if _storage._description_p != rhs_storage._description_p {return false}
-        if _storage._errors != rhs_storage._errors {return false}
-        if _storage._displayError != rhs_storage._displayError {return false}
-        if _storage._label != rhs_storage._label {return false}
-        if _storage._name != rhs_storage._name {return false}
-        if _storage._options != rhs_storage._options {return false}
-        if _storage._pattern != rhs_storage._pattern {return false}
-        if _storage._type != rhs_storage._type {return false}
-        if _storage._value != rhs_storage._value {return false}
-        if _storage._required != rhs_storage._required {return false}
-        if _storage._readOnly != rhs_storage._readOnly {return false}
-        if _storage._dependency != rhs_storage._dependency {return false}
-        if _storage._infoTitle != rhs_storage._infoTitle {return false}
-        if _storage._infoBody != rhs_storage._infoBody {return false}
-        if _storage._introduction != rhs_storage._introduction {return false}
-        return true
-      }
-      if !storagesAreEqual {return false}
-    }
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-extension ApplicationFormFieldOptions: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ApplicationFormFieldOptions"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "option"),
-  ]
-
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      switch fieldNumber {
-      case 1: try decoder.decodeRepeatedMessageField(value: &self.option)
-      default: break
-      }
-    }
-  }
-
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if !self.option.isEmpty {
-      try visitor.visitRepeatedMessageField(value: self.option, fieldNumber: 1)
-    }
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  public static func ==(lhs: ApplicationFormFieldOptions, rhs: ApplicationFormFieldOptions) -> Bool {
-    if lhs.option != rhs.option {return false}
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-extension ApplicationFormFieldOption: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ApplicationFormFieldOption"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "value"),
-    2: .same(proto: "label"),
-    3: .same(proto: "description"),
-    4: .standard(proto: "serialized_payload"),
-  ]
-
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      switch fieldNumber {
-      case 1: try decoder.decodeSingularStringField(value: &self.value)
-      case 2: try decoder.decodeSingularStringField(value: &self.label)
-      case 3: try decoder.decodeSingularStringField(value: &self.description_p)
-      case 4: try decoder.decodeSingularStringField(value: &self.serializedPayload)
-      default: break
-      }
-    }
-  }
-
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if !self.value.isEmpty {
-      try visitor.visitSingularStringField(value: self.value, fieldNumber: 1)
-    }
-    if !self.label.isEmpty {
-      try visitor.visitSingularStringField(value: self.label, fieldNumber: 2)
-    }
-    if !self.description_p.isEmpty {
-      try visitor.visitSingularStringField(value: self.description_p, fieldNumber: 3)
-    }
-    if !self.serializedPayload.isEmpty {
-      try visitor.visitSingularStringField(value: self.serializedPayload, fieldNumber: 4)
-    }
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  public static func ==(lhs: ApplicationFormFieldOption, rhs: ApplicationFormFieldOption) -> Bool {
-    if lhs.value != rhs.value {return false}
-    if lhs.label != rhs.label {return false}
-    if lhs.description_p != rhs.description_p {return false}
-    if lhs.serializedPayload != rhs.serializedPayload {return false}
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-extension ApplicationFormFieldErrors: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ApplicationFormFieldErrors"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "error"),
-  ]
-
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      switch fieldNumber {
-      case 1: try decoder.decodeRepeatedMessageField(value: &self.error)
-      default: break
-      }
-    }
-  }
-
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if !self.error.isEmpty {
-      try visitor.visitRepeatedMessageField(value: self.error, fieldNumber: 1)
-    }
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  public static func ==(lhs: ApplicationFormFieldErrors, rhs: ApplicationFormFieldErrors) -> Bool {
-    if lhs.error != rhs.error {return false}
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-extension ApplicationFormFieldError: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ApplicationFormFieldError"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "message"),
-  ]
-
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      switch fieldNumber {
-      case 1: try decoder.decodeSingularStringField(value: &self.message)
-      default: break
-      }
-    }
-  }
-
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if !self.message.isEmpty {
-      try visitor.visitSingularStringField(value: self.message, fieldNumber: 1)
-    }
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  public static func ==(lhs: ApplicationFormFieldError, rhs: ApplicationFormFieldError) -> Bool {
-    if lhs.message != rhs.message {return false}
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-extension ApplicationStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ApplicationStatus"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "key"),
-    2: .same(proto: "message"),
-    3: .same(proto: "updated"),
-  ]
-
-  fileprivate class _StorageClass {
-    var _key: ApplicationStatusKey = .applicationStatusUnknown
-    var _message: String = String()
-    var _updated: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
-
-    static let defaultInstance = _StorageClass()
-
-    private init() {}
-
-    init(copying source: _StorageClass) {
-      _key = source._key
-      _message = source._message
-      _updated = source._updated
-    }
-  }
-
-  fileprivate mutating func _uniqueStorage() -> _StorageClass {
-    if !isKnownUniquelyReferenced(&_storage) {
-      _storage = _StorageClass(copying: _storage)
-    }
-    return _storage
-  }
-
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    _ = _uniqueStorage()
-    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      while let fieldNumber = try decoder.nextFieldNumber() {
-        switch fieldNumber {
-        case 1: try decoder.decodeSingularEnumField(value: &_storage._key)
-        case 2: try decoder.decodeSingularStringField(value: &_storage._message)
-        case 3: try decoder.decodeSingularMessageField(value: &_storage._updated)
-        default: break
-        }
-      }
-    }
-  }
-
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      if _storage._key != .applicationStatusUnknown {
-        try visitor.visitSingularEnumField(value: _storage._key, fieldNumber: 1)
-      }
-      if !_storage._message.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._message, fieldNumber: 2)
-      }
-      if let v = _storage._updated {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
-      }
-    }
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  public static func ==(lhs: ApplicationStatus, rhs: ApplicationStatus) -> Bool {
-    if lhs._storage !== rhs._storage {
-      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
-        let _storage = _args.0
-        let rhs_storage = _args.1
-        if _storage._key != rhs_storage._key {return false}
-        if _storage._message != rhs_storage._message {return false}
-        if _storage._updated != rhs_storage._updated {return false}
-        return true
-      }
-      if !storagesAreEqual {return false}
-    }
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-extension ApplicationFormStatus: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ApplicationFormStatus"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "key"),
-    2: .same(proto: "message"),
-    3: .same(proto: "updated"),
-  ]
-
-  fileprivate class _StorageClass {
-    var _key: ApplicationFormStatusKey = .applicationFormStatusUnknown
-    var _message: String = String()
-    var _updated: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
-
-    static let defaultInstance = _StorageClass()
-
-    private init() {}
-
-    init(copying source: _StorageClass) {
-      _key = source._key
-      _message = source._message
-      _updated = source._updated
-    }
-  }
-
-  fileprivate mutating func _uniqueStorage() -> _StorageClass {
-    if !isKnownUniquelyReferenced(&_storage) {
-      _storage = _StorageClass(copying: _storage)
-    }
-    return _storage
-  }
-
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    _ = _uniqueStorage()
-    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      while let fieldNumber = try decoder.nextFieldNumber() {
-        switch fieldNumber {
-        case 1: try decoder.decodeSingularEnumField(value: &_storage._key)
-        case 2: try decoder.decodeSingularStringField(value: &_storage._message)
-        case 3: try decoder.decodeSingularMessageField(value: &_storage._updated)
-        default: break
-        }
-      }
-    }
-  }
-
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
-      if _storage._key != .applicationFormStatusUnknown {
-        try visitor.visitSingularEnumField(value: _storage._key, fieldNumber: 1)
-      }
-      if !_storage._message.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._message, fieldNumber: 2)
-      }
-      if let v = _storage._updated {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
-      }
-    }
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  public static func ==(lhs: ApplicationFormStatus, rhs: ApplicationFormStatus) -> Bool {
-    if lhs._storage !== rhs._storage {
-      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
-        let _storage = _args.0
-        let rhs_storage = _args.1
-        if _storage._key != rhs_storage._key {return false}
-        if _storage._message != rhs_storage._message {return false}
-        if _storage._updated != rhs_storage._updated {return false}
-        return true
-      }
-      if !storagesAreEqual {return false}
-    }
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
 extension BusinessDays: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "BusinessDays"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
@@ -15648,32 +13602,26 @@ extension Insight: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBa
   public static let protoMessageName: String = "Insight"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
-    2: .standard(proto: "user_id"),
-    3: .same(proto: "type"),
-    4: .same(proto: "group"),
-    5: .same(proto: "score"),
-    6: .same(proto: "title"),
-    7: .same(proto: "description"),
-    8: .same(proto: "created"),
-    9: .standard(proto: "expiration_date"),
-    10: .standard(proto: "data_sets"),
-    11: .same(proto: "actions"),
-    12: .standard(proto: "reference_ids"),
+    2: .same(proto: "type"),
+    3: .same(proto: "score"),
+    4: .same(proto: "title"),
+    5: .same(proto: "description"),
+    6: .standard(proto: "created_time"),
+    7: .standard(proto: "expiration_time"),
+    8: .standard(proto: "data_sets"),
+    9: .same(proto: "actions"),
   ]
 
   fileprivate class _StorageClass {
     var _id: String = String()
-    var _userID: String = String()
     var _type: String = String()
-    var _group: InsightGroup = .groupUnknown
     var _score: ExactNumber? = nil
     var _title: String = String()
     var _description_p: String = String()
-    var _created: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
-    var _expirationDate: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
+    var _createdTime: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
+    var _expirationTime: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
     var _dataSets: [InsightDataSet] = []
     var _actions: [InsightAction] = []
-    var _referenceIds: [ReferenceId] = []
 
     static let defaultInstance = _StorageClass()
 
@@ -15681,17 +13629,14 @@ extension Insight: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBa
 
     init(copying source: _StorageClass) {
       _id = source._id
-      _userID = source._userID
       _type = source._type
-      _group = source._group
       _score = source._score
       _title = source._title
       _description_p = source._description_p
-      _created = source._created
-      _expirationDate = source._expirationDate
+      _createdTime = source._createdTime
+      _expirationTime = source._expirationTime
       _dataSets = source._dataSets
       _actions = source._actions
-      _referenceIds = source._referenceIds
     }
   }
 
@@ -15708,17 +13653,14 @@ extension Insight: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBa
       while let fieldNumber = try decoder.nextFieldNumber() {
         switch fieldNumber {
         case 1: try decoder.decodeSingularStringField(value: &_storage._id)
-        case 2: try decoder.decodeSingularStringField(value: &_storage._userID)
-        case 3: try decoder.decodeSingularStringField(value: &_storage._type)
-        case 4: try decoder.decodeSingularEnumField(value: &_storage._group)
-        case 5: try decoder.decodeSingularMessageField(value: &_storage._score)
-        case 6: try decoder.decodeSingularStringField(value: &_storage._title)
-        case 7: try decoder.decodeSingularStringField(value: &_storage._description_p)
-        case 8: try decoder.decodeSingularMessageField(value: &_storage._created)
-        case 9: try decoder.decodeSingularMessageField(value: &_storage._expirationDate)
-        case 10: try decoder.decodeRepeatedMessageField(value: &_storage._dataSets)
-        case 11: try decoder.decodeRepeatedMessageField(value: &_storage._actions)
-        case 12: try decoder.decodeRepeatedMessageField(value: &_storage._referenceIds)
+        case 2: try decoder.decodeSingularStringField(value: &_storage._type)
+        case 3: try decoder.decodeSingularMessageField(value: &_storage._score)
+        case 4: try decoder.decodeSingularStringField(value: &_storage._title)
+        case 5: try decoder.decodeSingularStringField(value: &_storage._description_p)
+        case 6: try decoder.decodeSingularMessageField(value: &_storage._createdTime)
+        case 7: try decoder.decodeSingularMessageField(value: &_storage._expirationTime)
+        case 8: try decoder.decodeRepeatedMessageField(value: &_storage._dataSets)
+        case 9: try decoder.decodeRepeatedMessageField(value: &_storage._actions)
         default: break
         }
       }
@@ -15730,38 +13672,29 @@ extension Insight: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBa
       if !_storage._id.isEmpty {
         try visitor.visitSingularStringField(value: _storage._id, fieldNumber: 1)
       }
-      if !_storage._userID.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._userID, fieldNumber: 2)
-      }
       if !_storage._type.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._type, fieldNumber: 3)
-      }
-      if _storage._group != .groupUnknown {
-        try visitor.visitSingularEnumField(value: _storage._group, fieldNumber: 4)
+        try visitor.visitSingularStringField(value: _storage._type, fieldNumber: 2)
       }
       if let v = _storage._score {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
       }
       if !_storage._title.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._title, fieldNumber: 6)
+        try visitor.visitSingularStringField(value: _storage._title, fieldNumber: 4)
       }
       if !_storage._description_p.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._description_p, fieldNumber: 7)
+        try visitor.visitSingularStringField(value: _storage._description_p, fieldNumber: 5)
       }
-      if let v = _storage._created {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 8)
+      if let v = _storage._createdTime {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
       }
-      if let v = _storage._expirationDate {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 9)
+      if let v = _storage._expirationTime {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
       }
       if !_storage._dataSets.isEmpty {
-        try visitor.visitRepeatedMessageField(value: _storage._dataSets, fieldNumber: 10)
+        try visitor.visitRepeatedMessageField(value: _storage._dataSets, fieldNumber: 8)
       }
       if !_storage._actions.isEmpty {
-        try visitor.visitRepeatedMessageField(value: _storage._actions, fieldNumber: 11)
-      }
-      if !_storage._referenceIds.isEmpty {
-        try visitor.visitRepeatedMessageField(value: _storage._referenceIds, fieldNumber: 12)
+        try visitor.visitRepeatedMessageField(value: _storage._actions, fieldNumber: 9)
       }
     }
     try unknownFields.traverse(visitor: &visitor)
@@ -15773,17 +13706,14 @@ extension Insight: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBa
         let _storage = _args.0
         let rhs_storage = _args.1
         if _storage._id != rhs_storage._id {return false}
-        if _storage._userID != rhs_storage._userID {return false}
         if _storage._type != rhs_storage._type {return false}
-        if _storage._group != rhs_storage._group {return false}
         if _storage._score != rhs_storage._score {return false}
         if _storage._title != rhs_storage._title {return false}
         if _storage._description_p != rhs_storage._description_p {return false}
-        if _storage._created != rhs_storage._created {return false}
-        if _storage._expirationDate != rhs_storage._expirationDate {return false}
+        if _storage._createdTime != rhs_storage._createdTime {return false}
+        if _storage._expirationTime != rhs_storage._expirationTime {return false}
         if _storage._dataSets != rhs_storage._dataSets {return false}
         if _storage._actions != rhs_storage._actions {return false}
-        if _storage._referenceIds != rhs_storage._referenceIds {return false}
         return true
       }
       if !storagesAreEqual {return false}
@@ -15797,32 +13727,26 @@ extension ArchivedInsight: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
   public static let protoMessageName: String = "ArchivedInsight"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
-    2: .standard(proto: "user_id"),
-    3: .same(proto: "type"),
-    4: .same(proto: "group"),
-    5: .same(proto: "score"),
-    6: .same(proto: "title"),
-    7: .same(proto: "description"),
-    8: .standard(proto: "insight_created_date"),
-    9: .standard(proto: "insight_archived_date"),
-    10: .standard(proto: "data_sets"),
-    11: .same(proto: "action"),
-    12: .standard(proto: "reference_ids"),
+    2: .same(proto: "type"),
+    3: .same(proto: "score"),
+    4: .same(proto: "title"),
+    5: .same(proto: "description"),
+    6: .standard(proto: "created_time"),
+    7: .standard(proto: "archived_time"),
+    8: .standard(proto: "data_sets"),
+    9: .same(proto: "action"),
   ]
 
   fileprivate class _StorageClass {
     var _id: String = String()
-    var _userID: String = String()
     var _type: String = String()
-    var _group: InsightGroup = .groupUnknown
     var _score: ExactNumber? = nil
     var _title: String = String()
     var _description_p: String = String()
-    var _insightCreatedDate: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
-    var _insightArchivedDate: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
+    var _createdTime: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
+    var _archivedTime: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
     var _dataSets: [InsightDataSet] = []
     var _action: InsightAction? = nil
-    var _referenceIds: [ReferenceId] = []
 
     static let defaultInstance = _StorageClass()
 
@@ -15830,17 +13754,14 @@ extension ArchivedInsight: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
 
     init(copying source: _StorageClass) {
       _id = source._id
-      _userID = source._userID
       _type = source._type
-      _group = source._group
       _score = source._score
       _title = source._title
       _description_p = source._description_p
-      _insightCreatedDate = source._insightCreatedDate
-      _insightArchivedDate = source._insightArchivedDate
+      _createdTime = source._createdTime
+      _archivedTime = source._archivedTime
       _dataSets = source._dataSets
       _action = source._action
-      _referenceIds = source._referenceIds
     }
   }
 
@@ -15857,17 +13778,14 @@ extension ArchivedInsight: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
       while let fieldNumber = try decoder.nextFieldNumber() {
         switch fieldNumber {
         case 1: try decoder.decodeSingularStringField(value: &_storage._id)
-        case 2: try decoder.decodeSingularStringField(value: &_storage._userID)
-        case 3: try decoder.decodeSingularStringField(value: &_storage._type)
-        case 4: try decoder.decodeSingularEnumField(value: &_storage._group)
-        case 5: try decoder.decodeSingularMessageField(value: &_storage._score)
-        case 6: try decoder.decodeSingularStringField(value: &_storage._title)
-        case 7: try decoder.decodeSingularStringField(value: &_storage._description_p)
-        case 8: try decoder.decodeSingularMessageField(value: &_storage._insightCreatedDate)
-        case 9: try decoder.decodeSingularMessageField(value: &_storage._insightArchivedDate)
-        case 10: try decoder.decodeRepeatedMessageField(value: &_storage._dataSets)
-        case 11: try decoder.decodeSingularMessageField(value: &_storage._action)
-        case 12: try decoder.decodeRepeatedMessageField(value: &_storage._referenceIds)
+        case 2: try decoder.decodeSingularStringField(value: &_storage._type)
+        case 3: try decoder.decodeSingularMessageField(value: &_storage._score)
+        case 4: try decoder.decodeSingularStringField(value: &_storage._title)
+        case 5: try decoder.decodeSingularStringField(value: &_storage._description_p)
+        case 6: try decoder.decodeSingularMessageField(value: &_storage._createdTime)
+        case 7: try decoder.decodeSingularMessageField(value: &_storage._archivedTime)
+        case 8: try decoder.decodeRepeatedMessageField(value: &_storage._dataSets)
+        case 9: try decoder.decodeSingularMessageField(value: &_storage._action)
         default: break
         }
       }
@@ -15879,38 +13797,29 @@ extension ArchivedInsight: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
       if !_storage._id.isEmpty {
         try visitor.visitSingularStringField(value: _storage._id, fieldNumber: 1)
       }
-      if !_storage._userID.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._userID, fieldNumber: 2)
-      }
       if !_storage._type.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._type, fieldNumber: 3)
-      }
-      if _storage._group != .groupUnknown {
-        try visitor.visitSingularEnumField(value: _storage._group, fieldNumber: 4)
+        try visitor.visitSingularStringField(value: _storage._type, fieldNumber: 2)
       }
       if let v = _storage._score {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 3)
       }
       if !_storage._title.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._title, fieldNumber: 6)
+        try visitor.visitSingularStringField(value: _storage._title, fieldNumber: 4)
       }
       if !_storage._description_p.isEmpty {
-        try visitor.visitSingularStringField(value: _storage._description_p, fieldNumber: 7)
+        try visitor.visitSingularStringField(value: _storage._description_p, fieldNumber: 5)
       }
-      if let v = _storage._insightCreatedDate {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 8)
+      if let v = _storage._createdTime {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 6)
       }
-      if let v = _storage._insightArchivedDate {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 9)
+      if let v = _storage._archivedTime {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 7)
       }
       if !_storage._dataSets.isEmpty {
-        try visitor.visitRepeatedMessageField(value: _storage._dataSets, fieldNumber: 10)
+        try visitor.visitRepeatedMessageField(value: _storage._dataSets, fieldNumber: 8)
       }
       if let v = _storage._action {
-        try visitor.visitSingularMessageField(value: v, fieldNumber: 11)
-      }
-      if !_storage._referenceIds.isEmpty {
-        try visitor.visitRepeatedMessageField(value: _storage._referenceIds, fieldNumber: 12)
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 9)
       }
     }
     try unknownFields.traverse(visitor: &visitor)
@@ -15922,17 +13831,14 @@ extension ArchivedInsight: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
         let _storage = _args.0
         let rhs_storage = _args.1
         if _storage._id != rhs_storage._id {return false}
-        if _storage._userID != rhs_storage._userID {return false}
         if _storage._type != rhs_storage._type {return false}
-        if _storage._group != rhs_storage._group {return false}
         if _storage._score != rhs_storage._score {return false}
         if _storage._title != rhs_storage._title {return false}
         if _storage._description_p != rhs_storage._description_p {return false}
-        if _storage._insightCreatedDate != rhs_storage._insightCreatedDate {return false}
-        if _storage._insightArchivedDate != rhs_storage._insightArchivedDate {return false}
+        if _storage._createdTime != rhs_storage._createdTime {return false}
+        if _storage._archivedTime != rhs_storage._archivedTime {return false}
         if _storage._dataSets != rhs_storage._dataSets {return false}
         if _storage._action != rhs_storage._action {return false}
-        if _storage._referenceIds != rhs_storage._referenceIds {return false}
         return true
       }
       if !storagesAreEqual {return false}
@@ -16089,7 +13995,7 @@ extension InsightAction: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
     if self.method != .unknown {
       try visitor.visitSingularEnumField(value: self.method, fieldNumber: 4)
     }
-    if self.group != .groupUnknown {
+    if self.group != .unknown {
       try visitor.visitSingularEnumField(value: self.group, fieldNumber: 5)
     }
     try unknownFields.traverse(visitor: &visitor)
@@ -16127,50 +14033,27 @@ extension InsightAction.Method: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension ReferenceId: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ReferenceId"
+extension InsightAction.Group: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .same(proto: "id"),
-    2: .same(proto: "type"),
-  ]
-
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      switch fieldNumber {
-      case 1: try decoder.decodeSingularStringField(value: &self.id)
-      case 2: try decoder.decodeSingularEnumField(value: &self.type)
-      default: break
-      }
-    }
-  }
-
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if !self.id.isEmpty {
-      try visitor.visitSingularStringField(value: self.id, fieldNumber: 1)
-    }
-    if self.type != .unknown {
-      try visitor.visitSingularEnumField(value: self.type, fieldNumber: 2)
-    }
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  public static func ==(lhs: ReferenceId, rhs: ReferenceId) -> Bool {
-    if lhs.id != rhs.id {return false}
-    if lhs.type != rhs.type {return false}
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-extension ReferenceId.TypeEnum: SwiftProtobuf._ProtoNameProviding {
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    0: .same(proto: "TYPE_UNKNOWN"),
-    1: .same(proto: "TYPE_ACCOUNT"),
-    2: .same(proto: "TYPE_BUDGET"),
-    3: .same(proto: "TYPE_CREDENTIALS"),
-    4: .same(proto: "TYPE_SAVINGS_GOAL"),
-    5: .same(proto: "TYPE_TRANSACTION"),
-    6: .same(proto: "TYPE_TRANSFER"),
+    0: .same(proto: "GROUP_UNKNOWN"),
+    1: .same(proto: "GROUP_EDUCATING"),
+    2: .same(proto: "GROUP_ENCOURAGING"),
+    3: .same(proto: "GROUP_FUN_FACT"),
+    4: .same(proto: "GROUP_PRODUCT_SUGGEST"),
+    5: .same(proto: "GROUP_PROMOTION"),
+    6: .same(proto: "GROUP_REMINDER"),
+    7: .same(proto: "GROUP_SOURCE_DATA"),
+    8: .same(proto: "GROUP_SUGGESTION"),
+    9: .same(proto: "GROUP_SUMMARY"),
+    10: .same(proto: "GROUP_WARNING"),
+    11: .same(proto: "GROUP_BUDGET"),
+    12: .same(proto: "GROUP_ACCOUNT"),
+    13: .same(proto: "GROUP_CATEGORIZATION"),
+    14: .same(proto: "GROUP_CREDENTIALS"),
+    15: .same(proto: "GROUP_INVOICE"),
+    16: .same(proto: "GROUP_FRAUD"),
+    17: .same(proto: "GROUP_LEFT_TO_SPEND"),
+    18: .same(proto: "GROUP_TRANSFER"),
   ]
 }
 
@@ -16559,6 +14442,41 @@ extension KycQuestion: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementati
   public static func ==(lhs: KycQuestion, rhs: KycQuestion) -> Bool {
     if lhs.reference != rhs.reference {return false}
     if lhs.answer != rhs.answer {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension OAuth2ScopeDescription: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = "OAuth2ScopeDescription"
+  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "title"),
+    2: .same(proto: "description"),
+  ]
+
+  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularStringField(value: &self.title)
+      case 2: try decoder.decodeSingularStringField(value: &self.description_p)
+      default: break
+      }
+    }
+  }
+
+  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.title.isEmpty {
+      try visitor.visitSingularStringField(value: self.title, fieldNumber: 1)
+    }
+    if !self.description_p.isEmpty {
+      try visitor.visitSingularStringField(value: self.description_p, fieldNumber: 2)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  public static func ==(lhs: OAuth2ScopeDescription, rhs: OAuth2ScopeDescription) -> Bool {
+    if lhs.title != rhs.title {return false}
+    if lhs.description_p != rhs.description_p {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
