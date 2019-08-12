@@ -33,21 +33,12 @@ service ActivityService {
     rpc HtmlHead (ActivityHtmlHeadRequest) returns (ActivityHtmlHeadResponse) {}
 }
 
-service ApplicationService {
-    rpc CreateApplication (CreateApplicationRequest) returns (CreateApplicationResponse) {}
-    rpc GetApplication (GetApplicationRequest) returns (GetApplicationResponse) {}
-    rpc DeleteApplication (DeleteApplicationRequest) returns (DeleteApplicationResponse) {}
-    rpc GetApplicationSummary (GetApplicationSummaryRequest) returns (GetApplicationSummaryResponse) {}
-    rpc GetApplicationSummaryList (GetApplicationSummaryListRequest) returns (GetApplicationSummaryListResponse) {}
-    rpc SubmitApplicationForm (SubmitApplicationFormRequest) returns (SubmitApplicationFormResponse) {}
-    rpc SubmitApplication (SubmitApplicationRequest) returns (SubmitApplicationResponse) {}
-    rpc GetEligibleApplicationTypes (GetEligibleApplicationTypesRequest) returns (GetEligibleApplicationTypesResponse) {}
-}
-
 service AuthenticationService {
     rpc Login (LoginRequest) returns (LoginResponse) {}
     rpc Register (RegisterRequest) returns (RegisterResponse) {}
     rpc Logout (LogoutRequest) returns (LogoutResponse) {}
+    // Used by Tink Link when it starts, as a precondition to displaying any Tink Link UI
+    rpc DescribeOAuth2Client (DescribeOAuth2ClientRequest) returns (DescribeOAuth2ClientResponse) {}
 }
 
 service BudgetService {
@@ -88,6 +79,7 @@ service CredentialService {
     rpc EnableCredential (EnableCredentialRequest) returns (EnableCredentialResponse) {}
     rpc DisableCredential (DisableCredentialRequest) returns (DisableCredentialResponse) {}
     rpc ThirdPartyCallback (ThirdPartyCallbackRequest) returns (ThirdPartyCallbackResponse) {}
+    rpc ManualAuthentication (ManualAuthenticationRequest) returns (ManualAuthenticationResponse) {}
 }
 
 service DeviceService {
@@ -246,6 +238,7 @@ service TransferKycService {
 }
 
 service UserService {
+    rpc CreateAnonymous (CreateAnonymousRequest) returns (CreateAnonymousResponse) {}
     rpc GetProfile (GetProfileRequest) returns (GetProfileResponse) {}
     rpc DeleteUser (DeleteUserRequest) returns (DeleteUserResponse) {}
     rpc RateApp (RateAppRequest) returns (RateAppResponse) {}

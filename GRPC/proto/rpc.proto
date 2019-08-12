@@ -179,6 +179,14 @@ message RefreshCredentialsRequest {
 message RefreshCredentialsResponse {
 }
 
+message ManualAuthenticationRequest {
+    string credential_ids = 1;
+}
+
+message ManualAuthenticationResponse {
+
+}
+
 message DeleteCredentialRequest {
     string credential_id = 1;
 }
@@ -750,6 +758,22 @@ message UpdateI18NSettingsResponse {
     I18NSettings i18n_settings = 1;
 }
 
+message DescribeOAuth2ClientRequest {
+    string client_id = 1;
+    repeated string scopes = 2;
+    string redirect_uri = 3;
+}
+
+message DescribeOAuth2ClientResponse {
+    string client_icon_url = 1;
+    string client_name = 2;
+    string client_url = 3;
+    bool embedded_allowed = 4;
+    repeated OAuth2ScopeDescription scopes = 5;
+    bool verified = 6;
+    bool aggregator = 7;
+}
+
 message LoginRequest {
     string authentication_token = 1;
 }
@@ -781,6 +805,16 @@ message UpdateEmailRequest {
 
 message UpdateEmailResponse {
     UserProfile user_profile = 1;
+}
+
+message CreateAnonymousRequest {
+    string market = 1;
+    string locale = 2;
+    string origin = 3;
+}
+
+message CreateAnonymousResponse {
+    string access_token = 1;
 }
 
 message GetProfileRequest {
@@ -1066,75 +1100,10 @@ message PingResponse {
     string message = 1;
 }
 
-message CreateApplicationRequest {
-    ApplicationType type = 1;
-}
-
-message CreateApplicationResponse {
-    Application application = 1;
-}
-
-message GetApplicationRequest {
-    string application_id = 1;
-}
-
-message GetApplicationResponse {
-    Application application = 1;
-}
-
-message DeleteApplicationRequest {
-    string application_id = 1;
-}
-
-message DeleteApplicationResponse {
-
-}
-
-message GetApplicationSummaryRequest {
-    string application_id = 1;
-}
-
-message GetApplicationSummaryResponse {
-    ApplicationSummary summary = 1;
-}
-
-message GetApplicationSummaryListRequest {
-    repeated ApplicationType types = 1;
-}
-
-message GetApplicationSummaryListResponse {
-    repeated ApplicationSummary summary = 1;
-}
-
-message SubmitApplicationFormRequest {
-    string application_id = 1;
-    RequestApplicationForm form = 2;
-}
-
-message SubmitApplicationFormResponse {
-    Application application = 1;
-}
-
-message SubmitApplicationRequest {
-    string application_id = 1;
-}
-
-message SubmitApplicationResponse {
-    SignableOperation signable_operation = 1;
-}
-
-message GetEligibleApplicationTypesRequest {
-
-}
-
-message GetEligibleApplicationTypesResponse {
-    repeated ApplicationType types = 1;
-}
-
 message SelectInsightActionRequest {
     string insight_id = 1;
     string user_id = 2;
-    InsightGroup action_group = 3;
+    InsightAction.Group action_group = 3;
     InsightAction.Method action_method = 4;
     string label = 5;
 }

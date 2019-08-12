@@ -511,7 +511,6 @@ message SignableOperation {
         TYPE_UNKNOWN = 0;
         TYPE_TRANSFER = 1;
         TYPE_ACCOUNT_CREATE = 2;
-        TYPE_APPLICATION = 3;
     }
 
     Type type = 5;
@@ -1006,168 +1005,6 @@ enum AuthenticationMethod {
     AUTHENTICATION_METHOD_ABN_AMRO_PIN5 = 5;
 }
 
-message Application {
-    string id = 1;
-    ApplicationForms forms = 2;
-    ApplicationStatus status = 3;
-    int32 steps = 4;
-    string title = 5;
-    ApplicationType type = 6;
-}
-
-enum ApplicationType {
-    APPLICATION_TYPE_UNKNOWN = 0;
-    APPLICATION_TYPE_SWITCH_MORTGAGE_PROVIDER = 1;
-    APPLICATION_TYPE_OPEN_SAVINGS_ACCOUNT = 2;
-    APPLICATION_TYPE_RESIDENCE_VALUATION = 3;
-    APPLICATION_TYPE_SOLICIT_UNSECURED_LOANS = 4;
-    APPLICATION_TYPE_ACCEPT_UNSECURED_LOANS = 5;
-}
-
-message ApplicationSummary {
-    string description = 1;
-    string id = 2;
-    string image_url = 3;
-    double progress = 4;
-    string provider = 5;
-    ApplicationSummaryStatus status = 6;
-    string title = 7;
-    ApplicationType type = 8;
-}
-
-message ApplicationSummaryStatus {
-    ApplicationStatusKey key = 1;
-    string body = 2;
-    string payload = 3;
-    string title = 4;
-}
-
-message ApplicationForms {
-    repeated ApplicationForm form = 1;
-}
-
-message ApplicationForm {
-    string id = 1;
-    string application_id = 2;
-    string description = 3;
-    ApplicationFormFields fields = 4;
-    ApplicationFormStatus status = 5;
-    string type = 6;
-    string title = 7;
-    string serialized_payload = 8;
-    string name = 9;
-}
-
-message RequestApplicationForm {
-    string id = 1;
-    RequestApplicationFormFields fields = 2;
-}
-
-message RequestApplicationFormFields {
-    repeated RequestApplicationFormField field = 1;
-}
-
-message RequestApplicationFormField {
-    string name = 1;
-    google.protobuf.StringValue value = 2;
-}
-
-message ApplicationFormFields {
-    repeated ApplicationFormField field = 1;
-}
-
-message ApplicationFormField {
-    google.protobuf.StringValue default_value = 1;
-    string description = 2;
-    ApplicationFormFieldErrors errors = 3;
-    string display_error = 4;
-    string label = 5;
-    string name = 6;
-    ApplicationFormFieldOptions options = 7;
-    string pattern = 8;
-    ApplicationFieldType type = 9;
-    google.protobuf.StringValue value = 10;
-    bool required = 11;
-    bool readOnly = 12;
-    string dependency = 13;
-    string info_title = 14;
-    string info_body = 15;
-    string introduction = 16;
-}
-
-message ApplicationFormFieldOptions {
-    repeated ApplicationFormFieldOption option = 1;
-}
-
-message ApplicationFormFieldOption {
-    string value = 1;
-    string label = 2;
-    string description = 3;
-    string serialized_payload = 4;
-}
-
-enum ApplicationFieldType {
-    APPLICATION_FIELD_TYPE_UNKNOWN = 0;
-    APPLICATION_FIELD_TYPE_CHECKBOX = 1;
-    APPLICATION_FIELD_TYPE_DATE = 2;
-    APPLICATION_FIELD_TYPE_EMAIL = 3;
-    APPLICATION_FIELD_TYPE_HIDDEN = 4;
-    APPLICATION_FIELD_TYPE_MULTI_SELECT = 5;
-    APPLICATION_FIELD_TYPE_NUMBER = 6;
-    APPLICATION_FIELD_TYPE_NUMERIC = 7;
-    APPLICATION_FIELD_TYPE_SELECT = 8;
-    APPLICATION_FIELD_TYPE_SIGNATURE = 9;
-    APPLICATION_FIELD_TYPE_TEXT = 10;
-}
-
-message ApplicationFormFieldErrors {
-    repeated ApplicationFormFieldError error = 1;
-}
-
-message ApplicationFormFieldError {
-    string message = 1;
-}
-
-message ApplicationStatus {
-    ApplicationStatusKey key = 1;
-    string message = 2;
-    google.protobuf.Timestamp updated = 3;
-}
-
-message ApplicationFormStatus {
-    ApplicationFormStatusKey key = 1;
-    string message = 2;
-    google.protobuf.Timestamp updated = 3;
-}
-
-enum ApplicationStatusKey {
-    APPLICATION_STATUS_UNKNOWN = 0;
-    APPLICATION_STATUS_CREATED = 1;
-    APPLICATION_STATUS_IN_PROGRESS = 2;
-    APPLICATION_STATUS_DELETED = 3;
-    APPLICATION_STATUS_ERROR = 4;
-    APPLICATION_STATUS_EXPIRED = 5;
-    APPLICATION_STATUS_DISQUALIFIED = 6;
-    APPLICATION_STATUS_COMPLETED = 7;
-    APPLICATION_STATUS_SIGNED = 8;
-    APPLICATION_STATUS_SUPPLEMENTAL_INFORMATION_REQUIRED = 9;
-    APPLICATION_STATUS_REJECTED = 10;
-    APPLICATION_STATUS_APPROVED = 11;
-    APPLICATION_STATUS_ABORTED = 12;
-    APPLICATION_STATUS_EXECUTED = 13;
-    APPLICATION_STATUS_PENDING = 14;
-}
-
-enum ApplicationFormStatusKey {
-    APPLICATION_FORM_STATUS_UNKNOWN = 0;
-    APPLICATION_FORM_STATUS_CREATED = 1;
-    APPLICATION_FORM_STATUS_COMPLETED = 2;
-    APPLICATION_FORM_STATUS_IN_PROGRESS = 3;
-    APPLICATION_FORM_STATUS_ERROR = 4;
-    APPLICATION_FORM_STATUS_DISQUALIFIED = 5;
-    APPLICATION_FORM_STATUS_AUTO_SAVED = 6;
-}
-
 message BusinessDays {
     uint32 year = 1;
     uint32 month = 2;
@@ -1232,32 +1069,26 @@ message PropertyValuationSummary {
 
 message Insight {
     string id = 1;
-    string user_id = 2;
-    string type = 3;
-    InsightGroup group = 4;
-    ExactNumber score = 5;
-    string title = 6;
-    string description = 7;
-    google.protobuf.Timestamp created = 8;
-    google.protobuf.Timestamp expiration_date = 9;
-    repeated InsightDataSet data_sets = 10;
-    repeated InsightAction actions = 11;
-    repeated ReferenceId reference_ids = 12;
+    string type = 2;
+    ExactNumber score = 3;
+    string title = 4;
+    string description = 5;
+    google.protobuf.Timestamp created_time = 6;
+    google.protobuf.Timestamp expiration_time = 7;
+    repeated InsightDataSet data_sets = 8;
+    repeated InsightAction actions = 9;
 }
 
 message ArchivedInsight {
     string id = 1;
-    string user_id = 2;
-    string type = 3;
-    InsightGroup group = 4;
-    ExactNumber score = 5;
-    string title = 6;
-    string description = 7;
-    google.protobuf.Timestamp insight_created_date = 8;
-    google.protobuf.Timestamp insight_archived_date = 9;
-    repeated InsightDataSet data_sets = 10;
-    InsightAction action = 11;
-    repeated ReferenceId reference_ids = 12;
+    string type = 2;
+    ExactNumber score = 3;
+    string title = 4;
+    string description = 5;
+    google.protobuf.Timestamp created_time = 6;
+    google.protobuf.Timestamp archived_time = 7;
+    repeated InsightDataSet data_sets = 8;
+    InsightAction action = 9;
 }
 
 message InsightDataSet {
@@ -1281,8 +1112,7 @@ message InsightAction {
     string target = 2;
     Type type = 3;
     Method method = 4;
-    InsightGroup group = 5;
-
+    Group group = 5;
 
     enum Type {
         TYPE_UNKNOWN = 0;
@@ -1300,41 +1130,27 @@ message InsightAction {
         METHOD_NOT_NOW = 6;
         METHOD_DISMISS = 7;
     }
-}
 
-enum InsightGroup {
-    GROUP_UNKNOWN = 0;
-    GROUP_EDUCATING = 1;
-    GROUP_ENCOURAGING = 2;
-    GROUP_FUN_FACT = 3;
-    GROUP_PRODUCT_SUGGEST = 4;
-    GROUP_PROMOTION = 5;
-    GROUP_REMINDER = 6;
-    GROUP_SOURCE_DATA = 7;
-    GROUP_SUGGESTION = 8;
-    GROUP_SUMMARY = 9;
-    GROUP_WARNING = 10;
-    GROUP_BUDGET = 11;
-    GROUP_ACCOUNT = 12;
-    GROUP_CATEGORIZATION = 13;
-    GROUP_CREDENTIALS = 14;
-    GROUP_INVOICE = 15;
-    GROUP_FRAUD = 16;
-    GROUP_LEFT_TO_SPEND = 17;
-}
-
-message ReferenceId {
-    string id = 1;
-    Type type = 2;
-
-    enum Type {
-        TYPE_UNKNOWN = 0;
-        TYPE_ACCOUNT = 1;
-        TYPE_BUDGET = 2;
-        TYPE_CREDENTIALS = 3;
-        TYPE_SAVINGS_GOAL = 4;
-        TYPE_TRANSACTION = 5;
-        TYPE_TRANSFER = 6;
+    enum Group {
+        GROUP_UNKNOWN = 0;
+        GROUP_EDUCATING = 1;
+        GROUP_ENCOURAGING = 2;
+        GROUP_FUN_FACT = 3;
+        GROUP_PRODUCT_SUGGEST = 4;
+        GROUP_PROMOTION = 5;
+        GROUP_REMINDER = 6;
+        GROUP_SOURCE_DATA = 7;
+        GROUP_SUGGESTION = 8;
+        GROUP_SUMMARY = 9;
+        GROUP_WARNING = 10;
+        GROUP_BUDGET = 11;
+        GROUP_ACCOUNT = 12;
+        GROUP_CATEGORIZATION = 13;
+        GROUP_CREDENTIALS = 14;
+        GROUP_INVOICE = 15;
+        GROUP_FRAUD = 16;
+        GROUP_LEFT_TO_SPEND = 17;
+        GROUP_TRANSFER = 18;
     }
 }
 
@@ -1430,4 +1246,9 @@ message RecurringTransaction {
 message KycQuestion {
     string reference = 1;
     string answer = 2;
+}
+
+message OAuth2ScopeDescription {
+    string title = 1;
+    string description = 2;
 }
