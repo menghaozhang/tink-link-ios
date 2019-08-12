@@ -20,4 +20,6 @@ public final class Client {
             self.channel = Channel(address: environment.url.absoluteString, secure: false, arguments: arguments)
         }
     }
+
+    public private(set) lazy var providerService: ProviderService = ProviderService(channel: channel)
 }
