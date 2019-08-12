@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name     = 'TinkRPC'
+  s.name     = 'TinkGRPC'
   s.version  = '0.0.1'
   s.license  = 'Tink AB'
   s.authors  = { 'Tink AB' => 'support@tink.se' }

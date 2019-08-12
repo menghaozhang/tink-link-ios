@@ -1,15 +1,15 @@
 generate:
-	mkdir ./rpc/Sources/
-	./rpc/vendor/protoc \
-		--proto_path=./rpc/proto \
-		--proto_path=./rpc/third-party \
-		./rpc/proto/*.proto \
-		--swift_out=./rpc/Sources/ \
-		--swiftgrpc_out=./rpc/Sources/ \
+	mkdir ./GRPC/Sources/
+	./GRPC/vendor/protoc \
+		--proto_path=./GRPC/proto \
+		--proto_path=./GRPC/third-party \
+		./GRPC/proto/*.proto \
+		--swift_out=./GRPC/Sources/ \
+		--swiftgrpc_out=./GRPC/Sources/ \
 		--swift_opt=Visibility=Public \
 		--swiftgrpc_opt=Visibility=Public,Sync=false,Server=false \
-		--plugin=protoc-gen-swift=./rpc/vendor/protoc-gen-swift \
-		--plugin=protoc-gen-swiftgrpc=./rpc/vendor/protoc-gen-swiftgrpc
+		--plugin=protoc-gen-swift=./GRPC/vendor/protoc-gen-swift \
+		--plugin=protoc-gen-swiftgrpc=./GRPC/vendor/protoc-gen-swiftgrpc
 
 clean: 
-	-rm -rf ./rpc/Sources/
+	-rm -rf ./GRPC/Sources/
