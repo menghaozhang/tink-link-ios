@@ -6,8 +6,8 @@ generate:
 		./GRPC/proto/*.proto \
 		--swift_out=./Sources/TinkGRPC/ \
 		--swiftgrpc_out=./Sources/TinkGRPC/ \
-		--swift_opt=Visibility=Public \
-		--swiftgrpc_opt=Visibility=Public,Sync=false,Server=false \
+		--swift_opt=Visibility=Internal \
+		--swiftgrpc_opt=Visibility=Internal,Sync=false,Server=false \
 		--plugin=protoc-gen-swift=./GRPC/vendor/protoc-gen-swift \
 		--plugin=protoc-gen-swiftgrpc=./GRPC/vendor/protoc-gen-swiftgrpc
 

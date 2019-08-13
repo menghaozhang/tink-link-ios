@@ -19,239 +19,239 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
   typealias Version = _2
 }
 
-public struct GRPCListAccountsRequest {
+struct GRPCListAccountsRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCListAccountsResponse {
+struct GRPCListAccountsResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var accounts: [GRPCAccount] = []
+  var accounts: [GRPCAccount] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCListLoansRequest {
+struct GRPCListLoansRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCListLoansResponse {
+struct GRPCListLoansResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var loans: [GRPCLoan] = []
+  var loans: [GRPCLoan] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCUpdateAccountRequest {
+struct GRPCUpdateAccountRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var accountID: String {
+  var accountID: String {
     get {return _storage._accountID}
     set {_uniqueStorage()._accountID = newValue}
   }
 
-  public var name: SwiftProtobuf.Google_Protobuf_StringValue {
+  var name: SwiftProtobuf.Google_Protobuf_StringValue {
     get {return _storage._name ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._name = newValue}
   }
   /// Returns true if `name` has been explicitly set.
-  public var hasName: Bool {return _storage._name != nil}
+  var hasName: Bool {return _storage._name != nil}
   /// Clears the value of `name`. Subsequent reads from it will return its default value.
-  public mutating func clearName() {_uniqueStorage()._name = nil}
+  mutating func clearName() {_uniqueStorage()._name = nil}
 
-  public var type: GRPCAccount.TypeEnum {
+  var type: GRPCAccount.TypeEnum {
     get {return _storage._type}
     set {_uniqueStorage()._type = newValue}
   }
 
-  public var favored: SwiftProtobuf.Google_Protobuf_BoolValue {
+  var favored: SwiftProtobuf.Google_Protobuf_BoolValue {
     get {return _storage._favored ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._favored = newValue}
   }
   /// Returns true if `favored` has been explicitly set.
-  public var hasFavored: Bool {return _storage._favored != nil}
+  var hasFavored: Bool {return _storage._favored != nil}
   /// Clears the value of `favored`. Subsequent reads from it will return its default value.
-  public mutating func clearFavored() {_uniqueStorage()._favored = nil}
+  mutating func clearFavored() {_uniqueStorage()._favored = nil}
 
-  public var excluded: SwiftProtobuf.Google_Protobuf_BoolValue {
+  var excluded: SwiftProtobuf.Google_Protobuf_BoolValue {
     get {return _storage._excluded ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._excluded = newValue}
   }
   /// Returns true if `excluded` has been explicitly set.
-  public var hasExcluded: Bool {return _storage._excluded != nil}
+  var hasExcluded: Bool {return _storage._excluded != nil}
   /// Clears the value of `excluded`. Subsequent reads from it will return its default value.
-  public mutating func clearExcluded() {_uniqueStorage()._excluded = nil}
+  mutating func clearExcluded() {_uniqueStorage()._excluded = nil}
 
-  public var ownership: GRPCExactNumber {
+  var ownership: GRPCExactNumber {
     get {return _storage._ownership ?? GRPCExactNumber()}
     set {_uniqueStorage()._ownership = newValue}
   }
   /// Returns true if `ownership` has been explicitly set.
-  public var hasOwnership: Bool {return _storage._ownership != nil}
+  var hasOwnership: Bool {return _storage._ownership != nil}
   /// Clears the value of `ownership`. Subsequent reads from it will return its default value.
-  public mutating func clearOwnership() {_uniqueStorage()._ownership = nil}
+  mutating func clearOwnership() {_uniqueStorage()._ownership = nil}
 
-  public var exclusionType: GRPCAccount.Exclusion {
+  var exclusionType: GRPCAccount.Exclusion {
     get {return _storage._exclusionType}
     set {_uniqueStorage()._exclusionType = newValue}
   }
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCUpdateAccountResponse {
+struct GRPCUpdateAccountResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var account: GRPCAccount {
+  var account: GRPCAccount {
     get {return _storage._account ?? GRPCAccount()}
     set {_uniqueStorage()._account = newValue}
   }
   /// Returns true if `account` has been explicitly set.
-  public var hasAccount: Bool {return _storage._account != nil}
+  var hasAccount: Bool {return _storage._account != nil}
   /// Clears the value of `account`. Subsequent reads from it will return its default value.
-  public mutating func clearAccount() {_uniqueStorage()._account = nil}
+  mutating func clearAccount() {_uniqueStorage()._account = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCListActivityHtmlRequest {
+struct GRPCListActivityHtmlRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var offset: UInt32 = 0
+  var offset: UInt32 = 0
 
-  public var limit: UInt32 = 0
+  var limit: UInt32 = 0
 
-  public var screenWidth: UInt32 = 0
+  var screenWidth: UInt32 = 0
 
-  public var screenPpi: UInt32 = 0
+  var screenPpi: UInt32 = 0
 
-  public var theme: GRPCTheme = .unknown
+  var theme: GRPCTheme = .unknown
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCListActivityHtmlResponse {
+struct GRPCListActivityHtmlResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var htmlPage: String = String()
+  var htmlPage: String = String()
 
-  public var nextPageOffset: UInt32 = 0
+  var nextPageOffset: UInt32 = 0
 
-  public var activityKeys: [String] = []
+  var activityKeys: [String] = []
 
-  public var feedActivityIdentifiersList: [String] = []
+  var feedActivityIdentifiersList: [String] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCActivityHtmlHeadRequest {
+struct GRPCActivityHtmlHeadRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var theme: GRPCTheme = .unknown
+  var theme: GRPCTheme = .unknown
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCActivityHtmlHeadResponse {
+struct GRPCActivityHtmlHeadResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var css: String = String()
+  var css: String = String()
 
-  public var metadata: String = String()
+  var metadata: String = String()
 
-  public var scripts: String = String()
+  var scripts: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCCreateBudgetRequest {
+struct GRPCCreateBudgetRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var name: String {
+  var name: String {
     get {return _storage._name}
     set {_uniqueStorage()._name = newValue}
   }
 
-  public var description_p: String {
+  var description_p: String {
     get {return _storage._description_p}
     set {_uniqueStorage()._description_p = newValue}
   }
 
-  public var amount: GRPCCurrencyDenominatedAmount {
+  var amount: GRPCCurrencyDenominatedAmount {
     get {return _storage._amount ?? GRPCCurrencyDenominatedAmount()}
     set {_uniqueStorage()._amount = newValue}
   }
   /// Returns true if `amount` has been explicitly set.
-  public var hasAmount: Bool {return _storage._amount != nil}
+  var hasAmount: Bool {return _storage._amount != nil}
   /// Clears the value of `amount`. Subsequent reads from it will return its default value.
-  public mutating func clearAmount() {_uniqueStorage()._amount = nil}
+  mutating func clearAmount() {_uniqueStorage()._amount = nil}
 
-  public var filter: GRPCBudget.Filter {
+  var filter: GRPCBudget.Filter {
     get {return _storage._filter ?? GRPCBudget.Filter()}
     set {_uniqueStorage()._filter = newValue}
   }
   /// Returns true if `filter` has been explicitly set.
-  public var hasFilter: Bool {return _storage._filter != nil}
+  var hasFilter: Bool {return _storage._filter != nil}
   /// Clears the value of `filter`. Subsequent reads from it will return its default value.
-  public mutating func clearFilter() {_uniqueStorage()._filter = nil}
+  mutating func clearFilter() {_uniqueStorage()._filter = nil}
 
-  public var periodicity: OneOf_Periodicity? {
+  var periodicity: OneOf_Periodicity? {
     get {return _storage._periodicity}
     set {_uniqueStorage()._periodicity = newValue}
   }
 
-  public var recurringPeriodicity: GRPCBudget.RecurringPeriodicity {
+  var recurringPeriodicity: GRPCBudget.RecurringPeriodicity {
     get {
       if case .recurringPeriodicity(let v)? = _storage._periodicity {return v}
       return GRPCBudget.RecurringPeriodicity()
@@ -259,7 +259,7 @@ public struct GRPCCreateBudgetRequest {
     set {_uniqueStorage()._periodicity = .recurringPeriodicity(newValue)}
   }
 
-  public var oneOffPeriodicity: GRPCBudget.OneOffPeriodicity {
+  var oneOffPeriodicity: GRPCBudget.OneOffPeriodicity {
     get {
       if case .oneOffPeriodicity(let v)? = _storage._periodicity {return v}
       return GRPCBudget.OneOffPeriodicity()
@@ -267,14 +267,14 @@ public struct GRPCCreateBudgetRequest {
     set {_uniqueStorage()._periodicity = .oneOffPeriodicity(newValue)}
   }
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Periodicity: Equatable {
+  enum OneOf_Periodicity: Equatable {
     case recurringPeriodicity(GRPCBudget.RecurringPeriodicity)
     case oneOffPeriodicity(GRPCBudget.OneOffPeriodicity)
 
   #if !swift(>=4.1)
-    public static func ==(lhs: GRPCCreateBudgetRequest.OneOf_Periodicity, rhs: GRPCCreateBudgetRequest.OneOf_Periodicity) -> Bool {
+    static func ==(lhs: GRPCCreateBudgetRequest.OneOf_Periodicity, rhs: GRPCCreateBudgetRequest.OneOf_Periodicity) -> Bool {
       switch (lhs, rhs) {
       case (.recurringPeriodicity(let l), .recurringPeriodicity(let r)): return l == r
       case (.oneOffPeriodicity(let l), .oneOffPeriodicity(let r)): return l == r
@@ -284,76 +284,76 @@ public struct GRPCCreateBudgetRequest {
   #endif
   }
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCCreateBudgetResponse {
+struct GRPCCreateBudgetResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var budgetSpecification: GRPCBudget.Specification {
+  var budgetSpecification: GRPCBudget.Specification {
     get {return _storage._budgetSpecification ?? GRPCBudget.Specification()}
     set {_uniqueStorage()._budgetSpecification = newValue}
   }
   /// Returns true if `budgetSpecification` has been explicitly set.
-  public var hasBudgetSpecification: Bool {return _storage._budgetSpecification != nil}
+  var hasBudgetSpecification: Bool {return _storage._budgetSpecification != nil}
   /// Clears the value of `budgetSpecification`. Subsequent reads from it will return its default value.
-  public mutating func clearBudgetSpecification() {_uniqueStorage()._budgetSpecification = nil}
+  mutating func clearBudgetSpecification() {_uniqueStorage()._budgetSpecification = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCUpdateBudgetRequest {
+struct GRPCUpdateBudgetRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var budgetID: String {
+  var budgetID: String {
     get {return _storage._budgetID}
     set {_uniqueStorage()._budgetID = newValue}
   }
 
-  public var name: String {
+  var name: String {
     get {return _storage._name}
     set {_uniqueStorage()._name = newValue}
   }
 
-  public var description_p: String {
+  var description_p: String {
     get {return _storage._description_p}
     set {_uniqueStorage()._description_p = newValue}
   }
 
-  public var amount: GRPCCurrencyDenominatedAmount {
+  var amount: GRPCCurrencyDenominatedAmount {
     get {return _storage._amount ?? GRPCCurrencyDenominatedAmount()}
     set {_uniqueStorage()._amount = newValue}
   }
   /// Returns true if `amount` has been explicitly set.
-  public var hasAmount: Bool {return _storage._amount != nil}
+  var hasAmount: Bool {return _storage._amount != nil}
   /// Clears the value of `amount`. Subsequent reads from it will return its default value.
-  public mutating func clearAmount() {_uniqueStorage()._amount = nil}
+  mutating func clearAmount() {_uniqueStorage()._amount = nil}
 
-  public var filter: GRPCBudget.Filter {
+  var filter: GRPCBudget.Filter {
     get {return _storage._filter ?? GRPCBudget.Filter()}
     set {_uniqueStorage()._filter = newValue}
   }
   /// Returns true if `filter` has been explicitly set.
-  public var hasFilter: Bool {return _storage._filter != nil}
+  var hasFilter: Bool {return _storage._filter != nil}
   /// Clears the value of `filter`. Subsequent reads from it will return its default value.
-  public mutating func clearFilter() {_uniqueStorage()._filter = nil}
+  mutating func clearFilter() {_uniqueStorage()._filter = nil}
 
-  public var periodicity: OneOf_Periodicity? {
+  var periodicity: OneOf_Periodicity? {
     get {return _storage._periodicity}
     set {_uniqueStorage()._periodicity = newValue}
   }
 
-  public var recurringPeriodicity: GRPCBudget.RecurringPeriodicity {
+  var recurringPeriodicity: GRPCBudget.RecurringPeriodicity {
     get {
       if case .recurringPeriodicity(let v)? = _storage._periodicity {return v}
       return GRPCBudget.RecurringPeriodicity()
@@ -361,7 +361,7 @@ public struct GRPCUpdateBudgetRequest {
     set {_uniqueStorage()._periodicity = .recurringPeriodicity(newValue)}
   }
 
-  public var oneOffPeriodicity: GRPCBudget.OneOffPeriodicity {
+  var oneOffPeriodicity: GRPCBudget.OneOffPeriodicity {
     get {
       if case .oneOffPeriodicity(let v)? = _storage._periodicity {return v}
       return GRPCBudget.OneOffPeriodicity()
@@ -369,14 +369,14 @@ public struct GRPCUpdateBudgetRequest {
     set {_uniqueStorage()._periodicity = .oneOffPeriodicity(newValue)}
   }
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Periodicity: Equatable {
+  enum OneOf_Periodicity: Equatable {
     case recurringPeriodicity(GRPCBudget.RecurringPeriodicity)
     case oneOffPeriodicity(GRPCBudget.OneOffPeriodicity)
 
   #if !swift(>=4.1)
-    public static func ==(lhs: GRPCUpdateBudgetRequest.OneOf_Periodicity, rhs: GRPCUpdateBudgetRequest.OneOf_Periodicity) -> Bool {
+    static func ==(lhs: GRPCUpdateBudgetRequest.OneOf_Periodicity, rhs: GRPCUpdateBudgetRequest.OneOf_Periodicity) -> Bool {
       switch (lhs, rhs) {
       case (.recurringPeriodicity(let l), .recurringPeriodicity(let r)): return l == r
       case (.oneOffPeriodicity(let l), .oneOffPeriodicity(let r)): return l == r
@@ -386,1811 +386,1811 @@ public struct GRPCUpdateBudgetRequest {
   #endif
   }
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCUpdateBudgetResponse {
+struct GRPCUpdateBudgetResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var budgetSpecification: GRPCBudget.Specification {
+  var budgetSpecification: GRPCBudget.Specification {
     get {return _storage._budgetSpecification ?? GRPCBudget.Specification()}
     set {_uniqueStorage()._budgetSpecification = newValue}
   }
   /// Returns true if `budgetSpecification` has been explicitly set.
-  public var hasBudgetSpecification: Bool {return _storage._budgetSpecification != nil}
+  var hasBudgetSpecification: Bool {return _storage._budgetSpecification != nil}
   /// Clears the value of `budgetSpecification`. Subsequent reads from it will return its default value.
-  public mutating func clearBudgetSpecification() {_uniqueStorage()._budgetSpecification = nil}
+  mutating func clearBudgetSpecification() {_uniqueStorage()._budgetSpecification = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCDeleteBudgetRequest {
+struct GRPCDeleteBudgetRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var budgetID: String = String()
+  var budgetID: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCDeleteBudgetResponse {
+struct GRPCDeleteBudgetResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCArchiveBudgetRequest {
+struct GRPCArchiveBudgetRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var budgetID: String = String()
+  var budgetID: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCArchiveBudgetResponse {
+struct GRPCArchiveBudgetResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var budgetSpecification: GRPCBudget.Specification {
+  var budgetSpecification: GRPCBudget.Specification {
     get {return _storage._budgetSpecification ?? GRPCBudget.Specification()}
     set {_uniqueStorage()._budgetSpecification = newValue}
   }
   /// Returns true if `budgetSpecification` has been explicitly set.
-  public var hasBudgetSpecification: Bool {return _storage._budgetSpecification != nil}
+  var hasBudgetSpecification: Bool {return _storage._budgetSpecification != nil}
   /// Clears the value of `budgetSpecification`. Subsequent reads from it will return its default value.
-  public mutating func clearBudgetSpecification() {_uniqueStorage()._budgetSpecification = nil}
+  mutating func clearBudgetSpecification() {_uniqueStorage()._budgetSpecification = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCListBudgetsRequest {
+struct GRPCListBudgetsRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var includeArchived: Bool = false
+  var includeArchived: Bool = false
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCListBudgetsResponse {
+struct GRPCListBudgetsResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var budgetSummaries: [GRPCBudget.Summary] = []
+  var budgetSummaries: [GRPCBudget.Summary] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCGetBudgetPeriodDetailsRequest {
+struct GRPCGetBudgetPeriodDetailsRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var budgetID: String {
+  var budgetID: String {
     get {return _storage._budgetID}
     set {_uniqueStorage()._budgetID = newValue}
   }
 
-  public var start: SwiftProtobuf.Google_Protobuf_Timestamp {
+  var start: SwiftProtobuf.Google_Protobuf_Timestamp {
     get {return _storage._start ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
     set {_uniqueStorage()._start = newValue}
   }
   /// Returns true if `start` has been explicitly set.
-  public var hasStart: Bool {return _storage._start != nil}
+  var hasStart: Bool {return _storage._start != nil}
   /// Clears the value of `start`. Subsequent reads from it will return its default value.
-  public mutating func clearStart() {_uniqueStorage()._start = nil}
+  mutating func clearStart() {_uniqueStorage()._start = nil}
 
-  public var end: SwiftProtobuf.Google_Protobuf_Timestamp {
+  var end: SwiftProtobuf.Google_Protobuf_Timestamp {
     get {return _storage._end ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
     set {_uniqueStorage()._end = newValue}
   }
   /// Returns true if `end` has been explicitly set.
-  public var hasEnd: Bool {return _storage._end != nil}
+  var hasEnd: Bool {return _storage._end != nil}
   /// Clears the value of `end`. Subsequent reads from it will return its default value.
-  public mutating func clearEnd() {_uniqueStorage()._end = nil}
+  mutating func clearEnd() {_uniqueStorage()._end = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCGetBudgetPeriodDetailsResponse {
+struct GRPCGetBudgetPeriodDetailsResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var budgetSpecification: GRPCBudget.Specification {
+  var budgetSpecification: GRPCBudget.Specification {
     get {return _storage._budgetSpecification ?? GRPCBudget.Specification()}
     set {_uniqueStorage()._budgetSpecification = newValue}
   }
   /// Returns true if `budgetSpecification` has been explicitly set.
-  public var hasBudgetSpecification: Bool {return _storage._budgetSpecification != nil}
+  var hasBudgetSpecification: Bool {return _storage._budgetSpecification != nil}
   /// Clears the value of `budgetSpecification`. Subsequent reads from it will return its default value.
-  public mutating func clearBudgetSpecification() {_uniqueStorage()._budgetSpecification = nil}
+  mutating func clearBudgetSpecification() {_uniqueStorage()._budgetSpecification = nil}
 
-  public var start: SwiftProtobuf.Google_Protobuf_Timestamp {
+  var start: SwiftProtobuf.Google_Protobuf_Timestamp {
     get {return _storage._start ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
     set {_uniqueStorage()._start = newValue}
   }
   /// Returns true if `start` has been explicitly set.
-  public var hasStart: Bool {return _storage._start != nil}
+  var hasStart: Bool {return _storage._start != nil}
   /// Clears the value of `start`. Subsequent reads from it will return its default value.
-  public mutating func clearStart() {_uniqueStorage()._start = nil}
+  mutating func clearStart() {_uniqueStorage()._start = nil}
 
-  public var end: SwiftProtobuf.Google_Protobuf_Timestamp {
+  var end: SwiftProtobuf.Google_Protobuf_Timestamp {
     get {return _storage._end ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
     set {_uniqueStorage()._end = newValue}
   }
   /// Returns true if `end` has been explicitly set.
-  public var hasEnd: Bool {return _storage._end != nil}
+  var hasEnd: Bool {return _storage._end != nil}
   /// Clears the value of `end`. Subsequent reads from it will return its default value.
-  public mutating func clearEnd() {_uniqueStorage()._end = nil}
+  mutating func clearEnd() {_uniqueStorage()._end = nil}
 
-  public var budgetPeriods: [GRPCBudget.Period] {
+  var budgetPeriods: [GRPCBudget.Period] {
     get {return _storage._budgetPeriods}
     set {_uniqueStorage()._budgetPeriods = newValue}
   }
 
-  public var totalSpentAmount: GRPCCurrencyDenominatedAmount {
+  var totalSpentAmount: GRPCCurrencyDenominatedAmount {
     get {return _storage._totalSpentAmount ?? GRPCCurrencyDenominatedAmount()}
     set {_uniqueStorage()._totalSpentAmount = newValue}
   }
   /// Returns true if `totalSpentAmount` has been explicitly set.
-  public var hasTotalSpentAmount: Bool {return _storage._totalSpentAmount != nil}
+  var hasTotalSpentAmount: Bool {return _storage._totalSpentAmount != nil}
   /// Clears the value of `totalSpentAmount`. Subsequent reads from it will return its default value.
-  public mutating func clearTotalSpentAmount() {_uniqueStorage()._totalSpentAmount = nil}
+  mutating func clearTotalSpentAmount() {_uniqueStorage()._totalSpentAmount = nil}
 
-  public var averageSpentAmount: GRPCCurrencyDenominatedAmount {
+  var averageSpentAmount: GRPCCurrencyDenominatedAmount {
     get {return _storage._averageSpentAmount ?? GRPCCurrencyDenominatedAmount()}
     set {_uniqueStorage()._averageSpentAmount = newValue}
   }
   /// Returns true if `averageSpentAmount` has been explicitly set.
-  public var hasAverageSpentAmount: Bool {return _storage._averageSpentAmount != nil}
+  var hasAverageSpentAmount: Bool {return _storage._averageSpentAmount != nil}
   /// Clears the value of `averageSpentAmount`. Subsequent reads from it will return its default value.
-  public mutating func clearAverageSpentAmount() {_uniqueStorage()._averageSpentAmount = nil}
+  mutating func clearAverageSpentAmount() {_uniqueStorage()._averageSpentAmount = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCGetBudgetTransactionsRequest {
+struct GRPCGetBudgetTransactionsRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var budgetID: String {
+  var budgetID: String {
     get {return _storage._budgetID}
     set {_uniqueStorage()._budgetID = newValue}
   }
 
-  public var start: SwiftProtobuf.Google_Protobuf_Timestamp {
+  var start: SwiftProtobuf.Google_Protobuf_Timestamp {
     get {return _storage._start ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
     set {_uniqueStorage()._start = newValue}
   }
   /// Returns true if `start` has been explicitly set.
-  public var hasStart: Bool {return _storage._start != nil}
+  var hasStart: Bool {return _storage._start != nil}
   /// Clears the value of `start`. Subsequent reads from it will return its default value.
-  public mutating func clearStart() {_uniqueStorage()._start = nil}
+  mutating func clearStart() {_uniqueStorage()._start = nil}
 
-  public var end: SwiftProtobuf.Google_Protobuf_Timestamp {
+  var end: SwiftProtobuf.Google_Protobuf_Timestamp {
     get {return _storage._end ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
     set {_uniqueStorage()._end = newValue}
   }
   /// Returns true if `end` has been explicitly set.
-  public var hasEnd: Bool {return _storage._end != nil}
+  var hasEnd: Bool {return _storage._end != nil}
   /// Clears the value of `end`. Subsequent reads from it will return its default value.
-  public mutating func clearEnd() {_uniqueStorage()._end = nil}
+  mutating func clearEnd() {_uniqueStorage()._end = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCGetBudgetTransactionsResponse {
+struct GRPCGetBudgetTransactionsResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var start: SwiftProtobuf.Google_Protobuf_Timestamp {
+  var start: SwiftProtobuf.Google_Protobuf_Timestamp {
     get {return _storage._start ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
     set {_uniqueStorage()._start = newValue}
   }
   /// Returns true if `start` has been explicitly set.
-  public var hasStart: Bool {return _storage._start != nil}
+  var hasStart: Bool {return _storage._start != nil}
   /// Clears the value of `start`. Subsequent reads from it will return its default value.
-  public mutating func clearStart() {_uniqueStorage()._start = nil}
+  mutating func clearStart() {_uniqueStorage()._start = nil}
 
-  public var end: SwiftProtobuf.Google_Protobuf_Timestamp {
+  var end: SwiftProtobuf.Google_Protobuf_Timestamp {
     get {return _storage._end ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
     set {_uniqueStorage()._end = newValue}
   }
   /// Returns true if `end` has been explicitly set.
-  public var hasEnd: Bool {return _storage._end != nil}
+  var hasEnd: Bool {return _storage._end != nil}
   /// Clears the value of `end`. Subsequent reads from it will return its default value.
-  public mutating func clearEnd() {_uniqueStorage()._end = nil}
+  mutating func clearEnd() {_uniqueStorage()._end = nil}
 
-  public var transactions: [GRPCBudget.Transaction] {
+  var transactions: [GRPCBudget.Transaction] {
     get {return _storage._transactions}
     set {_uniqueStorage()._transactions = newValue}
   }
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCCreateCredentialRequest {
+struct GRPCCreateCredentialRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var providerName: String = String()
+  var providerName: String = String()
 
-  public var type: GRPCCredential.TypeEnum = .unknown
+  var type: GRPCCredential.TypeEnum = .unknown
 
-  public var fields: Dictionary<String,String> = [:]
+  var fields: Dictionary<String,String> = [:]
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCCreateCredentialResponse {
+struct GRPCCreateCredentialResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var credential: GRPCCredential {
+  var credential: GRPCCredential {
     get {return _storage._credential ?? GRPCCredential()}
     set {_uniqueStorage()._credential = newValue}
   }
   /// Returns true if `credential` has been explicitly set.
-  public var hasCredential: Bool {return _storage._credential != nil}
+  var hasCredential: Bool {return _storage._credential != nil}
   /// Clears the value of `credential`. Subsequent reads from it will return its default value.
-  public mutating func clearCredential() {_uniqueStorage()._credential = nil}
+  mutating func clearCredential() {_uniqueStorage()._credential = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCUpdateCredentialResponse {
+struct GRPCUpdateCredentialResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var credential: GRPCCredential {
+  var credential: GRPCCredential {
     get {return _storage._credential ?? GRPCCredential()}
     set {_uniqueStorage()._credential = newValue}
   }
   /// Returns true if `credential` has been explicitly set.
-  public var hasCredential: Bool {return _storage._credential != nil}
+  var hasCredential: Bool {return _storage._credential != nil}
   /// Clears the value of `credential`. Subsequent reads from it will return its default value.
-  public mutating func clearCredential() {_uniqueStorage()._credential = nil}
+  mutating func clearCredential() {_uniqueStorage()._credential = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCUpdateCredentialRequest {
+struct GRPCUpdateCredentialRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var credentialID: String = String()
+  var credentialID: String = String()
 
-  public var fields: Dictionary<String,String> = [:]
+  var fields: Dictionary<String,String> = [:]
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCRefreshCredentialsRequest {
+struct GRPCRefreshCredentialsRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var credentialIds: [String] = []
+  var credentialIds: [String] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCRefreshCredentialsResponse {
+struct GRPCRefreshCredentialsResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCManualAuthenticationRequest {
+struct GRPCManualAuthenticationRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var credentialIds: String = String()
+  var credentialIds: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCManualAuthenticationResponse {
+struct GRPCManualAuthenticationResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCDeleteCredentialRequest {
+struct GRPCDeleteCredentialRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var credentialID: String = String()
+  var credentialID: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCDeleteCredentialResponse {
+struct GRPCDeleteCredentialResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCEnableCredentialRequest {
+struct GRPCEnableCredentialRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var credentialID: String = String()
+  var credentialID: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCEnableCredentialResponse {
+struct GRPCEnableCredentialResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCDisableCredentialRequest {
+struct GRPCDisableCredentialRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var credentialID: String = String()
+  var credentialID: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCDisableCredentialResponse {
+struct GRPCDisableCredentialResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCRegisterPushNotificationTokenRequest {
+struct GRPCRegisterPushNotificationTokenRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var deviceID: String = String()
+  var deviceID: String = String()
 
-  public var notificationToken: String = String()
+  var notificationToken: String = String()
 
-  public var notificationPublicKey: String = String()
+  var notificationPublicKey: String = String()
 
-  public var appID: String = String()
+  var appID: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCGetDeviceConfigurationRequest {
+struct GRPCGetDeviceConfigurationRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var deviceID: String = String()
+  var deviceID: String = String()
 
-  public var marketCode: String = String()
+  var marketCode: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCDeviceConfigurationResponse {
+struct GRPCDeviceConfigurationResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var featureFlags: [String] = []
+  var featureFlags: [String] = []
 
-  public var markets: [GRPCDeviceConfigurationResponse.DeviceConfigurationMarket] = []
+  var markets: [GRPCDeviceConfigurationResponse.DeviceConfigurationMarket] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct DeviceConfigurationMarket {
+  struct DeviceConfigurationMarket {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
 
-    public var marketCode: String = String()
+    var marketCode: String = String()
 
-    public var label: String = String()
+    var label: String = String()
 
-    public var suggested: Bool = false
+    var suggested: Bool = false
 
-    public var loginMethods: [GRPCAuthenticationMethod] = []
+    var loginMethods: [GRPCAuthenticationMethod] = []
 
-    public var registerMethods: [GRPCAuthenticationMethod] = []
+    var registerMethods: [GRPCAuthenticationMethod] = []
 
-    public var linkToAboutPage: String = String()
+    var linkToAboutPage: String = String()
 
-    public var linkToHelpPage: String = String()
+    var linkToHelpPage: String = String()
 
-    public var linkToSecurityPage: String = String()
+    var linkToSecurityPage: String = String()
 
-    public var linkToTermsOfServicePage: String = String()
+    var linkToTermsOfServicePage: String = String()
 
-    public var status: GRPCMarketStatus = .unknown
+    var status: GRPCMarketStatus = .unknown
 
-    public var unknownFields = SwiftProtobuf.UnknownStorage()
+    var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public init() {}
+    init() {}
   }
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCSetOriginRequest {
+struct GRPCSetOriginRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var deviceID: String {
+  var deviceID: String {
     get {return _storage._deviceID}
     set {_uniqueStorage()._deviceID = newValue}
   }
 
-  public var organic: Bool {
+  var organic: Bool {
     get {return _storage._organic}
     set {_uniqueStorage()._organic = newValue}
   }
 
-  public var serviceName: String {
+  var serviceName: String {
     get {return _storage._serviceName}
     set {_uniqueStorage()._serviceName = newValue}
   }
 
-  public var externalServiceID: String {
+  var externalServiceID: String {
     get {return _storage._externalServiceID}
     set {_uniqueStorage()._externalServiceID = newValue}
   }
 
-  public var mediaSource: String {
+  var mediaSource: String {
     get {return _storage._mediaSource}
     set {_uniqueStorage()._mediaSource = newValue}
   }
 
-  public var campaign: String {
+  var campaign: String {
     get {return _storage._campaign}
     set {_uniqueStorage()._campaign = newValue}
   }
 
-  public var agency: String {
+  var agency: String {
     get {return _storage._agency}
     set {_uniqueStorage()._agency = newValue}
   }
 
-  public var clickTime: Int32 {
+  var clickTime: Int32 {
     get {return _storage._clickTime}
     set {_uniqueStorage()._clickTime = newValue}
   }
 
-  public var installTime: Int32 {
+  var installTime: Int32 {
     get {return _storage._installTime}
     set {_uniqueStorage()._installTime = newValue}
   }
 
-  public var appsFlyer: GRPCDeviceAppsFlyerOrigin {
+  var appsFlyer: GRPCDeviceAppsFlyerOrigin {
     get {return _storage._appsFlyer ?? GRPCDeviceAppsFlyerOrigin()}
     set {_uniqueStorage()._appsFlyer = newValue}
   }
   /// Returns true if `appsFlyer` has been explicitly set.
-  public var hasAppsFlyer: Bool {return _storage._appsFlyer != nil}
+  var hasAppsFlyer: Bool {return _storage._appsFlyer != nil}
   /// Clears the value of `appsFlyer`. Subsequent reads from it will return its default value.
-  public mutating func clearAppsFlyer() {_uniqueStorage()._appsFlyer = nil}
+  mutating func clearAppsFlyer() {_uniqueStorage()._appsFlyer = nil}
 
-  public var facebook: GRPCDeviceFacebookOrigin {
+  var facebook: GRPCDeviceFacebookOrigin {
     get {return _storage._facebook ?? GRPCDeviceFacebookOrigin()}
     set {_uniqueStorage()._facebook = newValue}
   }
   /// Returns true if `facebook` has been explicitly set.
-  public var hasFacebook: Bool {return _storage._facebook != nil}
+  var hasFacebook: Bool {return _storage._facebook != nil}
   /// Clears the value of `facebook`. Subsequent reads from it will return its default value.
-  public mutating func clearFacebook() {_uniqueStorage()._facebook = nil}
+  mutating func clearFacebook() {_uniqueStorage()._facebook = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCSetOriginResponse {
+struct GRPCSetOriginResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCDeleteDeviceRequest {
+struct GRPCDeleteDeviceRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var deviceID: String = String()
+  var deviceID: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCDeleteDeviceResponse {
+struct GRPCDeleteDeviceResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCListDevicesRequest {
+struct GRPCListDevicesRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCListDevicesResponse {
+struct GRPCListDevicesResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var devices: [GRPCDevice] = []
+  var devices: [GRPCDevice] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCRegisterPushNotificationTokenResponse {
+struct GRPCRegisterPushNotificationTokenResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var device: GRPCDevice {
+  var device: GRPCDevice {
     get {return _storage._device ?? GRPCDevice()}
     set {_uniqueStorage()._device = newValue}
   }
   /// Returns true if `device` has been explicitly set.
-  public var hasDevice: Bool {return _storage._device != nil}
+  var hasDevice: Bool {return _storage._device != nil}
   /// Clears the value of `device`. Subsequent reads from it will return its default value.
-  public mutating func clearDevice() {_uniqueStorage()._device = nil}
+  mutating func clearDevice() {_uniqueStorage()._device = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCSupplementInformationRequest {
+struct GRPCSupplementInformationRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var credentialID: String = String()
+  var credentialID: String = String()
 
-  public var supplementalInformationFields: Dictionary<String,String> = [:]
+  var supplementalInformationFields: Dictionary<String,String> = [:]
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCCancelSupplementInformationRequest {
+struct GRPCCancelSupplementInformationRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var credentialID: String = String()
+  var credentialID: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCCancelSupplementInformationResponse {
+struct GRPCCancelSupplementInformationResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCSupplementInformationResponse {
+struct GRPCSupplementInformationResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCListCredentialsRequest {
+struct GRPCListCredentialsRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCListCredentialsResponse {
+struct GRPCListCredentialsResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var credentials: [GRPCCredential] = []
+  var credentials: [GRPCCredential] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCCreateFollowItemRequest {
+struct GRPCCreateFollowItemRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var expensesCriteria: GRPCExpensesFollowCriteria {
+  var expensesCriteria: GRPCExpensesFollowCriteria {
     get {return _storage._expensesCriteria ?? GRPCExpensesFollowCriteria()}
     set {_uniqueStorage()._expensesCriteria = newValue}
   }
   /// Returns true if `expensesCriteria` has been explicitly set.
-  public var hasExpensesCriteria: Bool {return _storage._expensesCriteria != nil}
+  var hasExpensesCriteria: Bool {return _storage._expensesCriteria != nil}
   /// Clears the value of `expensesCriteria`. Subsequent reads from it will return its default value.
-  public mutating func clearExpensesCriteria() {_uniqueStorage()._expensesCriteria = nil}
+  mutating func clearExpensesCriteria() {_uniqueStorage()._expensesCriteria = nil}
 
-  public var searchCriteria: GRPCSearchFollowCriteria {
+  var searchCriteria: GRPCSearchFollowCriteria {
     get {return _storage._searchCriteria ?? GRPCSearchFollowCriteria()}
     set {_uniqueStorage()._searchCriteria = newValue}
   }
   /// Returns true if `searchCriteria` has been explicitly set.
-  public var hasSearchCriteria: Bool {return _storage._searchCriteria != nil}
+  var hasSearchCriteria: Bool {return _storage._searchCriteria != nil}
   /// Clears the value of `searchCriteria`. Subsequent reads from it will return its default value.
-  public mutating func clearSearchCriteria() {_uniqueStorage()._searchCriteria = nil}
+  mutating func clearSearchCriteria() {_uniqueStorage()._searchCriteria = nil}
 
-  public var savingCriteria: GRPCSavingsFollowCriteria {
+  var savingCriteria: GRPCSavingsFollowCriteria {
     get {return _storage._savingCriteria ?? GRPCSavingsFollowCriteria()}
     set {_uniqueStorage()._savingCriteria = newValue}
   }
   /// Returns true if `savingCriteria` has been explicitly set.
-  public var hasSavingCriteria: Bool {return _storage._savingCriteria != nil}
+  var hasSavingCriteria: Bool {return _storage._savingCriteria != nil}
   /// Clears the value of `savingCriteria`. Subsequent reads from it will return its default value.
-  public mutating func clearSavingCriteria() {_uniqueStorage()._savingCriteria = nil}
+  mutating func clearSavingCriteria() {_uniqueStorage()._savingCriteria = nil}
 
-  public var name: String {
+  var name: String {
     get {return _storage._name}
     set {_uniqueStorage()._name = newValue}
   }
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCCreateFollowItemResponse {
+struct GRPCCreateFollowItemResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var followItem: GRPCFollowItem {
+  var followItem: GRPCFollowItem {
     get {return _storage._followItem ?? GRPCFollowItem()}
     set {_uniqueStorage()._followItem = newValue}
   }
   /// Returns true if `followItem` has been explicitly set.
-  public var hasFollowItem: Bool {return _storage._followItem != nil}
+  var hasFollowItem: Bool {return _storage._followItem != nil}
   /// Clears the value of `followItem`. Subsequent reads from it will return its default value.
-  public mutating func clearFollowItem() {_uniqueStorage()._followItem = nil}
+  mutating func clearFollowItem() {_uniqueStorage()._followItem = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCUpdateFollowItemRequest {
+struct GRPCUpdateFollowItemRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var expensesCriteria: GRPCExpensesFollowCriteria {
+  var expensesCriteria: GRPCExpensesFollowCriteria {
     get {return _storage._expensesCriteria ?? GRPCExpensesFollowCriteria()}
     set {_uniqueStorage()._expensesCriteria = newValue}
   }
   /// Returns true if `expensesCriteria` has been explicitly set.
-  public var hasExpensesCriteria: Bool {return _storage._expensesCriteria != nil}
+  var hasExpensesCriteria: Bool {return _storage._expensesCriteria != nil}
   /// Clears the value of `expensesCriteria`. Subsequent reads from it will return its default value.
-  public mutating func clearExpensesCriteria() {_uniqueStorage()._expensesCriteria = nil}
+  mutating func clearExpensesCriteria() {_uniqueStorage()._expensesCriteria = nil}
 
-  public var searchCriteria: GRPCSearchFollowCriteria {
+  var searchCriteria: GRPCSearchFollowCriteria {
     get {return _storage._searchCriteria ?? GRPCSearchFollowCriteria()}
     set {_uniqueStorage()._searchCriteria = newValue}
   }
   /// Returns true if `searchCriteria` has been explicitly set.
-  public var hasSearchCriteria: Bool {return _storage._searchCriteria != nil}
+  var hasSearchCriteria: Bool {return _storage._searchCriteria != nil}
   /// Clears the value of `searchCriteria`. Subsequent reads from it will return its default value.
-  public mutating func clearSearchCriteria() {_uniqueStorage()._searchCriteria = nil}
+  mutating func clearSearchCriteria() {_uniqueStorage()._searchCriteria = nil}
 
-  public var savingCriteria: GRPCSavingsFollowCriteria {
+  var savingCriteria: GRPCSavingsFollowCriteria {
     get {return _storage._savingCriteria ?? GRPCSavingsFollowCriteria()}
     set {_uniqueStorage()._savingCriteria = newValue}
   }
   /// Returns true if `savingCriteria` has been explicitly set.
-  public var hasSavingCriteria: Bool {return _storage._savingCriteria != nil}
+  var hasSavingCriteria: Bool {return _storage._savingCriteria != nil}
   /// Clears the value of `savingCriteria`. Subsequent reads from it will return its default value.
-  public mutating func clearSavingCriteria() {_uniqueStorage()._savingCriteria = nil}
+  mutating func clearSavingCriteria() {_uniqueStorage()._savingCriteria = nil}
 
-  public var name: String {
+  var name: String {
     get {return _storage._name}
     set {_uniqueStorage()._name = newValue}
   }
 
-  public var followItemID: String {
+  var followItemID: String {
     get {return _storage._followItemID}
     set {_uniqueStorage()._followItemID = newValue}
   }
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCUpdateFollowItemResponse {
+struct GRPCUpdateFollowItemResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var followItem: GRPCFollowItem {
+  var followItem: GRPCFollowItem {
     get {return _storage._followItem ?? GRPCFollowItem()}
     set {_uniqueStorage()._followItem = newValue}
   }
   /// Returns true if `followItem` has been explicitly set.
-  public var hasFollowItem: Bool {return _storage._followItem != nil}
+  var hasFollowItem: Bool {return _storage._followItem != nil}
   /// Clears the value of `followItem`. Subsequent reads from it will return its default value.
-  public mutating func clearFollowItem() {_uniqueStorage()._followItem = nil}
+  mutating func clearFollowItem() {_uniqueStorage()._followItem = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCGetFollowItemRequest {
+struct GRPCGetFollowItemRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var followItemID: String = String()
+  var followItemID: String = String()
 
-  public var monthPeriod: String = String()
+  var monthPeriod: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCGetFollowItemResponse {
+struct GRPCGetFollowItemResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var followItem: GRPCFollowItem {
+  var followItem: GRPCFollowItem {
     get {return _storage._followItem ?? GRPCFollowItem()}
     set {_uniqueStorage()._followItem = newValue}
   }
   /// Returns true if `followItem` has been explicitly set.
-  public var hasFollowItem: Bool {return _storage._followItem != nil}
+  var hasFollowItem: Bool {return _storage._followItem != nil}
   /// Clears the value of `followItem`. Subsequent reads from it will return its default value.
-  public mutating func clearFollowItem() {_uniqueStorage()._followItem = nil}
+  mutating func clearFollowItem() {_uniqueStorage()._followItem = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCGetFollowItemHistoryRequest {
+struct GRPCGetFollowItemHistoryRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var followItemID: String = String()
+  var followItemID: String = String()
 
-  public var periodMode: GRPCPeriodMode = .unknown
+  var periodMode: GRPCPeriodMode = .unknown
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCGetFollowItemHistoryResponse {
+struct GRPCGetFollowItemHistoryResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var followItemHistory: GRPCFollowItemHistory {
+  var followItemHistory: GRPCFollowItemHistory {
     get {return _storage._followItemHistory ?? GRPCFollowItemHistory()}
     set {_uniqueStorage()._followItemHistory = newValue}
   }
   /// Returns true if `followItemHistory` has been explicitly set.
-  public var hasFollowItemHistory: Bool {return _storage._followItemHistory != nil}
+  var hasFollowItemHistory: Bool {return _storage._followItemHistory != nil}
   /// Clears the value of `followItemHistory`. Subsequent reads from it will return its default value.
-  public mutating func clearFollowItemHistory() {_uniqueStorage()._followItemHistory = nil}
+  mutating func clearFollowItemHistory() {_uniqueStorage()._followItemHistory = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCDeleteFollowItemRequest {
+struct GRPCDeleteFollowItemRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var followItemID: String = String()
+  var followItemID: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCDeleteFollowItemResponse {
+struct GRPCDeleteFollowItemResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCListFollowItemRequest {
+struct GRPCListFollowItemRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var monthPeriod: String = String()
+  var monthPeriod: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCListFollowItemResponse {
+struct GRPCListFollowItemResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var followItems: [GRPCFollowItem] = []
+  var followItems: [GRPCFollowItem] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCSuggestFollowItemRequest {
+struct GRPCSuggestFollowItemRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var expensesCriteria: GRPCExpensesFollowCriteria {
+  var expensesCriteria: GRPCExpensesFollowCriteria {
     get {return _storage._expensesCriteria ?? GRPCExpensesFollowCriteria()}
     set {_uniqueStorage()._expensesCriteria = newValue}
   }
   /// Returns true if `expensesCriteria` has been explicitly set.
-  public var hasExpensesCriteria: Bool {return _storage._expensesCriteria != nil}
+  var hasExpensesCriteria: Bool {return _storage._expensesCriteria != nil}
   /// Clears the value of `expensesCriteria`. Subsequent reads from it will return its default value.
-  public mutating func clearExpensesCriteria() {_uniqueStorage()._expensesCriteria = nil}
+  mutating func clearExpensesCriteria() {_uniqueStorage()._expensesCriteria = nil}
 
-  public var searchCriteria: GRPCSearchFollowCriteria {
+  var searchCriteria: GRPCSearchFollowCriteria {
     get {return _storage._searchCriteria ?? GRPCSearchFollowCriteria()}
     set {_uniqueStorage()._searchCriteria = newValue}
   }
   /// Returns true if `searchCriteria` has been explicitly set.
-  public var hasSearchCriteria: Bool {return _storage._searchCriteria != nil}
+  var hasSearchCriteria: Bool {return _storage._searchCriteria != nil}
   /// Clears the value of `searchCriteria`. Subsequent reads from it will return its default value.
-  public mutating func clearSearchCriteria() {_uniqueStorage()._searchCriteria = nil}
+  mutating func clearSearchCriteria() {_uniqueStorage()._searchCriteria = nil}
 
-  public var savingCriteria: GRPCSavingsFollowCriteria {
+  var savingCriteria: GRPCSavingsFollowCriteria {
     get {return _storage._savingCriteria ?? GRPCSavingsFollowCriteria()}
     set {_uniqueStorage()._savingCriteria = newValue}
   }
   /// Returns true if `savingCriteria` has been explicitly set.
-  public var hasSavingCriteria: Bool {return _storage._savingCriteria != nil}
+  var hasSavingCriteria: Bool {return _storage._savingCriteria != nil}
   /// Clears the value of `savingCriteria`. Subsequent reads from it will return its default value.
-  public mutating func clearSavingCriteria() {_uniqueStorage()._savingCriteria = nil}
+  mutating func clearSavingCriteria() {_uniqueStorage()._savingCriteria = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCSuggestFollowItemResponse {
+struct GRPCSuggestFollowItemResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var followItem: GRPCFollowItem {
+  var followItem: GRPCFollowItem {
     get {return _storage._followItem ?? GRPCFollowItem()}
     set {_uniqueStorage()._followItem = newValue}
   }
   /// Returns true if `followItem` has been explicitly set.
-  public var hasFollowItem: Bool {return _storage._followItem != nil}
+  var hasFollowItem: Bool {return _storage._followItem != nil}
   /// Clears the value of `followItem`. Subsequent reads from it will return its default value.
-  public mutating func clearFollowItem() {_uniqueStorage()._followItem = nil}
+  mutating func clearFollowItem() {_uniqueStorage()._followItem = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCListProvidersResponse {
+struct GRPCListProvidersResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var providers: [GRPCProvider] = []
+  var providers: [GRPCProvider] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCListProvidersForMarketsResponse {
+struct GRPCListProvidersForMarketsResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var providersByMarket: [GRPCListProvidersForMarketsResponse.MarketProviders] = []
+  var providersByMarket: [GRPCListProvidersForMarketsResponse.MarketProviders] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public struct MarketProviders {
+  struct MarketProviders {
     // SwiftProtobuf.Message conformance is added in an extension below. See the
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
 
-    public var marketCode: String = String()
+    var marketCode: String = String()
 
-    public var providers: [GRPCProvider] = []
+    var providers: [GRPCProvider] = []
 
-    public var unknownFields = SwiftProtobuf.UnknownStorage()
+    var unknownFields = SwiftProtobuf.UnknownStorage()
 
-    public init() {}
+    init() {}
   }
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCProviderMarketListResponse {
+struct GRPCProviderMarketListResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var providerMarkets: [GRPCProviderMarket] = []
+  var providerMarkets: [GRPCProviderMarket] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCQueryTransactionsRequest {
+struct GRPCQueryTransactionsRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var limit: SwiftProtobuf.Google_Protobuf_Int32Value {
+  var limit: SwiftProtobuf.Google_Protobuf_Int32Value {
     get {return _storage._limit ?? SwiftProtobuf.Google_Protobuf_Int32Value()}
     set {_uniqueStorage()._limit = newValue}
   }
   /// Returns true if `limit` has been explicitly set.
-  public var hasLimit: Bool {return _storage._limit != nil}
+  var hasLimit: Bool {return _storage._limit != nil}
   /// Clears the value of `limit`. Subsequent reads from it will return its default value.
-  public mutating func clearLimit() {_uniqueStorage()._limit = nil}
+  mutating func clearLimit() {_uniqueStorage()._limit = nil}
 
-  public var lastTransactionID: SwiftProtobuf.Google_Protobuf_StringValue {
+  var lastTransactionID: SwiftProtobuf.Google_Protobuf_StringValue {
     get {return _storage._lastTransactionID ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._lastTransactionID = newValue}
   }
   /// Returns true if `lastTransactionID` has been explicitly set.
-  public var hasLastTransactionID: Bool {return _storage._lastTransactionID != nil}
+  var hasLastTransactionID: Bool {return _storage._lastTransactionID != nil}
   /// Clears the value of `lastTransactionID`. Subsequent reads from it will return its default value.
-  public mutating func clearLastTransactionID() {_uniqueStorage()._lastTransactionID = nil}
+  mutating func clearLastTransactionID() {_uniqueStorage()._lastTransactionID = nil}
 
-  public var accountIds: [String] {
+  var accountIds: [String] {
     get {return _storage._accountIds}
     set {_uniqueStorage()._accountIds = newValue}
   }
 
-  public var credentialIds: [String] {
+  var credentialIds: [String] {
     get {return _storage._credentialIds}
     set {_uniqueStorage()._credentialIds = newValue}
   }
 
-  public var categoryCodes: [String] {
+  var categoryCodes: [String] {
     get {return _storage._categoryCodes}
     set {_uniqueStorage()._categoryCodes = newValue}
   }
 
-  public var startDate: SwiftProtobuf.Google_Protobuf_Timestamp {
+  var startDate: SwiftProtobuf.Google_Protobuf_Timestamp {
     get {return _storage._startDate ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
     set {_uniqueStorage()._startDate = newValue}
   }
   /// Returns true if `startDate` has been explicitly set.
-  public var hasStartDate: Bool {return _storage._startDate != nil}
+  var hasStartDate: Bool {return _storage._startDate != nil}
   /// Clears the value of `startDate`. Subsequent reads from it will return its default value.
-  public mutating func clearStartDate() {_uniqueStorage()._startDate = nil}
+  mutating func clearStartDate() {_uniqueStorage()._startDate = nil}
 
-  public var endDate: SwiftProtobuf.Google_Protobuf_Timestamp {
+  var endDate: SwiftProtobuf.Google_Protobuf_Timestamp {
     get {return _storage._endDate ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
     set {_uniqueStorage()._endDate = newValue}
   }
   /// Returns true if `endDate` has been explicitly set.
-  public var hasEndDate: Bool {return _storage._endDate != nil}
+  var hasEndDate: Bool {return _storage._endDate != nil}
   /// Clears the value of `endDate`. Subsequent reads from it will return its default value.
-  public mutating func clearEndDate() {_uniqueStorage()._endDate = nil}
+  mutating func clearEndDate() {_uniqueStorage()._endDate = nil}
 
-  public var includeUpcoming: SwiftProtobuf.Google_Protobuf_BoolValue {
+  var includeUpcoming: SwiftProtobuf.Google_Protobuf_BoolValue {
     get {return _storage._includeUpcoming ?? SwiftProtobuf.Google_Protobuf_BoolValue()}
     set {_uniqueStorage()._includeUpcoming = newValue}
   }
   /// Returns true if `includeUpcoming` has been explicitly set.
-  public var hasIncludeUpcoming: Bool {return _storage._includeUpcoming != nil}
+  var hasIncludeUpcoming: Bool {return _storage._includeUpcoming != nil}
   /// Clears the value of `includeUpcoming`. Subsequent reads from it will return its default value.
-  public mutating func clearIncludeUpcoming() {_uniqueStorage()._includeUpcoming = nil}
+  mutating func clearIncludeUpcoming() {_uniqueStorage()._includeUpcoming = nil}
 
-  public var queryString: SwiftProtobuf.Google_Protobuf_StringValue {
+  var queryString: SwiftProtobuf.Google_Protobuf_StringValue {
     get {return _storage._queryString ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._queryString = newValue}
   }
   /// Returns true if `queryString` has been explicitly set.
-  public var hasQueryString: Bool {return _storage._queryString != nil}
+  var hasQueryString: Bool {return _storage._queryString != nil}
   /// Clears the value of `queryString`. Subsequent reads from it will return its default value.
-  public mutating func clearQueryString() {_uniqueStorage()._queryString = nil}
+  mutating func clearQueryString() {_uniqueStorage()._queryString = nil}
 
-  public var sort: GRPCSortType {
+  var sort: GRPCSortType {
     get {return _storage._sort}
     set {_uniqueStorage()._sort = newValue}
   }
 
-  public var order: GRPCOrderType {
+  var order: GRPCOrderType {
     get {return _storage._order}
     set {_uniqueStorage()._order = newValue}
   }
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCQueryTransactionsResponse {
+struct GRPCQueryTransactionsResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var transactions: [GRPCTransaction] {
+  var transactions: [GRPCTransaction] {
     get {return _storage._transactions}
     set {_uniqueStorage()._transactions = newValue}
   }
 
-  public var hasMore_p: Bool {
+  var hasMore_p: Bool {
     get {return _storage._hasMore_p}
     set {_uniqueStorage()._hasMore_p = newValue}
   }
 
-  public var totalNetAmount: GRPCCurrencyDenominatedAmount {
+  var totalNetAmount: GRPCCurrencyDenominatedAmount {
     get {return _storage._totalNetAmount ?? GRPCCurrencyDenominatedAmount()}
     set {_uniqueStorage()._totalNetAmount = newValue}
   }
   /// Returns true if `totalNetAmount` has been explicitly set.
-  public var hasTotalNetAmount: Bool {return _storage._totalNetAmount != nil}
+  var hasTotalNetAmount: Bool {return _storage._totalNetAmount != nil}
   /// Clears the value of `totalNetAmount`. Subsequent reads from it will return its default value.
-  public mutating func clearTotalNetAmount() {_uniqueStorage()._totalNetAmount = nil}
+  mutating func clearTotalNetAmount() {_uniqueStorage()._totalNetAmount = nil}
 
-  public var totalCount: Int32 {
+  var totalCount: Int32 {
     get {return _storage._totalCount}
     set {_uniqueStorage()._totalCount = newValue}
   }
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCUpdateTransactionRequest {
+struct GRPCUpdateTransactionRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var transactionID: String {
+  var transactionID: String {
     get {return _storage._transactionID}
     set {_uniqueStorage()._transactionID = newValue}
   }
 
-  public var description_p: SwiftProtobuf.Google_Protobuf_StringValue {
+  var description_p: SwiftProtobuf.Google_Protobuf_StringValue {
     get {return _storage._description_p ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._description_p = newValue}
   }
   /// Returns true if `description_p` has been explicitly set.
-  public var hasDescription_p: Bool {return _storage._description_p != nil}
+  var hasDescription_p: Bool {return _storage._description_p != nil}
   /// Clears the value of `description_p`. Subsequent reads from it will return its default value.
-  public mutating func clearDescription_p() {_uniqueStorage()._description_p = nil}
+  mutating func clearDescription_p() {_uniqueStorage()._description_p = nil}
 
-  public var date: SwiftProtobuf.Google_Protobuf_Timestamp {
+  var date: SwiftProtobuf.Google_Protobuf_Timestamp {
     get {return _storage._date ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
     set {_uniqueStorage()._date = newValue}
   }
   /// Returns true if `date` has been explicitly set.
-  public var hasDate: Bool {return _storage._date != nil}
+  var hasDate: Bool {return _storage._date != nil}
   /// Clears the value of `date`. Subsequent reads from it will return its default value.
-  public mutating func clearDate() {_uniqueStorage()._date = nil}
+  mutating func clearDate() {_uniqueStorage()._date = nil}
 
-  public var notes: SwiftProtobuf.Google_Protobuf_StringValue {
+  var notes: SwiftProtobuf.Google_Protobuf_StringValue {
     get {return _storage._notes ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._notes = newValue}
   }
   /// Returns true if `notes` has been explicitly set.
-  public var hasNotes: Bool {return _storage._notes != nil}
+  var hasNotes: Bool {return _storage._notes != nil}
   /// Clears the value of `notes`. Subsequent reads from it will return its default value.
-  public mutating func clearNotes() {_uniqueStorage()._notes = nil}
+  mutating func clearNotes() {_uniqueStorage()._notes = nil}
 
-  public var tags: [GRPCTag] {
+  var tags: [GRPCTag] {
     get {return _storage._tags}
     set {_uniqueStorage()._tags = newValue}
   }
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCUpdateTransactionResponse {
+struct GRPCUpdateTransactionResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var transaction: GRPCTransaction {
+  var transaction: GRPCTransaction {
     get {return _storage._transaction ?? GRPCTransaction()}
     set {_uniqueStorage()._transaction = newValue}
   }
   /// Returns true if `transaction` has been explicitly set.
-  public var hasTransaction: Bool {return _storage._transaction != nil}
+  var hasTransaction: Bool {return _storage._transaction != nil}
   /// Clears the value of `transaction`. Subsequent reads from it will return its default value.
-  public mutating func clearTransaction() {_uniqueStorage()._transaction = nil}
+  mutating func clearTransaction() {_uniqueStorage()._transaction = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCGetTransactionRequest {
+struct GRPCGetTransactionRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var transactionID: String = String()
+  var transactionID: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCGetTransactionResponse {
+struct GRPCGetTransactionResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var transaction: GRPCTransaction {
+  var transaction: GRPCTransaction {
     get {return _storage._transaction ?? GRPCTransaction()}
     set {_uniqueStorage()._transaction = newValue}
   }
   /// Returns true if `transaction` has been explicitly set.
-  public var hasTransaction: Bool {return _storage._transaction != nil}
+  var hasTransaction: Bool {return _storage._transaction != nil}
   /// Clears the value of `transaction`. Subsequent reads from it will return its default value.
-  public mutating func clearTransaction() {_uniqueStorage()._transaction = nil}
+  mutating func clearTransaction() {_uniqueStorage()._transaction = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCCategorizeTransactionsRequest {
+struct GRPCCategorizeTransactionsRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var categoryCode: String = String()
+  var categoryCode: String = String()
 
-  public var transactionIds: [String] = []
+  var transactionIds: [String] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCCategorizeTransactionsResponse {
+struct GRPCCategorizeTransactionsResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var transactions: [GRPCTransaction] = []
+  var transactions: [GRPCTransaction] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCGetSimilarTransactionsRequest {
+struct GRPCGetSimilarTransactionsRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var transactionID: String {
+  var transactionID: String {
     get {return _storage._transactionID}
     set {_uniqueStorage()._transactionID = newValue}
   }
 
-  public var categoryCode: SwiftProtobuf.Google_Protobuf_StringValue {
+  var categoryCode: SwiftProtobuf.Google_Protobuf_StringValue {
     get {return _storage._categoryCode ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._categoryCode = newValue}
   }
   /// Returns true if `categoryCode` has been explicitly set.
-  public var hasCategoryCode: Bool {return _storage._categoryCode != nil}
+  var hasCategoryCode: Bool {return _storage._categoryCode != nil}
   /// Clears the value of `categoryCode`. Subsequent reads from it will return its default value.
-  public mutating func clearCategoryCode() {_uniqueStorage()._categoryCode = nil}
+  mutating func clearCategoryCode() {_uniqueStorage()._categoryCode = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCGetSimilarTransactionsResponse {
+struct GRPCGetSimilarTransactionsResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var transactions: [GRPCTransaction] = []
+  var transactions: [GRPCTransaction] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCSuggestTransactionsRequest {
+struct GRPCSuggestTransactionsRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var numberOfClusters: Int32 = 0
+  var numberOfClusters: Int32 = 0
 
-  public var evaluateEverything: Bool = false
+  var evaluateEverything: Bool = false
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCSuggestTransactionsResponse {
+struct GRPCSuggestTransactionsResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var categorizationImprovement: GRPCExactNumber {
+  var categorizationImprovement: GRPCExactNumber {
     get {return _storage._categorizationImprovement ?? GRPCExactNumber()}
     set {_uniqueStorage()._categorizationImprovement = newValue}
   }
   /// Returns true if `categorizationImprovement` has been explicitly set.
-  public var hasCategorizationImprovement: Bool {return _storage._categorizationImprovement != nil}
+  var hasCategorizationImprovement: Bool {return _storage._categorizationImprovement != nil}
   /// Clears the value of `categorizationImprovement`. Subsequent reads from it will return its default value.
-  public mutating func clearCategorizationImprovement() {_uniqueStorage()._categorizationImprovement = nil}
+  mutating func clearCategorizationImprovement() {_uniqueStorage()._categorizationImprovement = nil}
 
-  public var categorizationLevel: GRPCExactNumber {
+  var categorizationLevel: GRPCExactNumber {
     get {return _storage._categorizationLevel ?? GRPCExactNumber()}
     set {_uniqueStorage()._categorizationLevel = newValue}
   }
   /// Returns true if `categorizationLevel` has been explicitly set.
-  public var hasCategorizationLevel: Bool {return _storage._categorizationLevel != nil}
+  var hasCategorizationLevel: Bool {return _storage._categorizationLevel != nil}
   /// Clears the value of `categorizationLevel`. Subsequent reads from it will return its default value.
-  public mutating func clearCategorizationLevel() {_uniqueStorage()._categorizationLevel = nil}
+  mutating func clearCategorizationLevel() {_uniqueStorage()._categorizationLevel = nil}
 
-  public var clusters: [GRPCTransactionCluster] {
+  var clusters: [GRPCTransactionCluster] {
     get {return _storage._clusters}
     set {_uniqueStorage()._clusters = newValue}
   }
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCCreatePartAndCounterpartRequest {
+struct GRPCCreatePartAndCounterpartRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var transactionID: String {
+  var transactionID: String {
     get {return _storage._transactionID}
     set {_uniqueStorage()._transactionID = newValue}
   }
 
-  public var counterpartTransactionID: String {
+  var counterpartTransactionID: String {
     get {return _storage._counterpartTransactionID}
     set {_uniqueStorage()._counterpartTransactionID = newValue}
   }
 
-  public var suggestResponseIndex: SwiftProtobuf.Google_Protobuf_Int32Value {
+  var suggestResponseIndex: SwiftProtobuf.Google_Protobuf_Int32Value {
     get {return _storage._suggestResponseIndex ?? SwiftProtobuf.Google_Protobuf_Int32Value()}
     set {_uniqueStorage()._suggestResponseIndex = newValue}
   }
   /// Returns true if `suggestResponseIndex` has been explicitly set.
-  public var hasSuggestResponseIndex: Bool {return _storage._suggestResponseIndex != nil}
+  var hasSuggestResponseIndex: Bool {return _storage._suggestResponseIndex != nil}
   /// Clears the value of `suggestResponseIndex`. Subsequent reads from it will return its default value.
-  public mutating func clearSuggestResponseIndex() {_uniqueStorage()._suggestResponseIndex = nil}
+  mutating func clearSuggestResponseIndex() {_uniqueStorage()._suggestResponseIndex = nil}
 
-  public var partAmount: GRPCCurrencyDenominatedAmount {
+  var partAmount: GRPCCurrencyDenominatedAmount {
     get {return _storage._partAmount ?? GRPCCurrencyDenominatedAmount()}
     set {_uniqueStorage()._partAmount = newValue}
   }
   /// Returns true if `partAmount` has been explicitly set.
-  public var hasPartAmount: Bool {return _storage._partAmount != nil}
+  var hasPartAmount: Bool {return _storage._partAmount != nil}
   /// Clears the value of `partAmount`. Subsequent reads from it will return its default value.
-  public mutating func clearPartAmount() {_uniqueStorage()._partAmount = nil}
+  mutating func clearPartAmount() {_uniqueStorage()._partAmount = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCCreatePartAndCounterpartResponse {
+struct GRPCCreatePartAndCounterpartResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var transaction: GRPCTransaction {
+  var transaction: GRPCTransaction {
     get {return _storage._transaction ?? GRPCTransaction()}
     set {_uniqueStorage()._transaction = newValue}
   }
   /// Returns true if `transaction` has been explicitly set.
-  public var hasTransaction: Bool {return _storage._transaction != nil}
+  var hasTransaction: Bool {return _storage._transaction != nil}
   /// Clears the value of `transaction`. Subsequent reads from it will return its default value.
-  public mutating func clearTransaction() {_uniqueStorage()._transaction = nil}
+  mutating func clearTransaction() {_uniqueStorage()._transaction = nil}
 
-  public var counterpartTransaction: GRPCTransaction {
+  var counterpartTransaction: GRPCTransaction {
     get {return _storage._counterpartTransaction ?? GRPCTransaction()}
     set {_uniqueStorage()._counterpartTransaction = newValue}
   }
   /// Returns true if `counterpartTransaction` has been explicitly set.
-  public var hasCounterpartTransaction: Bool {return _storage._counterpartTransaction != nil}
+  var hasCounterpartTransaction: Bool {return _storage._counterpartTransaction != nil}
   /// Clears the value of `counterpartTransaction`. Subsequent reads from it will return its default value.
-  public mutating func clearCounterpartTransaction() {_uniqueStorage()._counterpartTransaction = nil}
+  mutating func clearCounterpartTransaction() {_uniqueStorage()._counterpartTransaction = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCUpdatePartAndCounterpartRequest {
+struct GRPCUpdatePartAndCounterpartRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var transactionID: String {
+  var transactionID: String {
     get {return _storage._transactionID}
     set {_uniqueStorage()._transactionID = newValue}
   }
 
-  public var partID: String {
+  var partID: String {
     get {return _storage._partID}
     set {_uniqueStorage()._partID = newValue}
   }
 
-  public var partAmount: GRPCCurrencyDenominatedAmount {
+  var partAmount: GRPCCurrencyDenominatedAmount {
     get {return _storage._partAmount ?? GRPCCurrencyDenominatedAmount()}
     set {_uniqueStorage()._partAmount = newValue}
   }
   /// Returns true if `partAmount` has been explicitly set.
-  public var hasPartAmount: Bool {return _storage._partAmount != nil}
+  var hasPartAmount: Bool {return _storage._partAmount != nil}
   /// Clears the value of `partAmount`. Subsequent reads from it will return its default value.
-  public mutating func clearPartAmount() {_uniqueStorage()._partAmount = nil}
+  mutating func clearPartAmount() {_uniqueStorage()._partAmount = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCUpdatePartAndCounterpartResponse {
+struct GRPCUpdatePartAndCounterpartResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var transaction: GRPCTransaction {
+  var transaction: GRPCTransaction {
     get {return _storage._transaction ?? GRPCTransaction()}
     set {_uniqueStorage()._transaction = newValue}
   }
   /// Returns true if `transaction` has been explicitly set.
-  public var hasTransaction: Bool {return _storage._transaction != nil}
+  var hasTransaction: Bool {return _storage._transaction != nil}
   /// Clears the value of `transaction`. Subsequent reads from it will return its default value.
-  public mutating func clearTransaction() {_uniqueStorage()._transaction = nil}
+  mutating func clearTransaction() {_uniqueStorage()._transaction = nil}
 
-  public var counterpartTransaction: GRPCTransaction {
+  var counterpartTransaction: GRPCTransaction {
     get {return _storage._counterpartTransaction ?? GRPCTransaction()}
     set {_uniqueStorage()._counterpartTransaction = newValue}
   }
   /// Returns true if `counterpartTransaction` has been explicitly set.
-  public var hasCounterpartTransaction: Bool {return _storage._counterpartTransaction != nil}
+  var hasCounterpartTransaction: Bool {return _storage._counterpartTransaction != nil}
   /// Clears the value of `counterpartTransaction`. Subsequent reads from it will return its default value.
-  public mutating func clearCounterpartTransaction() {_uniqueStorage()._counterpartTransaction = nil}
+  mutating func clearCounterpartTransaction() {_uniqueStorage()._counterpartTransaction = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCDeletePartAndCounterpartRequest {
+struct GRPCDeletePartAndCounterpartRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var transactionID: String = String()
+  var transactionID: String = String()
 
-  public var partID: String = String()
+  var partID: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCDeletePartAndCounterpartResponse {
+struct GRPCDeletePartAndCounterpartResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var transaction: GRPCTransaction {
+  var transaction: GRPCTransaction {
     get {return _storage._transaction ?? GRPCTransaction()}
     set {_uniqueStorage()._transaction = newValue}
   }
   /// Returns true if `transaction` has been explicitly set.
-  public var hasTransaction: Bool {return _storage._transaction != nil}
+  var hasTransaction: Bool {return _storage._transaction != nil}
   /// Clears the value of `transaction`. Subsequent reads from it will return its default value.
-  public mutating func clearTransaction() {_uniqueStorage()._transaction = nil}
+  mutating func clearTransaction() {_uniqueStorage()._transaction = nil}
 
-  public var counterpartTransaction: GRPCTransaction {
+  var counterpartTransaction: GRPCTransaction {
     get {return _storage._counterpartTransaction ?? GRPCTransaction()}
     set {_uniqueStorage()._counterpartTransaction = newValue}
   }
   /// Returns true if `counterpartTransaction` has been explicitly set.
-  public var hasCounterpartTransaction: Bool {return _storage._counterpartTransaction != nil}
+  var hasCounterpartTransaction: Bool {return _storage._counterpartTransaction != nil}
   /// Clears the value of `counterpartTransaction`. Subsequent reads from it will return its default value.
-  public mutating func clearCounterpartTransaction() {_uniqueStorage()._counterpartTransaction = nil}
+  mutating func clearCounterpartTransaction() {_uniqueStorage()._counterpartTransaction = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCSuggestCounterpartsRequest {
+struct GRPCSuggestCounterpartsRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var transactionID: String = String()
+  var transactionID: String = String()
 
-  public var limit: Int32 = 0
+  var limit: Int32 = 0
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCSuggestCounterpartsResponse {
+struct GRPCSuggestCounterpartsResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var transactions: [GRPCTransaction] = []
+  var transactions: [GRPCTransaction] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCStreamingRequest {
+struct GRPCStreamingRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCStreamingResponse {
+struct GRPCStreamingResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var type: GRPCStreamingResponse.TypeEnum {
+  var type: GRPCStreamingResponse.TypeEnum {
     get {return _storage._type}
     set {_uniqueStorage()._type = newValue}
   }
 
-  public var timestamp: SwiftProtobuf.Google_Protobuf_Timestamp {
+  var timestamp: SwiftProtobuf.Google_Protobuf_Timestamp {
     get {return _storage._timestamp ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
     set {_uniqueStorage()._timestamp = newValue}
   }
   /// Returns true if `timestamp` has been explicitly set.
-  public var hasTimestamp: Bool {return _storage._timestamp != nil}
+  var hasTimestamp: Bool {return _storage._timestamp != nil}
   /// Clears the value of `timestamp`. Subsequent reads from it will return its default value.
-  public mutating func clearTimestamp() {_uniqueStorage()._timestamp = nil}
+  mutating func clearTimestamp() {_uniqueStorage()._timestamp = nil}
 
-  public var credentials: GRPCCredentials {
+  var credentials: GRPCCredentials {
     get {return _storage._credentials ?? GRPCCredentials()}
     set {_uniqueStorage()._credentials = newValue}
   }
   /// Returns true if `credentials` has been explicitly set.
-  public var hasCredentials: Bool {return _storage._credentials != nil}
+  var hasCredentials: Bool {return _storage._credentials != nil}
   /// Clears the value of `credentials`. Subsequent reads from it will return its default value.
-  public mutating func clearCredentials() {_uniqueStorage()._credentials = nil}
+  mutating func clearCredentials() {_uniqueStorage()._credentials = nil}
 
-  public var accounts: GRPCAccounts {
+  var accounts: GRPCAccounts {
     get {return _storage._accounts ?? GRPCAccounts()}
     set {_uniqueStorage()._accounts = newValue}
   }
   /// Returns true if `accounts` has been explicitly set.
-  public var hasAccounts: Bool {return _storage._accounts != nil}
+  var hasAccounts: Bool {return _storage._accounts != nil}
   /// Clears the value of `accounts`. Subsequent reads from it will return its default value.
-  public mutating func clearAccounts() {_uniqueStorage()._accounts = nil}
+  mutating func clearAccounts() {_uniqueStorage()._accounts = nil}
 
-  public var transactions: GRPCTransactions {
+  var transactions: GRPCTransactions {
     get {return _storage._transactions ?? GRPCTransactions()}
     set {_uniqueStorage()._transactions = newValue}
   }
   /// Returns true if `transactions` has been explicitly set.
-  public var hasTransactions: Bool {return _storage._transactions != nil}
+  var hasTransactions: Bool {return _storage._transactions != nil}
   /// Clears the value of `transactions`. Subsequent reads from it will return its default value.
-  public mutating func clearTransactions() {_uniqueStorage()._transactions = nil}
+  mutating func clearTransactions() {_uniqueStorage()._transactions = nil}
 
-  public var statistics: GRPCStatisticTree {
+  var statistics: GRPCStatisticTree {
     get {return _storage._statistics ?? GRPCStatisticTree()}
     set {_uniqueStorage()._statistics = newValue}
   }
   /// Returns true if `statistics` has been explicitly set.
-  public var hasStatistics: Bool {return _storage._statistics != nil}
+  var hasStatistics: Bool {return _storage._statistics != nil}
   /// Clears the value of `statistics`. Subsequent reads from it will return its default value.
-  public mutating func clearStatistics() {_uniqueStorage()._statistics = nil}
+  mutating func clearStatistics() {_uniqueStorage()._statistics = nil}
 
-  public var providers: GRPCProviders {
+  var providers: GRPCProviders {
     get {return _storage._providers ?? GRPCProviders()}
     set {_uniqueStorage()._providers = newValue}
   }
   /// Returns true if `providers` has been explicitly set.
-  public var hasProviders: Bool {return _storage._providers != nil}
+  var hasProviders: Bool {return _storage._providers != nil}
   /// Clears the value of `providers`. Subsequent reads from it will return its default value.
-  public mutating func clearProviders() {_uniqueStorage()._providers = nil}
+  mutating func clearProviders() {_uniqueStorage()._providers = nil}
 
-  public var categories: GRPCCategoryTree {
+  var categories: GRPCCategoryTree {
     get {return _storage._categories ?? GRPCCategoryTree()}
     set {_uniqueStorage()._categories = newValue}
   }
   /// Returns true if `categories` has been explicitly set.
-  public var hasCategories: Bool {return _storage._categories != nil}
+  var hasCategories: Bool {return _storage._categories != nil}
   /// Clears the value of `categories`. Subsequent reads from it will return its default value.
-  public mutating func clearCategories() {_uniqueStorage()._categories = nil}
+  mutating func clearCategories() {_uniqueStorage()._categories = nil}
 
-  public var periods: GRPCPeriods {
+  var periods: GRPCPeriods {
     get {return _storage._periods ?? GRPCPeriods()}
     set {_uniqueStorage()._periods = newValue}
   }
   /// Returns true if `periods` has been explicitly set.
-  public var hasPeriods: Bool {return _storage._periods != nil}
+  var hasPeriods: Bool {return _storage._periods != nil}
   /// Clears the value of `periods`. Subsequent reads from it will return its default value.
-  public mutating func clearPeriods() {_uniqueStorage()._periods = nil}
+  mutating func clearPeriods() {_uniqueStorage()._periods = nil}
 
-  public var followItems: GRPCFollowItems {
+  var followItems: GRPCFollowItems {
     get {return _storage._followItems ?? GRPCFollowItems()}
     set {_uniqueStorage()._followItems = newValue}
   }
   /// Returns true if `followItems` has been explicitly set.
-  public var hasFollowItems: Bool {return _storage._followItems != nil}
+  var hasFollowItems: Bool {return _storage._followItems != nil}
   /// Clears the value of `followItems`. Subsequent reads from it will return its default value.
-  public mutating func clearFollowItems() {_uniqueStorage()._followItems = nil}
+  mutating func clearFollowItems() {_uniqueStorage()._followItems = nil}
 
-  public var signableOperations: GRPCSignableOperations {
+  var signableOperations: GRPCSignableOperations {
     get {return _storage._signableOperations ?? GRPCSignableOperations()}
     set {_uniqueStorage()._signableOperations = newValue}
   }
   /// Returns true if `signableOperations` has been explicitly set.
-  public var hasSignableOperations: Bool {return _storage._signableOperations != nil}
+  var hasSignableOperations: Bool {return _storage._signableOperations != nil}
   /// Clears the value of `signableOperations`. Subsequent reads from it will return its default value.
-  public mutating func clearSignableOperations() {_uniqueStorage()._signableOperations = nil}
+  mutating func clearSignableOperations() {_uniqueStorage()._signableOperations = nil}
 
-  public var userConfiguration: GRPCUserConfiguration {
+  var userConfiguration: GRPCUserConfiguration {
     get {return _storage._userConfiguration ?? GRPCUserConfiguration()}
     set {_uniqueStorage()._userConfiguration = newValue}
   }
   /// Returns true if `userConfiguration` has been explicitly set.
-  public var hasUserConfiguration: Bool {return _storage._userConfiguration != nil}
+  var hasUserConfiguration: Bool {return _storage._userConfiguration != nil}
   /// Clears the value of `userConfiguration`. Subsequent reads from it will return its default value.
-  public mutating func clearUserConfiguration() {_uniqueStorage()._userConfiguration = nil}
+  mutating func clearUserConfiguration() {_uniqueStorage()._userConfiguration = nil}
 
-  public var insights: GRPCInsights {
+  var insights: GRPCInsights {
     get {return _storage._insights ?? GRPCInsights()}
     set {_uniqueStorage()._insights = newValue}
   }
   /// Returns true if `insights` has been explicitly set.
-  public var hasInsights: Bool {return _storage._insights != nil}
+  var hasInsights: Bool {return _storage._insights != nil}
   /// Clears the value of `insights`. Subsequent reads from it will return its default value.
-  public mutating func clearInsights() {_uniqueStorage()._insights = nil}
+  mutating func clearInsights() {_uniqueStorage()._insights = nil}
 
-  public var budgetSummaries: GRPCBudgetSummaries {
+  var budgetSummaries: GRPCBudgetSummaries {
     get {return _storage._budgetSummaries ?? GRPCBudgetSummaries()}
     set {_uniqueStorage()._budgetSummaries = newValue}
   }
   /// Returns true if `budgetSummaries` has been explicitly set.
-  public var hasBudgetSummaries: Bool {return _storage._budgetSummaries != nil}
+  var hasBudgetSummaries: Bool {return _storage._budgetSummaries != nil}
   /// Clears the value of `budgetSummaries`. Subsequent reads from it will return its default value.
-  public mutating func clearBudgetSummaries() {_uniqueStorage()._budgetSummaries = nil}
+  mutating func clearBudgetSummaries() {_uniqueStorage()._budgetSummaries = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum TypeEnum: SwiftProtobuf.Enum {
-    public typealias RawValue = Int
+  enum TypeEnum: SwiftProtobuf.Enum {
+    typealias RawValue = Int
     case create // = 0
     case read // = 1
     case update // = 2
     case delete // = 3
     case UNRECOGNIZED(Int)
 
-    public init() {
+    init() {
       self = .create
     }
 
-    public init?(rawValue: Int) {
+    init?(rawValue: Int) {
       switch rawValue {
       case 0: self = .create
       case 1: self = .read
@@ -2200,7 +2200,7 @@ public struct GRPCStreamingResponse {
       }
     }
 
-    public var rawValue: Int {
+    var rawValue: Int {
       switch self {
       case .create: return 0
       case .read: return 1
@@ -2212,7 +2212,7 @@ public struct GRPCStreamingResponse {
 
   }
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
@@ -2221,7 +2221,7 @@ public struct GRPCStreamingResponse {
 
 extension GRPCStreamingResponse.TypeEnum: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [GRPCStreamingResponse.TypeEnum] = [
+  static var allCases: [GRPCStreamingResponse.TypeEnum] = [
     .create,
     .read,
     .update,
@@ -2231,1182 +2231,1182 @@ extension GRPCStreamingResponse.TypeEnum: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-public struct GRPCProviderListRequest {
+struct GRPCProviderListRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var capability: GRPCProvider.Capability = .unknown
+  var capability: GRPCProvider.Capability = .unknown
 
-  public var includeTestType: Bool = false
+  var includeTestType: Bool = false
 
-  public var marketCode: String = String()
+  var marketCode: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCProviderListForMarketsRequest {
+struct GRPCProviderListForMarketsRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var capability: GRPCProvider.Capability = .unknown
+  var capability: GRPCProvider.Capability = .unknown
 
-  public var marketCodes: [String] = []
+  var marketCodes: [String] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCProviderMarketListRequest {
+struct GRPCProviderMarketListRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCProviderSuggestRequest {
+struct GRPCProviderSuggestRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCQueryStatisticsRequest {
+struct GRPCQueryStatisticsRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var description_p: String = String()
+  var description_p: String = String()
 
-  public var periods: [GRPCPeriodDescription] = []
+  var periods: [GRPCPeriodDescription] = []
 
-  public var periodMode: GRPCPeriodMode = .unknown
+  var periodMode: GRPCPeriodMode = .unknown
 
-  public var types: [GRPCStatisticTree.TypeEnum] = []
+  var types: [GRPCStatisticTree.TypeEnum] = []
 
-  public var padResultsUntilToday: Bool = false
+  var padResultsUntilToday: Bool = false
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCQueryStatisticsResponse {
+struct GRPCQueryStatisticsResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var statistics: GRPCStatisticTree {
+  var statistics: GRPCStatisticTree {
     get {return _storage._statistics ?? GRPCStatisticTree()}
     set {_uniqueStorage()._statistics = newValue}
   }
   /// Returns true if `statistics` has been explicitly set.
-  public var hasStatistics: Bool {return _storage._statistics != nil}
+  var hasStatistics: Bool {return _storage._statistics != nil}
   /// Clears the value of `statistics`. Subsequent reads from it will return its default value.
-  public mutating func clearStatistics() {_uniqueStorage()._statistics = nil}
+  mutating func clearStatistics() {_uniqueStorage()._statistics = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCGetInsightsRequest {
+struct GRPCGetInsightsRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCGetStatisticsRequest {
+struct GRPCGetStatisticsRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCStatisticsResponse {
+struct GRPCStatisticsResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var statistics: GRPCStatisticTree {
+  var statistics: GRPCStatisticTree {
     get {return _storage._statistics ?? GRPCStatisticTree()}
     set {_uniqueStorage()._statistics = newValue}
   }
   /// Returns true if `statistics` has been explicitly set.
-  public var hasStatistics: Bool {return _storage._statistics != nil}
+  var hasStatistics: Bool {return _storage._statistics != nil}
   /// Clears the value of `statistics`. Subsequent reads from it will return its default value.
-  public mutating func clearStatistics() {_uniqueStorage()._statistics = nil}
+  mutating func clearStatistics() {_uniqueStorage()._statistics = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCInsightsResponse {
+struct GRPCInsightsResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var categories: GRPCInsightsCategories {
+  var categories: GRPCInsightsCategories {
     get {return _storage._categories ?? GRPCInsightsCategories()}
     set {_uniqueStorage()._categories = newValue}
   }
   /// Returns true if `categories` has been explicitly set.
-  public var hasCategories: Bool {return _storage._categories != nil}
+  var hasCategories: Bool {return _storage._categories != nil}
   /// Clears the value of `categories`. Subsequent reads from it will return its default value.
-  public mutating func clearCategories() {_uniqueStorage()._categories = nil}
+  mutating func clearCategories() {_uniqueStorage()._categories = nil}
 
-  public var mortgage: GRPCInsightsMortgage {
+  var mortgage: GRPCInsightsMortgage {
     get {return _storage._mortgage ?? GRPCInsightsMortgage()}
     set {_uniqueStorage()._mortgage = newValue}
   }
   /// Returns true if `mortgage` has been explicitly set.
-  public var hasMortgage: Bool {return _storage._mortgage != nil}
+  var hasMortgage: Bool {return _storage._mortgage != nil}
   /// Clears the value of `mortgage`. Subsequent reads from it will return its default value.
-  public mutating func clearMortgage() {_uniqueStorage()._mortgage = nil}
+  mutating func clearMortgage() {_uniqueStorage()._mortgage = nil}
 
-  public var savings: GRPCInsightsSavings {
+  var savings: GRPCInsightsSavings {
     get {return _storage._savings ?? GRPCInsightsSavings()}
     set {_uniqueStorage()._savings = newValue}
   }
   /// Returns true if `savings` has been explicitly set.
-  public var hasSavings: Bool {return _storage._savings != nil}
+  var hasSavings: Bool {return _storage._savings != nil}
   /// Clears the value of `savings`. Subsequent reads from it will return its default value.
-  public mutating func clearSavings() {_uniqueStorage()._savings = nil}
+  mutating func clearSavings() {_uniqueStorage()._savings = nil}
 
-  public var dailySpend: GRPCInsightsDailySpend {
+  var dailySpend: GRPCInsightsDailySpend {
     get {return _storage._dailySpend ?? GRPCInsightsDailySpend()}
     set {_uniqueStorage()._dailySpend = newValue}
   }
   /// Returns true if `dailySpend` has been explicitly set.
-  public var hasDailySpend: Bool {return _storage._dailySpend != nil}
+  var hasDailySpend: Bool {return _storage._dailySpend != nil}
   /// Clears the value of `dailySpend`. Subsequent reads from it will return its default value.
-  public mutating func clearDailySpend() {_uniqueStorage()._dailySpend = nil}
+  mutating func clearDailySpend() {_uniqueStorage()._dailySpend = nil}
 
-  public var leftToSpend: GRPCInsightsLeftToSpend {
+  var leftToSpend: GRPCInsightsLeftToSpend {
     get {return _storage._leftToSpend ?? GRPCInsightsLeftToSpend()}
     set {_uniqueStorage()._leftToSpend = newValue}
   }
   /// Returns true if `leftToSpend` has been explicitly set.
-  public var hasLeftToSpend: Bool {return _storage._leftToSpend != nil}
+  var hasLeftToSpend: Bool {return _storage._leftToSpend != nil}
   /// Clears the value of `leftToSpend`. Subsequent reads from it will return its default value.
-  public mutating func clearLeftToSpend() {_uniqueStorage()._leftToSpend = nil}
+  mutating func clearLeftToSpend() {_uniqueStorage()._leftToSpend = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCListCategoriesRequest {
+struct GRPCListCategoriesRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCListCategoriesResponse {
+struct GRPCListCategoriesResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var categories: GRPCCategoryTree {
+  var categories: GRPCCategoryTree {
     get {return _storage._categories ?? GRPCCategoryTree()}
     set {_uniqueStorage()._categories = newValue}
   }
   /// Returns true if `categories` has been explicitly set.
-  public var hasCategories: Bool {return _storage._categories != nil}
+  var hasCategories: Bool {return _storage._categories != nil}
   /// Clears the value of `categories`. Subsequent reads from it will return its default value.
-  public mutating func clearCategories() {_uniqueStorage()._categories = nil}
+  mutating func clearCategories() {_uniqueStorage()._categories = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCGetTrackingConfigurationRequest {
+struct GRPCGetTrackingConfigurationRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCGetTrackingConfigurationResponse {
+struct GRPCGetTrackingConfigurationResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var trackingUserID: String = String()
+  var trackingUserID: String = String()
 
-  public var trackingUsername: String = String()
+  var trackingUsername: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCTrackingRequest {
+struct GRPCTrackingRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var sessionID: String = String()
+  var sessionID: String = String()
 
-  public var events: [GRPCTrackingEvent] = []
+  var events: [GRPCTrackingEvent] = []
 
-  public var timings: [GRPCTrackingTiming] = []
+  var timings: [GRPCTrackingTiming] = []
 
-  public var views: [GRPCTrackingView] = []
+  var views: [GRPCTrackingView] = []
 
-  public var advertisingID: String = String()
+  var advertisingID: String = String()
 
-  public var limitAdvertising: Bool = false
+  var limitAdvertising: Bool = false
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCTrackingResponse {
+struct GRPCTrackingResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCTrackingSessionRequest {
+struct GRPCTrackingSessionRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCTrackingSessionResponse {
+struct GRPCTrackingSessionResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var sessionID: String = String()
+  var sessionID: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCTransferListRequest {
+struct GRPCTransferListRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var type: GRPCTransfer.TypeEnum = .unknown
+  var type: GRPCTransfer.TypeEnum = .unknown
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCTransferListResponse {
+struct GRPCTransferListResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var transfers: [GRPCTransfer] = []
+  var transfers: [GRPCTransfer] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCTransferGetRequest {
+struct GRPCTransferGetRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var transferID: String = String()
+  var transferID: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCTransferGetResponse {
+struct GRPCTransferGetResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var transfer: GRPCTransfer {
+  var transfer: GRPCTransfer {
     get {return _storage._transfer ?? GRPCTransfer()}
     set {_uniqueStorage()._transfer = newValue}
   }
   /// Returns true if `transfer` has been explicitly set.
-  public var hasTransfer: Bool {return _storage._transfer != nil}
+  var hasTransfer: Bool {return _storage._transfer != nil}
   /// Clears the value of `transfer`. Subsequent reads from it will return its default value.
-  public mutating func clearTransfer() {_uniqueStorage()._transfer = nil}
+  mutating func clearTransfer() {_uniqueStorage()._transfer = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCCreateTransferRequest {
+struct GRPCCreateTransferRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var amount: GRPCCurrencyDenominatedAmount {
+  var amount: GRPCCurrencyDenominatedAmount {
     get {return _storage._amount ?? GRPCCurrencyDenominatedAmount()}
     set {_uniqueStorage()._amount = newValue}
   }
   /// Returns true if `amount` has been explicitly set.
-  public var hasAmount: Bool {return _storage._amount != nil}
+  var hasAmount: Bool {return _storage._amount != nil}
   /// Clears the value of `amount`. Subsequent reads from it will return its default value.
-  public mutating func clearAmount() {_uniqueStorage()._amount = nil}
+  mutating func clearAmount() {_uniqueStorage()._amount = nil}
 
-  public var destination: String {
+  var destination: String {
     get {return _storage._destination}
     set {_uniqueStorage()._destination = newValue}
   }
 
-  public var destinationMessage: String {
+  var destinationMessage: String {
     get {return _storage._destinationMessage}
     set {_uniqueStorage()._destinationMessage = newValue}
   }
 
-  public var source: String {
+  var source: String {
     get {return _storage._source}
     set {_uniqueStorage()._source = newValue}
   }
 
-  public var sourceMessage: String {
+  var sourceMessage: String {
     get {return _storage._sourceMessage}
     set {_uniqueStorage()._sourceMessage = newValue}
   }
 
-  public var dueDate: SwiftProtobuf.Google_Protobuf_Timestamp {
+  var dueDate: SwiftProtobuf.Google_Protobuf_Timestamp {
     get {return _storage._dueDate ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
     set {_uniqueStorage()._dueDate = newValue}
   }
   /// Returns true if `dueDate` has been explicitly set.
-  public var hasDueDate: Bool {return _storage._dueDate != nil}
+  var hasDueDate: Bool {return _storage._dueDate != nil}
   /// Clears the value of `dueDate`. Subsequent reads from it will return its default value.
-  public mutating func clearDueDate() {_uniqueStorage()._dueDate = nil}
+  mutating func clearDueDate() {_uniqueStorage()._dueDate = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCCreateTransferResponse {
+struct GRPCCreateTransferResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var signableOperation: GRPCSignableOperation {
+  var signableOperation: GRPCSignableOperation {
     get {return _storage._signableOperation ?? GRPCSignableOperation()}
     set {_uniqueStorage()._signableOperation = newValue}
   }
   /// Returns true if `signableOperation` has been explicitly set.
-  public var hasSignableOperation: Bool {return _storage._signableOperation != nil}
+  var hasSignableOperation: Bool {return _storage._signableOperation != nil}
   /// Clears the value of `signableOperation`. Subsequent reads from it will return its default value.
-  public mutating func clearSignableOperation() {_uniqueStorage()._signableOperation = nil}
+  mutating func clearSignableOperation() {_uniqueStorage()._signableOperation = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCUpdateTransferRequest {
+struct GRPCUpdateTransferRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var transferID: String {
+  var transferID: String {
     get {return _storage._transferID}
     set {_uniqueStorage()._transferID = newValue}
   }
 
-  public var amount: GRPCCurrencyDenominatedAmount {
+  var amount: GRPCCurrencyDenominatedAmount {
     get {return _storage._amount ?? GRPCCurrencyDenominatedAmount()}
     set {_uniqueStorage()._amount = newValue}
   }
   /// Returns true if `amount` has been explicitly set.
-  public var hasAmount: Bool {return _storage._amount != nil}
+  var hasAmount: Bool {return _storage._amount != nil}
   /// Clears the value of `amount`. Subsequent reads from it will return its default value.
-  public mutating func clearAmount() {_uniqueStorage()._amount = nil}
+  mutating func clearAmount() {_uniqueStorage()._amount = nil}
 
-  public var destination: SwiftProtobuf.Google_Protobuf_StringValue {
+  var destination: SwiftProtobuf.Google_Protobuf_StringValue {
     get {return _storage._destination ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._destination = newValue}
   }
   /// Returns true if `destination` has been explicitly set.
-  public var hasDestination: Bool {return _storage._destination != nil}
+  var hasDestination: Bool {return _storage._destination != nil}
   /// Clears the value of `destination`. Subsequent reads from it will return its default value.
-  public mutating func clearDestination() {_uniqueStorage()._destination = nil}
+  mutating func clearDestination() {_uniqueStorage()._destination = nil}
 
-  public var destinationMessage: SwiftProtobuf.Google_Protobuf_StringValue {
+  var destinationMessage: SwiftProtobuf.Google_Protobuf_StringValue {
     get {return _storage._destinationMessage ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._destinationMessage = newValue}
   }
   /// Returns true if `destinationMessage` has been explicitly set.
-  public var hasDestinationMessage: Bool {return _storage._destinationMessage != nil}
+  var hasDestinationMessage: Bool {return _storage._destinationMessage != nil}
   /// Clears the value of `destinationMessage`. Subsequent reads from it will return its default value.
-  public mutating func clearDestinationMessage() {_uniqueStorage()._destinationMessage = nil}
+  mutating func clearDestinationMessage() {_uniqueStorage()._destinationMessage = nil}
 
-  public var source: SwiftProtobuf.Google_Protobuf_StringValue {
+  var source: SwiftProtobuf.Google_Protobuf_StringValue {
     get {return _storage._source ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._source = newValue}
   }
   /// Returns true if `source` has been explicitly set.
-  public var hasSource: Bool {return _storage._source != nil}
+  var hasSource: Bool {return _storage._source != nil}
   /// Clears the value of `source`. Subsequent reads from it will return its default value.
-  public mutating func clearSource() {_uniqueStorage()._source = nil}
+  mutating func clearSource() {_uniqueStorage()._source = nil}
 
-  public var sourceMessage: SwiftProtobuf.Google_Protobuf_StringValue {
+  var sourceMessage: SwiftProtobuf.Google_Protobuf_StringValue {
     get {return _storage._sourceMessage ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._sourceMessage = newValue}
   }
   /// Returns true if `sourceMessage` has been explicitly set.
-  public var hasSourceMessage: Bool {return _storage._sourceMessage != nil}
+  var hasSourceMessage: Bool {return _storage._sourceMessage != nil}
   /// Clears the value of `sourceMessage`. Subsequent reads from it will return its default value.
-  public mutating func clearSourceMessage() {_uniqueStorage()._sourceMessage = nil}
+  mutating func clearSourceMessage() {_uniqueStorage()._sourceMessage = nil}
 
-  public var dueDate: SwiftProtobuf.Google_Protobuf_Timestamp {
+  var dueDate: SwiftProtobuf.Google_Protobuf_Timestamp {
     get {return _storage._dueDate ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
     set {_uniqueStorage()._dueDate = newValue}
   }
   /// Returns true if `dueDate` has been explicitly set.
-  public var hasDueDate: Bool {return _storage._dueDate != nil}
+  var hasDueDate: Bool {return _storage._dueDate != nil}
   /// Clears the value of `dueDate`. Subsequent reads from it will return its default value.
-  public mutating func clearDueDate() {_uniqueStorage()._dueDate = nil}
+  mutating func clearDueDate() {_uniqueStorage()._dueDate = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCUpdateTransferResponse {
+struct GRPCUpdateTransferResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var signableOperation: GRPCSignableOperation {
+  var signableOperation: GRPCSignableOperation {
     get {return _storage._signableOperation ?? GRPCSignableOperation()}
     set {_uniqueStorage()._signableOperation = newValue}
   }
   /// Returns true if `signableOperation` has been explicitly set.
-  public var hasSignableOperation: Bool {return _storage._signableOperation != nil}
+  var hasSignableOperation: Bool {return _storage._signableOperation != nil}
   /// Clears the value of `signableOperation`. Subsequent reads from it will return its default value.
-  public mutating func clearSignableOperation() {_uniqueStorage()._signableOperation = nil}
+  mutating func clearSignableOperation() {_uniqueStorage()._signableOperation = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCTransferListAccountsRequest {
+struct GRPCTransferListAccountsRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var id: SwiftProtobuf.Google_Protobuf_StringValue {
+  var id: SwiftProtobuf.Google_Protobuf_StringValue {
     get {return _storage._id ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._id = newValue}
   }
   /// Returns true if `id` has been explicitly set.
-  public var hasID: Bool {return _storage._id != nil}
+  var hasID: Bool {return _storage._id != nil}
   /// Clears the value of `id`. Subsequent reads from it will return its default value.
-  public mutating func clearID() {_uniqueStorage()._id = nil}
+  mutating func clearID() {_uniqueStorage()._id = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCGiroLookupRequest {
+struct GRPCGiroLookupRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var giroNumber: String = String()
+  var giroNumber: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCGiroLookupResponse {
+struct GRPCGiroLookupResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var giroEntities: [GRPCGiroLookupEntity] = []
+  var giroEntities: [GRPCGiroLookupEntity] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCClearingLookupRequest {
+struct GRPCClearingLookupRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var clearingNumber: String = String()
+  var clearingNumber: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCClearingLookupResponse {
+struct GRPCClearingLookupResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var bankDisplayName: String {
+  var bankDisplayName: String {
     get {return _storage._bankDisplayName}
     set {_uniqueStorage()._bankDisplayName = newValue}
   }
 
-  public var images: GRPCImages {
+  var images: GRPCImages {
     get {return _storage._images ?? GRPCImages()}
     set {_uniqueStorage()._images = newValue}
   }
   /// Returns true if `images` has been explicitly set.
-  public var hasImages: Bool {return _storage._images != nil}
+  var hasImages: Bool {return _storage._images != nil}
   /// Clears the value of `images`. Subsequent reads from it will return its default value.
-  public mutating func clearImages() {_uniqueStorage()._images = nil}
+  mutating func clearImages() {_uniqueStorage()._images = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCSortCodeLookupRequest {
+struct GRPCSortCodeLookupRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var sortCode: String = String()
+  var sortCode: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCSortCodeLookupResponse {
+struct GRPCSortCodeLookupResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var bankDisplayName: String {
+  var bankDisplayName: String {
     get {return _storage._bankDisplayName}
     set {_uniqueStorage()._bankDisplayName = newValue}
   }
 
-  public var images: GRPCImages {
+  var images: GRPCImages {
     get {return _storage._images ?? GRPCImages()}
     set {_uniqueStorage()._images = newValue}
   }
   /// Returns true if `images` has been explicitly set.
-  public var hasImages: Bool {return _storage._images != nil}
+  var hasImages: Bool {return _storage._images != nil}
   /// Clears the value of `images`. Subsequent reads from it will return its default value.
-  public mutating func clearImages() {_uniqueStorage()._images = nil}
+  mutating func clearImages() {_uniqueStorage()._images = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCCreateTransferDestinationRequest {
+struct GRPCCreateTransferDestinationRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var uri: String = String()
+  var uri: String = String()
 
-  public var name: String = String()
+  var name: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCGetAccountsForTransferRequest {
+struct GRPCGetAccountsForTransferRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var transferID: String = String()
+  var transferID: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCGetAccountsForTransferResponse {
+struct GRPCGetAccountsForTransferResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var account: [GRPCAccount] = []
+  var account: [GRPCAccount] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCGetTransferDestinationsRequest {
+struct GRPCGetTransferDestinationsRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCGetTransferDestinationsResponse {
+struct GRPCGetTransferDestinationsResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var destinationsPerAccount: [GRPCTransferDestinationPerAccount] = []
+  var destinationsPerAccount: [GRPCTransferDestinationPerAccount] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCCreateTransferDestinationResponse {
+struct GRPCCreateTransferDestinationResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var destination: GRPCTransferDestination {
+  var destination: GRPCTransferDestination {
     get {return _storage._destination ?? GRPCTransferDestination()}
     set {_uniqueStorage()._destination = newValue}
   }
   /// Returns true if `destination` has been explicitly set.
-  public var hasDestination: Bool {return _storage._destination != nil}
+  var hasDestination: Bool {return _storage._destination != nil}
   /// Clears the value of `destination`. Subsequent reads from it will return its default value.
-  public mutating func clearDestination() {_uniqueStorage()._destination = nil}
+  mutating func clearDestination() {_uniqueStorage()._destination = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCListBusinessDaysRequest {
+struct GRPCListBusinessDaysRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var startYear: UInt32 = 0
+  var startYear: UInt32 = 0
 
-  public var startMonth: UInt32 = 0
+  var startMonth: UInt32 = 0
 
-  public var months: UInt32 = 0
+  var months: UInt32 = 0
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCListBusinessDaysResponse {
+struct GRPCListBusinessDaysResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var businessDays: [GRPCBusinessDays] = []
+  var businessDays: [GRPCBusinessDays] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCNotificationSettingsRequest {
+struct GRPCNotificationSettingsRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCNotificationSettingsResponse {
+struct GRPCNotificationSettingsResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var notificationSettings: GRPCNotificationSettings {
+  var notificationSettings: GRPCNotificationSettings {
     get {return _storage._notificationSettings ?? GRPCNotificationSettings()}
     set {_uniqueStorage()._notificationSettings = newValue}
   }
   /// Returns true if `notificationSettings` has been explicitly set.
-  public var hasNotificationSettings: Bool {return _storage._notificationSettings != nil}
+  var hasNotificationSettings: Bool {return _storage._notificationSettings != nil}
   /// Clears the value of `notificationSettings`. Subsequent reads from it will return its default value.
-  public mutating func clearNotificationSettings() {_uniqueStorage()._notificationSettings = nil}
+  mutating func clearNotificationSettings() {_uniqueStorage()._notificationSettings = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCUpdateNotificationSettingsRequest {
+struct GRPCUpdateNotificationSettingsRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var notificationTypes: [GRPCNotificationType] = []
+  var notificationTypes: [GRPCNotificationType] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCPeriodSettingsRequest {
+struct GRPCPeriodSettingsRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCPeriodSettingsResponse {
+struct GRPCPeriodSettingsResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var periodSettings: GRPCPeriodSettings {
+  var periodSettings: GRPCPeriodSettings {
     get {return _storage._periodSettings ?? GRPCPeriodSettings()}
     set {_uniqueStorage()._periodSettings = newValue}
   }
   /// Returns true if `periodSettings` has been explicitly set.
-  public var hasPeriodSettings: Bool {return _storage._periodSettings != nil}
+  var hasPeriodSettings: Bool {return _storage._periodSettings != nil}
   /// Clears the value of `periodSettings`. Subsequent reads from it will return its default value.
-  public mutating func clearPeriodSettings() {_uniqueStorage()._periodSettings = nil}
+  mutating func clearPeriodSettings() {_uniqueStorage()._periodSettings = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCUpdatePeriodSettingsRequest {
+struct GRPCUpdatePeriodSettingsRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var periodDateBreakType: GRPCPeriodDateBreakType {
+  var periodDateBreakType: GRPCPeriodDateBreakType {
     get {return _storage._periodDateBreakType}
     set {_uniqueStorage()._periodDateBreakType = newValue}
   }
 
-  public var monthlyAdjustedDay: SwiftProtobuf.Google_Protobuf_Int32Value {
+  var monthlyAdjustedDay: SwiftProtobuf.Google_Protobuf_Int32Value {
     get {return _storage._monthlyAdjustedDay ?? SwiftProtobuf.Google_Protobuf_Int32Value()}
     set {_uniqueStorage()._monthlyAdjustedDay = newValue}
   }
   /// Returns true if `monthlyAdjustedDay` has been explicitly set.
-  public var hasMonthlyAdjustedDay: Bool {return _storage._monthlyAdjustedDay != nil}
+  var hasMonthlyAdjustedDay: Bool {return _storage._monthlyAdjustedDay != nil}
   /// Clears the value of `monthlyAdjustedDay`. Subsequent reads from it will return its default value.
-  public mutating func clearMonthlyAdjustedDay() {_uniqueStorage()._monthlyAdjustedDay = nil}
+  mutating func clearMonthlyAdjustedDay() {_uniqueStorage()._monthlyAdjustedDay = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCUpdateI18NSettingsRequest {
+struct GRPCUpdateI18NSettingsRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var localeCode: SwiftProtobuf.Google_Protobuf_StringValue {
+  var localeCode: SwiftProtobuf.Google_Protobuf_StringValue {
     get {return _storage._localeCode ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._localeCode = newValue}
   }
   /// Returns true if `localeCode` has been explicitly set.
-  public var hasLocaleCode: Bool {return _storage._localeCode != nil}
+  var hasLocaleCode: Bool {return _storage._localeCode != nil}
   /// Clears the value of `localeCode`. Subsequent reads from it will return its default value.
-  public mutating func clearLocaleCode() {_uniqueStorage()._localeCode = nil}
+  mutating func clearLocaleCode() {_uniqueStorage()._localeCode = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCUpdateI18NSettingsResponse {
+struct GRPCUpdateI18NSettingsResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var i18NSettings: GRPCI18NSettings {
+  var i18NSettings: GRPCI18NSettings {
     get {return _storage._i18NSettings ?? GRPCI18NSettings()}
     set {_uniqueStorage()._i18NSettings = newValue}
   }
   /// Returns true if `i18NSettings` has been explicitly set.
-  public var hasI18NSettings: Bool {return _storage._i18NSettings != nil}
+  var hasI18NSettings: Bool {return _storage._i18NSettings != nil}
   /// Clears the value of `i18NSettings`. Subsequent reads from it will return its default value.
-  public mutating func clearI18NSettings() {_uniqueStorage()._i18NSettings = nil}
+  mutating func clearI18NSettings() {_uniqueStorage()._i18NSettings = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCDescribeOAuth2ClientRequest {
+struct GRPCDescribeOAuth2ClientRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var clientID: String = String()
+  var clientID: String = String()
 
-  public var scopes: [String] = []
+  var scopes: [String] = []
 
-  public var redirectUri: String = String()
+  var redirectUri: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCDescribeOAuth2ClientResponse {
+struct GRPCDescribeOAuth2ClientResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var clientIconURL: String = String()
+  var clientIconURL: String = String()
 
-  public var clientName: String = String()
+  var clientName: String = String()
 
-  public var clientURL: String = String()
+  var clientURL: String = String()
 
-  public var embeddedAllowed: Bool = false
+  var embeddedAllowed: Bool = false
 
-  public var scopes: [GRPCOAuth2ScopeDescription] = []
+  var scopes: [GRPCOAuth2ScopeDescription] = []
 
-  public var verified: Bool = false
+  var verified: Bool = false
 
-  public var aggregator: Bool = false
+  var aggregator: Bool = false
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCLoginRequest {
+struct GRPCLoginRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var authenticationToken: String = String()
+  var authenticationToken: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCLoginResponse {
+struct GRPCLoginResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var sessionID: String = String()
+  var sessionID: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCRegisterRequest {
+struct GRPCRegisterRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var authenticationToken: String = String()
+  var authenticationToken: String = String()
 
-  public var email: String = String()
+  var email: String = String()
 
-  public var locale: String = String()
+  var locale: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCRegisterResponse {
+struct GRPCRegisterResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var sessionID: String = String()
+  var sessionID: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCLogoutRequest {
+struct GRPCLogoutRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var autologout: Bool = false
+  var autologout: Bool = false
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCLogoutResponse {
+struct GRPCLogoutResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCUpdateEmailRequest {
+struct GRPCUpdateEmailRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var email: SwiftProtobuf.Google_Protobuf_StringValue {
+  var email: SwiftProtobuf.Google_Protobuf_StringValue {
     get {return _storage._email ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._email = newValue}
   }
   /// Returns true if `email` has been explicitly set.
-  public var hasEmail: Bool {return _storage._email != nil}
+  var hasEmail: Bool {return _storage._email != nil}
   /// Clears the value of `email`. Subsequent reads from it will return its default value.
-  public mutating func clearEmail() {_uniqueStorage()._email = nil}
+  mutating func clearEmail() {_uniqueStorage()._email = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCUpdateEmailResponse {
+struct GRPCUpdateEmailResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var userProfile: GRPCUserProfile {
+  var userProfile: GRPCUserProfile {
     get {return _storage._userProfile ?? GRPCUserProfile()}
     set {_uniqueStorage()._userProfile = newValue}
   }
   /// Returns true if `userProfile` has been explicitly set.
-  public var hasUserProfile: Bool {return _storage._userProfile != nil}
+  var hasUserProfile: Bool {return _storage._userProfile != nil}
   /// Clears the value of `userProfile`. Subsequent reads from it will return its default value.
-  public mutating func clearUserProfile() {_uniqueStorage()._userProfile = nil}
+  mutating func clearUserProfile() {_uniqueStorage()._userProfile = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCCreateAnonymousRequest {
+struct GRPCCreateAnonymousRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var market: String = String()
+  var market: String = String()
 
-  public var locale: String = String()
+  var locale: String = String()
 
-  public var origin: String = String()
+  var origin: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCCreateAnonymousResponse {
+struct GRPCCreateAnonymousResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var accessToken: String = String()
+  var accessToken: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCGetProfileRequest {
+struct GRPCGetProfileRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCGetProfileResponse {
+struct GRPCGetProfileResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var userProfile: GRPCUserProfile {
+  var userProfile: GRPCUserProfile {
     get {return _storage._userProfile ?? GRPCUserProfile()}
     set {_uniqueStorage()._userProfile = newValue}
   }
   /// Returns true if `userProfile` has been explicitly set.
-  public var hasUserProfile: Bool {return _storage._userProfile != nil}
+  var hasUserProfile: Bool {return _storage._userProfile != nil}
   /// Clears the value of `userProfile`. Subsequent reads from it will return its default value.
-  public mutating func clearUserProfile() {_uniqueStorage()._userProfile = nil}
+  mutating func clearUserProfile() {_uniqueStorage()._userProfile = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCDeleteUserRequest {
+struct GRPCDeleteUserRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var reasons: [String] {
+  var reasons: [String] {
     get {return _storage._reasons}
     set {_uniqueStorage()._reasons = newValue}
   }
 
-  public var comment: SwiftProtobuf.Google_Protobuf_StringValue {
+  var comment: SwiftProtobuf.Google_Protobuf_StringValue {
     get {return _storage._comment ?? SwiftProtobuf.Google_Protobuf_StringValue()}
     set {_uniqueStorage()._comment = newValue}
   }
   /// Returns true if `comment` has been explicitly set.
-  public var hasComment: Bool {return _storage._comment != nil}
+  var hasComment: Bool {return _storage._comment != nil}
   /// Clears the value of `comment`. Subsequent reads from it will return its default value.
-  public mutating func clearComment() {_uniqueStorage()._comment = nil}
+  mutating func clearComment() {_uniqueStorage()._comment = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCDeleteUserResponse {
+struct GRPCDeleteUserResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCRateAppRequest {
+struct GRPCRateAppRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var status: GRPCRateAppStatus = .unknown
+  var status: GRPCRateAppStatus = .unknown
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCRateAppResponse {
+struct GRPCRateAppResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
 /// Initiate a Mobile BankId authentication request. Two different initiations are possible.
 /// 1) NationalId available => Trigger a bankid for the nationalId that is provided.
 /// 2) Authentication token available => Trigger a bankid for the user that is connected to the authentication token.
-public struct GRPCInitiateBankIdAuthenticationRequest {
+struct GRPCInitiateBankIdAuthenticationRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var marketCode: String = String()
+  var marketCode: String = String()
 
-  public var type: GRPCInitiateBankIdAuthenticationRequest.OneOf_Type? = nil
+  var type: GRPCInitiateBankIdAuthenticationRequest.OneOf_Type? = nil
 
-  public var nationalID: String {
+  var nationalID: String {
     get {
       if case .nationalID(let v)? = type {return v}
       return String()
@@ -3414,7 +3414,7 @@ public struct GRPCInitiateBankIdAuthenticationRequest {
     set {type = .nationalID(newValue)}
   }
 
-  public var authenticationToken: String {
+  var authenticationToken: String {
     get {
       if case .authenticationToken(let v)? = type {return v}
       return String()
@@ -3422,14 +3422,14 @@ public struct GRPCInitiateBankIdAuthenticationRequest {
     set {type = .authenticationToken(newValue)}
   }
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Type: Equatable {
+  enum OneOf_Type: Equatable {
     case nationalID(String)
     case authenticationToken(String)
 
   #if !swift(>=4.1)
-    public static func ==(lhs: GRPCInitiateBankIdAuthenticationRequest.OneOf_Type, rhs: GRPCInitiateBankIdAuthenticationRequest.OneOf_Type) -> Bool {
+    static func ==(lhs: GRPCInitiateBankIdAuthenticationRequest.OneOf_Type, rhs: GRPCInitiateBankIdAuthenticationRequest.OneOf_Type) -> Bool {
       switch (lhs, rhs) {
       case (.nationalID(let l), .nationalID(let r)): return l == r
       case (.authenticationToken(let l), .authenticationToken(let r)): return l == r
@@ -3439,690 +3439,690 @@ public struct GRPCInitiateBankIdAuthenticationRequest {
   #endif
   }
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCInitiateBankIdAuthenticationResponse {
+struct GRPCInitiateBankIdAuthenticationResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var autoStartToken: String = String()
+  var autoStartToken: String = String()
 
-  public var authenticationToken: String = String()
+  var authenticationToken: String = String()
 
-  public var status: GRPCBankIdAuthenticationStatus = .unknown
+  var status: GRPCBankIdAuthenticationStatus = .unknown
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCCollectBankIdAuthenticationRequest {
+struct GRPCCollectBankIdAuthenticationRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var authenticationToken: String = String()
+  var authenticationToken: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCCollectBankIdAuthenticationResponse {
+struct GRPCCollectBankIdAuthenticationResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var nationalID: String = String()
+  var nationalID: String = String()
 
-  public var status: GRPCBankIdAuthenticationStatus = .unknown
+  var status: GRPCBankIdAuthenticationStatus = .unknown
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCEmailAndPasswordAuthenticationRequest {
+struct GRPCEmailAndPasswordAuthenticationRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var email: String = String()
+  var email: String = String()
 
-  public var password: String = String()
+  var password: String = String()
 
-  public var marketCode: String = String()
+  var marketCode: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCEmailAndPasswordAuthenticationResponse {
+struct GRPCEmailAndPasswordAuthenticationResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var authenticationToken: String = String()
+  var authenticationToken: String = String()
 
-  public var status: GRPCAuthenticationStatus = .unknown
+  var status: GRPCAuthenticationStatus = .unknown
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCForgotPasswordRequest {
+struct GRPCForgotPasswordRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var email: String = String()
+  var email: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCForgotPasswordResponse {
+struct GRPCForgotPasswordResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCResetPasswordRequest {
+struct GRPCResetPasswordRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var tokenID: String = String()
+  var tokenID: String = String()
 
-  public var password: String = String()
+  var password: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCResetPasswordResponse {
+struct GRPCResetPasswordResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCUpdatePasswordRequest {
+struct GRPCUpdatePasswordRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var oldPassword: String = String()
+  var oldPassword: String = String()
 
-  public var newPassword: String = String()
+  var newPassword: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCUpdatePasswordResponse {
+struct GRPCUpdatePasswordResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCGetIdentityEventRequest {
+struct GRPCGetIdentityEventRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var identityEventID: String = String()
+  var identityEventID: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCSeenIdentityEventRequest {
+struct GRPCSeenIdentityEventRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var identityEventIds: [String] = []
+  var identityEventIds: [String] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCAnswerIdentityEventRequest {
+struct GRPCAnswerIdentityEventRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var identityEventID: String {
+  var identityEventID: String {
     get {return _storage._identityEventID}
     set {_uniqueStorage()._identityEventID = newValue}
   }
 
-  public var answer: GRPCIdentityEventAnswer {
+  var answer: GRPCIdentityEventAnswer {
     get {return _storage._answer ?? GRPCIdentityEventAnswer()}
     set {_uniqueStorage()._answer = newValue}
   }
   /// Returns true if `answer` has been explicitly set.
-  public var hasAnswer: Bool {return _storage._answer != nil}
+  var hasAnswer: Bool {return _storage._answer != nil}
   /// Clears the value of `answer`. Subsequent reads from it will return its default value.
-  public mutating func clearAnswer() {_uniqueStorage()._answer = nil}
+  mutating func clearAnswer() {_uniqueStorage()._answer = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCIdentityEventListRequest {
+struct GRPCIdentityEventListRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCIdentityEventListResponse {
+struct GRPCIdentityEventListResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var events: [GRPCIdentityEventSummary] = []
+  var events: [GRPCIdentityEventSummary] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCIdentityEventResponse {
+struct GRPCIdentityEventResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var event: GRPCIdentityEvent {
+  var event: GRPCIdentityEvent {
     get {return _storage._event ?? GRPCIdentityEvent()}
     set {_uniqueStorage()._event = newValue}
   }
   /// Returns true if `event` has been explicitly set.
-  public var hasEvent: Bool {return _storage._event != nil}
+  var hasEvent: Bool {return _storage._event != nil}
   /// Clears the value of `event`. Subsequent reads from it will return its default value.
-  public mutating func clearEvent() {_uniqueStorage()._event = nil}
+  mutating func clearEvent() {_uniqueStorage()._event = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCSeenIdentityEventResponse {
+struct GRPCSeenIdentityEventResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var events: [GRPCIdentityEventSummary] = []
+  var events: [GRPCIdentityEventSummary] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCAnswerIdentityEventResponse {
+struct GRPCAnswerIdentityEventResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var event: GRPCIdentityEvent {
+  var event: GRPCIdentityEvent {
     get {return _storage._event ?? GRPCIdentityEvent()}
     set {_uniqueStorage()._event = newValue}
   }
   /// Returns true if `event` has been explicitly set.
-  public var hasEvent: Bool {return _storage._event != nil}
+  var hasEvent: Bool {return _storage._event != nil}
   /// Clears the value of `event`. Subsequent reads from it will return its default value.
-  public mutating func clearEvent() {_uniqueStorage()._event = nil}
+  mutating func clearEvent() {_uniqueStorage()._event = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCIdentityStateRequest {
+struct GRPCIdentityStateRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCIdentityStateResponse {
+struct GRPCIdentityStateResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var state: GRPCIdentityState {
+  var state: GRPCIdentityState {
     get {return _storage._state ?? GRPCIdentityState()}
     set {_uniqueStorage()._state = newValue}
   }
   /// Returns true if `state` has been explicitly set.
-  public var hasState: Bool {return _storage._state != nil}
+  var hasState: Bool {return _storage._state != nil}
   /// Clears the value of `state`. Subsequent reads from it will return its default value.
-  public mutating func clearState() {_uniqueStorage()._state = nil}
+  mutating func clearState() {_uniqueStorage()._state = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCActivateIdentityServiceRequest {
+struct GRPCActivateIdentityServiceRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCActivateIdentityServiceResponse {
+struct GRPCActivateIdentityServiceResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCInitiateSmsOtpRequest {
+struct GRPCInitiateSmsOtpRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var phoneNumber: String = String()
+  var phoneNumber: String = String()
 
-  public var locale: String = String()
+  var locale: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCInitiateSmsOtpResponse {
+struct GRPCInitiateSmsOtpResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var smsOtpVerificationToken: String {
+  var smsOtpVerificationToken: String {
     get {return _storage._smsOtpVerificationToken}
     set {_uniqueStorage()._smsOtpVerificationToken = newValue}
   }
 
-  public var otpLength: Int32 {
+  var otpLength: Int32 {
     get {return _storage._otpLength}
     set {_uniqueStorage()._otpLength = newValue}
   }
 
-  public var expireAt: SwiftProtobuf.Google_Protobuf_Timestamp {
+  var expireAt: SwiftProtobuf.Google_Protobuf_Timestamp {
     get {return _storage._expireAt ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
     set {_uniqueStorage()._expireAt = newValue}
   }
   /// Returns true if `expireAt` has been explicitly set.
-  public var hasExpireAt: Bool {return _storage._expireAt != nil}
+  var hasExpireAt: Bool {return _storage._expireAt != nil}
   /// Clears the value of `expireAt`. Subsequent reads from it will return its default value.
-  public mutating func clearExpireAt() {_uniqueStorage()._expireAt = nil}
+  mutating func clearExpireAt() {_uniqueStorage()._expireAt = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCVerifySmsOtpRequest {
+struct GRPCVerifySmsOtpRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var smsOtpVerificationToken: String = String()
+  var smsOtpVerificationToken: String = String()
 
-  public var code: String = String()
+  var code: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCVerifySmsOtpResponse {
+struct GRPCVerifySmsOtpResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var smsOtpVerificationToken: String = String()
+  var smsOtpVerificationToken: String = String()
 
-  public var status: GRPCSmsOtpStatus = .unknown
+  var status: GRPCSmsOtpStatus = .unknown
 
-  public var existingUser: Bool = false
+  var existingUser: Bool = false
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCSmsOtpAndPin6AuthenticationRequest {
+struct GRPCSmsOtpAndPin6AuthenticationRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var smsOtpVerificationToken: String = String()
+  var smsOtpVerificationToken: String = String()
 
-  public var pin6: String = String()
+  var pin6: String = String()
 
-  public var marketCode: String = String()
+  var marketCode: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCSmsOtpAndPin6AuthenticationResponse {
+struct GRPCSmsOtpAndPin6AuthenticationResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var authenticationToken: String = String()
+  var authenticationToken: String = String()
 
-  public var status: GRPCAuthenticationStatus = .unknown
+  var status: GRPCAuthenticationStatus = .unknown
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCPhoneNumberAndPin6AuthenticationRequest {
+struct GRPCPhoneNumberAndPin6AuthenticationRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var phoneNumber: String = String()
+  var phoneNumber: String = String()
 
-  public var pin6: String = String()
+  var pin6: String = String()
 
-  public var marketCode: String = String()
+  var marketCode: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCPhoneNumberAndPin6AuthenticationResponse {
+struct GRPCPhoneNumberAndPin6AuthenticationResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var authenticationToken: String = String()
+  var authenticationToken: String = String()
 
-  public var status: GRPCAuthenticationStatus = .unknown
+  var status: GRPCAuthenticationStatus = .unknown
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCListConsentsRequest {
+struct GRPCListConsentsRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCListConsentsResponse {
+struct GRPCListConsentsResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var consents: [GRPCConsent] = []
+  var consents: [GRPCConsent] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCAvailableConsentsRequest {
+struct GRPCAvailableConsentsRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCAvailableConsentsResponse {
+struct GRPCAvailableConsentsResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var consents: [GRPCConsent] = []
+  var consents: [GRPCConsent] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCConsentDetailsRequest {
+struct GRPCConsentDetailsRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var key: String = String()
+  var key: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCConsentDetailsResponse {
+struct GRPCConsentDetailsResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var consent: GRPCConsent {
+  var consent: GRPCConsent {
     get {return _storage._consent ?? GRPCConsent()}
     set {_uniqueStorage()._consent = newValue}
   }
   /// Returns true if `consent` has been explicitly set.
-  public var hasConsent: Bool {return _storage._consent != nil}
+  var hasConsent: Bool {return _storage._consent != nil}
   /// Clears the value of `consent`. Subsequent reads from it will return its default value.
-  public mutating func clearConsent() {_uniqueStorage()._consent = nil}
+  mutating func clearConsent() {_uniqueStorage()._consent = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCUserConsentsListRequest {
+struct GRPCUserConsentsListRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCUserConsentsListResponse {
+struct GRPCUserConsentsListResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var userConsents: [GRPCUserConsent] = []
+  var userConsents: [GRPCUserConsent] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCGiveConsentRequest {
+struct GRPCGiveConsentRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var key: String = String()
+  var key: String = String()
 
-  public var version: String = String()
+  var version: String = String()
 
-  public var action: GRPCConsentAction = .unknown
+  var action: GRPCConsentAction = .unknown
 
-  public var checksum: String = String()
+  var checksum: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCGiveConsentResponse {
+struct GRPCGiveConsentResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var userConsent: GRPCUserConsent {
+  var userConsent: GRPCUserConsent {
     get {return _storage._userConsent ?? GRPCUserConsent()}
     set {_uniqueStorage()._userConsent = newValue}
   }
   /// Returns true if `userConsent` has been explicitly set.
-  public var hasUserConsent: Bool {return _storage._userConsent != nil}
+  var hasUserConsent: Bool {return _storage._userConsent != nil}
   /// Clears the value of `userConsent`. Subsequent reads from it will return its default value.
-  public mutating func clearUserConsent() {_uniqueStorage()._userConsent = nil}
+  mutating func clearUserConsent() {_uniqueStorage()._userConsent = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCUserConsentDetailsRequest {
+struct GRPCUserConsentDetailsRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var id: String = String()
+  var id: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCUserConsentDetailsResponse {
+struct GRPCUserConsentDetailsResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var userConsent: GRPCUserConsent {
+  var userConsent: GRPCUserConsent {
     get {return _storage._userConsent ?? GRPCUserConsent()}
     set {_uniqueStorage()._userConsent = newValue}
   }
   /// Returns true if `userConsent` has been explicitly set.
-  public var hasUserConsent: Bool {return _storage._userConsent != nil}
+  var hasUserConsent: Bool {return _storage._userConsent != nil}
   /// Clears the value of `userConsent`. Subsequent reads from it will return its default value.
-  public mutating func clearUserConsent() {_uniqueStorage()._userConsent = nil}
+  mutating func clearUserConsent() {_uniqueStorage()._userConsent = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCUpdatePin6Request {
+struct GRPCUpdatePin6Request {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var oldPin6: String = String()
+  var oldPin6: String = String()
 
-  public var newPin6: String = String()
+  var newPin6: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCUpdatePin6Response {
+struct GRPCUpdatePin6Response {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCUpdatePhoneNumberRequest {
+struct GRPCUpdatePhoneNumberRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var smsOtpVerificationToken: String = String()
+  var smsOtpVerificationToken: String = String()
 
-  public var pin6: String = String()
+  var pin6: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCUpdatePhoneNumberResponse {
+struct GRPCUpdatePhoneNumberResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCResetPin6Request {
+struct GRPCResetPin6Request {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var method: GRPCResetPin6Request.OneOf_Method? = nil
+  var method: GRPCResetPin6Request.OneOf_Method? = nil
 
-  public var smsOtpVerificationToken: String {
+  var smsOtpVerificationToken: String {
     get {
       if case .smsOtpVerificationToken(let v)? = method {return v}
       return String()
@@ -4130,7 +4130,7 @@ public struct GRPCResetPin6Request {
     set {method = .smsOtpVerificationToken(newValue)}
   }
 
-  public var resetPin6Token: String {
+  var resetPin6Token: String {
     get {
       if case .resetPin6Token(let v)? = method {return v}
       return String()
@@ -4138,7 +4138,7 @@ public struct GRPCResetPin6Request {
     set {method = .resetPin6Token(newValue)}
   }
 
-  public var noCredentials: Bool {
+  var noCredentials: Bool {
     get {
       if case .noCredentials(let v)? = method {return v}
       return false
@@ -4146,17 +4146,17 @@ public struct GRPCResetPin6Request {
     set {method = .noCredentials(newValue)}
   }
 
-  public var pin6: String = String()
+  var pin6: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public enum OneOf_Method: Equatable {
+  enum OneOf_Method: Equatable {
     case smsOtpVerificationToken(String)
     case resetPin6Token(String)
     case noCredentials(Bool)
 
   #if !swift(>=4.1)
-    public static func ==(lhs: GRPCResetPin6Request.OneOf_Method, rhs: GRPCResetPin6Request.OneOf_Method) -> Bool {
+    static func ==(lhs: GRPCResetPin6Request.OneOf_Method, rhs: GRPCResetPin6Request.OneOf_Method) -> Bool {
       switch (lhs, rhs) {
       case (.smsOtpVerificationToken(let l), .smsOtpVerificationToken(let r)): return l == r
       case (.resetPin6Token(let l), .resetPin6Token(let r)): return l == r
@@ -4167,993 +4167,993 @@ public struct GRPCResetPin6Request {
   #endif
   }
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCResetPin6Response {
+struct GRPCResetPin6Response {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var authenticationToken: String = String()
+  var authenticationToken: String = String()
 
-  public var status: GRPCAuthenticationStatus = .unknown
+  var status: GRPCAuthenticationStatus = .unknown
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCAbnAmroAuthenticationRequest {
+struct GRPCAbnAmroAuthenticationRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var internetBankingSessionToken: String = String()
+  var internetBankingSessionToken: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCAbnAmroAuthenticationResponse {
+struct GRPCAbnAmroAuthenticationResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var authenticationToken: String = String()
+  var authenticationToken: String = String()
 
-  public var status: GRPCAuthenticationStatus = .unknown
+  var status: GRPCAuthenticationStatus = .unknown
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCAbnAmroMigrationRequest {
+struct GRPCAbnAmroMigrationRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var smsOtpVerificationToken: String = String()
+  var smsOtpVerificationToken: String = String()
 
-  public var pin6: String = String()
+  var pin6: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCAbnAmroMigrationResponse {
+struct GRPCAbnAmroMigrationResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCPingRequest {
+struct GRPCPingRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var message: String = String()
+  var message: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCPingResponse {
+struct GRPCPingResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var message: String = String()
+  var message: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCSelectInsightActionRequest {
+struct GRPCSelectInsightActionRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var insightID: String = String()
+  var insightID: String = String()
 
-  public var userID: String = String()
+  var userID: String = String()
 
-  public var actionGroup: GRPCInsightAction.Group = .unknown
+  var actionGroup: GRPCInsightAction.Group = .unknown
 
-  public var actionMethod: GRPCInsightAction.Method = .unknown
+  var actionMethod: GRPCInsightAction.Method = .unknown
 
-  public var label: String = String()
+  var label: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCSelectInsightActionResponse {
+struct GRPCSelectInsightActionResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCListPropertiesRequest {
+struct GRPCListPropertiesRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCListMarketsRequest {
+struct GRPCListMarketsRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCListMarketsResponse {
+struct GRPCListMarketsResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var markets: [GRPCMarket] = []
+  var markets: [GRPCMarket] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCListPropertiesResponse {
+struct GRPCListPropertiesResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var properties: [GRPCProperty] = []
+  var properties: [GRPCProperty] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCGetPropertyRequest {
+struct GRPCGetPropertyRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var propertyID: String = String()
+  var propertyID: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCGetPropertyResponse {
+struct GRPCGetPropertyResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var property: GRPCProperty {
+  var property: GRPCProperty {
     get {return _storage._property ?? GRPCProperty()}
     set {_uniqueStorage()._property = newValue}
   }
   /// Returns true if `property` has been explicitly set.
-  public var hasProperty: Bool {return _storage._property != nil}
+  var hasProperty: Bool {return _storage._property != nil}
   /// Clears the value of `property`. Subsequent reads from it will return its default value.
-  public mutating func clearProperty() {_uniqueStorage()._property = nil}
+  mutating func clearProperty() {_uniqueStorage()._property = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCUpdatePropertyRequest {
+struct GRPCUpdatePropertyRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var propertyID: String = String()
+  var propertyID: String = String()
 
-  public var numberOfRooms: Int32 = 0
+  var numberOfRooms: Int32 = 0
 
-  public var numberOfSquareMeters: Int32 = 0
+  var numberOfSquareMeters: Int32 = 0
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCUpdatePropertyResponse {
+struct GRPCUpdatePropertyResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var property: GRPCProperty {
+  var property: GRPCProperty {
     get {return _storage._property ?? GRPCProperty()}
     set {_uniqueStorage()._property = newValue}
   }
   /// Returns true if `property` has been explicitly set.
-  public var hasProperty: Bool {return _storage._property != nil}
+  var hasProperty: Bool {return _storage._property != nil}
   /// Clears the value of `property`. Subsequent reads from it will return its default value.
-  public mutating func clearProperty() {_uniqueStorage()._property = nil}
+  mutating func clearProperty() {_uniqueStorage()._property = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCDeleteValuationRequest {
+struct GRPCDeleteValuationRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var propertyID: String = String()
+  var propertyID: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCDeleteValuationResponse {
+struct GRPCDeleteValuationResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var property: GRPCProperty {
+  var property: GRPCProperty {
     get {return _storage._property ?? GRPCProperty()}
     set {_uniqueStorage()._property = newValue}
   }
   /// Returns true if `property` has been explicitly set.
-  public var hasProperty: Bool {return _storage._property != nil}
+  var hasProperty: Bool {return _storage._property != nil}
   /// Clears the value of `property`. Subsequent reads from it will return its default value.
-  public mutating func clearProperty() {_uniqueStorage()._property = nil}
+  mutating func clearProperty() {_uniqueStorage()._property = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCGetValuationEventsRequest {
+struct GRPCGetValuationEventsRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var propertyID: String = String()
+  var propertyID: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCGetValuationSummaryRequest {
+struct GRPCGetValuationSummaryRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var propertyID: String = String()
+  var propertyID: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCGetValuationEventsResponse {
+struct GRPCGetValuationEventsResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var valuationEvents: [GRPCPropertyValuationEvent] = []
+  var valuationEvents: [GRPCPropertyValuationEvent] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCGetValuationSummaryResponse {
+struct GRPCGetValuationSummaryResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var valuationSummary: GRPCPropertyValuationSummary {
+  var valuationSummary: GRPCPropertyValuationSummary {
     get {return _storage._valuationSummary ?? GRPCPropertyValuationSummary()}
     set {_uniqueStorage()._valuationSummary = newValue}
   }
   /// Returns true if `valuationSummary` has been explicitly set.
-  public var hasValuationSummary: Bool {return _storage._valuationSummary != nil}
+  var hasValuationSummary: Bool {return _storage._valuationSummary != nil}
   /// Clears the value of `valuationSummary`. Subsequent reads from it will return its default value.
-  public mutating func clearValuationSummary() {_uniqueStorage()._valuationSummary = nil}
+  mutating func clearValuationSummary() {_uniqueStorage()._valuationSummary = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCListInsightsRequest {
+struct GRPCListInsightsRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCListInsightsResponse {
+struct GRPCListInsightsResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var insights: [GRPCInsight] = []
+  var insights: [GRPCInsight] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCListArchivedInsightsResponse {
+struct GRPCListArchivedInsightsResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var insights: [GRPCArchivedInsight] = []
+  var insights: [GRPCArchivedInsight] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCListAuthenticationKeysRequest {
+struct GRPCListAuthenticationKeysRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCListAuthenticationKeysResponse {
+struct GRPCListAuthenticationKeysResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var authenticationKeys: [GRPCAuthenticationKey] = []
+  var authenticationKeys: [GRPCAuthenticationKey] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCStoreAuthenticationKeyRequest {
+struct GRPCStoreAuthenticationKeyRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var authenticationToken: String = String()
+  var authenticationToken: String = String()
 
-  public var keyType: GRPCAuthenticationKeyType = .keyTypeUnknown
+  var keyType: GRPCAuthenticationKeyType = .keyTypeUnknown
 
-  public var key: String = String()
+  var key: String = String()
 
-  public var source: GRPCAuthenticationSource = .unknown
+  var source: GRPCAuthenticationSource = .unknown
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCStoreAuthenticationKeyResponse {
+struct GRPCStoreAuthenticationKeyResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var keyID: String = String()
+  var keyID: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCDeleteAuthenticationKeyRequest {
+struct GRPCDeleteAuthenticationKeyRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var keyID: String = String()
+  var keyID: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCDeleteAuthenticationKeyResponse {
+struct GRPCDeleteAuthenticationKeyResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCGetAuthenticationChallengeRequest {
+struct GRPCGetAuthenticationChallengeRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var keyID: String = String()
+  var keyID: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCGetAuthenticationChallengeResponse {
+struct GRPCGetAuthenticationChallengeResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var challenge: String = String()
+  var challenge: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCSignedChallengeAuthenticationRequest {
+struct GRPCSignedChallengeAuthenticationRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var signedChallenge: String = String()
+  var signedChallenge: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCSignedChallengeAuthenticationResponse {
+struct GRPCSignedChallengeAuthenticationResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var authenticationToken: String = String()
+  var authenticationToken: String = String()
 
-  public var status: GRPCAuthenticationStatus = .unknown
+  var status: GRPCAuthenticationStatus = .unknown
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCAbnAmroAuthenticatePhoneNumberRequest {
+struct GRPCAbnAmroAuthenticatePhoneNumberRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var smsOtpVerificationToken: String = String()
+  var smsOtpVerificationToken: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCAbnAmroAuthenticatePhoneNumberResponse {
+struct GRPCAbnAmroAuthenticatePhoneNumberResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   /// This access token will give access to credentials:read and user.password:reset scopes.
-  public var accessToken: String = String()
+  var accessToken: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCInitializePin6ResetByThirdPartyAppRequest {
+struct GRPCInitializePin6ResetByThirdPartyAppRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var credentialsID: String = String()
+  var credentialsID: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCInitializePin6ResetByThirdPartyAppResponse {
+struct GRPCInitializePin6ResetByThirdPartyAppResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var resetPin6Token: String {
+  var resetPin6Token: String {
     get {return _storage._resetPin6Token}
     set {_uniqueStorage()._resetPin6Token = newValue}
   }
 
-  public var thirdPartyAppAuthentication: GRPCThirdPartyAppAuthentication {
+  var thirdPartyAppAuthentication: GRPCThirdPartyAppAuthentication {
     get {return _storage._thirdPartyAppAuthentication ?? GRPCThirdPartyAppAuthentication()}
     set {_uniqueStorage()._thirdPartyAppAuthentication = newValue}
   }
   /// Returns true if `thirdPartyAppAuthentication` has been explicitly set.
-  public var hasThirdPartyAppAuthentication: Bool {return _storage._thirdPartyAppAuthentication != nil}
+  var hasThirdPartyAppAuthentication: Bool {return _storage._thirdPartyAppAuthentication != nil}
   /// Clears the value of `thirdPartyAppAuthentication`. Subsequent reads from it will return its default value.
-  public mutating func clearThirdPartyAppAuthentication() {_uniqueStorage()._thirdPartyAppAuthentication = nil}
+  mutating func clearThirdPartyAppAuthentication() {_uniqueStorage()._thirdPartyAppAuthentication = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCListRecurringTransactionsRequest {
+struct GRPCListRecurringTransactionsRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var start: SwiftProtobuf.Google_Protobuf_Timestamp {
+  var start: SwiftProtobuf.Google_Protobuf_Timestamp {
     get {return _storage._start ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
     set {_uniqueStorage()._start = newValue}
   }
   /// Returns true if `start` has been explicitly set.
-  public var hasStart: Bool {return _storage._start != nil}
+  var hasStart: Bool {return _storage._start != nil}
   /// Clears the value of `start`. Subsequent reads from it will return its default value.
-  public mutating func clearStart() {_uniqueStorage()._start = nil}
+  mutating func clearStart() {_uniqueStorage()._start = nil}
 
-  public var end: SwiftProtobuf.Google_Protobuf_Timestamp {
+  var end: SwiftProtobuf.Google_Protobuf_Timestamp {
     get {return _storage._end ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
     set {_uniqueStorage()._end = newValue}
   }
   /// Returns true if `end` has been explicitly set.
-  public var hasEnd: Bool {return _storage._end != nil}
+  var hasEnd: Bool {return _storage._end != nil}
   /// Clears the value of `end`. Subsequent reads from it will return its default value.
-  public mutating func clearEnd() {_uniqueStorage()._end = nil}
+  mutating func clearEnd() {_uniqueStorage()._end = nil}
 
-  public var transactionType: GRPCRecurringTransaction.Transaction.TypeEnum {
+  var transactionType: GRPCRecurringTransaction.Transaction.TypeEnum {
     get {return _storage._transactionType}
     set {_uniqueStorage()._transactionType = newValue}
   }
 
-  public var categoryType: GRPCRecurringTransaction.Category.TypeEnum {
+  var categoryType: GRPCRecurringTransaction.Category.TypeEnum {
     get {return _storage._categoryType}
     set {_uniqueStorage()._categoryType = newValue}
   }
 
-  public var groupIds: [String] {
+  var groupIds: [String] {
     get {return _storage._groupIds}
     set {_uniqueStorage()._groupIds = newValue}
   }
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCListRecurringTransactionsResponse {
+struct GRPCListRecurringTransactionsResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var transactions: [GRPCRecurringTransaction.Transaction] = []
+  var transactions: [GRPCRecurringTransaction.Transaction] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCListRecurringTransactionPeriodSummariesRequest {
+struct GRPCListRecurringTransactionPeriodSummariesRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var start: SwiftProtobuf.Google_Protobuf_Timestamp {
+  var start: SwiftProtobuf.Google_Protobuf_Timestamp {
     get {return _storage._start ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
     set {_uniqueStorage()._start = newValue}
   }
   /// Returns true if `start` has been explicitly set.
-  public var hasStart: Bool {return _storage._start != nil}
+  var hasStart: Bool {return _storage._start != nil}
   /// Clears the value of `start`. Subsequent reads from it will return its default value.
-  public mutating func clearStart() {_uniqueStorage()._start = nil}
+  mutating func clearStart() {_uniqueStorage()._start = nil}
 
-  public var end: SwiftProtobuf.Google_Protobuf_Timestamp {
+  var end: SwiftProtobuf.Google_Protobuf_Timestamp {
     get {return _storage._end ?? SwiftProtobuf.Google_Protobuf_Timestamp()}
     set {_uniqueStorage()._end = newValue}
   }
   /// Returns true if `end` has been explicitly set.
-  public var hasEnd: Bool {return _storage._end != nil}
+  var hasEnd: Bool {return _storage._end != nil}
   /// Clears the value of `end`. Subsequent reads from it will return its default value.
-  public mutating func clearEnd() {_uniqueStorage()._end = nil}
+  mutating func clearEnd() {_uniqueStorage()._end = nil}
 
-  public var transactionType: GRPCRecurringTransaction.Transaction.TypeEnum {
+  var transactionType: GRPCRecurringTransaction.Transaction.TypeEnum {
     get {return _storage._transactionType}
     set {_uniqueStorage()._transactionType = newValue}
   }
 
-  public var categoryType: GRPCRecurringTransaction.Category.TypeEnum {
+  var categoryType: GRPCRecurringTransaction.Category.TypeEnum {
     get {return _storage._categoryType}
     set {_uniqueStorage()._categoryType = newValue}
   }
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCListRecurringTransactionPeriodSummariesResponse {
+struct GRPCListRecurringTransactionPeriodSummariesResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var periodSummaries: [GRPCRecurringTransaction.PeriodSummary] = []
+  var periodSummaries: [GRPCRecurringTransaction.PeriodSummary] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCListRecurringTransactionGroupsRequest {
+struct GRPCListRecurringTransactionGroupsRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var groupState: GRPCRecurringTransaction.Group.State = .unknown
+  var groupState: GRPCRecurringTransaction.Group.State = .unknown
 
-  public var categoryType: GRPCRecurringTransaction.Category.TypeEnum = .unknown
+  var categoryType: GRPCRecurringTransaction.Category.TypeEnum = .unknown
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCListRecurringTransactionGroupsResponse {
+struct GRPCListRecurringTransactionGroupsResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var groups: [GRPCRecurringTransaction.Group] = []
+  var groups: [GRPCRecurringTransaction.Group] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCCreateRecurringTransactionGroupRequest {
+struct GRPCCreateRecurringTransactionGroupRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var transactionIds: [String] = []
+  var transactionIds: [String] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCCreateRecurringTransactionGroupResponse {
+struct GRPCCreateRecurringTransactionGroupResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var group: GRPCRecurringTransaction.Group {
+  var group: GRPCRecurringTransaction.Group {
     get {return _storage._group ?? GRPCRecurringTransaction.Group()}
     set {_uniqueStorage()._group = newValue}
   }
   /// Returns true if `group` has been explicitly set.
-  public var hasGroup: Bool {return _storage._group != nil}
+  var hasGroup: Bool {return _storage._group != nil}
   /// Clears the value of `group`. Subsequent reads from it will return its default value.
-  public mutating func clearGroup() {_uniqueStorage()._group = nil}
+  mutating func clearGroup() {_uniqueStorage()._group = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCExcludeRecurringTransactionFromGroupRequest {
+struct GRPCExcludeRecurringTransactionFromGroupRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var groupID: String = String()
+  var groupID: String = String()
 
-  public var transactionID: String = String()
+  var transactionID: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCExcludeRecurringTransactionFromGroupResponse {
+struct GRPCExcludeRecurringTransactionFromGroupResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCIncludeRecurringTransactionInGroupRequest {
+struct GRPCIncludeRecurringTransactionInGroupRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var groupID: String = String()
+  var groupID: String = String()
 
-  public var transactionID: String = String()
+  var transactionID: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCIncludeRecurringTransactionInGroupResponse {
+struct GRPCIncludeRecurringTransactionInGroupResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCDisableRecurringTransactionGroupRequest {
+struct GRPCDisableRecurringTransactionGroupRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var groupID: String = String()
+  var groupID: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCDisableRecurringTransactionGroupResponse {
+struct GRPCDisableRecurringTransactionGroupResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var group: GRPCRecurringTransaction.Group {
+  var group: GRPCRecurringTransaction.Group {
     get {return _storage._group ?? GRPCRecurringTransaction.Group()}
     set {_uniqueStorage()._group = newValue}
   }
   /// Returns true if `group` has been explicitly set.
-  public var hasGroup: Bool {return _storage._group != nil}
+  var hasGroup: Bool {return _storage._group != nil}
   /// Clears the value of `group`. Subsequent reads from it will return its default value.
-  public mutating func clearGroup() {_uniqueStorage()._group = nil}
+  mutating func clearGroup() {_uniqueStorage()._group = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCActivateRecurringTransactionGroupRequest {
+struct GRPCActivateRecurringTransactionGroupRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var groupID: String = String()
+  var groupID: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCActivateRecurringTransactionGroupResponse {
+struct GRPCActivateRecurringTransactionGroupResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var group: GRPCRecurringTransaction.Group {
+  var group: GRPCRecurringTransaction.Group {
     get {return _storage._group ?? GRPCRecurringTransaction.Group()}
     set {_uniqueStorage()._group = newValue}
   }
   /// Returns true if `group` has been explicitly set.
-  public var hasGroup: Bool {return _storage._group != nil}
+  var hasGroup: Bool {return _storage._group != nil}
   /// Clears the value of `group`. Subsequent reads from it will return its default value.
-  public mutating func clearGroup() {_uniqueStorage()._group = nil}
+  mutating func clearGroup() {_uniqueStorage()._group = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCUpdateRecurringTransactionGroupRequest {
+struct GRPCUpdateRecurringTransactionGroupRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var groupID: String = String()
+  var groupID: String = String()
 
-  public var name: String = String()
+  var name: String = String()
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCUpdateRecurringTransactionGroupResponse {
+struct GRPCUpdateRecurringTransactionGroupResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var group: GRPCRecurringTransaction.Group {
+  var group: GRPCRecurringTransaction.Group {
     get {return _storage._group ?? GRPCRecurringTransaction.Group()}
     set {_uniqueStorage()._group = newValue}
   }
   /// Returns true if `group` has been explicitly set.
-  public var hasGroup: Bool {return _storage._group != nil}
+  var hasGroup: Bool {return _storage._group != nil}
   /// Clears the value of `group`. Subsequent reads from it will return its default value.
-  public mutating func clearGroup() {_uniqueStorage()._group = nil}
+  mutating func clearGroup() {_uniqueStorage()._group = nil}
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct GRPCStoreTransferKycRequest {
+struct GRPCStoreTransferKycRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var compliant: Bool = false
+  var compliant: Bool = false
 
-  public var questions: [GRPCKycQuestion] = []
+  var questions: [GRPCKycQuestion] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCStoreTransferKycResponse {
+struct GRPCStoreTransferKycResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCGetTransferKycRequest {
+struct GRPCGetTransferKycRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCGetTransferKycResponse {
+struct GRPCGetTransferKycResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var compliant: Bool = false
+  var compliant: Bool = false
 
-  public var questions: [GRPCKycQuestion] = []
+  var questions: [GRPCKycQuestion] = []
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCIsTransferKycCompliantRequest {
+struct GRPCIsTransferKycCompliantRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCIsTransferKycCompliantResponse {
+struct GRPCIsTransferKycCompliantResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var provided: Bool = false
+  var provided: Bool = false
 
-  public var compliant: Bool = false
+  var compliant: Bool = false
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCThirdPartyCallbackRequest {
+struct GRPCThirdPartyCallbackRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var state: String = String()
+  var state: String = String()
 
-  public var parameters: Dictionary<String,String> = [:]
+  var parameters: Dictionary<String,String> = [:]
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
-public struct GRPCThirdPartyCallbackResponse {
+struct GRPCThirdPartyCallbackResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var unknownFields = SwiftProtobuf.UnknownStorage()
+  var unknownFields = SwiftProtobuf.UnknownStorage()
 
-  public init() {}
+  init() {}
 }
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
 extension GRPCListAccountsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListAccountsRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "ListAccountsRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListAccountsRequest, rhs: GRPCListAccountsRequest) -> Bool {
+  static func ==(lhs: GRPCListAccountsRequest, rhs: GRPCListAccountsRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCListAccountsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListAccountsResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ListAccountsResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "accounts"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.accounts)
@@ -5162,14 +5162,14 @@ extension GRPCListAccountsResponse: SwiftProtobuf.Message, SwiftProtobuf._Messag
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.accounts.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.accounts, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListAccountsResponse, rhs: GRPCListAccountsResponse) -> Bool {
+  static func ==(lhs: GRPCListAccountsResponse, rhs: GRPCListAccountsResponse) -> Bool {
     if lhs.accounts != rhs.accounts {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -5177,31 +5177,31 @@ extension GRPCListAccountsResponse: SwiftProtobuf.Message, SwiftProtobuf._Messag
 }
 
 extension GRPCListLoansRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListLoansRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "ListLoansRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListLoansRequest, rhs: GRPCListLoansRequest) -> Bool {
+  static func ==(lhs: GRPCListLoansRequest, rhs: GRPCListLoansRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCListLoansResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListLoansResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ListLoansResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "loans"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.loans)
@@ -5210,14 +5210,14 @@ extension GRPCListLoansResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.loans.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.loans, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListLoansResponse, rhs: GRPCListLoansResponse) -> Bool {
+  static func ==(lhs: GRPCListLoansResponse, rhs: GRPCListLoansResponse) -> Bool {
     if lhs.loans != rhs.loans {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -5225,8 +5225,8 @@ extension GRPCListLoansResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
 }
 
 extension GRPCUpdateAccountRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "UpdateAccountRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "UpdateAccountRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "account_id"),
     2: .same(proto: "name"),
     3: .same(proto: "type"),
@@ -5267,7 +5267,7 @@ extension GRPCUpdateAccountRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -5285,7 +5285,7 @@ extension GRPCUpdateAccountRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if !_storage._accountID.isEmpty {
         try visitor.visitSingularStringField(value: _storage._accountID, fieldNumber: 1)
@@ -5312,7 +5312,7 @@ extension GRPCUpdateAccountRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCUpdateAccountRequest, rhs: GRPCUpdateAccountRequest) -> Bool {
+  static func ==(lhs: GRPCUpdateAccountRequest, rhs: GRPCUpdateAccountRequest) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -5334,8 +5334,8 @@ extension GRPCUpdateAccountRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
 }
 
 extension GRPCUpdateAccountResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "UpdateAccountResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "UpdateAccountResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "account"),
   ]
 
@@ -5358,7 +5358,7 @@ extension GRPCUpdateAccountResponse: SwiftProtobuf.Message, SwiftProtobuf._Messa
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -5370,7 +5370,7 @@ extension GRPCUpdateAccountResponse: SwiftProtobuf.Message, SwiftProtobuf._Messa
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._account {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -5379,7 +5379,7 @@ extension GRPCUpdateAccountResponse: SwiftProtobuf.Message, SwiftProtobuf._Messa
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCUpdateAccountResponse, rhs: GRPCUpdateAccountResponse) -> Bool {
+  static func ==(lhs: GRPCUpdateAccountResponse, rhs: GRPCUpdateAccountResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -5395,8 +5395,8 @@ extension GRPCUpdateAccountResponse: SwiftProtobuf.Message, SwiftProtobuf._Messa
 }
 
 extension GRPCListActivityHtmlRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListActivityHtmlRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ListActivityHtmlRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "offset"),
     2: .same(proto: "limit"),
     3: .standard(proto: "screen_width"),
@@ -5404,7 +5404,7 @@ extension GRPCListActivityHtmlRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     5: .same(proto: "theme"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularUInt32Field(value: &self.offset)
@@ -5417,7 +5417,7 @@ extension GRPCListActivityHtmlRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.offset != 0 {
       try visitor.visitSingularUInt32Field(value: self.offset, fieldNumber: 1)
     }
@@ -5436,7 +5436,7 @@ extension GRPCListActivityHtmlRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListActivityHtmlRequest, rhs: GRPCListActivityHtmlRequest) -> Bool {
+  static func ==(lhs: GRPCListActivityHtmlRequest, rhs: GRPCListActivityHtmlRequest) -> Bool {
     if lhs.offset != rhs.offset {return false}
     if lhs.limit != rhs.limit {return false}
     if lhs.screenWidth != rhs.screenWidth {return false}
@@ -5448,15 +5448,15 @@ extension GRPCListActivityHtmlRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
 }
 
 extension GRPCListActivityHtmlResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListActivityHtmlResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ListActivityHtmlResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "html_page"),
     2: .standard(proto: "next_page_offset"),
     3: .standard(proto: "activity_keys"),
     4: .standard(proto: "feed_activity_identifiers_list"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.htmlPage)
@@ -5468,7 +5468,7 @@ extension GRPCListActivityHtmlResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.htmlPage.isEmpty {
       try visitor.visitSingularStringField(value: self.htmlPage, fieldNumber: 1)
     }
@@ -5484,7 +5484,7 @@ extension GRPCListActivityHtmlResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListActivityHtmlResponse, rhs: GRPCListActivityHtmlResponse) -> Bool {
+  static func ==(lhs: GRPCListActivityHtmlResponse, rhs: GRPCListActivityHtmlResponse) -> Bool {
     if lhs.htmlPage != rhs.htmlPage {return false}
     if lhs.nextPageOffset != rhs.nextPageOffset {return false}
     if lhs.activityKeys != rhs.activityKeys {return false}
@@ -5495,12 +5495,12 @@ extension GRPCListActivityHtmlResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
 }
 
 extension GRPCActivityHtmlHeadRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ActivityHtmlHeadRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ActivityHtmlHeadRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "theme"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularEnumField(value: &self.theme)
@@ -5509,14 +5509,14 @@ extension GRPCActivityHtmlHeadRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.theme != .unknown {
       try visitor.visitSingularEnumField(value: self.theme, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCActivityHtmlHeadRequest, rhs: GRPCActivityHtmlHeadRequest) -> Bool {
+  static func ==(lhs: GRPCActivityHtmlHeadRequest, rhs: GRPCActivityHtmlHeadRequest) -> Bool {
     if lhs.theme != rhs.theme {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -5524,14 +5524,14 @@ extension GRPCActivityHtmlHeadRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
 }
 
 extension GRPCActivityHtmlHeadResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ActivityHtmlHeadResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ActivityHtmlHeadResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "css"),
     2: .same(proto: "metadata"),
     3: .same(proto: "scripts"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.css)
@@ -5542,7 +5542,7 @@ extension GRPCActivityHtmlHeadResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.css.isEmpty {
       try visitor.visitSingularStringField(value: self.css, fieldNumber: 1)
     }
@@ -5555,7 +5555,7 @@ extension GRPCActivityHtmlHeadResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCActivityHtmlHeadResponse, rhs: GRPCActivityHtmlHeadResponse) -> Bool {
+  static func ==(lhs: GRPCActivityHtmlHeadResponse, rhs: GRPCActivityHtmlHeadResponse) -> Bool {
     if lhs.css != rhs.css {return false}
     if lhs.metadata != rhs.metadata {return false}
     if lhs.scripts != rhs.scripts {return false}
@@ -5565,8 +5565,8 @@ extension GRPCActivityHtmlHeadResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
 }
 
 extension GRPCCreateBudgetRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "CreateBudgetRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "CreateBudgetRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "name"),
     2: .same(proto: "description"),
     3: .same(proto: "amount"),
@@ -5602,7 +5602,7 @@ extension GRPCCreateBudgetRequest: SwiftProtobuf.Message, SwiftProtobuf._Message
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -5633,7 +5633,7 @@ extension GRPCCreateBudgetRequest: SwiftProtobuf.Message, SwiftProtobuf._Message
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if !_storage._name.isEmpty {
         try visitor.visitSingularStringField(value: _storage._name, fieldNumber: 1)
@@ -5658,7 +5658,7 @@ extension GRPCCreateBudgetRequest: SwiftProtobuf.Message, SwiftProtobuf._Message
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCCreateBudgetRequest, rhs: GRPCCreateBudgetRequest) -> Bool {
+  static func ==(lhs: GRPCCreateBudgetRequest, rhs: GRPCCreateBudgetRequest) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -5678,8 +5678,8 @@ extension GRPCCreateBudgetRequest: SwiftProtobuf.Message, SwiftProtobuf._Message
 }
 
 extension GRPCCreateBudgetResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "CreateBudgetResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "CreateBudgetResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "budget_specification"),
   ]
 
@@ -5702,7 +5702,7 @@ extension GRPCCreateBudgetResponse: SwiftProtobuf.Message, SwiftProtobuf._Messag
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -5714,7 +5714,7 @@ extension GRPCCreateBudgetResponse: SwiftProtobuf.Message, SwiftProtobuf._Messag
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._budgetSpecification {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -5723,7 +5723,7 @@ extension GRPCCreateBudgetResponse: SwiftProtobuf.Message, SwiftProtobuf._Messag
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCCreateBudgetResponse, rhs: GRPCCreateBudgetResponse) -> Bool {
+  static func ==(lhs: GRPCCreateBudgetResponse, rhs: GRPCCreateBudgetResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -5739,8 +5739,8 @@ extension GRPCCreateBudgetResponse: SwiftProtobuf.Message, SwiftProtobuf._Messag
 }
 
 extension GRPCUpdateBudgetRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "UpdateBudgetRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "UpdateBudgetRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "budget_id"),
     2: .same(proto: "name"),
     3: .same(proto: "description"),
@@ -5779,7 +5779,7 @@ extension GRPCUpdateBudgetRequest: SwiftProtobuf.Message, SwiftProtobuf._Message
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -5811,7 +5811,7 @@ extension GRPCUpdateBudgetRequest: SwiftProtobuf.Message, SwiftProtobuf._Message
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if !_storage._budgetID.isEmpty {
         try visitor.visitSingularStringField(value: _storage._budgetID, fieldNumber: 1)
@@ -5839,7 +5839,7 @@ extension GRPCUpdateBudgetRequest: SwiftProtobuf.Message, SwiftProtobuf._Message
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCUpdateBudgetRequest, rhs: GRPCUpdateBudgetRequest) -> Bool {
+  static func ==(lhs: GRPCUpdateBudgetRequest, rhs: GRPCUpdateBudgetRequest) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -5860,8 +5860,8 @@ extension GRPCUpdateBudgetRequest: SwiftProtobuf.Message, SwiftProtobuf._Message
 }
 
 extension GRPCUpdateBudgetResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "UpdateBudgetResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "UpdateBudgetResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "budget_specification"),
   ]
 
@@ -5884,7 +5884,7 @@ extension GRPCUpdateBudgetResponse: SwiftProtobuf.Message, SwiftProtobuf._Messag
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -5896,7 +5896,7 @@ extension GRPCUpdateBudgetResponse: SwiftProtobuf.Message, SwiftProtobuf._Messag
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._budgetSpecification {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -5905,7 +5905,7 @@ extension GRPCUpdateBudgetResponse: SwiftProtobuf.Message, SwiftProtobuf._Messag
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCUpdateBudgetResponse, rhs: GRPCUpdateBudgetResponse) -> Bool {
+  static func ==(lhs: GRPCUpdateBudgetResponse, rhs: GRPCUpdateBudgetResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -5921,12 +5921,12 @@ extension GRPCUpdateBudgetResponse: SwiftProtobuf.Message, SwiftProtobuf._Messag
 }
 
 extension GRPCDeleteBudgetRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "DeleteBudgetRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "DeleteBudgetRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "budget_id"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.budgetID)
@@ -5935,14 +5935,14 @@ extension GRPCDeleteBudgetRequest: SwiftProtobuf.Message, SwiftProtobuf._Message
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.budgetID.isEmpty {
       try visitor.visitSingularStringField(value: self.budgetID, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCDeleteBudgetRequest, rhs: GRPCDeleteBudgetRequest) -> Bool {
+  static func ==(lhs: GRPCDeleteBudgetRequest, rhs: GRPCDeleteBudgetRequest) -> Bool {
     if lhs.budgetID != rhs.budgetID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -5950,31 +5950,31 @@ extension GRPCDeleteBudgetRequest: SwiftProtobuf.Message, SwiftProtobuf._Message
 }
 
 extension GRPCDeleteBudgetResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "DeleteBudgetResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "DeleteBudgetResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCDeleteBudgetResponse, rhs: GRPCDeleteBudgetResponse) -> Bool {
+  static func ==(lhs: GRPCDeleteBudgetResponse, rhs: GRPCDeleteBudgetResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCArchiveBudgetRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ArchiveBudgetRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ArchiveBudgetRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "budget_id"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.budgetID)
@@ -5983,14 +5983,14 @@ extension GRPCArchiveBudgetRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.budgetID.isEmpty {
       try visitor.visitSingularStringField(value: self.budgetID, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCArchiveBudgetRequest, rhs: GRPCArchiveBudgetRequest) -> Bool {
+  static func ==(lhs: GRPCArchiveBudgetRequest, rhs: GRPCArchiveBudgetRequest) -> Bool {
     if lhs.budgetID != rhs.budgetID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -5998,8 +5998,8 @@ extension GRPCArchiveBudgetRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
 }
 
 extension GRPCArchiveBudgetResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ArchiveBudgetResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ArchiveBudgetResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "budget_specification"),
   ]
 
@@ -6022,7 +6022,7 @@ extension GRPCArchiveBudgetResponse: SwiftProtobuf.Message, SwiftProtobuf._Messa
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -6034,7 +6034,7 @@ extension GRPCArchiveBudgetResponse: SwiftProtobuf.Message, SwiftProtobuf._Messa
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._budgetSpecification {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -6043,7 +6043,7 @@ extension GRPCArchiveBudgetResponse: SwiftProtobuf.Message, SwiftProtobuf._Messa
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCArchiveBudgetResponse, rhs: GRPCArchiveBudgetResponse) -> Bool {
+  static func ==(lhs: GRPCArchiveBudgetResponse, rhs: GRPCArchiveBudgetResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -6059,12 +6059,12 @@ extension GRPCArchiveBudgetResponse: SwiftProtobuf.Message, SwiftProtobuf._Messa
 }
 
 extension GRPCListBudgetsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListBudgetsRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ListBudgetsRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "include_archived"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularBoolField(value: &self.includeArchived)
@@ -6073,14 +6073,14 @@ extension GRPCListBudgetsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.includeArchived != false {
       try visitor.visitSingularBoolField(value: self.includeArchived, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListBudgetsRequest, rhs: GRPCListBudgetsRequest) -> Bool {
+  static func ==(lhs: GRPCListBudgetsRequest, rhs: GRPCListBudgetsRequest) -> Bool {
     if lhs.includeArchived != rhs.includeArchived {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -6088,12 +6088,12 @@ extension GRPCListBudgetsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageI
 }
 
 extension GRPCListBudgetsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListBudgetsResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ListBudgetsResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "budget_summaries"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.budgetSummaries)
@@ -6102,14 +6102,14 @@ extension GRPCListBudgetsResponse: SwiftProtobuf.Message, SwiftProtobuf._Message
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.budgetSummaries.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.budgetSummaries, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListBudgetsResponse, rhs: GRPCListBudgetsResponse) -> Bool {
+  static func ==(lhs: GRPCListBudgetsResponse, rhs: GRPCListBudgetsResponse) -> Bool {
     if lhs.budgetSummaries != rhs.budgetSummaries {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -6117,8 +6117,8 @@ extension GRPCListBudgetsResponse: SwiftProtobuf.Message, SwiftProtobuf._Message
 }
 
 extension GRPCGetBudgetPeriodDetailsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GetBudgetPeriodDetailsRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "GetBudgetPeriodDetailsRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "budget_id"),
     2: .same(proto: "start"),
     3: .same(proto: "end"),
@@ -6147,7 +6147,7 @@ extension GRPCGetBudgetPeriodDetailsRequest: SwiftProtobuf.Message, SwiftProtobu
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -6161,7 +6161,7 @@ extension GRPCGetBudgetPeriodDetailsRequest: SwiftProtobuf.Message, SwiftProtobu
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if !_storage._budgetID.isEmpty {
         try visitor.visitSingularStringField(value: _storage._budgetID, fieldNumber: 1)
@@ -6176,7 +6176,7 @@ extension GRPCGetBudgetPeriodDetailsRequest: SwiftProtobuf.Message, SwiftProtobu
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGetBudgetPeriodDetailsRequest, rhs: GRPCGetBudgetPeriodDetailsRequest) -> Bool {
+  static func ==(lhs: GRPCGetBudgetPeriodDetailsRequest, rhs: GRPCGetBudgetPeriodDetailsRequest) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -6194,8 +6194,8 @@ extension GRPCGetBudgetPeriodDetailsRequest: SwiftProtobuf.Message, SwiftProtobu
 }
 
 extension GRPCGetBudgetPeriodDetailsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GetBudgetPeriodDetailsResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "GetBudgetPeriodDetailsResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "budget_specification"),
     2: .same(proto: "start"),
     3: .same(proto: "end"),
@@ -6233,7 +6233,7 @@ extension GRPCGetBudgetPeriodDetailsResponse: SwiftProtobuf.Message, SwiftProtob
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -6250,7 +6250,7 @@ extension GRPCGetBudgetPeriodDetailsResponse: SwiftProtobuf.Message, SwiftProtob
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._budgetSpecification {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -6274,7 +6274,7 @@ extension GRPCGetBudgetPeriodDetailsResponse: SwiftProtobuf.Message, SwiftProtob
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGetBudgetPeriodDetailsResponse, rhs: GRPCGetBudgetPeriodDetailsResponse) -> Bool {
+  static func ==(lhs: GRPCGetBudgetPeriodDetailsResponse, rhs: GRPCGetBudgetPeriodDetailsResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -6295,8 +6295,8 @@ extension GRPCGetBudgetPeriodDetailsResponse: SwiftProtobuf.Message, SwiftProtob
 }
 
 extension GRPCGetBudgetTransactionsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GetBudgetTransactionsRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "GetBudgetTransactionsRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "budget_id"),
     2: .same(proto: "start"),
     3: .same(proto: "end"),
@@ -6325,7 +6325,7 @@ extension GRPCGetBudgetTransactionsRequest: SwiftProtobuf.Message, SwiftProtobuf
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -6339,7 +6339,7 @@ extension GRPCGetBudgetTransactionsRequest: SwiftProtobuf.Message, SwiftProtobuf
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if !_storage._budgetID.isEmpty {
         try visitor.visitSingularStringField(value: _storage._budgetID, fieldNumber: 1)
@@ -6354,7 +6354,7 @@ extension GRPCGetBudgetTransactionsRequest: SwiftProtobuf.Message, SwiftProtobuf
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGetBudgetTransactionsRequest, rhs: GRPCGetBudgetTransactionsRequest) -> Bool {
+  static func ==(lhs: GRPCGetBudgetTransactionsRequest, rhs: GRPCGetBudgetTransactionsRequest) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -6372,8 +6372,8 @@ extension GRPCGetBudgetTransactionsRequest: SwiftProtobuf.Message, SwiftProtobuf
 }
 
 extension GRPCGetBudgetTransactionsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GetBudgetTransactionsResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "GetBudgetTransactionsResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "start"),
     2: .same(proto: "end"),
     3: .same(proto: "transactions"),
@@ -6402,7 +6402,7 @@ extension GRPCGetBudgetTransactionsResponse: SwiftProtobuf.Message, SwiftProtobu
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -6416,7 +6416,7 @@ extension GRPCGetBudgetTransactionsResponse: SwiftProtobuf.Message, SwiftProtobu
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._start {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -6431,7 +6431,7 @@ extension GRPCGetBudgetTransactionsResponse: SwiftProtobuf.Message, SwiftProtobu
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGetBudgetTransactionsResponse, rhs: GRPCGetBudgetTransactionsResponse) -> Bool {
+  static func ==(lhs: GRPCGetBudgetTransactionsResponse, rhs: GRPCGetBudgetTransactionsResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -6449,14 +6449,14 @@ extension GRPCGetBudgetTransactionsResponse: SwiftProtobuf.Message, SwiftProtobu
 }
 
 extension GRPCCreateCredentialRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "CreateCredentialRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "CreateCredentialRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "provider_name"),
     2: .same(proto: "type"),
     3: .same(proto: "fields"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.providerName)
@@ -6467,7 +6467,7 @@ extension GRPCCreateCredentialRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.providerName.isEmpty {
       try visitor.visitSingularStringField(value: self.providerName, fieldNumber: 1)
     }
@@ -6480,7 +6480,7 @@ extension GRPCCreateCredentialRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCCreateCredentialRequest, rhs: GRPCCreateCredentialRequest) -> Bool {
+  static func ==(lhs: GRPCCreateCredentialRequest, rhs: GRPCCreateCredentialRequest) -> Bool {
     if lhs.providerName != rhs.providerName {return false}
     if lhs.type != rhs.type {return false}
     if lhs.fields != rhs.fields {return false}
@@ -6490,8 +6490,8 @@ extension GRPCCreateCredentialRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
 }
 
 extension GRPCCreateCredentialResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "CreateCredentialResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "CreateCredentialResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "credential"),
   ]
 
@@ -6514,7 +6514,7 @@ extension GRPCCreateCredentialResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -6526,7 +6526,7 @@ extension GRPCCreateCredentialResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._credential {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -6535,7 +6535,7 @@ extension GRPCCreateCredentialResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCCreateCredentialResponse, rhs: GRPCCreateCredentialResponse) -> Bool {
+  static func ==(lhs: GRPCCreateCredentialResponse, rhs: GRPCCreateCredentialResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -6551,8 +6551,8 @@ extension GRPCCreateCredentialResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
 }
 
 extension GRPCUpdateCredentialResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "UpdateCredentialResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "UpdateCredentialResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "credential"),
   ]
 
@@ -6575,7 +6575,7 @@ extension GRPCUpdateCredentialResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -6587,7 +6587,7 @@ extension GRPCUpdateCredentialResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._credential {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -6596,7 +6596,7 @@ extension GRPCUpdateCredentialResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCUpdateCredentialResponse, rhs: GRPCUpdateCredentialResponse) -> Bool {
+  static func ==(lhs: GRPCUpdateCredentialResponse, rhs: GRPCUpdateCredentialResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -6612,13 +6612,13 @@ extension GRPCUpdateCredentialResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
 }
 
 extension GRPCUpdateCredentialRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "UpdateCredentialRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "UpdateCredentialRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "credential_id"),
     2: .same(proto: "fields"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.credentialID)
@@ -6628,7 +6628,7 @@ extension GRPCUpdateCredentialRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.credentialID.isEmpty {
       try visitor.visitSingularStringField(value: self.credentialID, fieldNumber: 1)
     }
@@ -6638,7 +6638,7 @@ extension GRPCUpdateCredentialRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCUpdateCredentialRequest, rhs: GRPCUpdateCredentialRequest) -> Bool {
+  static func ==(lhs: GRPCUpdateCredentialRequest, rhs: GRPCUpdateCredentialRequest) -> Bool {
     if lhs.credentialID != rhs.credentialID {return false}
     if lhs.fields != rhs.fields {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -6647,12 +6647,12 @@ extension GRPCUpdateCredentialRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
 }
 
 extension GRPCRefreshCredentialsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "RefreshCredentialsRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "RefreshCredentialsRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "credential_ids"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedStringField(value: &self.credentialIds)
@@ -6661,14 +6661,14 @@ extension GRPCRefreshCredentialsRequest: SwiftProtobuf.Message, SwiftProtobuf._M
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.credentialIds.isEmpty {
       try visitor.visitRepeatedStringField(value: self.credentialIds, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCRefreshCredentialsRequest, rhs: GRPCRefreshCredentialsRequest) -> Bool {
+  static func ==(lhs: GRPCRefreshCredentialsRequest, rhs: GRPCRefreshCredentialsRequest) -> Bool {
     if lhs.credentialIds != rhs.credentialIds {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -6676,31 +6676,31 @@ extension GRPCRefreshCredentialsRequest: SwiftProtobuf.Message, SwiftProtobuf._M
 }
 
 extension GRPCRefreshCredentialsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "RefreshCredentialsResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "RefreshCredentialsResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCRefreshCredentialsResponse, rhs: GRPCRefreshCredentialsResponse) -> Bool {
+  static func ==(lhs: GRPCRefreshCredentialsResponse, rhs: GRPCRefreshCredentialsResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCManualAuthenticationRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ManualAuthenticationRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ManualAuthenticationRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "credential_ids"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.credentialIds)
@@ -6709,14 +6709,14 @@ extension GRPCManualAuthenticationRequest: SwiftProtobuf.Message, SwiftProtobuf.
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.credentialIds.isEmpty {
       try visitor.visitSingularStringField(value: self.credentialIds, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCManualAuthenticationRequest, rhs: GRPCManualAuthenticationRequest) -> Bool {
+  static func ==(lhs: GRPCManualAuthenticationRequest, rhs: GRPCManualAuthenticationRequest) -> Bool {
     if lhs.credentialIds != rhs.credentialIds {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -6724,31 +6724,31 @@ extension GRPCManualAuthenticationRequest: SwiftProtobuf.Message, SwiftProtobuf.
 }
 
 extension GRPCManualAuthenticationResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ManualAuthenticationResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "ManualAuthenticationResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCManualAuthenticationResponse, rhs: GRPCManualAuthenticationResponse) -> Bool {
+  static func ==(lhs: GRPCManualAuthenticationResponse, rhs: GRPCManualAuthenticationResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCDeleteCredentialRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "DeleteCredentialRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "DeleteCredentialRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "credential_id"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.credentialID)
@@ -6757,14 +6757,14 @@ extension GRPCDeleteCredentialRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.credentialID.isEmpty {
       try visitor.visitSingularStringField(value: self.credentialID, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCDeleteCredentialRequest, rhs: GRPCDeleteCredentialRequest) -> Bool {
+  static func ==(lhs: GRPCDeleteCredentialRequest, rhs: GRPCDeleteCredentialRequest) -> Bool {
     if lhs.credentialID != rhs.credentialID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -6772,31 +6772,31 @@ extension GRPCDeleteCredentialRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
 }
 
 extension GRPCDeleteCredentialResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "DeleteCredentialResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "DeleteCredentialResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCDeleteCredentialResponse, rhs: GRPCDeleteCredentialResponse) -> Bool {
+  static func ==(lhs: GRPCDeleteCredentialResponse, rhs: GRPCDeleteCredentialResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCEnableCredentialRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "EnableCredentialRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "EnableCredentialRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "credential_id"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.credentialID)
@@ -6805,14 +6805,14 @@ extension GRPCEnableCredentialRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.credentialID.isEmpty {
       try visitor.visitSingularStringField(value: self.credentialID, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCEnableCredentialRequest, rhs: GRPCEnableCredentialRequest) -> Bool {
+  static func ==(lhs: GRPCEnableCredentialRequest, rhs: GRPCEnableCredentialRequest) -> Bool {
     if lhs.credentialID != rhs.credentialID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -6820,31 +6820,31 @@ extension GRPCEnableCredentialRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
 }
 
 extension GRPCEnableCredentialResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "EnableCredentialResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "EnableCredentialResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCEnableCredentialResponse, rhs: GRPCEnableCredentialResponse) -> Bool {
+  static func ==(lhs: GRPCEnableCredentialResponse, rhs: GRPCEnableCredentialResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCDisableCredentialRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "DisableCredentialRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "DisableCredentialRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "credential_id"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.credentialID)
@@ -6853,14 +6853,14 @@ extension GRPCDisableCredentialRequest: SwiftProtobuf.Message, SwiftProtobuf._Me
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.credentialID.isEmpty {
       try visitor.visitSingularStringField(value: self.credentialID, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCDisableCredentialRequest, rhs: GRPCDisableCredentialRequest) -> Bool {
+  static func ==(lhs: GRPCDisableCredentialRequest, rhs: GRPCDisableCredentialRequest) -> Bool {
     if lhs.credentialID != rhs.credentialID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -6868,34 +6868,34 @@ extension GRPCDisableCredentialRequest: SwiftProtobuf.Message, SwiftProtobuf._Me
 }
 
 extension GRPCDisableCredentialResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "DisableCredentialResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "DisableCredentialResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCDisableCredentialResponse, rhs: GRPCDisableCredentialResponse) -> Bool {
+  static func ==(lhs: GRPCDisableCredentialResponse, rhs: GRPCDisableCredentialResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCRegisterPushNotificationTokenRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "RegisterPushNotificationTokenRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "RegisterPushNotificationTokenRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "device_id"),
     2: .standard(proto: "notification_token"),
     3: .standard(proto: "notification_public_key"),
     4: .standard(proto: "app_id"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.deviceID)
@@ -6907,7 +6907,7 @@ extension GRPCRegisterPushNotificationTokenRequest: SwiftProtobuf.Message, Swift
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.deviceID.isEmpty {
       try visitor.visitSingularStringField(value: self.deviceID, fieldNumber: 1)
     }
@@ -6923,7 +6923,7 @@ extension GRPCRegisterPushNotificationTokenRequest: SwiftProtobuf.Message, Swift
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCRegisterPushNotificationTokenRequest, rhs: GRPCRegisterPushNotificationTokenRequest) -> Bool {
+  static func ==(lhs: GRPCRegisterPushNotificationTokenRequest, rhs: GRPCRegisterPushNotificationTokenRequest) -> Bool {
     if lhs.deviceID != rhs.deviceID {return false}
     if lhs.notificationToken != rhs.notificationToken {return false}
     if lhs.notificationPublicKey != rhs.notificationPublicKey {return false}
@@ -6934,13 +6934,13 @@ extension GRPCRegisterPushNotificationTokenRequest: SwiftProtobuf.Message, Swift
 }
 
 extension GRPCGetDeviceConfigurationRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GetDeviceConfigurationRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "GetDeviceConfigurationRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "device_id"),
     2: .standard(proto: "market_code"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.deviceID)
@@ -6950,7 +6950,7 @@ extension GRPCGetDeviceConfigurationRequest: SwiftProtobuf.Message, SwiftProtobu
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.deviceID.isEmpty {
       try visitor.visitSingularStringField(value: self.deviceID, fieldNumber: 1)
     }
@@ -6960,7 +6960,7 @@ extension GRPCGetDeviceConfigurationRequest: SwiftProtobuf.Message, SwiftProtobu
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGetDeviceConfigurationRequest, rhs: GRPCGetDeviceConfigurationRequest) -> Bool {
+  static func ==(lhs: GRPCGetDeviceConfigurationRequest, rhs: GRPCGetDeviceConfigurationRequest) -> Bool {
     if lhs.deviceID != rhs.deviceID {return false}
     if lhs.marketCode != rhs.marketCode {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -6969,13 +6969,13 @@ extension GRPCGetDeviceConfigurationRequest: SwiftProtobuf.Message, SwiftProtobu
 }
 
 extension GRPCDeviceConfigurationResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "DeviceConfigurationResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "DeviceConfigurationResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "feature_flags"),
     2: .same(proto: "markets"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedStringField(value: &self.featureFlags)
@@ -6985,7 +6985,7 @@ extension GRPCDeviceConfigurationResponse: SwiftProtobuf.Message, SwiftProtobuf.
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.featureFlags.isEmpty {
       try visitor.visitRepeatedStringField(value: self.featureFlags, fieldNumber: 1)
     }
@@ -6995,7 +6995,7 @@ extension GRPCDeviceConfigurationResponse: SwiftProtobuf.Message, SwiftProtobuf.
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCDeviceConfigurationResponse, rhs: GRPCDeviceConfigurationResponse) -> Bool {
+  static func ==(lhs: GRPCDeviceConfigurationResponse, rhs: GRPCDeviceConfigurationResponse) -> Bool {
     if lhs.featureFlags != rhs.featureFlags {return false}
     if lhs.markets != rhs.markets {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -7004,8 +7004,8 @@ extension GRPCDeviceConfigurationResponse: SwiftProtobuf.Message, SwiftProtobuf.
 }
 
 extension GRPCDeviceConfigurationResponse.DeviceConfigurationMarket: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = GRPCDeviceConfigurationResponse.protoMessageName + ".DeviceConfigurationMarket"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = GRPCDeviceConfigurationResponse.protoMessageName + ".DeviceConfigurationMarket"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "market_code"),
     2: .same(proto: "label"),
     3: .same(proto: "suggested"),
@@ -7018,7 +7018,7 @@ extension GRPCDeviceConfigurationResponse.DeviceConfigurationMarket: SwiftProtob
     10: .same(proto: "status"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.marketCode)
@@ -7036,7 +7036,7 @@ extension GRPCDeviceConfigurationResponse.DeviceConfigurationMarket: SwiftProtob
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.marketCode.isEmpty {
       try visitor.visitSingularStringField(value: self.marketCode, fieldNumber: 1)
     }
@@ -7070,7 +7070,7 @@ extension GRPCDeviceConfigurationResponse.DeviceConfigurationMarket: SwiftProtob
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCDeviceConfigurationResponse.DeviceConfigurationMarket, rhs: GRPCDeviceConfigurationResponse.DeviceConfigurationMarket) -> Bool {
+  static func ==(lhs: GRPCDeviceConfigurationResponse.DeviceConfigurationMarket, rhs: GRPCDeviceConfigurationResponse.DeviceConfigurationMarket) -> Bool {
     if lhs.marketCode != rhs.marketCode {return false}
     if lhs.label != rhs.label {return false}
     if lhs.suggested != rhs.suggested {return false}
@@ -7087,8 +7087,8 @@ extension GRPCDeviceConfigurationResponse.DeviceConfigurationMarket: SwiftProtob
 }
 
 extension GRPCSetOriginRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "SetOriginRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "SetOriginRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "device_id"),
     2: .same(proto: "organic"),
     3: .standard(proto: "service_name"),
@@ -7141,7 +7141,7 @@ extension GRPCSetOriginRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -7163,7 +7163,7 @@ extension GRPCSetOriginRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if !_storage._deviceID.isEmpty {
         try visitor.visitSingularStringField(value: _storage._deviceID, fieldNumber: 1)
@@ -7202,7 +7202,7 @@ extension GRPCSetOriginRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCSetOriginRequest, rhs: GRPCSetOriginRequest) -> Bool {
+  static func ==(lhs: GRPCSetOriginRequest, rhs: GRPCSetOriginRequest) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -7228,31 +7228,31 @@ extension GRPCSetOriginRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
 }
 
 extension GRPCSetOriginResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "SetOriginResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "SetOriginResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCSetOriginResponse, rhs: GRPCSetOriginResponse) -> Bool {
+  static func ==(lhs: GRPCSetOriginResponse, rhs: GRPCSetOriginResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCDeleteDeviceRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "DeleteDeviceRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "DeleteDeviceRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "device_id"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.deviceID)
@@ -7261,14 +7261,14 @@ extension GRPCDeleteDeviceRequest: SwiftProtobuf.Message, SwiftProtobuf._Message
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.deviceID.isEmpty {
       try visitor.visitSingularStringField(value: self.deviceID, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCDeleteDeviceRequest, rhs: GRPCDeleteDeviceRequest) -> Bool {
+  static func ==(lhs: GRPCDeleteDeviceRequest, rhs: GRPCDeleteDeviceRequest) -> Bool {
     if lhs.deviceID != rhs.deviceID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -7276,50 +7276,50 @@ extension GRPCDeleteDeviceRequest: SwiftProtobuf.Message, SwiftProtobuf._Message
 }
 
 extension GRPCDeleteDeviceResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "DeleteDeviceResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "DeleteDeviceResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCDeleteDeviceResponse, rhs: GRPCDeleteDeviceResponse) -> Bool {
+  static func ==(lhs: GRPCDeleteDeviceResponse, rhs: GRPCDeleteDeviceResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCListDevicesRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListDevicesRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "ListDevicesRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListDevicesRequest, rhs: GRPCListDevicesRequest) -> Bool {
+  static func ==(lhs: GRPCListDevicesRequest, rhs: GRPCListDevicesRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCListDevicesResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListDevicesResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ListDevicesResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "devices"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.devices)
@@ -7328,14 +7328,14 @@ extension GRPCListDevicesResponse: SwiftProtobuf.Message, SwiftProtobuf._Message
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.devices.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.devices, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListDevicesResponse, rhs: GRPCListDevicesResponse) -> Bool {
+  static func ==(lhs: GRPCListDevicesResponse, rhs: GRPCListDevicesResponse) -> Bool {
     if lhs.devices != rhs.devices {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -7343,8 +7343,8 @@ extension GRPCListDevicesResponse: SwiftProtobuf.Message, SwiftProtobuf._Message
 }
 
 extension GRPCRegisterPushNotificationTokenResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "RegisterPushNotificationTokenResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "RegisterPushNotificationTokenResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "device"),
   ]
 
@@ -7367,7 +7367,7 @@ extension GRPCRegisterPushNotificationTokenResponse: SwiftProtobuf.Message, Swif
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -7379,7 +7379,7 @@ extension GRPCRegisterPushNotificationTokenResponse: SwiftProtobuf.Message, Swif
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._device {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -7388,7 +7388,7 @@ extension GRPCRegisterPushNotificationTokenResponse: SwiftProtobuf.Message, Swif
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCRegisterPushNotificationTokenResponse, rhs: GRPCRegisterPushNotificationTokenResponse) -> Bool {
+  static func ==(lhs: GRPCRegisterPushNotificationTokenResponse, rhs: GRPCRegisterPushNotificationTokenResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -7404,13 +7404,13 @@ extension GRPCRegisterPushNotificationTokenResponse: SwiftProtobuf.Message, Swif
 }
 
 extension GRPCSupplementInformationRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "SupplementInformationRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "SupplementInformationRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "credential_id"),
     2: .standard(proto: "supplemental_information_fields"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.credentialID)
@@ -7420,7 +7420,7 @@ extension GRPCSupplementInformationRequest: SwiftProtobuf.Message, SwiftProtobuf
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.credentialID.isEmpty {
       try visitor.visitSingularStringField(value: self.credentialID, fieldNumber: 1)
     }
@@ -7430,7 +7430,7 @@ extension GRPCSupplementInformationRequest: SwiftProtobuf.Message, SwiftProtobuf
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCSupplementInformationRequest, rhs: GRPCSupplementInformationRequest) -> Bool {
+  static func ==(lhs: GRPCSupplementInformationRequest, rhs: GRPCSupplementInformationRequest) -> Bool {
     if lhs.credentialID != rhs.credentialID {return false}
     if lhs.supplementalInformationFields != rhs.supplementalInformationFields {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -7439,12 +7439,12 @@ extension GRPCSupplementInformationRequest: SwiftProtobuf.Message, SwiftProtobuf
 }
 
 extension GRPCCancelSupplementInformationRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "CancelSupplementInformationRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "CancelSupplementInformationRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "credential_id"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.credentialID)
@@ -7453,14 +7453,14 @@ extension GRPCCancelSupplementInformationRequest: SwiftProtobuf.Message, SwiftPr
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.credentialID.isEmpty {
       try visitor.visitSingularStringField(value: self.credentialID, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCCancelSupplementInformationRequest, rhs: GRPCCancelSupplementInformationRequest) -> Bool {
+  static func ==(lhs: GRPCCancelSupplementInformationRequest, rhs: GRPCCancelSupplementInformationRequest) -> Bool {
     if lhs.credentialID != rhs.credentialID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -7468,69 +7468,69 @@ extension GRPCCancelSupplementInformationRequest: SwiftProtobuf.Message, SwiftPr
 }
 
 extension GRPCCancelSupplementInformationResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "CancelSupplementInformationResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "CancelSupplementInformationResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCCancelSupplementInformationResponse, rhs: GRPCCancelSupplementInformationResponse) -> Bool {
+  static func ==(lhs: GRPCCancelSupplementInformationResponse, rhs: GRPCCancelSupplementInformationResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCSupplementInformationResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "SupplementInformationResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "SupplementInformationResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCSupplementInformationResponse, rhs: GRPCSupplementInformationResponse) -> Bool {
+  static func ==(lhs: GRPCSupplementInformationResponse, rhs: GRPCSupplementInformationResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCListCredentialsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListCredentialsRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "ListCredentialsRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListCredentialsRequest, rhs: GRPCListCredentialsRequest) -> Bool {
+  static func ==(lhs: GRPCListCredentialsRequest, rhs: GRPCListCredentialsRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCListCredentialsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListCredentialsResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ListCredentialsResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "credentials"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.credentials)
@@ -7539,14 +7539,14 @@ extension GRPCListCredentialsResponse: SwiftProtobuf.Message, SwiftProtobuf._Mes
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.credentials.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.credentials, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListCredentialsResponse, rhs: GRPCListCredentialsResponse) -> Bool {
+  static func ==(lhs: GRPCListCredentialsResponse, rhs: GRPCListCredentialsResponse) -> Bool {
     if lhs.credentials != rhs.credentials {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -7554,8 +7554,8 @@ extension GRPCListCredentialsResponse: SwiftProtobuf.Message, SwiftProtobuf._Mes
 }
 
 extension GRPCCreateFollowItemRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "CreateFollowItemRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "CreateFollowItemRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "expenses_criteria"),
     2: .standard(proto: "search_criteria"),
     3: .standard(proto: "saving_criteria"),
@@ -7587,7 +7587,7 @@ extension GRPCCreateFollowItemRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -7602,7 +7602,7 @@ extension GRPCCreateFollowItemRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._expensesCriteria {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -7620,7 +7620,7 @@ extension GRPCCreateFollowItemRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCCreateFollowItemRequest, rhs: GRPCCreateFollowItemRequest) -> Bool {
+  static func ==(lhs: GRPCCreateFollowItemRequest, rhs: GRPCCreateFollowItemRequest) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -7639,8 +7639,8 @@ extension GRPCCreateFollowItemRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
 }
 
 extension GRPCCreateFollowItemResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "CreateFollowItemResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "CreateFollowItemResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "follow_item"),
   ]
 
@@ -7663,7 +7663,7 @@ extension GRPCCreateFollowItemResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -7675,7 +7675,7 @@ extension GRPCCreateFollowItemResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._followItem {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -7684,7 +7684,7 @@ extension GRPCCreateFollowItemResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCCreateFollowItemResponse, rhs: GRPCCreateFollowItemResponse) -> Bool {
+  static func ==(lhs: GRPCCreateFollowItemResponse, rhs: GRPCCreateFollowItemResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -7700,8 +7700,8 @@ extension GRPCCreateFollowItemResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
 }
 
 extension GRPCUpdateFollowItemRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "UpdateFollowItemRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "UpdateFollowItemRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "expenses_criteria"),
     2: .standard(proto: "search_criteria"),
     3: .standard(proto: "saving_criteria"),
@@ -7736,7 +7736,7 @@ extension GRPCUpdateFollowItemRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -7752,7 +7752,7 @@ extension GRPCUpdateFollowItemRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._expensesCriteria {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -7773,7 +7773,7 @@ extension GRPCUpdateFollowItemRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCUpdateFollowItemRequest, rhs: GRPCUpdateFollowItemRequest) -> Bool {
+  static func ==(lhs: GRPCUpdateFollowItemRequest, rhs: GRPCUpdateFollowItemRequest) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -7793,8 +7793,8 @@ extension GRPCUpdateFollowItemRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
 }
 
 extension GRPCUpdateFollowItemResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "UpdateFollowItemResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "UpdateFollowItemResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "follow_item"),
   ]
 
@@ -7817,7 +7817,7 @@ extension GRPCUpdateFollowItemResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -7829,7 +7829,7 @@ extension GRPCUpdateFollowItemResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._followItem {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -7838,7 +7838,7 @@ extension GRPCUpdateFollowItemResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCUpdateFollowItemResponse, rhs: GRPCUpdateFollowItemResponse) -> Bool {
+  static func ==(lhs: GRPCUpdateFollowItemResponse, rhs: GRPCUpdateFollowItemResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -7854,13 +7854,13 @@ extension GRPCUpdateFollowItemResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
 }
 
 extension GRPCGetFollowItemRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GetFollowItemRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "GetFollowItemRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "follow_item_id"),
     2: .standard(proto: "month_period"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.followItemID)
@@ -7870,7 +7870,7 @@ extension GRPCGetFollowItemRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.followItemID.isEmpty {
       try visitor.visitSingularStringField(value: self.followItemID, fieldNumber: 1)
     }
@@ -7880,7 +7880,7 @@ extension GRPCGetFollowItemRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGetFollowItemRequest, rhs: GRPCGetFollowItemRequest) -> Bool {
+  static func ==(lhs: GRPCGetFollowItemRequest, rhs: GRPCGetFollowItemRequest) -> Bool {
     if lhs.followItemID != rhs.followItemID {return false}
     if lhs.monthPeriod != rhs.monthPeriod {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -7889,8 +7889,8 @@ extension GRPCGetFollowItemRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
 }
 
 extension GRPCGetFollowItemResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GetFollowItemResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "GetFollowItemResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "follow_item"),
   ]
 
@@ -7913,7 +7913,7 @@ extension GRPCGetFollowItemResponse: SwiftProtobuf.Message, SwiftProtobuf._Messa
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -7925,7 +7925,7 @@ extension GRPCGetFollowItemResponse: SwiftProtobuf.Message, SwiftProtobuf._Messa
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._followItem {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -7934,7 +7934,7 @@ extension GRPCGetFollowItemResponse: SwiftProtobuf.Message, SwiftProtobuf._Messa
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGetFollowItemResponse, rhs: GRPCGetFollowItemResponse) -> Bool {
+  static func ==(lhs: GRPCGetFollowItemResponse, rhs: GRPCGetFollowItemResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -7950,13 +7950,13 @@ extension GRPCGetFollowItemResponse: SwiftProtobuf.Message, SwiftProtobuf._Messa
 }
 
 extension GRPCGetFollowItemHistoryRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GetFollowItemHistoryRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "GetFollowItemHistoryRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "follow_item_id"),
     2: .standard(proto: "period_mode"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.followItemID)
@@ -7966,7 +7966,7 @@ extension GRPCGetFollowItemHistoryRequest: SwiftProtobuf.Message, SwiftProtobuf.
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.followItemID.isEmpty {
       try visitor.visitSingularStringField(value: self.followItemID, fieldNumber: 1)
     }
@@ -7976,7 +7976,7 @@ extension GRPCGetFollowItemHistoryRequest: SwiftProtobuf.Message, SwiftProtobuf.
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGetFollowItemHistoryRequest, rhs: GRPCGetFollowItemHistoryRequest) -> Bool {
+  static func ==(lhs: GRPCGetFollowItemHistoryRequest, rhs: GRPCGetFollowItemHistoryRequest) -> Bool {
     if lhs.followItemID != rhs.followItemID {return false}
     if lhs.periodMode != rhs.periodMode {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -7985,8 +7985,8 @@ extension GRPCGetFollowItemHistoryRequest: SwiftProtobuf.Message, SwiftProtobuf.
 }
 
 extension GRPCGetFollowItemHistoryResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GetFollowItemHistoryResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "GetFollowItemHistoryResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "follow_item_history"),
   ]
 
@@ -8009,7 +8009,7 @@ extension GRPCGetFollowItemHistoryResponse: SwiftProtobuf.Message, SwiftProtobuf
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -8021,7 +8021,7 @@ extension GRPCGetFollowItemHistoryResponse: SwiftProtobuf.Message, SwiftProtobuf
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._followItemHistory {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -8030,7 +8030,7 @@ extension GRPCGetFollowItemHistoryResponse: SwiftProtobuf.Message, SwiftProtobuf
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGetFollowItemHistoryResponse, rhs: GRPCGetFollowItemHistoryResponse) -> Bool {
+  static func ==(lhs: GRPCGetFollowItemHistoryResponse, rhs: GRPCGetFollowItemHistoryResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -8046,12 +8046,12 @@ extension GRPCGetFollowItemHistoryResponse: SwiftProtobuf.Message, SwiftProtobuf
 }
 
 extension GRPCDeleteFollowItemRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "DeleteFollowItemRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "DeleteFollowItemRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "follow_item_id"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.followItemID)
@@ -8060,14 +8060,14 @@ extension GRPCDeleteFollowItemRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.followItemID.isEmpty {
       try visitor.visitSingularStringField(value: self.followItemID, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCDeleteFollowItemRequest, rhs: GRPCDeleteFollowItemRequest) -> Bool {
+  static func ==(lhs: GRPCDeleteFollowItemRequest, rhs: GRPCDeleteFollowItemRequest) -> Bool {
     if lhs.followItemID != rhs.followItemID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -8075,31 +8075,31 @@ extension GRPCDeleteFollowItemRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
 }
 
 extension GRPCDeleteFollowItemResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "DeleteFollowItemResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "DeleteFollowItemResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCDeleteFollowItemResponse, rhs: GRPCDeleteFollowItemResponse) -> Bool {
+  static func ==(lhs: GRPCDeleteFollowItemResponse, rhs: GRPCDeleteFollowItemResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCListFollowItemRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListFollowItemRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ListFollowItemRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "month_period"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.monthPeriod)
@@ -8108,14 +8108,14 @@ extension GRPCListFollowItemRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.monthPeriod.isEmpty {
       try visitor.visitSingularStringField(value: self.monthPeriod, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListFollowItemRequest, rhs: GRPCListFollowItemRequest) -> Bool {
+  static func ==(lhs: GRPCListFollowItemRequest, rhs: GRPCListFollowItemRequest) -> Bool {
     if lhs.monthPeriod != rhs.monthPeriod {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -8123,12 +8123,12 @@ extension GRPCListFollowItemRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
 }
 
 extension GRPCListFollowItemResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListFollowItemResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ListFollowItemResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "follow_items"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.followItems)
@@ -8137,14 +8137,14 @@ extension GRPCListFollowItemResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.followItems.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.followItems, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListFollowItemResponse, rhs: GRPCListFollowItemResponse) -> Bool {
+  static func ==(lhs: GRPCListFollowItemResponse, rhs: GRPCListFollowItemResponse) -> Bool {
     if lhs.followItems != rhs.followItems {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -8152,8 +8152,8 @@ extension GRPCListFollowItemResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
 }
 
 extension GRPCSuggestFollowItemRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "SuggestFollowItemRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "SuggestFollowItemRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "expenses_criteria"),
     2: .standard(proto: "search_criteria"),
     3: .standard(proto: "saving_criteria"),
@@ -8182,7 +8182,7 @@ extension GRPCSuggestFollowItemRequest: SwiftProtobuf.Message, SwiftProtobuf._Me
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -8196,7 +8196,7 @@ extension GRPCSuggestFollowItemRequest: SwiftProtobuf.Message, SwiftProtobuf._Me
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._expensesCriteria {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -8211,7 +8211,7 @@ extension GRPCSuggestFollowItemRequest: SwiftProtobuf.Message, SwiftProtobuf._Me
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCSuggestFollowItemRequest, rhs: GRPCSuggestFollowItemRequest) -> Bool {
+  static func ==(lhs: GRPCSuggestFollowItemRequest, rhs: GRPCSuggestFollowItemRequest) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -8229,8 +8229,8 @@ extension GRPCSuggestFollowItemRequest: SwiftProtobuf.Message, SwiftProtobuf._Me
 }
 
 extension GRPCSuggestFollowItemResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "SuggestFollowItemResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "SuggestFollowItemResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "follow_item"),
   ]
 
@@ -8253,7 +8253,7 @@ extension GRPCSuggestFollowItemResponse: SwiftProtobuf.Message, SwiftProtobuf._M
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -8265,7 +8265,7 @@ extension GRPCSuggestFollowItemResponse: SwiftProtobuf.Message, SwiftProtobuf._M
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._followItem {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -8274,7 +8274,7 @@ extension GRPCSuggestFollowItemResponse: SwiftProtobuf.Message, SwiftProtobuf._M
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCSuggestFollowItemResponse, rhs: GRPCSuggestFollowItemResponse) -> Bool {
+  static func ==(lhs: GRPCSuggestFollowItemResponse, rhs: GRPCSuggestFollowItemResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -8290,12 +8290,12 @@ extension GRPCSuggestFollowItemResponse: SwiftProtobuf.Message, SwiftProtobuf._M
 }
 
 extension GRPCListProvidersResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListProvidersResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ListProvidersResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "providers"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.providers)
@@ -8304,14 +8304,14 @@ extension GRPCListProvidersResponse: SwiftProtobuf.Message, SwiftProtobuf._Messa
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.providers.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.providers, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListProvidersResponse, rhs: GRPCListProvidersResponse) -> Bool {
+  static func ==(lhs: GRPCListProvidersResponse, rhs: GRPCListProvidersResponse) -> Bool {
     if lhs.providers != rhs.providers {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -8319,12 +8319,12 @@ extension GRPCListProvidersResponse: SwiftProtobuf.Message, SwiftProtobuf._Messa
 }
 
 extension GRPCListProvidersForMarketsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListProvidersForMarketsResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ListProvidersForMarketsResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "providers_by_market"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.providersByMarket)
@@ -8333,14 +8333,14 @@ extension GRPCListProvidersForMarketsResponse: SwiftProtobuf.Message, SwiftProto
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.providersByMarket.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.providersByMarket, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListProvidersForMarketsResponse, rhs: GRPCListProvidersForMarketsResponse) -> Bool {
+  static func ==(lhs: GRPCListProvidersForMarketsResponse, rhs: GRPCListProvidersForMarketsResponse) -> Bool {
     if lhs.providersByMarket != rhs.providersByMarket {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -8348,13 +8348,13 @@ extension GRPCListProvidersForMarketsResponse: SwiftProtobuf.Message, SwiftProto
 }
 
 extension GRPCListProvidersForMarketsResponse.MarketProviders: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = GRPCListProvidersForMarketsResponse.protoMessageName + ".MarketProviders"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = GRPCListProvidersForMarketsResponse.protoMessageName + ".MarketProviders"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "market_code"),
     2: .same(proto: "providers"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.marketCode)
@@ -8364,7 +8364,7 @@ extension GRPCListProvidersForMarketsResponse.MarketProviders: SwiftProtobuf.Mes
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.marketCode.isEmpty {
       try visitor.visitSingularStringField(value: self.marketCode, fieldNumber: 1)
     }
@@ -8374,7 +8374,7 @@ extension GRPCListProvidersForMarketsResponse.MarketProviders: SwiftProtobuf.Mes
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListProvidersForMarketsResponse.MarketProviders, rhs: GRPCListProvidersForMarketsResponse.MarketProviders) -> Bool {
+  static func ==(lhs: GRPCListProvidersForMarketsResponse.MarketProviders, rhs: GRPCListProvidersForMarketsResponse.MarketProviders) -> Bool {
     if lhs.marketCode != rhs.marketCode {return false}
     if lhs.providers != rhs.providers {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -8383,12 +8383,12 @@ extension GRPCListProvidersForMarketsResponse.MarketProviders: SwiftProtobuf.Mes
 }
 
 extension GRPCProviderMarketListResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ProviderMarketListResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ProviderMarketListResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "provider_markets"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.providerMarkets)
@@ -8397,14 +8397,14 @@ extension GRPCProviderMarketListResponse: SwiftProtobuf.Message, SwiftProtobuf._
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.providerMarkets.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.providerMarkets, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCProviderMarketListResponse, rhs: GRPCProviderMarketListResponse) -> Bool {
+  static func ==(lhs: GRPCProviderMarketListResponse, rhs: GRPCProviderMarketListResponse) -> Bool {
     if lhs.providerMarkets != rhs.providerMarkets {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -8412,8 +8412,8 @@ extension GRPCProviderMarketListResponse: SwiftProtobuf.Message, SwiftProtobuf._
 }
 
 extension GRPCQueryTransactionsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "QueryTransactionsRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "QueryTransactionsRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "limit"),
     2: .standard(proto: "last_transaction_id"),
     3: .standard(proto: "account_ids"),
@@ -8466,7 +8466,7 @@ extension GRPCQueryTransactionsRequest: SwiftProtobuf.Message, SwiftProtobuf._Me
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -8488,7 +8488,7 @@ extension GRPCQueryTransactionsRequest: SwiftProtobuf.Message, SwiftProtobuf._Me
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._limit {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -8527,7 +8527,7 @@ extension GRPCQueryTransactionsRequest: SwiftProtobuf.Message, SwiftProtobuf._Me
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCQueryTransactionsRequest, rhs: GRPCQueryTransactionsRequest) -> Bool {
+  static func ==(lhs: GRPCQueryTransactionsRequest, rhs: GRPCQueryTransactionsRequest) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -8553,8 +8553,8 @@ extension GRPCQueryTransactionsRequest: SwiftProtobuf.Message, SwiftProtobuf._Me
 }
 
 extension GRPCQueryTransactionsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "QueryTransactionsResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "QueryTransactionsResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "transactions"),
     2: .standard(proto: "has_more"),
     3: .standard(proto: "total_net_amount"),
@@ -8586,7 +8586,7 @@ extension GRPCQueryTransactionsResponse: SwiftProtobuf.Message, SwiftProtobuf._M
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -8601,7 +8601,7 @@ extension GRPCQueryTransactionsResponse: SwiftProtobuf.Message, SwiftProtobuf._M
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if !_storage._transactions.isEmpty {
         try visitor.visitRepeatedMessageField(value: _storage._transactions, fieldNumber: 1)
@@ -8619,7 +8619,7 @@ extension GRPCQueryTransactionsResponse: SwiftProtobuf.Message, SwiftProtobuf._M
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCQueryTransactionsResponse, rhs: GRPCQueryTransactionsResponse) -> Bool {
+  static func ==(lhs: GRPCQueryTransactionsResponse, rhs: GRPCQueryTransactionsResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -8638,8 +8638,8 @@ extension GRPCQueryTransactionsResponse: SwiftProtobuf.Message, SwiftProtobuf._M
 }
 
 extension GRPCUpdateTransactionRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "UpdateTransactionRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "UpdateTransactionRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "transaction_id"),
     2: .same(proto: "description"),
     3: .same(proto: "date"),
@@ -8674,7 +8674,7 @@ extension GRPCUpdateTransactionRequest: SwiftProtobuf.Message, SwiftProtobuf._Me
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -8690,7 +8690,7 @@ extension GRPCUpdateTransactionRequest: SwiftProtobuf.Message, SwiftProtobuf._Me
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if !_storage._transactionID.isEmpty {
         try visitor.visitSingularStringField(value: _storage._transactionID, fieldNumber: 1)
@@ -8711,7 +8711,7 @@ extension GRPCUpdateTransactionRequest: SwiftProtobuf.Message, SwiftProtobuf._Me
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCUpdateTransactionRequest, rhs: GRPCUpdateTransactionRequest) -> Bool {
+  static func ==(lhs: GRPCUpdateTransactionRequest, rhs: GRPCUpdateTransactionRequest) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -8731,8 +8731,8 @@ extension GRPCUpdateTransactionRequest: SwiftProtobuf.Message, SwiftProtobuf._Me
 }
 
 extension GRPCUpdateTransactionResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "UpdateTransactionResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "UpdateTransactionResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "transaction"),
   ]
 
@@ -8755,7 +8755,7 @@ extension GRPCUpdateTransactionResponse: SwiftProtobuf.Message, SwiftProtobuf._M
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -8767,7 +8767,7 @@ extension GRPCUpdateTransactionResponse: SwiftProtobuf.Message, SwiftProtobuf._M
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._transaction {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -8776,7 +8776,7 @@ extension GRPCUpdateTransactionResponse: SwiftProtobuf.Message, SwiftProtobuf._M
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCUpdateTransactionResponse, rhs: GRPCUpdateTransactionResponse) -> Bool {
+  static func ==(lhs: GRPCUpdateTransactionResponse, rhs: GRPCUpdateTransactionResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -8792,12 +8792,12 @@ extension GRPCUpdateTransactionResponse: SwiftProtobuf.Message, SwiftProtobuf._M
 }
 
 extension GRPCGetTransactionRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GetTransactionRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "GetTransactionRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "transaction_id"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.transactionID)
@@ -8806,14 +8806,14 @@ extension GRPCGetTransactionRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.transactionID.isEmpty {
       try visitor.visitSingularStringField(value: self.transactionID, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGetTransactionRequest, rhs: GRPCGetTransactionRequest) -> Bool {
+  static func ==(lhs: GRPCGetTransactionRequest, rhs: GRPCGetTransactionRequest) -> Bool {
     if lhs.transactionID != rhs.transactionID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -8821,8 +8821,8 @@ extension GRPCGetTransactionRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
 }
 
 extension GRPCGetTransactionResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GetTransactionResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "GetTransactionResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "transaction"),
   ]
 
@@ -8845,7 +8845,7 @@ extension GRPCGetTransactionResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -8857,7 +8857,7 @@ extension GRPCGetTransactionResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._transaction {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -8866,7 +8866,7 @@ extension GRPCGetTransactionResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGetTransactionResponse, rhs: GRPCGetTransactionResponse) -> Bool {
+  static func ==(lhs: GRPCGetTransactionResponse, rhs: GRPCGetTransactionResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -8882,13 +8882,13 @@ extension GRPCGetTransactionResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
 }
 
 extension GRPCCategorizeTransactionsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "CategorizeTransactionsRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "CategorizeTransactionsRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "category_code"),
     2: .standard(proto: "transaction_ids"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.categoryCode)
@@ -8898,7 +8898,7 @@ extension GRPCCategorizeTransactionsRequest: SwiftProtobuf.Message, SwiftProtobu
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.categoryCode.isEmpty {
       try visitor.visitSingularStringField(value: self.categoryCode, fieldNumber: 1)
     }
@@ -8908,7 +8908,7 @@ extension GRPCCategorizeTransactionsRequest: SwiftProtobuf.Message, SwiftProtobu
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCCategorizeTransactionsRequest, rhs: GRPCCategorizeTransactionsRequest) -> Bool {
+  static func ==(lhs: GRPCCategorizeTransactionsRequest, rhs: GRPCCategorizeTransactionsRequest) -> Bool {
     if lhs.categoryCode != rhs.categoryCode {return false}
     if lhs.transactionIds != rhs.transactionIds {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -8917,12 +8917,12 @@ extension GRPCCategorizeTransactionsRequest: SwiftProtobuf.Message, SwiftProtobu
 }
 
 extension GRPCCategorizeTransactionsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "CategorizeTransactionsResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "CategorizeTransactionsResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "transactions"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.transactions)
@@ -8931,14 +8931,14 @@ extension GRPCCategorizeTransactionsResponse: SwiftProtobuf.Message, SwiftProtob
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.transactions.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.transactions, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCCategorizeTransactionsResponse, rhs: GRPCCategorizeTransactionsResponse) -> Bool {
+  static func ==(lhs: GRPCCategorizeTransactionsResponse, rhs: GRPCCategorizeTransactionsResponse) -> Bool {
     if lhs.transactions != rhs.transactions {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -8946,8 +8946,8 @@ extension GRPCCategorizeTransactionsResponse: SwiftProtobuf.Message, SwiftProtob
 }
 
 extension GRPCGetSimilarTransactionsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GetSimilarTransactionsRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "GetSimilarTransactionsRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "transaction_id"),
     2: .standard(proto: "category_code"),
   ]
@@ -8973,7 +8973,7 @@ extension GRPCGetSimilarTransactionsRequest: SwiftProtobuf.Message, SwiftProtobu
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -8986,7 +8986,7 @@ extension GRPCGetSimilarTransactionsRequest: SwiftProtobuf.Message, SwiftProtobu
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if !_storage._transactionID.isEmpty {
         try visitor.visitSingularStringField(value: _storage._transactionID, fieldNumber: 1)
@@ -8998,7 +8998,7 @@ extension GRPCGetSimilarTransactionsRequest: SwiftProtobuf.Message, SwiftProtobu
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGetSimilarTransactionsRequest, rhs: GRPCGetSimilarTransactionsRequest) -> Bool {
+  static func ==(lhs: GRPCGetSimilarTransactionsRequest, rhs: GRPCGetSimilarTransactionsRequest) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -9015,12 +9015,12 @@ extension GRPCGetSimilarTransactionsRequest: SwiftProtobuf.Message, SwiftProtobu
 }
 
 extension GRPCGetSimilarTransactionsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GetSimilarTransactionsResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "GetSimilarTransactionsResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "transactions"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.transactions)
@@ -9029,14 +9029,14 @@ extension GRPCGetSimilarTransactionsResponse: SwiftProtobuf.Message, SwiftProtob
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.transactions.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.transactions, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGetSimilarTransactionsResponse, rhs: GRPCGetSimilarTransactionsResponse) -> Bool {
+  static func ==(lhs: GRPCGetSimilarTransactionsResponse, rhs: GRPCGetSimilarTransactionsResponse) -> Bool {
     if lhs.transactions != rhs.transactions {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -9044,13 +9044,13 @@ extension GRPCGetSimilarTransactionsResponse: SwiftProtobuf.Message, SwiftProtob
 }
 
 extension GRPCSuggestTransactionsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "SuggestTransactionsRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "SuggestTransactionsRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "number_of_clusters"),
     2: .standard(proto: "evaluate_everything"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularInt32Field(value: &self.numberOfClusters)
@@ -9060,7 +9060,7 @@ extension GRPCSuggestTransactionsRequest: SwiftProtobuf.Message, SwiftProtobuf._
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.numberOfClusters != 0 {
       try visitor.visitSingularInt32Field(value: self.numberOfClusters, fieldNumber: 1)
     }
@@ -9070,7 +9070,7 @@ extension GRPCSuggestTransactionsRequest: SwiftProtobuf.Message, SwiftProtobuf._
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCSuggestTransactionsRequest, rhs: GRPCSuggestTransactionsRequest) -> Bool {
+  static func ==(lhs: GRPCSuggestTransactionsRequest, rhs: GRPCSuggestTransactionsRequest) -> Bool {
     if lhs.numberOfClusters != rhs.numberOfClusters {return false}
     if lhs.evaluateEverything != rhs.evaluateEverything {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -9079,8 +9079,8 @@ extension GRPCSuggestTransactionsRequest: SwiftProtobuf.Message, SwiftProtobuf._
 }
 
 extension GRPCSuggestTransactionsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "SuggestTransactionsResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "SuggestTransactionsResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "categorization_improvement"),
     2: .standard(proto: "categorization_level"),
     3: .same(proto: "clusters"),
@@ -9109,7 +9109,7 @@ extension GRPCSuggestTransactionsResponse: SwiftProtobuf.Message, SwiftProtobuf.
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -9123,7 +9123,7 @@ extension GRPCSuggestTransactionsResponse: SwiftProtobuf.Message, SwiftProtobuf.
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._categorizationImprovement {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -9138,7 +9138,7 @@ extension GRPCSuggestTransactionsResponse: SwiftProtobuf.Message, SwiftProtobuf.
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCSuggestTransactionsResponse, rhs: GRPCSuggestTransactionsResponse) -> Bool {
+  static func ==(lhs: GRPCSuggestTransactionsResponse, rhs: GRPCSuggestTransactionsResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -9156,8 +9156,8 @@ extension GRPCSuggestTransactionsResponse: SwiftProtobuf.Message, SwiftProtobuf.
 }
 
 extension GRPCCreatePartAndCounterpartRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "CreatePartAndCounterpartRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "CreatePartAndCounterpartRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "transaction_id"),
     2: .standard(proto: "counterpart_transaction_id"),
     3: .standard(proto: "suggest_response_index"),
@@ -9189,7 +9189,7 @@ extension GRPCCreatePartAndCounterpartRequest: SwiftProtobuf.Message, SwiftProto
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -9204,7 +9204,7 @@ extension GRPCCreatePartAndCounterpartRequest: SwiftProtobuf.Message, SwiftProto
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if !_storage._transactionID.isEmpty {
         try visitor.visitSingularStringField(value: _storage._transactionID, fieldNumber: 1)
@@ -9222,7 +9222,7 @@ extension GRPCCreatePartAndCounterpartRequest: SwiftProtobuf.Message, SwiftProto
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCCreatePartAndCounterpartRequest, rhs: GRPCCreatePartAndCounterpartRequest) -> Bool {
+  static func ==(lhs: GRPCCreatePartAndCounterpartRequest, rhs: GRPCCreatePartAndCounterpartRequest) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -9241,8 +9241,8 @@ extension GRPCCreatePartAndCounterpartRequest: SwiftProtobuf.Message, SwiftProto
 }
 
 extension GRPCCreatePartAndCounterpartResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "CreatePartAndCounterpartResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "CreatePartAndCounterpartResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "transaction"),
     2: .standard(proto: "counterpart_transaction"),
   ]
@@ -9268,7 +9268,7 @@ extension GRPCCreatePartAndCounterpartResponse: SwiftProtobuf.Message, SwiftProt
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -9281,7 +9281,7 @@ extension GRPCCreatePartAndCounterpartResponse: SwiftProtobuf.Message, SwiftProt
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._transaction {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -9293,7 +9293,7 @@ extension GRPCCreatePartAndCounterpartResponse: SwiftProtobuf.Message, SwiftProt
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCCreatePartAndCounterpartResponse, rhs: GRPCCreatePartAndCounterpartResponse) -> Bool {
+  static func ==(lhs: GRPCCreatePartAndCounterpartResponse, rhs: GRPCCreatePartAndCounterpartResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -9310,8 +9310,8 @@ extension GRPCCreatePartAndCounterpartResponse: SwiftProtobuf.Message, SwiftProt
 }
 
 extension GRPCUpdatePartAndCounterpartRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "UpdatePartAndCounterpartRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "UpdatePartAndCounterpartRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "transaction_id"),
     2: .standard(proto: "part_id"),
     3: .standard(proto: "part_amount"),
@@ -9340,7 +9340,7 @@ extension GRPCUpdatePartAndCounterpartRequest: SwiftProtobuf.Message, SwiftProto
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -9354,7 +9354,7 @@ extension GRPCUpdatePartAndCounterpartRequest: SwiftProtobuf.Message, SwiftProto
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if !_storage._transactionID.isEmpty {
         try visitor.visitSingularStringField(value: _storage._transactionID, fieldNumber: 1)
@@ -9369,7 +9369,7 @@ extension GRPCUpdatePartAndCounterpartRequest: SwiftProtobuf.Message, SwiftProto
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCUpdatePartAndCounterpartRequest, rhs: GRPCUpdatePartAndCounterpartRequest) -> Bool {
+  static func ==(lhs: GRPCUpdatePartAndCounterpartRequest, rhs: GRPCUpdatePartAndCounterpartRequest) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -9387,8 +9387,8 @@ extension GRPCUpdatePartAndCounterpartRequest: SwiftProtobuf.Message, SwiftProto
 }
 
 extension GRPCUpdatePartAndCounterpartResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "UpdatePartAndCounterpartResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "UpdatePartAndCounterpartResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "transaction"),
     2: .standard(proto: "counterpart_transaction"),
   ]
@@ -9414,7 +9414,7 @@ extension GRPCUpdatePartAndCounterpartResponse: SwiftProtobuf.Message, SwiftProt
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -9427,7 +9427,7 @@ extension GRPCUpdatePartAndCounterpartResponse: SwiftProtobuf.Message, SwiftProt
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._transaction {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -9439,7 +9439,7 @@ extension GRPCUpdatePartAndCounterpartResponse: SwiftProtobuf.Message, SwiftProt
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCUpdatePartAndCounterpartResponse, rhs: GRPCUpdatePartAndCounterpartResponse) -> Bool {
+  static func ==(lhs: GRPCUpdatePartAndCounterpartResponse, rhs: GRPCUpdatePartAndCounterpartResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -9456,13 +9456,13 @@ extension GRPCUpdatePartAndCounterpartResponse: SwiftProtobuf.Message, SwiftProt
 }
 
 extension GRPCDeletePartAndCounterpartRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "DeletePartAndCounterpartRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "DeletePartAndCounterpartRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "transaction_id"),
     2: .standard(proto: "part_id"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.transactionID)
@@ -9472,7 +9472,7 @@ extension GRPCDeletePartAndCounterpartRequest: SwiftProtobuf.Message, SwiftProto
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.transactionID.isEmpty {
       try visitor.visitSingularStringField(value: self.transactionID, fieldNumber: 1)
     }
@@ -9482,7 +9482,7 @@ extension GRPCDeletePartAndCounterpartRequest: SwiftProtobuf.Message, SwiftProto
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCDeletePartAndCounterpartRequest, rhs: GRPCDeletePartAndCounterpartRequest) -> Bool {
+  static func ==(lhs: GRPCDeletePartAndCounterpartRequest, rhs: GRPCDeletePartAndCounterpartRequest) -> Bool {
     if lhs.transactionID != rhs.transactionID {return false}
     if lhs.partID != rhs.partID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -9491,8 +9491,8 @@ extension GRPCDeletePartAndCounterpartRequest: SwiftProtobuf.Message, SwiftProto
 }
 
 extension GRPCDeletePartAndCounterpartResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "DeletePartAndCounterpartResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "DeletePartAndCounterpartResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "transaction"),
     2: .standard(proto: "counterpart_transaction"),
   ]
@@ -9518,7 +9518,7 @@ extension GRPCDeletePartAndCounterpartResponse: SwiftProtobuf.Message, SwiftProt
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -9531,7 +9531,7 @@ extension GRPCDeletePartAndCounterpartResponse: SwiftProtobuf.Message, SwiftProt
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._transaction {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -9543,7 +9543,7 @@ extension GRPCDeletePartAndCounterpartResponse: SwiftProtobuf.Message, SwiftProt
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCDeletePartAndCounterpartResponse, rhs: GRPCDeletePartAndCounterpartResponse) -> Bool {
+  static func ==(lhs: GRPCDeletePartAndCounterpartResponse, rhs: GRPCDeletePartAndCounterpartResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -9560,13 +9560,13 @@ extension GRPCDeletePartAndCounterpartResponse: SwiftProtobuf.Message, SwiftProt
 }
 
 extension GRPCSuggestCounterpartsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "SuggestCounterpartsRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "SuggestCounterpartsRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "transaction_id"),
     2: .same(proto: "limit"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.transactionID)
@@ -9576,7 +9576,7 @@ extension GRPCSuggestCounterpartsRequest: SwiftProtobuf.Message, SwiftProtobuf._
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.transactionID.isEmpty {
       try visitor.visitSingularStringField(value: self.transactionID, fieldNumber: 1)
     }
@@ -9586,7 +9586,7 @@ extension GRPCSuggestCounterpartsRequest: SwiftProtobuf.Message, SwiftProtobuf._
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCSuggestCounterpartsRequest, rhs: GRPCSuggestCounterpartsRequest) -> Bool {
+  static func ==(lhs: GRPCSuggestCounterpartsRequest, rhs: GRPCSuggestCounterpartsRequest) -> Bool {
     if lhs.transactionID != rhs.transactionID {return false}
     if lhs.limit != rhs.limit {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -9595,12 +9595,12 @@ extension GRPCSuggestCounterpartsRequest: SwiftProtobuf.Message, SwiftProtobuf._
 }
 
 extension GRPCSuggestCounterpartsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "SuggestCounterpartsResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "SuggestCounterpartsResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "transactions"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.transactions)
@@ -9609,14 +9609,14 @@ extension GRPCSuggestCounterpartsResponse: SwiftProtobuf.Message, SwiftProtobuf.
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.transactions.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.transactions, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCSuggestCounterpartsResponse, rhs: GRPCSuggestCounterpartsResponse) -> Bool {
+  static func ==(lhs: GRPCSuggestCounterpartsResponse, rhs: GRPCSuggestCounterpartsResponse) -> Bool {
     if lhs.transactions != rhs.transactions {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -9624,27 +9624,27 @@ extension GRPCSuggestCounterpartsResponse: SwiftProtobuf.Message, SwiftProtobuf.
 }
 
 extension GRPCStreamingRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "StreamingRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "StreamingRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCStreamingRequest, rhs: GRPCStreamingRequest) -> Bool {
+  static func ==(lhs: GRPCStreamingRequest, rhs: GRPCStreamingRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCStreamingResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "StreamingResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "StreamingResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "type"),
     2: .same(proto: "timestamp"),
     3: .same(proto: "credentials"),
@@ -9706,7 +9706,7 @@ extension GRPCStreamingResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -9731,7 +9731,7 @@ extension GRPCStreamingResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if _storage._type != .create {
         try visitor.visitSingularEnumField(value: _storage._type, fieldNumber: 1)
@@ -9779,7 +9779,7 @@ extension GRPCStreamingResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCStreamingResponse, rhs: GRPCStreamingResponse) -> Bool {
+  static func ==(lhs: GRPCStreamingResponse, rhs: GRPCStreamingResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -9808,7 +9808,7 @@ extension GRPCStreamingResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
 }
 
 extension GRPCStreamingResponse.TypeEnum: SwiftProtobuf._ProtoNameProviding {
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "CREATE"),
     1: .same(proto: "READ"),
     2: .same(proto: "UPDATE"),
@@ -9817,14 +9817,14 @@ extension GRPCStreamingResponse.TypeEnum: SwiftProtobuf._ProtoNameProviding {
 }
 
 extension GRPCProviderListRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ProviderListRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ProviderListRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "capability"),
     2: .standard(proto: "include_test_type"),
     3: .standard(proto: "market_code"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularEnumField(value: &self.capability)
@@ -9835,7 +9835,7 @@ extension GRPCProviderListRequest: SwiftProtobuf.Message, SwiftProtobuf._Message
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.capability != .unknown {
       try visitor.visitSingularEnumField(value: self.capability, fieldNumber: 1)
     }
@@ -9848,7 +9848,7 @@ extension GRPCProviderListRequest: SwiftProtobuf.Message, SwiftProtobuf._Message
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCProviderListRequest, rhs: GRPCProviderListRequest) -> Bool {
+  static func ==(lhs: GRPCProviderListRequest, rhs: GRPCProviderListRequest) -> Bool {
     if lhs.capability != rhs.capability {return false}
     if lhs.includeTestType != rhs.includeTestType {return false}
     if lhs.marketCode != rhs.marketCode {return false}
@@ -9858,13 +9858,13 @@ extension GRPCProviderListRequest: SwiftProtobuf.Message, SwiftProtobuf._Message
 }
 
 extension GRPCProviderListForMarketsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ProviderListForMarketsRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ProviderListForMarketsRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "capability"),
     2: .standard(proto: "market_codes"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularEnumField(value: &self.capability)
@@ -9874,7 +9874,7 @@ extension GRPCProviderListForMarketsRequest: SwiftProtobuf.Message, SwiftProtobu
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.capability != .unknown {
       try visitor.visitSingularEnumField(value: self.capability, fieldNumber: 1)
     }
@@ -9884,7 +9884,7 @@ extension GRPCProviderListForMarketsRequest: SwiftProtobuf.Message, SwiftProtobu
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCProviderListForMarketsRequest, rhs: GRPCProviderListForMarketsRequest) -> Bool {
+  static func ==(lhs: GRPCProviderListForMarketsRequest, rhs: GRPCProviderListForMarketsRequest) -> Bool {
     if lhs.capability != rhs.capability {return false}
     if lhs.marketCodes != rhs.marketCodes {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -9893,46 +9893,46 @@ extension GRPCProviderListForMarketsRequest: SwiftProtobuf.Message, SwiftProtobu
 }
 
 extension GRPCProviderMarketListRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ProviderMarketListRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "ProviderMarketListRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCProviderMarketListRequest, rhs: GRPCProviderMarketListRequest) -> Bool {
+  static func ==(lhs: GRPCProviderMarketListRequest, rhs: GRPCProviderMarketListRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCProviderSuggestRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ProviderSuggestRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "ProviderSuggestRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCProviderSuggestRequest, rhs: GRPCProviderSuggestRequest) -> Bool {
+  static func ==(lhs: GRPCProviderSuggestRequest, rhs: GRPCProviderSuggestRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCQueryStatisticsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "QueryStatisticsRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "QueryStatisticsRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "description"),
     2: .same(proto: "periods"),
     3: .standard(proto: "period_mode"),
@@ -9940,7 +9940,7 @@ extension GRPCQueryStatisticsRequest: SwiftProtobuf.Message, SwiftProtobuf._Mess
     5: .standard(proto: "pad_results_until_today"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.description_p)
@@ -9953,7 +9953,7 @@ extension GRPCQueryStatisticsRequest: SwiftProtobuf.Message, SwiftProtobuf._Mess
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.description_p.isEmpty {
       try visitor.visitSingularStringField(value: self.description_p, fieldNumber: 1)
     }
@@ -9972,7 +9972,7 @@ extension GRPCQueryStatisticsRequest: SwiftProtobuf.Message, SwiftProtobuf._Mess
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCQueryStatisticsRequest, rhs: GRPCQueryStatisticsRequest) -> Bool {
+  static func ==(lhs: GRPCQueryStatisticsRequest, rhs: GRPCQueryStatisticsRequest) -> Bool {
     if lhs.description_p != rhs.description_p {return false}
     if lhs.periods != rhs.periods {return false}
     if lhs.periodMode != rhs.periodMode {return false}
@@ -9984,8 +9984,8 @@ extension GRPCQueryStatisticsRequest: SwiftProtobuf.Message, SwiftProtobuf._Mess
 }
 
 extension GRPCQueryStatisticsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "QueryStatisticsResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "QueryStatisticsResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "statistics"),
   ]
 
@@ -10008,7 +10008,7 @@ extension GRPCQueryStatisticsResponse: SwiftProtobuf.Message, SwiftProtobuf._Mes
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -10020,7 +10020,7 @@ extension GRPCQueryStatisticsResponse: SwiftProtobuf.Message, SwiftProtobuf._Mes
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._statistics {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -10029,7 +10029,7 @@ extension GRPCQueryStatisticsResponse: SwiftProtobuf.Message, SwiftProtobuf._Mes
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCQueryStatisticsResponse, rhs: GRPCQueryStatisticsResponse) -> Bool {
+  static func ==(lhs: GRPCQueryStatisticsResponse, rhs: GRPCQueryStatisticsResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -10045,46 +10045,46 @@ extension GRPCQueryStatisticsResponse: SwiftProtobuf.Message, SwiftProtobuf._Mes
 }
 
 extension GRPCGetInsightsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GetInsightsRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "GetInsightsRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGetInsightsRequest, rhs: GRPCGetInsightsRequest) -> Bool {
+  static func ==(lhs: GRPCGetInsightsRequest, rhs: GRPCGetInsightsRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCGetStatisticsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GetStatisticsRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "GetStatisticsRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGetStatisticsRequest, rhs: GRPCGetStatisticsRequest) -> Bool {
+  static func ==(lhs: GRPCGetStatisticsRequest, rhs: GRPCGetStatisticsRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCStatisticsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "StatisticsResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "StatisticsResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "statistics"),
   ]
 
@@ -10107,7 +10107,7 @@ extension GRPCStatisticsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -10119,7 +10119,7 @@ extension GRPCStatisticsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._statistics {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -10128,7 +10128,7 @@ extension GRPCStatisticsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCStatisticsResponse, rhs: GRPCStatisticsResponse) -> Bool {
+  static func ==(lhs: GRPCStatisticsResponse, rhs: GRPCStatisticsResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -10144,8 +10144,8 @@ extension GRPCStatisticsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageI
 }
 
 extension GRPCInsightsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "InsightsResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "InsightsResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "categories"),
     2: .same(proto: "mortgage"),
     3: .same(proto: "savings"),
@@ -10180,7 +10180,7 @@ extension GRPCInsightsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -10196,7 +10196,7 @@ extension GRPCInsightsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._categories {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -10217,7 +10217,7 @@ extension GRPCInsightsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCInsightsResponse, rhs: GRPCInsightsResponse) -> Bool {
+  static func ==(lhs: GRPCInsightsResponse, rhs: GRPCInsightsResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -10237,27 +10237,27 @@ extension GRPCInsightsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
 }
 
 extension GRPCListCategoriesRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListCategoriesRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "ListCategoriesRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListCategoriesRequest, rhs: GRPCListCategoriesRequest) -> Bool {
+  static func ==(lhs: GRPCListCategoriesRequest, rhs: GRPCListCategoriesRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCListCategoriesResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListCategoriesResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ListCategoriesResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "categories"),
   ]
 
@@ -10280,7 +10280,7 @@ extension GRPCListCategoriesResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -10292,7 +10292,7 @@ extension GRPCListCategoriesResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._categories {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -10301,7 +10301,7 @@ extension GRPCListCategoriesResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListCategoriesResponse, rhs: GRPCListCategoriesResponse) -> Bool {
+  static func ==(lhs: GRPCListCategoriesResponse, rhs: GRPCListCategoriesResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -10317,32 +10317,32 @@ extension GRPCListCategoriesResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
 }
 
 extension GRPCGetTrackingConfigurationRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GetTrackingConfigurationRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "GetTrackingConfigurationRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGetTrackingConfigurationRequest, rhs: GRPCGetTrackingConfigurationRequest) -> Bool {
+  static func ==(lhs: GRPCGetTrackingConfigurationRequest, rhs: GRPCGetTrackingConfigurationRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCGetTrackingConfigurationResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GetTrackingConfigurationResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "GetTrackingConfigurationResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "tracking_user_id"),
     2: .standard(proto: "tracking_username"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.trackingUserID)
@@ -10352,7 +10352,7 @@ extension GRPCGetTrackingConfigurationResponse: SwiftProtobuf.Message, SwiftProt
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.trackingUserID.isEmpty {
       try visitor.visitSingularStringField(value: self.trackingUserID, fieldNumber: 1)
     }
@@ -10362,7 +10362,7 @@ extension GRPCGetTrackingConfigurationResponse: SwiftProtobuf.Message, SwiftProt
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGetTrackingConfigurationResponse, rhs: GRPCGetTrackingConfigurationResponse) -> Bool {
+  static func ==(lhs: GRPCGetTrackingConfigurationResponse, rhs: GRPCGetTrackingConfigurationResponse) -> Bool {
     if lhs.trackingUserID != rhs.trackingUserID {return false}
     if lhs.trackingUsername != rhs.trackingUsername {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -10371,8 +10371,8 @@ extension GRPCGetTrackingConfigurationResponse: SwiftProtobuf.Message, SwiftProt
 }
 
 extension GRPCTrackingRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "TrackingRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "TrackingRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "session_id"),
     2: .same(proto: "events"),
     3: .same(proto: "timings"),
@@ -10381,7 +10381,7 @@ extension GRPCTrackingRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
     6: .standard(proto: "limit_advertising"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.sessionID)
@@ -10395,7 +10395,7 @@ extension GRPCTrackingRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.sessionID.isEmpty {
       try visitor.visitSingularStringField(value: self.sessionID, fieldNumber: 1)
     }
@@ -10417,7 +10417,7 @@ extension GRPCTrackingRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCTrackingRequest, rhs: GRPCTrackingRequest) -> Bool {
+  static func ==(lhs: GRPCTrackingRequest, rhs: GRPCTrackingRequest) -> Bool {
     if lhs.sessionID != rhs.sessionID {return false}
     if lhs.events != rhs.events {return false}
     if lhs.timings != rhs.timings {return false}
@@ -10430,50 +10430,50 @@ extension GRPCTrackingRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
 }
 
 extension GRPCTrackingResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "TrackingResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "TrackingResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCTrackingResponse, rhs: GRPCTrackingResponse) -> Bool {
+  static func ==(lhs: GRPCTrackingResponse, rhs: GRPCTrackingResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCTrackingSessionRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "TrackingSessionRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "TrackingSessionRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCTrackingSessionRequest, rhs: GRPCTrackingSessionRequest) -> Bool {
+  static func ==(lhs: GRPCTrackingSessionRequest, rhs: GRPCTrackingSessionRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCTrackingSessionResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "TrackingSessionResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "TrackingSessionResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "session_id"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.sessionID)
@@ -10482,14 +10482,14 @@ extension GRPCTrackingSessionResponse: SwiftProtobuf.Message, SwiftProtobuf._Mes
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.sessionID.isEmpty {
       try visitor.visitSingularStringField(value: self.sessionID, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCTrackingSessionResponse, rhs: GRPCTrackingSessionResponse) -> Bool {
+  static func ==(lhs: GRPCTrackingSessionResponse, rhs: GRPCTrackingSessionResponse) -> Bool {
     if lhs.sessionID != rhs.sessionID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -10497,12 +10497,12 @@ extension GRPCTrackingSessionResponse: SwiftProtobuf.Message, SwiftProtobuf._Mes
 }
 
 extension GRPCTransferListRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "TransferListRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "TransferListRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "type"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularEnumField(value: &self.type)
@@ -10511,14 +10511,14 @@ extension GRPCTransferListRequest: SwiftProtobuf.Message, SwiftProtobuf._Message
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.type != .unknown {
       try visitor.visitSingularEnumField(value: self.type, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCTransferListRequest, rhs: GRPCTransferListRequest) -> Bool {
+  static func ==(lhs: GRPCTransferListRequest, rhs: GRPCTransferListRequest) -> Bool {
     if lhs.type != rhs.type {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -10526,12 +10526,12 @@ extension GRPCTransferListRequest: SwiftProtobuf.Message, SwiftProtobuf._Message
 }
 
 extension GRPCTransferListResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "TransferListResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "TransferListResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "transfers"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.transfers)
@@ -10540,14 +10540,14 @@ extension GRPCTransferListResponse: SwiftProtobuf.Message, SwiftProtobuf._Messag
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.transfers.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.transfers, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCTransferListResponse, rhs: GRPCTransferListResponse) -> Bool {
+  static func ==(lhs: GRPCTransferListResponse, rhs: GRPCTransferListResponse) -> Bool {
     if lhs.transfers != rhs.transfers {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -10555,12 +10555,12 @@ extension GRPCTransferListResponse: SwiftProtobuf.Message, SwiftProtobuf._Messag
 }
 
 extension GRPCTransferGetRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "TransferGetRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "TransferGetRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "transfer_id"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.transferID)
@@ -10569,14 +10569,14 @@ extension GRPCTransferGetRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.transferID.isEmpty {
       try visitor.visitSingularStringField(value: self.transferID, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCTransferGetRequest, rhs: GRPCTransferGetRequest) -> Bool {
+  static func ==(lhs: GRPCTransferGetRequest, rhs: GRPCTransferGetRequest) -> Bool {
     if lhs.transferID != rhs.transferID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -10584,8 +10584,8 @@ extension GRPCTransferGetRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageI
 }
 
 extension GRPCTransferGetResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "TransferGetResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "TransferGetResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "transfer"),
   ]
 
@@ -10608,7 +10608,7 @@ extension GRPCTransferGetResponse: SwiftProtobuf.Message, SwiftProtobuf._Message
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -10620,7 +10620,7 @@ extension GRPCTransferGetResponse: SwiftProtobuf.Message, SwiftProtobuf._Message
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._transfer {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -10629,7 +10629,7 @@ extension GRPCTransferGetResponse: SwiftProtobuf.Message, SwiftProtobuf._Message
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCTransferGetResponse, rhs: GRPCTransferGetResponse) -> Bool {
+  static func ==(lhs: GRPCTransferGetResponse, rhs: GRPCTransferGetResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -10645,8 +10645,8 @@ extension GRPCTransferGetResponse: SwiftProtobuf.Message, SwiftProtobuf._Message
 }
 
 extension GRPCCreateTransferRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "CreateTransferRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "CreateTransferRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "amount"),
     2: .same(proto: "destination"),
     3: .standard(proto: "destination_message"),
@@ -10684,7 +10684,7 @@ extension GRPCCreateTransferRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -10701,7 +10701,7 @@ extension GRPCCreateTransferRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._amount {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -10725,7 +10725,7 @@ extension GRPCCreateTransferRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCCreateTransferRequest, rhs: GRPCCreateTransferRequest) -> Bool {
+  static func ==(lhs: GRPCCreateTransferRequest, rhs: GRPCCreateTransferRequest) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -10746,8 +10746,8 @@ extension GRPCCreateTransferRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
 }
 
 extension GRPCCreateTransferResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "CreateTransferResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "CreateTransferResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "signable_operation"),
   ]
 
@@ -10770,7 +10770,7 @@ extension GRPCCreateTransferResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -10782,7 +10782,7 @@ extension GRPCCreateTransferResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._signableOperation {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -10791,7 +10791,7 @@ extension GRPCCreateTransferResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCCreateTransferResponse, rhs: GRPCCreateTransferResponse) -> Bool {
+  static func ==(lhs: GRPCCreateTransferResponse, rhs: GRPCCreateTransferResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -10807,8 +10807,8 @@ extension GRPCCreateTransferResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
 }
 
 extension GRPCUpdateTransferRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "UpdateTransferRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "UpdateTransferRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "transfer_id"),
     2: .same(proto: "amount"),
     3: .same(proto: "destination"),
@@ -10849,7 +10849,7 @@ extension GRPCUpdateTransferRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -10867,7 +10867,7 @@ extension GRPCUpdateTransferRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if !_storage._transferID.isEmpty {
         try visitor.visitSingularStringField(value: _storage._transferID, fieldNumber: 1)
@@ -10894,7 +10894,7 @@ extension GRPCUpdateTransferRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCUpdateTransferRequest, rhs: GRPCUpdateTransferRequest) -> Bool {
+  static func ==(lhs: GRPCUpdateTransferRequest, rhs: GRPCUpdateTransferRequest) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -10916,8 +10916,8 @@ extension GRPCUpdateTransferRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
 }
 
 extension GRPCUpdateTransferResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "UpdateTransferResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "UpdateTransferResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "signable_operation"),
   ]
 
@@ -10940,7 +10940,7 @@ extension GRPCUpdateTransferResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -10952,7 +10952,7 @@ extension GRPCUpdateTransferResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._signableOperation {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -10961,7 +10961,7 @@ extension GRPCUpdateTransferResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCUpdateTransferResponse, rhs: GRPCUpdateTransferResponse) -> Bool {
+  static func ==(lhs: GRPCUpdateTransferResponse, rhs: GRPCUpdateTransferResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -10977,8 +10977,8 @@ extension GRPCUpdateTransferResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
 }
 
 extension GRPCTransferListAccountsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "TransferListAccountsRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "TransferListAccountsRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
   ]
 
@@ -11001,7 +11001,7 @@ extension GRPCTransferListAccountsRequest: SwiftProtobuf.Message, SwiftProtobuf.
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -11013,7 +11013,7 @@ extension GRPCTransferListAccountsRequest: SwiftProtobuf.Message, SwiftProtobuf.
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._id {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -11022,7 +11022,7 @@ extension GRPCTransferListAccountsRequest: SwiftProtobuf.Message, SwiftProtobuf.
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCTransferListAccountsRequest, rhs: GRPCTransferListAccountsRequest) -> Bool {
+  static func ==(lhs: GRPCTransferListAccountsRequest, rhs: GRPCTransferListAccountsRequest) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -11038,12 +11038,12 @@ extension GRPCTransferListAccountsRequest: SwiftProtobuf.Message, SwiftProtobuf.
 }
 
 extension GRPCGiroLookupRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GiroLookupRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "GiroLookupRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "giro_number"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.giroNumber)
@@ -11052,14 +11052,14 @@ extension GRPCGiroLookupRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.giroNumber.isEmpty {
       try visitor.visitSingularStringField(value: self.giroNumber, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGiroLookupRequest, rhs: GRPCGiroLookupRequest) -> Bool {
+  static func ==(lhs: GRPCGiroLookupRequest, rhs: GRPCGiroLookupRequest) -> Bool {
     if lhs.giroNumber != rhs.giroNumber {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -11067,12 +11067,12 @@ extension GRPCGiroLookupRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
 }
 
 extension GRPCGiroLookupResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GiroLookupResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "GiroLookupResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "giro_entities"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.giroEntities)
@@ -11081,14 +11081,14 @@ extension GRPCGiroLookupResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.giroEntities.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.giroEntities, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGiroLookupResponse, rhs: GRPCGiroLookupResponse) -> Bool {
+  static func ==(lhs: GRPCGiroLookupResponse, rhs: GRPCGiroLookupResponse) -> Bool {
     if lhs.giroEntities != rhs.giroEntities {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -11096,12 +11096,12 @@ extension GRPCGiroLookupResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageI
 }
 
 extension GRPCClearingLookupRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ClearingLookupRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ClearingLookupRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "clearing_number"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.clearingNumber)
@@ -11110,14 +11110,14 @@ extension GRPCClearingLookupRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.clearingNumber.isEmpty {
       try visitor.visitSingularStringField(value: self.clearingNumber, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCClearingLookupRequest, rhs: GRPCClearingLookupRequest) -> Bool {
+  static func ==(lhs: GRPCClearingLookupRequest, rhs: GRPCClearingLookupRequest) -> Bool {
     if lhs.clearingNumber != rhs.clearingNumber {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -11125,8 +11125,8 @@ extension GRPCClearingLookupRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
 }
 
 extension GRPCClearingLookupResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ClearingLookupResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ClearingLookupResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "bank_display_name"),
     2: .same(proto: "images"),
   ]
@@ -11152,7 +11152,7 @@ extension GRPCClearingLookupResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -11165,7 +11165,7 @@ extension GRPCClearingLookupResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if !_storage._bankDisplayName.isEmpty {
         try visitor.visitSingularStringField(value: _storage._bankDisplayName, fieldNumber: 1)
@@ -11177,7 +11177,7 @@ extension GRPCClearingLookupResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCClearingLookupResponse, rhs: GRPCClearingLookupResponse) -> Bool {
+  static func ==(lhs: GRPCClearingLookupResponse, rhs: GRPCClearingLookupResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -11194,12 +11194,12 @@ extension GRPCClearingLookupResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
 }
 
 extension GRPCSortCodeLookupRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "SortCodeLookupRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "SortCodeLookupRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "sort_code"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.sortCode)
@@ -11208,14 +11208,14 @@ extension GRPCSortCodeLookupRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.sortCode.isEmpty {
       try visitor.visitSingularStringField(value: self.sortCode, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCSortCodeLookupRequest, rhs: GRPCSortCodeLookupRequest) -> Bool {
+  static func ==(lhs: GRPCSortCodeLookupRequest, rhs: GRPCSortCodeLookupRequest) -> Bool {
     if lhs.sortCode != rhs.sortCode {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -11223,8 +11223,8 @@ extension GRPCSortCodeLookupRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
 }
 
 extension GRPCSortCodeLookupResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "SortCodeLookupResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "SortCodeLookupResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "bank_display_name"),
     2: .same(proto: "images"),
   ]
@@ -11250,7 +11250,7 @@ extension GRPCSortCodeLookupResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -11263,7 +11263,7 @@ extension GRPCSortCodeLookupResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if !_storage._bankDisplayName.isEmpty {
         try visitor.visitSingularStringField(value: _storage._bankDisplayName, fieldNumber: 1)
@@ -11275,7 +11275,7 @@ extension GRPCSortCodeLookupResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCSortCodeLookupResponse, rhs: GRPCSortCodeLookupResponse) -> Bool {
+  static func ==(lhs: GRPCSortCodeLookupResponse, rhs: GRPCSortCodeLookupResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -11292,13 +11292,13 @@ extension GRPCSortCodeLookupResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
 }
 
 extension GRPCCreateTransferDestinationRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "CreateTransferDestinationRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "CreateTransferDestinationRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "uri"),
     2: .same(proto: "name"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.uri)
@@ -11308,7 +11308,7 @@ extension GRPCCreateTransferDestinationRequest: SwiftProtobuf.Message, SwiftProt
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.uri.isEmpty {
       try visitor.visitSingularStringField(value: self.uri, fieldNumber: 1)
     }
@@ -11318,7 +11318,7 @@ extension GRPCCreateTransferDestinationRequest: SwiftProtobuf.Message, SwiftProt
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCCreateTransferDestinationRequest, rhs: GRPCCreateTransferDestinationRequest) -> Bool {
+  static func ==(lhs: GRPCCreateTransferDestinationRequest, rhs: GRPCCreateTransferDestinationRequest) -> Bool {
     if lhs.uri != rhs.uri {return false}
     if lhs.name != rhs.name {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -11327,12 +11327,12 @@ extension GRPCCreateTransferDestinationRequest: SwiftProtobuf.Message, SwiftProt
 }
 
 extension GRPCGetAccountsForTransferRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GetAccountsForTransferRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "GetAccountsForTransferRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "transfer_id"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.transferID)
@@ -11341,14 +11341,14 @@ extension GRPCGetAccountsForTransferRequest: SwiftProtobuf.Message, SwiftProtobu
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.transferID.isEmpty {
       try visitor.visitSingularStringField(value: self.transferID, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGetAccountsForTransferRequest, rhs: GRPCGetAccountsForTransferRequest) -> Bool {
+  static func ==(lhs: GRPCGetAccountsForTransferRequest, rhs: GRPCGetAccountsForTransferRequest) -> Bool {
     if lhs.transferID != rhs.transferID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -11356,12 +11356,12 @@ extension GRPCGetAccountsForTransferRequest: SwiftProtobuf.Message, SwiftProtobu
 }
 
 extension GRPCGetAccountsForTransferResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GetAccountsForTransferResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "GetAccountsForTransferResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "account"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.account)
@@ -11370,14 +11370,14 @@ extension GRPCGetAccountsForTransferResponse: SwiftProtobuf.Message, SwiftProtob
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.account.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.account, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGetAccountsForTransferResponse, rhs: GRPCGetAccountsForTransferResponse) -> Bool {
+  static func ==(lhs: GRPCGetAccountsForTransferResponse, rhs: GRPCGetAccountsForTransferResponse) -> Bool {
     if lhs.account != rhs.account {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -11385,31 +11385,31 @@ extension GRPCGetAccountsForTransferResponse: SwiftProtobuf.Message, SwiftProtob
 }
 
 extension GRPCGetTransferDestinationsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GetTransferDestinationsRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "GetTransferDestinationsRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGetTransferDestinationsRequest, rhs: GRPCGetTransferDestinationsRequest) -> Bool {
+  static func ==(lhs: GRPCGetTransferDestinationsRequest, rhs: GRPCGetTransferDestinationsRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCGetTransferDestinationsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GetTransferDestinationsResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "GetTransferDestinationsResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "destinations_per_account"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.destinationsPerAccount)
@@ -11418,14 +11418,14 @@ extension GRPCGetTransferDestinationsResponse: SwiftProtobuf.Message, SwiftProto
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.destinationsPerAccount.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.destinationsPerAccount, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGetTransferDestinationsResponse, rhs: GRPCGetTransferDestinationsResponse) -> Bool {
+  static func ==(lhs: GRPCGetTransferDestinationsResponse, rhs: GRPCGetTransferDestinationsResponse) -> Bool {
     if lhs.destinationsPerAccount != rhs.destinationsPerAccount {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -11433,8 +11433,8 @@ extension GRPCGetTransferDestinationsResponse: SwiftProtobuf.Message, SwiftProto
 }
 
 extension GRPCCreateTransferDestinationResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "CreateTransferDestinationResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "CreateTransferDestinationResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "destination"),
   ]
 
@@ -11457,7 +11457,7 @@ extension GRPCCreateTransferDestinationResponse: SwiftProtobuf.Message, SwiftPro
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -11469,7 +11469,7 @@ extension GRPCCreateTransferDestinationResponse: SwiftProtobuf.Message, SwiftPro
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._destination {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -11478,7 +11478,7 @@ extension GRPCCreateTransferDestinationResponse: SwiftProtobuf.Message, SwiftPro
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCCreateTransferDestinationResponse, rhs: GRPCCreateTransferDestinationResponse) -> Bool {
+  static func ==(lhs: GRPCCreateTransferDestinationResponse, rhs: GRPCCreateTransferDestinationResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -11494,14 +11494,14 @@ extension GRPCCreateTransferDestinationResponse: SwiftProtobuf.Message, SwiftPro
 }
 
 extension GRPCListBusinessDaysRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListBusinessDaysRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ListBusinessDaysRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "start_year"),
     2: .standard(proto: "start_month"),
     3: .same(proto: "months"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularUInt32Field(value: &self.startYear)
@@ -11512,7 +11512,7 @@ extension GRPCListBusinessDaysRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.startYear != 0 {
       try visitor.visitSingularUInt32Field(value: self.startYear, fieldNumber: 1)
     }
@@ -11525,7 +11525,7 @@ extension GRPCListBusinessDaysRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListBusinessDaysRequest, rhs: GRPCListBusinessDaysRequest) -> Bool {
+  static func ==(lhs: GRPCListBusinessDaysRequest, rhs: GRPCListBusinessDaysRequest) -> Bool {
     if lhs.startYear != rhs.startYear {return false}
     if lhs.startMonth != rhs.startMonth {return false}
     if lhs.months != rhs.months {return false}
@@ -11535,12 +11535,12 @@ extension GRPCListBusinessDaysRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
 }
 
 extension GRPCListBusinessDaysResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListBusinessDaysResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ListBusinessDaysResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "business_days"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.businessDays)
@@ -11549,14 +11549,14 @@ extension GRPCListBusinessDaysResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.businessDays.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.businessDays, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListBusinessDaysResponse, rhs: GRPCListBusinessDaysResponse) -> Bool {
+  static func ==(lhs: GRPCListBusinessDaysResponse, rhs: GRPCListBusinessDaysResponse) -> Bool {
     if lhs.businessDays != rhs.businessDays {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -11564,27 +11564,27 @@ extension GRPCListBusinessDaysResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
 }
 
 extension GRPCNotificationSettingsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "NotificationSettingsRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "NotificationSettingsRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCNotificationSettingsRequest, rhs: GRPCNotificationSettingsRequest) -> Bool {
+  static func ==(lhs: GRPCNotificationSettingsRequest, rhs: GRPCNotificationSettingsRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCNotificationSettingsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "NotificationSettingsResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "NotificationSettingsResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "notification_settings"),
   ]
 
@@ -11607,7 +11607,7 @@ extension GRPCNotificationSettingsResponse: SwiftProtobuf.Message, SwiftProtobuf
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -11619,7 +11619,7 @@ extension GRPCNotificationSettingsResponse: SwiftProtobuf.Message, SwiftProtobuf
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._notificationSettings {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -11628,7 +11628,7 @@ extension GRPCNotificationSettingsResponse: SwiftProtobuf.Message, SwiftProtobuf
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCNotificationSettingsResponse, rhs: GRPCNotificationSettingsResponse) -> Bool {
+  static func ==(lhs: GRPCNotificationSettingsResponse, rhs: GRPCNotificationSettingsResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -11644,12 +11644,12 @@ extension GRPCNotificationSettingsResponse: SwiftProtobuf.Message, SwiftProtobuf
 }
 
 extension GRPCUpdateNotificationSettingsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "UpdateNotificationSettingsRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "UpdateNotificationSettingsRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "notification_types"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.notificationTypes)
@@ -11658,14 +11658,14 @@ extension GRPCUpdateNotificationSettingsRequest: SwiftProtobuf.Message, SwiftPro
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.notificationTypes.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.notificationTypes, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCUpdateNotificationSettingsRequest, rhs: GRPCUpdateNotificationSettingsRequest) -> Bool {
+  static func ==(lhs: GRPCUpdateNotificationSettingsRequest, rhs: GRPCUpdateNotificationSettingsRequest) -> Bool {
     if lhs.notificationTypes != rhs.notificationTypes {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -11673,27 +11673,27 @@ extension GRPCUpdateNotificationSettingsRequest: SwiftProtobuf.Message, SwiftPro
 }
 
 extension GRPCPeriodSettingsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "PeriodSettingsRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "PeriodSettingsRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCPeriodSettingsRequest, rhs: GRPCPeriodSettingsRequest) -> Bool {
+  static func ==(lhs: GRPCPeriodSettingsRequest, rhs: GRPCPeriodSettingsRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCPeriodSettingsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "PeriodSettingsResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "PeriodSettingsResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "period_settings"),
   ]
 
@@ -11716,7 +11716,7 @@ extension GRPCPeriodSettingsResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -11728,7 +11728,7 @@ extension GRPCPeriodSettingsResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._periodSettings {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -11737,7 +11737,7 @@ extension GRPCPeriodSettingsResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCPeriodSettingsResponse, rhs: GRPCPeriodSettingsResponse) -> Bool {
+  static func ==(lhs: GRPCPeriodSettingsResponse, rhs: GRPCPeriodSettingsResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -11753,8 +11753,8 @@ extension GRPCPeriodSettingsResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
 }
 
 extension GRPCUpdatePeriodSettingsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "UpdatePeriodSettingsRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "UpdatePeriodSettingsRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "period_date_break_type"),
     2: .standard(proto: "monthly_adjusted_day"),
   ]
@@ -11780,7 +11780,7 @@ extension GRPCUpdatePeriodSettingsRequest: SwiftProtobuf.Message, SwiftProtobuf.
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -11793,7 +11793,7 @@ extension GRPCUpdatePeriodSettingsRequest: SwiftProtobuf.Message, SwiftProtobuf.
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if _storage._periodDateBreakType != .unknown {
         try visitor.visitSingularEnumField(value: _storage._periodDateBreakType, fieldNumber: 1)
@@ -11805,7 +11805,7 @@ extension GRPCUpdatePeriodSettingsRequest: SwiftProtobuf.Message, SwiftProtobuf.
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCUpdatePeriodSettingsRequest, rhs: GRPCUpdatePeriodSettingsRequest) -> Bool {
+  static func ==(lhs: GRPCUpdatePeriodSettingsRequest, rhs: GRPCUpdatePeriodSettingsRequest) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -11822,8 +11822,8 @@ extension GRPCUpdatePeriodSettingsRequest: SwiftProtobuf.Message, SwiftProtobuf.
 }
 
 extension GRPCUpdateI18NSettingsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "UpdateI18NSettingsRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "UpdateI18NSettingsRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "locale_code"),
   ]
 
@@ -11846,7 +11846,7 @@ extension GRPCUpdateI18NSettingsRequest: SwiftProtobuf.Message, SwiftProtobuf._M
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -11858,7 +11858,7 @@ extension GRPCUpdateI18NSettingsRequest: SwiftProtobuf.Message, SwiftProtobuf._M
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._localeCode {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -11867,7 +11867,7 @@ extension GRPCUpdateI18NSettingsRequest: SwiftProtobuf.Message, SwiftProtobuf._M
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCUpdateI18NSettingsRequest, rhs: GRPCUpdateI18NSettingsRequest) -> Bool {
+  static func ==(lhs: GRPCUpdateI18NSettingsRequest, rhs: GRPCUpdateI18NSettingsRequest) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -11883,8 +11883,8 @@ extension GRPCUpdateI18NSettingsRequest: SwiftProtobuf.Message, SwiftProtobuf._M
 }
 
 extension GRPCUpdateI18NSettingsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "UpdateI18NSettingsResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "UpdateI18NSettingsResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "i18n_settings"),
   ]
 
@@ -11907,7 +11907,7 @@ extension GRPCUpdateI18NSettingsResponse: SwiftProtobuf.Message, SwiftProtobuf._
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -11919,7 +11919,7 @@ extension GRPCUpdateI18NSettingsResponse: SwiftProtobuf.Message, SwiftProtobuf._
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._i18NSettings {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -11928,7 +11928,7 @@ extension GRPCUpdateI18NSettingsResponse: SwiftProtobuf.Message, SwiftProtobuf._
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCUpdateI18NSettingsResponse, rhs: GRPCUpdateI18NSettingsResponse) -> Bool {
+  static func ==(lhs: GRPCUpdateI18NSettingsResponse, rhs: GRPCUpdateI18NSettingsResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -11944,14 +11944,14 @@ extension GRPCUpdateI18NSettingsResponse: SwiftProtobuf.Message, SwiftProtobuf._
 }
 
 extension GRPCDescribeOAuth2ClientRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "DescribeOAuth2ClientRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "DescribeOAuth2ClientRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "client_id"),
     2: .same(proto: "scopes"),
     3: .standard(proto: "redirect_uri"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.clientID)
@@ -11962,7 +11962,7 @@ extension GRPCDescribeOAuth2ClientRequest: SwiftProtobuf.Message, SwiftProtobuf.
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.clientID.isEmpty {
       try visitor.visitSingularStringField(value: self.clientID, fieldNumber: 1)
     }
@@ -11975,7 +11975,7 @@ extension GRPCDescribeOAuth2ClientRequest: SwiftProtobuf.Message, SwiftProtobuf.
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCDescribeOAuth2ClientRequest, rhs: GRPCDescribeOAuth2ClientRequest) -> Bool {
+  static func ==(lhs: GRPCDescribeOAuth2ClientRequest, rhs: GRPCDescribeOAuth2ClientRequest) -> Bool {
     if lhs.clientID != rhs.clientID {return false}
     if lhs.scopes != rhs.scopes {return false}
     if lhs.redirectUri != rhs.redirectUri {return false}
@@ -11985,8 +11985,8 @@ extension GRPCDescribeOAuth2ClientRequest: SwiftProtobuf.Message, SwiftProtobuf.
 }
 
 extension GRPCDescribeOAuth2ClientResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "DescribeOAuth2ClientResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "DescribeOAuth2ClientResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "client_icon_url"),
     2: .standard(proto: "client_name"),
     3: .standard(proto: "client_url"),
@@ -11996,7 +11996,7 @@ extension GRPCDescribeOAuth2ClientResponse: SwiftProtobuf.Message, SwiftProtobuf
     7: .same(proto: "aggregator"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.clientIconURL)
@@ -12011,7 +12011,7 @@ extension GRPCDescribeOAuth2ClientResponse: SwiftProtobuf.Message, SwiftProtobuf
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.clientIconURL.isEmpty {
       try visitor.visitSingularStringField(value: self.clientIconURL, fieldNumber: 1)
     }
@@ -12036,7 +12036,7 @@ extension GRPCDescribeOAuth2ClientResponse: SwiftProtobuf.Message, SwiftProtobuf
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCDescribeOAuth2ClientResponse, rhs: GRPCDescribeOAuth2ClientResponse) -> Bool {
+  static func ==(lhs: GRPCDescribeOAuth2ClientResponse, rhs: GRPCDescribeOAuth2ClientResponse) -> Bool {
     if lhs.clientIconURL != rhs.clientIconURL {return false}
     if lhs.clientName != rhs.clientName {return false}
     if lhs.clientURL != rhs.clientURL {return false}
@@ -12050,12 +12050,12 @@ extension GRPCDescribeOAuth2ClientResponse: SwiftProtobuf.Message, SwiftProtobuf
 }
 
 extension GRPCLoginRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "LoginRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "LoginRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "authentication_token"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.authenticationToken)
@@ -12064,14 +12064,14 @@ extension GRPCLoginRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.authenticationToken.isEmpty {
       try visitor.visitSingularStringField(value: self.authenticationToken, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCLoginRequest, rhs: GRPCLoginRequest) -> Bool {
+  static func ==(lhs: GRPCLoginRequest, rhs: GRPCLoginRequest) -> Bool {
     if lhs.authenticationToken != rhs.authenticationToken {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -12079,12 +12079,12 @@ extension GRPCLoginRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
 }
 
 extension GRPCLoginResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "LoginResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "LoginResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "session_id"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.sessionID)
@@ -12093,14 +12093,14 @@ extension GRPCLoginResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.sessionID.isEmpty {
       try visitor.visitSingularStringField(value: self.sessionID, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCLoginResponse, rhs: GRPCLoginResponse) -> Bool {
+  static func ==(lhs: GRPCLoginResponse, rhs: GRPCLoginResponse) -> Bool {
     if lhs.sessionID != rhs.sessionID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -12108,14 +12108,14 @@ extension GRPCLoginResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
 }
 
 extension GRPCRegisterRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "RegisterRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "RegisterRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "authentication_token"),
     2: .same(proto: "email"),
     3: .same(proto: "locale"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.authenticationToken)
@@ -12126,7 +12126,7 @@ extension GRPCRegisterRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.authenticationToken.isEmpty {
       try visitor.visitSingularStringField(value: self.authenticationToken, fieldNumber: 1)
     }
@@ -12139,7 +12139,7 @@ extension GRPCRegisterRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCRegisterRequest, rhs: GRPCRegisterRequest) -> Bool {
+  static func ==(lhs: GRPCRegisterRequest, rhs: GRPCRegisterRequest) -> Bool {
     if lhs.authenticationToken != rhs.authenticationToken {return false}
     if lhs.email != rhs.email {return false}
     if lhs.locale != rhs.locale {return false}
@@ -12149,12 +12149,12 @@ extension GRPCRegisterRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
 }
 
 extension GRPCRegisterResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "RegisterResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "RegisterResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "session_id"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.sessionID)
@@ -12163,14 +12163,14 @@ extension GRPCRegisterResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.sessionID.isEmpty {
       try visitor.visitSingularStringField(value: self.sessionID, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCRegisterResponse, rhs: GRPCRegisterResponse) -> Bool {
+  static func ==(lhs: GRPCRegisterResponse, rhs: GRPCRegisterResponse) -> Bool {
     if lhs.sessionID != rhs.sessionID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -12178,12 +12178,12 @@ extension GRPCRegisterResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
 }
 
 extension GRPCLogoutRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "LogoutRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "LogoutRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "autologout"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularBoolField(value: &self.autologout)
@@ -12192,14 +12192,14 @@ extension GRPCLogoutRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.autologout != false {
       try visitor.visitSingularBoolField(value: self.autologout, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCLogoutRequest, rhs: GRPCLogoutRequest) -> Bool {
+  static func ==(lhs: GRPCLogoutRequest, rhs: GRPCLogoutRequest) -> Bool {
     if lhs.autologout != rhs.autologout {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -12207,27 +12207,27 @@ extension GRPCLogoutRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
 }
 
 extension GRPCLogoutResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "LogoutResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "LogoutResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCLogoutResponse, rhs: GRPCLogoutResponse) -> Bool {
+  static func ==(lhs: GRPCLogoutResponse, rhs: GRPCLogoutResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCUpdateEmailRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "UpdateEmailRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "UpdateEmailRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "email"),
   ]
 
@@ -12250,7 +12250,7 @@ extension GRPCUpdateEmailRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -12262,7 +12262,7 @@ extension GRPCUpdateEmailRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._email {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -12271,7 +12271,7 @@ extension GRPCUpdateEmailRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCUpdateEmailRequest, rhs: GRPCUpdateEmailRequest) -> Bool {
+  static func ==(lhs: GRPCUpdateEmailRequest, rhs: GRPCUpdateEmailRequest) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -12287,8 +12287,8 @@ extension GRPCUpdateEmailRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageI
 }
 
 extension GRPCUpdateEmailResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "UpdateEmailResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "UpdateEmailResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "user_profile"),
   ]
 
@@ -12311,7 +12311,7 @@ extension GRPCUpdateEmailResponse: SwiftProtobuf.Message, SwiftProtobuf._Message
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -12323,7 +12323,7 @@ extension GRPCUpdateEmailResponse: SwiftProtobuf.Message, SwiftProtobuf._Message
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._userProfile {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -12332,7 +12332,7 @@ extension GRPCUpdateEmailResponse: SwiftProtobuf.Message, SwiftProtobuf._Message
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCUpdateEmailResponse, rhs: GRPCUpdateEmailResponse) -> Bool {
+  static func ==(lhs: GRPCUpdateEmailResponse, rhs: GRPCUpdateEmailResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -12348,14 +12348,14 @@ extension GRPCUpdateEmailResponse: SwiftProtobuf.Message, SwiftProtobuf._Message
 }
 
 extension GRPCCreateAnonymousRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "CreateAnonymousRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "CreateAnonymousRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "market"),
     2: .same(proto: "locale"),
     3: .same(proto: "origin"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.market)
@@ -12366,7 +12366,7 @@ extension GRPCCreateAnonymousRequest: SwiftProtobuf.Message, SwiftProtobuf._Mess
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.market.isEmpty {
       try visitor.visitSingularStringField(value: self.market, fieldNumber: 1)
     }
@@ -12379,7 +12379,7 @@ extension GRPCCreateAnonymousRequest: SwiftProtobuf.Message, SwiftProtobuf._Mess
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCCreateAnonymousRequest, rhs: GRPCCreateAnonymousRequest) -> Bool {
+  static func ==(lhs: GRPCCreateAnonymousRequest, rhs: GRPCCreateAnonymousRequest) -> Bool {
     if lhs.market != rhs.market {return false}
     if lhs.locale != rhs.locale {return false}
     if lhs.origin != rhs.origin {return false}
@@ -12389,12 +12389,12 @@ extension GRPCCreateAnonymousRequest: SwiftProtobuf.Message, SwiftProtobuf._Mess
 }
 
 extension GRPCCreateAnonymousResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "CreateAnonymousResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "CreateAnonymousResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "access_token"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.accessToken)
@@ -12403,14 +12403,14 @@ extension GRPCCreateAnonymousResponse: SwiftProtobuf.Message, SwiftProtobuf._Mes
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.accessToken.isEmpty {
       try visitor.visitSingularStringField(value: self.accessToken, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCCreateAnonymousResponse, rhs: GRPCCreateAnonymousResponse) -> Bool {
+  static func ==(lhs: GRPCCreateAnonymousResponse, rhs: GRPCCreateAnonymousResponse) -> Bool {
     if lhs.accessToken != rhs.accessToken {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -12418,27 +12418,27 @@ extension GRPCCreateAnonymousResponse: SwiftProtobuf.Message, SwiftProtobuf._Mes
 }
 
 extension GRPCGetProfileRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GetProfileRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "GetProfileRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGetProfileRequest, rhs: GRPCGetProfileRequest) -> Bool {
+  static func ==(lhs: GRPCGetProfileRequest, rhs: GRPCGetProfileRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCGetProfileResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GetProfileResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "GetProfileResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "user_profile"),
   ]
 
@@ -12461,7 +12461,7 @@ extension GRPCGetProfileResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -12473,7 +12473,7 @@ extension GRPCGetProfileResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._userProfile {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -12482,7 +12482,7 @@ extension GRPCGetProfileResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGetProfileResponse, rhs: GRPCGetProfileResponse) -> Bool {
+  static func ==(lhs: GRPCGetProfileResponse, rhs: GRPCGetProfileResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -12498,8 +12498,8 @@ extension GRPCGetProfileResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageI
 }
 
 extension GRPCDeleteUserRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "DeleteUserRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "DeleteUserRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "reasons"),
     2: .same(proto: "comment"),
   ]
@@ -12525,7 +12525,7 @@ extension GRPCDeleteUserRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -12538,7 +12538,7 @@ extension GRPCDeleteUserRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if !_storage._reasons.isEmpty {
         try visitor.visitRepeatedStringField(value: _storage._reasons, fieldNumber: 1)
@@ -12550,7 +12550,7 @@ extension GRPCDeleteUserRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCDeleteUserRequest, rhs: GRPCDeleteUserRequest) -> Bool {
+  static func ==(lhs: GRPCDeleteUserRequest, rhs: GRPCDeleteUserRequest) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -12567,31 +12567,31 @@ extension GRPCDeleteUserRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
 }
 
 extension GRPCDeleteUserResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "DeleteUserResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "DeleteUserResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCDeleteUserResponse, rhs: GRPCDeleteUserResponse) -> Bool {
+  static func ==(lhs: GRPCDeleteUserResponse, rhs: GRPCDeleteUserResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCRateAppRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "RateAppRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "RateAppRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "status"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularEnumField(value: &self.status)
@@ -12600,14 +12600,14 @@ extension GRPCRateAppRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.status != .unknown {
       try visitor.visitSingularEnumField(value: self.status, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCRateAppRequest, rhs: GRPCRateAppRequest) -> Bool {
+  static func ==(lhs: GRPCRateAppRequest, rhs: GRPCRateAppRequest) -> Bool {
     if lhs.status != rhs.status {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -12615,33 +12615,33 @@ extension GRPCRateAppRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
 }
 
 extension GRPCRateAppResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "RateAppResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "RateAppResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCRateAppResponse, rhs: GRPCRateAppResponse) -> Bool {
+  static func ==(lhs: GRPCRateAppResponse, rhs: GRPCRateAppResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCInitiateBankIdAuthenticationRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "InitiateBankIdAuthenticationRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "InitiateBankIdAuthenticationRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     2: .standard(proto: "market_code"),
     1: .standard(proto: "national_id"),
     3: .standard(proto: "authentication_token"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1:
@@ -12660,7 +12660,7 @@ extension GRPCInitiateBankIdAuthenticationRequest: SwiftProtobuf.Message, SwiftP
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if case .nationalID(let v)? = self.type {
       try visitor.visitSingularStringField(value: v, fieldNumber: 1)
     }
@@ -12673,7 +12673,7 @@ extension GRPCInitiateBankIdAuthenticationRequest: SwiftProtobuf.Message, SwiftP
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCInitiateBankIdAuthenticationRequest, rhs: GRPCInitiateBankIdAuthenticationRequest) -> Bool {
+  static func ==(lhs: GRPCInitiateBankIdAuthenticationRequest, rhs: GRPCInitiateBankIdAuthenticationRequest) -> Bool {
     if lhs.marketCode != rhs.marketCode {return false}
     if lhs.type != rhs.type {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -12682,14 +12682,14 @@ extension GRPCInitiateBankIdAuthenticationRequest: SwiftProtobuf.Message, SwiftP
 }
 
 extension GRPCInitiateBankIdAuthenticationResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "InitiateBankIdAuthenticationResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "InitiateBankIdAuthenticationResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "auto_start_token"),
     2: .standard(proto: "authentication_token"),
     3: .same(proto: "status"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.autoStartToken)
@@ -12700,7 +12700,7 @@ extension GRPCInitiateBankIdAuthenticationResponse: SwiftProtobuf.Message, Swift
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.autoStartToken.isEmpty {
       try visitor.visitSingularStringField(value: self.autoStartToken, fieldNumber: 1)
     }
@@ -12713,7 +12713,7 @@ extension GRPCInitiateBankIdAuthenticationResponse: SwiftProtobuf.Message, Swift
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCInitiateBankIdAuthenticationResponse, rhs: GRPCInitiateBankIdAuthenticationResponse) -> Bool {
+  static func ==(lhs: GRPCInitiateBankIdAuthenticationResponse, rhs: GRPCInitiateBankIdAuthenticationResponse) -> Bool {
     if lhs.autoStartToken != rhs.autoStartToken {return false}
     if lhs.authenticationToken != rhs.authenticationToken {return false}
     if lhs.status != rhs.status {return false}
@@ -12723,12 +12723,12 @@ extension GRPCInitiateBankIdAuthenticationResponse: SwiftProtobuf.Message, Swift
 }
 
 extension GRPCCollectBankIdAuthenticationRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "CollectBankIdAuthenticationRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "CollectBankIdAuthenticationRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "authentication_token"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.authenticationToken)
@@ -12737,14 +12737,14 @@ extension GRPCCollectBankIdAuthenticationRequest: SwiftProtobuf.Message, SwiftPr
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.authenticationToken.isEmpty {
       try visitor.visitSingularStringField(value: self.authenticationToken, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCCollectBankIdAuthenticationRequest, rhs: GRPCCollectBankIdAuthenticationRequest) -> Bool {
+  static func ==(lhs: GRPCCollectBankIdAuthenticationRequest, rhs: GRPCCollectBankIdAuthenticationRequest) -> Bool {
     if lhs.authenticationToken != rhs.authenticationToken {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -12752,13 +12752,13 @@ extension GRPCCollectBankIdAuthenticationRequest: SwiftProtobuf.Message, SwiftPr
 }
 
 extension GRPCCollectBankIdAuthenticationResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "CollectBankIdAuthenticationResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "CollectBankIdAuthenticationResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "national_id"),
     2: .same(proto: "status"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.nationalID)
@@ -12768,7 +12768,7 @@ extension GRPCCollectBankIdAuthenticationResponse: SwiftProtobuf.Message, SwiftP
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.nationalID.isEmpty {
       try visitor.visitSingularStringField(value: self.nationalID, fieldNumber: 1)
     }
@@ -12778,7 +12778,7 @@ extension GRPCCollectBankIdAuthenticationResponse: SwiftProtobuf.Message, SwiftP
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCCollectBankIdAuthenticationResponse, rhs: GRPCCollectBankIdAuthenticationResponse) -> Bool {
+  static func ==(lhs: GRPCCollectBankIdAuthenticationResponse, rhs: GRPCCollectBankIdAuthenticationResponse) -> Bool {
     if lhs.nationalID != rhs.nationalID {return false}
     if lhs.status != rhs.status {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -12787,14 +12787,14 @@ extension GRPCCollectBankIdAuthenticationResponse: SwiftProtobuf.Message, SwiftP
 }
 
 extension GRPCEmailAndPasswordAuthenticationRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "EmailAndPasswordAuthenticationRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "EmailAndPasswordAuthenticationRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "email"),
     2: .same(proto: "password"),
     3: .standard(proto: "market_code"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.email)
@@ -12805,7 +12805,7 @@ extension GRPCEmailAndPasswordAuthenticationRequest: SwiftProtobuf.Message, Swif
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.email.isEmpty {
       try visitor.visitSingularStringField(value: self.email, fieldNumber: 1)
     }
@@ -12818,7 +12818,7 @@ extension GRPCEmailAndPasswordAuthenticationRequest: SwiftProtobuf.Message, Swif
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCEmailAndPasswordAuthenticationRequest, rhs: GRPCEmailAndPasswordAuthenticationRequest) -> Bool {
+  static func ==(lhs: GRPCEmailAndPasswordAuthenticationRequest, rhs: GRPCEmailAndPasswordAuthenticationRequest) -> Bool {
     if lhs.email != rhs.email {return false}
     if lhs.password != rhs.password {return false}
     if lhs.marketCode != rhs.marketCode {return false}
@@ -12828,13 +12828,13 @@ extension GRPCEmailAndPasswordAuthenticationRequest: SwiftProtobuf.Message, Swif
 }
 
 extension GRPCEmailAndPasswordAuthenticationResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "EmailAndPasswordAuthenticationResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "EmailAndPasswordAuthenticationResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "authentication_token"),
     2: .same(proto: "status"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.authenticationToken)
@@ -12844,7 +12844,7 @@ extension GRPCEmailAndPasswordAuthenticationResponse: SwiftProtobuf.Message, Swi
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.authenticationToken.isEmpty {
       try visitor.visitSingularStringField(value: self.authenticationToken, fieldNumber: 1)
     }
@@ -12854,7 +12854,7 @@ extension GRPCEmailAndPasswordAuthenticationResponse: SwiftProtobuf.Message, Swi
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCEmailAndPasswordAuthenticationResponse, rhs: GRPCEmailAndPasswordAuthenticationResponse) -> Bool {
+  static func ==(lhs: GRPCEmailAndPasswordAuthenticationResponse, rhs: GRPCEmailAndPasswordAuthenticationResponse) -> Bool {
     if lhs.authenticationToken != rhs.authenticationToken {return false}
     if lhs.status != rhs.status {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -12863,12 +12863,12 @@ extension GRPCEmailAndPasswordAuthenticationResponse: SwiftProtobuf.Message, Swi
 }
 
 extension GRPCForgotPasswordRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ForgotPasswordRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ForgotPasswordRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "email"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.email)
@@ -12877,14 +12877,14 @@ extension GRPCForgotPasswordRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.email.isEmpty {
       try visitor.visitSingularStringField(value: self.email, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCForgotPasswordRequest, rhs: GRPCForgotPasswordRequest) -> Bool {
+  static func ==(lhs: GRPCForgotPasswordRequest, rhs: GRPCForgotPasswordRequest) -> Bool {
     if lhs.email != rhs.email {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -12892,32 +12892,32 @@ extension GRPCForgotPasswordRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
 }
 
 extension GRPCForgotPasswordResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ForgotPasswordResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "ForgotPasswordResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCForgotPasswordResponse, rhs: GRPCForgotPasswordResponse) -> Bool {
+  static func ==(lhs: GRPCForgotPasswordResponse, rhs: GRPCForgotPasswordResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCResetPasswordRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ResetPasswordRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ResetPasswordRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "tokenId"),
     2: .same(proto: "password"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.tokenID)
@@ -12927,7 +12927,7 @@ extension GRPCResetPasswordRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.tokenID.isEmpty {
       try visitor.visitSingularStringField(value: self.tokenID, fieldNumber: 1)
     }
@@ -12937,7 +12937,7 @@ extension GRPCResetPasswordRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCResetPasswordRequest, rhs: GRPCResetPasswordRequest) -> Bool {
+  static func ==(lhs: GRPCResetPasswordRequest, rhs: GRPCResetPasswordRequest) -> Bool {
     if lhs.tokenID != rhs.tokenID {return false}
     if lhs.password != rhs.password {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -12946,32 +12946,32 @@ extension GRPCResetPasswordRequest: SwiftProtobuf.Message, SwiftProtobuf._Messag
 }
 
 extension GRPCResetPasswordResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ResetPasswordResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "ResetPasswordResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCResetPasswordResponse, rhs: GRPCResetPasswordResponse) -> Bool {
+  static func ==(lhs: GRPCResetPasswordResponse, rhs: GRPCResetPasswordResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCUpdatePasswordRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "UpdatePasswordRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "UpdatePasswordRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "old_password"),
     2: .standard(proto: "new_password"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.oldPassword)
@@ -12981,7 +12981,7 @@ extension GRPCUpdatePasswordRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.oldPassword.isEmpty {
       try visitor.visitSingularStringField(value: self.oldPassword, fieldNumber: 1)
     }
@@ -12991,7 +12991,7 @@ extension GRPCUpdatePasswordRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCUpdatePasswordRequest, rhs: GRPCUpdatePasswordRequest) -> Bool {
+  static func ==(lhs: GRPCUpdatePasswordRequest, rhs: GRPCUpdatePasswordRequest) -> Bool {
     if lhs.oldPassword != rhs.oldPassword {return false}
     if lhs.newPassword != rhs.newPassword {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -13000,31 +13000,31 @@ extension GRPCUpdatePasswordRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
 }
 
 extension GRPCUpdatePasswordResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "UpdatePasswordResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "UpdatePasswordResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCUpdatePasswordResponse, rhs: GRPCUpdatePasswordResponse) -> Bool {
+  static func ==(lhs: GRPCUpdatePasswordResponse, rhs: GRPCUpdatePasswordResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCGetIdentityEventRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GetIdentityEventRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "GetIdentityEventRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "identity_event_id"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.identityEventID)
@@ -13033,14 +13033,14 @@ extension GRPCGetIdentityEventRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.identityEventID.isEmpty {
       try visitor.visitSingularStringField(value: self.identityEventID, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGetIdentityEventRequest, rhs: GRPCGetIdentityEventRequest) -> Bool {
+  static func ==(lhs: GRPCGetIdentityEventRequest, rhs: GRPCGetIdentityEventRequest) -> Bool {
     if lhs.identityEventID != rhs.identityEventID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -13048,12 +13048,12 @@ extension GRPCGetIdentityEventRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
 }
 
 extension GRPCSeenIdentityEventRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "SeenIdentityEventRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "SeenIdentityEventRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "identity_event_ids"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedStringField(value: &self.identityEventIds)
@@ -13062,14 +13062,14 @@ extension GRPCSeenIdentityEventRequest: SwiftProtobuf.Message, SwiftProtobuf._Me
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.identityEventIds.isEmpty {
       try visitor.visitRepeatedStringField(value: self.identityEventIds, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCSeenIdentityEventRequest, rhs: GRPCSeenIdentityEventRequest) -> Bool {
+  static func ==(lhs: GRPCSeenIdentityEventRequest, rhs: GRPCSeenIdentityEventRequest) -> Bool {
     if lhs.identityEventIds != rhs.identityEventIds {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -13077,8 +13077,8 @@ extension GRPCSeenIdentityEventRequest: SwiftProtobuf.Message, SwiftProtobuf._Me
 }
 
 extension GRPCAnswerIdentityEventRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "AnswerIdentityEventRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "AnswerIdentityEventRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "identity_event_id"),
     2: .same(proto: "answer"),
   ]
@@ -13104,7 +13104,7 @@ extension GRPCAnswerIdentityEventRequest: SwiftProtobuf.Message, SwiftProtobuf._
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -13117,7 +13117,7 @@ extension GRPCAnswerIdentityEventRequest: SwiftProtobuf.Message, SwiftProtobuf._
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if !_storage._identityEventID.isEmpty {
         try visitor.visitSingularStringField(value: _storage._identityEventID, fieldNumber: 1)
@@ -13129,7 +13129,7 @@ extension GRPCAnswerIdentityEventRequest: SwiftProtobuf.Message, SwiftProtobuf._
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCAnswerIdentityEventRequest, rhs: GRPCAnswerIdentityEventRequest) -> Bool {
+  static func ==(lhs: GRPCAnswerIdentityEventRequest, rhs: GRPCAnswerIdentityEventRequest) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -13146,31 +13146,31 @@ extension GRPCAnswerIdentityEventRequest: SwiftProtobuf.Message, SwiftProtobuf._
 }
 
 extension GRPCIdentityEventListRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "IdentityEventListRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "IdentityEventListRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCIdentityEventListRequest, rhs: GRPCIdentityEventListRequest) -> Bool {
+  static func ==(lhs: GRPCIdentityEventListRequest, rhs: GRPCIdentityEventListRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCIdentityEventListResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "IdentityEventListResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "IdentityEventListResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "events"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.events)
@@ -13179,14 +13179,14 @@ extension GRPCIdentityEventListResponse: SwiftProtobuf.Message, SwiftProtobuf._M
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.events.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.events, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCIdentityEventListResponse, rhs: GRPCIdentityEventListResponse) -> Bool {
+  static func ==(lhs: GRPCIdentityEventListResponse, rhs: GRPCIdentityEventListResponse) -> Bool {
     if lhs.events != rhs.events {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -13194,8 +13194,8 @@ extension GRPCIdentityEventListResponse: SwiftProtobuf.Message, SwiftProtobuf._M
 }
 
 extension GRPCIdentityEventResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "IdentityEventResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "IdentityEventResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "event"),
   ]
 
@@ -13218,7 +13218,7 @@ extension GRPCIdentityEventResponse: SwiftProtobuf.Message, SwiftProtobuf._Messa
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -13230,7 +13230,7 @@ extension GRPCIdentityEventResponse: SwiftProtobuf.Message, SwiftProtobuf._Messa
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._event {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -13239,7 +13239,7 @@ extension GRPCIdentityEventResponse: SwiftProtobuf.Message, SwiftProtobuf._Messa
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCIdentityEventResponse, rhs: GRPCIdentityEventResponse) -> Bool {
+  static func ==(lhs: GRPCIdentityEventResponse, rhs: GRPCIdentityEventResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -13255,12 +13255,12 @@ extension GRPCIdentityEventResponse: SwiftProtobuf.Message, SwiftProtobuf._Messa
 }
 
 extension GRPCSeenIdentityEventResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "SeenIdentityEventResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "SeenIdentityEventResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "events"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.events)
@@ -13269,14 +13269,14 @@ extension GRPCSeenIdentityEventResponse: SwiftProtobuf.Message, SwiftProtobuf._M
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.events.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.events, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCSeenIdentityEventResponse, rhs: GRPCSeenIdentityEventResponse) -> Bool {
+  static func ==(lhs: GRPCSeenIdentityEventResponse, rhs: GRPCSeenIdentityEventResponse) -> Bool {
     if lhs.events != rhs.events {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -13284,8 +13284,8 @@ extension GRPCSeenIdentityEventResponse: SwiftProtobuf.Message, SwiftProtobuf._M
 }
 
 extension GRPCAnswerIdentityEventResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "AnswerIdentityEventResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "AnswerIdentityEventResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "event"),
   ]
 
@@ -13308,7 +13308,7 @@ extension GRPCAnswerIdentityEventResponse: SwiftProtobuf.Message, SwiftProtobuf.
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -13320,7 +13320,7 @@ extension GRPCAnswerIdentityEventResponse: SwiftProtobuf.Message, SwiftProtobuf.
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._event {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -13329,7 +13329,7 @@ extension GRPCAnswerIdentityEventResponse: SwiftProtobuf.Message, SwiftProtobuf.
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCAnswerIdentityEventResponse, rhs: GRPCAnswerIdentityEventResponse) -> Bool {
+  static func ==(lhs: GRPCAnswerIdentityEventResponse, rhs: GRPCAnswerIdentityEventResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -13345,27 +13345,27 @@ extension GRPCAnswerIdentityEventResponse: SwiftProtobuf.Message, SwiftProtobuf.
 }
 
 extension GRPCIdentityStateRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "IdentityStateRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "IdentityStateRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCIdentityStateRequest, rhs: GRPCIdentityStateRequest) -> Bool {
+  static func ==(lhs: GRPCIdentityStateRequest, rhs: GRPCIdentityStateRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCIdentityStateResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "IdentityStateResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "IdentityStateResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "state"),
   ]
 
@@ -13388,7 +13388,7 @@ extension GRPCIdentityStateResponse: SwiftProtobuf.Message, SwiftProtobuf._Messa
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -13400,7 +13400,7 @@ extension GRPCIdentityStateResponse: SwiftProtobuf.Message, SwiftProtobuf._Messa
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._state {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -13409,7 +13409,7 @@ extension GRPCIdentityStateResponse: SwiftProtobuf.Message, SwiftProtobuf._Messa
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCIdentityStateResponse, rhs: GRPCIdentityStateResponse) -> Bool {
+  static func ==(lhs: GRPCIdentityStateResponse, rhs: GRPCIdentityStateResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -13425,51 +13425,51 @@ extension GRPCIdentityStateResponse: SwiftProtobuf.Message, SwiftProtobuf._Messa
 }
 
 extension GRPCActivateIdentityServiceRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ActivateIdentityServiceRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "ActivateIdentityServiceRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCActivateIdentityServiceRequest, rhs: GRPCActivateIdentityServiceRequest) -> Bool {
+  static func ==(lhs: GRPCActivateIdentityServiceRequest, rhs: GRPCActivateIdentityServiceRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCActivateIdentityServiceResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ActivateIdentityServiceResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "ActivateIdentityServiceResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCActivateIdentityServiceResponse, rhs: GRPCActivateIdentityServiceResponse) -> Bool {
+  static func ==(lhs: GRPCActivateIdentityServiceResponse, rhs: GRPCActivateIdentityServiceResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCInitiateSmsOtpRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "InitiateSmsOtpRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "InitiateSmsOtpRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "phone_number"),
     2: .same(proto: "locale"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.phoneNumber)
@@ -13479,7 +13479,7 @@ extension GRPCInitiateSmsOtpRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.phoneNumber.isEmpty {
       try visitor.visitSingularStringField(value: self.phoneNumber, fieldNumber: 1)
     }
@@ -13489,7 +13489,7 @@ extension GRPCInitiateSmsOtpRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCInitiateSmsOtpRequest, rhs: GRPCInitiateSmsOtpRequest) -> Bool {
+  static func ==(lhs: GRPCInitiateSmsOtpRequest, rhs: GRPCInitiateSmsOtpRequest) -> Bool {
     if lhs.phoneNumber != rhs.phoneNumber {return false}
     if lhs.locale != rhs.locale {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -13498,8 +13498,8 @@ extension GRPCInitiateSmsOtpRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
 }
 
 extension GRPCInitiateSmsOtpResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "InitiateSmsOtpResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "InitiateSmsOtpResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "sms_otp_verification_token"),
     2: .standard(proto: "otp_length"),
     3: .standard(proto: "expire_at"),
@@ -13528,7 +13528,7 @@ extension GRPCInitiateSmsOtpResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -13542,7 +13542,7 @@ extension GRPCInitiateSmsOtpResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if !_storage._smsOtpVerificationToken.isEmpty {
         try visitor.visitSingularStringField(value: _storage._smsOtpVerificationToken, fieldNumber: 1)
@@ -13557,7 +13557,7 @@ extension GRPCInitiateSmsOtpResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCInitiateSmsOtpResponse, rhs: GRPCInitiateSmsOtpResponse) -> Bool {
+  static func ==(lhs: GRPCInitiateSmsOtpResponse, rhs: GRPCInitiateSmsOtpResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -13575,13 +13575,13 @@ extension GRPCInitiateSmsOtpResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
 }
 
 extension GRPCVerifySmsOtpRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "VerifySmsOtpRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "VerifySmsOtpRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "sms_otp_verification_token"),
     2: .same(proto: "code"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.smsOtpVerificationToken)
@@ -13591,7 +13591,7 @@ extension GRPCVerifySmsOtpRequest: SwiftProtobuf.Message, SwiftProtobuf._Message
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.smsOtpVerificationToken.isEmpty {
       try visitor.visitSingularStringField(value: self.smsOtpVerificationToken, fieldNumber: 1)
     }
@@ -13601,7 +13601,7 @@ extension GRPCVerifySmsOtpRequest: SwiftProtobuf.Message, SwiftProtobuf._Message
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCVerifySmsOtpRequest, rhs: GRPCVerifySmsOtpRequest) -> Bool {
+  static func ==(lhs: GRPCVerifySmsOtpRequest, rhs: GRPCVerifySmsOtpRequest) -> Bool {
     if lhs.smsOtpVerificationToken != rhs.smsOtpVerificationToken {return false}
     if lhs.code != rhs.code {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -13610,14 +13610,14 @@ extension GRPCVerifySmsOtpRequest: SwiftProtobuf.Message, SwiftProtobuf._Message
 }
 
 extension GRPCVerifySmsOtpResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "VerifySmsOtpResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "VerifySmsOtpResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "sms_otp_verification_token"),
     2: .same(proto: "status"),
     3: .standard(proto: "existing_user"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.smsOtpVerificationToken)
@@ -13628,7 +13628,7 @@ extension GRPCVerifySmsOtpResponse: SwiftProtobuf.Message, SwiftProtobuf._Messag
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.smsOtpVerificationToken.isEmpty {
       try visitor.visitSingularStringField(value: self.smsOtpVerificationToken, fieldNumber: 1)
     }
@@ -13641,7 +13641,7 @@ extension GRPCVerifySmsOtpResponse: SwiftProtobuf.Message, SwiftProtobuf._Messag
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCVerifySmsOtpResponse, rhs: GRPCVerifySmsOtpResponse) -> Bool {
+  static func ==(lhs: GRPCVerifySmsOtpResponse, rhs: GRPCVerifySmsOtpResponse) -> Bool {
     if lhs.smsOtpVerificationToken != rhs.smsOtpVerificationToken {return false}
     if lhs.status != rhs.status {return false}
     if lhs.existingUser != rhs.existingUser {return false}
@@ -13651,14 +13651,14 @@ extension GRPCVerifySmsOtpResponse: SwiftProtobuf.Message, SwiftProtobuf._Messag
 }
 
 extension GRPCSmsOtpAndPin6AuthenticationRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "SmsOtpAndPin6AuthenticationRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "SmsOtpAndPin6AuthenticationRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "sms_otp_verification_token"),
     2: .same(proto: "pin6"),
     3: .standard(proto: "market_code"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.smsOtpVerificationToken)
@@ -13669,7 +13669,7 @@ extension GRPCSmsOtpAndPin6AuthenticationRequest: SwiftProtobuf.Message, SwiftPr
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.smsOtpVerificationToken.isEmpty {
       try visitor.visitSingularStringField(value: self.smsOtpVerificationToken, fieldNumber: 1)
     }
@@ -13682,7 +13682,7 @@ extension GRPCSmsOtpAndPin6AuthenticationRequest: SwiftProtobuf.Message, SwiftPr
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCSmsOtpAndPin6AuthenticationRequest, rhs: GRPCSmsOtpAndPin6AuthenticationRequest) -> Bool {
+  static func ==(lhs: GRPCSmsOtpAndPin6AuthenticationRequest, rhs: GRPCSmsOtpAndPin6AuthenticationRequest) -> Bool {
     if lhs.smsOtpVerificationToken != rhs.smsOtpVerificationToken {return false}
     if lhs.pin6 != rhs.pin6 {return false}
     if lhs.marketCode != rhs.marketCode {return false}
@@ -13692,13 +13692,13 @@ extension GRPCSmsOtpAndPin6AuthenticationRequest: SwiftProtobuf.Message, SwiftPr
 }
 
 extension GRPCSmsOtpAndPin6AuthenticationResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "SmsOtpAndPin6AuthenticationResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "SmsOtpAndPin6AuthenticationResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "authentication_token"),
     2: .same(proto: "status"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.authenticationToken)
@@ -13708,7 +13708,7 @@ extension GRPCSmsOtpAndPin6AuthenticationResponse: SwiftProtobuf.Message, SwiftP
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.authenticationToken.isEmpty {
       try visitor.visitSingularStringField(value: self.authenticationToken, fieldNumber: 1)
     }
@@ -13718,7 +13718,7 @@ extension GRPCSmsOtpAndPin6AuthenticationResponse: SwiftProtobuf.Message, SwiftP
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCSmsOtpAndPin6AuthenticationResponse, rhs: GRPCSmsOtpAndPin6AuthenticationResponse) -> Bool {
+  static func ==(lhs: GRPCSmsOtpAndPin6AuthenticationResponse, rhs: GRPCSmsOtpAndPin6AuthenticationResponse) -> Bool {
     if lhs.authenticationToken != rhs.authenticationToken {return false}
     if lhs.status != rhs.status {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -13727,14 +13727,14 @@ extension GRPCSmsOtpAndPin6AuthenticationResponse: SwiftProtobuf.Message, SwiftP
 }
 
 extension GRPCPhoneNumberAndPin6AuthenticationRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "PhoneNumberAndPin6AuthenticationRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "PhoneNumberAndPin6AuthenticationRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "phone_number"),
     2: .same(proto: "pin6"),
     3: .standard(proto: "market_code"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.phoneNumber)
@@ -13745,7 +13745,7 @@ extension GRPCPhoneNumberAndPin6AuthenticationRequest: SwiftProtobuf.Message, Sw
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.phoneNumber.isEmpty {
       try visitor.visitSingularStringField(value: self.phoneNumber, fieldNumber: 1)
     }
@@ -13758,7 +13758,7 @@ extension GRPCPhoneNumberAndPin6AuthenticationRequest: SwiftProtobuf.Message, Sw
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCPhoneNumberAndPin6AuthenticationRequest, rhs: GRPCPhoneNumberAndPin6AuthenticationRequest) -> Bool {
+  static func ==(lhs: GRPCPhoneNumberAndPin6AuthenticationRequest, rhs: GRPCPhoneNumberAndPin6AuthenticationRequest) -> Bool {
     if lhs.phoneNumber != rhs.phoneNumber {return false}
     if lhs.pin6 != rhs.pin6 {return false}
     if lhs.marketCode != rhs.marketCode {return false}
@@ -13768,13 +13768,13 @@ extension GRPCPhoneNumberAndPin6AuthenticationRequest: SwiftProtobuf.Message, Sw
 }
 
 extension GRPCPhoneNumberAndPin6AuthenticationResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "PhoneNumberAndPin6AuthenticationResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "PhoneNumberAndPin6AuthenticationResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "authentication_token"),
     2: .same(proto: "status"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.authenticationToken)
@@ -13784,7 +13784,7 @@ extension GRPCPhoneNumberAndPin6AuthenticationResponse: SwiftProtobuf.Message, S
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.authenticationToken.isEmpty {
       try visitor.visitSingularStringField(value: self.authenticationToken, fieldNumber: 1)
     }
@@ -13794,7 +13794,7 @@ extension GRPCPhoneNumberAndPin6AuthenticationResponse: SwiftProtobuf.Message, S
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCPhoneNumberAndPin6AuthenticationResponse, rhs: GRPCPhoneNumberAndPin6AuthenticationResponse) -> Bool {
+  static func ==(lhs: GRPCPhoneNumberAndPin6AuthenticationResponse, rhs: GRPCPhoneNumberAndPin6AuthenticationResponse) -> Bool {
     if lhs.authenticationToken != rhs.authenticationToken {return false}
     if lhs.status != rhs.status {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -13803,31 +13803,31 @@ extension GRPCPhoneNumberAndPin6AuthenticationResponse: SwiftProtobuf.Message, S
 }
 
 extension GRPCListConsentsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListConsentsRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "ListConsentsRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListConsentsRequest, rhs: GRPCListConsentsRequest) -> Bool {
+  static func ==(lhs: GRPCListConsentsRequest, rhs: GRPCListConsentsRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCListConsentsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListConsentsResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ListConsentsResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "consents"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.consents)
@@ -13836,14 +13836,14 @@ extension GRPCListConsentsResponse: SwiftProtobuf.Message, SwiftProtobuf._Messag
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.consents.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.consents, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListConsentsResponse, rhs: GRPCListConsentsResponse) -> Bool {
+  static func ==(lhs: GRPCListConsentsResponse, rhs: GRPCListConsentsResponse) -> Bool {
     if lhs.consents != rhs.consents {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -13851,31 +13851,31 @@ extension GRPCListConsentsResponse: SwiftProtobuf.Message, SwiftProtobuf._Messag
 }
 
 extension GRPCAvailableConsentsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "AvailableConsentsRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "AvailableConsentsRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCAvailableConsentsRequest, rhs: GRPCAvailableConsentsRequest) -> Bool {
+  static func ==(lhs: GRPCAvailableConsentsRequest, rhs: GRPCAvailableConsentsRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCAvailableConsentsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "AvailableConsentsResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "AvailableConsentsResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "consents"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.consents)
@@ -13884,14 +13884,14 @@ extension GRPCAvailableConsentsResponse: SwiftProtobuf.Message, SwiftProtobuf._M
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.consents.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.consents, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCAvailableConsentsResponse, rhs: GRPCAvailableConsentsResponse) -> Bool {
+  static func ==(lhs: GRPCAvailableConsentsResponse, rhs: GRPCAvailableConsentsResponse) -> Bool {
     if lhs.consents != rhs.consents {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -13899,12 +13899,12 @@ extension GRPCAvailableConsentsResponse: SwiftProtobuf.Message, SwiftProtobuf._M
 }
 
 extension GRPCConsentDetailsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ConsentDetailsRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ConsentDetailsRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "key"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.key)
@@ -13913,14 +13913,14 @@ extension GRPCConsentDetailsRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.key.isEmpty {
       try visitor.visitSingularStringField(value: self.key, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCConsentDetailsRequest, rhs: GRPCConsentDetailsRequest) -> Bool {
+  static func ==(lhs: GRPCConsentDetailsRequest, rhs: GRPCConsentDetailsRequest) -> Bool {
     if lhs.key != rhs.key {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -13928,8 +13928,8 @@ extension GRPCConsentDetailsRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
 }
 
 extension GRPCConsentDetailsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ConsentDetailsResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ConsentDetailsResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "consent"),
   ]
 
@@ -13952,7 +13952,7 @@ extension GRPCConsentDetailsResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -13964,7 +13964,7 @@ extension GRPCConsentDetailsResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._consent {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -13973,7 +13973,7 @@ extension GRPCConsentDetailsResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCConsentDetailsResponse, rhs: GRPCConsentDetailsResponse) -> Bool {
+  static func ==(lhs: GRPCConsentDetailsResponse, rhs: GRPCConsentDetailsResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -13989,31 +13989,31 @@ extension GRPCConsentDetailsResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
 }
 
 extension GRPCUserConsentsListRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "UserConsentsListRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "UserConsentsListRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCUserConsentsListRequest, rhs: GRPCUserConsentsListRequest) -> Bool {
+  static func ==(lhs: GRPCUserConsentsListRequest, rhs: GRPCUserConsentsListRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCUserConsentsListResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "UserConsentsListResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "UserConsentsListResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "user_consents"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.userConsents)
@@ -14022,14 +14022,14 @@ extension GRPCUserConsentsListResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.userConsents.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.userConsents, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCUserConsentsListResponse, rhs: GRPCUserConsentsListResponse) -> Bool {
+  static func ==(lhs: GRPCUserConsentsListResponse, rhs: GRPCUserConsentsListResponse) -> Bool {
     if lhs.userConsents != rhs.userConsents {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -14037,15 +14037,15 @@ extension GRPCUserConsentsListResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
 }
 
 extension GRPCGiveConsentRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GiveConsentRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "GiveConsentRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "key"),
     2: .same(proto: "version"),
     3: .same(proto: "action"),
     4: .same(proto: "checksum"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.key)
@@ -14057,7 +14057,7 @@ extension GRPCGiveConsentRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.key.isEmpty {
       try visitor.visitSingularStringField(value: self.key, fieldNumber: 1)
     }
@@ -14073,7 +14073,7 @@ extension GRPCGiveConsentRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGiveConsentRequest, rhs: GRPCGiveConsentRequest) -> Bool {
+  static func ==(lhs: GRPCGiveConsentRequest, rhs: GRPCGiveConsentRequest) -> Bool {
     if lhs.key != rhs.key {return false}
     if lhs.version != rhs.version {return false}
     if lhs.action != rhs.action {return false}
@@ -14084,8 +14084,8 @@ extension GRPCGiveConsentRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageI
 }
 
 extension GRPCGiveConsentResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GiveConsentResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "GiveConsentResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "user_consent"),
   ]
 
@@ -14108,7 +14108,7 @@ extension GRPCGiveConsentResponse: SwiftProtobuf.Message, SwiftProtobuf._Message
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -14120,7 +14120,7 @@ extension GRPCGiveConsentResponse: SwiftProtobuf.Message, SwiftProtobuf._Message
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._userConsent {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -14129,7 +14129,7 @@ extension GRPCGiveConsentResponse: SwiftProtobuf.Message, SwiftProtobuf._Message
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGiveConsentResponse, rhs: GRPCGiveConsentResponse) -> Bool {
+  static func ==(lhs: GRPCGiveConsentResponse, rhs: GRPCGiveConsentResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -14145,12 +14145,12 @@ extension GRPCGiveConsentResponse: SwiftProtobuf.Message, SwiftProtobuf._Message
 }
 
 extension GRPCUserConsentDetailsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "UserConsentDetailsRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "UserConsentDetailsRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.id)
@@ -14159,14 +14159,14 @@ extension GRPCUserConsentDetailsRequest: SwiftProtobuf.Message, SwiftProtobuf._M
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.id.isEmpty {
       try visitor.visitSingularStringField(value: self.id, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCUserConsentDetailsRequest, rhs: GRPCUserConsentDetailsRequest) -> Bool {
+  static func ==(lhs: GRPCUserConsentDetailsRequest, rhs: GRPCUserConsentDetailsRequest) -> Bool {
     if lhs.id != rhs.id {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -14174,8 +14174,8 @@ extension GRPCUserConsentDetailsRequest: SwiftProtobuf.Message, SwiftProtobuf._M
 }
 
 extension GRPCUserConsentDetailsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "UserConsentDetailsResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "UserConsentDetailsResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "user_consent"),
   ]
 
@@ -14198,7 +14198,7 @@ extension GRPCUserConsentDetailsResponse: SwiftProtobuf.Message, SwiftProtobuf._
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -14210,7 +14210,7 @@ extension GRPCUserConsentDetailsResponse: SwiftProtobuf.Message, SwiftProtobuf._
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._userConsent {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -14219,7 +14219,7 @@ extension GRPCUserConsentDetailsResponse: SwiftProtobuf.Message, SwiftProtobuf._
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCUserConsentDetailsResponse, rhs: GRPCUserConsentDetailsResponse) -> Bool {
+  static func ==(lhs: GRPCUserConsentDetailsResponse, rhs: GRPCUserConsentDetailsResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -14235,13 +14235,13 @@ extension GRPCUserConsentDetailsResponse: SwiftProtobuf.Message, SwiftProtobuf._
 }
 
 extension GRPCUpdatePin6Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "UpdatePin6Request"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "UpdatePin6Request"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "old_pin6"),
     2: .standard(proto: "new_pin6"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.oldPin6)
@@ -14251,7 +14251,7 @@ extension GRPCUpdatePin6Request: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.oldPin6.isEmpty {
       try visitor.visitSingularStringField(value: self.oldPin6, fieldNumber: 1)
     }
@@ -14261,7 +14261,7 @@ extension GRPCUpdatePin6Request: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCUpdatePin6Request, rhs: GRPCUpdatePin6Request) -> Bool {
+  static func ==(lhs: GRPCUpdatePin6Request, rhs: GRPCUpdatePin6Request) -> Bool {
     if lhs.oldPin6 != rhs.oldPin6 {return false}
     if lhs.newPin6 != rhs.newPin6 {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -14270,32 +14270,32 @@ extension GRPCUpdatePin6Request: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
 }
 
 extension GRPCUpdatePin6Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "UpdatePin6Response"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "UpdatePin6Response"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCUpdatePin6Response, rhs: GRPCUpdatePin6Response) -> Bool {
+  static func ==(lhs: GRPCUpdatePin6Response, rhs: GRPCUpdatePin6Response) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCUpdatePhoneNumberRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "UpdatePhoneNumberRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "UpdatePhoneNumberRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "sms_otp_verification_token"),
     2: .same(proto: "pin6"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.smsOtpVerificationToken)
@@ -14305,7 +14305,7 @@ extension GRPCUpdatePhoneNumberRequest: SwiftProtobuf.Message, SwiftProtobuf._Me
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.smsOtpVerificationToken.isEmpty {
       try visitor.visitSingularStringField(value: self.smsOtpVerificationToken, fieldNumber: 1)
     }
@@ -14315,7 +14315,7 @@ extension GRPCUpdatePhoneNumberRequest: SwiftProtobuf.Message, SwiftProtobuf._Me
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCUpdatePhoneNumberRequest, rhs: GRPCUpdatePhoneNumberRequest) -> Bool {
+  static func ==(lhs: GRPCUpdatePhoneNumberRequest, rhs: GRPCUpdatePhoneNumberRequest) -> Bool {
     if lhs.smsOtpVerificationToken != rhs.smsOtpVerificationToken {return false}
     if lhs.pin6 != rhs.pin6 {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -14324,34 +14324,34 @@ extension GRPCUpdatePhoneNumberRequest: SwiftProtobuf.Message, SwiftProtobuf._Me
 }
 
 extension GRPCUpdatePhoneNumberResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "UpdatePhoneNumberResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "UpdatePhoneNumberResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCUpdatePhoneNumberResponse, rhs: GRPCUpdatePhoneNumberResponse) -> Bool {
+  static func ==(lhs: GRPCUpdatePhoneNumberResponse, rhs: GRPCUpdatePhoneNumberResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCResetPin6Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ResetPin6Request"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ResetPin6Request"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "sms_otp_verification_token"),
     3: .standard(proto: "reset_pin_6_token"),
     4: .standard(proto: "no_credentials"),
     2: .same(proto: "pin6"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1:
@@ -14375,7 +14375,7 @@ extension GRPCResetPin6Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if case .smsOtpVerificationToken(let v)? = self.method {
       try visitor.visitSingularStringField(value: v, fieldNumber: 1)
     }
@@ -14393,7 +14393,7 @@ extension GRPCResetPin6Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCResetPin6Request, rhs: GRPCResetPin6Request) -> Bool {
+  static func ==(lhs: GRPCResetPin6Request, rhs: GRPCResetPin6Request) -> Bool {
     if lhs.method != rhs.method {return false}
     if lhs.pin6 != rhs.pin6 {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -14402,13 +14402,13 @@ extension GRPCResetPin6Request: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
 }
 
 extension GRPCResetPin6Response: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ResetPin6Response"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ResetPin6Response"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "authentication_token"),
     2: .same(proto: "status"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.authenticationToken)
@@ -14418,7 +14418,7 @@ extension GRPCResetPin6Response: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.authenticationToken.isEmpty {
       try visitor.visitSingularStringField(value: self.authenticationToken, fieldNumber: 1)
     }
@@ -14428,7 +14428,7 @@ extension GRPCResetPin6Response: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCResetPin6Response, rhs: GRPCResetPin6Response) -> Bool {
+  static func ==(lhs: GRPCResetPin6Response, rhs: GRPCResetPin6Response) -> Bool {
     if lhs.authenticationToken != rhs.authenticationToken {return false}
     if lhs.status != rhs.status {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -14437,12 +14437,12 @@ extension GRPCResetPin6Response: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
 }
 
 extension GRPCAbnAmroAuthenticationRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "AbnAmroAuthenticationRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "AbnAmroAuthenticationRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "internet_banking_session_token"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.internetBankingSessionToken)
@@ -14451,14 +14451,14 @@ extension GRPCAbnAmroAuthenticationRequest: SwiftProtobuf.Message, SwiftProtobuf
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.internetBankingSessionToken.isEmpty {
       try visitor.visitSingularStringField(value: self.internetBankingSessionToken, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCAbnAmroAuthenticationRequest, rhs: GRPCAbnAmroAuthenticationRequest) -> Bool {
+  static func ==(lhs: GRPCAbnAmroAuthenticationRequest, rhs: GRPCAbnAmroAuthenticationRequest) -> Bool {
     if lhs.internetBankingSessionToken != rhs.internetBankingSessionToken {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -14466,13 +14466,13 @@ extension GRPCAbnAmroAuthenticationRequest: SwiftProtobuf.Message, SwiftProtobuf
 }
 
 extension GRPCAbnAmroAuthenticationResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "AbnAmroAuthenticationResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "AbnAmroAuthenticationResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "authentication_token"),
     2: .same(proto: "status"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.authenticationToken)
@@ -14482,7 +14482,7 @@ extension GRPCAbnAmroAuthenticationResponse: SwiftProtobuf.Message, SwiftProtobu
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.authenticationToken.isEmpty {
       try visitor.visitSingularStringField(value: self.authenticationToken, fieldNumber: 1)
     }
@@ -14492,7 +14492,7 @@ extension GRPCAbnAmroAuthenticationResponse: SwiftProtobuf.Message, SwiftProtobu
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCAbnAmroAuthenticationResponse, rhs: GRPCAbnAmroAuthenticationResponse) -> Bool {
+  static func ==(lhs: GRPCAbnAmroAuthenticationResponse, rhs: GRPCAbnAmroAuthenticationResponse) -> Bool {
     if lhs.authenticationToken != rhs.authenticationToken {return false}
     if lhs.status != rhs.status {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -14501,13 +14501,13 @@ extension GRPCAbnAmroAuthenticationResponse: SwiftProtobuf.Message, SwiftProtobu
 }
 
 extension GRPCAbnAmroMigrationRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "AbnAmroMigrationRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "AbnAmroMigrationRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "sms_otp_verification_token"),
     2: .same(proto: "pin6"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.smsOtpVerificationToken)
@@ -14517,7 +14517,7 @@ extension GRPCAbnAmroMigrationRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.smsOtpVerificationToken.isEmpty {
       try visitor.visitSingularStringField(value: self.smsOtpVerificationToken, fieldNumber: 1)
     }
@@ -14527,7 +14527,7 @@ extension GRPCAbnAmroMigrationRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCAbnAmroMigrationRequest, rhs: GRPCAbnAmroMigrationRequest) -> Bool {
+  static func ==(lhs: GRPCAbnAmroMigrationRequest, rhs: GRPCAbnAmroMigrationRequest) -> Bool {
     if lhs.smsOtpVerificationToken != rhs.smsOtpVerificationToken {return false}
     if lhs.pin6 != rhs.pin6 {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -14536,31 +14536,31 @@ extension GRPCAbnAmroMigrationRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
 }
 
 extension GRPCAbnAmroMigrationResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "AbnAmroMigrationResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "AbnAmroMigrationResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCAbnAmroMigrationResponse, rhs: GRPCAbnAmroMigrationResponse) -> Bool {
+  static func ==(lhs: GRPCAbnAmroMigrationResponse, rhs: GRPCAbnAmroMigrationResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCPingRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "PingRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "PingRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "message"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.message)
@@ -14569,14 +14569,14 @@ extension GRPCPingRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.message.isEmpty {
       try visitor.visitSingularStringField(value: self.message, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCPingRequest, rhs: GRPCPingRequest) -> Bool {
+  static func ==(lhs: GRPCPingRequest, rhs: GRPCPingRequest) -> Bool {
     if lhs.message != rhs.message {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -14584,12 +14584,12 @@ extension GRPCPingRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
 }
 
 extension GRPCPingResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "PingResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "PingResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "message"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.message)
@@ -14598,14 +14598,14 @@ extension GRPCPingResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.message.isEmpty {
       try visitor.visitSingularStringField(value: self.message, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCPingResponse, rhs: GRPCPingResponse) -> Bool {
+  static func ==(lhs: GRPCPingResponse, rhs: GRPCPingResponse) -> Bool {
     if lhs.message != rhs.message {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -14613,8 +14613,8 @@ extension GRPCPingResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
 }
 
 extension GRPCSelectInsightActionRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "SelectInsightActionRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "SelectInsightActionRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "insight_id"),
     2: .standard(proto: "user_id"),
     3: .standard(proto: "action_group"),
@@ -14622,7 +14622,7 @@ extension GRPCSelectInsightActionRequest: SwiftProtobuf.Message, SwiftProtobuf._
     5: .same(proto: "label"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.insightID)
@@ -14635,7 +14635,7 @@ extension GRPCSelectInsightActionRequest: SwiftProtobuf.Message, SwiftProtobuf._
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.insightID.isEmpty {
       try visitor.visitSingularStringField(value: self.insightID, fieldNumber: 1)
     }
@@ -14654,7 +14654,7 @@ extension GRPCSelectInsightActionRequest: SwiftProtobuf.Message, SwiftProtobuf._
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCSelectInsightActionRequest, rhs: GRPCSelectInsightActionRequest) -> Bool {
+  static func ==(lhs: GRPCSelectInsightActionRequest, rhs: GRPCSelectInsightActionRequest) -> Bool {
     if lhs.insightID != rhs.insightID {return false}
     if lhs.userID != rhs.userID {return false}
     if lhs.actionGroup != rhs.actionGroup {return false}
@@ -14666,69 +14666,69 @@ extension GRPCSelectInsightActionRequest: SwiftProtobuf.Message, SwiftProtobuf._
 }
 
 extension GRPCSelectInsightActionResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "SelectInsightActionResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "SelectInsightActionResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCSelectInsightActionResponse, rhs: GRPCSelectInsightActionResponse) -> Bool {
+  static func ==(lhs: GRPCSelectInsightActionResponse, rhs: GRPCSelectInsightActionResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCListPropertiesRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListPropertiesRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "ListPropertiesRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListPropertiesRequest, rhs: GRPCListPropertiesRequest) -> Bool {
+  static func ==(lhs: GRPCListPropertiesRequest, rhs: GRPCListPropertiesRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCListMarketsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListMarketsRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "ListMarketsRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListMarketsRequest, rhs: GRPCListMarketsRequest) -> Bool {
+  static func ==(lhs: GRPCListMarketsRequest, rhs: GRPCListMarketsRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCListMarketsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListMarketsResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ListMarketsResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "markets"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.markets)
@@ -14737,14 +14737,14 @@ extension GRPCListMarketsResponse: SwiftProtobuf.Message, SwiftProtobuf._Message
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.markets.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.markets, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListMarketsResponse, rhs: GRPCListMarketsResponse) -> Bool {
+  static func ==(lhs: GRPCListMarketsResponse, rhs: GRPCListMarketsResponse) -> Bool {
     if lhs.markets != rhs.markets {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -14752,12 +14752,12 @@ extension GRPCListMarketsResponse: SwiftProtobuf.Message, SwiftProtobuf._Message
 }
 
 extension GRPCListPropertiesResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListPropertiesResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ListPropertiesResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "properties"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.properties)
@@ -14766,14 +14766,14 @@ extension GRPCListPropertiesResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.properties.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.properties, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListPropertiesResponse, rhs: GRPCListPropertiesResponse) -> Bool {
+  static func ==(lhs: GRPCListPropertiesResponse, rhs: GRPCListPropertiesResponse) -> Bool {
     if lhs.properties != rhs.properties {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -14781,12 +14781,12 @@ extension GRPCListPropertiesResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
 }
 
 extension GRPCGetPropertyRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GetPropertyRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "GetPropertyRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "property_id"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.propertyID)
@@ -14795,14 +14795,14 @@ extension GRPCGetPropertyRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.propertyID.isEmpty {
       try visitor.visitSingularStringField(value: self.propertyID, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGetPropertyRequest, rhs: GRPCGetPropertyRequest) -> Bool {
+  static func ==(lhs: GRPCGetPropertyRequest, rhs: GRPCGetPropertyRequest) -> Bool {
     if lhs.propertyID != rhs.propertyID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -14810,8 +14810,8 @@ extension GRPCGetPropertyRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageI
 }
 
 extension GRPCGetPropertyResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GetPropertyResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "GetPropertyResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "property"),
   ]
 
@@ -14834,7 +14834,7 @@ extension GRPCGetPropertyResponse: SwiftProtobuf.Message, SwiftProtobuf._Message
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -14846,7 +14846,7 @@ extension GRPCGetPropertyResponse: SwiftProtobuf.Message, SwiftProtobuf._Message
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._property {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -14855,7 +14855,7 @@ extension GRPCGetPropertyResponse: SwiftProtobuf.Message, SwiftProtobuf._Message
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGetPropertyResponse, rhs: GRPCGetPropertyResponse) -> Bool {
+  static func ==(lhs: GRPCGetPropertyResponse, rhs: GRPCGetPropertyResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -14871,14 +14871,14 @@ extension GRPCGetPropertyResponse: SwiftProtobuf.Message, SwiftProtobuf._Message
 }
 
 extension GRPCUpdatePropertyRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "UpdatePropertyRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "UpdatePropertyRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "property_id"),
     2: .standard(proto: "number_of_rooms"),
     3: .standard(proto: "number_of_square_meters"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.propertyID)
@@ -14889,7 +14889,7 @@ extension GRPCUpdatePropertyRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.propertyID.isEmpty {
       try visitor.visitSingularStringField(value: self.propertyID, fieldNumber: 1)
     }
@@ -14902,7 +14902,7 @@ extension GRPCUpdatePropertyRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCUpdatePropertyRequest, rhs: GRPCUpdatePropertyRequest) -> Bool {
+  static func ==(lhs: GRPCUpdatePropertyRequest, rhs: GRPCUpdatePropertyRequest) -> Bool {
     if lhs.propertyID != rhs.propertyID {return false}
     if lhs.numberOfRooms != rhs.numberOfRooms {return false}
     if lhs.numberOfSquareMeters != rhs.numberOfSquareMeters {return false}
@@ -14912,8 +14912,8 @@ extension GRPCUpdatePropertyRequest: SwiftProtobuf.Message, SwiftProtobuf._Messa
 }
 
 extension GRPCUpdatePropertyResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "UpdatePropertyResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "UpdatePropertyResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "property"),
   ]
 
@@ -14936,7 +14936,7 @@ extension GRPCUpdatePropertyResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -14948,7 +14948,7 @@ extension GRPCUpdatePropertyResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._property {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -14957,7 +14957,7 @@ extension GRPCUpdatePropertyResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCUpdatePropertyResponse, rhs: GRPCUpdatePropertyResponse) -> Bool {
+  static func ==(lhs: GRPCUpdatePropertyResponse, rhs: GRPCUpdatePropertyResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -14973,12 +14973,12 @@ extension GRPCUpdatePropertyResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
 }
 
 extension GRPCDeleteValuationRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "DeleteValuationRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "DeleteValuationRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "property_id"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.propertyID)
@@ -14987,14 +14987,14 @@ extension GRPCDeleteValuationRequest: SwiftProtobuf.Message, SwiftProtobuf._Mess
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.propertyID.isEmpty {
       try visitor.visitSingularStringField(value: self.propertyID, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCDeleteValuationRequest, rhs: GRPCDeleteValuationRequest) -> Bool {
+  static func ==(lhs: GRPCDeleteValuationRequest, rhs: GRPCDeleteValuationRequest) -> Bool {
     if lhs.propertyID != rhs.propertyID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -15002,8 +15002,8 @@ extension GRPCDeleteValuationRequest: SwiftProtobuf.Message, SwiftProtobuf._Mess
 }
 
 extension GRPCDeleteValuationResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "DeleteValuationResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "DeleteValuationResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "property"),
   ]
 
@@ -15026,7 +15026,7 @@ extension GRPCDeleteValuationResponse: SwiftProtobuf.Message, SwiftProtobuf._Mes
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -15038,7 +15038,7 @@ extension GRPCDeleteValuationResponse: SwiftProtobuf.Message, SwiftProtobuf._Mes
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._property {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -15047,7 +15047,7 @@ extension GRPCDeleteValuationResponse: SwiftProtobuf.Message, SwiftProtobuf._Mes
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCDeleteValuationResponse, rhs: GRPCDeleteValuationResponse) -> Bool {
+  static func ==(lhs: GRPCDeleteValuationResponse, rhs: GRPCDeleteValuationResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -15063,12 +15063,12 @@ extension GRPCDeleteValuationResponse: SwiftProtobuf.Message, SwiftProtobuf._Mes
 }
 
 extension GRPCGetValuationEventsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GetValuationEventsRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "GetValuationEventsRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "property_id"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.propertyID)
@@ -15077,14 +15077,14 @@ extension GRPCGetValuationEventsRequest: SwiftProtobuf.Message, SwiftProtobuf._M
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.propertyID.isEmpty {
       try visitor.visitSingularStringField(value: self.propertyID, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGetValuationEventsRequest, rhs: GRPCGetValuationEventsRequest) -> Bool {
+  static func ==(lhs: GRPCGetValuationEventsRequest, rhs: GRPCGetValuationEventsRequest) -> Bool {
     if lhs.propertyID != rhs.propertyID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -15092,12 +15092,12 @@ extension GRPCGetValuationEventsRequest: SwiftProtobuf.Message, SwiftProtobuf._M
 }
 
 extension GRPCGetValuationSummaryRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GetValuationSummaryRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "GetValuationSummaryRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "property_id"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.propertyID)
@@ -15106,14 +15106,14 @@ extension GRPCGetValuationSummaryRequest: SwiftProtobuf.Message, SwiftProtobuf._
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.propertyID.isEmpty {
       try visitor.visitSingularStringField(value: self.propertyID, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGetValuationSummaryRequest, rhs: GRPCGetValuationSummaryRequest) -> Bool {
+  static func ==(lhs: GRPCGetValuationSummaryRequest, rhs: GRPCGetValuationSummaryRequest) -> Bool {
     if lhs.propertyID != rhs.propertyID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -15121,12 +15121,12 @@ extension GRPCGetValuationSummaryRequest: SwiftProtobuf.Message, SwiftProtobuf._
 }
 
 extension GRPCGetValuationEventsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GetValuationEventsResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "GetValuationEventsResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "valuation_events"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.valuationEvents)
@@ -15135,14 +15135,14 @@ extension GRPCGetValuationEventsResponse: SwiftProtobuf.Message, SwiftProtobuf._
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.valuationEvents.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.valuationEvents, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGetValuationEventsResponse, rhs: GRPCGetValuationEventsResponse) -> Bool {
+  static func ==(lhs: GRPCGetValuationEventsResponse, rhs: GRPCGetValuationEventsResponse) -> Bool {
     if lhs.valuationEvents != rhs.valuationEvents {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -15150,8 +15150,8 @@ extension GRPCGetValuationEventsResponse: SwiftProtobuf.Message, SwiftProtobuf._
 }
 
 extension GRPCGetValuationSummaryResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GetValuationSummaryResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "GetValuationSummaryResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "valuation_summary"),
   ]
 
@@ -15174,7 +15174,7 @@ extension GRPCGetValuationSummaryResponse: SwiftProtobuf.Message, SwiftProtobuf.
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -15186,7 +15186,7 @@ extension GRPCGetValuationSummaryResponse: SwiftProtobuf.Message, SwiftProtobuf.
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._valuationSummary {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -15195,7 +15195,7 @@ extension GRPCGetValuationSummaryResponse: SwiftProtobuf.Message, SwiftProtobuf.
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGetValuationSummaryResponse, rhs: GRPCGetValuationSummaryResponse) -> Bool {
+  static func ==(lhs: GRPCGetValuationSummaryResponse, rhs: GRPCGetValuationSummaryResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -15211,31 +15211,31 @@ extension GRPCGetValuationSummaryResponse: SwiftProtobuf.Message, SwiftProtobuf.
 }
 
 extension GRPCListInsightsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListInsightsRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "ListInsightsRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListInsightsRequest, rhs: GRPCListInsightsRequest) -> Bool {
+  static func ==(lhs: GRPCListInsightsRequest, rhs: GRPCListInsightsRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCListInsightsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListInsightsResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ListInsightsResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "insights"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.insights)
@@ -15244,14 +15244,14 @@ extension GRPCListInsightsResponse: SwiftProtobuf.Message, SwiftProtobuf._Messag
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.insights.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.insights, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListInsightsResponse, rhs: GRPCListInsightsResponse) -> Bool {
+  static func ==(lhs: GRPCListInsightsResponse, rhs: GRPCListInsightsResponse) -> Bool {
     if lhs.insights != rhs.insights {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -15259,12 +15259,12 @@ extension GRPCListInsightsResponse: SwiftProtobuf.Message, SwiftProtobuf._Messag
 }
 
 extension GRPCListArchivedInsightsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListArchivedInsightsResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ListArchivedInsightsResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "insights"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.insights)
@@ -15273,14 +15273,14 @@ extension GRPCListArchivedInsightsResponse: SwiftProtobuf.Message, SwiftProtobuf
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.insights.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.insights, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListArchivedInsightsResponse, rhs: GRPCListArchivedInsightsResponse) -> Bool {
+  static func ==(lhs: GRPCListArchivedInsightsResponse, rhs: GRPCListArchivedInsightsResponse) -> Bool {
     if lhs.insights != rhs.insights {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -15288,31 +15288,31 @@ extension GRPCListArchivedInsightsResponse: SwiftProtobuf.Message, SwiftProtobuf
 }
 
 extension GRPCListAuthenticationKeysRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListAuthenticationKeysRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "ListAuthenticationKeysRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListAuthenticationKeysRequest, rhs: GRPCListAuthenticationKeysRequest) -> Bool {
+  static func ==(lhs: GRPCListAuthenticationKeysRequest, rhs: GRPCListAuthenticationKeysRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCListAuthenticationKeysResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListAuthenticationKeysResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ListAuthenticationKeysResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "authentication_keys"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.authenticationKeys)
@@ -15321,14 +15321,14 @@ extension GRPCListAuthenticationKeysResponse: SwiftProtobuf.Message, SwiftProtob
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.authenticationKeys.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.authenticationKeys, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListAuthenticationKeysResponse, rhs: GRPCListAuthenticationKeysResponse) -> Bool {
+  static func ==(lhs: GRPCListAuthenticationKeysResponse, rhs: GRPCListAuthenticationKeysResponse) -> Bool {
     if lhs.authenticationKeys != rhs.authenticationKeys {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -15336,15 +15336,15 @@ extension GRPCListAuthenticationKeysResponse: SwiftProtobuf.Message, SwiftProtob
 }
 
 extension GRPCStoreAuthenticationKeyRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "StoreAuthenticationKeyRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "StoreAuthenticationKeyRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "authentication_token"),
     2: .standard(proto: "key_type"),
     3: .same(proto: "key"),
     4: .same(proto: "source"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.authenticationToken)
@@ -15356,7 +15356,7 @@ extension GRPCStoreAuthenticationKeyRequest: SwiftProtobuf.Message, SwiftProtobu
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.authenticationToken.isEmpty {
       try visitor.visitSingularStringField(value: self.authenticationToken, fieldNumber: 1)
     }
@@ -15372,7 +15372,7 @@ extension GRPCStoreAuthenticationKeyRequest: SwiftProtobuf.Message, SwiftProtobu
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCStoreAuthenticationKeyRequest, rhs: GRPCStoreAuthenticationKeyRequest) -> Bool {
+  static func ==(lhs: GRPCStoreAuthenticationKeyRequest, rhs: GRPCStoreAuthenticationKeyRequest) -> Bool {
     if lhs.authenticationToken != rhs.authenticationToken {return false}
     if lhs.keyType != rhs.keyType {return false}
     if lhs.key != rhs.key {return false}
@@ -15383,12 +15383,12 @@ extension GRPCStoreAuthenticationKeyRequest: SwiftProtobuf.Message, SwiftProtobu
 }
 
 extension GRPCStoreAuthenticationKeyResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "StoreAuthenticationKeyResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "StoreAuthenticationKeyResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "key_id"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.keyID)
@@ -15397,14 +15397,14 @@ extension GRPCStoreAuthenticationKeyResponse: SwiftProtobuf.Message, SwiftProtob
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.keyID.isEmpty {
       try visitor.visitSingularStringField(value: self.keyID, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCStoreAuthenticationKeyResponse, rhs: GRPCStoreAuthenticationKeyResponse) -> Bool {
+  static func ==(lhs: GRPCStoreAuthenticationKeyResponse, rhs: GRPCStoreAuthenticationKeyResponse) -> Bool {
     if lhs.keyID != rhs.keyID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -15412,12 +15412,12 @@ extension GRPCStoreAuthenticationKeyResponse: SwiftProtobuf.Message, SwiftProtob
 }
 
 extension GRPCDeleteAuthenticationKeyRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "DeleteAuthenticationKeyRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "DeleteAuthenticationKeyRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "key_id"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.keyID)
@@ -15426,14 +15426,14 @@ extension GRPCDeleteAuthenticationKeyRequest: SwiftProtobuf.Message, SwiftProtob
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.keyID.isEmpty {
       try visitor.visitSingularStringField(value: self.keyID, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCDeleteAuthenticationKeyRequest, rhs: GRPCDeleteAuthenticationKeyRequest) -> Bool {
+  static func ==(lhs: GRPCDeleteAuthenticationKeyRequest, rhs: GRPCDeleteAuthenticationKeyRequest) -> Bool {
     if lhs.keyID != rhs.keyID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -15441,31 +15441,31 @@ extension GRPCDeleteAuthenticationKeyRequest: SwiftProtobuf.Message, SwiftProtob
 }
 
 extension GRPCDeleteAuthenticationKeyResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "DeleteAuthenticationKeyResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "DeleteAuthenticationKeyResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCDeleteAuthenticationKeyResponse, rhs: GRPCDeleteAuthenticationKeyResponse) -> Bool {
+  static func ==(lhs: GRPCDeleteAuthenticationKeyResponse, rhs: GRPCDeleteAuthenticationKeyResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCGetAuthenticationChallengeRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GetAuthenticationChallengeRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "GetAuthenticationChallengeRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "key_id"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.keyID)
@@ -15474,14 +15474,14 @@ extension GRPCGetAuthenticationChallengeRequest: SwiftProtobuf.Message, SwiftPro
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.keyID.isEmpty {
       try visitor.visitSingularStringField(value: self.keyID, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGetAuthenticationChallengeRequest, rhs: GRPCGetAuthenticationChallengeRequest) -> Bool {
+  static func ==(lhs: GRPCGetAuthenticationChallengeRequest, rhs: GRPCGetAuthenticationChallengeRequest) -> Bool {
     if lhs.keyID != rhs.keyID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -15489,12 +15489,12 @@ extension GRPCGetAuthenticationChallengeRequest: SwiftProtobuf.Message, SwiftPro
 }
 
 extension GRPCGetAuthenticationChallengeResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GetAuthenticationChallengeResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "GetAuthenticationChallengeResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "challenge"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.challenge)
@@ -15503,14 +15503,14 @@ extension GRPCGetAuthenticationChallengeResponse: SwiftProtobuf.Message, SwiftPr
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.challenge.isEmpty {
       try visitor.visitSingularStringField(value: self.challenge, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGetAuthenticationChallengeResponse, rhs: GRPCGetAuthenticationChallengeResponse) -> Bool {
+  static func ==(lhs: GRPCGetAuthenticationChallengeResponse, rhs: GRPCGetAuthenticationChallengeResponse) -> Bool {
     if lhs.challenge != rhs.challenge {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -15518,12 +15518,12 @@ extension GRPCGetAuthenticationChallengeResponse: SwiftProtobuf.Message, SwiftPr
 }
 
 extension GRPCSignedChallengeAuthenticationRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "SignedChallengeAuthenticationRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "SignedChallengeAuthenticationRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "signed_challenge"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.signedChallenge)
@@ -15532,14 +15532,14 @@ extension GRPCSignedChallengeAuthenticationRequest: SwiftProtobuf.Message, Swift
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.signedChallenge.isEmpty {
       try visitor.visitSingularStringField(value: self.signedChallenge, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCSignedChallengeAuthenticationRequest, rhs: GRPCSignedChallengeAuthenticationRequest) -> Bool {
+  static func ==(lhs: GRPCSignedChallengeAuthenticationRequest, rhs: GRPCSignedChallengeAuthenticationRequest) -> Bool {
     if lhs.signedChallenge != rhs.signedChallenge {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -15547,13 +15547,13 @@ extension GRPCSignedChallengeAuthenticationRequest: SwiftProtobuf.Message, Swift
 }
 
 extension GRPCSignedChallengeAuthenticationResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "SignedChallengeAuthenticationResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "SignedChallengeAuthenticationResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "authentication_token"),
     2: .same(proto: "status"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.authenticationToken)
@@ -15563,7 +15563,7 @@ extension GRPCSignedChallengeAuthenticationResponse: SwiftProtobuf.Message, Swif
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.authenticationToken.isEmpty {
       try visitor.visitSingularStringField(value: self.authenticationToken, fieldNumber: 1)
     }
@@ -15573,7 +15573,7 @@ extension GRPCSignedChallengeAuthenticationResponse: SwiftProtobuf.Message, Swif
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCSignedChallengeAuthenticationResponse, rhs: GRPCSignedChallengeAuthenticationResponse) -> Bool {
+  static func ==(lhs: GRPCSignedChallengeAuthenticationResponse, rhs: GRPCSignedChallengeAuthenticationResponse) -> Bool {
     if lhs.authenticationToken != rhs.authenticationToken {return false}
     if lhs.status != rhs.status {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -15582,12 +15582,12 @@ extension GRPCSignedChallengeAuthenticationResponse: SwiftProtobuf.Message, Swif
 }
 
 extension GRPCAbnAmroAuthenticatePhoneNumberRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "AbnAmroAuthenticatePhoneNumberRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "AbnAmroAuthenticatePhoneNumberRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "sms_otp_verification_token"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.smsOtpVerificationToken)
@@ -15596,14 +15596,14 @@ extension GRPCAbnAmroAuthenticatePhoneNumberRequest: SwiftProtobuf.Message, Swif
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.smsOtpVerificationToken.isEmpty {
       try visitor.visitSingularStringField(value: self.smsOtpVerificationToken, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCAbnAmroAuthenticatePhoneNumberRequest, rhs: GRPCAbnAmroAuthenticatePhoneNumberRequest) -> Bool {
+  static func ==(lhs: GRPCAbnAmroAuthenticatePhoneNumberRequest, rhs: GRPCAbnAmroAuthenticatePhoneNumberRequest) -> Bool {
     if lhs.smsOtpVerificationToken != rhs.smsOtpVerificationToken {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -15611,12 +15611,12 @@ extension GRPCAbnAmroAuthenticatePhoneNumberRequest: SwiftProtobuf.Message, Swif
 }
 
 extension GRPCAbnAmroAuthenticatePhoneNumberResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "AbnAmroAuthenticatePhoneNumberResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "AbnAmroAuthenticatePhoneNumberResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "access_token"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.accessToken)
@@ -15625,14 +15625,14 @@ extension GRPCAbnAmroAuthenticatePhoneNumberResponse: SwiftProtobuf.Message, Swi
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.accessToken.isEmpty {
       try visitor.visitSingularStringField(value: self.accessToken, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCAbnAmroAuthenticatePhoneNumberResponse, rhs: GRPCAbnAmroAuthenticatePhoneNumberResponse) -> Bool {
+  static func ==(lhs: GRPCAbnAmroAuthenticatePhoneNumberResponse, rhs: GRPCAbnAmroAuthenticatePhoneNumberResponse) -> Bool {
     if lhs.accessToken != rhs.accessToken {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -15640,12 +15640,12 @@ extension GRPCAbnAmroAuthenticatePhoneNumberResponse: SwiftProtobuf.Message, Swi
 }
 
 extension GRPCInitializePin6ResetByThirdPartyAppRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "InitializePin6ResetByThirdPartyAppRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "InitializePin6ResetByThirdPartyAppRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "credentials_id"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.credentialsID)
@@ -15654,14 +15654,14 @@ extension GRPCInitializePin6ResetByThirdPartyAppRequest: SwiftProtobuf.Message, 
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.credentialsID.isEmpty {
       try visitor.visitSingularStringField(value: self.credentialsID, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCInitializePin6ResetByThirdPartyAppRequest, rhs: GRPCInitializePin6ResetByThirdPartyAppRequest) -> Bool {
+  static func ==(lhs: GRPCInitializePin6ResetByThirdPartyAppRequest, rhs: GRPCInitializePin6ResetByThirdPartyAppRequest) -> Bool {
     if lhs.credentialsID != rhs.credentialsID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -15669,8 +15669,8 @@ extension GRPCInitializePin6ResetByThirdPartyAppRequest: SwiftProtobuf.Message, 
 }
 
 extension GRPCInitializePin6ResetByThirdPartyAppResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "InitializePin6ResetByThirdPartyAppResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "InitializePin6ResetByThirdPartyAppResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "reset_pin_6_token"),
     2: .standard(proto: "third_party_app_authentication"),
   ]
@@ -15696,7 +15696,7 @@ extension GRPCInitializePin6ResetByThirdPartyAppResponse: SwiftProtobuf.Message,
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -15709,7 +15709,7 @@ extension GRPCInitializePin6ResetByThirdPartyAppResponse: SwiftProtobuf.Message,
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if !_storage._resetPin6Token.isEmpty {
         try visitor.visitSingularStringField(value: _storage._resetPin6Token, fieldNumber: 1)
@@ -15721,7 +15721,7 @@ extension GRPCInitializePin6ResetByThirdPartyAppResponse: SwiftProtobuf.Message,
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCInitializePin6ResetByThirdPartyAppResponse, rhs: GRPCInitializePin6ResetByThirdPartyAppResponse) -> Bool {
+  static func ==(lhs: GRPCInitializePin6ResetByThirdPartyAppResponse, rhs: GRPCInitializePin6ResetByThirdPartyAppResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -15738,8 +15738,8 @@ extension GRPCInitializePin6ResetByThirdPartyAppResponse: SwiftProtobuf.Message,
 }
 
 extension GRPCListRecurringTransactionsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListRecurringTransactionsRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ListRecurringTransactionsRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "start"),
     2: .same(proto: "end"),
     3: .standard(proto: "transaction_type"),
@@ -15774,7 +15774,7 @@ extension GRPCListRecurringTransactionsRequest: SwiftProtobuf.Message, SwiftProt
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -15790,7 +15790,7 @@ extension GRPCListRecurringTransactionsRequest: SwiftProtobuf.Message, SwiftProt
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._start {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -15811,7 +15811,7 @@ extension GRPCListRecurringTransactionsRequest: SwiftProtobuf.Message, SwiftProt
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListRecurringTransactionsRequest, rhs: GRPCListRecurringTransactionsRequest) -> Bool {
+  static func ==(lhs: GRPCListRecurringTransactionsRequest, rhs: GRPCListRecurringTransactionsRequest) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -15831,12 +15831,12 @@ extension GRPCListRecurringTransactionsRequest: SwiftProtobuf.Message, SwiftProt
 }
 
 extension GRPCListRecurringTransactionsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListRecurringTransactionsResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ListRecurringTransactionsResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "transactions"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.transactions)
@@ -15845,14 +15845,14 @@ extension GRPCListRecurringTransactionsResponse: SwiftProtobuf.Message, SwiftPro
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.transactions.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.transactions, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListRecurringTransactionsResponse, rhs: GRPCListRecurringTransactionsResponse) -> Bool {
+  static func ==(lhs: GRPCListRecurringTransactionsResponse, rhs: GRPCListRecurringTransactionsResponse) -> Bool {
     if lhs.transactions != rhs.transactions {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -15860,8 +15860,8 @@ extension GRPCListRecurringTransactionsResponse: SwiftProtobuf.Message, SwiftPro
 }
 
 extension GRPCListRecurringTransactionPeriodSummariesRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListRecurringTransactionPeriodSummariesRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ListRecurringTransactionPeriodSummariesRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "start"),
     2: .same(proto: "end"),
     3: .standard(proto: "transaction_type"),
@@ -15893,7 +15893,7 @@ extension GRPCListRecurringTransactionPeriodSummariesRequest: SwiftProtobuf.Mess
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -15908,7 +15908,7 @@ extension GRPCListRecurringTransactionPeriodSummariesRequest: SwiftProtobuf.Mess
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._start {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -15926,7 +15926,7 @@ extension GRPCListRecurringTransactionPeriodSummariesRequest: SwiftProtobuf.Mess
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListRecurringTransactionPeriodSummariesRequest, rhs: GRPCListRecurringTransactionPeriodSummariesRequest) -> Bool {
+  static func ==(lhs: GRPCListRecurringTransactionPeriodSummariesRequest, rhs: GRPCListRecurringTransactionPeriodSummariesRequest) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -15945,12 +15945,12 @@ extension GRPCListRecurringTransactionPeriodSummariesRequest: SwiftProtobuf.Mess
 }
 
 extension GRPCListRecurringTransactionPeriodSummariesResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListRecurringTransactionPeriodSummariesResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ListRecurringTransactionPeriodSummariesResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "period_summaries"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.periodSummaries)
@@ -15959,14 +15959,14 @@ extension GRPCListRecurringTransactionPeriodSummariesResponse: SwiftProtobuf.Mes
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.periodSummaries.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.periodSummaries, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListRecurringTransactionPeriodSummariesResponse, rhs: GRPCListRecurringTransactionPeriodSummariesResponse) -> Bool {
+  static func ==(lhs: GRPCListRecurringTransactionPeriodSummariesResponse, rhs: GRPCListRecurringTransactionPeriodSummariesResponse) -> Bool {
     if lhs.periodSummaries != rhs.periodSummaries {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -15974,13 +15974,13 @@ extension GRPCListRecurringTransactionPeriodSummariesResponse: SwiftProtobuf.Mes
 }
 
 extension GRPCListRecurringTransactionGroupsRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListRecurringTransactionGroupsRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ListRecurringTransactionGroupsRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "group_state"),
     2: .standard(proto: "category_type"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularEnumField(value: &self.groupState)
@@ -15990,7 +15990,7 @@ extension GRPCListRecurringTransactionGroupsRequest: SwiftProtobuf.Message, Swif
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.groupState != .unknown {
       try visitor.visitSingularEnumField(value: self.groupState, fieldNumber: 1)
     }
@@ -16000,7 +16000,7 @@ extension GRPCListRecurringTransactionGroupsRequest: SwiftProtobuf.Message, Swif
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListRecurringTransactionGroupsRequest, rhs: GRPCListRecurringTransactionGroupsRequest) -> Bool {
+  static func ==(lhs: GRPCListRecurringTransactionGroupsRequest, rhs: GRPCListRecurringTransactionGroupsRequest) -> Bool {
     if lhs.groupState != rhs.groupState {return false}
     if lhs.categoryType != rhs.categoryType {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -16009,12 +16009,12 @@ extension GRPCListRecurringTransactionGroupsRequest: SwiftProtobuf.Message, Swif
 }
 
 extension GRPCListRecurringTransactionGroupsResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ListRecurringTransactionGroupsResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ListRecurringTransactionGroupsResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "groups"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedMessageField(value: &self.groups)
@@ -16023,14 +16023,14 @@ extension GRPCListRecurringTransactionGroupsResponse: SwiftProtobuf.Message, Swi
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.groups.isEmpty {
       try visitor.visitRepeatedMessageField(value: self.groups, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCListRecurringTransactionGroupsResponse, rhs: GRPCListRecurringTransactionGroupsResponse) -> Bool {
+  static func ==(lhs: GRPCListRecurringTransactionGroupsResponse, rhs: GRPCListRecurringTransactionGroupsResponse) -> Bool {
     if lhs.groups != rhs.groups {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -16038,12 +16038,12 @@ extension GRPCListRecurringTransactionGroupsResponse: SwiftProtobuf.Message, Swi
 }
 
 extension GRPCCreateRecurringTransactionGroupRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "CreateRecurringTransactionGroupRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "CreateRecurringTransactionGroupRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "transaction_ids"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeRepeatedStringField(value: &self.transactionIds)
@@ -16052,14 +16052,14 @@ extension GRPCCreateRecurringTransactionGroupRequest: SwiftProtobuf.Message, Swi
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.transactionIds.isEmpty {
       try visitor.visitRepeatedStringField(value: self.transactionIds, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCCreateRecurringTransactionGroupRequest, rhs: GRPCCreateRecurringTransactionGroupRequest) -> Bool {
+  static func ==(lhs: GRPCCreateRecurringTransactionGroupRequest, rhs: GRPCCreateRecurringTransactionGroupRequest) -> Bool {
     if lhs.transactionIds != rhs.transactionIds {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -16067,8 +16067,8 @@ extension GRPCCreateRecurringTransactionGroupRequest: SwiftProtobuf.Message, Swi
 }
 
 extension GRPCCreateRecurringTransactionGroupResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "CreateRecurringTransactionGroupResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "CreateRecurringTransactionGroupResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "group"),
   ]
 
@@ -16091,7 +16091,7 @@ extension GRPCCreateRecurringTransactionGroupResponse: SwiftProtobuf.Message, Sw
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -16103,7 +16103,7 @@ extension GRPCCreateRecurringTransactionGroupResponse: SwiftProtobuf.Message, Sw
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._group {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -16112,7 +16112,7 @@ extension GRPCCreateRecurringTransactionGroupResponse: SwiftProtobuf.Message, Sw
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCCreateRecurringTransactionGroupResponse, rhs: GRPCCreateRecurringTransactionGroupResponse) -> Bool {
+  static func ==(lhs: GRPCCreateRecurringTransactionGroupResponse, rhs: GRPCCreateRecurringTransactionGroupResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -16128,13 +16128,13 @@ extension GRPCCreateRecurringTransactionGroupResponse: SwiftProtobuf.Message, Sw
 }
 
 extension GRPCExcludeRecurringTransactionFromGroupRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ExcludeRecurringTransactionFromGroupRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ExcludeRecurringTransactionFromGroupRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "group_id"),
     2: .standard(proto: "transaction_id"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.groupID)
@@ -16144,7 +16144,7 @@ extension GRPCExcludeRecurringTransactionFromGroupRequest: SwiftProtobuf.Message
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.groupID.isEmpty {
       try visitor.visitSingularStringField(value: self.groupID, fieldNumber: 1)
     }
@@ -16154,7 +16154,7 @@ extension GRPCExcludeRecurringTransactionFromGroupRequest: SwiftProtobuf.Message
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCExcludeRecurringTransactionFromGroupRequest, rhs: GRPCExcludeRecurringTransactionFromGroupRequest) -> Bool {
+  static func ==(lhs: GRPCExcludeRecurringTransactionFromGroupRequest, rhs: GRPCExcludeRecurringTransactionFromGroupRequest) -> Bool {
     if lhs.groupID != rhs.groupID {return false}
     if lhs.transactionID != rhs.transactionID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -16163,32 +16163,32 @@ extension GRPCExcludeRecurringTransactionFromGroupRequest: SwiftProtobuf.Message
 }
 
 extension GRPCExcludeRecurringTransactionFromGroupResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ExcludeRecurringTransactionFromGroupResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "ExcludeRecurringTransactionFromGroupResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCExcludeRecurringTransactionFromGroupResponse, rhs: GRPCExcludeRecurringTransactionFromGroupResponse) -> Bool {
+  static func ==(lhs: GRPCExcludeRecurringTransactionFromGroupResponse, rhs: GRPCExcludeRecurringTransactionFromGroupResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCIncludeRecurringTransactionInGroupRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "IncludeRecurringTransactionInGroupRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "IncludeRecurringTransactionInGroupRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "group_id"),
     2: .standard(proto: "transaction_id"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.groupID)
@@ -16198,7 +16198,7 @@ extension GRPCIncludeRecurringTransactionInGroupRequest: SwiftProtobuf.Message, 
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.groupID.isEmpty {
       try visitor.visitSingularStringField(value: self.groupID, fieldNumber: 1)
     }
@@ -16208,7 +16208,7 @@ extension GRPCIncludeRecurringTransactionInGroupRequest: SwiftProtobuf.Message, 
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCIncludeRecurringTransactionInGroupRequest, rhs: GRPCIncludeRecurringTransactionInGroupRequest) -> Bool {
+  static func ==(lhs: GRPCIncludeRecurringTransactionInGroupRequest, rhs: GRPCIncludeRecurringTransactionInGroupRequest) -> Bool {
     if lhs.groupID != rhs.groupID {return false}
     if lhs.transactionID != rhs.transactionID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -16217,31 +16217,31 @@ extension GRPCIncludeRecurringTransactionInGroupRequest: SwiftProtobuf.Message, 
 }
 
 extension GRPCIncludeRecurringTransactionInGroupResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "IncludeRecurringTransactionInGroupResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "IncludeRecurringTransactionInGroupResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCIncludeRecurringTransactionInGroupResponse, rhs: GRPCIncludeRecurringTransactionInGroupResponse) -> Bool {
+  static func ==(lhs: GRPCIncludeRecurringTransactionInGroupResponse, rhs: GRPCIncludeRecurringTransactionInGroupResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCDisableRecurringTransactionGroupRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "DisableRecurringTransactionGroupRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "DisableRecurringTransactionGroupRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "group_id"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.groupID)
@@ -16250,14 +16250,14 @@ extension GRPCDisableRecurringTransactionGroupRequest: SwiftProtobuf.Message, Sw
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.groupID.isEmpty {
       try visitor.visitSingularStringField(value: self.groupID, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCDisableRecurringTransactionGroupRequest, rhs: GRPCDisableRecurringTransactionGroupRequest) -> Bool {
+  static func ==(lhs: GRPCDisableRecurringTransactionGroupRequest, rhs: GRPCDisableRecurringTransactionGroupRequest) -> Bool {
     if lhs.groupID != rhs.groupID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -16265,8 +16265,8 @@ extension GRPCDisableRecurringTransactionGroupRequest: SwiftProtobuf.Message, Sw
 }
 
 extension GRPCDisableRecurringTransactionGroupResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "DisableRecurringTransactionGroupResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "DisableRecurringTransactionGroupResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "group"),
   ]
 
@@ -16289,7 +16289,7 @@ extension GRPCDisableRecurringTransactionGroupResponse: SwiftProtobuf.Message, S
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -16301,7 +16301,7 @@ extension GRPCDisableRecurringTransactionGroupResponse: SwiftProtobuf.Message, S
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._group {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -16310,7 +16310,7 @@ extension GRPCDisableRecurringTransactionGroupResponse: SwiftProtobuf.Message, S
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCDisableRecurringTransactionGroupResponse, rhs: GRPCDisableRecurringTransactionGroupResponse) -> Bool {
+  static func ==(lhs: GRPCDisableRecurringTransactionGroupResponse, rhs: GRPCDisableRecurringTransactionGroupResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -16326,12 +16326,12 @@ extension GRPCDisableRecurringTransactionGroupResponse: SwiftProtobuf.Message, S
 }
 
 extension GRPCActivateRecurringTransactionGroupRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ActivateRecurringTransactionGroupRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ActivateRecurringTransactionGroupRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "group_id"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.groupID)
@@ -16340,14 +16340,14 @@ extension GRPCActivateRecurringTransactionGroupRequest: SwiftProtobuf.Message, S
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.groupID.isEmpty {
       try visitor.visitSingularStringField(value: self.groupID, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCActivateRecurringTransactionGroupRequest, rhs: GRPCActivateRecurringTransactionGroupRequest) -> Bool {
+  static func ==(lhs: GRPCActivateRecurringTransactionGroupRequest, rhs: GRPCActivateRecurringTransactionGroupRequest) -> Bool {
     if lhs.groupID != rhs.groupID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
@@ -16355,8 +16355,8 @@ extension GRPCActivateRecurringTransactionGroupRequest: SwiftProtobuf.Message, S
 }
 
 extension GRPCActivateRecurringTransactionGroupResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ActivateRecurringTransactionGroupResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ActivateRecurringTransactionGroupResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "group"),
   ]
 
@@ -16379,7 +16379,7 @@ extension GRPCActivateRecurringTransactionGroupResponse: SwiftProtobuf.Message, 
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -16391,7 +16391,7 @@ extension GRPCActivateRecurringTransactionGroupResponse: SwiftProtobuf.Message, 
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._group {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -16400,7 +16400,7 @@ extension GRPCActivateRecurringTransactionGroupResponse: SwiftProtobuf.Message, 
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCActivateRecurringTransactionGroupResponse, rhs: GRPCActivateRecurringTransactionGroupResponse) -> Bool {
+  static func ==(lhs: GRPCActivateRecurringTransactionGroupResponse, rhs: GRPCActivateRecurringTransactionGroupResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -16416,13 +16416,13 @@ extension GRPCActivateRecurringTransactionGroupResponse: SwiftProtobuf.Message, 
 }
 
 extension GRPCUpdateRecurringTransactionGroupRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "UpdateRecurringTransactionGroupRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "UpdateRecurringTransactionGroupRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "group_id"),
     2: .same(proto: "name"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.groupID)
@@ -16432,7 +16432,7 @@ extension GRPCUpdateRecurringTransactionGroupRequest: SwiftProtobuf.Message, Swi
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.groupID.isEmpty {
       try visitor.visitSingularStringField(value: self.groupID, fieldNumber: 1)
     }
@@ -16442,7 +16442,7 @@ extension GRPCUpdateRecurringTransactionGroupRequest: SwiftProtobuf.Message, Swi
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCUpdateRecurringTransactionGroupRequest, rhs: GRPCUpdateRecurringTransactionGroupRequest) -> Bool {
+  static func ==(lhs: GRPCUpdateRecurringTransactionGroupRequest, rhs: GRPCUpdateRecurringTransactionGroupRequest) -> Bool {
     if lhs.groupID != rhs.groupID {return false}
     if lhs.name != rhs.name {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -16451,8 +16451,8 @@ extension GRPCUpdateRecurringTransactionGroupRequest: SwiftProtobuf.Message, Swi
 }
 
 extension GRPCUpdateRecurringTransactionGroupResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "UpdateRecurringTransactionGroupResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "UpdateRecurringTransactionGroupResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "group"),
   ]
 
@@ -16475,7 +16475,7 @@ extension GRPCUpdateRecurringTransactionGroupResponse: SwiftProtobuf.Message, Sw
     return _storage
   }
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     _ = _uniqueStorage()
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       while let fieldNumber = try decoder.nextFieldNumber() {
@@ -16487,7 +16487,7 @@ extension GRPCUpdateRecurringTransactionGroupResponse: SwiftProtobuf.Message, Sw
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
       if let v = _storage._group {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
@@ -16496,7 +16496,7 @@ extension GRPCUpdateRecurringTransactionGroupResponse: SwiftProtobuf.Message, Sw
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCUpdateRecurringTransactionGroupResponse, rhs: GRPCUpdateRecurringTransactionGroupResponse) -> Bool {
+  static func ==(lhs: GRPCUpdateRecurringTransactionGroupResponse, rhs: GRPCUpdateRecurringTransactionGroupResponse) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -16512,13 +16512,13 @@ extension GRPCUpdateRecurringTransactionGroupResponse: SwiftProtobuf.Message, Sw
 }
 
 extension GRPCStoreTransferKycRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "StoreTransferKycRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "StoreTransferKycRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "compliant"),
     2: .same(proto: "questions"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularBoolField(value: &self.compliant)
@@ -16528,7 +16528,7 @@ extension GRPCStoreTransferKycRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.compliant != false {
       try visitor.visitSingularBoolField(value: self.compliant, fieldNumber: 1)
     }
@@ -16538,7 +16538,7 @@ extension GRPCStoreTransferKycRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCStoreTransferKycRequest, rhs: GRPCStoreTransferKycRequest) -> Bool {
+  static func ==(lhs: GRPCStoreTransferKycRequest, rhs: GRPCStoreTransferKycRequest) -> Bool {
     if lhs.compliant != rhs.compliant {return false}
     if lhs.questions != rhs.questions {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -16547,51 +16547,51 @@ extension GRPCStoreTransferKycRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
 }
 
 extension GRPCStoreTransferKycResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "StoreTransferKycResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "StoreTransferKycResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCStoreTransferKycResponse, rhs: GRPCStoreTransferKycResponse) -> Bool {
+  static func ==(lhs: GRPCStoreTransferKycResponse, rhs: GRPCStoreTransferKycResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCGetTransferKycRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GetTransferKycRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "GetTransferKycRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGetTransferKycRequest, rhs: GRPCGetTransferKycRequest) -> Bool {
+  static func ==(lhs: GRPCGetTransferKycRequest, rhs: GRPCGetTransferKycRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCGetTransferKycResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "GetTransferKycResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "GetTransferKycResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "compliant"),
     2: .same(proto: "questions"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularBoolField(value: &self.compliant)
@@ -16601,7 +16601,7 @@ extension GRPCGetTransferKycResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.compliant != false {
       try visitor.visitSingularBoolField(value: self.compliant, fieldNumber: 1)
     }
@@ -16611,7 +16611,7 @@ extension GRPCGetTransferKycResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCGetTransferKycResponse, rhs: GRPCGetTransferKycResponse) -> Bool {
+  static func ==(lhs: GRPCGetTransferKycResponse, rhs: GRPCGetTransferKycResponse) -> Bool {
     if lhs.compliant != rhs.compliant {return false}
     if lhs.questions != rhs.questions {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -16620,32 +16620,32 @@ extension GRPCGetTransferKycResponse: SwiftProtobuf.Message, SwiftProtobuf._Mess
 }
 
 extension GRPCIsTransferKycCompliantRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "IsTransferKycCompliantRequest"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "IsTransferKycCompliantRequest"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCIsTransferKycCompliantRequest, rhs: GRPCIsTransferKycCompliantRequest) -> Bool {
+  static func ==(lhs: GRPCIsTransferKycCompliantRequest, rhs: GRPCIsTransferKycCompliantRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
 extension GRPCIsTransferKycCompliantResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "IsTransferKycCompliantResponse"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "IsTransferKycCompliantResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "provided"),
     2: .same(proto: "compliant"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularBoolField(value: &self.provided)
@@ -16655,7 +16655,7 @@ extension GRPCIsTransferKycCompliantResponse: SwiftProtobuf.Message, SwiftProtob
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if self.provided != false {
       try visitor.visitSingularBoolField(value: self.provided, fieldNumber: 1)
     }
@@ -16665,7 +16665,7 @@ extension GRPCIsTransferKycCompliantResponse: SwiftProtobuf.Message, SwiftProtob
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCIsTransferKycCompliantResponse, rhs: GRPCIsTransferKycCompliantResponse) -> Bool {
+  static func ==(lhs: GRPCIsTransferKycCompliantResponse, rhs: GRPCIsTransferKycCompliantResponse) -> Bool {
     if lhs.provided != rhs.provided {return false}
     if lhs.compliant != rhs.compliant {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -16674,13 +16674,13 @@ extension GRPCIsTransferKycCompliantResponse: SwiftProtobuf.Message, SwiftProtob
 }
 
 extension GRPCThirdPartyCallbackRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ThirdPartyCallbackRequest"
-  public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+  static let protoMessageName: String = "ThirdPartyCallbackRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "state"),
     2: .same(proto: "parameters"),
   ]
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.state)
@@ -16690,7 +16690,7 @@ extension GRPCThirdPartyCallbackRequest: SwiftProtobuf.Message, SwiftProtobuf._M
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.state.isEmpty {
       try visitor.visitSingularStringField(value: self.state, fieldNumber: 1)
     }
@@ -16700,7 +16700,7 @@ extension GRPCThirdPartyCallbackRequest: SwiftProtobuf.Message, SwiftProtobuf._M
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCThirdPartyCallbackRequest, rhs: GRPCThirdPartyCallbackRequest) -> Bool {
+  static func ==(lhs: GRPCThirdPartyCallbackRequest, rhs: GRPCThirdPartyCallbackRequest) -> Bool {
     if lhs.state != rhs.state {return false}
     if lhs.parameters != rhs.parameters {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -16709,19 +16709,19 @@ extension GRPCThirdPartyCallbackRequest: SwiftProtobuf.Message, SwiftProtobuf._M
 }
 
 extension GRPCThirdPartyCallbackResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = "ThirdPartyCallbackResponse"
-  public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+  static let protoMessageName: String = "ThirdPartyCallbackResponse"
+  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
-  public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let _ = try decoder.nextFieldNumber() {
     }
   }
 
-  public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GRPCThirdPartyCallbackResponse, rhs: GRPCThirdPartyCallbackResponse) -> Bool {
+  static func ==(lhs: GRPCThirdPartyCallbackResponse, rhs: GRPCThirdPartyCallbackResponse) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

@@ -25,13 +25,13 @@ import Foundation
 import SwiftGRPC
 import SwiftProtobuf
 
-public protocol AbnAmroAuthenticationServiceAuthenticateCall: ClientCallUnary {}
+internal protocol AbnAmroAuthenticationServiceAuthenticateCall: ClientCallUnary {}
 
 fileprivate final class AbnAmroAuthenticationServiceAuthenticateCallBase: ClientCallUnaryBase<GRPCAbnAmroAuthenticationRequest, GRPCAbnAmroAuthenticationResponse>, AbnAmroAuthenticationServiceAuthenticateCall {
   override class var method: String { return "/AbnAmroAuthenticationService/Authenticate" }
 }
 
-public protocol AbnAmroAuthenticationServiceAuthenticatePhoneNumberCall: ClientCallUnary {}
+internal protocol AbnAmroAuthenticationServiceAuthenticatePhoneNumberCall: ClientCallUnary {}
 
 fileprivate final class AbnAmroAuthenticationServiceAuthenticatePhoneNumberCallBase: ClientCallUnaryBase<GRPCAbnAmroAuthenticatePhoneNumberRequest, GRPCAbnAmroAuthenticatePhoneNumberResponse>, AbnAmroAuthenticationServiceAuthenticatePhoneNumberCall {
   override class var method: String { return "/AbnAmroAuthenticationService/AuthenticatePhoneNumber" }
@@ -39,7 +39,7 @@ fileprivate final class AbnAmroAuthenticationServiceAuthenticatePhoneNumberCallB
 
 
 /// Instantiate AbnAmroAuthenticationServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol AbnAmroAuthenticationServiceService: ServiceClient {
+internal protocol AbnAmroAuthenticationServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func authenticate(_ request: GRPCAbnAmroAuthenticationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCAbnAmroAuthenticationResponse?, CallResult) -> Void) throws -> AbnAmroAuthenticationServiceAuthenticateCall
@@ -50,7 +50,7 @@ public protocol AbnAmroAuthenticationServiceService: ServiceClient {
 
 }
 
-public extension AbnAmroAuthenticationServiceService {
+internal extension AbnAmroAuthenticationServiceService {
   /// Asynchronous. Unary.
   @discardableResult
   func authenticate(_ request: GRPCAbnAmroAuthenticationRequest, completion: @escaping (GRPCAbnAmroAuthenticationResponse?, CallResult) -> Void) throws -> AbnAmroAuthenticationServiceAuthenticateCall {
@@ -65,23 +65,23 @@ public extension AbnAmroAuthenticationServiceService {
 
 }
 
-public final class AbnAmroAuthenticationServiceServiceClient: ServiceClientBase, AbnAmroAuthenticationServiceService {
+internal final class AbnAmroAuthenticationServiceServiceClient: ServiceClientBase, AbnAmroAuthenticationServiceService {
   /// Asynchronous. Unary.
   @discardableResult
-  public func authenticate(_ request: GRPCAbnAmroAuthenticationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCAbnAmroAuthenticationResponse?, CallResult) -> Void) throws -> AbnAmroAuthenticationServiceAuthenticateCall {
+  internal func authenticate(_ request: GRPCAbnAmroAuthenticationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCAbnAmroAuthenticationResponse?, CallResult) -> Void) throws -> AbnAmroAuthenticationServiceAuthenticateCall {
     return try AbnAmroAuthenticationServiceAuthenticateCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func authenticatePhoneNumber(_ request: GRPCAbnAmroAuthenticatePhoneNumberRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCAbnAmroAuthenticatePhoneNumberResponse?, CallResult) -> Void) throws -> AbnAmroAuthenticationServiceAuthenticatePhoneNumberCall {
+  internal func authenticatePhoneNumber(_ request: GRPCAbnAmroAuthenticatePhoneNumberRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCAbnAmroAuthenticatePhoneNumberResponse?, CallResult) -> Void) throws -> AbnAmroAuthenticationServiceAuthenticatePhoneNumberCall {
     return try AbnAmroAuthenticationServiceAuthenticatePhoneNumberCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
 }
-public protocol AbnAmroResetPin6ByThirdPartyAppServiceInitializePin6ResetByThirdPartyAppCall: ClientCallUnary {}
+internal protocol AbnAmroResetPin6ByThirdPartyAppServiceInitializePin6ResetByThirdPartyAppCall: ClientCallUnary {}
 
 fileprivate final class AbnAmroResetPin6ByThirdPartyAppServiceInitializePin6ResetByThirdPartyAppCallBase: ClientCallUnaryBase<GRPCInitializePin6ResetByThirdPartyAppRequest, GRPCInitializePin6ResetByThirdPartyAppResponse>, AbnAmroResetPin6ByThirdPartyAppServiceInitializePin6ResetByThirdPartyAppCall {
   override class var method: String { return "/AbnAmroResetPin6ByThirdPartyAppService/InitializePin6ResetByThirdPartyApp" }
@@ -89,14 +89,14 @@ fileprivate final class AbnAmroResetPin6ByThirdPartyAppServiceInitializePin6Rese
 
 
 /// Instantiate AbnAmroResetPin6ByThirdPartyAppServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol AbnAmroResetPin6ByThirdPartyAppServiceService: ServiceClient {
+internal protocol AbnAmroResetPin6ByThirdPartyAppServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func initializePin6ResetByThirdPartyApp(_ request: GRPCInitializePin6ResetByThirdPartyAppRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCInitializePin6ResetByThirdPartyAppResponse?, CallResult) -> Void) throws -> AbnAmroResetPin6ByThirdPartyAppServiceInitializePin6ResetByThirdPartyAppCall
 
 }
 
-public extension AbnAmroResetPin6ByThirdPartyAppServiceService {
+internal extension AbnAmroResetPin6ByThirdPartyAppServiceService {
   /// Asynchronous. Unary.
   @discardableResult
   func initializePin6ResetByThirdPartyApp(_ request: GRPCInitializePin6ResetByThirdPartyAppRequest, completion: @escaping (GRPCInitializePin6ResetByThirdPartyAppResponse?, CallResult) -> Void) throws -> AbnAmroResetPin6ByThirdPartyAppServiceInitializePin6ResetByThirdPartyAppCall {
@@ -105,16 +105,16 @@ public extension AbnAmroResetPin6ByThirdPartyAppServiceService {
 
 }
 
-public final class AbnAmroResetPin6ByThirdPartyAppServiceServiceClient: ServiceClientBase, AbnAmroResetPin6ByThirdPartyAppServiceService {
+internal final class AbnAmroResetPin6ByThirdPartyAppServiceServiceClient: ServiceClientBase, AbnAmroResetPin6ByThirdPartyAppServiceService {
   /// Asynchronous. Unary.
   @discardableResult
-  public func initializePin6ResetByThirdPartyApp(_ request: GRPCInitializePin6ResetByThirdPartyAppRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCInitializePin6ResetByThirdPartyAppResponse?, CallResult) -> Void) throws -> AbnAmroResetPin6ByThirdPartyAppServiceInitializePin6ResetByThirdPartyAppCall {
+  internal func initializePin6ResetByThirdPartyApp(_ request: GRPCInitializePin6ResetByThirdPartyAppRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCInitializePin6ResetByThirdPartyAppResponse?, CallResult) -> Void) throws -> AbnAmroResetPin6ByThirdPartyAppServiceInitializePin6ResetByThirdPartyAppCall {
     return try AbnAmroResetPin6ByThirdPartyAppServiceInitializePin6ResetByThirdPartyAppCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
 }
-public protocol AbnAmroMigrationServiceMigrateCall: ClientCallUnary {}
+internal protocol AbnAmroMigrationServiceMigrateCall: ClientCallUnary {}
 
 fileprivate final class AbnAmroMigrationServiceMigrateCallBase: ClientCallUnaryBase<GRPCAbnAmroMigrationRequest, GRPCAbnAmroMigrationResponse>, AbnAmroMigrationServiceMigrateCall {
   override class var method: String { return "/AbnAmroMigrationService/Migrate" }
@@ -122,14 +122,14 @@ fileprivate final class AbnAmroMigrationServiceMigrateCallBase: ClientCallUnaryB
 
 
 /// Instantiate AbnAmroMigrationServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol AbnAmroMigrationServiceService: ServiceClient {
+internal protocol AbnAmroMigrationServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func migrate(_ request: GRPCAbnAmroMigrationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCAbnAmroMigrationResponse?, CallResult) -> Void) throws -> AbnAmroMigrationServiceMigrateCall
 
 }
 
-public extension AbnAmroMigrationServiceService {
+internal extension AbnAmroMigrationServiceService {
   /// Asynchronous. Unary.
   @discardableResult
   func migrate(_ request: GRPCAbnAmroMigrationRequest, completion: @escaping (GRPCAbnAmroMigrationResponse?, CallResult) -> Void) throws -> AbnAmroMigrationServiceMigrateCall {
@@ -138,22 +138,22 @@ public extension AbnAmroMigrationServiceService {
 
 }
 
-public final class AbnAmroMigrationServiceServiceClient: ServiceClientBase, AbnAmroMigrationServiceService {
+internal final class AbnAmroMigrationServiceServiceClient: ServiceClientBase, AbnAmroMigrationServiceService {
   /// Asynchronous. Unary.
   @discardableResult
-  public func migrate(_ request: GRPCAbnAmroMigrationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCAbnAmroMigrationResponse?, CallResult) -> Void) throws -> AbnAmroMigrationServiceMigrateCall {
+  internal func migrate(_ request: GRPCAbnAmroMigrationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCAbnAmroMigrationResponse?, CallResult) -> Void) throws -> AbnAmroMigrationServiceMigrateCall {
     return try AbnAmroMigrationServiceMigrateCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
 }
-public protocol AccountServiceListAccountsCall: ClientCallUnary {}
+internal protocol AccountServiceListAccountsCall: ClientCallUnary {}
 
 fileprivate final class AccountServiceListAccountsCallBase: ClientCallUnaryBase<GRPCListAccountsRequest, GRPCListAccountsResponse>, AccountServiceListAccountsCall {
   override class var method: String { return "/AccountService/ListAccounts" }
 }
 
-public protocol AccountServiceUpdateAccountCall: ClientCallUnary {}
+internal protocol AccountServiceUpdateAccountCall: ClientCallUnary {}
 
 fileprivate final class AccountServiceUpdateAccountCallBase: ClientCallUnaryBase<GRPCUpdateAccountRequest, GRPCUpdateAccountResponse>, AccountServiceUpdateAccountCall {
   override class var method: String { return "/AccountService/UpdateAccount" }
@@ -161,7 +161,7 @@ fileprivate final class AccountServiceUpdateAccountCallBase: ClientCallUnaryBase
 
 
 /// Instantiate AccountServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol AccountServiceService: ServiceClient {
+internal protocol AccountServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func listAccounts(_ request: GRPCListAccountsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListAccountsResponse?, CallResult) -> Void) throws -> AccountServiceListAccountsCall
@@ -172,7 +172,7 @@ public protocol AccountServiceService: ServiceClient {
 
 }
 
-public extension AccountServiceService {
+internal extension AccountServiceService {
   /// Asynchronous. Unary.
   @discardableResult
   func listAccounts(_ request: GRPCListAccountsRequest, completion: @escaping (GRPCListAccountsResponse?, CallResult) -> Void) throws -> AccountServiceListAccountsCall {
@@ -187,29 +187,29 @@ public extension AccountServiceService {
 
 }
 
-public final class AccountServiceServiceClient: ServiceClientBase, AccountServiceService {
+internal final class AccountServiceServiceClient: ServiceClientBase, AccountServiceService {
   /// Asynchronous. Unary.
   @discardableResult
-  public func listAccounts(_ request: GRPCListAccountsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListAccountsResponse?, CallResult) -> Void) throws -> AccountServiceListAccountsCall {
+  internal func listAccounts(_ request: GRPCListAccountsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListAccountsResponse?, CallResult) -> Void) throws -> AccountServiceListAccountsCall {
     return try AccountServiceListAccountsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func updateAccount(_ request: GRPCUpdateAccountRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCUpdateAccountResponse?, CallResult) -> Void) throws -> AccountServiceUpdateAccountCall {
+  internal func updateAccount(_ request: GRPCUpdateAccountRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCUpdateAccountResponse?, CallResult) -> Void) throws -> AccountServiceUpdateAccountCall {
     return try AccountServiceUpdateAccountCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
 }
-public protocol ActivityServiceListHtmlCall: ClientCallUnary {}
+internal protocol ActivityServiceListHtmlCall: ClientCallUnary {}
 
 fileprivate final class ActivityServiceListHtmlCallBase: ClientCallUnaryBase<GRPCListActivityHtmlRequest, GRPCListActivityHtmlResponse>, ActivityServiceListHtmlCall {
   override class var method: String { return "/ActivityService/ListHtml" }
 }
 
-public protocol ActivityServiceHtmlHeadCall: ClientCallUnary {}
+internal protocol ActivityServiceHtmlHeadCall: ClientCallUnary {}
 
 fileprivate final class ActivityServiceHtmlHeadCallBase: ClientCallUnaryBase<GRPCActivityHtmlHeadRequest, GRPCActivityHtmlHeadResponse>, ActivityServiceHtmlHeadCall {
   override class var method: String { return "/ActivityService/HtmlHead" }
@@ -217,7 +217,7 @@ fileprivate final class ActivityServiceHtmlHeadCallBase: ClientCallUnaryBase<GRP
 
 
 /// Instantiate ActivityServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol ActivityServiceService: ServiceClient {
+internal protocol ActivityServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func listHtml(_ request: GRPCListActivityHtmlRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListActivityHtmlResponse?, CallResult) -> Void) throws -> ActivityServiceListHtmlCall
@@ -228,7 +228,7 @@ public protocol ActivityServiceService: ServiceClient {
 
 }
 
-public extension ActivityServiceService {
+internal extension ActivityServiceService {
   /// Asynchronous. Unary.
   @discardableResult
   func listHtml(_ request: GRPCListActivityHtmlRequest, completion: @escaping (GRPCListActivityHtmlResponse?, CallResult) -> Void) throws -> ActivityServiceListHtmlCall {
@@ -243,41 +243,41 @@ public extension ActivityServiceService {
 
 }
 
-public final class ActivityServiceServiceClient: ServiceClientBase, ActivityServiceService {
+internal final class ActivityServiceServiceClient: ServiceClientBase, ActivityServiceService {
   /// Asynchronous. Unary.
   @discardableResult
-  public func listHtml(_ request: GRPCListActivityHtmlRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListActivityHtmlResponse?, CallResult) -> Void) throws -> ActivityServiceListHtmlCall {
+  internal func listHtml(_ request: GRPCListActivityHtmlRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListActivityHtmlResponse?, CallResult) -> Void) throws -> ActivityServiceListHtmlCall {
     return try ActivityServiceListHtmlCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func htmlHead(_ request: GRPCActivityHtmlHeadRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCActivityHtmlHeadResponse?, CallResult) -> Void) throws -> ActivityServiceHtmlHeadCall {
+  internal func htmlHead(_ request: GRPCActivityHtmlHeadRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCActivityHtmlHeadResponse?, CallResult) -> Void) throws -> ActivityServiceHtmlHeadCall {
     return try ActivityServiceHtmlHeadCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
 }
-public protocol AuthenticationServiceLoginCall: ClientCallUnary {}
+internal protocol AuthenticationServiceLoginCall: ClientCallUnary {}
 
 fileprivate final class AuthenticationServiceLoginCallBase: ClientCallUnaryBase<GRPCLoginRequest, GRPCLoginResponse>, AuthenticationServiceLoginCall {
   override class var method: String { return "/AuthenticationService/Login" }
 }
 
-public protocol AuthenticationServiceRegisterCall: ClientCallUnary {}
+internal protocol AuthenticationServiceRegisterCall: ClientCallUnary {}
 
 fileprivate final class AuthenticationServiceRegisterCallBase: ClientCallUnaryBase<GRPCRegisterRequest, GRPCRegisterResponse>, AuthenticationServiceRegisterCall {
   override class var method: String { return "/AuthenticationService/Register" }
 }
 
-public protocol AuthenticationServiceLogoutCall: ClientCallUnary {}
+internal protocol AuthenticationServiceLogoutCall: ClientCallUnary {}
 
 fileprivate final class AuthenticationServiceLogoutCallBase: ClientCallUnaryBase<GRPCLogoutRequest, GRPCLogoutResponse>, AuthenticationServiceLogoutCall {
   override class var method: String { return "/AuthenticationService/Logout" }
 }
 
-public protocol AuthenticationServiceDescribeOAuth2ClientCall: ClientCallUnary {}
+internal protocol AuthenticationServiceDescribeOAuth2ClientCall: ClientCallUnary {}
 
 fileprivate final class AuthenticationServiceDescribeOAuth2ClientCallBase: ClientCallUnaryBase<GRPCDescribeOAuth2ClientRequest, GRPCDescribeOAuth2ClientResponse>, AuthenticationServiceDescribeOAuth2ClientCall {
   override class var method: String { return "/AuthenticationService/DescribeOAuth2Client" }
@@ -285,7 +285,7 @@ fileprivate final class AuthenticationServiceDescribeOAuth2ClientCallBase: Clien
 
 
 /// Instantiate AuthenticationServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol AuthenticationServiceService: ServiceClient {
+internal protocol AuthenticationServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func login(_ request: GRPCLoginRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCLoginResponse?, CallResult) -> Void) throws -> AuthenticationServiceLoginCall
@@ -304,7 +304,7 @@ public protocol AuthenticationServiceService: ServiceClient {
 
 }
 
-public extension AuthenticationServiceService {
+internal extension AuthenticationServiceService {
   /// Asynchronous. Unary.
   @discardableResult
   func login(_ request: GRPCLoginRequest, completion: @escaping (GRPCLoginResponse?, CallResult) -> Void) throws -> AuthenticationServiceLoginCall {
@@ -331,73 +331,73 @@ public extension AuthenticationServiceService {
 
 }
 
-public final class AuthenticationServiceServiceClient: ServiceClientBase, AuthenticationServiceService {
+internal final class AuthenticationServiceServiceClient: ServiceClientBase, AuthenticationServiceService {
   /// Asynchronous. Unary.
   @discardableResult
-  public func login(_ request: GRPCLoginRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCLoginResponse?, CallResult) -> Void) throws -> AuthenticationServiceLoginCall {
+  internal func login(_ request: GRPCLoginRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCLoginResponse?, CallResult) -> Void) throws -> AuthenticationServiceLoginCall {
     return try AuthenticationServiceLoginCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func register(_ request: GRPCRegisterRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCRegisterResponse?, CallResult) -> Void) throws -> AuthenticationServiceRegisterCall {
+  internal func register(_ request: GRPCRegisterRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCRegisterResponse?, CallResult) -> Void) throws -> AuthenticationServiceRegisterCall {
     return try AuthenticationServiceRegisterCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func logout(_ request: GRPCLogoutRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCLogoutResponse?, CallResult) -> Void) throws -> AuthenticationServiceLogoutCall {
+  internal func logout(_ request: GRPCLogoutRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCLogoutResponse?, CallResult) -> Void) throws -> AuthenticationServiceLogoutCall {
     return try AuthenticationServiceLogoutCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func describeOAuth2Client(_ request: GRPCDescribeOAuth2ClientRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCDescribeOAuth2ClientResponse?, CallResult) -> Void) throws -> AuthenticationServiceDescribeOAuth2ClientCall {
+  internal func describeOAuth2Client(_ request: GRPCDescribeOAuth2ClientRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCDescribeOAuth2ClientResponse?, CallResult) -> Void) throws -> AuthenticationServiceDescribeOAuth2ClientCall {
     return try AuthenticationServiceDescribeOAuth2ClientCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
 }
-public protocol BudgetServiceCreateBudgetCall: ClientCallUnary {}
+internal protocol BudgetServiceCreateBudgetCall: ClientCallUnary {}
 
 fileprivate final class BudgetServiceCreateBudgetCallBase: ClientCallUnaryBase<GRPCCreateBudgetRequest, GRPCCreateBudgetResponse>, BudgetServiceCreateBudgetCall {
   override class var method: String { return "/BudgetService/CreateBudget" }
 }
 
-public protocol BudgetServiceUpdateBudgetCall: ClientCallUnary {}
+internal protocol BudgetServiceUpdateBudgetCall: ClientCallUnary {}
 
 fileprivate final class BudgetServiceUpdateBudgetCallBase: ClientCallUnaryBase<GRPCUpdateBudgetRequest, GRPCUpdateBudgetResponse>, BudgetServiceUpdateBudgetCall {
   override class var method: String { return "/BudgetService/UpdateBudget" }
 }
 
-public protocol BudgetServiceDeleteBudgetCall: ClientCallUnary {}
+internal protocol BudgetServiceDeleteBudgetCall: ClientCallUnary {}
 
 fileprivate final class BudgetServiceDeleteBudgetCallBase: ClientCallUnaryBase<GRPCDeleteBudgetRequest, GRPCDeleteBudgetResponse>, BudgetServiceDeleteBudgetCall {
   override class var method: String { return "/BudgetService/DeleteBudget" }
 }
 
-public protocol BudgetServiceArchiveBudgetCall: ClientCallUnary {}
+internal protocol BudgetServiceArchiveBudgetCall: ClientCallUnary {}
 
 fileprivate final class BudgetServiceArchiveBudgetCallBase: ClientCallUnaryBase<GRPCArchiveBudgetRequest, GRPCArchiveBudgetResponse>, BudgetServiceArchiveBudgetCall {
   override class var method: String { return "/BudgetService/ArchiveBudget" }
 }
 
-public protocol BudgetServiceListBudgetsCall: ClientCallUnary {}
+internal protocol BudgetServiceListBudgetsCall: ClientCallUnary {}
 
 fileprivate final class BudgetServiceListBudgetsCallBase: ClientCallUnaryBase<GRPCListBudgetsRequest, GRPCListBudgetsResponse>, BudgetServiceListBudgetsCall {
   override class var method: String { return "/BudgetService/ListBudgets" }
 }
 
-public protocol BudgetServiceGetBudgetPeriodDetailsCall: ClientCallUnary {}
+internal protocol BudgetServiceGetBudgetPeriodDetailsCall: ClientCallUnary {}
 
 fileprivate final class BudgetServiceGetBudgetPeriodDetailsCallBase: ClientCallUnaryBase<GRPCGetBudgetPeriodDetailsRequest, GRPCGetBudgetPeriodDetailsResponse>, BudgetServiceGetBudgetPeriodDetailsCall {
   override class var method: String { return "/BudgetService/GetBudgetPeriodDetails" }
 }
 
-public protocol BudgetServiceGetBudgetTransactionsCall: ClientCallUnary {}
+internal protocol BudgetServiceGetBudgetTransactionsCall: ClientCallUnary {}
 
 fileprivate final class BudgetServiceGetBudgetTransactionsCallBase: ClientCallUnaryBase<GRPCGetBudgetTransactionsRequest, GRPCGetBudgetTransactionsResponse>, BudgetServiceGetBudgetTransactionsCall {
   override class var method: String { return "/BudgetService/GetBudgetTransactions" }
@@ -405,7 +405,7 @@ fileprivate final class BudgetServiceGetBudgetTransactionsCallBase: ClientCallUn
 
 
 /// Instantiate BudgetServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol BudgetServiceService: ServiceClient {
+internal protocol BudgetServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func createBudget(_ request: GRPCCreateBudgetRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCCreateBudgetResponse?, CallResult) -> Void) throws -> BudgetServiceCreateBudgetCall
@@ -436,7 +436,7 @@ public protocol BudgetServiceService: ServiceClient {
 
 }
 
-public extension BudgetServiceService {
+internal extension BudgetServiceService {
   /// Asynchronous. Unary.
   @discardableResult
   func createBudget(_ request: GRPCCreateBudgetRequest, completion: @escaping (GRPCCreateBudgetResponse?, CallResult) -> Void) throws -> BudgetServiceCreateBudgetCall {
@@ -481,58 +481,58 @@ public extension BudgetServiceService {
 
 }
 
-public final class BudgetServiceServiceClient: ServiceClientBase, BudgetServiceService {
+internal final class BudgetServiceServiceClient: ServiceClientBase, BudgetServiceService {
   /// Asynchronous. Unary.
   @discardableResult
-  public func createBudget(_ request: GRPCCreateBudgetRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCCreateBudgetResponse?, CallResult) -> Void) throws -> BudgetServiceCreateBudgetCall {
+  internal func createBudget(_ request: GRPCCreateBudgetRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCCreateBudgetResponse?, CallResult) -> Void) throws -> BudgetServiceCreateBudgetCall {
     return try BudgetServiceCreateBudgetCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func updateBudget(_ request: GRPCUpdateBudgetRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCUpdateBudgetResponse?, CallResult) -> Void) throws -> BudgetServiceUpdateBudgetCall {
+  internal func updateBudget(_ request: GRPCUpdateBudgetRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCUpdateBudgetResponse?, CallResult) -> Void) throws -> BudgetServiceUpdateBudgetCall {
     return try BudgetServiceUpdateBudgetCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func deleteBudget(_ request: GRPCDeleteBudgetRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCDeleteBudgetResponse?, CallResult) -> Void) throws -> BudgetServiceDeleteBudgetCall {
+  internal func deleteBudget(_ request: GRPCDeleteBudgetRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCDeleteBudgetResponse?, CallResult) -> Void) throws -> BudgetServiceDeleteBudgetCall {
     return try BudgetServiceDeleteBudgetCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func archiveBudget(_ request: GRPCArchiveBudgetRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCArchiveBudgetResponse?, CallResult) -> Void) throws -> BudgetServiceArchiveBudgetCall {
+  internal func archiveBudget(_ request: GRPCArchiveBudgetRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCArchiveBudgetResponse?, CallResult) -> Void) throws -> BudgetServiceArchiveBudgetCall {
     return try BudgetServiceArchiveBudgetCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func listBudgets(_ request: GRPCListBudgetsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListBudgetsResponse?, CallResult) -> Void) throws -> BudgetServiceListBudgetsCall {
+  internal func listBudgets(_ request: GRPCListBudgetsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListBudgetsResponse?, CallResult) -> Void) throws -> BudgetServiceListBudgetsCall {
     return try BudgetServiceListBudgetsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func getBudgetPeriodDetails(_ request: GRPCGetBudgetPeriodDetailsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGetBudgetPeriodDetailsResponse?, CallResult) -> Void) throws -> BudgetServiceGetBudgetPeriodDetailsCall {
+  internal func getBudgetPeriodDetails(_ request: GRPCGetBudgetPeriodDetailsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGetBudgetPeriodDetailsResponse?, CallResult) -> Void) throws -> BudgetServiceGetBudgetPeriodDetailsCall {
     return try BudgetServiceGetBudgetPeriodDetailsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func getBudgetTransactions(_ request: GRPCGetBudgetTransactionsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGetBudgetTransactionsResponse?, CallResult) -> Void) throws -> BudgetServiceGetBudgetTransactionsCall {
+  internal func getBudgetTransactions(_ request: GRPCGetBudgetTransactionsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGetBudgetTransactionsResponse?, CallResult) -> Void) throws -> BudgetServiceGetBudgetTransactionsCall {
     return try BudgetServiceGetBudgetTransactionsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
 }
-public protocol CalendarServiceGetBusinessDaysCall: ClientCallUnary {}
+internal protocol CalendarServiceGetBusinessDaysCall: ClientCallUnary {}
 
 fileprivate final class CalendarServiceGetBusinessDaysCallBase: ClientCallUnaryBase<GRPCListBusinessDaysRequest, GRPCListBusinessDaysResponse>, CalendarServiceGetBusinessDaysCall {
   override class var method: String { return "/CalendarService/GetBusinessDays" }
@@ -540,14 +540,14 @@ fileprivate final class CalendarServiceGetBusinessDaysCallBase: ClientCallUnaryB
 
 
 /// Instantiate CalendarServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol CalendarServiceService: ServiceClient {
+internal protocol CalendarServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func getBusinessDays(_ request: GRPCListBusinessDaysRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListBusinessDaysResponse?, CallResult) -> Void) throws -> CalendarServiceGetBusinessDaysCall
 
 }
 
-public extension CalendarServiceService {
+internal extension CalendarServiceService {
   /// Asynchronous. Unary.
   @discardableResult
   func getBusinessDays(_ request: GRPCListBusinessDaysRequest, completion: @escaping (GRPCListBusinessDaysResponse?, CallResult) -> Void) throws -> CalendarServiceGetBusinessDaysCall {
@@ -556,16 +556,16 @@ public extension CalendarServiceService {
 
 }
 
-public final class CalendarServiceServiceClient: ServiceClientBase, CalendarServiceService {
+internal final class CalendarServiceServiceClient: ServiceClientBase, CalendarServiceService {
   /// Asynchronous. Unary.
   @discardableResult
-  public func getBusinessDays(_ request: GRPCListBusinessDaysRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListBusinessDaysResponse?, CallResult) -> Void) throws -> CalendarServiceGetBusinessDaysCall {
+  internal func getBusinessDays(_ request: GRPCListBusinessDaysRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListBusinessDaysResponse?, CallResult) -> Void) throws -> CalendarServiceGetBusinessDaysCall {
     return try CalendarServiceGetBusinessDaysCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
 }
-public protocol CategoryServiceListCategoriesCall: ClientCallUnary {}
+internal protocol CategoryServiceListCategoriesCall: ClientCallUnary {}
 
 fileprivate final class CategoryServiceListCategoriesCallBase: ClientCallUnaryBase<GRPCListCategoriesRequest, GRPCListCategoriesResponse>, CategoryServiceListCategoriesCall {
   override class var method: String { return "/CategoryService/ListCategories" }
@@ -573,14 +573,14 @@ fileprivate final class CategoryServiceListCategoriesCallBase: ClientCallUnaryBa
 
 
 /// Instantiate CategoryServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol CategoryServiceService: ServiceClient {
+internal protocol CategoryServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func listCategories(_ request: GRPCListCategoriesRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListCategoriesResponse?, CallResult) -> Void) throws -> CategoryServiceListCategoriesCall
 
 }
 
-public extension CategoryServiceService {
+internal extension CategoryServiceService {
   /// Asynchronous. Unary.
   @discardableResult
   func listCategories(_ request: GRPCListCategoriesRequest, completion: @escaping (GRPCListCategoriesResponse?, CallResult) -> Void) throws -> CategoryServiceListCategoriesCall {
@@ -589,46 +589,46 @@ public extension CategoryServiceService {
 
 }
 
-public final class CategoryServiceServiceClient: ServiceClientBase, CategoryServiceService {
+internal final class CategoryServiceServiceClient: ServiceClientBase, CategoryServiceService {
   /// Asynchronous. Unary.
   @discardableResult
-  public func listCategories(_ request: GRPCListCategoriesRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListCategoriesResponse?, CallResult) -> Void) throws -> CategoryServiceListCategoriesCall {
+  internal func listCategories(_ request: GRPCListCategoriesRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListCategoriesResponse?, CallResult) -> Void) throws -> CategoryServiceListCategoriesCall {
     return try CategoryServiceListCategoriesCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
 }
-public protocol ConsentServiceListConsentsCall: ClientCallUnary {}
+internal protocol ConsentServiceListConsentsCall: ClientCallUnary {}
 
 fileprivate final class ConsentServiceListConsentsCallBase: ClientCallUnaryBase<GRPCListConsentsRequest, GRPCListConsentsResponse>, ConsentServiceListConsentsCall {
   override class var method: String { return "/ConsentService/ListConsents" }
 }
 
-public protocol ConsentServiceConsentDetailsCall: ClientCallUnary {}
+internal protocol ConsentServiceConsentDetailsCall: ClientCallUnary {}
 
 fileprivate final class ConsentServiceConsentDetailsCallBase: ClientCallUnaryBase<GRPCConsentDetailsRequest, GRPCConsentDetailsResponse>, ConsentServiceConsentDetailsCall {
   override class var method: String { return "/ConsentService/ConsentDetails" }
 }
 
-public protocol ConsentServiceAvailableConsentsCall: ClientCallUnary {}
+internal protocol ConsentServiceAvailableConsentsCall: ClientCallUnary {}
 
 fileprivate final class ConsentServiceAvailableConsentsCallBase: ClientCallUnaryBase<GRPCAvailableConsentsRequest, GRPCAvailableConsentsResponse>, ConsentServiceAvailableConsentsCall {
   override class var method: String { return "/ConsentService/AvailableConsents" }
 }
 
-public protocol ConsentServiceListUserConsentsCall: ClientCallUnary {}
+internal protocol ConsentServiceListUserConsentsCall: ClientCallUnary {}
 
 fileprivate final class ConsentServiceListUserConsentsCallBase: ClientCallUnaryBase<GRPCUserConsentsListRequest, GRPCUserConsentsListResponse>, ConsentServiceListUserConsentsCall {
   override class var method: String { return "/ConsentService/ListUserConsents" }
 }
 
-public protocol ConsentServiceGiveConsentCall: ClientCallUnary {}
+internal protocol ConsentServiceGiveConsentCall: ClientCallUnary {}
 
 fileprivate final class ConsentServiceGiveConsentCallBase: ClientCallUnaryBase<GRPCGiveConsentRequest, GRPCGiveConsentResponse>, ConsentServiceGiveConsentCall {
   override class var method: String { return "/ConsentService/GiveConsent" }
 }
 
-public protocol ConsentServiceUserConsentDetailsCall: ClientCallUnary {}
+internal protocol ConsentServiceUserConsentDetailsCall: ClientCallUnary {}
 
 fileprivate final class ConsentServiceUserConsentDetailsCallBase: ClientCallUnaryBase<GRPCUserConsentDetailsRequest, GRPCUserConsentDetailsResponse>, ConsentServiceUserConsentDetailsCall {
   override class var method: String { return "/ConsentService/UserConsentDetails" }
@@ -636,7 +636,7 @@ fileprivate final class ConsentServiceUserConsentDetailsCallBase: ClientCallUnar
 
 
 /// Instantiate ConsentServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol ConsentServiceService: ServiceClient {
+internal protocol ConsentServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func listConsents(_ request: GRPCListConsentsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListConsentsResponse?, CallResult) -> Void) throws -> ConsentServiceListConsentsCall
@@ -663,7 +663,7 @@ public protocol ConsentServiceService: ServiceClient {
 
 }
 
-public extension ConsentServiceService {
+internal extension ConsentServiceService {
   /// Asynchronous. Unary.
   @discardableResult
   func listConsents(_ request: GRPCListConsentsRequest, completion: @escaping (GRPCListConsentsResponse?, CallResult) -> Void) throws -> ConsentServiceListConsentsCall {
@@ -702,111 +702,111 @@ public extension ConsentServiceService {
 
 }
 
-public final class ConsentServiceServiceClient: ServiceClientBase, ConsentServiceService {
+internal final class ConsentServiceServiceClient: ServiceClientBase, ConsentServiceService {
   /// Asynchronous. Unary.
   @discardableResult
-  public func listConsents(_ request: GRPCListConsentsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListConsentsResponse?, CallResult) -> Void) throws -> ConsentServiceListConsentsCall {
+  internal func listConsents(_ request: GRPCListConsentsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListConsentsResponse?, CallResult) -> Void) throws -> ConsentServiceListConsentsCall {
     return try ConsentServiceListConsentsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func consentDetails(_ request: GRPCConsentDetailsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCConsentDetailsResponse?, CallResult) -> Void) throws -> ConsentServiceConsentDetailsCall {
+  internal func consentDetails(_ request: GRPCConsentDetailsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCConsentDetailsResponse?, CallResult) -> Void) throws -> ConsentServiceConsentDetailsCall {
     return try ConsentServiceConsentDetailsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func availableConsents(_ request: GRPCAvailableConsentsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCAvailableConsentsResponse?, CallResult) -> Void) throws -> ConsentServiceAvailableConsentsCall {
+  internal func availableConsents(_ request: GRPCAvailableConsentsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCAvailableConsentsResponse?, CallResult) -> Void) throws -> ConsentServiceAvailableConsentsCall {
     return try ConsentServiceAvailableConsentsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func listUserConsents(_ request: GRPCUserConsentsListRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCUserConsentsListResponse?, CallResult) -> Void) throws -> ConsentServiceListUserConsentsCall {
+  internal func listUserConsents(_ request: GRPCUserConsentsListRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCUserConsentsListResponse?, CallResult) -> Void) throws -> ConsentServiceListUserConsentsCall {
     return try ConsentServiceListUserConsentsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func giveConsent(_ request: GRPCGiveConsentRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGiveConsentResponse?, CallResult) -> Void) throws -> ConsentServiceGiveConsentCall {
+  internal func giveConsent(_ request: GRPCGiveConsentRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGiveConsentResponse?, CallResult) -> Void) throws -> ConsentServiceGiveConsentCall {
     return try ConsentServiceGiveConsentCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func userConsentDetails(_ request: GRPCUserConsentDetailsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCUserConsentDetailsResponse?, CallResult) -> Void) throws -> ConsentServiceUserConsentDetailsCall {
+  internal func userConsentDetails(_ request: GRPCUserConsentDetailsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCUserConsentDetailsResponse?, CallResult) -> Void) throws -> ConsentServiceUserConsentDetailsCall {
     return try ConsentServiceUserConsentDetailsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
 }
-public protocol CredentialServiceListCredentialsCall: ClientCallUnary {}
+internal protocol CredentialServiceListCredentialsCall: ClientCallUnary {}
 
 fileprivate final class CredentialServiceListCredentialsCallBase: ClientCallUnaryBase<GRPCListCredentialsRequest, GRPCListCredentialsResponse>, CredentialServiceListCredentialsCall {
   override class var method: String { return "/CredentialService/ListCredentials" }
 }
 
-public protocol CredentialServiceCreateCredentialCall: ClientCallUnary {}
+internal protocol CredentialServiceCreateCredentialCall: ClientCallUnary {}
 
 fileprivate final class CredentialServiceCreateCredentialCallBase: ClientCallUnaryBase<GRPCCreateCredentialRequest, GRPCCreateCredentialResponse>, CredentialServiceCreateCredentialCall {
   override class var method: String { return "/CredentialService/CreateCredential" }
 }
 
-public protocol CredentialServiceDeleteCredentialCall: ClientCallUnary {}
+internal protocol CredentialServiceDeleteCredentialCall: ClientCallUnary {}
 
 fileprivate final class CredentialServiceDeleteCredentialCallBase: ClientCallUnaryBase<GRPCDeleteCredentialRequest, GRPCDeleteCredentialResponse>, CredentialServiceDeleteCredentialCall {
   override class var method: String { return "/CredentialService/DeleteCredential" }
 }
 
-public protocol CredentialServiceUpdateCredentialCall: ClientCallUnary {}
+internal protocol CredentialServiceUpdateCredentialCall: ClientCallUnary {}
 
 fileprivate final class CredentialServiceUpdateCredentialCallBase: ClientCallUnaryBase<GRPCUpdateCredentialRequest, GRPCUpdateCredentialResponse>, CredentialServiceUpdateCredentialCall {
   override class var method: String { return "/CredentialService/UpdateCredential" }
 }
 
-public protocol CredentialServiceRefreshCredentialsCall: ClientCallUnary {}
+internal protocol CredentialServiceRefreshCredentialsCall: ClientCallUnary {}
 
 fileprivate final class CredentialServiceRefreshCredentialsCallBase: ClientCallUnaryBase<GRPCRefreshCredentialsRequest, GRPCRefreshCredentialsResponse>, CredentialServiceRefreshCredentialsCall {
   override class var method: String { return "/CredentialService/RefreshCredentials" }
 }
 
-public protocol CredentialServiceSupplementInformationCall: ClientCallUnary {}
+internal protocol CredentialServiceSupplementInformationCall: ClientCallUnary {}
 
 fileprivate final class CredentialServiceSupplementInformationCallBase: ClientCallUnaryBase<GRPCSupplementInformationRequest, GRPCSupplementInformationResponse>, CredentialServiceSupplementInformationCall {
   override class var method: String { return "/CredentialService/SupplementInformation" }
 }
 
-public protocol CredentialServiceCancelSupplementInformationCall: ClientCallUnary {}
+internal protocol CredentialServiceCancelSupplementInformationCall: ClientCallUnary {}
 
 fileprivate final class CredentialServiceCancelSupplementInformationCallBase: ClientCallUnaryBase<GRPCCancelSupplementInformationRequest, GRPCCancelSupplementInformationResponse>, CredentialServiceCancelSupplementInformationCall {
   override class var method: String { return "/CredentialService/CancelSupplementInformation" }
 }
 
-public protocol CredentialServiceEnableCredentialCall: ClientCallUnary {}
+internal protocol CredentialServiceEnableCredentialCall: ClientCallUnary {}
 
 fileprivate final class CredentialServiceEnableCredentialCallBase: ClientCallUnaryBase<GRPCEnableCredentialRequest, GRPCEnableCredentialResponse>, CredentialServiceEnableCredentialCall {
   override class var method: String { return "/CredentialService/EnableCredential" }
 }
 
-public protocol CredentialServiceDisableCredentialCall: ClientCallUnary {}
+internal protocol CredentialServiceDisableCredentialCall: ClientCallUnary {}
 
 fileprivate final class CredentialServiceDisableCredentialCallBase: ClientCallUnaryBase<GRPCDisableCredentialRequest, GRPCDisableCredentialResponse>, CredentialServiceDisableCredentialCall {
   override class var method: String { return "/CredentialService/DisableCredential" }
 }
 
-public protocol CredentialServiceThirdPartyCallbackCall: ClientCallUnary {}
+internal protocol CredentialServiceThirdPartyCallbackCall: ClientCallUnary {}
 
 fileprivate final class CredentialServiceThirdPartyCallbackCallBase: ClientCallUnaryBase<GRPCThirdPartyCallbackRequest, GRPCThirdPartyCallbackResponse>, CredentialServiceThirdPartyCallbackCall {
   override class var method: String { return "/CredentialService/ThirdPartyCallback" }
 }
 
-public protocol CredentialServiceManualAuthenticationCall: ClientCallUnary {}
+internal protocol CredentialServiceManualAuthenticationCall: ClientCallUnary {}
 
 fileprivate final class CredentialServiceManualAuthenticationCallBase: ClientCallUnaryBase<GRPCManualAuthenticationRequest, GRPCManualAuthenticationResponse>, CredentialServiceManualAuthenticationCall {
   override class var method: String { return "/CredentialService/ManualAuthentication" }
@@ -814,7 +814,7 @@ fileprivate final class CredentialServiceManualAuthenticationCallBase: ClientCal
 
 
 /// Instantiate CredentialServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol CredentialServiceService: ServiceClient {
+internal protocol CredentialServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func listCredentials(_ request: GRPCListCredentialsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListCredentialsResponse?, CallResult) -> Void) throws -> CredentialServiceListCredentialsCall
@@ -861,7 +861,7 @@ public protocol CredentialServiceService: ServiceClient {
 
 }
 
-public extension CredentialServiceService {
+internal extension CredentialServiceService {
   /// Asynchronous. Unary.
   @discardableResult
   func listCredentials(_ request: GRPCListCredentialsRequest, completion: @escaping (GRPCListCredentialsResponse?, CallResult) -> Void) throws -> CredentialServiceListCredentialsCall {
@@ -930,110 +930,110 @@ public extension CredentialServiceService {
 
 }
 
-public final class CredentialServiceServiceClient: ServiceClientBase, CredentialServiceService {
+internal final class CredentialServiceServiceClient: ServiceClientBase, CredentialServiceService {
   /// Asynchronous. Unary.
   @discardableResult
-  public func listCredentials(_ request: GRPCListCredentialsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListCredentialsResponse?, CallResult) -> Void) throws -> CredentialServiceListCredentialsCall {
+  internal func listCredentials(_ request: GRPCListCredentialsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListCredentialsResponse?, CallResult) -> Void) throws -> CredentialServiceListCredentialsCall {
     return try CredentialServiceListCredentialsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func createCredential(_ request: GRPCCreateCredentialRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCCreateCredentialResponse?, CallResult) -> Void) throws -> CredentialServiceCreateCredentialCall {
+  internal func createCredential(_ request: GRPCCreateCredentialRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCCreateCredentialResponse?, CallResult) -> Void) throws -> CredentialServiceCreateCredentialCall {
     return try CredentialServiceCreateCredentialCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func deleteCredential(_ request: GRPCDeleteCredentialRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCDeleteCredentialResponse?, CallResult) -> Void) throws -> CredentialServiceDeleteCredentialCall {
+  internal func deleteCredential(_ request: GRPCDeleteCredentialRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCDeleteCredentialResponse?, CallResult) -> Void) throws -> CredentialServiceDeleteCredentialCall {
     return try CredentialServiceDeleteCredentialCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func updateCredential(_ request: GRPCUpdateCredentialRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCUpdateCredentialResponse?, CallResult) -> Void) throws -> CredentialServiceUpdateCredentialCall {
+  internal func updateCredential(_ request: GRPCUpdateCredentialRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCUpdateCredentialResponse?, CallResult) -> Void) throws -> CredentialServiceUpdateCredentialCall {
     return try CredentialServiceUpdateCredentialCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func refreshCredentials(_ request: GRPCRefreshCredentialsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCRefreshCredentialsResponse?, CallResult) -> Void) throws -> CredentialServiceRefreshCredentialsCall {
+  internal func refreshCredentials(_ request: GRPCRefreshCredentialsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCRefreshCredentialsResponse?, CallResult) -> Void) throws -> CredentialServiceRefreshCredentialsCall {
     return try CredentialServiceRefreshCredentialsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func supplementInformation(_ request: GRPCSupplementInformationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCSupplementInformationResponse?, CallResult) -> Void) throws -> CredentialServiceSupplementInformationCall {
+  internal func supplementInformation(_ request: GRPCSupplementInformationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCSupplementInformationResponse?, CallResult) -> Void) throws -> CredentialServiceSupplementInformationCall {
     return try CredentialServiceSupplementInformationCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func cancelSupplementInformation(_ request: GRPCCancelSupplementInformationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCCancelSupplementInformationResponse?, CallResult) -> Void) throws -> CredentialServiceCancelSupplementInformationCall {
+  internal func cancelSupplementInformation(_ request: GRPCCancelSupplementInformationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCCancelSupplementInformationResponse?, CallResult) -> Void) throws -> CredentialServiceCancelSupplementInformationCall {
     return try CredentialServiceCancelSupplementInformationCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func enableCredential(_ request: GRPCEnableCredentialRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCEnableCredentialResponse?, CallResult) -> Void) throws -> CredentialServiceEnableCredentialCall {
+  internal func enableCredential(_ request: GRPCEnableCredentialRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCEnableCredentialResponse?, CallResult) -> Void) throws -> CredentialServiceEnableCredentialCall {
     return try CredentialServiceEnableCredentialCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func disableCredential(_ request: GRPCDisableCredentialRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCDisableCredentialResponse?, CallResult) -> Void) throws -> CredentialServiceDisableCredentialCall {
+  internal func disableCredential(_ request: GRPCDisableCredentialRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCDisableCredentialResponse?, CallResult) -> Void) throws -> CredentialServiceDisableCredentialCall {
     return try CredentialServiceDisableCredentialCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func thirdPartyCallback(_ request: GRPCThirdPartyCallbackRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCThirdPartyCallbackResponse?, CallResult) -> Void) throws -> CredentialServiceThirdPartyCallbackCall {
+  internal func thirdPartyCallback(_ request: GRPCThirdPartyCallbackRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCThirdPartyCallbackResponse?, CallResult) -> Void) throws -> CredentialServiceThirdPartyCallbackCall {
     return try CredentialServiceThirdPartyCallbackCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func manualAuthentication(_ request: GRPCManualAuthenticationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCManualAuthenticationResponse?, CallResult) -> Void) throws -> CredentialServiceManualAuthenticationCall {
+  internal func manualAuthentication(_ request: GRPCManualAuthenticationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCManualAuthenticationResponse?, CallResult) -> Void) throws -> CredentialServiceManualAuthenticationCall {
     return try CredentialServiceManualAuthenticationCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
 }
-public protocol DeviceServiceRegisterPushNotificationTokenCall: ClientCallUnary {}
+internal protocol DeviceServiceRegisterPushNotificationTokenCall: ClientCallUnary {}
 
 fileprivate final class DeviceServiceRegisterPushNotificationTokenCallBase: ClientCallUnaryBase<GRPCRegisterPushNotificationTokenRequest, GRPCRegisterPushNotificationTokenResponse>, DeviceServiceRegisterPushNotificationTokenCall {
   override class var method: String { return "/DeviceService/RegisterPushNotificationToken" }
 }
 
-public protocol DeviceServiceGetDeviceConfigurationCall: ClientCallUnary {}
+internal protocol DeviceServiceGetDeviceConfigurationCall: ClientCallUnary {}
 
 fileprivate final class DeviceServiceGetDeviceConfigurationCallBase: ClientCallUnaryBase<GRPCGetDeviceConfigurationRequest, GRPCDeviceConfigurationResponse>, DeviceServiceGetDeviceConfigurationCall {
   override class var method: String { return "/DeviceService/GetDeviceConfiguration" }
 }
 
-public protocol DeviceServiceSetOriginCall: ClientCallUnary {}
+internal protocol DeviceServiceSetOriginCall: ClientCallUnary {}
 
 fileprivate final class DeviceServiceSetOriginCallBase: ClientCallUnaryBase<GRPCSetOriginRequest, GRPCSetOriginResponse>, DeviceServiceSetOriginCall {
   override class var method: String { return "/DeviceService/SetOrigin" }
 }
 
-public protocol DeviceServiceDeleteDeviceCall: ClientCallUnary {}
+internal protocol DeviceServiceDeleteDeviceCall: ClientCallUnary {}
 
 fileprivate final class DeviceServiceDeleteDeviceCallBase: ClientCallUnaryBase<GRPCDeleteDeviceRequest, GRPCDeleteDeviceResponse>, DeviceServiceDeleteDeviceCall {
   override class var method: String { return "/DeviceService/DeleteDevice" }
 }
 
-public protocol DeviceServiceListDevicesCall: ClientCallUnary {}
+internal protocol DeviceServiceListDevicesCall: ClientCallUnary {}
 
 fileprivate final class DeviceServiceListDevicesCallBase: ClientCallUnaryBase<GRPCListDevicesRequest, GRPCListDevicesResponse>, DeviceServiceListDevicesCall {
   override class var method: String { return "/DeviceService/ListDevices" }
@@ -1041,7 +1041,7 @@ fileprivate final class DeviceServiceListDevicesCallBase: ClientCallUnaryBase<GR
 
 
 /// Instantiate DeviceServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol DeviceServiceService: ServiceClient {
+internal protocol DeviceServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func registerPushNotificationToken(_ request: GRPCRegisterPushNotificationTokenRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCRegisterPushNotificationTokenResponse?, CallResult) -> Void) throws -> DeviceServiceRegisterPushNotificationTokenCall
@@ -1064,7 +1064,7 @@ public protocol DeviceServiceService: ServiceClient {
 
 }
 
-public extension DeviceServiceService {
+internal extension DeviceServiceService {
   /// Asynchronous. Unary.
   @discardableResult
   func registerPushNotificationToken(_ request: GRPCRegisterPushNotificationTokenRequest, completion: @escaping (GRPCRegisterPushNotificationTokenResponse?, CallResult) -> Void) throws -> DeviceServiceRegisterPushNotificationTokenCall {
@@ -1097,68 +1097,68 @@ public extension DeviceServiceService {
 
 }
 
-public final class DeviceServiceServiceClient: ServiceClientBase, DeviceServiceService {
+internal final class DeviceServiceServiceClient: ServiceClientBase, DeviceServiceService {
   /// Asynchronous. Unary.
   @discardableResult
-  public func registerPushNotificationToken(_ request: GRPCRegisterPushNotificationTokenRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCRegisterPushNotificationTokenResponse?, CallResult) -> Void) throws -> DeviceServiceRegisterPushNotificationTokenCall {
+  internal func registerPushNotificationToken(_ request: GRPCRegisterPushNotificationTokenRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCRegisterPushNotificationTokenResponse?, CallResult) -> Void) throws -> DeviceServiceRegisterPushNotificationTokenCall {
     return try DeviceServiceRegisterPushNotificationTokenCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func getDeviceConfiguration(_ request: GRPCGetDeviceConfigurationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCDeviceConfigurationResponse?, CallResult) -> Void) throws -> DeviceServiceGetDeviceConfigurationCall {
+  internal func getDeviceConfiguration(_ request: GRPCGetDeviceConfigurationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCDeviceConfigurationResponse?, CallResult) -> Void) throws -> DeviceServiceGetDeviceConfigurationCall {
     return try DeviceServiceGetDeviceConfigurationCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func setOrigin(_ request: GRPCSetOriginRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCSetOriginResponse?, CallResult) -> Void) throws -> DeviceServiceSetOriginCall {
+  internal func setOrigin(_ request: GRPCSetOriginRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCSetOriginResponse?, CallResult) -> Void) throws -> DeviceServiceSetOriginCall {
     return try DeviceServiceSetOriginCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func deleteDevice(_ request: GRPCDeleteDeviceRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCDeleteDeviceResponse?, CallResult) -> Void) throws -> DeviceServiceDeleteDeviceCall {
+  internal func deleteDevice(_ request: GRPCDeleteDeviceRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCDeleteDeviceResponse?, CallResult) -> Void) throws -> DeviceServiceDeleteDeviceCall {
     return try DeviceServiceDeleteDeviceCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func listDevices(_ request: GRPCListDevicesRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListDevicesResponse?, CallResult) -> Void) throws -> DeviceServiceListDevicesCall {
+  internal func listDevices(_ request: GRPCListDevicesRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListDevicesResponse?, CallResult) -> Void) throws -> DeviceServiceListDevicesCall {
     return try DeviceServiceListDevicesCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
 }
-public protocol EmailAndPasswordAuthenticationServiceEmailAndPasswordAuthenticationCall: ClientCallUnary {}
+internal protocol EmailAndPasswordAuthenticationServiceEmailAndPasswordAuthenticationCall: ClientCallUnary {}
 
 fileprivate final class EmailAndPasswordAuthenticationServiceEmailAndPasswordAuthenticationCallBase: ClientCallUnaryBase<GRPCEmailAndPasswordAuthenticationRequest, GRPCEmailAndPasswordAuthenticationResponse>, EmailAndPasswordAuthenticationServiceEmailAndPasswordAuthenticationCall {
   override class var method: String { return "/EmailAndPasswordAuthenticationService/EmailAndPasswordAuthentication" }
 }
 
-public protocol EmailAndPasswordAuthenticationServiceForgotPasswordCall: ClientCallUnary {}
+internal protocol EmailAndPasswordAuthenticationServiceForgotPasswordCall: ClientCallUnary {}
 
 fileprivate final class EmailAndPasswordAuthenticationServiceForgotPasswordCallBase: ClientCallUnaryBase<GRPCForgotPasswordRequest, GRPCForgotPasswordResponse>, EmailAndPasswordAuthenticationServiceForgotPasswordCall {
   override class var method: String { return "/EmailAndPasswordAuthenticationService/ForgotPassword" }
 }
 
-public protocol EmailAndPasswordAuthenticationServiceResetPasswordCall: ClientCallUnary {}
+internal protocol EmailAndPasswordAuthenticationServiceResetPasswordCall: ClientCallUnary {}
 
 fileprivate final class EmailAndPasswordAuthenticationServiceResetPasswordCallBase: ClientCallUnaryBase<GRPCResetPasswordRequest, GRPCResetPasswordResponse>, EmailAndPasswordAuthenticationServiceResetPasswordCall {
   override class var method: String { return "/EmailAndPasswordAuthenticationService/ResetPassword" }
 }
 
-public protocol EmailAndPasswordAuthenticationServiceUpdatePasswordCall: ClientCallUnary {}
+internal protocol EmailAndPasswordAuthenticationServiceUpdatePasswordCall: ClientCallUnary {}
 
 fileprivate final class EmailAndPasswordAuthenticationServiceUpdatePasswordCallBase: ClientCallUnaryBase<GRPCUpdatePasswordRequest, GRPCUpdatePasswordResponse>, EmailAndPasswordAuthenticationServiceUpdatePasswordCall {
   override class var method: String { return "/EmailAndPasswordAuthenticationService/UpdatePassword" }
 }
 
-public protocol EmailAndPasswordAuthenticationServiceUpdateEmailCall: ClientCallUnary {}
+internal protocol EmailAndPasswordAuthenticationServiceUpdateEmailCall: ClientCallUnary {}
 
 fileprivate final class EmailAndPasswordAuthenticationServiceUpdateEmailCallBase: ClientCallUnaryBase<GRPCUpdateEmailRequest, GRPCUpdateEmailResponse>, EmailAndPasswordAuthenticationServiceUpdateEmailCall {
   override class var method: String { return "/EmailAndPasswordAuthenticationService/UpdateEmail" }
@@ -1166,7 +1166,7 @@ fileprivate final class EmailAndPasswordAuthenticationServiceUpdateEmailCallBase
 
 
 /// Instantiate EmailAndPasswordAuthenticationServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol EmailAndPasswordAuthenticationServiceService: ServiceClient {
+internal protocol EmailAndPasswordAuthenticationServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func emailAndPasswordAuthentication(_ request: GRPCEmailAndPasswordAuthenticationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCEmailAndPasswordAuthenticationResponse?, CallResult) -> Void) throws -> EmailAndPasswordAuthenticationServiceEmailAndPasswordAuthenticationCall
@@ -1189,7 +1189,7 @@ public protocol EmailAndPasswordAuthenticationServiceService: ServiceClient {
 
 }
 
-public extension EmailAndPasswordAuthenticationServiceService {
+internal extension EmailAndPasswordAuthenticationServiceService {
   /// Asynchronous. Unary.
   @discardableResult
   func emailAndPasswordAuthentication(_ request: GRPCEmailAndPasswordAuthenticationRequest, completion: @escaping (GRPCEmailAndPasswordAuthenticationResponse?, CallResult) -> Void) throws -> EmailAndPasswordAuthenticationServiceEmailAndPasswordAuthenticationCall {
@@ -1222,80 +1222,80 @@ public extension EmailAndPasswordAuthenticationServiceService {
 
 }
 
-public final class EmailAndPasswordAuthenticationServiceServiceClient: ServiceClientBase, EmailAndPasswordAuthenticationServiceService {
+internal final class EmailAndPasswordAuthenticationServiceServiceClient: ServiceClientBase, EmailAndPasswordAuthenticationServiceService {
   /// Asynchronous. Unary.
   @discardableResult
-  public func emailAndPasswordAuthentication(_ request: GRPCEmailAndPasswordAuthenticationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCEmailAndPasswordAuthenticationResponse?, CallResult) -> Void) throws -> EmailAndPasswordAuthenticationServiceEmailAndPasswordAuthenticationCall {
+  internal func emailAndPasswordAuthentication(_ request: GRPCEmailAndPasswordAuthenticationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCEmailAndPasswordAuthenticationResponse?, CallResult) -> Void) throws -> EmailAndPasswordAuthenticationServiceEmailAndPasswordAuthenticationCall {
     return try EmailAndPasswordAuthenticationServiceEmailAndPasswordAuthenticationCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func forgotPassword(_ request: GRPCForgotPasswordRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCForgotPasswordResponse?, CallResult) -> Void) throws -> EmailAndPasswordAuthenticationServiceForgotPasswordCall {
+  internal func forgotPassword(_ request: GRPCForgotPasswordRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCForgotPasswordResponse?, CallResult) -> Void) throws -> EmailAndPasswordAuthenticationServiceForgotPasswordCall {
     return try EmailAndPasswordAuthenticationServiceForgotPasswordCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func resetPassword(_ request: GRPCResetPasswordRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCResetPasswordResponse?, CallResult) -> Void) throws -> EmailAndPasswordAuthenticationServiceResetPasswordCall {
+  internal func resetPassword(_ request: GRPCResetPasswordRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCResetPasswordResponse?, CallResult) -> Void) throws -> EmailAndPasswordAuthenticationServiceResetPasswordCall {
     return try EmailAndPasswordAuthenticationServiceResetPasswordCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func updatePassword(_ request: GRPCUpdatePasswordRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCUpdatePasswordResponse?, CallResult) -> Void) throws -> EmailAndPasswordAuthenticationServiceUpdatePasswordCall {
+  internal func updatePassword(_ request: GRPCUpdatePasswordRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCUpdatePasswordResponse?, CallResult) -> Void) throws -> EmailAndPasswordAuthenticationServiceUpdatePasswordCall {
     return try EmailAndPasswordAuthenticationServiceUpdatePasswordCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func updateEmail(_ request: GRPCUpdateEmailRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCUpdateEmailResponse?, CallResult) -> Void) throws -> EmailAndPasswordAuthenticationServiceUpdateEmailCall {
+  internal func updateEmail(_ request: GRPCUpdateEmailRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCUpdateEmailResponse?, CallResult) -> Void) throws -> EmailAndPasswordAuthenticationServiceUpdateEmailCall {
     return try EmailAndPasswordAuthenticationServiceUpdateEmailCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
 }
-public protocol FollowServiceCreateFollowItemCall: ClientCallUnary {}
+internal protocol FollowServiceCreateFollowItemCall: ClientCallUnary {}
 
 fileprivate final class FollowServiceCreateFollowItemCallBase: ClientCallUnaryBase<GRPCCreateFollowItemRequest, GRPCCreateFollowItemResponse>, FollowServiceCreateFollowItemCall {
   override class var method: String { return "/FollowService/CreateFollowItem" }
 }
 
-public protocol FollowServiceUpdateFollowItemCall: ClientCallUnary {}
+internal protocol FollowServiceUpdateFollowItemCall: ClientCallUnary {}
 
 fileprivate final class FollowServiceUpdateFollowItemCallBase: ClientCallUnaryBase<GRPCUpdateFollowItemRequest, GRPCUpdateFollowItemResponse>, FollowServiceUpdateFollowItemCall {
   override class var method: String { return "/FollowService/UpdateFollowItem" }
 }
 
-public protocol FollowServiceGetFollowItemCall: ClientCallUnary {}
+internal protocol FollowServiceGetFollowItemCall: ClientCallUnary {}
 
 fileprivate final class FollowServiceGetFollowItemCallBase: ClientCallUnaryBase<GRPCGetFollowItemRequest, GRPCGetFollowItemResponse>, FollowServiceGetFollowItemCall {
   override class var method: String { return "/FollowService/GetFollowItem" }
 }
 
-public protocol FollowServiceGetFollowItemHistoryCall: ClientCallUnary {}
+internal protocol FollowServiceGetFollowItemHistoryCall: ClientCallUnary {}
 
 fileprivate final class FollowServiceGetFollowItemHistoryCallBase: ClientCallUnaryBase<GRPCGetFollowItemHistoryRequest, GRPCGetFollowItemHistoryResponse>, FollowServiceGetFollowItemHistoryCall {
   override class var method: String { return "/FollowService/GetFollowItemHistory" }
 }
 
-public protocol FollowServiceDeleteFollowItemCall: ClientCallUnary {}
+internal protocol FollowServiceDeleteFollowItemCall: ClientCallUnary {}
 
 fileprivate final class FollowServiceDeleteFollowItemCallBase: ClientCallUnaryBase<GRPCDeleteFollowItemRequest, GRPCDeleteFollowItemResponse>, FollowServiceDeleteFollowItemCall {
   override class var method: String { return "/FollowService/DeleteFollowItem" }
 }
 
-public protocol FollowServiceListFollowItemCall: ClientCallUnary {}
+internal protocol FollowServiceListFollowItemCall: ClientCallUnary {}
 
 fileprivate final class FollowServiceListFollowItemCallBase: ClientCallUnaryBase<GRPCListFollowItemRequest, GRPCListFollowItemResponse>, FollowServiceListFollowItemCall {
   override class var method: String { return "/FollowService/ListFollowItem" }
 }
 
-public protocol FollowServiceSuggestFollowItemCall: ClientCallUnary {}
+internal protocol FollowServiceSuggestFollowItemCall: ClientCallUnary {}
 
 fileprivate final class FollowServiceSuggestFollowItemCallBase: ClientCallUnaryBase<GRPCSuggestFollowItemRequest, GRPCSuggestFollowItemResponse>, FollowServiceSuggestFollowItemCall {
   override class var method: String { return "/FollowService/SuggestFollowItem" }
@@ -1303,7 +1303,7 @@ fileprivate final class FollowServiceSuggestFollowItemCallBase: ClientCallUnaryB
 
 
 /// Instantiate FollowServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol FollowServiceService: ServiceClient {
+internal protocol FollowServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func createFollowItem(_ request: GRPCCreateFollowItemRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCCreateFollowItemResponse?, CallResult) -> Void) throws -> FollowServiceCreateFollowItemCall
@@ -1334,7 +1334,7 @@ public protocol FollowServiceService: ServiceClient {
 
 }
 
-public extension FollowServiceService {
+internal extension FollowServiceService {
   /// Asynchronous. Unary.
   @discardableResult
   func createFollowItem(_ request: GRPCCreateFollowItemRequest, completion: @escaping (GRPCCreateFollowItemResponse?, CallResult) -> Void) throws -> FollowServiceCreateFollowItemCall {
@@ -1379,88 +1379,88 @@ public extension FollowServiceService {
 
 }
 
-public final class FollowServiceServiceClient: ServiceClientBase, FollowServiceService {
+internal final class FollowServiceServiceClient: ServiceClientBase, FollowServiceService {
   /// Asynchronous. Unary.
   @discardableResult
-  public func createFollowItem(_ request: GRPCCreateFollowItemRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCCreateFollowItemResponse?, CallResult) -> Void) throws -> FollowServiceCreateFollowItemCall {
+  internal func createFollowItem(_ request: GRPCCreateFollowItemRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCCreateFollowItemResponse?, CallResult) -> Void) throws -> FollowServiceCreateFollowItemCall {
     return try FollowServiceCreateFollowItemCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func updateFollowItem(_ request: GRPCUpdateFollowItemRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCUpdateFollowItemResponse?, CallResult) -> Void) throws -> FollowServiceUpdateFollowItemCall {
+  internal func updateFollowItem(_ request: GRPCUpdateFollowItemRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCUpdateFollowItemResponse?, CallResult) -> Void) throws -> FollowServiceUpdateFollowItemCall {
     return try FollowServiceUpdateFollowItemCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func getFollowItem(_ request: GRPCGetFollowItemRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGetFollowItemResponse?, CallResult) -> Void) throws -> FollowServiceGetFollowItemCall {
+  internal func getFollowItem(_ request: GRPCGetFollowItemRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGetFollowItemResponse?, CallResult) -> Void) throws -> FollowServiceGetFollowItemCall {
     return try FollowServiceGetFollowItemCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func getFollowItemHistory(_ request: GRPCGetFollowItemHistoryRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGetFollowItemHistoryResponse?, CallResult) -> Void) throws -> FollowServiceGetFollowItemHistoryCall {
+  internal func getFollowItemHistory(_ request: GRPCGetFollowItemHistoryRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGetFollowItemHistoryResponse?, CallResult) -> Void) throws -> FollowServiceGetFollowItemHistoryCall {
     return try FollowServiceGetFollowItemHistoryCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func deleteFollowItem(_ request: GRPCDeleteFollowItemRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCDeleteFollowItemResponse?, CallResult) -> Void) throws -> FollowServiceDeleteFollowItemCall {
+  internal func deleteFollowItem(_ request: GRPCDeleteFollowItemRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCDeleteFollowItemResponse?, CallResult) -> Void) throws -> FollowServiceDeleteFollowItemCall {
     return try FollowServiceDeleteFollowItemCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func listFollowItem(_ request: GRPCListFollowItemRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListFollowItemResponse?, CallResult) -> Void) throws -> FollowServiceListFollowItemCall {
+  internal func listFollowItem(_ request: GRPCListFollowItemRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListFollowItemResponse?, CallResult) -> Void) throws -> FollowServiceListFollowItemCall {
     return try FollowServiceListFollowItemCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func suggestFollowItem(_ request: GRPCSuggestFollowItemRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCSuggestFollowItemResponse?, CallResult) -> Void) throws -> FollowServiceSuggestFollowItemCall {
+  internal func suggestFollowItem(_ request: GRPCSuggestFollowItemRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCSuggestFollowItemResponse?, CallResult) -> Void) throws -> FollowServiceSuggestFollowItemCall {
     return try FollowServiceSuggestFollowItemCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
 }
-public protocol IdentityServiceGetIdentityEventCall: ClientCallUnary {}
+internal protocol IdentityServiceGetIdentityEventCall: ClientCallUnary {}
 
 fileprivate final class IdentityServiceGetIdentityEventCallBase: ClientCallUnaryBase<GRPCGetIdentityEventRequest, GRPCIdentityEventResponse>, IdentityServiceGetIdentityEventCall {
   override class var method: String { return "/IdentityService/GetIdentityEvent" }
 }
 
-public protocol IdentityServiceGetIdentityEventSummaryListCall: ClientCallUnary {}
+internal protocol IdentityServiceGetIdentityEventSummaryListCall: ClientCallUnary {}
 
 fileprivate final class IdentityServiceGetIdentityEventSummaryListCallBase: ClientCallUnaryBase<GRPCIdentityEventListRequest, GRPCIdentityEventListResponse>, IdentityServiceGetIdentityEventSummaryListCall {
   override class var method: String { return "/IdentityService/GetIdentityEventSummaryList" }
 }
 
-public protocol IdentityServiceSeenIdentityEventsCall: ClientCallUnary {}
+internal protocol IdentityServiceSeenIdentityEventsCall: ClientCallUnary {}
 
 fileprivate final class IdentityServiceSeenIdentityEventsCallBase: ClientCallUnaryBase<GRPCSeenIdentityEventRequest, GRPCSeenIdentityEventResponse>, IdentityServiceSeenIdentityEventsCall {
   override class var method: String { return "/IdentityService/SeenIdentityEvents" }
 }
 
-public protocol IdentityServiceAnswerIdentityEventCall: ClientCallUnary {}
+internal protocol IdentityServiceAnswerIdentityEventCall: ClientCallUnary {}
 
 fileprivate final class IdentityServiceAnswerIdentityEventCallBase: ClientCallUnaryBase<GRPCAnswerIdentityEventRequest, GRPCAnswerIdentityEventResponse>, IdentityServiceAnswerIdentityEventCall {
   override class var method: String { return "/IdentityService/AnswerIdentityEvent" }
 }
 
-public protocol IdentityServiceGetIdentityStateCall: ClientCallUnary {}
+internal protocol IdentityServiceGetIdentityStateCall: ClientCallUnary {}
 
 fileprivate final class IdentityServiceGetIdentityStateCallBase: ClientCallUnaryBase<GRPCIdentityStateRequest, GRPCIdentityStateResponse>, IdentityServiceGetIdentityStateCall {
   override class var method: String { return "/IdentityService/GetIdentityState" }
 }
 
-public protocol IdentityServiceActivateIdentityServiceCall: ClientCallUnary {}
+internal protocol IdentityServiceActivateIdentityServiceCall: ClientCallUnary {}
 
 fileprivate final class IdentityServiceActivateIdentityServiceCallBase: ClientCallUnaryBase<GRPCActivateIdentityServiceRequest, GRPCActivateIdentityServiceResponse>, IdentityServiceActivateIdentityServiceCall {
   override class var method: String { return "/IdentityService/ActivateIdentityService" }
@@ -1468,7 +1468,7 @@ fileprivate final class IdentityServiceActivateIdentityServiceCallBase: ClientCa
 
 
 /// Instantiate IdentityServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol IdentityServiceService: ServiceClient {
+internal protocol IdentityServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func getIdentityEvent(_ request: GRPCGetIdentityEventRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCIdentityEventResponse?, CallResult) -> Void) throws -> IdentityServiceGetIdentityEventCall
@@ -1495,7 +1495,7 @@ public protocol IdentityServiceService: ServiceClient {
 
 }
 
-public extension IdentityServiceService {
+internal extension IdentityServiceService {
   /// Asynchronous. Unary.
   @discardableResult
   func getIdentityEvent(_ request: GRPCGetIdentityEventRequest, completion: @escaping (GRPCIdentityEventResponse?, CallResult) -> Void) throws -> IdentityServiceGetIdentityEventCall {
@@ -1534,63 +1534,63 @@ public extension IdentityServiceService {
 
 }
 
-public final class IdentityServiceServiceClient: ServiceClientBase, IdentityServiceService {
+internal final class IdentityServiceServiceClient: ServiceClientBase, IdentityServiceService {
   /// Asynchronous. Unary.
   @discardableResult
-  public func getIdentityEvent(_ request: GRPCGetIdentityEventRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCIdentityEventResponse?, CallResult) -> Void) throws -> IdentityServiceGetIdentityEventCall {
+  internal func getIdentityEvent(_ request: GRPCGetIdentityEventRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCIdentityEventResponse?, CallResult) -> Void) throws -> IdentityServiceGetIdentityEventCall {
     return try IdentityServiceGetIdentityEventCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func getIdentityEventSummaryList(_ request: GRPCIdentityEventListRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCIdentityEventListResponse?, CallResult) -> Void) throws -> IdentityServiceGetIdentityEventSummaryListCall {
+  internal func getIdentityEventSummaryList(_ request: GRPCIdentityEventListRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCIdentityEventListResponse?, CallResult) -> Void) throws -> IdentityServiceGetIdentityEventSummaryListCall {
     return try IdentityServiceGetIdentityEventSummaryListCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func seenIdentityEvents(_ request: GRPCSeenIdentityEventRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCSeenIdentityEventResponse?, CallResult) -> Void) throws -> IdentityServiceSeenIdentityEventsCall {
+  internal func seenIdentityEvents(_ request: GRPCSeenIdentityEventRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCSeenIdentityEventResponse?, CallResult) -> Void) throws -> IdentityServiceSeenIdentityEventsCall {
     return try IdentityServiceSeenIdentityEventsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func answerIdentityEvent(_ request: GRPCAnswerIdentityEventRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCAnswerIdentityEventResponse?, CallResult) -> Void) throws -> IdentityServiceAnswerIdentityEventCall {
+  internal func answerIdentityEvent(_ request: GRPCAnswerIdentityEventRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCAnswerIdentityEventResponse?, CallResult) -> Void) throws -> IdentityServiceAnswerIdentityEventCall {
     return try IdentityServiceAnswerIdentityEventCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func getIdentityState(_ request: GRPCIdentityStateRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCIdentityStateResponse?, CallResult) -> Void) throws -> IdentityServiceGetIdentityStateCall {
+  internal func getIdentityState(_ request: GRPCIdentityStateRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCIdentityStateResponse?, CallResult) -> Void) throws -> IdentityServiceGetIdentityStateCall {
     return try IdentityServiceGetIdentityStateCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func activateIdentityService(_ request: GRPCActivateIdentityServiceRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCActivateIdentityServiceResponse?, CallResult) -> Void) throws -> IdentityServiceActivateIdentityServiceCall {
+  internal func activateIdentityService(_ request: GRPCActivateIdentityServiceRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCActivateIdentityServiceResponse?, CallResult) -> Void) throws -> IdentityServiceActivateIdentityServiceCall {
     return try IdentityServiceActivateIdentityServiceCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
 }
-public protocol InsightsServiceListInsightsCall: ClientCallUnary {}
+internal protocol InsightsServiceListInsightsCall: ClientCallUnary {}
 
 fileprivate final class InsightsServiceListInsightsCallBase: ClientCallUnaryBase<GRPCListInsightsRequest, GRPCListInsightsResponse>, InsightsServiceListInsightsCall {
   override class var method: String { return "/InsightsService/ListInsights" }
 }
 
-public protocol InsightsServiceListArchivedInsightsCall: ClientCallUnary {}
+internal protocol InsightsServiceListArchivedInsightsCall: ClientCallUnary {}
 
 fileprivate final class InsightsServiceListArchivedInsightsCallBase: ClientCallUnaryBase<GRPCListInsightsRequest, GRPCListArchivedInsightsResponse>, InsightsServiceListArchivedInsightsCall {
   override class var method: String { return "/InsightsService/ListArchivedInsights" }
 }
 
-public protocol InsightsServiceSelectActionCall: ClientCallUnary {}
+internal protocol InsightsServiceSelectActionCall: ClientCallUnary {}
 
 fileprivate final class InsightsServiceSelectActionCallBase: ClientCallUnaryBase<GRPCSelectInsightActionRequest, GRPCSelectInsightActionResponse>, InsightsServiceSelectActionCall {
   override class var method: String { return "/InsightsService/SelectAction" }
@@ -1598,7 +1598,7 @@ fileprivate final class InsightsServiceSelectActionCallBase: ClientCallUnaryBase
 
 
 /// Instantiate InsightsServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol InsightsServiceService: ServiceClient {
+internal protocol InsightsServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func listInsights(_ request: GRPCListInsightsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListInsightsResponse?, CallResult) -> Void) throws -> InsightsServiceListInsightsCall
@@ -1613,7 +1613,7 @@ public protocol InsightsServiceService: ServiceClient {
 
 }
 
-public extension InsightsServiceService {
+internal extension InsightsServiceService {
   /// Asynchronous. Unary.
   @discardableResult
   func listInsights(_ request: GRPCListInsightsRequest, completion: @escaping (GRPCListInsightsResponse?, CallResult) -> Void) throws -> InsightsServiceListInsightsCall {
@@ -1634,30 +1634,30 @@ public extension InsightsServiceService {
 
 }
 
-public final class InsightsServiceServiceClient: ServiceClientBase, InsightsServiceService {
+internal final class InsightsServiceServiceClient: ServiceClientBase, InsightsServiceService {
   /// Asynchronous. Unary.
   @discardableResult
-  public func listInsights(_ request: GRPCListInsightsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListInsightsResponse?, CallResult) -> Void) throws -> InsightsServiceListInsightsCall {
+  internal func listInsights(_ request: GRPCListInsightsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListInsightsResponse?, CallResult) -> Void) throws -> InsightsServiceListInsightsCall {
     return try InsightsServiceListInsightsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func listArchivedInsights(_ request: GRPCListInsightsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListArchivedInsightsResponse?, CallResult) -> Void) throws -> InsightsServiceListArchivedInsightsCall {
+  internal func listArchivedInsights(_ request: GRPCListInsightsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListArchivedInsightsResponse?, CallResult) -> Void) throws -> InsightsServiceListArchivedInsightsCall {
     return try InsightsServiceListArchivedInsightsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func selectAction(_ request: GRPCSelectInsightActionRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCSelectInsightActionResponse?, CallResult) -> Void) throws -> InsightsServiceSelectActionCall {
+  internal func selectAction(_ request: GRPCSelectInsightActionRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCSelectInsightActionResponse?, CallResult) -> Void) throws -> InsightsServiceSelectActionCall {
     return try InsightsServiceSelectActionCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
 }
-public protocol LoanServiceListLoansCall: ClientCallUnary {}
+internal protocol LoanServiceListLoansCall: ClientCallUnary {}
 
 fileprivate final class LoanServiceListLoansCallBase: ClientCallUnaryBase<GRPCListLoansRequest, GRPCListLoansResponse>, LoanServiceListLoansCall {
   override class var method: String { return "/LoanService/ListLoans" }
@@ -1665,14 +1665,14 @@ fileprivate final class LoanServiceListLoansCallBase: ClientCallUnaryBase<GRPCLi
 
 
 /// Instantiate LoanServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol LoanServiceService: ServiceClient {
+internal protocol LoanServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func listLoans(_ request: GRPCListLoansRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListLoansResponse?, CallResult) -> Void) throws -> LoanServiceListLoansCall
 
 }
 
-public extension LoanServiceService {
+internal extension LoanServiceService {
   /// Asynchronous. Unary.
   @discardableResult
   func listLoans(_ request: GRPCListLoansRequest, completion: @escaping (GRPCListLoansResponse?, CallResult) -> Void) throws -> LoanServiceListLoansCall {
@@ -1681,22 +1681,22 @@ public extension LoanServiceService {
 
 }
 
-public final class LoanServiceServiceClient: ServiceClientBase, LoanServiceService {
+internal final class LoanServiceServiceClient: ServiceClientBase, LoanServiceService {
   /// Asynchronous. Unary.
   @discardableResult
-  public func listLoans(_ request: GRPCListLoansRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListLoansResponse?, CallResult) -> Void) throws -> LoanServiceListLoansCall {
+  internal func listLoans(_ request: GRPCListLoansRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListLoansResponse?, CallResult) -> Void) throws -> LoanServiceListLoansCall {
     return try LoanServiceListLoansCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
 }
-public protocol MobileBankIdAuthenticationServiceInitiateBankIdAuthenticationCall: ClientCallUnary {}
+internal protocol MobileBankIdAuthenticationServiceInitiateBankIdAuthenticationCall: ClientCallUnary {}
 
 fileprivate final class MobileBankIdAuthenticationServiceInitiateBankIdAuthenticationCallBase: ClientCallUnaryBase<GRPCInitiateBankIdAuthenticationRequest, GRPCInitiateBankIdAuthenticationResponse>, MobileBankIdAuthenticationServiceInitiateBankIdAuthenticationCall {
   override class var method: String { return "/MobileBankIdAuthenticationService/InitiateBankIdAuthentication" }
 }
 
-public protocol MobileBankIdAuthenticationServiceCollectBankIdAuthenticationCall: ClientCallUnary {}
+internal protocol MobileBankIdAuthenticationServiceCollectBankIdAuthenticationCall: ClientCallUnary {}
 
 fileprivate final class MobileBankIdAuthenticationServiceCollectBankIdAuthenticationCallBase: ClientCallUnaryBase<GRPCCollectBankIdAuthenticationRequest, GRPCCollectBankIdAuthenticationResponse>, MobileBankIdAuthenticationServiceCollectBankIdAuthenticationCall {
   override class var method: String { return "/MobileBankIdAuthenticationService/CollectBankIdAuthentication" }
@@ -1704,7 +1704,7 @@ fileprivate final class MobileBankIdAuthenticationServiceCollectBankIdAuthentica
 
 
 /// Instantiate MobileBankIdAuthenticationServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol MobileBankIdAuthenticationServiceService: ServiceClient {
+internal protocol MobileBankIdAuthenticationServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func initiateBankIdAuthentication(_ request: GRPCInitiateBankIdAuthenticationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCInitiateBankIdAuthenticationResponse?, CallResult) -> Void) throws -> MobileBankIdAuthenticationServiceInitiateBankIdAuthenticationCall
@@ -1715,7 +1715,7 @@ public protocol MobileBankIdAuthenticationServiceService: ServiceClient {
 
 }
 
-public extension MobileBankIdAuthenticationServiceService {
+internal extension MobileBankIdAuthenticationServiceService {
   /// Asynchronous. Unary.
   @discardableResult
   func initiateBankIdAuthentication(_ request: GRPCInitiateBankIdAuthenticationRequest, completion: @escaping (GRPCInitiateBankIdAuthenticationResponse?, CallResult) -> Void) throws -> MobileBankIdAuthenticationServiceInitiateBankIdAuthenticationCall {
@@ -1730,47 +1730,47 @@ public extension MobileBankIdAuthenticationServiceService {
 
 }
 
-public final class MobileBankIdAuthenticationServiceServiceClient: ServiceClientBase, MobileBankIdAuthenticationServiceService {
+internal final class MobileBankIdAuthenticationServiceServiceClient: ServiceClientBase, MobileBankIdAuthenticationServiceService {
   /// Asynchronous. Unary.
   @discardableResult
-  public func initiateBankIdAuthentication(_ request: GRPCInitiateBankIdAuthenticationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCInitiateBankIdAuthenticationResponse?, CallResult) -> Void) throws -> MobileBankIdAuthenticationServiceInitiateBankIdAuthenticationCall {
+  internal func initiateBankIdAuthentication(_ request: GRPCInitiateBankIdAuthenticationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCInitiateBankIdAuthenticationResponse?, CallResult) -> Void) throws -> MobileBankIdAuthenticationServiceInitiateBankIdAuthenticationCall {
     return try MobileBankIdAuthenticationServiceInitiateBankIdAuthenticationCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func collectBankIdAuthentication(_ request: GRPCCollectBankIdAuthenticationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCCollectBankIdAuthenticationResponse?, CallResult) -> Void) throws -> MobileBankIdAuthenticationServiceCollectBankIdAuthenticationCall {
+  internal func collectBankIdAuthentication(_ request: GRPCCollectBankIdAuthenticationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCCollectBankIdAuthenticationResponse?, CallResult) -> Void) throws -> MobileBankIdAuthenticationServiceCollectBankIdAuthenticationCall {
     return try MobileBankIdAuthenticationServiceCollectBankIdAuthenticationCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
 }
-public protocol PhoneNumberAndPin6AuthenticationServiceSmsOtpAndPin6AuthenticationCall: ClientCallUnary {}
+internal protocol PhoneNumberAndPin6AuthenticationServiceSmsOtpAndPin6AuthenticationCall: ClientCallUnary {}
 
 fileprivate final class PhoneNumberAndPin6AuthenticationServiceSmsOtpAndPin6AuthenticationCallBase: ClientCallUnaryBase<GRPCSmsOtpAndPin6AuthenticationRequest, GRPCSmsOtpAndPin6AuthenticationResponse>, PhoneNumberAndPin6AuthenticationServiceSmsOtpAndPin6AuthenticationCall {
   override class var method: String { return "/PhoneNumberAndPin6AuthenticationService/SmsOtpAndPin6Authentication" }
 }
 
-public protocol PhoneNumberAndPin6AuthenticationServicePhoneNumberAndPin6AuthenticationCall: ClientCallUnary {}
+internal protocol PhoneNumberAndPin6AuthenticationServicePhoneNumberAndPin6AuthenticationCall: ClientCallUnary {}
 
 fileprivate final class PhoneNumberAndPin6AuthenticationServicePhoneNumberAndPin6AuthenticationCallBase: ClientCallUnaryBase<GRPCPhoneNumberAndPin6AuthenticationRequest, GRPCPhoneNumberAndPin6AuthenticationResponse>, PhoneNumberAndPin6AuthenticationServicePhoneNumberAndPin6AuthenticationCall {
   override class var method: String { return "/PhoneNumberAndPin6AuthenticationService/PhoneNumberAndPin6Authentication" }
 }
 
-public protocol PhoneNumberAndPin6AuthenticationServiceUpdatePin6Call: ClientCallUnary {}
+internal protocol PhoneNumberAndPin6AuthenticationServiceUpdatePin6Call: ClientCallUnary {}
 
 fileprivate final class PhoneNumberAndPin6AuthenticationServiceUpdatePin6CallBase: ClientCallUnaryBase<GRPCUpdatePin6Request, GRPCUpdatePin6Response>, PhoneNumberAndPin6AuthenticationServiceUpdatePin6Call {
   override class var method: String { return "/PhoneNumberAndPin6AuthenticationService/UpdatePin6" }
 }
 
-public protocol PhoneNumberAndPin6AuthenticationServiceUpdatePhoneNumberCall: ClientCallUnary {}
+internal protocol PhoneNumberAndPin6AuthenticationServiceUpdatePhoneNumberCall: ClientCallUnary {}
 
 fileprivate final class PhoneNumberAndPin6AuthenticationServiceUpdatePhoneNumberCallBase: ClientCallUnaryBase<GRPCUpdatePhoneNumberRequest, GRPCUpdatePhoneNumberResponse>, PhoneNumberAndPin6AuthenticationServiceUpdatePhoneNumberCall {
   override class var method: String { return "/PhoneNumberAndPin6AuthenticationService/UpdatePhoneNumber" }
 }
 
-public protocol PhoneNumberAndPin6AuthenticationServiceResetPin6Call: ClientCallUnary {}
+internal protocol PhoneNumberAndPin6AuthenticationServiceResetPin6Call: ClientCallUnary {}
 
 fileprivate final class PhoneNumberAndPin6AuthenticationServiceResetPin6CallBase: ClientCallUnaryBase<GRPCResetPin6Request, GRPCResetPin6Response>, PhoneNumberAndPin6AuthenticationServiceResetPin6Call {
   override class var method: String { return "/PhoneNumberAndPin6AuthenticationService/ResetPin6" }
@@ -1778,7 +1778,7 @@ fileprivate final class PhoneNumberAndPin6AuthenticationServiceResetPin6CallBase
 
 
 /// Instantiate PhoneNumberAndPin6AuthenticationServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol PhoneNumberAndPin6AuthenticationServiceService: ServiceClient {
+internal protocol PhoneNumberAndPin6AuthenticationServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func smsOtpAndPin6Authentication(_ request: GRPCSmsOtpAndPin6AuthenticationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCSmsOtpAndPin6AuthenticationResponse?, CallResult) -> Void) throws -> PhoneNumberAndPin6AuthenticationServiceSmsOtpAndPin6AuthenticationCall
@@ -1801,7 +1801,7 @@ public protocol PhoneNumberAndPin6AuthenticationServiceService: ServiceClient {
 
 }
 
-public extension PhoneNumberAndPin6AuthenticationServiceService {
+internal extension PhoneNumberAndPin6AuthenticationServiceService {
   /// Asynchronous. Unary.
   @discardableResult
   func smsOtpAndPin6Authentication(_ request: GRPCSmsOtpAndPin6AuthenticationRequest, completion: @escaping (GRPCSmsOtpAndPin6AuthenticationResponse?, CallResult) -> Void) throws -> PhoneNumberAndPin6AuthenticationServiceSmsOtpAndPin6AuthenticationCall {
@@ -1834,50 +1834,50 @@ public extension PhoneNumberAndPin6AuthenticationServiceService {
 
 }
 
-public final class PhoneNumberAndPin6AuthenticationServiceServiceClient: ServiceClientBase, PhoneNumberAndPin6AuthenticationServiceService {
+internal final class PhoneNumberAndPin6AuthenticationServiceServiceClient: ServiceClientBase, PhoneNumberAndPin6AuthenticationServiceService {
   /// Asynchronous. Unary.
   @discardableResult
-  public func smsOtpAndPin6Authentication(_ request: GRPCSmsOtpAndPin6AuthenticationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCSmsOtpAndPin6AuthenticationResponse?, CallResult) -> Void) throws -> PhoneNumberAndPin6AuthenticationServiceSmsOtpAndPin6AuthenticationCall {
+  internal func smsOtpAndPin6Authentication(_ request: GRPCSmsOtpAndPin6AuthenticationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCSmsOtpAndPin6AuthenticationResponse?, CallResult) -> Void) throws -> PhoneNumberAndPin6AuthenticationServiceSmsOtpAndPin6AuthenticationCall {
     return try PhoneNumberAndPin6AuthenticationServiceSmsOtpAndPin6AuthenticationCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func phoneNumberAndPin6Authentication(_ request: GRPCPhoneNumberAndPin6AuthenticationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCPhoneNumberAndPin6AuthenticationResponse?, CallResult) -> Void) throws -> PhoneNumberAndPin6AuthenticationServicePhoneNumberAndPin6AuthenticationCall {
+  internal func phoneNumberAndPin6Authentication(_ request: GRPCPhoneNumberAndPin6AuthenticationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCPhoneNumberAndPin6AuthenticationResponse?, CallResult) -> Void) throws -> PhoneNumberAndPin6AuthenticationServicePhoneNumberAndPin6AuthenticationCall {
     return try PhoneNumberAndPin6AuthenticationServicePhoneNumberAndPin6AuthenticationCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func updatePin6(_ request: GRPCUpdatePin6Request, metadata customMetadata: Metadata, completion: @escaping (GRPCUpdatePin6Response?, CallResult) -> Void) throws -> PhoneNumberAndPin6AuthenticationServiceUpdatePin6Call {
+  internal func updatePin6(_ request: GRPCUpdatePin6Request, metadata customMetadata: Metadata, completion: @escaping (GRPCUpdatePin6Response?, CallResult) -> Void) throws -> PhoneNumberAndPin6AuthenticationServiceUpdatePin6Call {
     return try PhoneNumberAndPin6AuthenticationServiceUpdatePin6CallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func updatePhoneNumber(_ request: GRPCUpdatePhoneNumberRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCUpdatePhoneNumberResponse?, CallResult) -> Void) throws -> PhoneNumberAndPin6AuthenticationServiceUpdatePhoneNumberCall {
+  internal func updatePhoneNumber(_ request: GRPCUpdatePhoneNumberRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCUpdatePhoneNumberResponse?, CallResult) -> Void) throws -> PhoneNumberAndPin6AuthenticationServiceUpdatePhoneNumberCall {
     return try PhoneNumberAndPin6AuthenticationServiceUpdatePhoneNumberCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func resetPin6(_ request: GRPCResetPin6Request, metadata customMetadata: Metadata, completion: @escaping (GRPCResetPin6Response?, CallResult) -> Void) throws -> PhoneNumberAndPin6AuthenticationServiceResetPin6Call {
+  internal func resetPin6(_ request: GRPCResetPin6Request, metadata customMetadata: Metadata, completion: @escaping (GRPCResetPin6Response?, CallResult) -> Void) throws -> PhoneNumberAndPin6AuthenticationServiceResetPin6Call {
     return try PhoneNumberAndPin6AuthenticationServiceResetPin6CallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
 }
-public protocol PhoneNumberAuthenticationServiceInitiateSmsOtpCall: ClientCallUnary {}
+internal protocol PhoneNumberAuthenticationServiceInitiateSmsOtpCall: ClientCallUnary {}
 
 fileprivate final class PhoneNumberAuthenticationServiceInitiateSmsOtpCallBase: ClientCallUnaryBase<GRPCInitiateSmsOtpRequest, GRPCInitiateSmsOtpResponse>, PhoneNumberAuthenticationServiceInitiateSmsOtpCall {
   override class var method: String { return "/PhoneNumberAuthenticationService/InitiateSmsOtp" }
 }
 
-public protocol PhoneNumberAuthenticationServiceVerifySmsOtpCall: ClientCallUnary {}
+internal protocol PhoneNumberAuthenticationServiceVerifySmsOtpCall: ClientCallUnary {}
 
 fileprivate final class PhoneNumberAuthenticationServiceVerifySmsOtpCallBase: ClientCallUnaryBase<GRPCVerifySmsOtpRequest, GRPCVerifySmsOtpResponse>, PhoneNumberAuthenticationServiceVerifySmsOtpCall {
   override class var method: String { return "/PhoneNumberAuthenticationService/VerifySmsOtp" }
@@ -1885,7 +1885,7 @@ fileprivate final class PhoneNumberAuthenticationServiceVerifySmsOtpCallBase: Cl
 
 
 /// Instantiate PhoneNumberAuthenticationServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol PhoneNumberAuthenticationServiceService: ServiceClient {
+internal protocol PhoneNumberAuthenticationServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func initiateSmsOtp(_ request: GRPCInitiateSmsOtpRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCInitiateSmsOtpResponse?, CallResult) -> Void) throws -> PhoneNumberAuthenticationServiceInitiateSmsOtpCall
@@ -1896,7 +1896,7 @@ public protocol PhoneNumberAuthenticationServiceService: ServiceClient {
 
 }
 
-public extension PhoneNumberAuthenticationServiceService {
+internal extension PhoneNumberAuthenticationServiceService {
   /// Asynchronous. Unary.
   @discardableResult
   func initiateSmsOtp(_ request: GRPCInitiateSmsOtpRequest, completion: @escaping (GRPCInitiateSmsOtpResponse?, CallResult) -> Void) throws -> PhoneNumberAuthenticationServiceInitiateSmsOtpCall {
@@ -1911,23 +1911,23 @@ public extension PhoneNumberAuthenticationServiceService {
 
 }
 
-public final class PhoneNumberAuthenticationServiceServiceClient: ServiceClientBase, PhoneNumberAuthenticationServiceService {
+internal final class PhoneNumberAuthenticationServiceServiceClient: ServiceClientBase, PhoneNumberAuthenticationServiceService {
   /// Asynchronous. Unary.
   @discardableResult
-  public func initiateSmsOtp(_ request: GRPCInitiateSmsOtpRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCInitiateSmsOtpResponse?, CallResult) -> Void) throws -> PhoneNumberAuthenticationServiceInitiateSmsOtpCall {
+  internal func initiateSmsOtp(_ request: GRPCInitiateSmsOtpRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCInitiateSmsOtpResponse?, CallResult) -> Void) throws -> PhoneNumberAuthenticationServiceInitiateSmsOtpCall {
     return try PhoneNumberAuthenticationServiceInitiateSmsOtpCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func verifySmsOtp(_ request: GRPCVerifySmsOtpRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCVerifySmsOtpResponse?, CallResult) -> Void) throws -> PhoneNumberAuthenticationServiceVerifySmsOtpCall {
+  internal func verifySmsOtp(_ request: GRPCVerifySmsOtpRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCVerifySmsOtpResponse?, CallResult) -> Void) throws -> PhoneNumberAuthenticationServiceVerifySmsOtpCall {
     return try PhoneNumberAuthenticationServiceVerifySmsOtpCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
 }
-public protocol PingServicePingCall: ClientCallUnary {}
+internal protocol PingServicePingCall: ClientCallUnary {}
 
 fileprivate final class PingServicePingCallBase: ClientCallUnaryBase<GRPCPingRequest, GRPCPingResponse>, PingServicePingCall {
   override class var method: String { return "/PingService/Ping" }
@@ -1935,14 +1935,14 @@ fileprivate final class PingServicePingCallBase: ClientCallUnaryBase<GRPCPingReq
 
 
 /// Instantiate PingServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol PingServiceService: ServiceClient {
+internal protocol PingServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func ping(_ request: GRPCPingRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCPingResponse?, CallResult) -> Void) throws -> PingServicePingCall
 
 }
 
-public extension PingServiceService {
+internal extension PingServiceService {
   /// Asynchronous. Unary.
   @discardableResult
   func ping(_ request: GRPCPingRequest, completion: @escaping (GRPCPingResponse?, CallResult) -> Void) throws -> PingServicePingCall {
@@ -1951,46 +1951,46 @@ public extension PingServiceService {
 
 }
 
-public final class PingServiceServiceClient: ServiceClientBase, PingServiceService {
+internal final class PingServiceServiceClient: ServiceClientBase, PingServiceService {
   /// Asynchronous. Unary.
   @discardableResult
-  public func ping(_ request: GRPCPingRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCPingResponse?, CallResult) -> Void) throws -> PingServicePingCall {
+  internal func ping(_ request: GRPCPingRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCPingResponse?, CallResult) -> Void) throws -> PingServicePingCall {
     return try PingServicePingCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
 }
-public protocol PropertyServiceListPropertiesCall: ClientCallUnary {}
+internal protocol PropertyServiceListPropertiesCall: ClientCallUnary {}
 
 fileprivate final class PropertyServiceListPropertiesCallBase: ClientCallUnaryBase<GRPCListPropertiesRequest, GRPCListPropertiesResponse>, PropertyServiceListPropertiesCall {
   override class var method: String { return "/PropertyService/ListProperties" }
 }
 
-public protocol PropertyServiceGetPropertyCall: ClientCallUnary {}
+internal protocol PropertyServiceGetPropertyCall: ClientCallUnary {}
 
 fileprivate final class PropertyServiceGetPropertyCallBase: ClientCallUnaryBase<GRPCGetPropertyRequest, GRPCGetPropertyResponse>, PropertyServiceGetPropertyCall {
   override class var method: String { return "/PropertyService/GetProperty" }
 }
 
-public protocol PropertyServiceUpdatePropertyCall: ClientCallUnary {}
+internal protocol PropertyServiceUpdatePropertyCall: ClientCallUnary {}
 
 fileprivate final class PropertyServiceUpdatePropertyCallBase: ClientCallUnaryBase<GRPCUpdatePropertyRequest, GRPCUpdatePropertyResponse>, PropertyServiceUpdatePropertyCall {
   override class var method: String { return "/PropertyService/UpdateProperty" }
 }
 
-public protocol PropertyServiceDeleteValuationCall: ClientCallUnary {}
+internal protocol PropertyServiceDeleteValuationCall: ClientCallUnary {}
 
 fileprivate final class PropertyServiceDeleteValuationCallBase: ClientCallUnaryBase<GRPCDeleteValuationRequest, GRPCDeleteValuationResponse>, PropertyServiceDeleteValuationCall {
   override class var method: String { return "/PropertyService/DeleteValuation" }
 }
 
-public protocol PropertyServiceGetValuationEventsCall: ClientCallUnary {}
+internal protocol PropertyServiceGetValuationEventsCall: ClientCallUnary {}
 
 fileprivate final class PropertyServiceGetValuationEventsCallBase: ClientCallUnaryBase<GRPCGetValuationEventsRequest, GRPCGetValuationEventsResponse>, PropertyServiceGetValuationEventsCall {
   override class var method: String { return "/PropertyService/GetValuationEvents" }
 }
 
-public protocol PropertyServiceGetValuationSummaryCall: ClientCallUnary {}
+internal protocol PropertyServiceGetValuationSummaryCall: ClientCallUnary {}
 
 fileprivate final class PropertyServiceGetValuationSummaryCallBase: ClientCallUnaryBase<GRPCGetValuationSummaryRequest, GRPCGetValuationSummaryResponse>, PropertyServiceGetValuationSummaryCall {
   override class var method: String { return "/PropertyService/GetValuationSummary" }
@@ -1998,7 +1998,7 @@ fileprivate final class PropertyServiceGetValuationSummaryCallBase: ClientCallUn
 
 
 /// Instantiate PropertyServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol PropertyServiceService: ServiceClient {
+internal protocol PropertyServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func listProperties(_ request: GRPCListPropertiesRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListPropertiesResponse?, CallResult) -> Void) throws -> PropertyServiceListPropertiesCall
@@ -2025,7 +2025,7 @@ public protocol PropertyServiceService: ServiceClient {
 
 }
 
-public extension PropertyServiceService {
+internal extension PropertyServiceService {
   /// Asynchronous. Unary.
   @discardableResult
   func listProperties(_ request: GRPCListPropertiesRequest, completion: @escaping (GRPCListPropertiesResponse?, CallResult) -> Void) throws -> PropertyServiceListPropertiesCall {
@@ -2064,51 +2064,51 @@ public extension PropertyServiceService {
 
 }
 
-public final class PropertyServiceServiceClient: ServiceClientBase, PropertyServiceService {
+internal final class PropertyServiceServiceClient: ServiceClientBase, PropertyServiceService {
   /// Asynchronous. Unary.
   @discardableResult
-  public func listProperties(_ request: GRPCListPropertiesRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListPropertiesResponse?, CallResult) -> Void) throws -> PropertyServiceListPropertiesCall {
+  internal func listProperties(_ request: GRPCListPropertiesRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListPropertiesResponse?, CallResult) -> Void) throws -> PropertyServiceListPropertiesCall {
     return try PropertyServiceListPropertiesCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func getProperty(_ request: GRPCGetPropertyRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGetPropertyResponse?, CallResult) -> Void) throws -> PropertyServiceGetPropertyCall {
+  internal func getProperty(_ request: GRPCGetPropertyRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGetPropertyResponse?, CallResult) -> Void) throws -> PropertyServiceGetPropertyCall {
     return try PropertyServiceGetPropertyCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func updateProperty(_ request: GRPCUpdatePropertyRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCUpdatePropertyResponse?, CallResult) -> Void) throws -> PropertyServiceUpdatePropertyCall {
+  internal func updateProperty(_ request: GRPCUpdatePropertyRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCUpdatePropertyResponse?, CallResult) -> Void) throws -> PropertyServiceUpdatePropertyCall {
     return try PropertyServiceUpdatePropertyCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func deleteValuation(_ request: GRPCDeleteValuationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCDeleteValuationResponse?, CallResult) -> Void) throws -> PropertyServiceDeleteValuationCall {
+  internal func deleteValuation(_ request: GRPCDeleteValuationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCDeleteValuationResponse?, CallResult) -> Void) throws -> PropertyServiceDeleteValuationCall {
     return try PropertyServiceDeleteValuationCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func getValuationEvents(_ request: GRPCGetValuationEventsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGetValuationEventsResponse?, CallResult) -> Void) throws -> PropertyServiceGetValuationEventsCall {
+  internal func getValuationEvents(_ request: GRPCGetValuationEventsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGetValuationEventsResponse?, CallResult) -> Void) throws -> PropertyServiceGetValuationEventsCall {
     return try PropertyServiceGetValuationEventsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func getValuationSummary(_ request: GRPCGetValuationSummaryRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGetValuationSummaryResponse?, CallResult) -> Void) throws -> PropertyServiceGetValuationSummaryCall {
+  internal func getValuationSummary(_ request: GRPCGetValuationSummaryRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGetValuationSummaryResponse?, CallResult) -> Void) throws -> PropertyServiceGetValuationSummaryCall {
     return try PropertyServiceGetValuationSummaryCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
 }
-public protocol MarketServiceListMarketsCall: ClientCallUnary {}
+internal protocol MarketServiceListMarketsCall: ClientCallUnary {}
 
 fileprivate final class MarketServiceListMarketsCallBase: ClientCallUnaryBase<GRPCListMarketsRequest, GRPCListMarketsResponse>, MarketServiceListMarketsCall {
   override class var method: String { return "/MarketService/ListMarkets" }
@@ -2116,14 +2116,14 @@ fileprivate final class MarketServiceListMarketsCallBase: ClientCallUnaryBase<GR
 
 
 /// Instantiate MarketServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol MarketServiceService: ServiceClient {
+internal protocol MarketServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func listMarkets(_ request: GRPCListMarketsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListMarketsResponse?, CallResult) -> Void) throws -> MarketServiceListMarketsCall
 
 }
 
-public extension MarketServiceService {
+internal extension MarketServiceService {
   /// Asynchronous. Unary.
   @discardableResult
   func listMarkets(_ request: GRPCListMarketsRequest, completion: @escaping (GRPCListMarketsResponse?, CallResult) -> Void) throws -> MarketServiceListMarketsCall {
@@ -2132,34 +2132,34 @@ public extension MarketServiceService {
 
 }
 
-public final class MarketServiceServiceClient: ServiceClientBase, MarketServiceService {
+internal final class MarketServiceServiceClient: ServiceClientBase, MarketServiceService {
   /// Asynchronous. Unary.
   @discardableResult
-  public func listMarkets(_ request: GRPCListMarketsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListMarketsResponse?, CallResult) -> Void) throws -> MarketServiceListMarketsCall {
+  internal func listMarkets(_ request: GRPCListMarketsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListMarketsResponse?, CallResult) -> Void) throws -> MarketServiceListMarketsCall {
     return try MarketServiceListMarketsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
 }
-public protocol ProviderServiceListProvidersCall: ClientCallUnary {}
+internal protocol ProviderServiceListProvidersCall: ClientCallUnary {}
 
 fileprivate final class ProviderServiceListProvidersCallBase: ClientCallUnaryBase<GRPCProviderListRequest, GRPCListProvidersResponse>, ProviderServiceListProvidersCall {
   override class var method: String { return "/ProviderService/ListProviders" }
 }
 
-public protocol ProviderServiceListProvidersForMarketsCall: ClientCallUnary {}
+internal protocol ProviderServiceListProvidersForMarketsCall: ClientCallUnary {}
 
 fileprivate final class ProviderServiceListProvidersForMarketsCallBase: ClientCallUnaryBase<GRPCProviderListForMarketsRequest, GRPCListProvidersForMarketsResponse>, ProviderServiceListProvidersForMarketsCall {
   override class var method: String { return "/ProviderService/ListProvidersForMarkets" }
 }
 
-public protocol ProviderServiceListProviderMarketsCall: ClientCallUnary {}
+internal protocol ProviderServiceListProviderMarketsCall: ClientCallUnary {}
 
 fileprivate final class ProviderServiceListProviderMarketsCallBase: ClientCallUnaryBase<GRPCProviderMarketListRequest, GRPCProviderMarketListResponse>, ProviderServiceListProviderMarketsCall {
   override class var method: String { return "/ProviderService/ListProviderMarkets" }
 }
 
-public protocol ProviderServiceSuggestCall: ClientCallUnary {}
+internal protocol ProviderServiceSuggestCall: ClientCallUnary {}
 
 fileprivate final class ProviderServiceSuggestCallBase: ClientCallUnaryBase<GRPCProviderSuggestRequest, GRPCListProvidersResponse>, ProviderServiceSuggestCall {
   override class var method: String { return "/ProviderService/Suggest" }
@@ -2167,7 +2167,7 @@ fileprivate final class ProviderServiceSuggestCallBase: ClientCallUnaryBase<GRPC
 
 
 /// Instantiate ProviderServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol ProviderServiceService: ServiceClient {
+internal protocol ProviderServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func listProviders(_ request: GRPCProviderListRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListProvidersResponse?, CallResult) -> Void) throws -> ProviderServiceListProvidersCall
@@ -2186,7 +2186,7 @@ public protocol ProviderServiceService: ServiceClient {
 
 }
 
-public extension ProviderServiceService {
+internal extension ProviderServiceService {
   /// Asynchronous. Unary.
   @discardableResult
   func listProviders(_ request: GRPCProviderListRequest, completion: @escaping (GRPCListProvidersResponse?, CallResult) -> Void) throws -> ProviderServiceListProvidersCall {
@@ -2213,85 +2213,85 @@ public extension ProviderServiceService {
 
 }
 
-public final class ProviderServiceServiceClient: ServiceClientBase, ProviderServiceService {
+internal final class ProviderServiceServiceClient: ServiceClientBase, ProviderServiceService {
   /// Asynchronous. Unary.
   @discardableResult
-  public func listProviders(_ request: GRPCProviderListRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListProvidersResponse?, CallResult) -> Void) throws -> ProviderServiceListProvidersCall {
+  internal func listProviders(_ request: GRPCProviderListRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListProvidersResponse?, CallResult) -> Void) throws -> ProviderServiceListProvidersCall {
     return try ProviderServiceListProvidersCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func listProvidersForMarkets(_ request: GRPCProviderListForMarketsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListProvidersForMarketsResponse?, CallResult) -> Void) throws -> ProviderServiceListProvidersForMarketsCall {
+  internal func listProvidersForMarkets(_ request: GRPCProviderListForMarketsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListProvidersForMarketsResponse?, CallResult) -> Void) throws -> ProviderServiceListProvidersForMarketsCall {
     return try ProviderServiceListProvidersForMarketsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func listProviderMarkets(_ request: GRPCProviderMarketListRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCProviderMarketListResponse?, CallResult) -> Void) throws -> ProviderServiceListProviderMarketsCall {
+  internal func listProviderMarkets(_ request: GRPCProviderMarketListRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCProviderMarketListResponse?, CallResult) -> Void) throws -> ProviderServiceListProviderMarketsCall {
     return try ProviderServiceListProviderMarketsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func suggest(_ request: GRPCProviderSuggestRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListProvidersResponse?, CallResult) -> Void) throws -> ProviderServiceSuggestCall {
+  internal func suggest(_ request: GRPCProviderSuggestRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListProvidersResponse?, CallResult) -> Void) throws -> ProviderServiceSuggestCall {
     return try ProviderServiceSuggestCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
 }
-public protocol RecurringTransactionsServiceListRecurringTransactionsCall: ClientCallUnary {}
+internal protocol RecurringTransactionsServiceListRecurringTransactionsCall: ClientCallUnary {}
 
 fileprivate final class RecurringTransactionsServiceListRecurringTransactionsCallBase: ClientCallUnaryBase<GRPCListRecurringTransactionsRequest, GRPCListRecurringTransactionsResponse>, RecurringTransactionsServiceListRecurringTransactionsCall {
   override class var method: String { return "/RecurringTransactionsService/ListRecurringTransactions" }
 }
 
-public protocol RecurringTransactionsServiceListRecurringTransactionGroupsCall: ClientCallUnary {}
+internal protocol RecurringTransactionsServiceListRecurringTransactionGroupsCall: ClientCallUnary {}
 
 fileprivate final class RecurringTransactionsServiceListRecurringTransactionGroupsCallBase: ClientCallUnaryBase<GRPCListRecurringTransactionGroupsRequest, GRPCListRecurringTransactionGroupsResponse>, RecurringTransactionsServiceListRecurringTransactionGroupsCall {
   override class var method: String { return "/RecurringTransactionsService/ListRecurringTransactionGroups" }
 }
 
-public protocol RecurringTransactionsServiceCreateRecurringTransactionGroupCall: ClientCallUnary {}
+internal protocol RecurringTransactionsServiceCreateRecurringTransactionGroupCall: ClientCallUnary {}
 
 fileprivate final class RecurringTransactionsServiceCreateRecurringTransactionGroupCallBase: ClientCallUnaryBase<GRPCCreateRecurringTransactionGroupRequest, GRPCCreateRecurringTransactionGroupResponse>, RecurringTransactionsServiceCreateRecurringTransactionGroupCall {
   override class var method: String { return "/RecurringTransactionsService/CreateRecurringTransactionGroup" }
 }
 
-public protocol RecurringTransactionsServiceExcludeRecurringTransactionFromGroupCall: ClientCallUnary {}
+internal protocol RecurringTransactionsServiceExcludeRecurringTransactionFromGroupCall: ClientCallUnary {}
 
 fileprivate final class RecurringTransactionsServiceExcludeRecurringTransactionFromGroupCallBase: ClientCallUnaryBase<GRPCExcludeRecurringTransactionFromGroupRequest, GRPCExcludeRecurringTransactionFromGroupResponse>, RecurringTransactionsServiceExcludeRecurringTransactionFromGroupCall {
   override class var method: String { return "/RecurringTransactionsService/ExcludeRecurringTransactionFromGroup" }
 }
 
-public protocol RecurringTransactionsServiceIncludeRecurringTransactionInGroupCall: ClientCallUnary {}
+internal protocol RecurringTransactionsServiceIncludeRecurringTransactionInGroupCall: ClientCallUnary {}
 
 fileprivate final class RecurringTransactionsServiceIncludeRecurringTransactionInGroupCallBase: ClientCallUnaryBase<GRPCIncludeRecurringTransactionInGroupRequest, GRPCIncludeRecurringTransactionInGroupResponse>, RecurringTransactionsServiceIncludeRecurringTransactionInGroupCall {
   override class var method: String { return "/RecurringTransactionsService/IncludeRecurringTransactionInGroup" }
 }
 
-public protocol RecurringTransactionsServiceDisableRecurringTransactionGroupCall: ClientCallUnary {}
+internal protocol RecurringTransactionsServiceDisableRecurringTransactionGroupCall: ClientCallUnary {}
 
 fileprivate final class RecurringTransactionsServiceDisableRecurringTransactionGroupCallBase: ClientCallUnaryBase<GRPCDisableRecurringTransactionGroupRequest, GRPCDisableRecurringTransactionGroupResponse>, RecurringTransactionsServiceDisableRecurringTransactionGroupCall {
   override class var method: String { return "/RecurringTransactionsService/DisableRecurringTransactionGroup" }
 }
 
-public protocol RecurringTransactionsServiceActivateRecurringTransactionGroupCall: ClientCallUnary {}
+internal protocol RecurringTransactionsServiceActivateRecurringTransactionGroupCall: ClientCallUnary {}
 
 fileprivate final class RecurringTransactionsServiceActivateRecurringTransactionGroupCallBase: ClientCallUnaryBase<GRPCActivateRecurringTransactionGroupRequest, GRPCActivateRecurringTransactionGroupResponse>, RecurringTransactionsServiceActivateRecurringTransactionGroupCall {
   override class var method: String { return "/RecurringTransactionsService/ActivateRecurringTransactionGroup" }
 }
 
-public protocol RecurringTransactionsServiceUpdateRecurringTransactionGroupCall: ClientCallUnary {}
+internal protocol RecurringTransactionsServiceUpdateRecurringTransactionGroupCall: ClientCallUnary {}
 
 fileprivate final class RecurringTransactionsServiceUpdateRecurringTransactionGroupCallBase: ClientCallUnaryBase<GRPCUpdateRecurringTransactionGroupRequest, GRPCUpdateRecurringTransactionGroupResponse>, RecurringTransactionsServiceUpdateRecurringTransactionGroupCall {
   override class var method: String { return "/RecurringTransactionsService/UpdateRecurringTransactionGroup" }
 }
 
-public protocol RecurringTransactionsServiceListRecurringTransactionPeriodSummariesCall: ClientCallUnary {}
+internal protocol RecurringTransactionsServiceListRecurringTransactionPeriodSummariesCall: ClientCallUnary {}
 
 fileprivate final class RecurringTransactionsServiceListRecurringTransactionPeriodSummariesCallBase: ClientCallUnaryBase<GRPCListRecurringTransactionPeriodSummariesRequest, GRPCListRecurringTransactionPeriodSummariesResponse>, RecurringTransactionsServiceListRecurringTransactionPeriodSummariesCall {
   override class var method: String { return "/RecurringTransactionsService/ListRecurringTransactionPeriodSummaries" }
@@ -2299,7 +2299,7 @@ fileprivate final class RecurringTransactionsServiceListRecurringTransactionPeri
 
 
 /// Instantiate RecurringTransactionsServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol RecurringTransactionsServiceService: ServiceClient {
+internal protocol RecurringTransactionsServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func listRecurringTransactions(_ request: GRPCListRecurringTransactionsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListRecurringTransactionsResponse?, CallResult) -> Void) throws -> RecurringTransactionsServiceListRecurringTransactionsCall
@@ -2338,7 +2338,7 @@ public protocol RecurringTransactionsServiceService: ServiceClient {
 
 }
 
-public extension RecurringTransactionsServiceService {
+internal extension RecurringTransactionsServiceService {
   /// Asynchronous. Unary.
   @discardableResult
   func listRecurringTransactions(_ request: GRPCListRecurringTransactionsRequest, completion: @escaping (GRPCListRecurringTransactionsResponse?, CallResult) -> Void) throws -> RecurringTransactionsServiceListRecurringTransactionsCall {
@@ -2395,96 +2395,96 @@ public extension RecurringTransactionsServiceService {
 
 }
 
-public final class RecurringTransactionsServiceServiceClient: ServiceClientBase, RecurringTransactionsServiceService {
+internal final class RecurringTransactionsServiceServiceClient: ServiceClientBase, RecurringTransactionsServiceService {
   /// Asynchronous. Unary.
   @discardableResult
-  public func listRecurringTransactions(_ request: GRPCListRecurringTransactionsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListRecurringTransactionsResponse?, CallResult) -> Void) throws -> RecurringTransactionsServiceListRecurringTransactionsCall {
+  internal func listRecurringTransactions(_ request: GRPCListRecurringTransactionsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListRecurringTransactionsResponse?, CallResult) -> Void) throws -> RecurringTransactionsServiceListRecurringTransactionsCall {
     return try RecurringTransactionsServiceListRecurringTransactionsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func listRecurringTransactionGroups(_ request: GRPCListRecurringTransactionGroupsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListRecurringTransactionGroupsResponse?, CallResult) -> Void) throws -> RecurringTransactionsServiceListRecurringTransactionGroupsCall {
+  internal func listRecurringTransactionGroups(_ request: GRPCListRecurringTransactionGroupsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListRecurringTransactionGroupsResponse?, CallResult) -> Void) throws -> RecurringTransactionsServiceListRecurringTransactionGroupsCall {
     return try RecurringTransactionsServiceListRecurringTransactionGroupsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func createRecurringTransactionGroup(_ request: GRPCCreateRecurringTransactionGroupRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCCreateRecurringTransactionGroupResponse?, CallResult) -> Void) throws -> RecurringTransactionsServiceCreateRecurringTransactionGroupCall {
+  internal func createRecurringTransactionGroup(_ request: GRPCCreateRecurringTransactionGroupRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCCreateRecurringTransactionGroupResponse?, CallResult) -> Void) throws -> RecurringTransactionsServiceCreateRecurringTransactionGroupCall {
     return try RecurringTransactionsServiceCreateRecurringTransactionGroupCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func excludeRecurringTransactionFromGroup(_ request: GRPCExcludeRecurringTransactionFromGroupRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCExcludeRecurringTransactionFromGroupResponse?, CallResult) -> Void) throws -> RecurringTransactionsServiceExcludeRecurringTransactionFromGroupCall {
+  internal func excludeRecurringTransactionFromGroup(_ request: GRPCExcludeRecurringTransactionFromGroupRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCExcludeRecurringTransactionFromGroupResponse?, CallResult) -> Void) throws -> RecurringTransactionsServiceExcludeRecurringTransactionFromGroupCall {
     return try RecurringTransactionsServiceExcludeRecurringTransactionFromGroupCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func includeRecurringTransactionInGroup(_ request: GRPCIncludeRecurringTransactionInGroupRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCIncludeRecurringTransactionInGroupResponse?, CallResult) -> Void) throws -> RecurringTransactionsServiceIncludeRecurringTransactionInGroupCall {
+  internal func includeRecurringTransactionInGroup(_ request: GRPCIncludeRecurringTransactionInGroupRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCIncludeRecurringTransactionInGroupResponse?, CallResult) -> Void) throws -> RecurringTransactionsServiceIncludeRecurringTransactionInGroupCall {
     return try RecurringTransactionsServiceIncludeRecurringTransactionInGroupCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func disableRecurringTransactionGroup(_ request: GRPCDisableRecurringTransactionGroupRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCDisableRecurringTransactionGroupResponse?, CallResult) -> Void) throws -> RecurringTransactionsServiceDisableRecurringTransactionGroupCall {
+  internal func disableRecurringTransactionGroup(_ request: GRPCDisableRecurringTransactionGroupRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCDisableRecurringTransactionGroupResponse?, CallResult) -> Void) throws -> RecurringTransactionsServiceDisableRecurringTransactionGroupCall {
     return try RecurringTransactionsServiceDisableRecurringTransactionGroupCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func activateRecurringTransactionGroup(_ request: GRPCActivateRecurringTransactionGroupRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCActivateRecurringTransactionGroupResponse?, CallResult) -> Void) throws -> RecurringTransactionsServiceActivateRecurringTransactionGroupCall {
+  internal func activateRecurringTransactionGroup(_ request: GRPCActivateRecurringTransactionGroupRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCActivateRecurringTransactionGroupResponse?, CallResult) -> Void) throws -> RecurringTransactionsServiceActivateRecurringTransactionGroupCall {
     return try RecurringTransactionsServiceActivateRecurringTransactionGroupCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func updateRecurringTransactionGroup(_ request: GRPCUpdateRecurringTransactionGroupRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCUpdateRecurringTransactionGroupResponse?, CallResult) -> Void) throws -> RecurringTransactionsServiceUpdateRecurringTransactionGroupCall {
+  internal func updateRecurringTransactionGroup(_ request: GRPCUpdateRecurringTransactionGroupRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCUpdateRecurringTransactionGroupResponse?, CallResult) -> Void) throws -> RecurringTransactionsServiceUpdateRecurringTransactionGroupCall {
     return try RecurringTransactionsServiceUpdateRecurringTransactionGroupCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func listRecurringTransactionPeriodSummaries(_ request: GRPCListRecurringTransactionPeriodSummariesRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListRecurringTransactionPeriodSummariesResponse?, CallResult) -> Void) throws -> RecurringTransactionsServiceListRecurringTransactionPeriodSummariesCall {
+  internal func listRecurringTransactionPeriodSummaries(_ request: GRPCListRecurringTransactionPeriodSummariesRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListRecurringTransactionPeriodSummariesResponse?, CallResult) -> Void) throws -> RecurringTransactionsServiceListRecurringTransactionPeriodSummariesCall {
     return try RecurringTransactionsServiceListRecurringTransactionPeriodSummariesCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
 }
-public protocol SettingsServiceGetNotificationSettingsCall: ClientCallUnary {}
+internal protocol SettingsServiceGetNotificationSettingsCall: ClientCallUnary {}
 
 fileprivate final class SettingsServiceGetNotificationSettingsCallBase: ClientCallUnaryBase<GRPCNotificationSettingsRequest, GRPCNotificationSettingsResponse>, SettingsServiceGetNotificationSettingsCall {
   override class var method: String { return "/SettingsService/GetNotificationSettings" }
 }
 
-public protocol SettingsServiceUpdateNotificationSettingsCall: ClientCallUnary {}
+internal protocol SettingsServiceUpdateNotificationSettingsCall: ClientCallUnary {}
 
 fileprivate final class SettingsServiceUpdateNotificationSettingsCallBase: ClientCallUnaryBase<GRPCUpdateNotificationSettingsRequest, GRPCNotificationSettingsResponse>, SettingsServiceUpdateNotificationSettingsCall {
   override class var method: String { return "/SettingsService/UpdateNotificationSettings" }
 }
 
-public protocol SettingsServiceGetPeriodSettingsCall: ClientCallUnary {}
+internal protocol SettingsServiceGetPeriodSettingsCall: ClientCallUnary {}
 
 fileprivate final class SettingsServiceGetPeriodSettingsCallBase: ClientCallUnaryBase<GRPCPeriodSettingsRequest, GRPCPeriodSettingsResponse>, SettingsServiceGetPeriodSettingsCall {
   override class var method: String { return "/SettingsService/GetPeriodSettings" }
 }
 
-public protocol SettingsServiceUpdatePeriodSettingsCall: ClientCallUnary {}
+internal protocol SettingsServiceUpdatePeriodSettingsCall: ClientCallUnary {}
 
 fileprivate final class SettingsServiceUpdatePeriodSettingsCallBase: ClientCallUnaryBase<GRPCUpdatePeriodSettingsRequest, GRPCPeriodSettingsResponse>, SettingsServiceUpdatePeriodSettingsCall {
   override class var method: String { return "/SettingsService/UpdatePeriodSettings" }
 }
 
-public protocol SettingsServiceUpdateI18NSettingsCall: ClientCallUnary {}
+internal protocol SettingsServiceUpdateI18NSettingsCall: ClientCallUnary {}
 
 fileprivate final class SettingsServiceUpdateI18NSettingsCallBase: ClientCallUnaryBase<GRPCUpdateI18NSettingsRequest, GRPCUpdateI18NSettingsResponse>, SettingsServiceUpdateI18NSettingsCall {
   override class var method: String { return "/SettingsService/UpdateI18NSettings" }
@@ -2492,7 +2492,7 @@ fileprivate final class SettingsServiceUpdateI18NSettingsCallBase: ClientCallUna
 
 
 /// Instantiate SettingsServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol SettingsServiceService: ServiceClient {
+internal protocol SettingsServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func getNotificationSettings(_ request: GRPCNotificationSettingsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCNotificationSettingsResponse?, CallResult) -> Void) throws -> SettingsServiceGetNotificationSettingsCall
@@ -2515,7 +2515,7 @@ public protocol SettingsServiceService: ServiceClient {
 
 }
 
-public extension SettingsServiceService {
+internal extension SettingsServiceService {
   /// Asynchronous. Unary.
   @discardableResult
   func getNotificationSettings(_ request: GRPCNotificationSettingsRequest, completion: @escaping (GRPCNotificationSettingsResponse?, CallResult) -> Void) throws -> SettingsServiceGetNotificationSettingsCall {
@@ -2548,56 +2548,56 @@ public extension SettingsServiceService {
 
 }
 
-public final class SettingsServiceServiceClient: ServiceClientBase, SettingsServiceService {
+internal final class SettingsServiceServiceClient: ServiceClientBase, SettingsServiceService {
   /// Asynchronous. Unary.
   @discardableResult
-  public func getNotificationSettings(_ request: GRPCNotificationSettingsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCNotificationSettingsResponse?, CallResult) -> Void) throws -> SettingsServiceGetNotificationSettingsCall {
+  internal func getNotificationSettings(_ request: GRPCNotificationSettingsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCNotificationSettingsResponse?, CallResult) -> Void) throws -> SettingsServiceGetNotificationSettingsCall {
     return try SettingsServiceGetNotificationSettingsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func updateNotificationSettings(_ request: GRPCUpdateNotificationSettingsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCNotificationSettingsResponse?, CallResult) -> Void) throws -> SettingsServiceUpdateNotificationSettingsCall {
+  internal func updateNotificationSettings(_ request: GRPCUpdateNotificationSettingsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCNotificationSettingsResponse?, CallResult) -> Void) throws -> SettingsServiceUpdateNotificationSettingsCall {
     return try SettingsServiceUpdateNotificationSettingsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func getPeriodSettings(_ request: GRPCPeriodSettingsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCPeriodSettingsResponse?, CallResult) -> Void) throws -> SettingsServiceGetPeriodSettingsCall {
+  internal func getPeriodSettings(_ request: GRPCPeriodSettingsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCPeriodSettingsResponse?, CallResult) -> Void) throws -> SettingsServiceGetPeriodSettingsCall {
     return try SettingsServiceGetPeriodSettingsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func updatePeriodSettings(_ request: GRPCUpdatePeriodSettingsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCPeriodSettingsResponse?, CallResult) -> Void) throws -> SettingsServiceUpdatePeriodSettingsCall {
+  internal func updatePeriodSettings(_ request: GRPCUpdatePeriodSettingsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCPeriodSettingsResponse?, CallResult) -> Void) throws -> SettingsServiceUpdatePeriodSettingsCall {
     return try SettingsServiceUpdatePeriodSettingsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func updateI18NSettings(_ request: GRPCUpdateI18NSettingsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCUpdateI18NSettingsResponse?, CallResult) -> Void) throws -> SettingsServiceUpdateI18NSettingsCall {
+  internal func updateI18NSettings(_ request: GRPCUpdateI18NSettingsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCUpdateI18NSettingsResponse?, CallResult) -> Void) throws -> SettingsServiceUpdateI18NSettingsCall {
     return try SettingsServiceUpdateI18NSettingsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
 }
-public protocol StatisticServiceQueryStatisticsCall: ClientCallUnary {}
+internal protocol StatisticServiceQueryStatisticsCall: ClientCallUnary {}
 
 fileprivate final class StatisticServiceQueryStatisticsCallBase: ClientCallUnaryBase<GRPCQueryStatisticsRequest, GRPCQueryStatisticsResponse>, StatisticServiceQueryStatisticsCall {
   override class var method: String { return "/StatisticService/QueryStatistics" }
 }
 
-public protocol StatisticServiceGetInsightsCall: ClientCallUnary {}
+internal protocol StatisticServiceGetInsightsCall: ClientCallUnary {}
 
 fileprivate final class StatisticServiceGetInsightsCallBase: ClientCallUnaryBase<GRPCGetInsightsRequest, GRPCInsightsResponse>, StatisticServiceGetInsightsCall {
   override class var method: String { return "/StatisticService/GetInsights" }
 }
 
-public protocol StatisticServiceGetStatisticsCall: ClientCallUnary {}
+internal protocol StatisticServiceGetStatisticsCall: ClientCallUnary {}
 
 fileprivate final class StatisticServiceGetStatisticsCallBase: ClientCallUnaryBase<GRPCGetStatisticsRequest, GRPCStatisticsResponse>, StatisticServiceGetStatisticsCall {
   override class var method: String { return "/StatisticService/GetStatistics" }
@@ -2605,7 +2605,7 @@ fileprivate final class StatisticServiceGetStatisticsCallBase: ClientCallUnaryBa
 
 
 /// Instantiate StatisticServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol StatisticServiceService: ServiceClient {
+internal protocol StatisticServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func queryStatistics(_ request: GRPCQueryStatisticsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCQueryStatisticsResponse?, CallResult) -> Void) throws -> StatisticServiceQueryStatisticsCall
@@ -2620,7 +2620,7 @@ public protocol StatisticServiceService: ServiceClient {
 
 }
 
-public extension StatisticServiceService {
+internal extension StatisticServiceService {
   /// Asynchronous. Unary.
   @discardableResult
   func queryStatistics(_ request: GRPCQueryStatisticsRequest, completion: @escaping (GRPCQueryStatisticsResponse?, CallResult) -> Void) throws -> StatisticServiceQueryStatisticsCall {
@@ -2641,30 +2641,30 @@ public extension StatisticServiceService {
 
 }
 
-public final class StatisticServiceServiceClient: ServiceClientBase, StatisticServiceService {
+internal final class StatisticServiceServiceClient: ServiceClientBase, StatisticServiceService {
   /// Asynchronous. Unary.
   @discardableResult
-  public func queryStatistics(_ request: GRPCQueryStatisticsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCQueryStatisticsResponse?, CallResult) -> Void) throws -> StatisticServiceQueryStatisticsCall {
+  internal func queryStatistics(_ request: GRPCQueryStatisticsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCQueryStatisticsResponse?, CallResult) -> Void) throws -> StatisticServiceQueryStatisticsCall {
     return try StatisticServiceQueryStatisticsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func getInsights(_ request: GRPCGetInsightsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCInsightsResponse?, CallResult) -> Void) throws -> StatisticServiceGetInsightsCall {
+  internal func getInsights(_ request: GRPCGetInsightsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCInsightsResponse?, CallResult) -> Void) throws -> StatisticServiceGetInsightsCall {
     return try StatisticServiceGetInsightsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func getStatistics(_ request: GRPCGetStatisticsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCStatisticsResponse?, CallResult) -> Void) throws -> StatisticServiceGetStatisticsCall {
+  internal func getStatistics(_ request: GRPCGetStatisticsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCStatisticsResponse?, CallResult) -> Void) throws -> StatisticServiceGetStatisticsCall {
     return try StatisticServiceGetStatisticsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
 }
-public protocol StreamingServiceStreamCall: ClientCallBidirectionalStreaming {
+internal protocol StreamingServiceStreamCall: ClientCallBidirectionalStreaming {
   /// Do not call this directly, call `receive()` in the protocol extension below instead.
   func _receive(timeout: DispatchTime) throws -> GRPCStreamingResponse?
   /// Call this to wait for a result. Nonblocking.
@@ -2681,12 +2681,12 @@ public protocol StreamingServiceStreamCall: ClientCallBidirectionalStreaming {
   func closeSend(completion: (() -> Void)?) throws
 }
 
-public extension StreamingServiceStreamCall {
+internal extension StreamingServiceStreamCall {
   /// Call this to wait for a result. Blocking.
   func receive(timeout: DispatchTime = .distantFuture) throws -> GRPCStreamingResponse? { return try self._receive(timeout: timeout) }
 }
 
-public extension StreamingServiceStreamCall {
+internal extension StreamingServiceStreamCall {
   /// Send a message to the stream and wait for the send operation to finish. Blocking.
   func send(_ message: GRPCStreamingRequest, timeout: DispatchTime = .distantFuture) throws { try self._send(message, timeout: timeout) }
 }
@@ -2697,7 +2697,7 @@ fileprivate final class StreamingServiceStreamCallBase: ClientCallBidirectionalS
 
 
 /// Instantiate StreamingServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol StreamingServiceService: ServiceClient {
+internal protocol StreamingServiceService: ServiceClient {
   /// Asynchronous. Bidirectional-streaming.
   /// Use methods on the returned object to stream messages,
   /// to wait for replies, and to close the connection.
@@ -2705,7 +2705,7 @@ public protocol StreamingServiceService: ServiceClient {
 
 }
 
-public extension StreamingServiceService {
+internal extension StreamingServiceService {
   /// Asynchronous. Bidirectional-streaming.
   func stream(completion: ((CallResult) -> Void)?) throws -> StreamingServiceStreamCall {
     return try self.stream(metadata: self.metadata, completion: completion)
@@ -2713,29 +2713,29 @@ public extension StreamingServiceService {
 
 }
 
-public final class StreamingServiceServiceClient: ServiceClientBase, StreamingServiceService {
+internal final class StreamingServiceServiceClient: ServiceClientBase, StreamingServiceService {
   /// Asynchronous. Bidirectional-streaming.
   /// Use methods on the returned object to stream messages,
   /// to wait for replies, and to close the connection.
-  public func stream(metadata customMetadata: Metadata, completion: ((CallResult) -> Void)?) throws -> StreamingServiceStreamCall {
+  internal func stream(metadata customMetadata: Metadata, completion: ((CallResult) -> Void)?) throws -> StreamingServiceStreamCall {
     return try StreamingServiceStreamCallBase(channel)
       .start(metadata: customMetadata, completion: completion)
   }
 
 }
-public protocol TrackingServiceGetTrackingConfigurationCall: ClientCallUnary {}
+internal protocol TrackingServiceGetTrackingConfigurationCall: ClientCallUnary {}
 
 fileprivate final class TrackingServiceGetTrackingConfigurationCallBase: ClientCallUnaryBase<GRPCGetTrackingConfigurationRequest, GRPCGetTrackingConfigurationResponse>, TrackingServiceGetTrackingConfigurationCall {
   override class var method: String { return "/TrackingService/GetTrackingConfiguration" }
 }
 
-public protocol TrackingServiceCreateSessionCall: ClientCallUnary {}
+internal protocol TrackingServiceCreateSessionCall: ClientCallUnary {}
 
 fileprivate final class TrackingServiceCreateSessionCallBase: ClientCallUnaryBase<GRPCTrackingSessionRequest, GRPCTrackingSessionResponse>, TrackingServiceCreateSessionCall {
   override class var method: String { return "/TrackingService/CreateSession" }
 }
 
-public protocol TrackingServiceTrackDataCall: ClientCallUnary {}
+internal protocol TrackingServiceTrackDataCall: ClientCallUnary {}
 
 fileprivate final class TrackingServiceTrackDataCallBase: ClientCallUnaryBase<GRPCTrackingRequest, GRPCTrackingResponse>, TrackingServiceTrackDataCall {
   override class var method: String { return "/TrackingService/TrackData" }
@@ -2743,7 +2743,7 @@ fileprivate final class TrackingServiceTrackDataCallBase: ClientCallUnaryBase<GR
 
 
 /// Instantiate TrackingServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol TrackingServiceService: ServiceClient {
+internal protocol TrackingServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func getTrackingConfiguration(_ request: GRPCGetTrackingConfigurationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGetTrackingConfigurationResponse?, CallResult) -> Void) throws -> TrackingServiceGetTrackingConfigurationCall
@@ -2758,7 +2758,7 @@ public protocol TrackingServiceService: ServiceClient {
 
 }
 
-public extension TrackingServiceService {
+internal extension TrackingServiceService {
   /// Asynchronous. Unary.
   @discardableResult
   func getTrackingConfiguration(_ request: GRPCGetTrackingConfigurationRequest, completion: @escaping (GRPCGetTrackingConfigurationResponse?, CallResult) -> Void) throws -> TrackingServiceGetTrackingConfigurationCall {
@@ -2779,84 +2779,84 @@ public extension TrackingServiceService {
 
 }
 
-public final class TrackingServiceServiceClient: ServiceClientBase, TrackingServiceService {
+internal final class TrackingServiceServiceClient: ServiceClientBase, TrackingServiceService {
   /// Asynchronous. Unary.
   @discardableResult
-  public func getTrackingConfiguration(_ request: GRPCGetTrackingConfigurationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGetTrackingConfigurationResponse?, CallResult) -> Void) throws -> TrackingServiceGetTrackingConfigurationCall {
+  internal func getTrackingConfiguration(_ request: GRPCGetTrackingConfigurationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGetTrackingConfigurationResponse?, CallResult) -> Void) throws -> TrackingServiceGetTrackingConfigurationCall {
     return try TrackingServiceGetTrackingConfigurationCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func createSession(_ request: GRPCTrackingSessionRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCTrackingSessionResponse?, CallResult) -> Void) throws -> TrackingServiceCreateSessionCall {
+  internal func createSession(_ request: GRPCTrackingSessionRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCTrackingSessionResponse?, CallResult) -> Void) throws -> TrackingServiceCreateSessionCall {
     return try TrackingServiceCreateSessionCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func trackData(_ request: GRPCTrackingRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCTrackingResponse?, CallResult) -> Void) throws -> TrackingServiceTrackDataCall {
+  internal func trackData(_ request: GRPCTrackingRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCTrackingResponse?, CallResult) -> Void) throws -> TrackingServiceTrackDataCall {
     return try TrackingServiceTrackDataCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
 }
-public protocol TransactionServiceQueryTransactionsCall: ClientCallUnary {}
+internal protocol TransactionServiceQueryTransactionsCall: ClientCallUnary {}
 
 fileprivate final class TransactionServiceQueryTransactionsCallBase: ClientCallUnaryBase<GRPCQueryTransactionsRequest, GRPCQueryTransactionsResponse>, TransactionServiceQueryTransactionsCall {
   override class var method: String { return "/TransactionService/QueryTransactions" }
 }
 
-public protocol TransactionServiceUpdateTransactionCall: ClientCallUnary {}
+internal protocol TransactionServiceUpdateTransactionCall: ClientCallUnary {}
 
 fileprivate final class TransactionServiceUpdateTransactionCallBase: ClientCallUnaryBase<GRPCUpdateTransactionRequest, GRPCUpdateTransactionResponse>, TransactionServiceUpdateTransactionCall {
   override class var method: String { return "/TransactionService/UpdateTransaction" }
 }
 
-public protocol TransactionServiceGetTransactionCall: ClientCallUnary {}
+internal protocol TransactionServiceGetTransactionCall: ClientCallUnary {}
 
 fileprivate final class TransactionServiceGetTransactionCallBase: ClientCallUnaryBase<GRPCGetTransactionRequest, GRPCGetTransactionResponse>, TransactionServiceGetTransactionCall {
   override class var method: String { return "/TransactionService/GetTransaction" }
 }
 
-public protocol TransactionServiceCategorizeTransactionsCall: ClientCallUnary {}
+internal protocol TransactionServiceCategorizeTransactionsCall: ClientCallUnary {}
 
 fileprivate final class TransactionServiceCategorizeTransactionsCallBase: ClientCallUnaryBase<GRPCCategorizeTransactionsRequest, GRPCCategorizeTransactionsResponse>, TransactionServiceCategorizeTransactionsCall {
   override class var method: String { return "/TransactionService/CategorizeTransactions" }
 }
 
-public protocol TransactionServiceGetSimilarTransactionsCall: ClientCallUnary {}
+internal protocol TransactionServiceGetSimilarTransactionsCall: ClientCallUnary {}
 
 fileprivate final class TransactionServiceGetSimilarTransactionsCallBase: ClientCallUnaryBase<GRPCGetSimilarTransactionsRequest, GRPCGetSimilarTransactionsResponse>, TransactionServiceGetSimilarTransactionsCall {
   override class var method: String { return "/TransactionService/GetSimilarTransactions" }
 }
 
-public protocol TransactionServiceSuggestTransactionsCall: ClientCallUnary {}
+internal protocol TransactionServiceSuggestTransactionsCall: ClientCallUnary {}
 
 fileprivate final class TransactionServiceSuggestTransactionsCallBase: ClientCallUnaryBase<GRPCSuggestTransactionsRequest, GRPCSuggestTransactionsResponse>, TransactionServiceSuggestTransactionsCall {
   override class var method: String { return "/TransactionService/SuggestTransactions" }
 }
 
-public protocol TransactionServiceSuggestCounterpartsCall: ClientCallUnary {}
+internal protocol TransactionServiceSuggestCounterpartsCall: ClientCallUnary {}
 
 fileprivate final class TransactionServiceSuggestCounterpartsCallBase: ClientCallUnaryBase<GRPCSuggestCounterpartsRequest, GRPCSuggestCounterpartsResponse>, TransactionServiceSuggestCounterpartsCall {
   override class var method: String { return "/TransactionService/SuggestCounterparts" }
 }
 
-public protocol TransactionServiceCreatePartAndCounterpartCall: ClientCallUnary {}
+internal protocol TransactionServiceCreatePartAndCounterpartCall: ClientCallUnary {}
 
 fileprivate final class TransactionServiceCreatePartAndCounterpartCallBase: ClientCallUnaryBase<GRPCCreatePartAndCounterpartRequest, GRPCCreatePartAndCounterpartResponse>, TransactionServiceCreatePartAndCounterpartCall {
   override class var method: String { return "/TransactionService/CreatePartAndCounterpart" }
 }
 
-public protocol TransactionServiceUpdatePartAndCounterpartCall: ClientCallUnary {}
+internal protocol TransactionServiceUpdatePartAndCounterpartCall: ClientCallUnary {}
 
 fileprivate final class TransactionServiceUpdatePartAndCounterpartCallBase: ClientCallUnaryBase<GRPCUpdatePartAndCounterpartRequest, GRPCUpdatePartAndCounterpartResponse>, TransactionServiceUpdatePartAndCounterpartCall {
   override class var method: String { return "/TransactionService/UpdatePartAndCounterpart" }
 }
 
-public protocol TransactionServiceDeletePartAndCounterpartCall: ClientCallUnary {}
+internal protocol TransactionServiceDeletePartAndCounterpartCall: ClientCallUnary {}
 
 fileprivate final class TransactionServiceDeletePartAndCounterpartCallBase: ClientCallUnaryBase<GRPCDeletePartAndCounterpartRequest, GRPCDeletePartAndCounterpartResponse>, TransactionServiceDeletePartAndCounterpartCall {
   override class var method: String { return "/TransactionService/DeletePartAndCounterpart" }
@@ -2864,7 +2864,7 @@ fileprivate final class TransactionServiceDeletePartAndCounterpartCallBase: Clie
 
 
 /// Instantiate TransactionServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol TransactionServiceService: ServiceClient {
+internal protocol TransactionServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func queryTransactions(_ request: GRPCQueryTransactionsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCQueryTransactionsResponse?, CallResult) -> Void) throws -> TransactionServiceQueryTransactionsCall
@@ -2907,7 +2907,7 @@ public protocol TransactionServiceService: ServiceClient {
 
 }
 
-public extension TransactionServiceService {
+internal extension TransactionServiceService {
   /// Asynchronous. Unary.
   @discardableResult
   func queryTransactions(_ request: GRPCQueryTransactionsRequest, completion: @escaping (GRPCQueryTransactionsResponse?, CallResult) -> Void) throws -> TransactionServiceQueryTransactionsCall {
@@ -2970,133 +2970,133 @@ public extension TransactionServiceService {
 
 }
 
-public final class TransactionServiceServiceClient: ServiceClientBase, TransactionServiceService {
+internal final class TransactionServiceServiceClient: ServiceClientBase, TransactionServiceService {
   /// Asynchronous. Unary.
   @discardableResult
-  public func queryTransactions(_ request: GRPCQueryTransactionsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCQueryTransactionsResponse?, CallResult) -> Void) throws -> TransactionServiceQueryTransactionsCall {
+  internal func queryTransactions(_ request: GRPCQueryTransactionsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCQueryTransactionsResponse?, CallResult) -> Void) throws -> TransactionServiceQueryTransactionsCall {
     return try TransactionServiceQueryTransactionsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func updateTransaction(_ request: GRPCUpdateTransactionRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCUpdateTransactionResponse?, CallResult) -> Void) throws -> TransactionServiceUpdateTransactionCall {
+  internal func updateTransaction(_ request: GRPCUpdateTransactionRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCUpdateTransactionResponse?, CallResult) -> Void) throws -> TransactionServiceUpdateTransactionCall {
     return try TransactionServiceUpdateTransactionCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func getTransaction(_ request: GRPCGetTransactionRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGetTransactionResponse?, CallResult) -> Void) throws -> TransactionServiceGetTransactionCall {
+  internal func getTransaction(_ request: GRPCGetTransactionRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGetTransactionResponse?, CallResult) -> Void) throws -> TransactionServiceGetTransactionCall {
     return try TransactionServiceGetTransactionCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func categorizeTransactions(_ request: GRPCCategorizeTransactionsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCCategorizeTransactionsResponse?, CallResult) -> Void) throws -> TransactionServiceCategorizeTransactionsCall {
+  internal func categorizeTransactions(_ request: GRPCCategorizeTransactionsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCCategorizeTransactionsResponse?, CallResult) -> Void) throws -> TransactionServiceCategorizeTransactionsCall {
     return try TransactionServiceCategorizeTransactionsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func getSimilarTransactions(_ request: GRPCGetSimilarTransactionsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGetSimilarTransactionsResponse?, CallResult) -> Void) throws -> TransactionServiceGetSimilarTransactionsCall {
+  internal func getSimilarTransactions(_ request: GRPCGetSimilarTransactionsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGetSimilarTransactionsResponse?, CallResult) -> Void) throws -> TransactionServiceGetSimilarTransactionsCall {
     return try TransactionServiceGetSimilarTransactionsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func suggestTransactions(_ request: GRPCSuggestTransactionsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCSuggestTransactionsResponse?, CallResult) -> Void) throws -> TransactionServiceSuggestTransactionsCall {
+  internal func suggestTransactions(_ request: GRPCSuggestTransactionsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCSuggestTransactionsResponse?, CallResult) -> Void) throws -> TransactionServiceSuggestTransactionsCall {
     return try TransactionServiceSuggestTransactionsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func suggestCounterparts(_ request: GRPCSuggestCounterpartsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCSuggestCounterpartsResponse?, CallResult) -> Void) throws -> TransactionServiceSuggestCounterpartsCall {
+  internal func suggestCounterparts(_ request: GRPCSuggestCounterpartsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCSuggestCounterpartsResponse?, CallResult) -> Void) throws -> TransactionServiceSuggestCounterpartsCall {
     return try TransactionServiceSuggestCounterpartsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func createPartAndCounterpart(_ request: GRPCCreatePartAndCounterpartRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCCreatePartAndCounterpartResponse?, CallResult) -> Void) throws -> TransactionServiceCreatePartAndCounterpartCall {
+  internal func createPartAndCounterpart(_ request: GRPCCreatePartAndCounterpartRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCCreatePartAndCounterpartResponse?, CallResult) -> Void) throws -> TransactionServiceCreatePartAndCounterpartCall {
     return try TransactionServiceCreatePartAndCounterpartCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func updatePartAndCounterpart(_ request: GRPCUpdatePartAndCounterpartRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCUpdatePartAndCounterpartResponse?, CallResult) -> Void) throws -> TransactionServiceUpdatePartAndCounterpartCall {
+  internal func updatePartAndCounterpart(_ request: GRPCUpdatePartAndCounterpartRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCUpdatePartAndCounterpartResponse?, CallResult) -> Void) throws -> TransactionServiceUpdatePartAndCounterpartCall {
     return try TransactionServiceUpdatePartAndCounterpartCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func deletePartAndCounterpart(_ request: GRPCDeletePartAndCounterpartRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCDeletePartAndCounterpartResponse?, CallResult) -> Void) throws -> TransactionServiceDeletePartAndCounterpartCall {
+  internal func deletePartAndCounterpart(_ request: GRPCDeletePartAndCounterpartRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCDeletePartAndCounterpartResponse?, CallResult) -> Void) throws -> TransactionServiceDeletePartAndCounterpartCall {
     return try TransactionServiceDeletePartAndCounterpartCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
 }
-public protocol TransferServiceListTransfersCall: ClientCallUnary {}
+internal protocol TransferServiceListTransfersCall: ClientCallUnary {}
 
 fileprivate final class TransferServiceListTransfersCallBase: ClientCallUnaryBase<GRPCTransferListRequest, GRPCTransferListResponse>, TransferServiceListTransfersCall {
   override class var method: String { return "/TransferService/ListTransfers" }
 }
 
-public protocol TransferServiceGetTransferCall: ClientCallUnary {}
+internal protocol TransferServiceGetTransferCall: ClientCallUnary {}
 
 fileprivate final class TransferServiceGetTransferCallBase: ClientCallUnaryBase<GRPCTransferGetRequest, GRPCTransferGetResponse>, TransferServiceGetTransferCall {
   override class var method: String { return "/TransferService/GetTransfer" }
 }
 
-public protocol TransferServiceCreateTransferCall: ClientCallUnary {}
+internal protocol TransferServiceCreateTransferCall: ClientCallUnary {}
 
 fileprivate final class TransferServiceCreateTransferCallBase: ClientCallUnaryBase<GRPCCreateTransferRequest, GRPCCreateTransferResponse>, TransferServiceCreateTransferCall {
   override class var method: String { return "/TransferService/CreateTransfer" }
 }
 
-public protocol TransferServiceUpdateTransferCall: ClientCallUnary {}
+internal protocol TransferServiceUpdateTransferCall: ClientCallUnary {}
 
 fileprivate final class TransferServiceUpdateTransferCallBase: ClientCallUnaryBase<GRPCUpdateTransferRequest, GRPCUpdateTransferResponse>, TransferServiceUpdateTransferCall {
   override class var method: String { return "/TransferService/UpdateTransfer" }
 }
 
-public protocol TransferServiceLookupGiroCall: ClientCallUnary {}
+internal protocol TransferServiceLookupGiroCall: ClientCallUnary {}
 
 fileprivate final class TransferServiceLookupGiroCallBase: ClientCallUnaryBase<GRPCGiroLookupRequest, GRPCGiroLookupResponse>, TransferServiceLookupGiroCall {
   override class var method: String { return "/TransferService/LookupGiro" }
 }
 
-public protocol TransferServiceLookupClearingCall: ClientCallUnary {}
+internal protocol TransferServiceLookupClearingCall: ClientCallUnary {}
 
 fileprivate final class TransferServiceLookupClearingCallBase: ClientCallUnaryBase<GRPCClearingLookupRequest, GRPCClearingLookupResponse>, TransferServiceLookupClearingCall {
   override class var method: String { return "/TransferService/LookupClearing" }
 }
 
-public protocol TransferServiceLookupSortCodeCall: ClientCallUnary {}
+internal protocol TransferServiceLookupSortCodeCall: ClientCallUnary {}
 
 fileprivate final class TransferServiceLookupSortCodeCallBase: ClientCallUnaryBase<GRPCSortCodeLookupRequest, GRPCSortCodeLookupResponse>, TransferServiceLookupSortCodeCall {
   override class var method: String { return "/TransferService/LookupSortCode" }
 }
 
-public protocol TransferServiceCreateTransferDestinationCall: ClientCallUnary {}
+internal protocol TransferServiceCreateTransferDestinationCall: ClientCallUnary {}
 
 fileprivate final class TransferServiceCreateTransferDestinationCallBase: ClientCallUnaryBase<GRPCCreateTransferDestinationRequest, GRPCCreateTransferDestinationResponse>, TransferServiceCreateTransferDestinationCall {
   override class var method: String { return "/TransferService/CreateTransferDestination" }
 }
 
-public protocol TransferServiceGetAccountsForTransferCall: ClientCallUnary {}
+internal protocol TransferServiceGetAccountsForTransferCall: ClientCallUnary {}
 
 fileprivate final class TransferServiceGetAccountsForTransferCallBase: ClientCallUnaryBase<GRPCGetAccountsForTransferRequest, GRPCGetAccountsForTransferResponse>, TransferServiceGetAccountsForTransferCall {
   override class var method: String { return "/TransferService/GetAccountsForTransfer" }
 }
 
-public protocol TransferServiceGetTransferDestinationsCall: ClientCallUnary {}
+internal protocol TransferServiceGetTransferDestinationsCall: ClientCallUnary {}
 
 fileprivate final class TransferServiceGetTransferDestinationsCallBase: ClientCallUnaryBase<GRPCGetTransferDestinationsRequest, GRPCGetTransferDestinationsResponse>, TransferServiceGetTransferDestinationsCall {
   override class var method: String { return "/TransferService/GetTransferDestinations" }
@@ -3104,7 +3104,7 @@ fileprivate final class TransferServiceGetTransferDestinationsCallBase: ClientCa
 
 
 /// Instantiate TransferServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol TransferServiceService: ServiceClient {
+internal protocol TransferServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func listTransfers(_ request: GRPCTransferListRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCTransferListResponse?, CallResult) -> Void) throws -> TransferServiceListTransfersCall
@@ -3147,7 +3147,7 @@ public protocol TransferServiceService: ServiceClient {
 
 }
 
-public extension TransferServiceService {
+internal extension TransferServiceService {
   /// Asynchronous. Unary.
   @discardableResult
   func listTransfers(_ request: GRPCTransferListRequest, completion: @escaping (GRPCTransferListResponse?, CallResult) -> Void) throws -> TransferServiceListTransfersCall {
@@ -3210,91 +3210,91 @@ public extension TransferServiceService {
 
 }
 
-public final class TransferServiceServiceClient: ServiceClientBase, TransferServiceService {
+internal final class TransferServiceServiceClient: ServiceClientBase, TransferServiceService {
   /// Asynchronous. Unary.
   @discardableResult
-  public func listTransfers(_ request: GRPCTransferListRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCTransferListResponse?, CallResult) -> Void) throws -> TransferServiceListTransfersCall {
+  internal func listTransfers(_ request: GRPCTransferListRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCTransferListResponse?, CallResult) -> Void) throws -> TransferServiceListTransfersCall {
     return try TransferServiceListTransfersCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func getTransfer(_ request: GRPCTransferGetRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCTransferGetResponse?, CallResult) -> Void) throws -> TransferServiceGetTransferCall {
+  internal func getTransfer(_ request: GRPCTransferGetRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCTransferGetResponse?, CallResult) -> Void) throws -> TransferServiceGetTransferCall {
     return try TransferServiceGetTransferCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func createTransfer(_ request: GRPCCreateTransferRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCCreateTransferResponse?, CallResult) -> Void) throws -> TransferServiceCreateTransferCall {
+  internal func createTransfer(_ request: GRPCCreateTransferRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCCreateTransferResponse?, CallResult) -> Void) throws -> TransferServiceCreateTransferCall {
     return try TransferServiceCreateTransferCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func updateTransfer(_ request: GRPCUpdateTransferRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCUpdateTransferResponse?, CallResult) -> Void) throws -> TransferServiceUpdateTransferCall {
+  internal func updateTransfer(_ request: GRPCUpdateTransferRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCUpdateTransferResponse?, CallResult) -> Void) throws -> TransferServiceUpdateTransferCall {
     return try TransferServiceUpdateTransferCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func lookupGiro(_ request: GRPCGiroLookupRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGiroLookupResponse?, CallResult) -> Void) throws -> TransferServiceLookupGiroCall {
+  internal func lookupGiro(_ request: GRPCGiroLookupRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGiroLookupResponse?, CallResult) -> Void) throws -> TransferServiceLookupGiroCall {
     return try TransferServiceLookupGiroCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func lookupClearing(_ request: GRPCClearingLookupRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCClearingLookupResponse?, CallResult) -> Void) throws -> TransferServiceLookupClearingCall {
+  internal func lookupClearing(_ request: GRPCClearingLookupRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCClearingLookupResponse?, CallResult) -> Void) throws -> TransferServiceLookupClearingCall {
     return try TransferServiceLookupClearingCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func lookupSortCode(_ request: GRPCSortCodeLookupRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCSortCodeLookupResponse?, CallResult) -> Void) throws -> TransferServiceLookupSortCodeCall {
+  internal func lookupSortCode(_ request: GRPCSortCodeLookupRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCSortCodeLookupResponse?, CallResult) -> Void) throws -> TransferServiceLookupSortCodeCall {
     return try TransferServiceLookupSortCodeCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func createTransferDestination(_ request: GRPCCreateTransferDestinationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCCreateTransferDestinationResponse?, CallResult) -> Void) throws -> TransferServiceCreateTransferDestinationCall {
+  internal func createTransferDestination(_ request: GRPCCreateTransferDestinationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCCreateTransferDestinationResponse?, CallResult) -> Void) throws -> TransferServiceCreateTransferDestinationCall {
     return try TransferServiceCreateTransferDestinationCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func getAccountsForTransfer(_ request: GRPCGetAccountsForTransferRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGetAccountsForTransferResponse?, CallResult) -> Void) throws -> TransferServiceGetAccountsForTransferCall {
+  internal func getAccountsForTransfer(_ request: GRPCGetAccountsForTransferRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGetAccountsForTransferResponse?, CallResult) -> Void) throws -> TransferServiceGetAccountsForTransferCall {
     return try TransferServiceGetAccountsForTransferCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func getTransferDestinations(_ request: GRPCGetTransferDestinationsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGetTransferDestinationsResponse?, CallResult) -> Void) throws -> TransferServiceGetTransferDestinationsCall {
+  internal func getTransferDestinations(_ request: GRPCGetTransferDestinationsRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGetTransferDestinationsResponse?, CallResult) -> Void) throws -> TransferServiceGetTransferDestinationsCall {
     return try TransferServiceGetTransferDestinationsCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
 }
-public protocol TransferKycServiceStoreKycCall: ClientCallUnary {}
+internal protocol TransferKycServiceStoreKycCall: ClientCallUnary {}
 
 fileprivate final class TransferKycServiceStoreKycCallBase: ClientCallUnaryBase<GRPCStoreTransferKycRequest, GRPCStoreTransferKycResponse>, TransferKycServiceStoreKycCall {
   override class var method: String { return "/TransferKycService/StoreKyc" }
 }
 
-public protocol TransferKycServiceGetKycCall: ClientCallUnary {}
+internal protocol TransferKycServiceGetKycCall: ClientCallUnary {}
 
 fileprivate final class TransferKycServiceGetKycCallBase: ClientCallUnaryBase<GRPCGetTransferKycRequest, GRPCGetTransferKycResponse>, TransferKycServiceGetKycCall {
   override class var method: String { return "/TransferKycService/GetKyc" }
 }
 
-public protocol TransferKycServiceIsCompliantCall: ClientCallUnary {}
+internal protocol TransferKycServiceIsCompliantCall: ClientCallUnary {}
 
 fileprivate final class TransferKycServiceIsCompliantCallBase: ClientCallUnaryBase<GRPCIsTransferKycCompliantRequest, GRPCIsTransferKycCompliantResponse>, TransferKycServiceIsCompliantCall {
   override class var method: String { return "/TransferKycService/IsCompliant" }
@@ -3302,7 +3302,7 @@ fileprivate final class TransferKycServiceIsCompliantCallBase: ClientCallUnaryBa
 
 
 /// Instantiate TransferKycServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol TransferKycServiceService: ServiceClient {
+internal protocol TransferKycServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func storeKyc(_ request: GRPCStoreTransferKycRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCStoreTransferKycResponse?, CallResult) -> Void) throws -> TransferKycServiceStoreKycCall
@@ -3317,7 +3317,7 @@ public protocol TransferKycServiceService: ServiceClient {
 
 }
 
-public extension TransferKycServiceService {
+internal extension TransferKycServiceService {
   /// Asynchronous. Unary.
   @discardableResult
   func storeKyc(_ request: GRPCStoreTransferKycRequest, completion: @escaping (GRPCStoreTransferKycResponse?, CallResult) -> Void) throws -> TransferKycServiceStoreKycCall {
@@ -3338,48 +3338,48 @@ public extension TransferKycServiceService {
 
 }
 
-public final class TransferKycServiceServiceClient: ServiceClientBase, TransferKycServiceService {
+internal final class TransferKycServiceServiceClient: ServiceClientBase, TransferKycServiceService {
   /// Asynchronous. Unary.
   @discardableResult
-  public func storeKyc(_ request: GRPCStoreTransferKycRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCStoreTransferKycResponse?, CallResult) -> Void) throws -> TransferKycServiceStoreKycCall {
+  internal func storeKyc(_ request: GRPCStoreTransferKycRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCStoreTransferKycResponse?, CallResult) -> Void) throws -> TransferKycServiceStoreKycCall {
     return try TransferKycServiceStoreKycCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func getKyc(_ request: GRPCGetTransferKycRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGetTransferKycResponse?, CallResult) -> Void) throws -> TransferKycServiceGetKycCall {
+  internal func getKyc(_ request: GRPCGetTransferKycRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGetTransferKycResponse?, CallResult) -> Void) throws -> TransferKycServiceGetKycCall {
     return try TransferKycServiceGetKycCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func isCompliant(_ request: GRPCIsTransferKycCompliantRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCIsTransferKycCompliantResponse?, CallResult) -> Void) throws -> TransferKycServiceIsCompliantCall {
+  internal func isCompliant(_ request: GRPCIsTransferKycCompliantRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCIsTransferKycCompliantResponse?, CallResult) -> Void) throws -> TransferKycServiceIsCompliantCall {
     return try TransferKycServiceIsCompliantCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
 }
-public protocol UserServiceCreateAnonymousCall: ClientCallUnary {}
+internal protocol UserServiceCreateAnonymousCall: ClientCallUnary {}
 
 fileprivate final class UserServiceCreateAnonymousCallBase: ClientCallUnaryBase<GRPCCreateAnonymousRequest, GRPCCreateAnonymousResponse>, UserServiceCreateAnonymousCall {
   override class var method: String { return "/UserService/CreateAnonymous" }
 }
 
-public protocol UserServiceGetProfileCall: ClientCallUnary {}
+internal protocol UserServiceGetProfileCall: ClientCallUnary {}
 
 fileprivate final class UserServiceGetProfileCallBase: ClientCallUnaryBase<GRPCGetProfileRequest, GRPCGetProfileResponse>, UserServiceGetProfileCall {
   override class var method: String { return "/UserService/GetProfile" }
 }
 
-public protocol UserServiceDeleteUserCall: ClientCallUnary {}
+internal protocol UserServiceDeleteUserCall: ClientCallUnary {}
 
 fileprivate final class UserServiceDeleteUserCallBase: ClientCallUnaryBase<GRPCDeleteUserRequest, GRPCDeleteUserResponse>, UserServiceDeleteUserCall {
   override class var method: String { return "/UserService/DeleteUser" }
 }
 
-public protocol UserServiceRateAppCall: ClientCallUnary {}
+internal protocol UserServiceRateAppCall: ClientCallUnary {}
 
 fileprivate final class UserServiceRateAppCallBase: ClientCallUnaryBase<GRPCRateAppRequest, GRPCRateAppResponse>, UserServiceRateAppCall {
   override class var method: String { return "/UserService/RateApp" }
@@ -3387,7 +3387,7 @@ fileprivate final class UserServiceRateAppCallBase: ClientCallUnaryBase<GRPCRate
 
 
 /// Instantiate UserServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol UserServiceService: ServiceClient {
+internal protocol UserServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func createAnonymous(_ request: GRPCCreateAnonymousRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCCreateAnonymousResponse?, CallResult) -> Void) throws -> UserServiceCreateAnonymousCall
@@ -3406,7 +3406,7 @@ public protocol UserServiceService: ServiceClient {
 
 }
 
-public extension UserServiceService {
+internal extension UserServiceService {
   /// Asynchronous. Unary.
   @discardableResult
   func createAnonymous(_ request: GRPCCreateAnonymousRequest, completion: @escaping (GRPCCreateAnonymousResponse?, CallResult) -> Void) throws -> UserServiceCreateAnonymousCall {
@@ -3433,61 +3433,61 @@ public extension UserServiceService {
 
 }
 
-public final class UserServiceServiceClient: ServiceClientBase, UserServiceService {
+internal final class UserServiceServiceClient: ServiceClientBase, UserServiceService {
   /// Asynchronous. Unary.
   @discardableResult
-  public func createAnonymous(_ request: GRPCCreateAnonymousRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCCreateAnonymousResponse?, CallResult) -> Void) throws -> UserServiceCreateAnonymousCall {
+  internal func createAnonymous(_ request: GRPCCreateAnonymousRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCCreateAnonymousResponse?, CallResult) -> Void) throws -> UserServiceCreateAnonymousCall {
     return try UserServiceCreateAnonymousCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func getProfile(_ request: GRPCGetProfileRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGetProfileResponse?, CallResult) -> Void) throws -> UserServiceGetProfileCall {
+  internal func getProfile(_ request: GRPCGetProfileRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGetProfileResponse?, CallResult) -> Void) throws -> UserServiceGetProfileCall {
     return try UserServiceGetProfileCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func deleteUser(_ request: GRPCDeleteUserRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCDeleteUserResponse?, CallResult) -> Void) throws -> UserServiceDeleteUserCall {
+  internal func deleteUser(_ request: GRPCDeleteUserRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCDeleteUserResponse?, CallResult) -> Void) throws -> UserServiceDeleteUserCall {
     return try UserServiceDeleteUserCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func rateApp(_ request: GRPCRateAppRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCRateAppResponse?, CallResult) -> Void) throws -> UserServiceRateAppCall {
+  internal func rateApp(_ request: GRPCRateAppRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCRateAppResponse?, CallResult) -> Void) throws -> UserServiceRateAppCall {
     return try UserServiceRateAppCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
 }
-public protocol ChallengeResponseAuthenticationServiceListAuthenticationKeysCall: ClientCallUnary {}
+internal protocol ChallengeResponseAuthenticationServiceListAuthenticationKeysCall: ClientCallUnary {}
 
 fileprivate final class ChallengeResponseAuthenticationServiceListAuthenticationKeysCallBase: ClientCallUnaryBase<GRPCListAuthenticationKeysRequest, GRPCListAuthenticationKeysResponse>, ChallengeResponseAuthenticationServiceListAuthenticationKeysCall {
   override class var method: String { return "/ChallengeResponseAuthenticationService/ListAuthenticationKeys" }
 }
 
-public protocol ChallengeResponseAuthenticationServiceStoreAuthenticationKeyCall: ClientCallUnary {}
+internal protocol ChallengeResponseAuthenticationServiceStoreAuthenticationKeyCall: ClientCallUnary {}
 
 fileprivate final class ChallengeResponseAuthenticationServiceStoreAuthenticationKeyCallBase: ClientCallUnaryBase<GRPCStoreAuthenticationKeyRequest, GRPCStoreAuthenticationKeyResponse>, ChallengeResponseAuthenticationServiceStoreAuthenticationKeyCall {
   override class var method: String { return "/ChallengeResponseAuthenticationService/StoreAuthenticationKey" }
 }
 
-public protocol ChallengeResponseAuthenticationServiceDeleteAuthenticationKeyCall: ClientCallUnary {}
+internal protocol ChallengeResponseAuthenticationServiceDeleteAuthenticationKeyCall: ClientCallUnary {}
 
 fileprivate final class ChallengeResponseAuthenticationServiceDeleteAuthenticationKeyCallBase: ClientCallUnaryBase<GRPCDeleteAuthenticationKeyRequest, GRPCDeleteAuthenticationKeyResponse>, ChallengeResponseAuthenticationServiceDeleteAuthenticationKeyCall {
   override class var method: String { return "/ChallengeResponseAuthenticationService/DeleteAuthenticationKey" }
 }
 
-public protocol ChallengeResponseAuthenticationServiceGetAuthenticationChallengeCall: ClientCallUnary {}
+internal protocol ChallengeResponseAuthenticationServiceGetAuthenticationChallengeCall: ClientCallUnary {}
 
 fileprivate final class ChallengeResponseAuthenticationServiceGetAuthenticationChallengeCallBase: ClientCallUnaryBase<GRPCGetAuthenticationChallengeRequest, GRPCGetAuthenticationChallengeResponse>, ChallengeResponseAuthenticationServiceGetAuthenticationChallengeCall {
   override class var method: String { return "/ChallengeResponseAuthenticationService/GetAuthenticationChallenge" }
 }
 
-public protocol ChallengeResponseAuthenticationServiceSignedChallengeAuthenticationCall: ClientCallUnary {}
+internal protocol ChallengeResponseAuthenticationServiceSignedChallengeAuthenticationCall: ClientCallUnary {}
 
 fileprivate final class ChallengeResponseAuthenticationServiceSignedChallengeAuthenticationCallBase: ClientCallUnaryBase<GRPCSignedChallengeAuthenticationRequest, GRPCSignedChallengeAuthenticationResponse>, ChallengeResponseAuthenticationServiceSignedChallengeAuthenticationCall {
   override class var method: String { return "/ChallengeResponseAuthenticationService/SignedChallengeAuthentication" }
@@ -3495,7 +3495,7 @@ fileprivate final class ChallengeResponseAuthenticationServiceSignedChallengeAut
 
 
 /// Instantiate ChallengeResponseAuthenticationServiceServiceClient, then call methods of this protocol to make API calls.
-public protocol ChallengeResponseAuthenticationServiceService: ServiceClient {
+internal protocol ChallengeResponseAuthenticationServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func listAuthenticationKeys(_ request: GRPCListAuthenticationKeysRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListAuthenticationKeysResponse?, CallResult) -> Void) throws -> ChallengeResponseAuthenticationServiceListAuthenticationKeysCall
@@ -3518,7 +3518,7 @@ public protocol ChallengeResponseAuthenticationServiceService: ServiceClient {
 
 }
 
-public extension ChallengeResponseAuthenticationServiceService {
+internal extension ChallengeResponseAuthenticationServiceService {
   /// Asynchronous. Unary.
   @discardableResult
   func listAuthenticationKeys(_ request: GRPCListAuthenticationKeysRequest, completion: @escaping (GRPCListAuthenticationKeysResponse?, CallResult) -> Void) throws -> ChallengeResponseAuthenticationServiceListAuthenticationKeysCall {
@@ -3551,38 +3551,38 @@ public extension ChallengeResponseAuthenticationServiceService {
 
 }
 
-public final class ChallengeResponseAuthenticationServiceServiceClient: ServiceClientBase, ChallengeResponseAuthenticationServiceService {
+internal final class ChallengeResponseAuthenticationServiceServiceClient: ServiceClientBase, ChallengeResponseAuthenticationServiceService {
   /// Asynchronous. Unary.
   @discardableResult
-  public func listAuthenticationKeys(_ request: GRPCListAuthenticationKeysRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListAuthenticationKeysResponse?, CallResult) -> Void) throws -> ChallengeResponseAuthenticationServiceListAuthenticationKeysCall {
+  internal func listAuthenticationKeys(_ request: GRPCListAuthenticationKeysRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListAuthenticationKeysResponse?, CallResult) -> Void) throws -> ChallengeResponseAuthenticationServiceListAuthenticationKeysCall {
     return try ChallengeResponseAuthenticationServiceListAuthenticationKeysCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func storeAuthenticationKey(_ request: GRPCStoreAuthenticationKeyRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCStoreAuthenticationKeyResponse?, CallResult) -> Void) throws -> ChallengeResponseAuthenticationServiceStoreAuthenticationKeyCall {
+  internal func storeAuthenticationKey(_ request: GRPCStoreAuthenticationKeyRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCStoreAuthenticationKeyResponse?, CallResult) -> Void) throws -> ChallengeResponseAuthenticationServiceStoreAuthenticationKeyCall {
     return try ChallengeResponseAuthenticationServiceStoreAuthenticationKeyCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func deleteAuthenticationKey(_ request: GRPCDeleteAuthenticationKeyRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCDeleteAuthenticationKeyResponse?, CallResult) -> Void) throws -> ChallengeResponseAuthenticationServiceDeleteAuthenticationKeyCall {
+  internal func deleteAuthenticationKey(_ request: GRPCDeleteAuthenticationKeyRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCDeleteAuthenticationKeyResponse?, CallResult) -> Void) throws -> ChallengeResponseAuthenticationServiceDeleteAuthenticationKeyCall {
     return try ChallengeResponseAuthenticationServiceDeleteAuthenticationKeyCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func getAuthenticationChallenge(_ request: GRPCGetAuthenticationChallengeRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGetAuthenticationChallengeResponse?, CallResult) -> Void) throws -> ChallengeResponseAuthenticationServiceGetAuthenticationChallengeCall {
+  internal func getAuthenticationChallenge(_ request: GRPCGetAuthenticationChallengeRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCGetAuthenticationChallengeResponse?, CallResult) -> Void) throws -> ChallengeResponseAuthenticationServiceGetAuthenticationChallengeCall {
     return try ChallengeResponseAuthenticationServiceGetAuthenticationChallengeCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
   /// Asynchronous. Unary.
   @discardableResult
-  public func signedChallengeAuthentication(_ request: GRPCSignedChallengeAuthenticationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCSignedChallengeAuthenticationResponse?, CallResult) -> Void) throws -> ChallengeResponseAuthenticationServiceSignedChallengeAuthenticationCall {
+  internal func signedChallengeAuthentication(_ request: GRPCSignedChallengeAuthenticationRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCSignedChallengeAuthenticationResponse?, CallResult) -> Void) throws -> ChallengeResponseAuthenticationServiceSignedChallengeAuthenticationCall {
     return try ChallengeResponseAuthenticationServiceSignedChallengeAuthenticationCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
