@@ -10,6 +10,8 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '10.0'
   s.osx.deployment_target = '10.13'
 
+  s.source_files = "Sources/TinkLink/**/*.swift"
+
   s.subspec 'GRPCMessages' do |ms|
     ms.source_files = "Sources/TinkGRPC/*.pb.swift"
     ms.requires_arc = false
