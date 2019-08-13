@@ -12,7 +12,7 @@ class ClientTests: XCTestCase {
 
         let requestExpectation = expectation(description: "Providers Request")
 
-        client.providerService.providers { (result) in
+        let canceller = client.providerService.providers { (result) in
             do {
                 _ = try result.get()
                 XCTFail("Shouldn't receive providers when not authenticated.")
@@ -32,5 +32,7 @@ class ClientTests: XCTestCase {
         }
 
         wait(for: [requestExpectation], timeout: 5)
+
+        canceller.cancel()
     }
 }
