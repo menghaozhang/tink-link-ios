@@ -15,13 +15,11 @@ Pod::Spec.new do |s|
   s.subspec 'GRPC' do |gs|
     gs.subspec 'Messages' do |ms|
       ms.source_files = "Sources/TinkGRPC/*.pb.swift"
-      ms.requires_arc = false
       ms.dependency 'SwiftProtobuf'
     end
 
     gs.subspec 'Services' do |ss|
       ss.source_files = "Sources/TinkGRPC/*.grpc.swift"
-      ss.requires_arc = true
       ss.dependency 'SwiftGRPC'
     end
   end
