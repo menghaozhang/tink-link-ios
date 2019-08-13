@@ -12,15 +12,17 @@ Pod::Spec.new do |s|
 
   s.source_files = "Sources/TinkLink/**/*.swift"
 
-  s.subspec 'GRPCMessages' do |ms|
-    ms.source_files = "Sources/TinkGRPC/*.pb.swift"
-    ms.requires_arc = false
-    ms.dependency 'SwiftProtobuf'
-  end
+  s.subspec 'GRPC' do |gs|
+    gs.subspec 'Messages' do |ms|
+      ms.source_files = "Sources/TinkGRPC/*.pb.swift"
+      ms.requires_arc = false
+      ms.dependency 'SwiftProtobuf'
+    end
 
-  s.subspec 'GRPCServices' do |ss|
-    ss.source_files = "Sources/TinkGRPC/*.grpc.swift"
-    ss.requires_arc = true
-    ss.dependency 'SwiftGRPC'
+    gs.subspec 'Services' do |ss|
+      ss.source_files = "Sources/TinkGRPC/*.grpc.swift"
+      ss.requires_arc = true
+      ss.dependency 'SwiftGRPC'
+    end
   end
 end
