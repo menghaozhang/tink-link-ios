@@ -11,13 +11,13 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.13'
 
   s.subspec 'GRPCMessages' do |ms|
-    ms.source_files = "Sources/Sources/*.pb.swift"
+    ms.source_files = "Sources/TinkGRPC/*.pb.swift"
     ms.requires_arc = false
     ms.dependency 'SwiftProtobuf'
   end
 
   s.subspec 'GRPCServices' do |ss|
-    ss.source_files = "Sources/GRPC/*.grpc.swift"
+    ss.source_files = "Sources/TinkGRPC/*.grpc.swift"
     ss.requires_arc = true
     ss.dependency 'SwiftGRPC'
   end
