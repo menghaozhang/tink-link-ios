@@ -19,7 +19,7 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
   typealias Version = _2
 }
 
-public enum MarketStatus: SwiftProtobuf.Enum {
+public enum GRPCMarketStatus: SwiftProtobuf.Enum {
   public typealias RawValue = Int
   case unknown // = 0
   case beta // = 1
@@ -55,9 +55,9 @@ public enum MarketStatus: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension MarketStatus: CaseIterable {
+extension GRPCMarketStatus: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [MarketStatus] = [
+  public static var allCases: [GRPCMarketStatus] = [
     .unknown,
     .beta,
     .disabled,
@@ -67,7 +67,7 @@ extension MarketStatus: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-public enum PeriodDateBreakType: SwiftProtobuf.Enum {
+public enum GRPCPeriodDateBreakType: SwiftProtobuf.Enum {
   public typealias RawValue = Int
   case unknown // = 0
   case monthly // = 1
@@ -100,9 +100,9 @@ public enum PeriodDateBreakType: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension PeriodDateBreakType: CaseIterable {
+extension GRPCPeriodDateBreakType: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [PeriodDateBreakType] = [
+  public static var allCases: [GRPCPeriodDateBreakType] = [
     .unknown,
     .monthly,
     .monthlyAdjusted,
@@ -111,7 +111,7 @@ extension PeriodDateBreakType: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-public enum PeriodMode: SwiftProtobuf.Enum {
+public enum GRPCPeriodMode: SwiftProtobuf.Enum {
   public typealias RawValue = Int
   case unknown // = 0
   case daily // = 1
@@ -153,9 +153,9 @@ public enum PeriodMode: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension PeriodMode: CaseIterable {
+extension GRPCPeriodMode: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [PeriodMode] = [
+  public static var allCases: [GRPCPeriodMode] = [
     .unknown,
     .daily,
     .monthly,
@@ -167,7 +167,7 @@ extension PeriodMode: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-public enum BankIdAuthenticationStatus: SwiftProtobuf.Enum {
+public enum GRPCBankIdAuthenticationStatus: SwiftProtobuf.Enum {
   public typealias RawValue = Int
   case unknown // = 0
   case authenticated // = 1
@@ -206,9 +206,9 @@ public enum BankIdAuthenticationStatus: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension BankIdAuthenticationStatus: CaseIterable {
+extension GRPCBankIdAuthenticationStatus: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [BankIdAuthenticationStatus] = [
+  public static var allCases: [GRPCBankIdAuthenticationStatus] = [
     .unknown,
     .authenticated,
     .authenticationError,
@@ -219,7 +219,7 @@ extension BankIdAuthenticationStatus: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-public enum AuthenticationStatus: SwiftProtobuf.Enum {
+public enum GRPCAuthenticationStatus: SwiftProtobuf.Enum {
   public typealias RawValue = Int
   case unknown // = 0
   case authenticated // = 1
@@ -264,9 +264,9 @@ public enum AuthenticationStatus: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension AuthenticationStatus: CaseIterable {
+extension GRPCAuthenticationStatus: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [AuthenticationStatus] = [
+  public static var allCases: [GRPCAuthenticationStatus] = [
     .unknown,
     .authenticated,
     .authenticationError,
@@ -279,7 +279,7 @@ extension AuthenticationStatus: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-public enum AuthenticationKeyType: SwiftProtobuf.Enum {
+public enum GRPCAuthenticationKeyType: SwiftProtobuf.Enum {
   public typealias RawValue = Int
   case keyTypeUnknown // = 0
   case keyTypeRsa // = 1
@@ -312,9 +312,9 @@ public enum AuthenticationKeyType: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension AuthenticationKeyType: CaseIterable {
+extension GRPCAuthenticationKeyType: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [AuthenticationKeyType] = [
+  public static var allCases: [GRPCAuthenticationKeyType] = [
     .keyTypeUnknown,
     .keyTypeRsa,
     .keyTypeEcdsa,
@@ -323,7 +323,7 @@ extension AuthenticationKeyType: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-public enum AuthenticationSource: SwiftProtobuf.Enum {
+public enum GRPCAuthenticationSource: SwiftProtobuf.Enum {
   public typealias RawValue = Int
   case unknown // = 0
   case touchid // = 1
@@ -359,9 +359,9 @@ public enum AuthenticationSource: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension AuthenticationSource: CaseIterable {
+extension GRPCAuthenticationSource: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [AuthenticationSource] = [
+  public static var allCases: [GRPCAuthenticationSource] = [
     .unknown,
     .touchid,
     .fingerprint,
@@ -371,7 +371,7 @@ extension AuthenticationSource: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-public enum IdentityAnswerKey: SwiftProtobuf.Enum {
+public enum GRPCIdentityAnswerKey: SwiftProtobuf.Enum {
   public typealias RawValue = Int
   case unknown // = 0
   case ok // = 1
@@ -404,9 +404,9 @@ public enum IdentityAnswerKey: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension IdentityAnswerKey: CaseIterable {
+extension GRPCIdentityAnswerKey: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [IdentityAnswerKey] = [
+  public static var allCases: [GRPCIdentityAnswerKey] = [
     .unknown,
     .ok,
     .fraudulent,
@@ -415,7 +415,7 @@ extension IdentityAnswerKey: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-public enum ConsentAction: SwiftProtobuf.Enum {
+public enum GRPCConsentAction: SwiftProtobuf.Enum {
   public typealias RawValue = Int
   case unknown // = 0
   case accepted // = 1
@@ -448,9 +448,9 @@ public enum ConsentAction: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension ConsentAction: CaseIterable {
+extension GRPCConsentAction: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [ConsentAction] = [
+  public static var allCases: [GRPCConsentAction] = [
     .unknown,
     .accepted,
     .declined,
@@ -459,7 +459,7 @@ extension ConsentAction: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-public enum SmsOtpStatus: SwiftProtobuf.Enum {
+public enum GRPCSmsOtpStatus: SwiftProtobuf.Enum {
   public typealias RawValue = Int
   case unknown // = 0
   case correct // = 1
@@ -498,9 +498,9 @@ public enum SmsOtpStatus: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension SmsOtpStatus: CaseIterable {
+extension GRPCSmsOtpStatus: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [SmsOtpStatus] = [
+  public static var allCases: [GRPCSmsOtpStatus] = [
     .unknown,
     .correct,
     .incorrect,
@@ -511,7 +511,7 @@ extension SmsOtpStatus: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-public enum RateAppStatus: SwiftProtobuf.Enum {
+public enum GRPCRateAppStatus: SwiftProtobuf.Enum {
   public typealias RawValue = Int
   case unknown // = 0
   case clickedIgnore // = 1
@@ -544,9 +544,9 @@ public enum RateAppStatus: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension RateAppStatus: CaseIterable {
+extension GRPCRateAppStatus: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [RateAppStatus] = [
+  public static var allCases: [GRPCRateAppStatus] = [
     .unknown,
     .clickedIgnore,
     .clickedRateInStore,
@@ -555,7 +555,7 @@ extension RateAppStatus: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-public enum AuthenticationMethod: SwiftProtobuf.Enum {
+public enum GRPCAuthenticationMethod: SwiftProtobuf.Enum {
   public typealias RawValue = Int
   case unknown // = 0
   case bankid // = 1
@@ -597,9 +597,9 @@ public enum AuthenticationMethod: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension AuthenticationMethod: CaseIterable {
+extension GRPCAuthenticationMethod: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [AuthenticationMethod] = [
+  public static var allCases: [GRPCAuthenticationMethod] = [
     .unknown,
     .bankid,
     .emailAndPassword,
@@ -611,7 +611,7 @@ extension AuthenticationMethod: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-public enum SortType: SwiftProtobuf.Enum {
+public enum GRPCSortType: SwiftProtobuf.Enum {
   public typealias RawValue = Int
   case unknown // = 0
   case score // = 1
@@ -656,9 +656,9 @@ public enum SortType: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension SortType: CaseIterable {
+extension GRPCSortType: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [SortType] = [
+  public static var allCases: [GRPCSortType] = [
     .unknown,
     .score,
     .date,
@@ -671,7 +671,7 @@ extension SortType: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-public enum OrderType: SwiftProtobuf.Enum {
+public enum GRPCOrderType: SwiftProtobuf.Enum {
   public typealias RawValue = Int
   case unknown // = 0
   case asc // = 1
@@ -704,9 +704,9 @@ public enum OrderType: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension OrderType: CaseIterable {
+extension GRPCOrderType: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [OrderType] = [
+  public static var allCases: [GRPCOrderType] = [
     .unknown,
     .asc,
     .desc,
@@ -715,7 +715,7 @@ extension OrderType: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-public enum Theme: SwiftProtobuf.Enum {
+public enum GRPCTheme: SwiftProtobuf.Enum {
   public typealias RawValue = Int
   case unknown // = 0
   case light // = 1
@@ -751,9 +751,9 @@ public enum Theme: SwiftProtobuf.Enum {
 
 #if swift(>=4.2)
 
-extension Theme: CaseIterable {
+extension GRPCTheme: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [Theme] = [
+  public static var allCases: [GRPCTheme] = [
     .unknown,
     .light,
     .black,
@@ -763,7 +763,7 @@ extension Theme: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-public struct Credential {
+public struct GRPCCredential {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -778,12 +778,12 @@ public struct Credential {
     set {_uniqueStorage()._providerName = newValue}
   }
 
-  public var type: Credential.TypeEnum {
+  public var type: GRPCCredential.TypeEnum {
     get {return _storage._type}
     set {_uniqueStorage()._type = newValue}
   }
 
-  public var status: Credential.Status {
+  public var status: GRPCCredential.Status {
     get {return _storage._status}
     set {_uniqueStorage()._status = newValue}
   }
@@ -816,13 +816,13 @@ public struct Credential {
     set {_uniqueStorage()._fields = newValue}
   }
 
-  public var supplementalInformationFields: [ProviderFieldSpecification] {
+  public var supplementalInformationFields: [GRPCProviderFieldSpecification] {
     get {return _storage._supplementalInformationFields}
     set {_uniqueStorage()._supplementalInformationFields = newValue}
   }
 
-  public var thirdPartyAppAuthentication: ThirdPartyAppAuthentication {
-    get {return _storage._thirdPartyAppAuthentication ?? ThirdPartyAppAuthentication()}
+  public var thirdPartyAppAuthentication: GRPCThirdPartyAppAuthentication {
+    get {return _storage._thirdPartyAppAuthentication ?? GRPCThirdPartyAppAuthentication()}
     set {_uniqueStorage()._thirdPartyAppAuthentication = newValue}
   }
   /// Returns true if `thirdPartyAppAuthentication` has been explicitly set.
@@ -953,9 +953,9 @@ public struct Credential {
 
 #if swift(>=4.2)
 
-extension Credential.Status: CaseIterable {
+extension GRPCCredential.Status: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [Credential.Status] = [
+  public static var allCases: [GRPCCredential.Status] = [
     .unknown,
     .created,
     .authenticating,
@@ -972,9 +972,9 @@ extension Credential.Status: CaseIterable {
   ]
 }
 
-extension Credential.TypeEnum: CaseIterable {
+extension GRPCCredential.TypeEnum: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [Credential.TypeEnum] = [
+  public static var allCases: [GRPCCredential.TypeEnum] = [
     .unknown,
     .password,
     .mobileBankid,
@@ -986,7 +986,7 @@ extension Credential.TypeEnum: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-public struct Account {
+public struct GRPCAccount {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -996,8 +996,8 @@ public struct Account {
     set {_uniqueStorage()._id = newValue}
   }
 
-  public var balance: CurrencyDenominatedAmount {
-    get {return _storage._balance ?? CurrencyDenominatedAmount()}
+  public var balance: GRPCCurrencyDenominatedAmount {
+    get {return _storage._balance ?? GRPCCurrencyDenominatedAmount()}
     set {_uniqueStorage()._balance = newValue}
   }
   /// Returns true if `balance` has been explicitly set.
@@ -1035,8 +1035,8 @@ public struct Account {
     set {_uniqueStorage()._name = newValue}
   }
 
-  public var ownership: ExactNumber {
-    get {return _storage._ownership ?? ExactNumber()}
+  public var ownership: GRPCExactNumber {
+    get {return _storage._ownership ?? GRPCExactNumber()}
     set {_uniqueStorage()._ownership = newValue}
   }
   /// Returns true if `ownership` has been explicitly set.
@@ -1044,13 +1044,13 @@ public struct Account {
   /// Clears the value of `ownership`. Subsequent reads from it will return its default value.
   public mutating func clearOwnership() {_uniqueStorage()._ownership = nil}
 
-  public var type: Account.TypeEnum {
+  public var type: GRPCAccount.TypeEnum {
     get {return _storage._type}
     set {_uniqueStorage()._type = newValue}
   }
 
-  public var images: Images {
-    get {return _storage._images ?? Images()}
+  public var images: GRPCImages {
+    get {return _storage._images ?? GRPCImages()}
     set {_uniqueStorage()._images = newValue}
   }
   /// Returns true if `images` has been explicitly set.
@@ -1068,12 +1068,12 @@ public struct Account {
     set {_uniqueStorage()._identifiers = newValue}
   }
 
-  public var exclusionType: Account.Exclusion {
+  public var exclusionType: GRPCAccount.Exclusion {
     get {return _storage._exclusionType}
     set {_uniqueStorage()._exclusionType = newValue}
   }
 
-  public var flags: [Account.AccountFlag] {
+  public var flags: [GRPCAccount.AccountFlag] {
     get {return _storage._flags}
     set {_uniqueStorage()._flags = newValue}
   }
@@ -1210,9 +1210,9 @@ public struct Account {
 
 #if swift(>=4.2)
 
-extension Account.TypeEnum: CaseIterable {
+extension GRPCAccount.TypeEnum: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [Account.TypeEnum] = [
+  public static var allCases: [GRPCAccount.TypeEnum] = [
     .unknown,
     .checking,
     .savings,
@@ -1227,9 +1227,9 @@ extension Account.TypeEnum: CaseIterable {
   ]
 }
 
-extension Account.Exclusion: CaseIterable {
+extension GRPCAccount.Exclusion: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [Account.Exclusion] = [
+  public static var allCases: [GRPCAccount.Exclusion] = [
     .unkown,
     .aggregation,
     .pfmAndSearch,
@@ -1238,9 +1238,9 @@ extension Account.Exclusion: CaseIterable {
   ]
 }
 
-extension Account.AccountFlag: CaseIterable {
+extension GRPCAccount.AccountFlag: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [Account.AccountFlag] = [
+  public static var allCases: [GRPCAccount.AccountFlag] = [
     .unknown,
     .business,
     .mandate,
@@ -1249,7 +1249,7 @@ extension Account.AccountFlag: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-public struct Tag {
+public struct GRPCTag {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1261,7 +1261,7 @@ public struct Tag {
   public init() {}
 }
 
-public struct Transaction {
+public struct GRPCTransaction {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1271,8 +1271,8 @@ public struct Transaction {
     set {_uniqueStorage()._accountID = newValue}
   }
 
-  public var amount: CurrencyDenominatedAmount {
-    get {return _storage._amount ?? CurrencyDenominatedAmount()}
+  public var amount: GRPCCurrencyDenominatedAmount {
+    get {return _storage._amount ?? GRPCCurrencyDenominatedAmount()}
     set {_uniqueStorage()._amount = newValue}
   }
   /// Returns true if `amount` has been explicitly set.
@@ -1285,8 +1285,8 @@ public struct Transaction {
     set {_uniqueStorage()._categoryCode = newValue}
   }
 
-  public var originalAmount: CurrencyDenominatedAmount {
-    get {return _storage._originalAmount ?? CurrencyDenominatedAmount()}
+  public var originalAmount: GRPCCurrencyDenominatedAmount {
+    get {return _storage._originalAmount ?? GRPCCurrencyDenominatedAmount()}
     set {_uniqueStorage()._originalAmount = newValue}
   }
   /// Returns true if `originalAmount` has been explicitly set.
@@ -1318,7 +1318,7 @@ public struct Transaction {
     set {_uniqueStorage()._notes = newValue}
   }
 
-  public var tags: [Tag] {
+  public var tags: [GRPCTag] {
     get {return _storage._tags}
     set {_uniqueStorage()._tags = newValue}
   }
@@ -1337,8 +1337,8 @@ public struct Transaction {
     set {_uniqueStorage()._originalDescription = newValue}
   }
 
-  public var details: Transaction.TransactionDetails {
-    get {return _storage._details ?? Transaction.TransactionDetails()}
+  public var details: GRPCTransaction.TransactionDetails {
+    get {return _storage._details ?? GRPCTransaction.TransactionDetails()}
     set {_uniqueStorage()._details = newValue}
   }
   /// Returns true if `details` has been explicitly set.
@@ -1356,7 +1356,7 @@ public struct Transaction {
     set {_uniqueStorage()._upcoming = newValue}
   }
 
-  public var type: Transaction.TypeEnum {
+  public var type: GRPCTransaction.TypeEnum {
     get {return _storage._type}
     set {_uniqueStorage()._type = newValue}
   }
@@ -1375,13 +1375,13 @@ public struct Transaction {
   /// Clears the value of `inserted`. Subsequent reads from it will return its default value.
   public mutating func clearInserted() {_uniqueStorage()._inserted = nil}
 
-  public var parts: [Transaction.Part] {
+  public var parts: [GRPCTransaction.Part] {
     get {return _storage._parts}
     set {_uniqueStorage()._parts = newValue}
   }
 
-  public var dispensableAmount: CurrencyDenominatedAmount {
-    get {return _storage._dispensableAmount ?? CurrencyDenominatedAmount()}
+  public var dispensableAmount: GRPCCurrencyDenominatedAmount {
+    get {return _storage._dispensableAmount ?? GRPCCurrencyDenominatedAmount()}
     set {_uniqueStorage()._dispensableAmount = newValue}
   }
   /// Returns true if `dispensableAmount` has been explicitly set.
@@ -1454,8 +1454,8 @@ public struct Transaction {
       set {_uniqueStorage()._id = newValue}
     }
 
-    public var amount: CurrencyDenominatedAmount {
-      get {return _storage._amount ?? CurrencyDenominatedAmount()}
+    public var amount: GRPCCurrencyDenominatedAmount {
+      get {return _storage._amount ?? GRPCCurrencyDenominatedAmount()}
       set {_uniqueStorage()._amount = newValue}
     }
     /// Returns true if `amount` has been explicitly set.
@@ -1468,8 +1468,8 @@ public struct Transaction {
       set {_uniqueStorage()._categoryCode = newValue}
     }
 
-    public var counterpart: Transaction.Counterpart {
-      get {return _storage._counterpart ?? Transaction.Counterpart()}
+    public var counterpart: GRPCTransaction.Counterpart {
+      get {return _storage._counterpart ?? GRPCTransaction.Counterpart()}
       set {_uniqueStorage()._counterpart = newValue}
     }
     /// Returns true if `counterpart` has been explicitly set.
@@ -1499,8 +1499,8 @@ public struct Transaction {
       set {_uniqueStorage()._transactionID = newValue}
     }
 
-    public var transactionAmount: CurrencyDenominatedAmount {
-      get {return _storage._transactionAmount ?? CurrencyDenominatedAmount()}
+    public var transactionAmount: GRPCCurrencyDenominatedAmount {
+      get {return _storage._transactionAmount ?? GRPCCurrencyDenominatedAmount()}
       set {_uniqueStorage()._transactionAmount = newValue}
     }
     /// Returns true if `transactionAmount` has been explicitly set.
@@ -1527,9 +1527,9 @@ public struct Transaction {
 
 #if swift(>=4.2)
 
-extension Transaction.TypeEnum: CaseIterable {
+extension GRPCTransaction.TypeEnum: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [Transaction.TypeEnum] = [
+  public static var allCases: [GRPCTransaction.TypeEnum] = [
     .unknown,
     .default,
     .creditCard,
@@ -1541,7 +1541,7 @@ extension Transaction.TypeEnum: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-public struct Provider {
+public struct GRPCProvider {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1556,17 +1556,17 @@ public struct Provider {
     set {_uniqueStorage()._displayName = newValue}
   }
 
-  public var type: Provider.TypeEnum {
+  public var type: GRPCProvider.TypeEnum {
     get {return _storage._type}
     set {_uniqueStorage()._type = newValue}
   }
 
-  public var status: Provider.Status {
+  public var status: GRPCProvider.Status {
     get {return _storage._status}
     set {_uniqueStorage()._status = newValue}
   }
 
-  public var credentialType: Credential.TypeEnum {
+  public var credentialType: GRPCCredential.TypeEnum {
     get {return _storage._credentialType}
     set {_uniqueStorage()._credentialType = newValue}
   }
@@ -1581,7 +1581,7 @@ public struct Provider {
     set {_uniqueStorage()._popular = newValue}
   }
 
-  public var fields: [ProviderFieldSpecification] {
+  public var fields: [GRPCProviderFieldSpecification] {
     get {return _storage._fields}
     set {_uniqueStorage()._fields = newValue}
   }
@@ -1591,8 +1591,8 @@ public struct Provider {
     set {_uniqueStorage()._groupDisplayName = newValue}
   }
 
-  public var images: Images {
-    get {return _storage._images ?? Images()}
+  public var images: GRPCImages {
+    get {return _storage._images ?? GRPCImages()}
     set {_uniqueStorage()._images = newValue}
   }
   /// Returns true if `images` has been explicitly set.
@@ -1605,7 +1605,7 @@ public struct Provider {
     set {_uniqueStorage()._displayDescription = newValue}
   }
 
-  public var capabilities: [Provider.Capability] {
+  public var capabilities: [GRPCProvider.Capability] {
     get {return _storage._capabilities}
     set {_uniqueStorage()._capabilities = newValue}
   }
@@ -1615,7 +1615,7 @@ public struct Provider {
     set {_uniqueStorage()._marketCode = newValue}
   }
 
-  public var accessType: Provider.AccessType {
+  public var accessType: GRPCProvider.AccessType {
     get {return _storage._accessType}
     set {_uniqueStorage()._accessType = newValue}
   }
@@ -1631,7 +1631,7 @@ public struct Provider {
     set {_uniqueStorage()._financialInstitutionName = newValue}
   }
 
-  public var authenticationFlow: Provider.AuthenticationFlow {
+  public var authenticationFlow: GRPCProvider.AuthenticationFlow {
     get {return _storage._authenticationFlow}
     set {_uniqueStorage()._authenticationFlow = newValue}
   }
@@ -1845,9 +1845,9 @@ public struct Provider {
 
 #if swift(>=4.2)
 
-extension Provider.TypeEnum: CaseIterable {
+extension GRPCProvider.TypeEnum: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [Provider.TypeEnum] = [
+  public static var allCases: [GRPCProvider.TypeEnum] = [
     .unknown,
     .bank,
     .creditCard,
@@ -1858,9 +1858,9 @@ extension Provider.TypeEnum: CaseIterable {
   ]
 }
 
-extension Provider.Status: CaseIterable {
+extension GRPCProvider.Status: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [Provider.Status] = [
+  public static var allCases: [GRPCProvider.Status] = [
     .unknown,
     .enabled,
     .disabled,
@@ -1869,9 +1869,9 @@ extension Provider.Status: CaseIterable {
   ]
 }
 
-extension Provider.Capability: CaseIterable {
+extension GRPCProvider.Capability: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [Provider.Capability] = [
+  public static var allCases: [GRPCProvider.Capability] = [
     .unknown,
     .transfers,
     .mortgageAggregation,
@@ -1886,18 +1886,18 @@ extension Provider.Capability: CaseIterable {
   ]
 }
 
-extension Provider.AccessType: CaseIterable {
+extension GRPCProvider.AccessType: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [Provider.AccessType] = [
+  public static var allCases: [GRPCProvider.AccessType] = [
     .unknown,
     .openBanking,
     .other,
   ]
 }
 
-extension Provider.AuthenticationFlow: CaseIterable {
+extension GRPCProvider.AuthenticationFlow: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [Provider.AuthenticationFlow] = [
+  public static var allCases: [GRPCProvider.AuthenticationFlow] = [
     .unknown,
     .embedded,
     .redirect,
@@ -1907,13 +1907,13 @@ extension Provider.AuthenticationFlow: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-public struct CurrencyDenominatedAmount {
+public struct GRPCCurrencyDenominatedAmount {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var value: ExactNumber {
-    get {return _storage._value ?? ExactNumber()}
+  public var value: GRPCExactNumber {
+    get {return _storage._value ?? GRPCExactNumber()}
     set {_uniqueStorage()._value = newValue}
   }
   /// Returns true if `value` has been explicitly set.
@@ -1933,7 +1933,7 @@ public struct CurrencyDenominatedAmount {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct ExactNumber {
+public struct GRPCExactNumber {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1947,7 +1947,7 @@ public struct ExactNumber {
   public init() {}
 }
 
-public struct Period {
+public struct GRPCPeriod {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -1997,7 +1997,7 @@ public struct Period {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct PeriodDescription {
+public struct GRPCPeriodDescription {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2015,24 +2015,24 @@ public struct PeriodDescription {
   public init() {}
 }
 
-public struct StatisticTree {
+public struct GRPCStatisticTree {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var balancesByAccountID: Dictionary<String,StatisticNode> = [:]
+  public var balancesByAccountID: Dictionary<String,GRPCStatisticNode> = [:]
 
-  public var balancesByAccountGroupType: Dictionary<String,StatisticNode> = [:]
+  public var balancesByAccountGroupType: Dictionary<String,GRPCStatisticNode> = [:]
 
-  public var leftToSpend: Dictionary<String,StatisticNode> = [:]
+  public var leftToSpend: Dictionary<String,GRPCStatisticNode> = [:]
 
-  public var expensesByCategoryCode: Dictionary<String,StatisticNode> = [:]
+  public var expensesByCategoryCode: Dictionary<String,GRPCStatisticNode> = [:]
 
-  public var incomeByCategoryCode: Dictionary<String,StatisticNode> = [:]
+  public var incomeByCategoryCode: Dictionary<String,GRPCStatisticNode> = [:]
 
-  public var loanRatesByProperty: Dictionary<String,StatisticNode> = [:]
+  public var loanRatesByProperty: Dictionary<String,GRPCStatisticNode> = [:]
 
-  public var loanBalancesByProperty: Dictionary<String,StatisticNode> = [:]
+  public var loanBalancesByProperty: Dictionary<String,GRPCStatisticNode> = [:]
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -2081,9 +2081,9 @@ public struct StatisticTree {
 
 #if swift(>=4.2)
 
-extension StatisticTree.TypeEnum: CaseIterable {
+extension GRPCStatisticTree.TypeEnum: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [StatisticTree.TypeEnum] = [
+  public static var allCases: [GRPCStatisticTree.TypeEnum] = [
     .unknown,
     .balancesByAccountID,
     .balancesByAccountGroupType,
@@ -2095,13 +2095,13 @@ extension StatisticTree.TypeEnum: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-public struct StatisticNode {
+public struct GRPCStatisticNode {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var period: Period {
-    get {return _storage._period ?? Period()}
+  public var period: GRPCPeriod {
+    get {return _storage._period ?? GRPCPeriod()}
     set {_uniqueStorage()._period = newValue}
   }
   /// Returns true if `period` has been explicitly set.
@@ -2115,24 +2115,24 @@ public struct StatisticNode {
   }
 
   /// Used if the value on the node is related to a currency, like "balances by account"
-  public var amount: CurrencyDenominatedAmount {
+  public var amount: GRPCCurrencyDenominatedAmount {
     get {
       if case .amount(let v)? = _storage._nodeValue {return v}
-      return CurrencyDenominatedAmount()
+      return GRPCCurrencyDenominatedAmount()
     }
     set {_uniqueStorage()._nodeValue = .amount(newValue)}
   }
 
   /// Used if the value on the node isn't related to a currency, like "loan rate by property"
-  public var value: ExactNumber {
+  public var value: GRPCExactNumber {
     get {
       if case .value(let v)? = _storage._nodeValue {return v}
-      return ExactNumber()
+      return GRPCExactNumber()
     }
     set {_uniqueStorage()._nodeValue = .value(newValue)}
   }
 
-  public var children: Dictionary<String,StatisticNode> {
+  public var children: Dictionary<String,GRPCStatisticNode> {
     get {return _storage._children}
     set {_uniqueStorage()._children = newValue}
   }
@@ -2141,12 +2141,12 @@ public struct StatisticNode {
 
   public enum OneOf_NodeValue: Equatable {
     /// Used if the value on the node is related to a currency, like "balances by account"
-    case amount(CurrencyDenominatedAmount)
+    case amount(GRPCCurrencyDenominatedAmount)
     /// Used if the value on the node isn't related to a currency, like "loan rate by property"
-    case value(ExactNumber)
+    case value(GRPCExactNumber)
 
   #if !swift(>=4.1)
-    public static func ==(lhs: StatisticNode.OneOf_NodeValue, rhs: StatisticNode.OneOf_NodeValue) -> Bool {
+    public static func ==(lhs: GRPCStatisticNode.OneOf_NodeValue, rhs: GRPCStatisticNode.OneOf_NodeValue) -> Bool {
       switch (lhs, rhs) {
       case (.amount(let l), .amount(let r)): return l == r
       case (.value(let l), .value(let r)): return l == r
@@ -2161,7 +2161,7 @@ public struct StatisticNode {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct FollowItem {
+public struct GRPCFollowItem {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2171,32 +2171,32 @@ public struct FollowItem {
     set {_uniqueStorage()._criteria = newValue}
   }
 
-  public var expensesCriteria: ExpensesFollowCriteria {
+  public var expensesCriteria: GRPCExpensesFollowCriteria {
     get {
       if case .expensesCriteria(let v)? = _storage._criteria {return v}
-      return ExpensesFollowCriteria()
+      return GRPCExpensesFollowCriteria()
     }
     set {_uniqueStorage()._criteria = .expensesCriteria(newValue)}
   }
 
-  public var searchCriteria: SearchFollowCriteria {
+  public var searchCriteria: GRPCSearchFollowCriteria {
     get {
       if case .searchCriteria(let v)? = _storage._criteria {return v}
-      return SearchFollowCriteria()
+      return GRPCSearchFollowCriteria()
     }
     set {_uniqueStorage()._criteria = .searchCriteria(newValue)}
   }
 
-  public var savingCriteria: SavingsFollowCriteria {
+  public var savingCriteria: GRPCSavingsFollowCriteria {
     get {
       if case .savingCriteria(let v)? = _storage._criteria {return v}
-      return SavingsFollowCriteria()
+      return GRPCSavingsFollowCriteria()
     }
     set {_uniqueStorage()._criteria = .savingCriteria(newValue)}
   }
 
-  public var data: FollowData {
-    get {return _storage._data ?? FollowData()}
+  public var data: GRPCFollowData {
+    get {return _storage._data ?? GRPCFollowData()}
     set {_uniqueStorage()._data = newValue}
   }
   /// Returns true if `data` has been explicitly set.
@@ -2226,12 +2226,12 @@ public struct FollowItem {
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public enum OneOf_Criteria: Equatable {
-    case expensesCriteria(ExpensesFollowCriteria)
-    case searchCriteria(SearchFollowCriteria)
-    case savingCriteria(SavingsFollowCriteria)
+    case expensesCriteria(GRPCExpensesFollowCriteria)
+    case searchCriteria(GRPCSearchFollowCriteria)
+    case savingCriteria(GRPCSavingsFollowCriteria)
 
   #if !swift(>=4.1)
-    public static func ==(lhs: FollowItem.OneOf_Criteria, rhs: FollowItem.OneOf_Criteria) -> Bool {
+    public static func ==(lhs: GRPCFollowItem.OneOf_Criteria, rhs: GRPCFollowItem.OneOf_Criteria) -> Bool {
       switch (lhs, rhs) {
       case (.expensesCriteria(let l), .expensesCriteria(let r)): return l == r
       case (.searchCriteria(let l), .searchCriteria(let r)): return l == r
@@ -2247,25 +2247,25 @@ public struct FollowItem {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct FollowItemHistory {
+public struct GRPCFollowItemHistory {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var historicalAmounts: [PeriodExactNumberPair] = []
+  public var historicalAmounts: [GRPCPeriodExactNumberPair] = []
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 }
 
-public struct ExpensesFollowCriteria {
+public struct GRPCExpensesFollowCriteria {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var targetAmount: ExactNumber {
-    get {return _storage._targetAmount ?? ExactNumber()}
+  public var targetAmount: GRPCExactNumber {
+    get {return _storage._targetAmount ?? GRPCExactNumber()}
     set {_uniqueStorage()._targetAmount = newValue}
   }
   /// Returns true if `targetAmount` has been explicitly set.
@@ -2285,13 +2285,13 @@ public struct ExpensesFollowCriteria {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct SearchFollowCriteria {
+public struct GRPCSearchFollowCriteria {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var targetAmount: ExactNumber {
-    get {return _storage._targetAmount ?? ExactNumber()}
+  public var targetAmount: GRPCExactNumber {
+    get {return _storage._targetAmount ?? GRPCExactNumber()}
     set {_uniqueStorage()._targetAmount = newValue}
   }
   /// Returns true if `targetAmount` has been explicitly set.
@@ -2311,13 +2311,13 @@ public struct SearchFollowCriteria {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct SavingsFollowCriteria {
+public struct GRPCSavingsFollowCriteria {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var targetAmount: ExactNumber {
-    get {return _storage._targetAmount ?? ExactNumber()}
+  public var targetAmount: GRPCExactNumber {
+    get {return _storage._targetAmount ?? GRPCExactNumber()}
     set {_uniqueStorage()._targetAmount = newValue}
   }
   /// Returns true if `targetAmount` has been explicitly set.
@@ -2342,18 +2342,18 @@ public struct SavingsFollowCriteria {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct FollowData {
+public struct GRPCFollowData {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var historicalAmounts: [PeriodExactNumberPair] {
+  public var historicalAmounts: [GRPCPeriodExactNumberPair] {
     get {return _storage._historicalAmounts}
     set {_uniqueStorage()._historicalAmounts = newValue}
   }
 
-  public var period: Period {
-    get {return _storage._period ?? Period()}
+  public var period: GRPCPeriod {
+    get {return _storage._period ?? GRPCPeriod()}
     set {_uniqueStorage()._period = newValue}
   }
   /// Returns true if `period` has been explicitly set.
@@ -2368,13 +2368,13 @@ public struct FollowData {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct PeriodExactNumberPair {
+public struct GRPCPeriodExactNumberPair {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var period: Period {
-    get {return _storage._period ?? Period()}
+  public var period: GRPCPeriod {
+    get {return _storage._period ?? GRPCPeriod()}
     set {_uniqueStorage()._period = newValue}
   }
   /// Returns true if `period` has been explicitly set.
@@ -2382,8 +2382,8 @@ public struct PeriodExactNumberPair {
   /// Clears the value of `period`. Subsequent reads from it will return its default value.
   public mutating func clearPeriod() {_uniqueStorage()._period = nil}
 
-  public var value: ExactNumber {
-    get {return _storage._value ?? ExactNumber()}
+  public var value: GRPCExactNumber {
+    get {return _storage._value ?? GRPCExactNumber()}
     set {_uniqueStorage()._value = newValue}
   }
   /// Returns true if `value` has been explicitly set.
@@ -2398,7 +2398,7 @@ public struct PeriodExactNumberPair {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct Budget {
+public struct GRPCBudget {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2425,8 +2425,8 @@ public struct Budget {
       set {_uniqueStorage()._description_p = newValue}
     }
 
-    public var amount: CurrencyDenominatedAmount {
-      get {return _storage._amount ?? CurrencyDenominatedAmount()}
+    public var amount: GRPCCurrencyDenominatedAmount {
+      get {return _storage._amount ?? GRPCCurrencyDenominatedAmount()}
       set {_uniqueStorage()._amount = newValue}
     }
     /// Returns true if `amount` has been explicitly set.
@@ -2439,18 +2439,18 @@ public struct Budget {
       set {_uniqueStorage()._periodicity = newValue}
     }
 
-    public var recurringPeriodicity: Budget.RecurringPeriodicity {
+    public var recurringPeriodicity: GRPCBudget.RecurringPeriodicity {
       get {
         if case .recurringPeriodicity(let v)? = _storage._periodicity {return v}
-        return Budget.RecurringPeriodicity()
+        return GRPCBudget.RecurringPeriodicity()
       }
       set {_uniqueStorage()._periodicity = .recurringPeriodicity(newValue)}
     }
 
-    public var oneOffPeriodicity: Budget.OneOffPeriodicity {
+    public var oneOffPeriodicity: GRPCBudget.OneOffPeriodicity {
       get {
         if case .oneOffPeriodicity(let v)? = _storage._periodicity {return v}
-        return Budget.OneOffPeriodicity()
+        return GRPCBudget.OneOffPeriodicity()
       }
       set {_uniqueStorage()._periodicity = .oneOffPeriodicity(newValue)}
     }
@@ -2460,8 +2460,8 @@ public struct Budget {
       set {_uniqueStorage()._archived = newValue}
     }
 
-    public var filter: Budget.Filter {
-      get {return _storage._filter ?? Budget.Filter()}
+    public var filter: GRPCBudget.Filter {
+      get {return _storage._filter ?? GRPCBudget.Filter()}
       set {_uniqueStorage()._filter = newValue}
     }
     /// Returns true if `filter` has been explicitly set.
@@ -2472,11 +2472,11 @@ public struct Budget {
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
     public enum OneOf_Periodicity: Equatable {
-      case recurringPeriodicity(Budget.RecurringPeriodicity)
-      case oneOffPeriodicity(Budget.OneOffPeriodicity)
+      case recurringPeriodicity(GRPCBudget.RecurringPeriodicity)
+      case oneOffPeriodicity(GRPCBudget.OneOffPeriodicity)
 
     #if !swift(>=4.1)
-      public static func ==(lhs: Budget.Specification.OneOf_Periodicity, rhs: Budget.Specification.OneOf_Periodicity) -> Bool {
+      public static func ==(lhs: GRPCBudget.Specification.OneOf_Periodicity, rhs: GRPCBudget.Specification.OneOf_Periodicity) -> Bool {
         switch (lhs, rhs) {
         case (.recurringPeriodicity(let l), .recurringPeriodicity(let r)): return l == r
         case (.oneOffPeriodicity(let l), .oneOffPeriodicity(let r)): return l == r
@@ -2496,11 +2496,11 @@ public struct Budget {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
 
-    public var accounts: [Budget.Filter.Account] = []
+    public var accounts: [GRPCBudget.Filter.Account] = []
 
-    public var categories: [Budget.Filter.Category] = []
+    public var categories: [GRPCBudget.Filter.Category] = []
 
-    public var tags: [Budget.Filter.Tag] = []
+    public var tags: [GRPCBudget.Filter.Tag] = []
 
     public var freeTextQuery: String = String()
 
@@ -2580,7 +2580,7 @@ public struct Budget {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
 
-    public var periodUnit: Budget.RecurringPeriodicity.PeriodUnit = .unknown
+    public var periodUnit: GRPCBudget.RecurringPeriodicity.PeriodUnit = .unknown
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -2644,8 +2644,8 @@ public struct Budget {
     /// Clears the value of `end`. Subsequent reads from it will return its default value.
     public mutating func clearEnd() {_uniqueStorage()._end = nil}
 
-    public var spentAmount: CurrencyDenominatedAmount {
-      get {return _storage._spentAmount ?? CurrencyDenominatedAmount()}
+    public var spentAmount: GRPCCurrencyDenominatedAmount {
+      get {return _storage._spentAmount ?? GRPCCurrencyDenominatedAmount()}
       set {_uniqueStorage()._spentAmount = newValue}
     }
     /// Returns true if `spentAmount` has been explicitly set.
@@ -2653,8 +2653,8 @@ public struct Budget {
     /// Clears the value of `spentAmount`. Subsequent reads from it will return its default value.
     public mutating func clearSpentAmount() {_uniqueStorage()._spentAmount = nil}
 
-    public var budgetAmount: CurrencyDenominatedAmount {
-      get {return _storage._budgetAmount ?? CurrencyDenominatedAmount()}
+    public var budgetAmount: GRPCCurrencyDenominatedAmount {
+      get {return _storage._budgetAmount ?? GRPCCurrencyDenominatedAmount()}
       set {_uniqueStorage()._budgetAmount = newValue}
     }
     /// Returns true if `budgetAmount` has been explicitly set.
@@ -2674,8 +2674,8 @@ public struct Budget {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
 
-    public var budgetSpecification: Budget.Specification {
-      get {return _storage._budgetSpecification ?? Budget.Specification()}
+    public var budgetSpecification: GRPCBudget.Specification {
+      get {return _storage._budgetSpecification ?? GRPCBudget.Specification()}
       set {_uniqueStorage()._budgetSpecification = newValue}
     }
     /// Returns true if `budgetSpecification` has been explicitly set.
@@ -2683,8 +2683,8 @@ public struct Budget {
     /// Clears the value of `budgetSpecification`. Subsequent reads from it will return its default value.
     public mutating func clearBudgetSpecification() {_uniqueStorage()._budgetSpecification = nil}
 
-    public var currentBudgetPeriod: Budget.Period {
-      get {return _storage._currentBudgetPeriod ?? Budget.Period()}
+    public var currentBudgetPeriod: GRPCBudget.Period {
+      get {return _storage._currentBudgetPeriod ?? GRPCBudget.Period()}
       set {_uniqueStorage()._currentBudgetPeriod = newValue}
     }
     /// Returns true if `currentBudgetPeriod` has been explicitly set.
@@ -2709,8 +2709,8 @@ public struct Budget {
       set {_uniqueStorage()._id = newValue}
     }
 
-    public var amount: CurrencyDenominatedAmount {
-      get {return _storage._amount ?? CurrencyDenominatedAmount()}
+    public var amount: GRPCCurrencyDenominatedAmount {
+      get {return _storage._amount ?? GRPCCurrencyDenominatedAmount()}
       set {_uniqueStorage()._amount = newValue}
     }
     /// Returns true if `amount` has been explicitly set.
@@ -2718,8 +2718,8 @@ public struct Budget {
     /// Clears the value of `amount`. Subsequent reads from it will return its default value.
     public mutating func clearAmount() {_uniqueStorage()._amount = nil}
 
-    public var dispensableAmount: CurrencyDenominatedAmount {
-      get {return _storage._dispensableAmount ?? CurrencyDenominatedAmount()}
+    public var dispensableAmount: GRPCCurrencyDenominatedAmount {
+      get {return _storage._dispensableAmount ?? GRPCCurrencyDenominatedAmount()}
       set {_uniqueStorage()._dispensableAmount = newValue}
     }
     /// Returns true if `dispensableAmount` has been explicitly set.
@@ -2761,7 +2761,7 @@ public struct Budget {
   public init() {}
 }
 
-public struct Currency {
+public struct GRPCCurrency {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2771,8 +2771,8 @@ public struct Currency {
     set {_uniqueStorage()._code = newValue}
   }
 
-  public var factor: ExactNumber {
-    get {return _storage._factor ?? ExactNumber()}
+  public var factor: GRPCExactNumber {
+    get {return _storage._factor ?? GRPCExactNumber()}
     set {_uniqueStorage()._factor = newValue}
   }
   /// Returns true if `factor` has been explicitly set.
@@ -2797,7 +2797,7 @@ public struct Currency {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct Loan {
+public struct GRPCLoan {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2807,8 +2807,8 @@ public struct Loan {
     set {_uniqueStorage()._accountID = newValue}
   }
 
-  public var interest: ExactNumber {
-    get {return _storage._interest ?? ExactNumber()}
+  public var interest: GRPCExactNumber {
+    get {return _storage._interest ?? GRPCExactNumber()}
     set {_uniqueStorage()._interest = newValue}
   }
   /// Returns true if `interest` has been explicitly set.
@@ -2821,7 +2821,7 @@ public struct Loan {
     set {_uniqueStorage()._numberOfMonthsBound = newValue}
   }
 
-  public var type: Loan.TypeEnum {
+  public var type: GRPCLoan.TypeEnum {
     get {return _storage._type}
     set {_uniqueStorage()._type = newValue}
   }
@@ -2881,9 +2881,9 @@ public struct Loan {
 
 #if swift(>=4.2)
 
-extension Loan.TypeEnum: CaseIterable {
+extension GRPCLoan.TypeEnum: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [Loan.TypeEnum] = [
+  public static var allCases: [GRPCLoan.TypeEnum] = [
     .unknown,
     .mortgage,
     .blanco,
@@ -2897,13 +2897,13 @@ extension Loan.TypeEnum: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-public struct CategoryTree {
+public struct GRPCCategoryTree {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var expenses: CategoryNode {
-    get {return _storage._expenses ?? CategoryNode()}
+  public var expenses: GRPCCategoryNode {
+    get {return _storage._expenses ?? GRPCCategoryNode()}
     set {_uniqueStorage()._expenses = newValue}
   }
   /// Returns true if `expenses` has been explicitly set.
@@ -2911,8 +2911,8 @@ public struct CategoryTree {
   /// Clears the value of `expenses`. Subsequent reads from it will return its default value.
   public mutating func clearExpenses() {_uniqueStorage()._expenses = nil}
 
-  public var income: CategoryNode {
-    get {return _storage._income ?? CategoryNode()}
+  public var income: GRPCCategoryNode {
+    get {return _storage._income ?? GRPCCategoryNode()}
     set {_uniqueStorage()._income = newValue}
   }
   /// Returns true if `income` has been explicitly set.
@@ -2920,8 +2920,8 @@ public struct CategoryTree {
   /// Clears the value of `income`. Subsequent reads from it will return its default value.
   public mutating func clearIncome() {_uniqueStorage()._income = nil}
 
-  public var transfers: CategoryNode {
-    get {return _storage._transfers ?? CategoryNode()}
+  public var transfers: GRPCCategoryNode {
+    get {return _storage._transfers ?? GRPCCategoryNode()}
     set {_uniqueStorage()._transfers = newValue}
   }
   /// Returns true if `transfers` has been explicitly set.
@@ -2936,7 +2936,7 @@ public struct CategoryTree {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct CategoryNode {
+public struct GRPCCategoryNode {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2947,7 +2947,7 @@ public struct CategoryNode {
 
   public var name: String = String()
 
-  public var children: [CategoryNode] = []
+  public var children: [GRPCCategoryNode] = []
 
   public var sortOrder: Int32 = 0
 
@@ -2958,7 +2958,7 @@ public struct CategoryNode {
   public init() {}
 }
 
-public struct Device {
+public struct GRPCDevice {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2974,7 +2974,7 @@ public struct Device {
   public init() {}
 }
 
-public struct DeviceAppsFlyerOrigin {
+public struct GRPCDeviceAppsFlyerOrigin {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -2994,7 +2994,7 @@ public struct DeviceAppsFlyerOrigin {
   public init() {}
 }
 
-public struct DeviceFacebookOrigin {
+public struct GRPCDeviceFacebookOrigin {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -3016,7 +3016,7 @@ public struct DeviceFacebookOrigin {
   public init() {}
 }
 
-public struct ProviderFieldSpecification {
+public struct GRPCProviderFieldSpecification {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -3052,7 +3052,7 @@ public struct ProviderFieldSpecification {
   public init() {}
 }
 
-public struct GiroLookupEntity {
+public struct GRPCGiroLookupEntity {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -3067,8 +3067,8 @@ public struct GiroLookupEntity {
     set {_uniqueStorage()._identifier = newValue}
   }
 
-  public var images: Images {
-    get {return _storage._images ?? Images()}
+  public var images: GRPCImages {
+    get {return _storage._images ?? GRPCImages()}
     set {_uniqueStorage()._images = newValue}
   }
   /// Returns true if `images` has been explicitly set.
@@ -3088,7 +3088,7 @@ public struct GiroLookupEntity {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct Images {
+public struct GRPCImages {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -3102,7 +3102,7 @@ public struct Images {
   public init() {}
 }
 
-public struct SignableOperation {
+public struct GRPCSignableOperation {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -3121,7 +3121,7 @@ public struct SignableOperation {
     set {_uniqueStorage()._id = newValue}
   }
 
-  public var status: SignableOperation.Status {
+  public var status: GRPCSignableOperation.Status {
     get {return _storage._status}
     set {_uniqueStorage()._status = newValue}
   }
@@ -3131,7 +3131,7 @@ public struct SignableOperation {
     set {_uniqueStorage()._statusMessage = newValue}
   }
 
-  public var type: SignableOperation.TypeEnum {
+  public var type: GRPCSignableOperation.TypeEnum {
     get {return _storage._type}
     set {_uniqueStorage()._type = newValue}
   }
@@ -3155,8 +3155,8 @@ public struct SignableOperation {
     set {_uniqueStorage()._credentialID = newValue}
   }
 
-  public var thirdPartyAppAuthentication: ThirdPartyAppAuthentication {
-    get {return _storage._thirdPartyAppAuthentication ?? ThirdPartyAppAuthentication()}
+  public var thirdPartyAppAuthentication: GRPCThirdPartyAppAuthentication {
+    get {return _storage._thirdPartyAppAuthentication ?? GRPCThirdPartyAppAuthentication()}
     set {_uniqueStorage()._thirdPartyAppAuthentication = newValue}
   }
   /// Returns true if `thirdPartyAppAuthentication` has been explicitly set.
@@ -3250,9 +3250,9 @@ public struct SignableOperation {
 
 #if swift(>=4.2)
 
-extension SignableOperation.Status: CaseIterable {
+extension GRPCSignableOperation.Status: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [SignableOperation.Status] = [
+  public static var allCases: [GRPCSignableOperation.Status] = [
     .unknown,
     .created,
     .executing,
@@ -3264,9 +3264,9 @@ extension SignableOperation.Status: CaseIterable {
   ]
 }
 
-extension SignableOperation.TypeEnum: CaseIterable {
+extension GRPCSignableOperation.TypeEnum: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [SignableOperation.TypeEnum] = [
+  public static var allCases: [GRPCSignableOperation.TypeEnum] = [
     .unknown,
     .transfer,
     .accountCreate,
@@ -3275,7 +3275,7 @@ extension SignableOperation.TypeEnum: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-public struct TrackingEvent {
+public struct GRPCTrackingEvent {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -3316,7 +3316,7 @@ public struct TrackingEvent {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct TrackingTiming {
+public struct GRPCTrackingTiming {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -3361,7 +3361,7 @@ public struct TrackingTiming {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct TrackingView {
+public struct GRPCTrackingView {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -3387,7 +3387,7 @@ public struct TrackingView {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct TransactionCluster {
+public struct GRPCTransactionCluster {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -3397,13 +3397,13 @@ public struct TransactionCluster {
     set {_uniqueStorage()._description_p = newValue}
   }
 
-  public var transactions: [Transaction] {
+  public var transactions: [GRPCTransaction] {
     get {return _storage._transactions}
     set {_uniqueStorage()._transactions = newValue}
   }
 
-  public var score: ExactNumber {
-    get {return _storage._score ?? ExactNumber()}
+  public var score: GRPCExactNumber {
+    get {return _storage._score ?? GRPCExactNumber()}
     set {_uniqueStorage()._score = newValue}
   }
   /// Returns true if `score` has been explicitly set.
@@ -3411,8 +3411,8 @@ public struct TransactionCluster {
   /// Clears the value of `score`. Subsequent reads from it will return its default value.
   public mutating func clearScore() {_uniqueStorage()._score = nil}
 
-  public var categorizationImprovement: ExactNumber {
-    get {return _storage._categorizationImprovement ?? ExactNumber()}
+  public var categorizationImprovement: GRPCExactNumber {
+    get {return _storage._categorizationImprovement ?? GRPCExactNumber()}
     set {_uniqueStorage()._categorizationImprovement = newValue}
   }
   /// Returns true if `categorizationImprovement` has been explicitly set.
@@ -3427,7 +3427,7 @@ public struct TransactionCluster {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct TransferDestination {
+public struct GRPCTransferDestination {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -3442,8 +3442,8 @@ public struct TransferDestination {
     set {_uniqueStorage()._name = newValue}
   }
 
-  public var balance: CurrencyDenominatedAmount {
-    get {return _storage._balance ?? CurrencyDenominatedAmount()}
+  public var balance: GRPCCurrencyDenominatedAmount {
+    get {return _storage._balance ?? GRPCCurrencyDenominatedAmount()}
     set {_uniqueStorage()._balance = newValue}
   }
   /// Returns true if `balance` has been explicitly set.
@@ -3456,13 +3456,13 @@ public struct TransferDestination {
     set {_uniqueStorage()._displayBankName = newValue}
   }
 
-  public var type: Account.TypeEnum {
+  public var type: GRPCAccount.TypeEnum {
     get {return _storage._type}
     set {_uniqueStorage()._type = newValue}
   }
 
-  public var images: Images {
-    get {return _storage._images ?? Images()}
+  public var images: GRPCImages {
+    get {return _storage._images ?? GRPCImages()}
     set {_uniqueStorage()._images = newValue}
   }
   /// Returns true if `images` has been explicitly set.
@@ -3487,27 +3487,27 @@ public struct TransferDestination {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct TransferDestinationPerAccount {
+public struct GRPCTransferDestinationPerAccount {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   public var accountID: String = String()
 
-  public var destinations: [TransferDestination] = []
+  public var destinations: [GRPCTransferDestination] = []
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 }
 
-public struct Transfer {
+public struct GRPCTransfer {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var amount: CurrencyDenominatedAmount {
-    get {return _storage._amount ?? CurrencyDenominatedAmount()}
+  public var amount: GRPCCurrencyDenominatedAmount {
+    get {return _storage._amount ?? GRPCCurrencyDenominatedAmount()}
     set {_uniqueStorage()._amount = newValue}
   }
   /// Returns true if `amount` has been explicitly set.
@@ -3545,7 +3545,7 @@ public struct Transfer {
     set {_uniqueStorage()._sourceMessage = newValue}
   }
 
-  public var type: Transfer.TypeEnum {
+  public var type: GRPCTransfer.TypeEnum {
     get {return _storage._type}
     set {_uniqueStorage()._type = newValue}
   }
@@ -3602,9 +3602,9 @@ public struct Transfer {
 
 #if swift(>=4.2)
 
-extension Transfer.TypeEnum: CaseIterable {
+extension GRPCTransfer.TypeEnum: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [Transfer.TypeEnum] = [
+  public static var allCases: [GRPCTransfer.TypeEnum] = [
     .unknown,
     .einvoice,
     .payment,
@@ -3614,7 +3614,7 @@ extension Transfer.TypeEnum: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-public struct UserProfile {
+public struct GRPCUserProfile {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -3630,13 +3630,13 @@ public struct UserProfile {
   }
 
   /// The login methods that the user is authorized to use, for example `BANKID`.
-  public var authorizedLoginMethods: [AuthenticationMethod] {
+  public var authorizedLoginMethods: [GRPCAuthenticationMethod] {
     get {return _storage._authorizedLoginMethods}
     set {_uniqueStorage()._authorizedLoginMethods = newValue}
   }
 
   /// The login methods that are available on the market, for example `EMAIL_AND_PASSWORD` and `BANKID`.
-  public var availableLoginMethods: [AuthenticationMethod] {
+  public var availableLoginMethods: [GRPCAuthenticationMethod] {
     get {return _storage._availableLoginMethods}
     set {_uniqueStorage()._availableLoginMethods = newValue}
   }
@@ -3657,7 +3657,7 @@ public struct UserProfile {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct UserConfiguration {
+public struct GRPCUserConfiguration {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -3667,8 +3667,8 @@ public struct UserConfiguration {
     set {_uniqueStorage()._flags = newValue}
   }
 
-  public var i18NConfiguration: UserConfiguration.I18NConfiguration {
-    get {return _storage._i18NConfiguration ?? UserConfiguration.I18NConfiguration()}
+  public var i18NConfiguration: GRPCUserConfiguration.I18NConfiguration {
+    get {return _storage._i18NConfiguration ?? GRPCUserConfiguration.I18NConfiguration()}
     set {_uniqueStorage()._i18NConfiguration = newValue}
   }
   /// Returns true if `i18NConfiguration` has been explicitly set.
@@ -3706,7 +3706,7 @@ public struct UserConfiguration {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct I18NSettings {
+public struct GRPCI18NSettings {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -3718,12 +3718,12 @@ public struct I18NSettings {
   public init() {}
 }
 
-public struct PeriodSettings {
+public struct GRPCPeriodSettings {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var periodDateBreakType: PeriodDateBreakType = .unknown
+  public var periodDateBreakType: GRPCPeriodDateBreakType = .unknown
 
   public var monthlyAdjustedDay: Int32 = 0
 
@@ -3732,33 +3732,33 @@ public struct PeriodSettings {
   public init() {}
 }
 
-public struct NotificationSettings {
+public struct GRPCNotificationSettings {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var groups: [NotificationGroup] = []
+  public var groups: [GRPCNotificationGroup] = []
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 }
 
-public struct NotificationGroup {
+public struct GRPCNotificationGroup {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   public var title: String = String()
 
-  public var notificationTypes: [NotificationType] = []
+  public var notificationTypes: [GRPCNotificationType] = []
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 }
 
-public struct NotificationType {
+public struct GRPCNotificationType {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -3774,7 +3774,7 @@ public struct NotificationType {
   public init() {}
 }
 
-public struct UserOrigin {
+public struct GRPCUserOrigin {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -3857,8 +3857,8 @@ public struct UserOrigin {
     set {_uniqueStorage()._extraParam5 = newValue}
   }
 
-  public var facebookAd: FacebookAd {
-    get {return _storage._facebookAd ?? FacebookAd()}
+  public var facebookAd: GRPCFacebookAd {
+    get {return _storage._facebookAd ?? GRPCFacebookAd()}
     set {_uniqueStorage()._facebookAd = newValue}
   }
   /// Returns true if `facebookAd` has been explicitly set.
@@ -3873,7 +3873,7 @@ public struct UserOrigin {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct FacebookAd {
+public struct GRPCFacebookAd {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -3895,39 +3895,39 @@ public struct FacebookAd {
   public init() {}
 }
 
-public struct AuthenticationKey {
+public struct GRPCAuthenticationKey {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var keyType: AuthenticationKeyType = .keyTypeUnknown
+  public var keyType: GRPCAuthenticationKeyType = .keyTypeUnknown
 
   public var id: String = String()
 
   public var key: String = String()
 
-  public var source: AuthenticationSource = .unknown
+  public var source: GRPCAuthenticationSource = .unknown
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 }
 
-public struct IdentityEventAnswer {
+public struct GRPCIdentityEventAnswer {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   public var label: String = String()
 
-  public var key: IdentityAnswerKey = .unknown
+  public var key: GRPCIdentityAnswerKey = .unknown
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 }
 
-public struct IdentityEvent {
+public struct GRPCIdentityEvent {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -3961,13 +3961,13 @@ public struct IdentityEvent {
     set {_uniqueStorage()._question = newValue}
   }
 
-  public var potentialAnswers: [IdentityEventAnswer] {
+  public var potentialAnswers: [GRPCIdentityEventAnswer] {
     get {return _storage._potentialAnswers}
     set {_uniqueStorage()._potentialAnswers = newValue}
   }
 
-  public var answer: IdentityDocumentedAnswer {
-    get {return _storage._answer ?? IdentityDocumentedAnswer()}
+  public var answer: GRPCIdentityDocumentedAnswer {
+    get {return _storage._answer ?? GRPCIdentityDocumentedAnswer()}
     set {_uniqueStorage()._answer = newValue}
   }
   /// Returns true if `answer` has been explicitly set.
@@ -3975,8 +3975,8 @@ public struct IdentityEvent {
   /// Clears the value of `answer`. Subsequent reads from it will return its default value.
   public mutating func clearAnswer() {_uniqueStorage()._answer = nil}
 
-  public var documentation: IdentityEventDocumentation {
-    get {return _storage._documentation ?? IdentityEventDocumentation()}
+  public var documentation: GRPCIdentityEventDocumentation {
+    get {return _storage._documentation ?? GRPCIdentityEventDocumentation()}
     set {_uniqueStorage()._documentation = newValue}
   }
   /// Returns true if `documentation` has been explicitly set.
@@ -3984,7 +3984,7 @@ public struct IdentityEvent {
   /// Clears the value of `documentation`. Subsequent reads from it will return its default value.
   public mutating func clearDocumentation() {_uniqueStorage()._documentation = nil}
 
-  public var transactions: [Transaction] {
+  public var transactions: [GRPCTransaction] {
     get {return _storage._transactions}
     set {_uniqueStorage()._transactions = newValue}
   }
@@ -3996,7 +3996,7 @@ public struct IdentityEvent {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct IdentityEventSummary {
+public struct GRPCIdentityEventSummary {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4025,8 +4025,8 @@ public struct IdentityEventSummary {
     set {_uniqueStorage()._seen = newValue}
   }
 
-  public var answer: IdentityDocumentedAnswer {
-    get {return _storage._answer ?? IdentityDocumentedAnswer()}
+  public var answer: GRPCIdentityDocumentedAnswer {
+    get {return _storage._answer ?? GRPCIdentityDocumentedAnswer()}
     set {_uniqueStorage()._answer = newValue}
   }
   /// Returns true if `answer` has been explicitly set.
@@ -4041,7 +4041,7 @@ public struct IdentityEventSummary {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct IdentityEventDocumentation {
+public struct GRPCIdentityEventDocumentation {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4061,7 +4061,7 @@ public struct IdentityEventDocumentation {
   public init() {}
 }
 
-public struct IdentityStateAddress {
+public struct GRPCIdentityStateAddress {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4079,7 +4079,7 @@ public struct IdentityStateAddress {
   public init() {}
 }
 
-public struct IdentityStateProperty {
+public struct GRPCIdentityStateProperty {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4115,7 +4115,7 @@ public struct IdentityStateProperty {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct IdentityStateCompany {
+public struct GRPCIdentityStateCompany {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4129,7 +4129,7 @@ public struct IdentityStateCompany {
   public init() {}
 }
 
-public struct IdentityStateRole {
+public struct GRPCIdentityStateRole {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4141,13 +4141,13 @@ public struct IdentityStateRole {
   public init() {}
 }
 
-public struct IdentityStateCompanyEngagement {
+public struct GRPCIdentityStateCompanyEngagement {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var company: IdentityStateCompany {
-    get {return _storage._company ?? IdentityStateCompany()}
+  public var company: GRPCIdentityStateCompany {
+    get {return _storage._company ?? GRPCIdentityStateCompany()}
     set {_uniqueStorage()._company = newValue}
   }
   /// Returns true if `company` has been explicitly set.
@@ -4155,7 +4155,7 @@ public struct IdentityStateCompanyEngagement {
   /// Clears the value of `company`. Subsequent reads from it will return its default value.
   public mutating func clearCompany() {_uniqueStorage()._company = nil}
 
-  public var roles: [IdentityStateRole] {
+  public var roles: [GRPCIdentityStateRole] {
     get {return _storage._roles}
     set {_uniqueStorage()._roles = newValue}
   }
@@ -4176,7 +4176,7 @@ public struct IdentityStateCompanyEngagement {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct IdentityStateCreditScore {
+public struct GRPCIdentityStateCreditScore {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4192,13 +4192,13 @@ public struct IdentityStateCreditScore {
   public init() {}
 }
 
-public struct IdentityStateTaxDeclaration {
+public struct GRPCIdentityStateTaxDeclaration {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var finalTax: CurrencyDenominatedAmount {
-    get {return _storage._finalTax ?? CurrencyDenominatedAmount()}
+  public var finalTax: GRPCCurrencyDenominatedAmount {
+    get {return _storage._finalTax ?? GRPCCurrencyDenominatedAmount()}
     set {_uniqueStorage()._finalTax = newValue}
   }
   /// Returns true if `finalTax` has been explicitly set.
@@ -4206,8 +4206,8 @@ public struct IdentityStateTaxDeclaration {
   /// Clears the value of `finalTax`. Subsequent reads from it will return its default value.
   public mutating func clearFinalTax() {_uniqueStorage()._finalTax = nil}
 
-  public var totalIncome: CurrencyDenominatedAmount {
-    get {return _storage._totalIncome ?? CurrencyDenominatedAmount()}
+  public var totalIncome: GRPCCurrencyDenominatedAmount {
+    get {return _storage._totalIncome ?? GRPCCurrencyDenominatedAmount()}
     set {_uniqueStorage()._totalIncome = newValue}
   }
   /// Returns true if `totalIncome` has been explicitly set.
@@ -4215,8 +4215,8 @@ public struct IdentityStateTaxDeclaration {
   /// Clears the value of `totalIncome`. Subsequent reads from it will return its default value.
   public mutating func clearTotalIncome() {_uniqueStorage()._totalIncome = nil}
 
-  public var incomeByService: CurrencyDenominatedAmount {
-    get {return _storage._incomeByService ?? CurrencyDenominatedAmount()}
+  public var incomeByService: GRPCCurrencyDenominatedAmount {
+    get {return _storage._incomeByService ?? GRPCCurrencyDenominatedAmount()}
     set {_uniqueStorage()._incomeByService = newValue}
   }
   /// Returns true if `incomeByService` has been explicitly set.
@@ -4224,8 +4224,8 @@ public struct IdentityStateTaxDeclaration {
   /// Clears the value of `incomeByService`. Subsequent reads from it will return its default value.
   public mutating func clearIncomeByService() {_uniqueStorage()._incomeByService = nil}
 
-  public var incomeByCapital: CurrencyDenominatedAmount {
-    get {return _storage._incomeByCapital ?? CurrencyDenominatedAmount()}
+  public var incomeByCapital: GRPCCurrencyDenominatedAmount {
+    get {return _storage._incomeByCapital ?? GRPCCurrencyDenominatedAmount()}
     set {_uniqueStorage()._incomeByCapital = newValue}
   }
   /// Returns true if `incomeByCapital` has been explicitly set.
@@ -4254,7 +4254,7 @@ public struct IdentityStateTaxDeclaration {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct IdentityStateRecordOfNonPayment {
+public struct GRPCIdentityStateRecordOfNonPayment {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4264,8 +4264,8 @@ public struct IdentityStateRecordOfNonPayment {
     set {_uniqueStorage()._name = newValue}
   }
 
-  public var amount: CurrencyDenominatedAmount {
-    get {return _storage._amount ?? CurrencyDenominatedAmount()}
+  public var amount: GRPCCurrencyDenominatedAmount {
+    get {return _storage._amount ?? GRPCCurrencyDenominatedAmount()}
     set {_uniqueStorage()._amount = newValue}
   }
   /// Returns true if `amount` has been explicitly set.
@@ -4289,13 +4289,13 @@ public struct IdentityStateRecordOfNonPayment {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct IdentityStateOutstandingDebt {
+public struct GRPCIdentityStateOutstandingDebt {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var amount: CurrencyDenominatedAmount {
-    get {return _storage._amount ?? CurrencyDenominatedAmount()}
+  public var amount: GRPCCurrencyDenominatedAmount {
+    get {return _storage._amount ?? GRPCCurrencyDenominatedAmount()}
     set {_uniqueStorage()._amount = newValue}
   }
   /// Returns true if `amount` has been explicitly set.
@@ -4324,7 +4324,7 @@ public struct IdentityStateOutstandingDebt {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct IdentityState {
+public struct GRPCIdentityState {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4344,8 +4344,8 @@ public struct IdentityState {
     set {_uniqueStorage()._nationalID = newValue}
   }
 
-  public var address: IdentityStateAddress {
-    get {return _storage._address ?? IdentityStateAddress()}
+  public var address: GRPCIdentityStateAddress {
+    get {return _storage._address ?? GRPCIdentityStateAddress()}
     set {_uniqueStorage()._address = newValue}
   }
   /// Returns true if `address` has been explicitly set.
@@ -4353,18 +4353,18 @@ public struct IdentityState {
   /// Clears the value of `address`. Subsequent reads from it will return its default value.
   public mutating func clearAddress() {_uniqueStorage()._address = nil}
 
-  public var properties: [IdentityStateProperty] {
+  public var properties: [GRPCIdentityStateProperty] {
     get {return _storage._properties}
     set {_uniqueStorage()._properties = newValue}
   }
 
-  public var companyEngagements: [IdentityStateCompanyEngagement] {
+  public var companyEngagements: [GRPCIdentityStateCompanyEngagement] {
     get {return _storage._companyEngagements}
     set {_uniqueStorage()._companyEngagements = newValue}
   }
 
-  public var creditScore: IdentityStateCreditScore {
-    get {return _storage._creditScore ?? IdentityStateCreditScore()}
+  public var creditScore: GRPCIdentityStateCreditScore {
+    get {return _storage._creditScore ?? GRPCIdentityStateCreditScore()}
     set {_uniqueStorage()._creditScore = newValue}
   }
   /// Returns true if `creditScore` has been explicitly set.
@@ -4372,8 +4372,8 @@ public struct IdentityState {
   /// Clears the value of `creditScore`. Subsequent reads from it will return its default value.
   public mutating func clearCreditScore() {_uniqueStorage()._creditScore = nil}
 
-  public var mostRecentTaxDeclaration: IdentityStateTaxDeclaration {
-    get {return _storage._mostRecentTaxDeclaration ?? IdentityStateTaxDeclaration()}
+  public var mostRecentTaxDeclaration: GRPCIdentityStateTaxDeclaration {
+    get {return _storage._mostRecentTaxDeclaration ?? GRPCIdentityStateTaxDeclaration()}
     set {_uniqueStorage()._mostRecentTaxDeclaration = newValue}
   }
   /// Returns true if `mostRecentTaxDeclaration` has been explicitly set.
@@ -4381,13 +4381,13 @@ public struct IdentityState {
   /// Clears the value of `mostRecentTaxDeclaration`. Subsequent reads from it will return its default value.
   public mutating func clearMostRecentTaxDeclaration() {_uniqueStorage()._mostRecentTaxDeclaration = nil}
 
-  public var recordsOfNonPayment: [IdentityStateRecordOfNonPayment] {
+  public var recordsOfNonPayment: [GRPCIdentityStateRecordOfNonPayment] {
     get {return _storage._recordsOfNonPayment}
     set {_uniqueStorage()._recordsOfNonPayment = newValue}
   }
 
-  public var outstandingDebt: IdentityStateOutstandingDebt {
-    get {return _storage._outstandingDebt ?? IdentityStateOutstandingDebt()}
+  public var outstandingDebt: GRPCIdentityStateOutstandingDebt {
+    get {return _storage._outstandingDebt ?? GRPCIdentityStateOutstandingDebt()}
     set {_uniqueStorage()._outstandingDebt = newValue}
   }
   /// Returns true if `outstandingDebt` has been explicitly set.
@@ -4402,19 +4402,19 @@ public struct IdentityState {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct IdentityDocumentedAnswer {
+public struct GRPCIdentityDocumentedAnswer {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var answer: IdentityAnswerKey = .unknown
+  public var answer: GRPCIdentityAnswerKey = .unknown
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 }
 
-public struct Consent {
+public struct GRPCConsent {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4429,7 +4429,7 @@ public struct Consent {
 
   public var checksum: String = String()
 
-  public var messages: [ConsentMessage] = []
+  public var messages: [GRPCConsentMessage] = []
 
   public var attachments: Dictionary<String,String> = [:]
 
@@ -4438,7 +4438,7 @@ public struct Consent {
   public init() {}
 }
 
-public struct UserConsent {
+public struct GRPCUserConsent {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4458,7 +4458,7 @@ public struct UserConsent {
     set {_uniqueStorage()._version = newValue}
   }
 
-  public var action: ConsentAction {
+  public var action: GRPCConsentAction {
     get {return _storage._action}
     set {_uniqueStorage()._action = newValue}
   }
@@ -4479,21 +4479,21 @@ public struct UserConsent {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct ConsentMessage {
+public struct GRPCConsentMessage {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   public var message: String = String()
 
-  public var links: [ConsentMessageLink] = []
+  public var links: [GRPCConsentMessageLink] = []
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 }
 
-public struct ConsentMessageLink {
+public struct GRPCConsentMessageLink {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4509,7 +4509,7 @@ public struct ConsentMessageLink {
   public init() {}
 }
 
-public struct ThirdPartyAppAuthentication {
+public struct GRPCThirdPartyAppAuthentication {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4534,8 +4534,8 @@ public struct ThirdPartyAppAuthentication {
     set {_uniqueStorage()._upgradeMessage = newValue}
   }
 
-  public var ios: ThirdPartyAppAuthentication.Ios {
-    get {return _storage._ios ?? ThirdPartyAppAuthentication.Ios()}
+  public var ios: GRPCThirdPartyAppAuthentication.Ios {
+    get {return _storage._ios ?? GRPCThirdPartyAppAuthentication.Ios()}
     set {_uniqueStorage()._ios = newValue}
   }
   /// Returns true if `ios` has been explicitly set.
@@ -4543,8 +4543,8 @@ public struct ThirdPartyAppAuthentication {
   /// Clears the value of `ios`. Subsequent reads from it will return its default value.
   public mutating func clearIos() {_uniqueStorage()._ios = nil}
 
-  public var android: ThirdPartyAppAuthentication.Android {
-    get {return _storage._android ?? ThirdPartyAppAuthentication.Android()}
+  public var android: GRPCThirdPartyAppAuthentication.Android {
+    get {return _storage._android ?? GRPCThirdPartyAppAuthentication.Android()}
     set {_uniqueStorage()._android = newValue}
   }
   /// Returns true if `android` has been explicitly set.
@@ -4552,8 +4552,8 @@ public struct ThirdPartyAppAuthentication {
   /// Clears the value of `android`. Subsequent reads from it will return its default value.
   public mutating func clearAndroid() {_uniqueStorage()._android = nil}
 
-  public var web: ThirdPartyAppAuthentication.Web {
-    get {return _storage._web ?? ThirdPartyAppAuthentication.Web()}
+  public var web: GRPCThirdPartyAppAuthentication.Web {
+    get {return _storage._web ?? GRPCThirdPartyAppAuthentication.Web()}
     set {_uniqueStorage()._web = newValue}
   }
   /// Returns true if `web` has been explicitly set.
@@ -4614,115 +4614,115 @@ public struct ThirdPartyAppAuthentication {
 
 /// Wrap lists in objects, Only used in streaming
 /// Since we stream lists, we have to encapsulate them in objects so we can see the difference between empty lists that need action and those that don't
-public struct Credentials {
+public struct GRPCCredentials {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var credential: [Credential] = []
+  public var credential: [GRPCCredential] = []
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 }
 
-public struct Accounts {
+public struct GRPCAccounts {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var account: [Account] = []
+  public var account: [GRPCAccount] = []
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 }
 
-public struct Transactions {
+public struct GRPCTransactions {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var transaction: [Transaction] = []
+  public var transaction: [GRPCTransaction] = []
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 }
 
-public struct Providers {
+public struct GRPCProviders {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var provider: [Provider] = []
+  public var provider: [GRPCProvider] = []
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 }
 
-public struct Periods {
+public struct GRPCPeriods {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var period: Dictionary<String,Period> = [:]
+  public var period: Dictionary<String,GRPCPeriod> = [:]
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 }
 
-public struct FollowItems {
+public struct GRPCFollowItems {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var followItem: [FollowItem] = []
+  public var followItem: [GRPCFollowItem] = []
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 }
 
-public struct SignableOperations {
+public struct GRPCSignableOperations {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var signableOperation: [SignableOperation] = []
+  public var signableOperation: [GRPCSignableOperation] = []
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 }
 
-public struct BudgetSummaries {
+public struct GRPCBudgetSummaries {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var budgetSummaries: [Budget.Summary] = []
+  public var budgetSummaries: [GRPCBudget.Summary] = []
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 }
 
-public struct Insights {
+public struct GRPCInsights {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
-  public var insights: [Insight] = []
+  public var insights: [GRPCInsight] = []
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 }
 
-public struct InsightsCategories {
+public struct GRPCInsightsCategories {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4731,7 +4731,7 @@ public struct InsightsCategories {
 
   public var body: String = String()
 
-  public var amountByCategoryCode: [InsightsCategories.AmountByCategoryCode] = []
+  public var amountByCategoryCode: [GRPCInsightsCategories.AmountByCategoryCode] = []
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -4745,8 +4745,8 @@ public struct InsightsCategories {
       set {_uniqueStorage()._categoryCode = newValue}
     }
 
-    public var amount: CurrencyDenominatedAmount {
-      get {return _storage._amount ?? CurrencyDenominatedAmount()}
+    public var amount: GRPCCurrencyDenominatedAmount {
+      get {return _storage._amount ?? GRPCCurrencyDenominatedAmount()}
       set {_uniqueStorage()._amount = newValue}
     }
     /// Returns true if `amount` has been explicitly set.
@@ -4764,7 +4764,7 @@ public struct InsightsCategories {
   public init() {}
 }
 
-public struct InsightsMortgage {
+public struct GRPCInsightsMortgage {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4773,7 +4773,7 @@ public struct InsightsMortgage {
 
   public var body: String = String()
 
-  public var distribution: [InsightsMortgage.HistogramBucket] = []
+  public var distribution: [GRPCInsightsMortgage.HistogramBucket] = []
 
   public var interestRate: Double = 0
 
@@ -4798,7 +4798,7 @@ public struct InsightsMortgage {
   public init() {}
 }
 
-public struct InsightsSavings {
+public struct GRPCInsightsSavings {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4813,8 +4813,8 @@ public struct InsightsSavings {
     set {_uniqueStorage()._body = newValue}
   }
 
-  public var amount: CurrencyDenominatedAmount {
-    get {return _storage._amount ?? CurrencyDenominatedAmount()}
+  public var amount: GRPCCurrencyDenominatedAmount {
+    get {return _storage._amount ?? GRPCCurrencyDenominatedAmount()}
     set {_uniqueStorage()._amount = newValue}
   }
   /// Returns true if `amount` has been explicitly set.
@@ -4829,7 +4829,7 @@ public struct InsightsSavings {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct InsightsDailySpend {
+public struct GRPCInsightsDailySpend {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4838,7 +4838,7 @@ public struct InsightsDailySpend {
 
   public var body: String = String()
 
-  public var amountByWeekday: [InsightsDailySpend.AmountByWeekday] = []
+  public var amountByWeekday: [GRPCInsightsDailySpend.AmountByWeekday] = []
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -4852,8 +4852,8 @@ public struct InsightsDailySpend {
       set {_uniqueStorage()._weekday = newValue}
     }
 
-    public var amount: CurrencyDenominatedAmount {
-      get {return _storage._amount ?? CurrencyDenominatedAmount()}
+    public var amount: GRPCCurrencyDenominatedAmount {
+      get {return _storage._amount ?? GRPCCurrencyDenominatedAmount()}
       set {_uniqueStorage()._amount = newValue}
     }
     /// Returns true if `amount` has been explicitly set.
@@ -4871,7 +4871,7 @@ public struct InsightsDailySpend {
   public init() {}
 }
 
-public struct InsightsLeftToSpend {
+public struct GRPCInsightsLeftToSpend {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4880,7 +4880,7 @@ public struct InsightsLeftToSpend {
 
   public var body: String = String()
 
-  public var leftToSpendByPeriod: [InsightsLeftToSpend.LeftToSpendByPeriod] = []
+  public var leftToSpendByPeriod: [GRPCInsightsLeftToSpend.LeftToSpendByPeriod] = []
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -4901,7 +4901,7 @@ public struct InsightsLeftToSpend {
   public init() {}
 }
 
-public struct BusinessDays {
+public struct GRPCBusinessDays {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4917,7 +4917,7 @@ public struct BusinessDays {
   public init() {}
 }
 
-public struct ErrorCode {
+public struct GRPCErrorCode {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4929,7 +4929,7 @@ public struct ErrorCode {
   public init() {}
 }
 
-public struct Property {
+public struct GRPCProperty {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -4969,7 +4969,7 @@ public struct Property {
     set {_uniqueStorage()._longitude = newValue}
   }
 
-  public var type: Property.TypeEnum {
+  public var type: GRPCProperty.TypeEnum {
     get {return _storage._type}
     set {_uniqueStorage()._type = newValue}
   }
@@ -5005,8 +5005,8 @@ public struct Property {
     set {_uniqueStorage()._userModifiedLoanAccountIds = newValue}
   }
 
-  public var valuationAmount: CurrencyDenominatedAmount {
-    get {return _storage._valuationAmount ?? CurrencyDenominatedAmount()}
+  public var valuationAmount: GRPCCurrencyDenominatedAmount {
+    get {return _storage._valuationAmount ?? GRPCCurrencyDenominatedAmount()}
     set {_uniqueStorage()._valuationAmount = newValue}
   }
   /// Returns true if `valuationAmount` has been explicitly set.
@@ -5014,8 +5014,8 @@ public struct Property {
   /// Clears the value of `valuationAmount`. Subsequent reads from it will return its default value.
   public mutating func clearValuationAmount() {_uniqueStorage()._valuationAmount = nil}
 
-  public var totalLoanAmount: CurrencyDenominatedAmount {
-    get {return _storage._totalLoanAmount ?? CurrencyDenominatedAmount()}
+  public var totalLoanAmount: GRPCCurrencyDenominatedAmount {
+    get {return _storage._totalLoanAmount ?? GRPCCurrencyDenominatedAmount()}
     set {_uniqueStorage()._totalLoanAmount = newValue}
   }
   /// Returns true if `totalLoanAmount` has been explicitly set.
@@ -5023,8 +5023,8 @@ public struct Property {
   /// Clears the value of `totalLoanAmount`. Subsequent reads from it will return its default value.
   public mutating func clearTotalLoanAmount() {_uniqueStorage()._totalLoanAmount = nil}
 
-  public var averageInterestRate: ExactNumber {
-    get {return _storage._averageInterestRate ?? ExactNumber()}
+  public var averageInterestRate: GRPCExactNumber {
+    get {return _storage._averageInterestRate ?? GRPCExactNumber()}
     set {_uniqueStorage()._averageInterestRate = newValue}
   }
   /// Returns true if `averageInterestRate` has been explicitly set.
@@ -5075,9 +5075,9 @@ public struct Property {
 
 #if swift(>=4.2)
 
-extension Property.TypeEnum: CaseIterable {
+extension GRPCProperty.TypeEnum: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [Property.TypeEnum] = [
+  public static var allCases: [GRPCProperty.TypeEnum] = [
     .propertyTypeUnknown,
     .propertyTypeHouse,
     .propertyTypeApartment,
@@ -5087,7 +5087,7 @@ extension Property.TypeEnum: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-public struct Market {
+public struct GRPCMarket {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -5096,14 +5096,14 @@ public struct Market {
 
   public var label: String = String()
 
-  public var status: MarketStatus = .unknown
+  public var status: GRPCMarketStatus = .unknown
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
   public init() {}
 }
 
-public struct ProviderMarket {
+public struct GRPCProviderMarket {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -5115,7 +5115,7 @@ public struct ProviderMarket {
   public init() {}
 }
 
-public struct PropertyValuationEvent {
+public struct GRPCPropertyValuationEvent {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -5134,8 +5134,8 @@ public struct PropertyValuationEvent {
   /// Clears the value of `date`. Subsequent reads from it will return its default value.
   public mutating func clearDate() {_uniqueStorage()._date = nil}
 
-  public var valuationAmount: CurrencyDenominatedAmount {
-    get {return _storage._valuationAmount ?? CurrencyDenominatedAmount()}
+  public var valuationAmount: GRPCCurrencyDenominatedAmount {
+    get {return _storage._valuationAmount ?? GRPCCurrencyDenominatedAmount()}
     set {_uniqueStorage()._valuationAmount = newValue}
   }
   /// Returns true if `valuationAmount` has been explicitly set.
@@ -5150,7 +5150,7 @@ public struct PropertyValuationEvent {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct PropertyValuationSummary {
+public struct GRPCPropertyValuationSummary {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -5178,8 +5178,8 @@ public struct PropertyValuationSummary {
   /// Clears the value of `to`. Subsequent reads from it will return its default value.
   public mutating func clearTo() {_uniqueStorage()._to = nil}
 
-  public var fromValuationAmount: CurrencyDenominatedAmount {
-    get {return _storage._fromValuationAmount ?? CurrencyDenominatedAmount()}
+  public var fromValuationAmount: GRPCCurrencyDenominatedAmount {
+    get {return _storage._fromValuationAmount ?? GRPCCurrencyDenominatedAmount()}
     set {_uniqueStorage()._fromValuationAmount = newValue}
   }
   /// Returns true if `fromValuationAmount` has been explicitly set.
@@ -5187,8 +5187,8 @@ public struct PropertyValuationSummary {
   /// Clears the value of `fromValuationAmount`. Subsequent reads from it will return its default value.
   public mutating func clearFromValuationAmount() {_uniqueStorage()._fromValuationAmount = nil}
 
-  public var toValuationAmount: CurrencyDenominatedAmount {
-    get {return _storage._toValuationAmount ?? CurrencyDenominatedAmount()}
+  public var toValuationAmount: GRPCCurrencyDenominatedAmount {
+    get {return _storage._toValuationAmount ?? GRPCCurrencyDenominatedAmount()}
     set {_uniqueStorage()._toValuationAmount = newValue}
   }
   /// Returns true if `toValuationAmount` has been explicitly set.
@@ -5203,7 +5203,7 @@ public struct PropertyValuationSummary {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct Insight {
+public struct GRPCInsight {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -5218,8 +5218,8 @@ public struct Insight {
     set {_uniqueStorage()._type = newValue}
   }
 
-  public var score: ExactNumber {
-    get {return _storage._score ?? ExactNumber()}
+  public var score: GRPCExactNumber {
+    get {return _storage._score ?? GRPCExactNumber()}
     set {_uniqueStorage()._score = newValue}
   }
   /// Returns true if `score` has been explicitly set.
@@ -5255,12 +5255,12 @@ public struct Insight {
   /// Clears the value of `expirationTime`. Subsequent reads from it will return its default value.
   public mutating func clearExpirationTime() {_uniqueStorage()._expirationTime = nil}
 
-  public var dataSets: [InsightDataSet] {
+  public var dataSets: [GRPCInsightDataSet] {
     get {return _storage._dataSets}
     set {_uniqueStorage()._dataSets = newValue}
   }
 
-  public var actions: [InsightAction] {
+  public var actions: [GRPCInsightAction] {
     get {return _storage._actions}
     set {_uniqueStorage()._actions = newValue}
   }
@@ -5272,7 +5272,7 @@ public struct Insight {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct ArchivedInsight {
+public struct GRPCArchivedInsight {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -5287,8 +5287,8 @@ public struct ArchivedInsight {
     set {_uniqueStorage()._type = newValue}
   }
 
-  public var score: ExactNumber {
-    get {return _storage._score ?? ExactNumber()}
+  public var score: GRPCExactNumber {
+    get {return _storage._score ?? GRPCExactNumber()}
     set {_uniqueStorage()._score = newValue}
   }
   /// Returns true if `score` has been explicitly set.
@@ -5324,13 +5324,13 @@ public struct ArchivedInsight {
   /// Clears the value of `archivedTime`. Subsequent reads from it will return its default value.
   public mutating func clearArchivedTime() {_uniqueStorage()._archivedTime = nil}
 
-  public var dataSets: [InsightDataSet] {
+  public var dataSets: [GRPCInsightDataSet] {
     get {return _storage._dataSets}
     set {_uniqueStorage()._dataSets = newValue}
   }
 
-  public var action: InsightAction {
-    get {return _storage._action ?? InsightAction()}
+  public var action: GRPCInsightAction {
+    get {return _storage._action ?? GRPCInsightAction()}
     set {_uniqueStorage()._action = newValue}
   }
   /// Returns true if `action` has been explicitly set.
@@ -5345,14 +5345,14 @@ public struct ArchivedInsight {
   fileprivate var _storage = _StorageClass.defaultInstance
 }
 
-public struct InsightDataSet {
+public struct GRPCInsightDataSet {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
 
   public var name: String = String()
 
-  public var dataSeries: [InsightDataSet.DataSeries] = []
+  public var dataSeries: [GRPCInsightDataSet.DataSeries] = []
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -5365,7 +5365,7 @@ public struct InsightDataSet {
 
     public var type: String = String()
 
-    public var dataPoints: [InsightDataSet.DataSeries.DataPoint] = []
+    public var dataPoints: [GRPCInsightDataSet.DataSeries.DataPoint] = []
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -5389,7 +5389,7 @@ public struct InsightDataSet {
   public init() {}
 }
 
-public struct InsightAction {
+public struct GRPCInsightAction {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -5398,11 +5398,11 @@ public struct InsightAction {
 
   public var target: String = String()
 
-  public var type: InsightAction.TypeEnum = .unknown
+  public var type: GRPCInsightAction.TypeEnum = .unknown
 
-  public var method: InsightAction.Method = .unknown
+  public var method: GRPCInsightAction.Method = .unknown
 
-  public var group: InsightAction.Group = .unknown
+  public var group: GRPCInsightAction.Group = .unknown
 
   public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -5567,18 +5567,18 @@ public struct InsightAction {
 
 #if swift(>=4.2)
 
-extension InsightAction.TypeEnum: CaseIterable {
+extension GRPCInsightAction.TypeEnum: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [InsightAction.TypeEnum] = [
+  public static var allCases: [GRPCInsightAction.TypeEnum] = [
     .unknown,
     .primary,
     .secondary,
   ]
 }
 
-extension InsightAction.Method: CaseIterable {
+extension GRPCInsightAction.Method: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [InsightAction.Method] = [
+  public static var allCases: [GRPCInsightAction.Method] = [
     .unknown,
     .acknowledge,
     .create,
@@ -5590,9 +5590,9 @@ extension InsightAction.Method: CaseIterable {
   ]
 }
 
-extension InsightAction.Group: CaseIterable {
+extension GRPCInsightAction.Group: CaseIterable {
   // The compiler won't synthesize support with the UNRECOGNIZED case.
-  public static var allCases: [InsightAction.Group] = [
+  public static var allCases: [GRPCInsightAction.Group] = [
     .unknown,
     .educating,
     .encouraging,
@@ -5617,7 +5617,7 @@ extension InsightAction.Group: CaseIterable {
 
 #endif  // swift(>=4.2)
 
-public struct RecurringTransaction {
+public struct GRPCRecurringTransaction {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -5634,7 +5634,7 @@ public struct RecurringTransaction {
       set {_uniqueStorage()._transactionID = newValue}
     }
 
-    public var type: RecurringTransaction.Transaction.TypeEnum {
+    public var type: GRPCRecurringTransaction.Transaction.TypeEnum {
       get {return _storage._type}
       set {_uniqueStorage()._type = newValue}
     }
@@ -5653,8 +5653,8 @@ public struct RecurringTransaction {
       set {_uniqueStorage()._description_p = newValue}
     }
 
-    public var amount: CurrencyDenominatedAmount {
-      get {return _storage._amount ?? CurrencyDenominatedAmount()}
+    public var amount: GRPCCurrencyDenominatedAmount {
+      get {return _storage._amount ?? GRPCCurrencyDenominatedAmount()}
       set {_uniqueStorage()._amount = newValue}
     }
     /// Returns true if `amount` has been explicitly set.
@@ -5662,8 +5662,8 @@ public struct RecurringTransaction {
     /// Clears the value of `amount`. Subsequent reads from it will return its default value.
     public mutating func clearAmount() {_uniqueStorage()._amount = nil}
 
-    public var category: RecurringTransaction.Category {
-      get {return _storage._category ?? RecurringTransaction.Category()}
+    public var category: GRPCRecurringTransaction.Category {
+      get {return _storage._category ?? GRPCRecurringTransaction.Category()}
       set {_uniqueStorage()._category = newValue}
     }
     /// Returns true if `category` has been explicitly set.
@@ -5676,7 +5676,7 @@ public struct RecurringTransaction {
       set {_uniqueStorage()._groupID = newValue}
     }
 
-    public var source: RecurringTransaction.Transaction.Source {
+    public var source: GRPCRecurringTransaction.Transaction.Source {
       get {return _storage._source}
       set {_uniqueStorage()._source = newValue}
     }
@@ -5755,7 +5755,7 @@ public struct RecurringTransaction {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
 
-    public var type: RecurringTransaction.Category.TypeEnum = .unknown
+    public var type: GRPCRecurringTransaction.Category.TypeEnum = .unknown
 
     public var code: String = String()
 
@@ -5813,9 +5813,9 @@ public struct RecurringTransaction {
 
     public var qualifier: String = String()
 
-    public var periodicity: RecurringTransaction.Group.RecurringPeriodicity = .unknown
+    public var periodicity: GRPCRecurringTransaction.Group.RecurringPeriodicity = .unknown
 
-    public var categoryType: RecurringTransaction.Category.TypeEnum = .unknown
+    public var categoryType: GRPCRecurringTransaction.Category.TypeEnum = .unknown
 
     public var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -5892,8 +5892,8 @@ public struct RecurringTransaction {
     // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
     // methods supported on all messages.
 
-    public var totalAmount: CurrencyDenominatedAmount {
-      get {return _storage._totalAmount ?? CurrencyDenominatedAmount()}
+    public var totalAmount: GRPCCurrencyDenominatedAmount {
+      get {return _storage._totalAmount ?? GRPCCurrencyDenominatedAmount()}
       set {_uniqueStorage()._totalAmount = newValue}
     }
     /// Returns true if `totalAmount` has been explicitly set.
@@ -5929,7 +5929,7 @@ public struct RecurringTransaction {
   public init() {}
 }
 
-public struct KycQuestion {
+public struct GRPCKycQuestion {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -5943,7 +5943,7 @@ public struct KycQuestion {
   public init() {}
 }
 
-public struct OAuth2ScopeDescription {
+public struct GRPCOAuth2ScopeDescription {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -5959,7 +5959,7 @@ public struct OAuth2ScopeDescription {
 
 // MARK: - Code below here is support for the SwiftProtobuf runtime.
 
-extension MarketStatus: SwiftProtobuf._ProtoNameProviding {
+extension GRPCMarketStatus: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "MARKET_STATUS_UNKNOWN"),
     1: .same(proto: "MARKET_STATUS_BETA"),
@@ -5968,7 +5968,7 @@ extension MarketStatus: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension PeriodDateBreakType: SwiftProtobuf._ProtoNameProviding {
+extension GRPCPeriodDateBreakType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "PERIOD_DATE_BREAK_TYPE_UNKNOWN"),
     1: .same(proto: "PERIOD_DATE_BREAK_TYPE_MONTHLY"),
@@ -5976,7 +5976,7 @@ extension PeriodDateBreakType: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension PeriodMode: SwiftProtobuf._ProtoNameProviding {
+extension GRPCPeriodMode: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "PERIOD_MODE_UNKNOWN"),
     1: .same(proto: "PERIOD_MODE_DAILY"),
@@ -5987,7 +5987,7 @@ extension PeriodMode: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension BankIdAuthenticationStatus: SwiftProtobuf._ProtoNameProviding {
+extension GRPCBankIdAuthenticationStatus: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "BANK_ID_AUTHENTICATION_STATUS_UNKNOWN"),
     1: .same(proto: "BANK_ID_AUTHENTICATION_STATUS_AUTHENTICATED"),
@@ -5997,7 +5997,7 @@ extension BankIdAuthenticationStatus: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension AuthenticationStatus: SwiftProtobuf._ProtoNameProviding {
+extension GRPCAuthenticationStatus: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "AUTHENTICATION_STATUS_UNKNOWN"),
     1: .same(proto: "AUTHENTICATION_STATUS_AUTHENTICATED"),
@@ -6009,7 +6009,7 @@ extension AuthenticationStatus: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension AuthenticationKeyType: SwiftProtobuf._ProtoNameProviding {
+extension GRPCAuthenticationKeyType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "KEY_TYPE_UNKNOWN"),
     1: .same(proto: "KEY_TYPE_RSA"),
@@ -6017,7 +6017,7 @@ extension AuthenticationKeyType: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension AuthenticationSource: SwiftProtobuf._ProtoNameProviding {
+extension GRPCAuthenticationSource: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "AUTHENTICATION_SOURCE_UNKNOWN"),
     1: .same(proto: "AUTHENTICATION_SOURCE_TOUCHID"),
@@ -6026,7 +6026,7 @@ extension AuthenticationSource: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension IdentityAnswerKey: SwiftProtobuf._ProtoNameProviding {
+extension GRPCIdentityAnswerKey: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "IDENTITY_ANSWER_KEY_UNKNOWN"),
     1: .same(proto: "IDENTITY_ANSWER_KEY_OK"),
@@ -6034,7 +6034,7 @@ extension IdentityAnswerKey: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension ConsentAction: SwiftProtobuf._ProtoNameProviding {
+extension GRPCConsentAction: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "CONSENT_ACTION_UNKNOWN"),
     1: .same(proto: "CONSENT_ACTION_ACCEPTED"),
@@ -6042,7 +6042,7 @@ extension ConsentAction: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension SmsOtpStatus: SwiftProtobuf._ProtoNameProviding {
+extension GRPCSmsOtpStatus: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "SMS_OTP_STATUS_UNKNOWN"),
     1: .same(proto: "SMS_OTP_STATUS_CORRECT"),
@@ -6052,7 +6052,7 @@ extension SmsOtpStatus: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension RateAppStatus: SwiftProtobuf._ProtoNameProviding {
+extension GRPCRateAppStatus: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "RATE_APP_STATUS_UNKNOWN"),
     1: .same(proto: "RATE_APP_STATUS_CLICKED_IGNORE"),
@@ -6060,7 +6060,7 @@ extension RateAppStatus: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension AuthenticationMethod: SwiftProtobuf._ProtoNameProviding {
+extension GRPCAuthenticationMethod: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "AUTHENTICATION_METHOD_UNKNOWN"),
     1: .same(proto: "AUTHENTICATION_METHOD_BANKID"),
@@ -6071,7 +6071,7 @@ extension AuthenticationMethod: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension SortType: SwiftProtobuf._ProtoNameProviding {
+extension GRPCSortType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "SORT_TYPE_UNKNOWN"),
     1: .same(proto: "SORT_TYPE_SCORE"),
@@ -6083,7 +6083,7 @@ extension SortType: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension OrderType: SwiftProtobuf._ProtoNameProviding {
+extension GRPCOrderType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "ORDER_TYPE_UNKNOWN"),
     1: .same(proto: "ORDER_TYPE_ASC"),
@@ -6091,7 +6091,7 @@ extension OrderType: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension Theme: SwiftProtobuf._ProtoNameProviding {
+extension GRPCTheme: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "THEME_UNKNOWN"),
     1: .same(proto: "THEME_LIGHT"),
@@ -6100,7 +6100,7 @@ extension Theme: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension Credential: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCCredential: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "Credential"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
@@ -6119,14 +6119,14 @@ extension Credential: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementatio
   fileprivate class _StorageClass {
     var _id: String = String()
     var _providerName: String = String()
-    var _type: Credential.TypeEnum = .unknown
-    var _status: Credential.Status = .unknown
+    var _type: GRPCCredential.TypeEnum = .unknown
+    var _status: GRPCCredential.Status = .unknown
     var _statusPayload: String = String()
     var _statusUpdated: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
     var _updated: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
     var _fields: Dictionary<String,String> = [:]
-    var _supplementalInformationFields: [ProviderFieldSpecification] = []
-    var _thirdPartyAppAuthentication: ThirdPartyAppAuthentication? = nil
+    var _supplementalInformationFields: [GRPCProviderFieldSpecification] = []
+    var _thirdPartyAppAuthentication: GRPCThirdPartyAppAuthentication? = nil
     var _sessionExpiryDate: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
 
     static let defaultInstance = _StorageClass()
@@ -6216,7 +6216,7 @@ extension Credential: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementatio
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Credential, rhs: Credential) -> Bool {
+  public static func ==(lhs: GRPCCredential, rhs: GRPCCredential) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -6241,7 +6241,7 @@ extension Credential: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementatio
   }
 }
 
-extension Credential.Status: SwiftProtobuf._ProtoNameProviding {
+extension GRPCCredential.Status: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "STATUS_UNKNOWN"),
     1: .same(proto: "STATUS_CREATED"),
@@ -6259,7 +6259,7 @@ extension Credential.Status: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension Credential.TypeEnum: SwiftProtobuf._ProtoNameProviding {
+extension GRPCCredential.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "TYPE_UNKNOWN"),
     1: .same(proto: "TYPE_PASSWORD"),
@@ -6270,7 +6270,7 @@ extension Credential.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension Account: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCAccount: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "Account"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
@@ -6292,20 +6292,20 @@ extension Account: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBa
 
   fileprivate class _StorageClass {
     var _id: String = String()
-    var _balance: CurrencyDenominatedAmount? = nil
+    var _balance: GRPCCurrencyDenominatedAmount? = nil
     var _accountNumber: String = String()
     var _credentialID: String = String()
     var _excluded: Bool = false
     var _favored: Bool = false
     var _transactional: Bool = false
     var _name: String = String()
-    var _ownership: ExactNumber? = nil
-    var _type: Account.TypeEnum = .unknown
-    var _images: Images? = nil
+    var _ownership: GRPCExactNumber? = nil
+    var _type: GRPCAccount.TypeEnum = .unknown
+    var _images: GRPCImages? = nil
     var _closed: Bool = false
     var _identifiers: [String] = []
-    var _exclusionType: Account.Exclusion = .unkown
-    var _flags: [Account.AccountFlag] = []
+    var _exclusionType: GRPCAccount.Exclusion = .unkown
+    var _flags: [GRPCAccount.AccountFlag] = []
 
     static let defaultInstance = _StorageClass()
 
@@ -6414,7 +6414,7 @@ extension Account: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBa
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Account, rhs: Account) -> Bool {
+  public static func ==(lhs: GRPCAccount, rhs: GRPCAccount) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -6443,7 +6443,7 @@ extension Account: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBa
   }
 }
 
-extension Account.TypeEnum: SwiftProtobuf._ProtoNameProviding {
+extension GRPCAccount.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "TYPE_UNKNOWN"),
     1: .same(proto: "TYPE_CHECKING"),
@@ -6459,7 +6459,7 @@ extension Account.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension Account.Exclusion: SwiftProtobuf._ProtoNameProviding {
+extension GRPCAccount.Exclusion: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "UNKOWN"),
     1: .same(proto: "PFM_AND_SEARCH"),
@@ -6469,7 +6469,7 @@ extension Account.Exclusion: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension Account.AccountFlag: SwiftProtobuf._ProtoNameProviding {
+extension GRPCAccount.AccountFlag: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "UNKNOWN"),
     1: .same(proto: "BUSINESS"),
@@ -6477,7 +6477,7 @@ extension Account.AccountFlag: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension Tag: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCTag: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "Tag"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "name"),
@@ -6499,14 +6499,14 @@ extension Tag: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, 
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Tag, rhs: Tag) -> Bool {
+  public static func ==(lhs: GRPCTag, rhs: GRPCTag) -> Bool {
     if lhs.name != rhs.name {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Transaction: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCTransaction: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "Transaction"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "account_id"),
@@ -6532,24 +6532,24 @@ extension Transaction: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementati
 
   fileprivate class _StorageClass {
     var _accountID: String = String()
-    var _amount: CurrencyDenominatedAmount? = nil
+    var _amount: GRPCCurrencyDenominatedAmount? = nil
     var _categoryCode: String = String()
-    var _originalAmount: CurrencyDenominatedAmount? = nil
+    var _originalAmount: GRPCCurrencyDenominatedAmount? = nil
     var _date: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
     var _description_p: String = String()
     var _id: String = String()
     var _notes: String = String()
-    var _tags: [Tag] = []
+    var _tags: [GRPCTag] = []
     var _originalDate: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
     var _originalDescription: String = String()
-    var _details: Transaction.TransactionDetails? = nil
+    var _details: GRPCTransaction.TransactionDetails? = nil
     var _pending: Bool = false
     var _upcoming: Bool = false
-    var _type: Transaction.TypeEnum = .unknown
+    var _type: GRPCTransaction.TypeEnum = .unknown
     var _secondaryDescription: String = String()
     var _inserted: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
-    var _parts: [Transaction.Part] = []
-    var _dispensableAmount: CurrencyDenominatedAmount? = nil
+    var _parts: [GRPCTransaction.Part] = []
+    var _dispensableAmount: GRPCCurrencyDenominatedAmount? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -6678,7 +6678,7 @@ extension Transaction: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementati
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Transaction, rhs: Transaction) -> Bool {
+  public static func ==(lhs: GRPCTransaction, rhs: GRPCTransaction) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -6711,7 +6711,7 @@ extension Transaction: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementati
   }
 }
 
-extension Transaction.TypeEnum: SwiftProtobuf._ProtoNameProviding {
+extension GRPCTransaction.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "TYPE_UNKNOWN"),
     1: .same(proto: "TYPE_DEFAULT"),
@@ -6722,8 +6722,8 @@ extension Transaction.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension Transaction.TransactionDetails: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = Transaction.protoMessageName + ".TransactionDetails"
+extension GRPCTransaction.TransactionDetails: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = GRPCTransaction.protoMessageName + ".TransactionDetails"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "transfer_id"),
   ]
@@ -6744,15 +6744,15 @@ extension Transaction.TransactionDetails: SwiftProtobuf.Message, SwiftProtobuf._
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Transaction.TransactionDetails, rhs: Transaction.TransactionDetails) -> Bool {
+  public static func ==(lhs: GRPCTransaction.TransactionDetails, rhs: GRPCTransaction.TransactionDetails) -> Bool {
     if lhs.transferID != rhs.transferID {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Transaction.Part: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = Transaction.protoMessageName + ".Part"
+extension GRPCTransaction.Part: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = GRPCTransaction.protoMessageName + ".Part"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
     2: .same(proto: "amount"),
@@ -6762,9 +6762,9 @@ extension Transaction.Part: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
 
   fileprivate class _StorageClass {
     var _id: String = String()
-    var _amount: CurrencyDenominatedAmount? = nil
+    var _amount: GRPCCurrencyDenominatedAmount? = nil
     var _categoryCode: String = String()
-    var _counterpart: Transaction.Counterpart? = nil
+    var _counterpart: GRPCTransaction.Counterpart? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -6818,7 +6818,7 @@ extension Transaction.Part: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Transaction.Part, rhs: Transaction.Part) -> Bool {
+  public static func ==(lhs: GRPCTransaction.Part, rhs: GRPCTransaction.Part) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -6836,8 +6836,8 @@ extension Transaction.Part: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
   }
 }
 
-extension Transaction.Counterpart: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = Transaction.protoMessageName + ".Counterpart"
+extension GRPCTransaction.Counterpart: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = GRPCTransaction.protoMessageName + ".Counterpart"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
     2: .standard(proto: "transaction_id"),
@@ -6848,7 +6848,7 @@ extension Transaction.Counterpart: SwiftProtobuf.Message, SwiftProtobuf._Message
   fileprivate class _StorageClass {
     var _id: String = String()
     var _transactionID: String = String()
-    var _transactionAmount: CurrencyDenominatedAmount? = nil
+    var _transactionAmount: GRPCCurrencyDenominatedAmount? = nil
     var _transactionDescription: String = String()
 
     static let defaultInstance = _StorageClass()
@@ -6903,7 +6903,7 @@ extension Transaction.Counterpart: SwiftProtobuf.Message, SwiftProtobuf._Message
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Transaction.Counterpart, rhs: Transaction.Counterpart) -> Bool {
+  public static func ==(lhs: GRPCTransaction.Counterpart, rhs: GRPCTransaction.Counterpart) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -6921,7 +6921,7 @@ extension Transaction.Counterpart: SwiftProtobuf.Message, SwiftProtobuf._Message
   }
 }
 
-extension Provider: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCProvider: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "Provider"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "name"),
@@ -6946,21 +6946,21 @@ extension Provider: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationB
   fileprivate class _StorageClass {
     var _name: String = String()
     var _displayName: String = String()
-    var _type: Provider.TypeEnum = .unknown
-    var _status: Provider.Status = .unknown
-    var _credentialType: Credential.TypeEnum = .unknown
+    var _type: GRPCProvider.TypeEnum = .unknown
+    var _status: GRPCProvider.Status = .unknown
+    var _credentialType: GRPCCredential.TypeEnum = .unknown
     var _helpText: String = String()
     var _popular: Bool = false
-    var _fields: [ProviderFieldSpecification] = []
+    var _fields: [GRPCProviderFieldSpecification] = []
     var _groupDisplayName: String = String()
-    var _images: Images? = nil
+    var _images: GRPCImages? = nil
     var _displayDescription: String = String()
-    var _capabilities: [Provider.Capability] = []
+    var _capabilities: [GRPCProvider.Capability] = []
     var _marketCode: String = String()
-    var _accessType: Provider.AccessType = .unknown
+    var _accessType: GRPCProvider.AccessType = .unknown
     var _financialInstitutionID: String = String()
     var _financialInstitutionName: String = String()
-    var _authenticationFlow: Provider.AuthenticationFlow = .unknown
+    var _authenticationFlow: GRPCProvider.AuthenticationFlow = .unknown
 
     static let defaultInstance = _StorageClass()
 
@@ -7079,7 +7079,7 @@ extension Provider: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationB
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Provider, rhs: Provider) -> Bool {
+  public static func ==(lhs: GRPCProvider, rhs: GRPCProvider) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -7110,7 +7110,7 @@ extension Provider: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationB
   }
 }
 
-extension Provider.TypeEnum: SwiftProtobuf._ProtoNameProviding {
+extension GRPCProvider.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "TYPE_UNKNOWN"),
     1: .same(proto: "TYPE_BANK"),
@@ -7122,7 +7122,7 @@ extension Provider.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension Provider.Status: SwiftProtobuf._ProtoNameProviding {
+extension GRPCProvider.Status: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "STATUS_UNKNOWN"),
     1: .same(proto: "STATUS_ENABLED"),
@@ -7132,7 +7132,7 @@ extension Provider.Status: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension Provider.Capability: SwiftProtobuf._ProtoNameProviding {
+extension GRPCProvider.Capability: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "CAPABILITY_UNKNOWN"),
     1: .same(proto: "CAPABILITY_TRANSFERS"),
@@ -7148,7 +7148,7 @@ extension Provider.Capability: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension Provider.AccessType: SwiftProtobuf._ProtoNameProviding {
+extension GRPCProvider.AccessType: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "ACCESS_TYPE_UNKNOWN"),
     1: .same(proto: "ACCESS_TYPE_OPEN_BANKING"),
@@ -7156,7 +7156,7 @@ extension Provider.AccessType: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension Provider.AuthenticationFlow: SwiftProtobuf._ProtoNameProviding {
+extension GRPCProvider.AuthenticationFlow: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "AUTHENTICATION_FLOW_UNKNOWN"),
     1: .same(proto: "AUTHENTICATION_FLOW_EMBEDDED"),
@@ -7165,7 +7165,7 @@ extension Provider.AuthenticationFlow: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension CurrencyDenominatedAmount: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCCurrencyDenominatedAmount: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "CurrencyDenominatedAmount"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "value"),
@@ -7173,7 +7173,7 @@ extension CurrencyDenominatedAmount: SwiftProtobuf.Message, SwiftProtobuf._Messa
   ]
 
   fileprivate class _StorageClass {
-    var _value: ExactNumber? = nil
+    var _value: GRPCExactNumber? = nil
     var _currencyCode: String = String()
 
     static let defaultInstance = _StorageClass()
@@ -7218,7 +7218,7 @@ extension CurrencyDenominatedAmount: SwiftProtobuf.Message, SwiftProtobuf._Messa
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: CurrencyDenominatedAmount, rhs: CurrencyDenominatedAmount) -> Bool {
+  public static func ==(lhs: GRPCCurrencyDenominatedAmount, rhs: GRPCCurrencyDenominatedAmount) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -7234,7 +7234,7 @@ extension CurrencyDenominatedAmount: SwiftProtobuf.Message, SwiftProtobuf._Messa
   }
 }
 
-extension ExactNumber: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCExactNumber: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "ExactNumber"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "unscaledValue"),
@@ -7261,7 +7261,7 @@ extension ExactNumber: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementati
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: ExactNumber, rhs: ExactNumber) -> Bool {
+  public static func ==(lhs: GRPCExactNumber, rhs: GRPCExactNumber) -> Bool {
     if lhs.unscaledValue != rhs.unscaledValue {return false}
     if lhs.scale != rhs.scale {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -7269,7 +7269,7 @@ extension ExactNumber: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementati
   }
 }
 
-extension Period: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCPeriod: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "Period"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "year"),
@@ -7350,7 +7350,7 @@ extension Period: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBas
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Period, rhs: Period) -> Bool {
+  public static func ==(lhs: GRPCPeriod, rhs: GRPCPeriod) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -7370,7 +7370,7 @@ extension Period: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBas
   }
 }
 
-extension PeriodDescription: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCPeriodDescription: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "PeriodDescription"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "year"),
@@ -7407,7 +7407,7 @@ extension PeriodDescription: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: PeriodDescription, rhs: PeriodDescription) -> Bool {
+  public static func ==(lhs: GRPCPeriodDescription, rhs: GRPCPeriodDescription) -> Bool {
     if lhs.year != rhs.year {return false}
     if lhs.month != rhs.month {return false}
     if lhs.week != rhs.week {return false}
@@ -7417,7 +7417,7 @@ extension PeriodDescription: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
   }
 }
 
-extension StatisticTree: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCStatisticTree: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "StatisticTree"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "balances_by_account_id"),
@@ -7432,13 +7432,13 @@ extension StatisticTree: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
-      case 1: try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,StatisticNode>.self, value: &self.balancesByAccountID)
-      case 2: try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,StatisticNode>.self, value: &self.balancesByAccountGroupType)
-      case 3: try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,StatisticNode>.self, value: &self.leftToSpend)
-      case 5: try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,StatisticNode>.self, value: &self.expensesByCategoryCode)
-      case 6: try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,StatisticNode>.self, value: &self.incomeByCategoryCode)
-      case 7: try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,StatisticNode>.self, value: &self.loanRatesByProperty)
-      case 8: try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,StatisticNode>.self, value: &self.loanBalancesByProperty)
+      case 1: try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,GRPCStatisticNode>.self, value: &self.balancesByAccountID)
+      case 2: try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,GRPCStatisticNode>.self, value: &self.balancesByAccountGroupType)
+      case 3: try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,GRPCStatisticNode>.self, value: &self.leftToSpend)
+      case 5: try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,GRPCStatisticNode>.self, value: &self.expensesByCategoryCode)
+      case 6: try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,GRPCStatisticNode>.self, value: &self.incomeByCategoryCode)
+      case 7: try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,GRPCStatisticNode>.self, value: &self.loanRatesByProperty)
+      case 8: try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,GRPCStatisticNode>.self, value: &self.loanBalancesByProperty)
       default: break
       }
     }
@@ -7446,30 +7446,30 @@ extension StatisticTree: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.balancesByAccountID.isEmpty {
-      try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,StatisticNode>.self, value: self.balancesByAccountID, fieldNumber: 1)
+      try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,GRPCStatisticNode>.self, value: self.balancesByAccountID, fieldNumber: 1)
     }
     if !self.balancesByAccountGroupType.isEmpty {
-      try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,StatisticNode>.self, value: self.balancesByAccountGroupType, fieldNumber: 2)
+      try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,GRPCStatisticNode>.self, value: self.balancesByAccountGroupType, fieldNumber: 2)
     }
     if !self.leftToSpend.isEmpty {
-      try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,StatisticNode>.self, value: self.leftToSpend, fieldNumber: 3)
+      try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,GRPCStatisticNode>.self, value: self.leftToSpend, fieldNumber: 3)
     }
     if !self.expensesByCategoryCode.isEmpty {
-      try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,StatisticNode>.self, value: self.expensesByCategoryCode, fieldNumber: 5)
+      try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,GRPCStatisticNode>.self, value: self.expensesByCategoryCode, fieldNumber: 5)
     }
     if !self.incomeByCategoryCode.isEmpty {
-      try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,StatisticNode>.self, value: self.incomeByCategoryCode, fieldNumber: 6)
+      try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,GRPCStatisticNode>.self, value: self.incomeByCategoryCode, fieldNumber: 6)
     }
     if !self.loanRatesByProperty.isEmpty {
-      try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,StatisticNode>.self, value: self.loanRatesByProperty, fieldNumber: 7)
+      try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,GRPCStatisticNode>.self, value: self.loanRatesByProperty, fieldNumber: 7)
     }
     if !self.loanBalancesByProperty.isEmpty {
-      try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,StatisticNode>.self, value: self.loanBalancesByProperty, fieldNumber: 8)
+      try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,GRPCStatisticNode>.self, value: self.loanBalancesByProperty, fieldNumber: 8)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: StatisticTree, rhs: StatisticTree) -> Bool {
+  public static func ==(lhs: GRPCStatisticTree, rhs: GRPCStatisticTree) -> Bool {
     if lhs.balancesByAccountID != rhs.balancesByAccountID {return false}
     if lhs.balancesByAccountGroupType != rhs.balancesByAccountGroupType {return false}
     if lhs.leftToSpend != rhs.leftToSpend {return false}
@@ -7482,7 +7482,7 @@ extension StatisticTree: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
   }
 }
 
-extension StatisticTree.TypeEnum: SwiftProtobuf._ProtoNameProviding {
+extension GRPCStatisticTree.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "TYPE_UNKNOWN"),
     1: .same(proto: "TYPE_BALANCES_BY_ACCOUNT_ID"),
@@ -7493,7 +7493,7 @@ extension StatisticTree.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension StatisticNode: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCStatisticNode: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "StatisticNode"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "period"),
@@ -7503,9 +7503,9 @@ extension StatisticNode: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
   ]
 
   fileprivate class _StorageClass {
-    var _period: Period? = nil
-    var _nodeValue: StatisticNode.OneOf_NodeValue?
-    var _children: Dictionary<String,StatisticNode> = [:]
+    var _period: GRPCPeriod? = nil
+    var _nodeValue: GRPCStatisticNode.OneOf_NodeValue?
+    var _children: Dictionary<String,GRPCStatisticNode> = [:]
 
     static let defaultInstance = _StorageClass()
 
@@ -7532,16 +7532,16 @@ extension StatisticNode: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
         switch fieldNumber {
         case 1: try decoder.decodeSingularMessageField(value: &_storage._period)
         case 2:
-          var v: CurrencyDenominatedAmount?
+          var v: GRPCCurrencyDenominatedAmount?
           if let current = _storage._nodeValue {
             try decoder.handleConflictingOneOf()
             if case .amount(let m) = current {v = m}
           }
           try decoder.decodeSingularMessageField(value: &v)
           if let v = v {_storage._nodeValue = .amount(v)}
-        case 3: try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,StatisticNode>.self, value: &_storage._children)
+        case 3: try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,GRPCStatisticNode>.self, value: &_storage._children)
         case 4:
-          var v: ExactNumber?
+          var v: GRPCExactNumber?
           if let current = _storage._nodeValue {
             try decoder.handleConflictingOneOf()
             if case .value(let m) = current {v = m}
@@ -7563,7 +7563,7 @@ extension StatisticNode: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
         try visitor.visitSingularMessageField(value: v, fieldNumber: 2)
       }
       if !_storage._children.isEmpty {
-        try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,StatisticNode>.self, value: _storage._children, fieldNumber: 3)
+        try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,GRPCStatisticNode>.self, value: _storage._children, fieldNumber: 3)
       }
       if case .value(let v)? = _storage._nodeValue {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 4)
@@ -7572,7 +7572,7 @@ extension StatisticNode: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: StatisticNode, rhs: StatisticNode) -> Bool {
+  public static func ==(lhs: GRPCStatisticNode, rhs: GRPCStatisticNode) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -7589,7 +7589,7 @@ extension StatisticNode: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
   }
 }
 
-extension FollowItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCFollowItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "FollowItem"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "expenses_criteria"),
@@ -7602,8 +7602,8 @@ extension FollowItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementatio
   ]
 
   fileprivate class _StorageClass {
-    var _criteria: FollowItem.OneOf_Criteria?
-    var _data: FollowData? = nil
+    var _criteria: GRPCFollowItem.OneOf_Criteria?
+    var _data: GRPCFollowData? = nil
     var _id: String = String()
     var _name: String = String()
     var _createdDate: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
@@ -7634,7 +7634,7 @@ extension FollowItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementatio
       while let fieldNumber = try decoder.nextFieldNumber() {
         switch fieldNumber {
         case 1:
-          var v: ExpensesFollowCriteria?
+          var v: GRPCExpensesFollowCriteria?
           if let current = _storage._criteria {
             try decoder.handleConflictingOneOf()
             if case .expensesCriteria(let m) = current {v = m}
@@ -7642,7 +7642,7 @@ extension FollowItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementatio
           try decoder.decodeSingularMessageField(value: &v)
           if let v = v {_storage._criteria = .expensesCriteria(v)}
         case 2:
-          var v: SearchFollowCriteria?
+          var v: GRPCSearchFollowCriteria?
           if let current = _storage._criteria {
             try decoder.handleConflictingOneOf()
             if case .searchCriteria(let m) = current {v = m}
@@ -7650,7 +7650,7 @@ extension FollowItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementatio
           try decoder.decodeSingularMessageField(value: &v)
           if let v = v {_storage._criteria = .searchCriteria(v)}
         case 3:
-          var v: SavingsFollowCriteria?
+          var v: GRPCSavingsFollowCriteria?
           if let current = _storage._criteria {
             try decoder.handleConflictingOneOf()
             if case .savingCriteria(let m) = current {v = m}
@@ -7694,7 +7694,7 @@ extension FollowItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementatio
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: FollowItem, rhs: FollowItem) -> Bool {
+  public static func ==(lhs: GRPCFollowItem, rhs: GRPCFollowItem) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -7713,7 +7713,7 @@ extension FollowItem: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementatio
   }
 }
 
-extension FollowItemHistory: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCFollowItemHistory: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "FollowItemHistory"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "historical_amounts"),
@@ -7735,14 +7735,14 @@ extension FollowItemHistory: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: FollowItemHistory, rhs: FollowItemHistory) -> Bool {
+  public static func ==(lhs: GRPCFollowItemHistory, rhs: GRPCFollowItemHistory) -> Bool {
     if lhs.historicalAmounts != rhs.historicalAmounts {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension ExpensesFollowCriteria: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCExpensesFollowCriteria: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "ExpensesFollowCriteria"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "target_amount"),
@@ -7750,7 +7750,7 @@ extension ExpensesFollowCriteria: SwiftProtobuf.Message, SwiftProtobuf._MessageI
   ]
 
   fileprivate class _StorageClass {
-    var _targetAmount: ExactNumber? = nil
+    var _targetAmount: GRPCExactNumber? = nil
     var _categoryCodes: [String] = []
 
     static let defaultInstance = _StorageClass()
@@ -7795,7 +7795,7 @@ extension ExpensesFollowCriteria: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: ExpensesFollowCriteria, rhs: ExpensesFollowCriteria) -> Bool {
+  public static func ==(lhs: GRPCExpensesFollowCriteria, rhs: GRPCExpensesFollowCriteria) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -7811,7 +7811,7 @@ extension ExpensesFollowCriteria: SwiftProtobuf.Message, SwiftProtobuf._MessageI
   }
 }
 
-extension SearchFollowCriteria: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCSearchFollowCriteria: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "SearchFollowCriteria"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "target_amount"),
@@ -7819,7 +7819,7 @@ extension SearchFollowCriteria: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
   ]
 
   fileprivate class _StorageClass {
-    var _targetAmount: ExactNumber? = nil
+    var _targetAmount: GRPCExactNumber? = nil
     var _query: String = String()
 
     static let defaultInstance = _StorageClass()
@@ -7864,7 +7864,7 @@ extension SearchFollowCriteria: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: SearchFollowCriteria, rhs: SearchFollowCriteria) -> Bool {
+  public static func ==(lhs: GRPCSearchFollowCriteria, rhs: GRPCSearchFollowCriteria) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -7880,7 +7880,7 @@ extension SearchFollowCriteria: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
   }
 }
 
-extension SavingsFollowCriteria: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCSavingsFollowCriteria: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "SavingsFollowCriteria"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "target_amount"),
@@ -7889,7 +7889,7 @@ extension SavingsFollowCriteria: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
   ]
 
   fileprivate class _StorageClass {
-    var _targetAmount: ExactNumber? = nil
+    var _targetAmount: GRPCExactNumber? = nil
     var _accountIds: [String] = []
     var _period: String = String()
 
@@ -7940,7 +7940,7 @@ extension SavingsFollowCriteria: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: SavingsFollowCriteria, rhs: SavingsFollowCriteria) -> Bool {
+  public static func ==(lhs: GRPCSavingsFollowCriteria, rhs: GRPCSavingsFollowCriteria) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -7957,7 +7957,7 @@ extension SavingsFollowCriteria: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
   }
 }
 
-extension FollowData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCFollowData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "FollowData"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "historical_amounts"),
@@ -7965,8 +7965,8 @@ extension FollowData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementatio
   ]
 
   fileprivate class _StorageClass {
-    var _historicalAmounts: [PeriodExactNumberPair] = []
-    var _period: Period? = nil
+    var _historicalAmounts: [GRPCPeriodExactNumberPair] = []
+    var _period: GRPCPeriod? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -8010,7 +8010,7 @@ extension FollowData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementatio
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: FollowData, rhs: FollowData) -> Bool {
+  public static func ==(lhs: GRPCFollowData, rhs: GRPCFollowData) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -8026,7 +8026,7 @@ extension FollowData: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementatio
   }
 }
 
-extension PeriodExactNumberPair: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCPeriodExactNumberPair: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "PeriodExactNumberPair"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "period"),
@@ -8034,8 +8034,8 @@ extension PeriodExactNumberPair: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
   ]
 
   fileprivate class _StorageClass {
-    var _period: Period? = nil
-    var _value: ExactNumber? = nil
+    var _period: GRPCPeriod? = nil
+    var _value: GRPCExactNumber? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -8079,7 +8079,7 @@ extension PeriodExactNumberPair: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: PeriodExactNumberPair, rhs: PeriodExactNumberPair) -> Bool {
+  public static func ==(lhs: GRPCPeriodExactNumberPair, rhs: GRPCPeriodExactNumberPair) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -8095,7 +8095,7 @@ extension PeriodExactNumberPair: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
   }
 }
 
-extension Budget: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCBudget: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "Budget"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -8108,14 +8108,14 @@ extension Budget: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBas
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Budget, rhs: Budget) -> Bool {
+  public static func ==(lhs: GRPCBudget, rhs: GRPCBudget) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Budget.Specification: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = Budget.protoMessageName + ".Specification"
+extension GRPCBudget.Specification: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = GRPCBudget.protoMessageName + ".Specification"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
     2: .same(proto: "name"),
@@ -8131,10 +8131,10 @@ extension Budget.Specification: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     var _id: String = String()
     var _name: String = String()
     var _description_p: String = String()
-    var _amount: CurrencyDenominatedAmount? = nil
-    var _periodicity: Budget.Specification.OneOf_Periodicity?
+    var _amount: GRPCCurrencyDenominatedAmount? = nil
+    var _periodicity: GRPCBudget.Specification.OneOf_Periodicity?
     var _archived: Bool = false
-    var _filter: Budget.Filter? = nil
+    var _filter: GRPCBudget.Filter? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -8168,7 +8168,7 @@ extension Budget.Specification: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
         case 3: try decoder.decodeSingularStringField(value: &_storage._description_p)
         case 4: try decoder.decodeSingularMessageField(value: &_storage._amount)
         case 5:
-          var v: Budget.RecurringPeriodicity?
+          var v: GRPCBudget.RecurringPeriodicity?
           if let current = _storage._periodicity {
             try decoder.handleConflictingOneOf()
             if case .recurringPeriodicity(let m) = current {v = m}
@@ -8176,7 +8176,7 @@ extension Budget.Specification: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
           try decoder.decodeSingularMessageField(value: &v)
           if let v = v {_storage._periodicity = .recurringPeriodicity(v)}
         case 6:
-          var v: Budget.OneOffPeriodicity?
+          var v: GRPCBudget.OneOffPeriodicity?
           if let current = _storage._periodicity {
             try decoder.handleConflictingOneOf()
             if case .oneOffPeriodicity(let m) = current {v = m}
@@ -8222,7 +8222,7 @@ extension Budget.Specification: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Budget.Specification, rhs: Budget.Specification) -> Bool {
+  public static func ==(lhs: GRPCBudget.Specification, rhs: GRPCBudget.Specification) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -8243,8 +8243,8 @@ extension Budget.Specification: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
   }
 }
 
-extension Budget.Filter: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = Budget.protoMessageName + ".Filter"
+extension GRPCBudget.Filter: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = GRPCBudget.protoMessageName + ".Filter"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "accounts"),
     2: .same(proto: "categories"),
@@ -8280,7 +8280,7 @@ extension Budget.Filter: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Budget.Filter, rhs: Budget.Filter) -> Bool {
+  public static func ==(lhs: GRPCBudget.Filter, rhs: GRPCBudget.Filter) -> Bool {
     if lhs.accounts != rhs.accounts {return false}
     if lhs.categories != rhs.categories {return false}
     if lhs.tags != rhs.tags {return false}
@@ -8290,8 +8290,8 @@ extension Budget.Filter: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
   }
 }
 
-extension Budget.Filter.Account: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = Budget.Filter.protoMessageName + ".Account"
+extension GRPCBudget.Filter.Account: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = GRPCBudget.Filter.protoMessageName + ".Account"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
   ]
@@ -8312,15 +8312,15 @@ extension Budget.Filter.Account: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Budget.Filter.Account, rhs: Budget.Filter.Account) -> Bool {
+  public static func ==(lhs: GRPCBudget.Filter.Account, rhs: GRPCBudget.Filter.Account) -> Bool {
     if lhs.id != rhs.id {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Budget.Filter.Category: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = Budget.Filter.protoMessageName + ".Category"
+extension GRPCBudget.Filter.Category: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = GRPCBudget.Filter.protoMessageName + ".Category"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "code"),
   ]
@@ -8341,15 +8341,15 @@ extension Budget.Filter.Category: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Budget.Filter.Category, rhs: Budget.Filter.Category) -> Bool {
+  public static func ==(lhs: GRPCBudget.Filter.Category, rhs: GRPCBudget.Filter.Category) -> Bool {
     if lhs.code != rhs.code {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Budget.Filter.Tag: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = Budget.Filter.protoMessageName + ".Tag"
+extension GRPCBudget.Filter.Tag: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = GRPCBudget.Filter.protoMessageName + ".Tag"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "key"),
   ]
@@ -8370,15 +8370,15 @@ extension Budget.Filter.Tag: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Budget.Filter.Tag, rhs: Budget.Filter.Tag) -> Bool {
+  public static func ==(lhs: GRPCBudget.Filter.Tag, rhs: GRPCBudget.Filter.Tag) -> Bool {
     if lhs.key != rhs.key {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Budget.OneOffPeriodicity: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = Budget.protoMessageName + ".OneOffPeriodicity"
+extension GRPCBudget.OneOffPeriodicity: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = GRPCBudget.protoMessageName + ".OneOffPeriodicity"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "start"),
     2: .same(proto: "end"),
@@ -8430,7 +8430,7 @@ extension Budget.OneOffPeriodicity: SwiftProtobuf.Message, SwiftProtobuf._Messag
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Budget.OneOffPeriodicity, rhs: Budget.OneOffPeriodicity) -> Bool {
+  public static func ==(lhs: GRPCBudget.OneOffPeriodicity, rhs: GRPCBudget.OneOffPeriodicity) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -8446,8 +8446,8 @@ extension Budget.OneOffPeriodicity: SwiftProtobuf.Message, SwiftProtobuf._Messag
   }
 }
 
-extension Budget.RecurringPeriodicity: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = Budget.protoMessageName + ".RecurringPeriodicity"
+extension GRPCBudget.RecurringPeriodicity: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = GRPCBudget.protoMessageName + ".RecurringPeriodicity"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "period_unit"),
   ]
@@ -8468,14 +8468,14 @@ extension Budget.RecurringPeriodicity: SwiftProtobuf.Message, SwiftProtobuf._Mes
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Budget.RecurringPeriodicity, rhs: Budget.RecurringPeriodicity) -> Bool {
+  public static func ==(lhs: GRPCBudget.RecurringPeriodicity, rhs: GRPCBudget.RecurringPeriodicity) -> Bool {
     if lhs.periodUnit != rhs.periodUnit {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Budget.RecurringPeriodicity.PeriodUnit: SwiftProtobuf._ProtoNameProviding {
+extension GRPCBudget.RecurringPeriodicity.PeriodUnit: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "PERIOD_UNIT_UNKNOWN"),
     1: .same(proto: "PERIOD_UNIT_WEEK"),
@@ -8484,8 +8484,8 @@ extension Budget.RecurringPeriodicity.PeriodUnit: SwiftProtobuf._ProtoNameProvid
   ]
 }
 
-extension Budget.Period: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = Budget.protoMessageName + ".Period"
+extension GRPCBudget.Period: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = GRPCBudget.protoMessageName + ".Period"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "start"),
     2: .same(proto: "end"),
@@ -8496,8 +8496,8 @@ extension Budget.Period: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
   fileprivate class _StorageClass {
     var _start: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
     var _end: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
-    var _spentAmount: CurrencyDenominatedAmount? = nil
-    var _budgetAmount: CurrencyDenominatedAmount? = nil
+    var _spentAmount: GRPCCurrencyDenominatedAmount? = nil
+    var _budgetAmount: GRPCCurrencyDenominatedAmount? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -8551,7 +8551,7 @@ extension Budget.Period: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Budget.Period, rhs: Budget.Period) -> Bool {
+  public static func ==(lhs: GRPCBudget.Period, rhs: GRPCBudget.Period) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -8569,16 +8569,16 @@ extension Budget.Period: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
   }
 }
 
-extension Budget.Summary: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = Budget.protoMessageName + ".Summary"
+extension GRPCBudget.Summary: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = GRPCBudget.protoMessageName + ".Summary"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "budget_specification"),
     2: .standard(proto: "current_budget_period"),
   ]
 
   fileprivate class _StorageClass {
-    var _budgetSpecification: Budget.Specification? = nil
-    var _currentBudgetPeriod: Budget.Period? = nil
+    var _budgetSpecification: GRPCBudget.Specification? = nil
+    var _currentBudgetPeriod: GRPCBudget.Period? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -8622,7 +8622,7 @@ extension Budget.Summary: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Budget.Summary, rhs: Budget.Summary) -> Bool {
+  public static func ==(lhs: GRPCBudget.Summary, rhs: GRPCBudget.Summary) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -8638,8 +8638,8 @@ extension Budget.Summary: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
   }
 }
 
-extension Budget.Transaction: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = Budget.protoMessageName + ".Transaction"
+extension GRPCBudget.Transaction: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = GRPCBudget.protoMessageName + ".Transaction"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
     2: .same(proto: "amount"),
@@ -8652,8 +8652,8 @@ extension Budget.Transaction: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
 
   fileprivate class _StorageClass {
     var _id: String = String()
-    var _amount: CurrencyDenominatedAmount? = nil
-    var _dispensableAmount: CurrencyDenominatedAmount? = nil
+    var _amount: GRPCCurrencyDenominatedAmount? = nil
+    var _dispensableAmount: GRPCCurrencyDenominatedAmount? = nil
     var _date: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
     var _description_p: String = String()
     var _categoryCode: String = String()
@@ -8726,7 +8726,7 @@ extension Budget.Transaction: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Budget.Transaction, rhs: Budget.Transaction) -> Bool {
+  public static func ==(lhs: GRPCBudget.Transaction, rhs: GRPCBudget.Transaction) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -8747,7 +8747,7 @@ extension Budget.Transaction: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
   }
 }
 
-extension Currency: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCCurrency: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "Currency"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "code"),
@@ -8758,7 +8758,7 @@ extension Currency: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationB
 
   fileprivate class _StorageClass {
     var _code: String = String()
-    var _factor: ExactNumber? = nil
+    var _factor: GRPCExactNumber? = nil
     var _prefixed: Bool = false
     var _symbol: String = String()
 
@@ -8814,7 +8814,7 @@ extension Currency: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationB
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Currency, rhs: Currency) -> Bool {
+  public static func ==(lhs: GRPCCurrency, rhs: GRPCCurrency) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -8832,7 +8832,7 @@ extension Currency: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationB
   }
 }
 
-extension Loan: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCLoan: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "Loan"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "account_id"),
@@ -8843,9 +8843,9 @@ extension Loan: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase,
 
   fileprivate class _StorageClass {
     var _accountID: String = String()
-    var _interest: ExactNumber? = nil
+    var _interest: GRPCExactNumber? = nil
     var _numberOfMonthsBound: Int32 = 0
-    var _type: Loan.TypeEnum = .unknown
+    var _type: GRPCLoan.TypeEnum = .unknown
 
     static let defaultInstance = _StorageClass()
 
@@ -8899,7 +8899,7 @@ extension Loan: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase,
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Loan, rhs: Loan) -> Bool {
+  public static func ==(lhs: GRPCLoan, rhs: GRPCLoan) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -8917,7 +8917,7 @@ extension Loan: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase,
   }
 }
 
-extension Loan.TypeEnum: SwiftProtobuf._ProtoNameProviding {
+extension GRPCLoan.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "TYPE_UNKNOWN"),
     1: .same(proto: "TYPE_MORTGAGE"),
@@ -8930,7 +8930,7 @@ extension Loan.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension CategoryTree: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCCategoryTree: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "CategoryTree"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "expenses"),
@@ -8939,9 +8939,9 @@ extension CategoryTree: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementat
   ]
 
   fileprivate class _StorageClass {
-    var _expenses: CategoryNode? = nil
-    var _income: CategoryNode? = nil
-    var _transfers: CategoryNode? = nil
+    var _expenses: GRPCCategoryNode? = nil
+    var _income: GRPCCategoryNode? = nil
+    var _transfers: GRPCCategoryNode? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -8990,7 +8990,7 @@ extension CategoryTree: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementat
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: CategoryTree, rhs: CategoryTree) -> Bool {
+  public static func ==(lhs: GRPCCategoryTree, rhs: GRPCCategoryTree) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -9007,7 +9007,7 @@ extension CategoryTree: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementat
   }
 }
 
-extension CategoryNode: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCCategoryNode: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "CategoryNode"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "code"),
@@ -9054,7 +9054,7 @@ extension CategoryNode: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementat
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: CategoryNode, rhs: CategoryNode) -> Bool {
+  public static func ==(lhs: GRPCCategoryNode, rhs: GRPCCategoryNode) -> Bool {
     if lhs.code != rhs.code {return false}
     if lhs.id != rhs.id {return false}
     if lhs.name != rhs.name {return false}
@@ -9066,7 +9066,7 @@ extension CategoryNode: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementat
   }
 }
 
-extension Device: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCDevice: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "Device"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
@@ -9098,7 +9098,7 @@ extension Device: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBas
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Device, rhs: Device) -> Bool {
+  public static func ==(lhs: GRPCDevice, rhs: GRPCDevice) -> Bool {
     if lhs.id != rhs.id {return false}
     if lhs.notificationToken != rhs.notificationToken {return false}
     if lhs.notificationPublicKey != rhs.notificationPublicKey {return false}
@@ -9107,7 +9107,7 @@ extension Device: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBas
   }
 }
 
-extension DeviceAppsFlyerOrigin: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCDeviceAppsFlyerOrigin: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "DeviceAppsFlyerOrigin"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "extra_param_1"),
@@ -9149,7 +9149,7 @@ extension DeviceAppsFlyerOrigin: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: DeviceAppsFlyerOrigin, rhs: DeviceAppsFlyerOrigin) -> Bool {
+  public static func ==(lhs: GRPCDeviceAppsFlyerOrigin, rhs: GRPCDeviceAppsFlyerOrigin) -> Bool {
     if lhs.extraParam1 != rhs.extraParam1 {return false}
     if lhs.extraParam2 != rhs.extraParam2 {return false}
     if lhs.extraParam3 != rhs.extraParam3 {return false}
@@ -9160,7 +9160,7 @@ extension DeviceAppsFlyerOrigin: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
   }
 }
 
-extension DeviceFacebookOrigin: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCDeviceFacebookOrigin: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "DeviceFacebookOrigin"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "campaign_id"),
@@ -9207,7 +9207,7 @@ extension DeviceFacebookOrigin: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: DeviceFacebookOrigin, rhs: DeviceFacebookOrigin) -> Bool {
+  public static func ==(lhs: GRPCDeviceFacebookOrigin, rhs: GRPCDeviceFacebookOrigin) -> Bool {
     if lhs.campaignID != rhs.campaignID {return false}
     if lhs.adGroupID != rhs.adGroupID {return false}
     if lhs.adGroupName != rhs.adGroupName {return false}
@@ -9219,7 +9219,7 @@ extension DeviceFacebookOrigin: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
   }
 }
 
-extension ProviderFieldSpecification: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCProviderFieldSpecification: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "ProviderFieldSpecification"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "description"),
@@ -9301,7 +9301,7 @@ extension ProviderFieldSpecification: SwiftProtobuf.Message, SwiftProtobuf._Mess
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: ProviderFieldSpecification, rhs: ProviderFieldSpecification) -> Bool {
+  public static func ==(lhs: GRPCProviderFieldSpecification, rhs: GRPCProviderFieldSpecification) -> Bool {
     if lhs.description_p != rhs.description_p {return false}
     if lhs.hint != rhs.hint {return false}
     if lhs.maxLength != rhs.maxLength {return false}
@@ -9320,7 +9320,7 @@ extension ProviderFieldSpecification: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 }
 
-extension GiroLookupEntity: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCGiroLookupEntity: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "GiroLookupEntity"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "display_name"),
@@ -9332,7 +9332,7 @@ extension GiroLookupEntity: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
   fileprivate class _StorageClass {
     var _displayName: String = String()
     var _identifier: String = String()
-    var _images: Images? = nil
+    var _images: GRPCImages? = nil
     var _displayNumber: String = String()
 
     static let defaultInstance = _StorageClass()
@@ -9387,7 +9387,7 @@ extension GiroLookupEntity: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: GiroLookupEntity, rhs: GiroLookupEntity) -> Bool {
+  public static func ==(lhs: GRPCGiroLookupEntity, rhs: GRPCGiroLookupEntity) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -9405,7 +9405,7 @@ extension GiroLookupEntity: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
   }
 }
 
-extension Images: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCImages: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "Images"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "icon_url"),
@@ -9432,7 +9432,7 @@ extension Images: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBas
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Images, rhs: Images) -> Bool {
+  public static func ==(lhs: GRPCImages, rhs: GRPCImages) -> Bool {
     if lhs.iconURL != rhs.iconURL {return false}
     if lhs.bannerURL != rhs.bannerURL {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -9440,7 +9440,7 @@ extension Images: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBas
   }
 }
 
-extension SignableOperation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCSignableOperation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "SignableOperation"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "created"),
@@ -9457,13 +9457,13 @@ extension SignableOperation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
   fileprivate class _StorageClass {
     var _created: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
     var _id: String = String()
-    var _status: SignableOperation.Status = .unknown
+    var _status: GRPCSignableOperation.Status = .unknown
     var _statusMessage: String = String()
-    var _type: SignableOperation.TypeEnum = .unknown
+    var _type: GRPCSignableOperation.TypeEnum = .unknown
     var _underlyingID: String = String()
     var _updated: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
     var _credentialID: String = String()
-    var _thirdPartyAppAuthentication: ThirdPartyAppAuthentication? = nil
+    var _thirdPartyAppAuthentication: GRPCThirdPartyAppAuthentication? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -9542,7 +9542,7 @@ extension SignableOperation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: SignableOperation, rhs: SignableOperation) -> Bool {
+  public static func ==(lhs: GRPCSignableOperation, rhs: GRPCSignableOperation) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -9565,7 +9565,7 @@ extension SignableOperation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
   }
 }
 
-extension SignableOperation.Status: SwiftProtobuf._ProtoNameProviding {
+extension GRPCSignableOperation.Status: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "STATUS_UNKNOWN"),
     1: .same(proto: "STATUS_CREATED"),
@@ -9578,7 +9578,7 @@ extension SignableOperation.Status: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension SignableOperation.TypeEnum: SwiftProtobuf._ProtoNameProviding {
+extension GRPCSignableOperation.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "TYPE_UNKNOWN"),
     1: .same(proto: "TYPE_TRANSFER"),
@@ -9586,7 +9586,7 @@ extension SignableOperation.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension TrackingEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCTrackingEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "TrackingEvent"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "date"),
@@ -9660,7 +9660,7 @@ extension TrackingEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: TrackingEvent, rhs: TrackingEvent) -> Bool {
+  public static func ==(lhs: GRPCTrackingEvent, rhs: GRPCTrackingEvent) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -9679,7 +9679,7 @@ extension TrackingEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
   }
 }
 
-extension TrackingTiming: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCTrackingTiming: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "TrackingTiming"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "date"),
@@ -9753,7 +9753,7 @@ extension TrackingTiming: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: TrackingTiming, rhs: TrackingTiming) -> Bool {
+  public static func ==(lhs: GRPCTrackingTiming, rhs: GRPCTrackingTiming) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -9772,7 +9772,7 @@ extension TrackingTiming: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
   }
 }
 
-extension TrackingView: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCTrackingView: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "TrackingView"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "date"),
@@ -9825,7 +9825,7 @@ extension TrackingView: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementat
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: TrackingView, rhs: TrackingView) -> Bool {
+  public static func ==(lhs: GRPCTrackingView, rhs: GRPCTrackingView) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -9841,7 +9841,7 @@ extension TrackingView: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementat
   }
 }
 
-extension TransactionCluster: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCTransactionCluster: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "TransactionCluster"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "description"),
@@ -9852,9 +9852,9 @@ extension TransactionCluster: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
 
   fileprivate class _StorageClass {
     var _description_p: String = String()
-    var _transactions: [Transaction] = []
-    var _score: ExactNumber? = nil
-    var _categorizationImprovement: ExactNumber? = nil
+    var _transactions: [GRPCTransaction] = []
+    var _score: GRPCExactNumber? = nil
+    var _categorizationImprovement: GRPCExactNumber? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -9908,7 +9908,7 @@ extension TransactionCluster: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: TransactionCluster, rhs: TransactionCluster) -> Bool {
+  public static func ==(lhs: GRPCTransactionCluster, rhs: GRPCTransactionCluster) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -9926,7 +9926,7 @@ extension TransactionCluster: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
   }
 }
 
-extension TransferDestination: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCTransferDestination: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "TransferDestination"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "uri"),
@@ -9942,10 +9942,10 @@ extension TransferDestination: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
   fileprivate class _StorageClass {
     var _uri: String = String()
     var _name: String = String()
-    var _balance: CurrencyDenominatedAmount? = nil
+    var _balance: GRPCCurrencyDenominatedAmount? = nil
     var _displayBankName: String = String()
-    var _type: Account.TypeEnum = .unknown
-    var _images: Images? = nil
+    var _type: GRPCAccount.TypeEnum = .unknown
+    var _images: GRPCImages? = nil
     var _displayAccountNumber: String = String()
     var _matchesMultiple: Bool = false
 
@@ -10021,7 +10021,7 @@ extension TransferDestination: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: TransferDestination, rhs: TransferDestination) -> Bool {
+  public static func ==(lhs: GRPCTransferDestination, rhs: GRPCTransferDestination) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -10043,7 +10043,7 @@ extension TransferDestination: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
   }
 }
 
-extension TransferDestinationPerAccount: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCTransferDestinationPerAccount: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "TransferDestinationPerAccount"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "account_id"),
@@ -10070,7 +10070,7 @@ extension TransferDestinationPerAccount: SwiftProtobuf.Message, SwiftProtobuf._M
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: TransferDestinationPerAccount, rhs: TransferDestinationPerAccount) -> Bool {
+  public static func ==(lhs: GRPCTransferDestinationPerAccount, rhs: GRPCTransferDestinationPerAccount) -> Bool {
     if lhs.accountID != rhs.accountID {return false}
     if lhs.destinations != rhs.destinations {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -10078,7 +10078,7 @@ extension TransferDestinationPerAccount: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension Transfer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCTransfer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "Transfer"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "amount"),
@@ -10093,14 +10093,14 @@ extension Transfer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationB
   ]
 
   fileprivate class _StorageClass {
-    var _amount: CurrencyDenominatedAmount? = nil
+    var _amount: GRPCCurrencyDenominatedAmount? = nil
     var _credentialID: String = String()
     var _destinationUri: String = String()
     var _destinationMessage: String = String()
     var _id: String = String()
     var _sourceUri: String = String()
     var _sourceMessage: String = String()
-    var _type: Transfer.TypeEnum = .unknown
+    var _type: GRPCTransfer.TypeEnum = .unknown
     var _dueDate: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
 
     static let defaultInstance = _StorageClass()
@@ -10180,7 +10180,7 @@ extension Transfer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationB
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Transfer, rhs: Transfer) -> Bool {
+  public static func ==(lhs: GRPCTransfer, rhs: GRPCTransfer) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -10203,7 +10203,7 @@ extension Transfer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationB
   }
 }
 
-extension Transfer.TypeEnum: SwiftProtobuf._ProtoNameProviding {
+extension GRPCTransfer.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "TYPE_UNKNOWN"),
     1: .same(proto: "TYPE_EINVOICE"),
@@ -10212,7 +10212,7 @@ extension Transfer.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension UserProfile: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCUserProfile: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "UserProfile"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "username"),
@@ -10225,8 +10225,8 @@ extension UserProfile: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementati
   fileprivate class _StorageClass {
     var _username: String = String()
     var _nationalID: String = String()
-    var _authorizedLoginMethods: [AuthenticationMethod] = []
-    var _availableLoginMethods: [AuthenticationMethod] = []
+    var _authorizedLoginMethods: [GRPCAuthenticationMethod] = []
+    var _availableLoginMethods: [GRPCAuthenticationMethod] = []
     var _createdDate: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
 
     static let defaultInstance = _StorageClass()
@@ -10286,7 +10286,7 @@ extension UserProfile: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementati
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: UserProfile, rhs: UserProfile) -> Bool {
+  public static func ==(lhs: GRPCUserProfile, rhs: GRPCUserProfile) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -10305,7 +10305,7 @@ extension UserProfile: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementati
   }
 }
 
-extension UserConfiguration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCUserConfiguration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "UserConfiguration"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "flags"),
@@ -10315,7 +10315,7 @@ extension UserConfiguration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
 
   fileprivate class _StorageClass {
     var _flags: [String] = []
-    var _i18NConfiguration: UserConfiguration.I18NConfiguration? = nil
+    var _i18NConfiguration: GRPCUserConfiguration.I18NConfiguration? = nil
     var _userID: String = String()
 
     static let defaultInstance = _StorageClass()
@@ -10365,7 +10365,7 @@ extension UserConfiguration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: UserConfiguration, rhs: UserConfiguration) -> Bool {
+  public static func ==(lhs: GRPCUserConfiguration, rhs: GRPCUserConfiguration) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -10382,8 +10382,8 @@ extension UserConfiguration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
   }
 }
 
-extension UserConfiguration.I18NConfiguration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = UserConfiguration.protoMessageName + ".I18NConfiguration"
+extension GRPCUserConfiguration.I18NConfiguration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = GRPCUserConfiguration.protoMessageName + ".I18NConfiguration"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "currency_code"),
     2: .standard(proto: "locale_code"),
@@ -10419,7 +10419,7 @@ extension UserConfiguration.I18NConfiguration: SwiftProtobuf.Message, SwiftProto
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: UserConfiguration.I18NConfiguration, rhs: UserConfiguration.I18NConfiguration) -> Bool {
+  public static func ==(lhs: GRPCUserConfiguration.I18NConfiguration, rhs: GRPCUserConfiguration.I18NConfiguration) -> Bool {
     if lhs.currencyCode != rhs.currencyCode {return false}
     if lhs.localeCode != rhs.localeCode {return false}
     if lhs.marketCode != rhs.marketCode {return false}
@@ -10429,7 +10429,7 @@ extension UserConfiguration.I18NConfiguration: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension I18NSettings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCI18NSettings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "I18NSettings"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "locale_code"),
@@ -10451,14 +10451,14 @@ extension I18NSettings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementat
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: I18NSettings, rhs: I18NSettings) -> Bool {
+  public static func ==(lhs: GRPCI18NSettings, rhs: GRPCI18NSettings) -> Bool {
     if lhs.localeCode != rhs.localeCode {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension PeriodSettings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCPeriodSettings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "PeriodSettings"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "period_date_break_type"),
@@ -10485,7 +10485,7 @@ extension PeriodSettings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: PeriodSettings, rhs: PeriodSettings) -> Bool {
+  public static func ==(lhs: GRPCPeriodSettings, rhs: GRPCPeriodSettings) -> Bool {
     if lhs.periodDateBreakType != rhs.periodDateBreakType {return false}
     if lhs.monthlyAdjustedDay != rhs.monthlyAdjustedDay {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -10493,7 +10493,7 @@ extension PeriodSettings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
   }
 }
 
-extension NotificationSettings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCNotificationSettings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "NotificationSettings"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "groups"),
@@ -10515,14 +10515,14 @@ extension NotificationSettings: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: NotificationSettings, rhs: NotificationSettings) -> Bool {
+  public static func ==(lhs: GRPCNotificationSettings, rhs: GRPCNotificationSettings) -> Bool {
     if lhs.groups != rhs.groups {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension NotificationGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCNotificationGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "NotificationGroup"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "title"),
@@ -10549,7 +10549,7 @@ extension NotificationGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: NotificationGroup, rhs: NotificationGroup) -> Bool {
+  public static func ==(lhs: GRPCNotificationGroup, rhs: GRPCNotificationGroup) -> Bool {
     if lhs.title != rhs.title {return false}
     if lhs.notificationTypes != rhs.notificationTypes {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -10557,7 +10557,7 @@ extension NotificationGroup: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
   }
 }
 
-extension NotificationType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCNotificationType: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "NotificationType"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "key"),
@@ -10589,7 +10589,7 @@ extension NotificationType: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: NotificationType, rhs: NotificationType) -> Bool {
+  public static func ==(lhs: GRPCNotificationType, rhs: GRPCNotificationType) -> Bool {
     if lhs.key != rhs.key {return false}
     if lhs.title != rhs.title {return false}
     if lhs.enabled != rhs.enabled {return false}
@@ -10598,7 +10598,7 @@ extension NotificationType: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
   }
 }
 
-extension UserOrigin: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCUserOrigin: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "UserOrigin"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
@@ -10633,7 +10633,7 @@ extension UserOrigin: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementatio
     var _extraParam3: String = String()
     var _extraParam4: String = String()
     var _extraParam5: String = String()
-    var _facebookAd: FacebookAd? = nil
+    var _facebookAd: GRPCFacebookAd? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -10742,7 +10742,7 @@ extension UserOrigin: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementatio
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: UserOrigin, rhs: UserOrigin) -> Bool {
+  public static func ==(lhs: GRPCUserOrigin, rhs: GRPCUserOrigin) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -10771,7 +10771,7 @@ extension UserOrigin: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementatio
   }
 }
 
-extension FacebookAd: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCFacebookAd: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "FacebookAd"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "group_id"),
@@ -10818,7 +10818,7 @@ extension FacebookAd: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementatio
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: FacebookAd, rhs: FacebookAd) -> Bool {
+  public static func ==(lhs: GRPCFacebookAd, rhs: GRPCFacebookAd) -> Bool {
     if lhs.groupID != rhs.groupID {return false}
     if lhs.groupName != rhs.groupName {return false}
     if lhs.campaignID != rhs.campaignID {return false}
@@ -10830,7 +10830,7 @@ extension FacebookAd: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementatio
   }
 }
 
-extension AuthenticationKey: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCAuthenticationKey: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "AuthenticationKey"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "key_type"),
@@ -10867,7 +10867,7 @@ extension AuthenticationKey: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: AuthenticationKey, rhs: AuthenticationKey) -> Bool {
+  public static func ==(lhs: GRPCAuthenticationKey, rhs: GRPCAuthenticationKey) -> Bool {
     if lhs.keyType != rhs.keyType {return false}
     if lhs.id != rhs.id {return false}
     if lhs.key != rhs.key {return false}
@@ -10877,7 +10877,7 @@ extension AuthenticationKey: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
   }
 }
 
-extension IdentityEventAnswer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCIdentityEventAnswer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "IdentityEventAnswer"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "label"),
@@ -10904,7 +10904,7 @@ extension IdentityEventAnswer: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: IdentityEventAnswer, rhs: IdentityEventAnswer) -> Bool {
+  public static func ==(lhs: GRPCIdentityEventAnswer, rhs: GRPCIdentityEventAnswer) -> Bool {
     if lhs.label != rhs.label {return false}
     if lhs.key != rhs.key {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -10912,7 +10912,7 @@ extension IdentityEventAnswer: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
   }
 }
 
-extension IdentityEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCIdentityEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "IdentityEvent"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
@@ -10932,10 +10932,10 @@ extension IdentityEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
     var _description_p: String = String()
     var _seen: Bool = false
     var _question: String = String()
-    var _potentialAnswers: [IdentityEventAnswer] = []
-    var _answer: IdentityDocumentedAnswer? = nil
-    var _documentation: IdentityEventDocumentation? = nil
-    var _transactions: [Transaction] = []
+    var _potentialAnswers: [GRPCIdentityEventAnswer] = []
+    var _answer: GRPCIdentityDocumentedAnswer? = nil
+    var _documentation: GRPCIdentityEventDocumentation? = nil
+    var _transactions: [GRPCTransaction] = []
 
     static let defaultInstance = _StorageClass()
 
@@ -11014,7 +11014,7 @@ extension IdentityEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: IdentityEvent, rhs: IdentityEvent) -> Bool {
+  public static func ==(lhs: GRPCIdentityEvent, rhs: GRPCIdentityEvent) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -11037,7 +11037,7 @@ extension IdentityEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
   }
 }
 
-extension IdentityEventSummary: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCIdentityEventSummary: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "IdentityEventSummary"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
@@ -11052,7 +11052,7 @@ extension IdentityEventSummary: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     var _date: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
     var _description_p: String = String()
     var _seen: Bool = false
-    var _answer: IdentityDocumentedAnswer? = nil
+    var _answer: GRPCIdentityDocumentedAnswer? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -11111,7 +11111,7 @@ extension IdentityEventSummary: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: IdentityEventSummary, rhs: IdentityEventSummary) -> Bool {
+  public static func ==(lhs: GRPCIdentityEventSummary, rhs: GRPCIdentityEventSummary) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -11130,7 +11130,7 @@ extension IdentityEventSummary: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
   }
 }
 
-extension IdentityEventDocumentation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCIdentityEventDocumentation: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "IdentityEventDocumentation"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "source"),
@@ -11172,7 +11172,7 @@ extension IdentityEventDocumentation: SwiftProtobuf.Message, SwiftProtobuf._Mess
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: IdentityEventDocumentation, rhs: IdentityEventDocumentation) -> Bool {
+  public static func ==(lhs: GRPCIdentityEventDocumentation, rhs: GRPCIdentityEventDocumentation) -> Bool {
     if lhs.source != rhs.source {return false}
     if lhs.infoTitle != rhs.infoTitle {return false}
     if lhs.infoBody != rhs.infoBody {return false}
@@ -11183,7 +11183,7 @@ extension IdentityEventDocumentation: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 }
 
-extension IdentityStateAddress: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCIdentityStateAddress: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "IdentityStateAddress"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "name"),
@@ -11220,7 +11220,7 @@ extension IdentityStateAddress: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: IdentityStateAddress, rhs: IdentityStateAddress) -> Bool {
+  public static func ==(lhs: GRPCIdentityStateAddress, rhs: GRPCIdentityStateAddress) -> Bool {
     if lhs.name != rhs.name {return false}
     if lhs.postalCode != rhs.postalCode {return false}
     if lhs.city != rhs.city {return false}
@@ -11230,7 +11230,7 @@ extension IdentityStateAddress: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
   }
 }
 
-extension IdentityStateProperty: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCIdentityStateProperty: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "IdentityStateProperty"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "name"),
@@ -11297,7 +11297,7 @@ extension IdentityStateProperty: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: IdentityStateProperty, rhs: IdentityStateProperty) -> Bool {
+  public static func ==(lhs: GRPCIdentityStateProperty, rhs: GRPCIdentityStateProperty) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -11315,7 +11315,7 @@ extension IdentityStateProperty: SwiftProtobuf.Message, SwiftProtobuf._MessageIm
   }
 }
 
-extension IdentityStateCompany: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCIdentityStateCompany: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "IdentityStateCompany"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "name"),
@@ -11342,7 +11342,7 @@ extension IdentityStateCompany: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: IdentityStateCompany, rhs: IdentityStateCompany) -> Bool {
+  public static func ==(lhs: GRPCIdentityStateCompany, rhs: GRPCIdentityStateCompany) -> Bool {
     if lhs.name != rhs.name {return false}
     if lhs.number != rhs.number {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -11350,7 +11350,7 @@ extension IdentityStateCompany: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
   }
 }
 
-extension IdentityStateRole: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCIdentityStateRole: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "IdentityStateRole"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "name"),
@@ -11372,14 +11372,14 @@ extension IdentityStateRole: SwiftProtobuf.Message, SwiftProtobuf._MessageImplem
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: IdentityStateRole, rhs: IdentityStateRole) -> Bool {
+  public static func ==(lhs: GRPCIdentityStateRole, rhs: GRPCIdentityStateRole) -> Bool {
     if lhs.name != rhs.name {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension IdentityStateCompanyEngagement: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCIdentityStateCompanyEngagement: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "IdentityStateCompanyEngagement"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "company"),
@@ -11388,8 +11388,8 @@ extension IdentityStateCompanyEngagement: SwiftProtobuf.Message, SwiftProtobuf._
   ]
 
   fileprivate class _StorageClass {
-    var _company: IdentityStateCompany? = nil
-    var _roles: [IdentityStateRole] = []
+    var _company: GRPCIdentityStateCompany? = nil
+    var _roles: [GRPCIdentityStateRole] = []
     var _dateIn: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
 
     static let defaultInstance = _StorageClass()
@@ -11439,7 +11439,7 @@ extension IdentityStateCompanyEngagement: SwiftProtobuf.Message, SwiftProtobuf._
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: IdentityStateCompanyEngagement, rhs: IdentityStateCompanyEngagement) -> Bool {
+  public static func ==(lhs: GRPCIdentityStateCompanyEngagement, rhs: GRPCIdentityStateCompanyEngagement) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -11456,7 +11456,7 @@ extension IdentityStateCompanyEngagement: SwiftProtobuf.Message, SwiftProtobuf._
   }
 }
 
-extension IdentityStateCreditScore: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCIdentityStateCreditScore: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "IdentityStateCreditScore"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "text"),
@@ -11488,7 +11488,7 @@ extension IdentityStateCreditScore: SwiftProtobuf.Message, SwiftProtobuf._Messag
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: IdentityStateCreditScore, rhs: IdentityStateCreditScore) -> Bool {
+  public static func ==(lhs: GRPCIdentityStateCreditScore, rhs: GRPCIdentityStateCreditScore) -> Bool {
     if lhs.text != rhs.text {return false}
     if lhs.score != rhs.score {return false}
     if lhs.maxScore != rhs.maxScore {return false}
@@ -11497,7 +11497,7 @@ extension IdentityStateCreditScore: SwiftProtobuf.Message, SwiftProtobuf._Messag
   }
 }
 
-extension IdentityStateTaxDeclaration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCIdentityStateTaxDeclaration: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "IdentityStateTaxDeclaration"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "final_tax"),
@@ -11509,10 +11509,10 @@ extension IdentityStateTaxDeclaration: SwiftProtobuf.Message, SwiftProtobuf._Mes
   ]
 
   fileprivate class _StorageClass {
-    var _finalTax: CurrencyDenominatedAmount? = nil
-    var _totalIncome: CurrencyDenominatedAmount? = nil
-    var _incomeByService: CurrencyDenominatedAmount? = nil
-    var _incomeByCapital: CurrencyDenominatedAmount? = nil
+    var _finalTax: GRPCCurrencyDenominatedAmount? = nil
+    var _totalIncome: GRPCCurrencyDenominatedAmount? = nil
+    var _incomeByService: GRPCCurrencyDenominatedAmount? = nil
+    var _incomeByCapital: GRPCCurrencyDenominatedAmount? = nil
     var _year: Int32 = 0
     var _registeredDate: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
 
@@ -11578,7 +11578,7 @@ extension IdentityStateTaxDeclaration: SwiftProtobuf.Message, SwiftProtobuf._Mes
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: IdentityStateTaxDeclaration, rhs: IdentityStateTaxDeclaration) -> Bool {
+  public static func ==(lhs: GRPCIdentityStateTaxDeclaration, rhs: GRPCIdentityStateTaxDeclaration) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -11598,7 +11598,7 @@ extension IdentityStateTaxDeclaration: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension IdentityStateRecordOfNonPayment: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCIdentityStateRecordOfNonPayment: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "IdentityStateRecordOfNonPayment"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "name"),
@@ -11608,7 +11608,7 @@ extension IdentityStateRecordOfNonPayment: SwiftProtobuf.Message, SwiftProtobuf.
 
   fileprivate class _StorageClass {
     var _name: String = String()
-    var _amount: CurrencyDenominatedAmount? = nil
+    var _amount: GRPCCurrencyDenominatedAmount? = nil
     var _registeredDate: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
 
     static let defaultInstance = _StorageClass()
@@ -11658,7 +11658,7 @@ extension IdentityStateRecordOfNonPayment: SwiftProtobuf.Message, SwiftProtobuf.
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: IdentityStateRecordOfNonPayment, rhs: IdentityStateRecordOfNonPayment) -> Bool {
+  public static func ==(lhs: GRPCIdentityStateRecordOfNonPayment, rhs: GRPCIdentityStateRecordOfNonPayment) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -11675,7 +11675,7 @@ extension IdentityStateRecordOfNonPayment: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension IdentityStateOutstandingDebt: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCIdentityStateOutstandingDebt: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "IdentityStateOutstandingDebt"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "amount"),
@@ -11684,7 +11684,7 @@ extension IdentityStateOutstandingDebt: SwiftProtobuf.Message, SwiftProtobuf._Me
   ]
 
   fileprivate class _StorageClass {
-    var _amount: CurrencyDenominatedAmount? = nil
+    var _amount: GRPCCurrencyDenominatedAmount? = nil
     var _number: Int32 = 0
     var _registeredDate: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
 
@@ -11735,7 +11735,7 @@ extension IdentityStateOutstandingDebt: SwiftProtobuf.Message, SwiftProtobuf._Me
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: IdentityStateOutstandingDebt, rhs: IdentityStateOutstandingDebt) -> Bool {
+  public static func ==(lhs: GRPCIdentityStateOutstandingDebt, rhs: GRPCIdentityStateOutstandingDebt) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -11752,7 +11752,7 @@ extension IdentityStateOutstandingDebt: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
-extension IdentityState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCIdentityState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "IdentityState"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "first_name"),
@@ -11771,13 +11771,13 @@ extension IdentityState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
     var _firstName: String = String()
     var _lastName: String = String()
     var _nationalID: String = String()
-    var _address: IdentityStateAddress? = nil
-    var _properties: [IdentityStateProperty] = []
-    var _companyEngagements: [IdentityStateCompanyEngagement] = []
-    var _creditScore: IdentityStateCreditScore? = nil
-    var _mostRecentTaxDeclaration: IdentityStateTaxDeclaration? = nil
-    var _recordsOfNonPayment: [IdentityStateRecordOfNonPayment] = []
-    var _outstandingDebt: IdentityStateOutstandingDebt? = nil
+    var _address: GRPCIdentityStateAddress? = nil
+    var _properties: [GRPCIdentityStateProperty] = []
+    var _companyEngagements: [GRPCIdentityStateCompanyEngagement] = []
+    var _creditScore: GRPCIdentityStateCreditScore? = nil
+    var _mostRecentTaxDeclaration: GRPCIdentityStateTaxDeclaration? = nil
+    var _recordsOfNonPayment: [GRPCIdentityStateRecordOfNonPayment] = []
+    var _outstandingDebt: GRPCIdentityStateOutstandingDebt? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -11861,7 +11861,7 @@ extension IdentityState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: IdentityState, rhs: IdentityState) -> Bool {
+  public static func ==(lhs: GRPCIdentityState, rhs: GRPCIdentityState) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -11885,7 +11885,7 @@ extension IdentityState: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
   }
 }
 
-extension IdentityDocumentedAnswer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCIdentityDocumentedAnswer: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "IdentityDocumentedAnswer"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "answer"),
@@ -11907,14 +11907,14 @@ extension IdentityDocumentedAnswer: SwiftProtobuf.Message, SwiftProtobuf._Messag
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: IdentityDocumentedAnswer, rhs: IdentityDocumentedAnswer) -> Bool {
+  public static func ==(lhs: GRPCIdentityDocumentedAnswer, rhs: GRPCIdentityDocumentedAnswer) -> Bool {
     if lhs.answer != rhs.answer {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Consent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCConsent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "Consent"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "key"),
@@ -11966,7 +11966,7 @@ extension Consent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBa
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Consent, rhs: Consent) -> Bool {
+  public static func ==(lhs: GRPCConsent, rhs: GRPCConsent) -> Bool {
     if lhs.key != rhs.key {return false}
     if lhs.version != rhs.version {return false}
     if lhs.title != rhs.title {return false}
@@ -11979,7 +11979,7 @@ extension Consent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBa
   }
 }
 
-extension UserConsent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCUserConsent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "UserConsent"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
@@ -11993,7 +11993,7 @@ extension UserConsent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementati
     var _id: String = String()
     var _key: String = String()
     var _version: String = String()
-    var _action: ConsentAction = .unknown
+    var _action: GRPCConsentAction = .unknown
     var _timestamp: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
 
     static let defaultInstance = _StorageClass()
@@ -12053,7 +12053,7 @@ extension UserConsent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementati
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: UserConsent, rhs: UserConsent) -> Bool {
+  public static func ==(lhs: GRPCUserConsent, rhs: GRPCUserConsent) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -12072,7 +12072,7 @@ extension UserConsent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementati
   }
 }
 
-extension ConsentMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCConsentMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "ConsentMessage"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "message"),
@@ -12099,7 +12099,7 @@ extension ConsentMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: ConsentMessage, rhs: ConsentMessage) -> Bool {
+  public static func ==(lhs: GRPCConsentMessage, rhs: GRPCConsentMessage) -> Bool {
     if lhs.message != rhs.message {return false}
     if lhs.links != rhs.links {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -12107,7 +12107,7 @@ extension ConsentMessage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
   }
 }
 
-extension ConsentMessageLink: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCConsentMessageLink: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "ConsentMessageLink"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "to"),
@@ -12139,7 +12139,7 @@ extension ConsentMessageLink: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: ConsentMessageLink, rhs: ConsentMessageLink) -> Bool {
+  public static func ==(lhs: GRPCConsentMessageLink, rhs: GRPCConsentMessageLink) -> Bool {
     if lhs.to != rhs.to {return false}
     if lhs.start != rhs.start {return false}
     if lhs.end != rhs.end {return false}
@@ -12148,7 +12148,7 @@ extension ConsentMessageLink: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
   }
 }
 
-extension ThirdPartyAppAuthentication: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCThirdPartyAppAuthentication: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "ThirdPartyAppAuthentication"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "download_title"),
@@ -12165,9 +12165,9 @@ extension ThirdPartyAppAuthentication: SwiftProtobuf.Message, SwiftProtobuf._Mes
     var _downloadMessage: String = String()
     var _upgradeTitle: String = String()
     var _upgradeMessage: String = String()
-    var _ios: ThirdPartyAppAuthentication.Ios? = nil
-    var _android: ThirdPartyAppAuthentication.Android? = nil
-    var _web: ThirdPartyAppAuthentication.Web? = nil
+    var _ios: GRPCThirdPartyAppAuthentication.Ios? = nil
+    var _android: GRPCThirdPartyAppAuthentication.Android? = nil
+    var _web: GRPCThirdPartyAppAuthentication.Web? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -12236,7 +12236,7 @@ extension ThirdPartyAppAuthentication: SwiftProtobuf.Message, SwiftProtobuf._Mes
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: ThirdPartyAppAuthentication, rhs: ThirdPartyAppAuthentication) -> Bool {
+  public static func ==(lhs: GRPCThirdPartyAppAuthentication, rhs: GRPCThirdPartyAppAuthentication) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -12257,8 +12257,8 @@ extension ThirdPartyAppAuthentication: SwiftProtobuf.Message, SwiftProtobuf._Mes
   }
 }
 
-extension ThirdPartyAppAuthentication.Ios: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = ThirdPartyAppAuthentication.protoMessageName + ".Ios"
+extension GRPCThirdPartyAppAuthentication.Ios: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = GRPCThirdPartyAppAuthentication.protoMessageName + ".Ios"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "app_store_url"),
     2: .same(proto: "scheme"),
@@ -12289,7 +12289,7 @@ extension ThirdPartyAppAuthentication.Ios: SwiftProtobuf.Message, SwiftProtobuf.
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: ThirdPartyAppAuthentication.Ios, rhs: ThirdPartyAppAuthentication.Ios) -> Bool {
+  public static func ==(lhs: GRPCThirdPartyAppAuthentication.Ios, rhs: GRPCThirdPartyAppAuthentication.Ios) -> Bool {
     if lhs.appStoreURL != rhs.appStoreURL {return false}
     if lhs.scheme != rhs.scheme {return false}
     if lhs.deepLinkURL != rhs.deepLinkURL {return false}
@@ -12298,8 +12298,8 @@ extension ThirdPartyAppAuthentication.Ios: SwiftProtobuf.Message, SwiftProtobuf.
   }
 }
 
-extension ThirdPartyAppAuthentication.Android: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = ThirdPartyAppAuthentication.protoMessageName + ".Android"
+extension GRPCThirdPartyAppAuthentication.Android: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = GRPCThirdPartyAppAuthentication.protoMessageName + ".Android"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "package_name"),
     2: .standard(proto: "required_minimum_version"),
@@ -12330,7 +12330,7 @@ extension ThirdPartyAppAuthentication.Android: SwiftProtobuf.Message, SwiftProto
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: ThirdPartyAppAuthentication.Android, rhs: ThirdPartyAppAuthentication.Android) -> Bool {
+  public static func ==(lhs: GRPCThirdPartyAppAuthentication.Android, rhs: GRPCThirdPartyAppAuthentication.Android) -> Bool {
     if lhs.packageName != rhs.packageName {return false}
     if lhs.requiredMinimumVersion != rhs.requiredMinimumVersion {return false}
     if lhs.intent != rhs.intent {return false}
@@ -12339,8 +12339,8 @@ extension ThirdPartyAppAuthentication.Android: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension ThirdPartyAppAuthentication.Web: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = ThirdPartyAppAuthentication.protoMessageName + ".Web"
+extension GRPCThirdPartyAppAuthentication.Web: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = GRPCThirdPartyAppAuthentication.protoMessageName + ".Web"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "url"),
   ]
@@ -12361,14 +12361,14 @@ extension ThirdPartyAppAuthentication.Web: SwiftProtobuf.Message, SwiftProtobuf.
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: ThirdPartyAppAuthentication.Web, rhs: ThirdPartyAppAuthentication.Web) -> Bool {
+  public static func ==(lhs: GRPCThirdPartyAppAuthentication.Web, rhs: GRPCThirdPartyAppAuthentication.Web) -> Bool {
     if lhs.url != rhs.url {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Credentials: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCCredentials: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "Credentials"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "credential"),
@@ -12390,14 +12390,14 @@ extension Credentials: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementati
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Credentials, rhs: Credentials) -> Bool {
+  public static func ==(lhs: GRPCCredentials, rhs: GRPCCredentials) -> Bool {
     if lhs.credential != rhs.credential {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Accounts: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCAccounts: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "Accounts"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "account"),
@@ -12419,14 +12419,14 @@ extension Accounts: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationB
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Accounts, rhs: Accounts) -> Bool {
+  public static func ==(lhs: GRPCAccounts, rhs: GRPCAccounts) -> Bool {
     if lhs.account != rhs.account {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Transactions: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCTransactions: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "Transactions"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "transaction"),
@@ -12448,14 +12448,14 @@ extension Transactions: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementat
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Transactions, rhs: Transactions) -> Bool {
+  public static func ==(lhs: GRPCTransactions, rhs: GRPCTransactions) -> Bool {
     if lhs.transaction != rhs.transaction {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Providers: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCProviders: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "Providers"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "provider"),
@@ -12477,14 +12477,14 @@ extension Providers: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementation
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Providers, rhs: Providers) -> Bool {
+  public static func ==(lhs: GRPCProviders, rhs: GRPCProviders) -> Bool {
     if lhs.provider != rhs.provider {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Periods: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCPeriods: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "Periods"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "period"),
@@ -12493,7 +12493,7 @@ extension Periods: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBa
   public mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
     while let fieldNumber = try decoder.nextFieldNumber() {
       switch fieldNumber {
-      case 1: try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,Period>.self, value: &self.period)
+      case 1: try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,GRPCPeriod>.self, value: &self.period)
       default: break
       }
     }
@@ -12501,19 +12501,19 @@ extension Periods: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBa
 
   public func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
     if !self.period.isEmpty {
-      try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,Period>.self, value: self.period, fieldNumber: 1)
+      try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMessageMap<SwiftProtobuf.ProtobufString,GRPCPeriod>.self, value: self.period, fieldNumber: 1)
     }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Periods, rhs: Periods) -> Bool {
+  public static func ==(lhs: GRPCPeriods, rhs: GRPCPeriods) -> Bool {
     if lhs.period != rhs.period {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension FollowItems: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCFollowItems: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "FollowItems"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "follow_item"),
@@ -12535,14 +12535,14 @@ extension FollowItems: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementati
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: FollowItems, rhs: FollowItems) -> Bool {
+  public static func ==(lhs: GRPCFollowItems, rhs: GRPCFollowItems) -> Bool {
     if lhs.followItem != rhs.followItem {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension SignableOperations: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCSignableOperations: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "SignableOperations"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "signable_operation"),
@@ -12564,14 +12564,14 @@ extension SignableOperations: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: SignableOperations, rhs: SignableOperations) -> Bool {
+  public static func ==(lhs: GRPCSignableOperations, rhs: GRPCSignableOperations) -> Bool {
     if lhs.signableOperation != rhs.signableOperation {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension BudgetSummaries: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCBudgetSummaries: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "BudgetSummaries"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "budget_summaries"),
@@ -12593,14 +12593,14 @@ extension BudgetSummaries: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: BudgetSummaries, rhs: BudgetSummaries) -> Bool {
+  public static func ==(lhs: GRPCBudgetSummaries, rhs: GRPCBudgetSummaries) -> Bool {
     if lhs.budgetSummaries != rhs.budgetSummaries {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Insights: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCInsights: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "Insights"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "insights"),
@@ -12622,14 +12622,14 @@ extension Insights: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationB
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Insights, rhs: Insights) -> Bool {
+  public static func ==(lhs: GRPCInsights, rhs: GRPCInsights) -> Bool {
     if lhs.insights != rhs.insights {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension InsightsCategories: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCInsightsCategories: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "InsightsCategories"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "title"),
@@ -12661,7 +12661,7 @@ extension InsightsCategories: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: InsightsCategories, rhs: InsightsCategories) -> Bool {
+  public static func ==(lhs: GRPCInsightsCategories, rhs: GRPCInsightsCategories) -> Bool {
     if lhs.title != rhs.title {return false}
     if lhs.body != rhs.body {return false}
     if lhs.amountByCategoryCode != rhs.amountByCategoryCode {return false}
@@ -12670,8 +12670,8 @@ extension InsightsCategories: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
   }
 }
 
-extension InsightsCategories.AmountByCategoryCode: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = InsightsCategories.protoMessageName + ".AmountByCategoryCode"
+extension GRPCInsightsCategories.AmountByCategoryCode: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = GRPCInsightsCategories.protoMessageName + ".AmountByCategoryCode"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "category_code"),
     2: .same(proto: "amount"),
@@ -12679,7 +12679,7 @@ extension InsightsCategories.AmountByCategoryCode: SwiftProtobuf.Message, SwiftP
 
   fileprivate class _StorageClass {
     var _categoryCode: String = String()
-    var _amount: CurrencyDenominatedAmount? = nil
+    var _amount: GRPCCurrencyDenominatedAmount? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -12723,7 +12723,7 @@ extension InsightsCategories.AmountByCategoryCode: SwiftProtobuf.Message, SwiftP
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: InsightsCategories.AmountByCategoryCode, rhs: InsightsCategories.AmountByCategoryCode) -> Bool {
+  public static func ==(lhs: GRPCInsightsCategories.AmountByCategoryCode, rhs: GRPCInsightsCategories.AmountByCategoryCode) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -12739,7 +12739,7 @@ extension InsightsCategories.AmountByCategoryCode: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension InsightsMortgage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCInsightsMortgage: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "InsightsMortgage"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "title"),
@@ -12776,7 +12776,7 @@ extension InsightsMortgage: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: InsightsMortgage, rhs: InsightsMortgage) -> Bool {
+  public static func ==(lhs: GRPCInsightsMortgage, rhs: GRPCInsightsMortgage) -> Bool {
     if lhs.title != rhs.title {return false}
     if lhs.body != rhs.body {return false}
     if lhs.distribution != rhs.distribution {return false}
@@ -12786,8 +12786,8 @@ extension InsightsMortgage: SwiftProtobuf.Message, SwiftProtobuf._MessageImpleme
   }
 }
 
-extension InsightsMortgage.HistogramBucket: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = InsightsMortgage.protoMessageName + ".HistogramBucket"
+extension GRPCInsightsMortgage.HistogramBucket: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = GRPCInsightsMortgage.protoMessageName + ".HistogramBucket"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "lower_endpoint"),
     2: .standard(proto: "upper_endpoint"),
@@ -12818,7 +12818,7 @@ extension InsightsMortgage.HistogramBucket: SwiftProtobuf.Message, SwiftProtobuf
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: InsightsMortgage.HistogramBucket, rhs: InsightsMortgage.HistogramBucket) -> Bool {
+  public static func ==(lhs: GRPCInsightsMortgage.HistogramBucket, rhs: GRPCInsightsMortgage.HistogramBucket) -> Bool {
     if lhs.lowerEndpoint != rhs.lowerEndpoint {return false}
     if lhs.upperEndpoint != rhs.upperEndpoint {return false}
     if lhs.frequency != rhs.frequency {return false}
@@ -12827,7 +12827,7 @@ extension InsightsMortgage.HistogramBucket: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension InsightsSavings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCInsightsSavings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "InsightsSavings"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "title"),
@@ -12838,7 +12838,7 @@ extension InsightsSavings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
   fileprivate class _StorageClass {
     var _title: String = String()
     var _body: String = String()
-    var _amount: CurrencyDenominatedAmount? = nil
+    var _amount: GRPCCurrencyDenominatedAmount? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -12887,7 +12887,7 @@ extension InsightsSavings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: InsightsSavings, rhs: InsightsSavings) -> Bool {
+  public static func ==(lhs: GRPCInsightsSavings, rhs: GRPCInsightsSavings) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -12904,7 +12904,7 @@ extension InsightsSavings: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
   }
 }
 
-extension InsightsDailySpend: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCInsightsDailySpend: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "InsightsDailySpend"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "title"),
@@ -12936,7 +12936,7 @@ extension InsightsDailySpend: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: InsightsDailySpend, rhs: InsightsDailySpend) -> Bool {
+  public static func ==(lhs: GRPCInsightsDailySpend, rhs: GRPCInsightsDailySpend) -> Bool {
     if lhs.title != rhs.title {return false}
     if lhs.body != rhs.body {return false}
     if lhs.amountByWeekday != rhs.amountByWeekday {return false}
@@ -12945,8 +12945,8 @@ extension InsightsDailySpend: SwiftProtobuf.Message, SwiftProtobuf._MessageImple
   }
 }
 
-extension InsightsDailySpend.AmountByWeekday: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = InsightsDailySpend.protoMessageName + ".AmountByWeekday"
+extension GRPCInsightsDailySpend.AmountByWeekday: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = GRPCInsightsDailySpend.protoMessageName + ".AmountByWeekday"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "weekday"),
     2: .same(proto: "amount"),
@@ -12954,7 +12954,7 @@ extension InsightsDailySpend.AmountByWeekday: SwiftProtobuf.Message, SwiftProtob
 
   fileprivate class _StorageClass {
     var _weekday: String = String()
-    var _amount: CurrencyDenominatedAmount? = nil
+    var _amount: GRPCCurrencyDenominatedAmount? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -12998,7 +12998,7 @@ extension InsightsDailySpend.AmountByWeekday: SwiftProtobuf.Message, SwiftProtob
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: InsightsDailySpend.AmountByWeekday, rhs: InsightsDailySpend.AmountByWeekday) -> Bool {
+  public static func ==(lhs: GRPCInsightsDailySpend.AmountByWeekday, rhs: GRPCInsightsDailySpend.AmountByWeekday) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -13014,7 +13014,7 @@ extension InsightsDailySpend.AmountByWeekday: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension InsightsLeftToSpend: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCInsightsLeftToSpend: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "InsightsLeftToSpend"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "title"),
@@ -13046,7 +13046,7 @@ extension InsightsLeftToSpend: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: InsightsLeftToSpend, rhs: InsightsLeftToSpend) -> Bool {
+  public static func ==(lhs: GRPCInsightsLeftToSpend, rhs: GRPCInsightsLeftToSpend) -> Bool {
     if lhs.title != rhs.title {return false}
     if lhs.body != rhs.body {return false}
     if lhs.leftToSpendByPeriod != rhs.leftToSpendByPeriod {return false}
@@ -13055,8 +13055,8 @@ extension InsightsLeftToSpend: SwiftProtobuf.Message, SwiftProtobuf._MessageImpl
   }
 }
 
-extension InsightsLeftToSpend.LeftToSpendByPeriod: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = InsightsLeftToSpend.protoMessageName + ".LeftToSpendByPeriod"
+extension GRPCInsightsLeftToSpend.LeftToSpendByPeriod: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = GRPCInsightsLeftToSpend.protoMessageName + ".LeftToSpendByPeriod"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "period"),
     2: .same(proto: "percentage"),
@@ -13082,7 +13082,7 @@ extension InsightsLeftToSpend.LeftToSpendByPeriod: SwiftProtobuf.Message, SwiftP
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: InsightsLeftToSpend.LeftToSpendByPeriod, rhs: InsightsLeftToSpend.LeftToSpendByPeriod) -> Bool {
+  public static func ==(lhs: GRPCInsightsLeftToSpend.LeftToSpendByPeriod, rhs: GRPCInsightsLeftToSpend.LeftToSpendByPeriod) -> Bool {
     if lhs.period != rhs.period {return false}
     if lhs.percentage != rhs.percentage {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -13090,7 +13090,7 @@ extension InsightsLeftToSpend.LeftToSpendByPeriod: SwiftProtobuf.Message, SwiftP
   }
 }
 
-extension BusinessDays: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCBusinessDays: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "BusinessDays"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "year"),
@@ -13122,7 +13122,7 @@ extension BusinessDays: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementat
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: BusinessDays, rhs: BusinessDays) -> Bool {
+  public static func ==(lhs: GRPCBusinessDays, rhs: GRPCBusinessDays) -> Bool {
     if lhs.year != rhs.year {return false}
     if lhs.month != rhs.month {return false}
     if lhs.days != rhs.days {return false}
@@ -13131,7 +13131,7 @@ extension BusinessDays: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementat
   }
 }
 
-extension ErrorCode: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCErrorCode: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "ErrorCode"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "code"),
@@ -13153,14 +13153,14 @@ extension ErrorCode: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementation
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: ErrorCode, rhs: ErrorCode) -> Bool {
+  public static func ==(lhs: GRPCErrorCode, rhs: GRPCErrorCode) -> Bool {
     if lhs.code != rhs.code {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension Property: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCProperty: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "Property"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "property_id"),
@@ -13190,16 +13190,16 @@ extension Property: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationB
     var _community: String = String()
     var _latitude: Double = 0
     var _longitude: Double = 0
-    var _type: Property.TypeEnum = .propertyTypeUnknown
+    var _type: GRPCProperty.TypeEnum = .propertyTypeUnknown
     var _numberOfRooms: Int32 = 0
     var _numberOfSquareMeters: Int32 = 0
     var _valuation: Int32 = 0
     var _loanAccountIds: [String] = []
     var _registeredAddress: Bool = false
     var _userModifiedLoanAccountIds: Bool = false
-    var _valuationAmount: CurrencyDenominatedAmount? = nil
-    var _totalLoanAmount: CurrencyDenominatedAmount? = nil
-    var _averageInterestRate: ExactNumber? = nil
+    var _valuationAmount: GRPCCurrencyDenominatedAmount? = nil
+    var _totalLoanAmount: GRPCCurrencyDenominatedAmount? = nil
+    var _averageInterestRate: GRPCExactNumber? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -13318,7 +13318,7 @@ extension Property: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationB
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Property, rhs: Property) -> Bool {
+  public static func ==(lhs: GRPCProperty, rhs: GRPCProperty) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -13349,7 +13349,7 @@ extension Property: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationB
   }
 }
 
-extension Property.TypeEnum: SwiftProtobuf._ProtoNameProviding {
+extension GRPCProperty.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "PROPERTY_TYPE_UNKNOWN"),
     1: .same(proto: "PROPERTY_TYPE_HOUSE"),
@@ -13358,7 +13358,7 @@ extension Property.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension Market: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCMarket: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "Market"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "code"),
@@ -13390,7 +13390,7 @@ extension Market: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBas
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Market, rhs: Market) -> Bool {
+  public static func ==(lhs: GRPCMarket, rhs: GRPCMarket) -> Bool {
     if lhs.code != rhs.code {return false}
     if lhs.label != rhs.label {return false}
     if lhs.status != rhs.status {return false}
@@ -13399,7 +13399,7 @@ extension Market: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBas
   }
 }
 
-extension ProviderMarket: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCProviderMarket: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "ProviderMarket"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "code"),
@@ -13421,14 +13421,14 @@ extension ProviderMarket: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: ProviderMarket, rhs: ProviderMarket) -> Bool {
+  public static func ==(lhs: GRPCProviderMarket, rhs: GRPCProviderMarket) -> Bool {
     if lhs.code != rhs.code {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension PropertyValuationEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCPropertyValuationEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "PropertyValuationEvent"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "property_id"),
@@ -13439,7 +13439,7 @@ extension PropertyValuationEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageI
   fileprivate class _StorageClass {
     var _propertyID: String = String()
     var _date: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
-    var _valuationAmount: CurrencyDenominatedAmount? = nil
+    var _valuationAmount: GRPCCurrencyDenominatedAmount? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -13488,7 +13488,7 @@ extension PropertyValuationEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: PropertyValuationEvent, rhs: PropertyValuationEvent) -> Bool {
+  public static func ==(lhs: GRPCPropertyValuationEvent, rhs: GRPCPropertyValuationEvent) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -13505,7 +13505,7 @@ extension PropertyValuationEvent: SwiftProtobuf.Message, SwiftProtobuf._MessageI
   }
 }
 
-extension PropertyValuationSummary: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCPropertyValuationSummary: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "PropertyValuationSummary"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "property_id"),
@@ -13519,8 +13519,8 @@ extension PropertyValuationSummary: SwiftProtobuf.Message, SwiftProtobuf._Messag
     var _propertyID: String = String()
     var _from: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
     var _to: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
-    var _fromValuationAmount: CurrencyDenominatedAmount? = nil
-    var _toValuationAmount: CurrencyDenominatedAmount? = nil
+    var _fromValuationAmount: GRPCCurrencyDenominatedAmount? = nil
+    var _toValuationAmount: GRPCCurrencyDenominatedAmount? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -13579,7 +13579,7 @@ extension PropertyValuationSummary: SwiftProtobuf.Message, SwiftProtobuf._Messag
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: PropertyValuationSummary, rhs: PropertyValuationSummary) -> Bool {
+  public static func ==(lhs: GRPCPropertyValuationSummary, rhs: GRPCPropertyValuationSummary) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -13598,7 +13598,7 @@ extension PropertyValuationSummary: SwiftProtobuf.Message, SwiftProtobuf._Messag
   }
 }
 
-extension Insight: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCInsight: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "Insight"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
@@ -13615,13 +13615,13 @@ extension Insight: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBa
   fileprivate class _StorageClass {
     var _id: String = String()
     var _type: String = String()
-    var _score: ExactNumber? = nil
+    var _score: GRPCExactNumber? = nil
     var _title: String = String()
     var _description_p: String = String()
     var _createdTime: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
     var _expirationTime: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
-    var _dataSets: [InsightDataSet] = []
-    var _actions: [InsightAction] = []
+    var _dataSets: [GRPCInsightDataSet] = []
+    var _actions: [GRPCInsightAction] = []
 
     static let defaultInstance = _StorageClass()
 
@@ -13700,7 +13700,7 @@ extension Insight: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBa
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: Insight, rhs: Insight) -> Bool {
+  public static func ==(lhs: GRPCInsight, rhs: GRPCInsight) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -13723,7 +13723,7 @@ extension Insight: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBa
   }
 }
 
-extension ArchivedInsight: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCArchivedInsight: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "ArchivedInsight"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
@@ -13740,13 +13740,13 @@ extension ArchivedInsight: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
   fileprivate class _StorageClass {
     var _id: String = String()
     var _type: String = String()
-    var _score: ExactNumber? = nil
+    var _score: GRPCExactNumber? = nil
     var _title: String = String()
     var _description_p: String = String()
     var _createdTime: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
     var _archivedTime: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
-    var _dataSets: [InsightDataSet] = []
-    var _action: InsightAction? = nil
+    var _dataSets: [GRPCInsightDataSet] = []
+    var _action: GRPCInsightAction? = nil
 
     static let defaultInstance = _StorageClass()
 
@@ -13825,7 +13825,7 @@ extension ArchivedInsight: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: ArchivedInsight, rhs: ArchivedInsight) -> Bool {
+  public static func ==(lhs: GRPCArchivedInsight, rhs: GRPCArchivedInsight) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -13848,7 +13848,7 @@ extension ArchivedInsight: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
   }
 }
 
-extension InsightDataSet: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCInsightDataSet: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "InsightDataSet"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "name"),
@@ -13875,7 +13875,7 @@ extension InsightDataSet: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: InsightDataSet, rhs: InsightDataSet) -> Bool {
+  public static func ==(lhs: GRPCInsightDataSet, rhs: GRPCInsightDataSet) -> Bool {
     if lhs.name != rhs.name {return false}
     if lhs.dataSeries != rhs.dataSeries {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -13883,8 +13883,8 @@ extension InsightDataSet: SwiftProtobuf.Message, SwiftProtobuf._MessageImplement
   }
 }
 
-extension InsightDataSet.DataSeries: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = InsightDataSet.protoMessageName + ".DataSeries"
+extension GRPCInsightDataSet.DataSeries: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = GRPCInsightDataSet.protoMessageName + ".DataSeries"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "name"),
     2: .same(proto: "type"),
@@ -13915,7 +13915,7 @@ extension InsightDataSet.DataSeries: SwiftProtobuf.Message, SwiftProtobuf._Messa
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: InsightDataSet.DataSeries, rhs: InsightDataSet.DataSeries) -> Bool {
+  public static func ==(lhs: GRPCInsightDataSet.DataSeries, rhs: GRPCInsightDataSet.DataSeries) -> Bool {
     if lhs.name != rhs.name {return false}
     if lhs.type != rhs.type {return false}
     if lhs.dataPoints != rhs.dataPoints {return false}
@@ -13924,8 +13924,8 @@ extension InsightDataSet.DataSeries: SwiftProtobuf.Message, SwiftProtobuf._Messa
   }
 }
 
-extension InsightDataSet.DataSeries.DataPoint: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = InsightDataSet.DataSeries.protoMessageName + ".DataPoint"
+extension GRPCInsightDataSet.DataSeries.DataPoint: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = GRPCInsightDataSet.DataSeries.protoMessageName + ".DataPoint"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "x"),
     2: .same(proto: "y"),
@@ -13951,7 +13951,7 @@ extension InsightDataSet.DataSeries.DataPoint: SwiftProtobuf.Message, SwiftProto
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: InsightDataSet.DataSeries.DataPoint, rhs: InsightDataSet.DataSeries.DataPoint) -> Bool {
+  public static func ==(lhs: GRPCInsightDataSet.DataSeries.DataPoint, rhs: GRPCInsightDataSet.DataSeries.DataPoint) -> Bool {
     if lhs.x != rhs.x {return false}
     if lhs.y != rhs.y {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -13959,7 +13959,7 @@ extension InsightDataSet.DataSeries.DataPoint: SwiftProtobuf.Message, SwiftProto
   }
 }
 
-extension InsightAction: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCInsightAction: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "InsightAction"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "label"),
@@ -14001,7 +14001,7 @@ extension InsightAction: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: InsightAction, rhs: InsightAction) -> Bool {
+  public static func ==(lhs: GRPCInsightAction, rhs: GRPCInsightAction) -> Bool {
     if lhs.label != rhs.label {return false}
     if lhs.target != rhs.target {return false}
     if lhs.type != rhs.type {return false}
@@ -14012,7 +14012,7 @@ extension InsightAction: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementa
   }
 }
 
-extension InsightAction.TypeEnum: SwiftProtobuf._ProtoNameProviding {
+extension GRPCInsightAction.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "TYPE_UNKNOWN"),
     1: .same(proto: "TYPE_PRIMARY"),
@@ -14020,7 +14020,7 @@ extension InsightAction.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension InsightAction.Method: SwiftProtobuf._ProtoNameProviding {
+extension GRPCInsightAction.Method: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "METHOD_UNKNOWN"),
     1: .same(proto: "METHOD_ACKNOWLEDGE"),
@@ -14033,7 +14033,7 @@ extension InsightAction.Method: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension InsightAction.Group: SwiftProtobuf._ProtoNameProviding {
+extension GRPCInsightAction.Group: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "GROUP_UNKNOWN"),
     1: .same(proto: "GROUP_EDUCATING"),
@@ -14057,7 +14057,7 @@ extension InsightAction.Group: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension RecurringTransaction: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCRecurringTransaction: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "RecurringTransaction"
   public static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
@@ -14070,14 +14070,14 @@ extension RecurringTransaction: SwiftProtobuf.Message, SwiftProtobuf._MessageImp
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: RecurringTransaction, rhs: RecurringTransaction) -> Bool {
+  public static func ==(lhs: GRPCRecurringTransaction, rhs: GRPCRecurringTransaction) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension RecurringTransaction.Transaction: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = RecurringTransaction.protoMessageName + ".Transaction"
+extension GRPCRecurringTransaction.Transaction: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = GRPCRecurringTransaction.protoMessageName + ".Transaction"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "transaction_id"),
     2: .same(proto: "type"),
@@ -14091,13 +14091,13 @@ extension RecurringTransaction.Transaction: SwiftProtobuf.Message, SwiftProtobuf
 
   fileprivate class _StorageClass {
     var _transactionID: String = String()
-    var _type: RecurringTransaction.Transaction.TypeEnum = .unknown
+    var _type: GRPCRecurringTransaction.Transaction.TypeEnum = .unknown
     var _date: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
     var _description_p: String = String()
-    var _amount: CurrencyDenominatedAmount? = nil
-    var _category: RecurringTransaction.Category? = nil
+    var _amount: GRPCCurrencyDenominatedAmount? = nil
+    var _category: GRPCRecurringTransaction.Category? = nil
     var _groupID: String = String()
-    var _source: RecurringTransaction.Transaction.Source = .unknown
+    var _source: GRPCRecurringTransaction.Transaction.Source = .unknown
 
     static let defaultInstance = _StorageClass()
 
@@ -14171,7 +14171,7 @@ extension RecurringTransaction.Transaction: SwiftProtobuf.Message, SwiftProtobuf
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: RecurringTransaction.Transaction, rhs: RecurringTransaction.Transaction) -> Bool {
+  public static func ==(lhs: GRPCRecurringTransaction.Transaction, rhs: GRPCRecurringTransaction.Transaction) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -14193,7 +14193,7 @@ extension RecurringTransaction.Transaction: SwiftProtobuf.Message, SwiftProtobuf
   }
 }
 
-extension RecurringTransaction.Transaction.TypeEnum: SwiftProtobuf._ProtoNameProviding {
+extension GRPCRecurringTransaction.Transaction.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "TYPE_UNKNOWN"),
     1: .same(proto: "TYPE_PREDICTED"),
@@ -14201,7 +14201,7 @@ extension RecurringTransaction.Transaction.TypeEnum: SwiftProtobuf._ProtoNamePro
   ]
 }
 
-extension RecurringTransaction.Transaction.Source: SwiftProtobuf._ProtoNameProviding {
+extension GRPCRecurringTransaction.Transaction.Source: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "SOURCE_UNKNOWN"),
     1: .same(proto: "SOURCE_USER_ADDED"),
@@ -14209,8 +14209,8 @@ extension RecurringTransaction.Transaction.Source: SwiftProtobuf._ProtoNameProvi
   ]
 }
 
-extension RecurringTransaction.Category: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = RecurringTransaction.protoMessageName + ".Category"
+extension GRPCRecurringTransaction.Category: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = GRPCRecurringTransaction.protoMessageName + ".Category"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "type"),
     2: .same(proto: "code"),
@@ -14246,7 +14246,7 @@ extension RecurringTransaction.Category: SwiftProtobuf.Message, SwiftProtobuf._M
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: RecurringTransaction.Category, rhs: RecurringTransaction.Category) -> Bool {
+  public static func ==(lhs: GRPCRecurringTransaction.Category, rhs: GRPCRecurringTransaction.Category) -> Bool {
     if lhs.type != rhs.type {return false}
     if lhs.code != rhs.code {return false}
     if lhs.primaryName != rhs.primaryName {return false}
@@ -14256,7 +14256,7 @@ extension RecurringTransaction.Category: SwiftProtobuf.Message, SwiftProtobuf._M
   }
 }
 
-extension RecurringTransaction.Category.TypeEnum: SwiftProtobuf._ProtoNameProviding {
+extension GRPCRecurringTransaction.Category.TypeEnum: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "TYPE_UNKNOWN"),
     1: .same(proto: "TYPE_INCOME"),
@@ -14265,8 +14265,8 @@ extension RecurringTransaction.Category.TypeEnum: SwiftProtobuf._ProtoNameProvid
   ]
 }
 
-extension RecurringTransaction.Group: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = RecurringTransaction.protoMessageName + ".Group"
+extension GRPCRecurringTransaction.Group: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = GRPCRecurringTransaction.protoMessageName + ".Group"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "id"),
     2: .same(proto: "name"),
@@ -14307,7 +14307,7 @@ extension RecurringTransaction.Group: SwiftProtobuf.Message, SwiftProtobuf._Mess
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: RecurringTransaction.Group, rhs: RecurringTransaction.Group) -> Bool {
+  public static func ==(lhs: GRPCRecurringTransaction.Group, rhs: GRPCRecurringTransaction.Group) -> Bool {
     if lhs.id != rhs.id {return false}
     if lhs.name != rhs.name {return false}
     if lhs.qualifier != rhs.qualifier {return false}
@@ -14318,7 +14318,7 @@ extension RecurringTransaction.Group: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 }
 
-extension RecurringTransaction.Group.State: SwiftProtobuf._ProtoNameProviding {
+extension GRPCRecurringTransaction.Group.State: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "STATE_UNKNOWN"),
     1: .same(proto: "STATE_DISABLED"),
@@ -14326,7 +14326,7 @@ extension RecurringTransaction.Group.State: SwiftProtobuf._ProtoNameProviding {
   ]
 }
 
-extension RecurringTransaction.Group.RecurringPeriodicity: SwiftProtobuf._ProtoNameProviding {
+extension GRPCRecurringTransaction.Group.RecurringPeriodicity: SwiftProtobuf._ProtoNameProviding {
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     0: .same(proto: "RECURRING_PERIODICITY_UNKNOWN"),
     1: .same(proto: "RECURRING_PERIODICITY_MONTHLY"),
@@ -14335,8 +14335,8 @@ extension RecurringTransaction.Group.RecurringPeriodicity: SwiftProtobuf._ProtoN
   ]
 }
 
-extension RecurringTransaction.PeriodSummary: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  public static let protoMessageName: String = RecurringTransaction.protoMessageName + ".PeriodSummary"
+extension GRPCRecurringTransaction.PeriodSummary: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  public static let protoMessageName: String = GRPCRecurringTransaction.protoMessageName + ".PeriodSummary"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "total_amount"),
     2: .same(proto: "start"),
@@ -14344,7 +14344,7 @@ extension RecurringTransaction.PeriodSummary: SwiftProtobuf.Message, SwiftProtob
   ]
 
   fileprivate class _StorageClass {
-    var _totalAmount: CurrencyDenominatedAmount? = nil
+    var _totalAmount: GRPCCurrencyDenominatedAmount? = nil
     var _start: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
     var _end: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
 
@@ -14395,7 +14395,7 @@ extension RecurringTransaction.PeriodSummary: SwiftProtobuf.Message, SwiftProtob
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: RecurringTransaction.PeriodSummary, rhs: RecurringTransaction.PeriodSummary) -> Bool {
+  public static func ==(lhs: GRPCRecurringTransaction.PeriodSummary, rhs: GRPCRecurringTransaction.PeriodSummary) -> Bool {
     if lhs._storage !== rhs._storage {
       let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
         let _storage = _args.0
@@ -14412,7 +14412,7 @@ extension RecurringTransaction.PeriodSummary: SwiftProtobuf.Message, SwiftProtob
   }
 }
 
-extension KycQuestion: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCKycQuestion: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "KycQuestion"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "reference"),
@@ -14439,7 +14439,7 @@ extension KycQuestion: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementati
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: KycQuestion, rhs: KycQuestion) -> Bool {
+  public static func ==(lhs: GRPCKycQuestion, rhs: GRPCKycQuestion) -> Bool {
     if lhs.reference != rhs.reference {return false}
     if lhs.answer != rhs.answer {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
@@ -14447,7 +14447,7 @@ extension KycQuestion: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementati
   }
 }
 
-extension OAuth2ScopeDescription: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+extension GRPCOAuth2ScopeDescription: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   public static let protoMessageName: String = "OAuth2ScopeDescription"
   public static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .same(proto: "title"),
@@ -14474,7 +14474,7 @@ extension OAuth2ScopeDescription: SwiftProtobuf.Message, SwiftProtobuf._MessageI
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  public static func ==(lhs: OAuth2ScopeDescription, rhs: OAuth2ScopeDescription) -> Bool {
+  public static func ==(lhs: GRPCOAuth2ScopeDescription, rhs: GRPCOAuth2ScopeDescription) -> Bool {
     if lhs.title != rhs.title {return false}
     if lhs.description_p != rhs.description_p {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}

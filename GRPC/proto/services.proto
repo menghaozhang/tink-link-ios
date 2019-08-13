@@ -4,6 +4,7 @@ option java_multiple_files = true;
 option java_package = "se.tink.grpc.v1.services";
 option java_outer_classname = "Protos";
 option go_package = "proto";
+option swift_prefix = "GRPC";
 
 import "rpc.proto";
 import "google/api/annotations.proto";
