@@ -74,4 +74,12 @@ public final class CredentialService {
 
         return startCall(for: request, method: service.disableCredential, responseMap: { _ in return }, completion: completion)
     }
+
+    func thirdPartyCallback(state: String, parameters: [String: String], completion: @escaping (Result<Void, Error>) -> Void) -> Cancellable {
+        var request = GRPCThirdPartyCallbackRequest()
+        request.state = state
+        request.parameters = parameters
+
+        return startCall(for: request, method: service.thirdPartyCallback, responseMap: { _ in return }, completion: completion)
+    }
 }
