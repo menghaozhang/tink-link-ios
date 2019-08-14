@@ -27,6 +27,7 @@
 		20ED857A230407B3006213BB /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED8579230407B3006213BB /* Provider.swift */; };
 		20ED85832304081D006213BB /* Provider+GRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED85822304081D006213BB /* Provider+GRPC.swift */; };
 		20ED8588230408E6006213BB /* ClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED8587230408E6006213BB /* ClientTests.swift */; };
+		20ED859023041679006213BB /* ProviderGRPCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED858923040974006213BB /* ProviderGRPCTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		20ED8579230407B3006213BB /* Provider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		20ED85822304081D006213BB /* Provider+GRPC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Provider+GRPC.swift"; sourceTree = "<group>"; };
 		20ED8587230408E6006213BB /* ClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTests.swift; sourceTree = "<group>"; };
+		20ED858923040974006213BB /* ProviderGRPCTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderGRPCTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				20ED852E2303FA48006213BB /* TinkLinkTests.swift */,
+				20ED858923040974006213BB /* ProviderGRPCTests.swift */,
 				20ED8587230408E6006213BB /* ClientTests.swift */,
 				20ED85302303FA48006213BB /* Info.plist */,
 			);
@@ -303,6 +306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20ED859023041679006213BB /* ProviderGRPCTests.swift in Sources */,
 				20ED8588230408E6006213BB /* ClientTests.swift in Sources */,
 				20ED852F2303FA48006213BB /* TinkLinkTests.swift in Sources */,
 			);
