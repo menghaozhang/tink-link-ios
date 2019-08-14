@@ -82,4 +82,11 @@ public final class CredentialService {
 
         return startCall(for: request, method: service.thirdPartyCallback, responseMap: { _ in return }, completion: completion)
     }
+
+    func manualAuthentication(credentialID: String, completion: @escaping (Result<Void, Error>) -> Void) -> Cancellable {
+        var request = GRPCManualAuthenticationRequest()
+        request.credentialIds = credentialID
+
+        return startCall(for: request, method: service.manualAuthentication, responseMap: { _ in return }, completion: completion)
+    }
 }
