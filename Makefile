@@ -1,11 +1,11 @@
 generate:
-	mkdir ./Sources/TinkGRPC/
+	mkdir ./Sources/TinkLink/GRPC/
 	./GRPC/vendor/protoc \
 		--proto_path=./GRPC/proto \
 		--proto_path=./GRPC/third-party \
 		./GRPC/proto/*.proto \
-		--swift_out=./Sources/TinkGRPC/ \
-		--swiftgrpc_out=./Sources/TinkGRPC/ \
+		--swift_out=./Sources/TinkLink/GRPC/ \
+		--swiftgrpc_out=./Sources/TinkLink/GRPC/ \
 		--swift_opt=Visibility=Internal \
 		--swiftgrpc_opt=Visibility=Internal,Sync=false,Server=false \
 		--plugin=protoc-gen-swift=./GRPC/vendor/protoc-gen-swift \
@@ -15,4 +15,4 @@ test:
 	swift test -Xcc -ISources/BoringSSL/include -Xlinker -lz
 
 clean: 
-	-rm -rf ./Sources/TinkGRPC/
+	-rm -rf ./Sources/TinkLink/GRPC/

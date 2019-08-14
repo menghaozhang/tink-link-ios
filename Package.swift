@@ -16,12 +16,9 @@ let package = Package(
     targets: [
         .target(
             name: "TinkLink",
-            dependencies: ["TinkGRPC"]),
+            dependencies: ["SwiftProtobuf", "SwiftGRPC"]),
         .testTarget(
             name: "TinkLinkTests",
             dependencies: ["TinkLink"]),
-        .target(
-            name: "TinkGRPC",
-            dependencies: ["SwiftProtobuf", "SwiftGRPC"]),
     ]
 )
