@@ -15,6 +15,10 @@
 		20ED85422303FAEC006213BB /* models.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED853E2303FAEC006213BB /* models.pb.swift */; };
 		20ED85432303FAEC006213BB /* services.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED853F2303FAEC006213BB /* services.grpc.swift */; };
 		20ED85442303FAEC006213BB /* services.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED85402303FAEC006213BB /* services.pb.swift */; };
+		20ED854A2303FD85006213BB /* BoringSSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85462303FD85006213BB /* BoringSSL.framework */; };
+		20ED854B2303FD85006213BB /* CgRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85472303FD85006213BB /* CgRPC.framework */; };
+		20ED854C2303FD85006213BB /* SwiftProtobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85482303FD85006213BB /* SwiftProtobuf.framework */; };
+		20ED854D2303FD85006213BB /* SwiftGRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85492303FD85006213BB /* SwiftGRPC.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +43,10 @@
 		20ED853E2303FAEC006213BB /* models.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = models.pb.swift; sourceTree = "<group>"; };
 		20ED853F2303FAEC006213BB /* services.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = services.grpc.swift; sourceTree = "<group>"; };
 		20ED85402303FAEC006213BB /* services.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = services.pb.swift; sourceTree = "<group>"; };
+		20ED85462303FD85006213BB /* BoringSSL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BoringSSL.framework; path = Carthage/Build/iOS/BoringSSL.framework; sourceTree = "<group>"; };
+		20ED85472303FD85006213BB /* CgRPC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CgRPC.framework; path = Carthage/Build/iOS/CgRPC.framework; sourceTree = "<group>"; };
+		20ED85482303FD85006213BB /* SwiftProtobuf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftProtobuf.framework; path = Carthage/Build/iOS/SwiftProtobuf.framework; sourceTree = "<group>"; };
+		20ED85492303FD85006213BB /* SwiftGRPC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftGRPC.framework; path = Carthage/Build/iOS/SwiftGRPC.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +54,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20ED854A2303FD85006213BB /* BoringSSL.framework in Frameworks */,
+				20ED854B2303FD85006213BB /* CgRPC.framework in Frameworks */,
+				20ED854C2303FD85006213BB /* SwiftProtobuf.framework in Frameworks */,
+				20ED854D2303FD85006213BB /* SwiftGRPC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +78,7 @@
 				20ED85222303FA48006213BB /* TinkLink */,
 				20ED852D2303FA48006213BB /* TinkLinkTests */,
 				20ED85212303FA48006213BB /* Products */,
+				20ED85452303FD85006213BB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,6 +122,17 @@
 				20ED85402303FAEC006213BB /* services.pb.swift */,
 			);
 			path = GRPC;
+			sourceTree = "<group>";
+		};
+		20ED85452303FD85006213BB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				20ED85462303FD85006213BB /* BoringSSL.framework */,
+				20ED85472303FD85006213BB /* CgRPC.framework */,
+				20ED85492303FD85006213BB /* SwiftGRPC.framework */,
+				20ED85482303FD85006213BB /* SwiftProtobuf.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -379,6 +403,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/TinkLink/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -405,6 +433,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/TinkLink/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
