@@ -23,7 +23,7 @@ public final class ProviderService {
         request.capability = .unknown
         request.includeTestType = includeTestProviders
 
-        return startCall(request: request, method: service.listProviders, responseMap: { $0.providers.map({ Provider(grpcProvider: $0) }).filter({ !$0.capabilities.isDisjoint(with: capabilities) }) }, completion: completion)
+        return startCall(for: request, method: service.listProviders, responseMap: { $0.providers.map({ Provider(grpcProvider: $0) }).filter({ !$0.capabilities.isDisjoint(with: capabilities) }) }, completion: completion)
     }
 
     /// Lists all markets where there are providers available.
@@ -33,7 +33,7 @@ public final class ProviderService {
     public func providerMarkets(completion: @escaping (Result<[String], Error>) -> Void) -> Cancellable {
         let request = GRPCProviderMarketListRequest()
 
-        return startCall(request: request, method: service.listProviderMarkets, responseMap: { $0.providerMarkets.map({ $0.code }) }, completion: completion)
+        return startCall(for: request, method: service.listProviderMarkets, responseMap: { $0.providerMarkets.map({ $0.code }) }, completion: completion)
     }
 
 }

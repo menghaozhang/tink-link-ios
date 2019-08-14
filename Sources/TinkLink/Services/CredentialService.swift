@@ -12,6 +12,6 @@ public final class CredentialService {
     func credentials(completion: @escaping (Result<[GRPCCredential], Error>) -> Void) -> Cancellable {
         let request = GRPCListCredentialsRequest()
 
-        return startCall(request: request, method: service.listCredentials, responseMap: { $0.credentials }, completion: completion)
+        return startCall(for: request, method: service.listCredentials, responseMap: { $0.credentials }, completion: completion)
     }
 }

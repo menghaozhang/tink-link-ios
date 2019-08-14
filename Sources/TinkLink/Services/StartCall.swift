@@ -3,7 +3,7 @@ import SwiftGRPC
 typealias CallCompletionHandler<Model> = (Result<Model, Error>) -> Void
 
 func startCall<Request, Response, Model>(
-    request: Request,
+    for request: Request,
     method: (Request, @escaping (Response?, CallResult) -> Void) throws -> ClientCall,
     responseMap: @escaping (Response) -> Model,
     completion: @escaping CallCompletionHandler<Model>
