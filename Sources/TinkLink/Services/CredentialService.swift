@@ -60,4 +60,18 @@ public final class CredentialService {
 
         return startCall(for: request, method: service.cancelSupplementInformation, responseMap: { _ in return }, completion: completion)
     }
+
+    func enableCredential(credentialID: String, completion: @escaping (Result<Void, Error>) -> Void) -> Cancellable {
+        var request = GRPCEnableCredentialRequest()
+        request.credentialID = credentialID
+
+        return startCall(for: request, method: service.enableCredential, responseMap: { _ in return }, completion: completion)
+    }
+
+    func disableCredential(credentialID: String, completion: @escaping (Result<Void, Error>) -> Void) -> Cancellable {
+        var request = GRPCDisableCredentialRequest()
+        request.credentialID = credentialID
+
+        return startCall(for: request, method: service.disableCredential, responseMap: { _ in return }, completion: completion)
+    }
 }
