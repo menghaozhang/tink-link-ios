@@ -14,4 +14,35 @@ public final class CredentialService {
 
         return startCall(for: request, method: service.listCredentials, responseMap: { $0.credentials }, completion: completion)
     }
+
+    func createCredential(providerName: String, type: GRPCCredential.TypeEnum = .unknown, fields: [String: String] = [:], completion: @escaping (Result<GRPCCredential, Error>) -> Void) -> Cancellable {
+        var request = GRPCCreateCredentialRequest()
+        request.providerName = providerName
+        request.type = type
+        request.fields = fields
+
+        return startCall(for: request, method: service.createCredential, responseMap: { $0.credential }, completion: completion)
+    }
+
+    func deleteCredential(credentialID: String, completion: @escaping (Result<Void, Error>) -> Void) -> Cancellable {
+        var request = GRPCDeleteCredentialRequest()
+        request.credentialID = credentialID
+
+        return startCall(for: request, method: service.deleteCredential, responseMap: { _ in return }, completion: completion)
+    }
+
+    func updateCredential(credentialID: String, fields: [String: String] = [:], completion: @escaping (Result<GRPCCredential, Error>) -> Void) -> Cancellable {
+        var request = GRPCUpdateCredentialRequest()
+        request.credentialID = credentialID
+        request.fields = fields
+
+        return startCall(for: request, method: service.updateCredential, responseMap: { $0.credential }, completion: completion)
+    }
+
+    func refreshCredentials(credentialIDs: [String], completion: @escaping (Result<Void, Error>) -> Void) -> Cancellable {
+        var request = GRPCRefreshCredentialsRequest()
+        request.credentialIds = credentialIDs
+
+        return startCall(for: request, method: service.refreshCredentials, responseMap: { _ in return }, completion: completion)
+    }
 }
