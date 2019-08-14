@@ -15,7 +15,7 @@ public final class ProviderService {
         request.capability = capability
         request.includeTestType = includeTestType
 
-        let canceller = Cancellable()
+        let canceller = CallCanceller()
 
         do {
             canceller.call = try service.listProviders(request) { (response, result) in
@@ -36,7 +36,7 @@ public final class ProviderService {
     func providerMarkets(completion: @escaping (Result<[GRPCProviderMarket], Error>) -> Void) -> Cancellable {
         let request = GRPCProviderMarketListRequest()
 
-        let canceller = Cancellable()
+        let canceller = CallCanceller()
 
         do {
             canceller.call = try service.listProviderMarkets(request) { (response, result) in
