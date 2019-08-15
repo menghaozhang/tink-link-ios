@@ -70,15 +70,4 @@ public struct UpdateAccountRequest {
     var accountFavored: Bool
     var accountExcluded: Bool
     var accountOwnership: AccountOwnership
-    var accountExclusionType: GRPCAccount.Exclusion
-    
-    init(accountID: String, accountName: String, accountType: GRPCAccount.TypeEnum, accountFavored: Bool = fasle, accountExcluded: Bool = false, accountOwnership: AccountOwnership = .owned, accountExclusionType: GRPCAccount.Exclusion = .unkown) {
-        self.accountID = accountID
-        self.accountName = accountName
-        self.accountType = accountType
-        self.accountFavored = accountFavored
-        self.accountExcluded = accountExcluded
-        self.accountOwnership = accountOwnership
-        self.accountExclusionType = accountExclusionType
-    }
 }
