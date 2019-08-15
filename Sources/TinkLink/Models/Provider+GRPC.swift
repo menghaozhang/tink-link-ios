@@ -8,7 +8,7 @@ extension Provider {
         self.status = Status(grpcStatus: grpcProvider.status)
         self.helpText = grpcProvider.helpText
         self.isPopular = grpcProvider.popular
-        self.fields = [] // TODO:
+        self.fields = grpcProvider.fields.map(FieldSpecification.init(grpcProviderFieldSpecification:))
         self.groupDisplayName = grpcProvider.groupDisplayName
         self.image = grpcProvider.hasImages ? URL(string: grpcProvider.images.iconURL) : nil
         self.displayDescription = grpcProvider.displayDescription
@@ -146,5 +146,23 @@ extension Provider.AccessType {
             assertionFailure("Unrecognized access type: \(value)")
             self = .unknown
         }
+    }
+}
+
+extension Provider.FieldSpecification {
+    init(grpcProviderFieldSpecification: GRPCProviderFieldSpecification) {
+        self.fieldDescription = grpcProviderFieldSpecification.description_p
+        self.hint = grpcProviderFieldSpecification.hint
+        self.maxLength = grpcProviderFieldSpecification.maxLength > 0 ? Int(grpcProviderFieldSpecification.maxLength) : nil
+        self.minLength = grpcProviderFieldSpecification.minLength > 0 ? Int(grpcProviderFieldSpecification.minLength) : nil
+        self.isMasked = grpcProviderFieldSpecification.masked
+        self.isNumeric = grpcProviderFieldSpecification.numeric
+        self.isImmutable = grpcProviderFieldSpecification.immutable
+        self.isOptional = grpcProviderFieldSpecification.optional
+        self.name = grpcProviderFieldSpecification.name
+        self.value = grpcProviderFieldSpecification.value
+        self.pattern = grpcProviderFieldSpecification.pattern
+        self.patternError = grpcProviderFieldSpecification.patternError
+        self.helpText = grpcProviderFieldSpecification.helpText
     }
 }
