@@ -1,0 +1,1357 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "se.tink.grpc.v1.rpc";
+option java_outer_classname = "Protos";
+option go_package = "proto";
+option swift_prefix = "GRPC";
+
+import "models.proto";
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/timestamp.proto";
+
+// AccountService
+
+message ListAccountsRequest {
+
+}
+
+message ListAccountsResponse {
+    repeated Account accounts = 1;
+}
+
+message ListLoansRequest {
+
+}
+
+message ListLoansResponse {
+    repeated Loan loans = 1;
+}
+
+message UpdateAccountRequest {
+    string account_id = 1;
+    google.protobuf.StringValue name = 2;
+    Account.Type type = 3;
+    google.protobuf.BoolValue favored = 4;
+    google.protobuf.BoolValue excluded = 5;
+    ExactNumber ownership = 6;
+    Account.Exclusion exclusionType = 7;
+}
+
+message UpdateAccountResponse {
+    Account account = 1;
+}
+
+// ActivityService
+
+message ListActivityHtmlRequest {
+    uint32 offset = 1;
+    uint32 limit = 2;
+    uint32 screen_width = 3;
+    uint32 screen_ppi = 4;
+    Theme theme = 5;
+}
+
+message ListActivityHtmlResponse {
+    string html_page = 1;
+    uint32 next_page_offset = 2;
+    repeated string activity_keys = 3;
+    repeated string feed_activity_identifiers_list = 4;
+}
+
+message ActivityHtmlHeadRequest {
+    Theme theme = 1;
+}
+
+message ActivityHtmlHeadResponse {
+    string css = 1;
+    string metadata = 2;
+    string scripts = 3;
+}
+
+// BudgetService
+
+message CreateBudgetRequest {
+    string name = 1;
+    string description = 2;
+    CurrencyDenominatedAmount amount = 3;
+    Budget.Filter filter = 4;
+    oneof periodicity {
+        Budget.RecurringPeriodicity recurring_periodicity = 5;
+        Budget.OneOffPeriodicity one_off_periodicity = 6;
+    }
+}
+
+message CreateBudgetResponse {
+    Budget.Specification budget_specification = 1;
+}
+
+message UpdateBudgetRequest {
+    string budget_id = 1;
+    string name = 2;
+    string description = 3;
+    CurrencyDenominatedAmount amount = 4;
+    Budget.Filter filter = 5;
+    oneof periodicity {
+        Budget.RecurringPeriodicity recurring_periodicity = 6;
+        Budget.OneOffPeriodicity one_off_periodicity = 7;
+    }
+}
+
+message UpdateBudgetResponse {
+    Budget.Specification budget_specification = 1;
+}
+
+message DeleteBudgetRequest {
+    string budget_id = 1;
+}
+
+message DeleteBudgetResponse {
+}
+
+message ArchiveBudgetRequest {
+    string budget_id = 1;
+}
+
+message ArchiveBudgetResponse {
+    Budget.Specification budget_specification = 1;
+}
+
+message ListBudgetsRequest {
+    bool include_archived = 1;
+}
+
+message ListBudgetsResponse {
+    repeated Budget.Summary budget_summaries = 1;
+}
+
+message GetBudgetPeriodDetailsRequest {
+    string budget_id = 1;
+    google.protobuf.Timestamp start = 2;
+    google.protobuf.Timestamp end = 3;
+}
+
+message GetBudgetPeriodDetailsResponse {
+    Budget.Specification budget_specification = 1;
+    google.protobuf.Timestamp start = 2;
+    google.protobuf.Timestamp end = 3;
+    repeated Budget.Period budget_periods = 4;
+    CurrencyDenominatedAmount total_spent_amount = 5;
+    CurrencyDenominatedAmount average_spent_amount = 6;
+}
+
+message GetBudgetTransactionsRequest {
+    string budget_id = 1;
+    google.protobuf.Timestamp start = 2;
+    google.protobuf.Timestamp end = 3;
+}
+
+message GetBudgetTransactionsResponse {
+    google.protobuf.Timestamp start = 1;
+    google.protobuf.Timestamp end = 2;
+    repeated Budget.Transaction transactions = 3;
+}
+
+// CredentialService
+
+message CreateCredentialRequest {
+    string provider_name = 1;
+    Credential.Type type = 2;
+    map<string, string> fields = 3;
+}
+
+message CreateCredentialResponse {
+    Credential credential = 1;
+}
+
+message UpdateCredentialResponse {
+    Credential credential = 1;
+}
+
+message UpdateCredentialRequest {
+    string credential_id = 1;
+    map<string, string> fields = 2;
+}
+
+message RefreshCredentialsRequest {
+    repeated string credential_ids = 1;
+}
+
+message RefreshCredentialsResponse {
+}
+
+message ManualAuthenticationRequest {
+    string credential_ids = 1;
+}
+
+message ManualAuthenticationResponse {
+
+}
+
+message DeleteCredentialRequest {
+    string credential_id = 1;
+}
+
+message DeleteCredentialResponse {
+
+}
+
+message EnableCredentialRequest {
+    string credential_id = 1;
+}
+
+message EnableCredentialResponse {
+
+}
+
+message DisableCredentialRequest {
+    string credential_id = 1;
+}
+
+message DisableCredentialResponse {
+
+}
+
+message RegisterPushNotificationTokenRequest {
+    string device_id = 1;
+    string notification_token = 2;
+    string notification_public_key = 3;
+    string app_id = 4;
+}
+
+
+message GetDeviceConfigurationRequest {
+    string device_id = 1;
+    string market_code = 2;
+}
+
+message DeviceConfigurationResponse {
+    repeated string feature_flags = 1;
+    repeated DeviceConfigurationMarket markets = 2;
+
+    message DeviceConfigurationMarket {
+        string market_code = 1;
+        string label = 2;
+        bool suggested = 3;
+        repeated AuthenticationMethod login_methods = 4;
+        repeated AuthenticationMethod register_methods = 5;
+        string link_to_about_page = 6;
+        string link_to_help_page = 7;
+        string link_to_security_page = 8;
+        string link_to_terms_of_service_page = 9;
+        MarketStatus status = 10;
+    }
+}
+
+message SetOriginRequest {
+    string device_id = 1;
+    bool organic = 2;
+    string service_name = 3;
+    string external_service_id = 4;
+    string media_source = 5;
+    string campaign = 6;
+    string agency = 7;
+    int32 click_time = 8;
+    int32 install_time = 9;
+    DeviceAppsFlyerOrigin apps_flyer = 10;
+    DeviceFacebookOrigin facebook = 11;
+}
+
+message SetOriginResponse {
+}
+
+message DeleteDeviceRequest {
+    string device_id = 1;
+}
+message DeleteDeviceResponse {
+}
+
+message ListDevicesRequest {
+}
+
+message ListDevicesResponse {
+    repeated Device devices = 1;
+}
+
+message RegisterPushNotificationTokenResponse {
+    Device device = 1;
+}
+
+message SupplementInformationRequest {
+    string credential_id = 1;
+    map<string, string> supplemental_information_fields = 2;
+}
+
+message CancelSupplementInformationRequest {
+    string credential_id = 1;
+}
+
+message CancelSupplementInformationResponse {
+}
+
+message SupplementInformationResponse {
+}
+
+message ListCredentialsRequest {
+}
+
+message ListCredentialsResponse {
+    repeated Credential credentials = 1;
+}
+
+// Follow Service
+
+message CreateFollowItemRequest {
+    ExpensesFollowCriteria expenses_criteria = 1;
+    SearchFollowCriteria search_criteria = 2;
+    SavingsFollowCriteria saving_criteria = 3;
+    string name = 4;
+}
+
+message CreateFollowItemResponse {
+    FollowItem follow_item = 1;
+}
+
+message UpdateFollowItemRequest {
+    ExpensesFollowCriteria expenses_criteria = 1;
+    SearchFollowCriteria search_criteria = 2;
+    SavingsFollowCriteria saving_criteria = 3;
+    string name = 4;
+    string follow_item_id = 5;
+}
+
+message UpdateFollowItemResponse {
+    FollowItem follow_item = 1;
+}
+
+message GetFollowItemRequest {
+    string follow_item_id = 1;
+    string month_period = 2;
+}
+
+message GetFollowItemResponse {
+    FollowItem follow_item = 1;
+}
+
+message GetFollowItemHistoryRequest {
+    string follow_item_id = 1;
+    PeriodMode period_mode = 2;
+}
+
+message GetFollowItemHistoryResponse {
+    FollowItemHistory follow_item_history = 1;
+}
+
+message DeleteFollowItemRequest {
+    string follow_item_id = 1;
+}
+
+message DeleteFollowItemResponse {
+
+}
+
+message ListFollowItemRequest {
+    string month_period = 1;
+}
+
+message ListFollowItemResponse {
+    repeated FollowItem follow_items = 1;
+}
+
+message SuggestFollowItemRequest {
+    ExpensesFollowCriteria expenses_criteria = 1;
+    SearchFollowCriteria search_criteria = 2;
+    SavingsFollowCriteria saving_criteria = 3;
+}
+
+message SuggestFollowItemResponse {
+    FollowItem follow_item = 1;
+}
+
+// Provider Service
+
+message ListProvidersResponse {
+    repeated Provider providers = 1;
+}
+
+message ListProvidersForMarketsResponse {
+    message MarketProviders {
+        string market_code = 1 ;
+        repeated Provider providers = 2;
+    }
+
+    repeated MarketProviders providers_by_market = 1;
+}
+
+message ProviderMarketListResponse {
+    repeated ProviderMarket provider_markets = 1;
+}
+
+// Transaction Service
+
+message QueryTransactionsRequest {
+    google.protobuf.Int32Value limit = 1;
+    google.protobuf.StringValue last_transaction_id = 2;
+    repeated string account_ids = 3;
+    repeated string credential_ids = 4;
+    repeated string category_codes = 5;
+    google.protobuf.Timestamp start_date = 6;
+    google.protobuf.Timestamp end_date = 7;
+    google.protobuf.BoolValue include_upcoming = 8;
+    google.protobuf.StringValue query_string = 9;
+    SortType sort = 10;
+    OrderType order = 11;
+}
+
+message QueryTransactionsResponse {
+    repeated Transaction transactions = 1;
+    bool has_more = 2;
+    CurrencyDenominatedAmount total_net_amount = 3;
+    int32 total_count = 4;
+}
+
+message UpdateTransactionRequest {
+    string transaction_id = 1;
+    google.protobuf.StringValue description = 2;
+    google.protobuf.Timestamp date = 3;
+    google.protobuf.StringValue notes = 4;
+    repeated Tag tags = 5;
+}
+
+message UpdateTransactionResponse {
+    Transaction transaction = 1;
+}
+
+message GetTransactionRequest {
+    string transaction_id = 1;
+}
+
+message GetTransactionResponse {
+    Transaction transaction = 1;
+}
+
+message CategorizeTransactionsRequest {
+    string category_code = 1;
+    repeated string transaction_ids = 2;
+}
+
+message CategorizeTransactionsResponse {
+    repeated Transaction transactions = 1;
+}
+
+message GetSimilarTransactionsRequest {
+    string transaction_id = 1;
+    google.protobuf.StringValue category_code = 2;
+}
+
+message GetSimilarTransactionsResponse {
+    repeated Transaction transactions = 1;
+}
+
+message SuggestTransactionsRequest {
+    int32 number_of_clusters = 1;
+    bool evaluate_everything = 2;
+}
+
+message SuggestTransactionsResponse {
+    ExactNumber categorization_improvement = 1;
+    ExactNumber categorization_level = 2;
+    repeated TransactionCluster clusters = 3;
+}
+
+message CreatePartAndCounterpartRequest {
+    string transaction_id = 1;
+    string counterpart_transaction_id = 2;
+    google.protobuf.Int32Value suggest_response_index = 3;
+    CurrencyDenominatedAmount part_amount = 4;
+}
+
+message CreatePartAndCounterpartResponse {
+    Transaction transaction = 1;
+    Transaction counterpart_transaction = 2;
+}
+
+message UpdatePartAndCounterpartRequest {
+    string transaction_id = 1;
+    string part_id = 2;
+    CurrencyDenominatedAmount part_amount = 3;
+}
+
+message UpdatePartAndCounterpartResponse {
+    Transaction transaction = 1;
+    Transaction counterpart_transaction = 2;
+}
+
+message DeletePartAndCounterpartRequest {
+    string transaction_id = 1;
+    string part_id = 2;
+}
+
+message DeletePartAndCounterpartResponse {
+    Transaction transaction = 1;
+    Transaction counterpart_transaction = 2;
+}
+
+message SuggestCounterpartsRequest {
+    string transaction_id = 1;
+    int32 limit = 2;
+}
+
+message SuggestCounterpartsResponse {
+    repeated Transaction transactions = 1;
+}
+
+// Streaming Service
+
+message StreamingRequest {
+
+}
+
+message StreamingResponse {
+    enum Type {
+        CREATE = 0;
+        READ = 1;
+        UPDATE = 2;
+        DELETE = 3;
+    }
+
+    Type type = 1;
+    google.protobuf.Timestamp timestamp = 2;
+    Credentials credentials = 3;
+    Accounts accounts = 4;
+    Transactions transactions = 5;
+    StatisticTree statistics = 6;
+    Providers providers = 7;
+    CategoryTree categories = 8;
+    Periods periods = 9;
+    FollowItems follow_items = 10;
+    SignableOperations signable_operations = 11;
+    UserConfiguration user_configuration = 12;
+    Insights insights = 13;
+    BudgetSummaries budget_summaries = 14;
+
+}
+
+message ProviderListRequest {
+    Provider.Capability capability = 1;
+    bool include_test_type = 2;
+    string market_code = 3;
+}
+
+message ProviderListForMarketsRequest {
+    Provider.Capability capability = 1;
+    repeated string market_codes = 2;
+}
+
+message ProviderMarketListRequest {
+
+}
+
+message ProviderSuggestRequest {
+
+}
+
+message QueryStatisticsRequest {
+    string description = 1;
+    repeated PeriodDescription periods = 2;
+    PeriodMode period_mode = 3;
+    repeated StatisticTree.Type types = 4;
+    bool pad_results_until_today = 5;
+}
+
+message QueryStatisticsResponse {
+    StatisticTree statistics = 1;
+}
+
+message GetInsightsRequest {
+
+}
+
+message GetStatisticsRequest {
+
+}
+
+message StatisticsResponse {
+    StatisticTree statistics = 1;
+}
+
+message InsightsResponse {
+    InsightsCategories categories = 1;
+    InsightsMortgage mortgage = 2;
+    InsightsSavings savings = 3;
+    InsightsDailySpend daily_spend = 4;
+    InsightsLeftToSpend left_to_spend = 5;
+}
+
+message ListCategoriesRequest {
+}
+
+message ListCategoriesResponse {
+    CategoryTree categories = 1;
+}
+
+message GetTrackingConfigurationRequest {
+
+}
+
+message GetTrackingConfigurationResponse {
+    string tracking_user_id = 1;
+    string tracking_username = 2;
+}
+
+message TrackingRequest {
+    string session_id = 1;
+    repeated TrackingEvent events = 2;
+    repeated TrackingTiming timings = 3;
+    repeated TrackingView views = 4;
+    string advertising_id = 5;
+    bool limit_advertising = 6;
+}
+
+message TrackingResponse {
+}
+
+message TrackingSessionRequest {
+}
+
+message TrackingSessionResponse {
+    string session_id = 1;
+}
+
+message TransferListRequest {
+    Transfer.Type type = 1;
+}
+
+message TransferListResponse {
+    repeated Transfer transfers = 1;
+}
+
+message TransferGetRequest {
+    string transfer_id = 1;
+}
+
+message TransferGetResponse {
+    Transfer transfer = 1;
+}
+
+message CreateTransferRequest {
+    CurrencyDenominatedAmount amount = 1;
+    string destination = 2;
+    string destination_message = 3;
+    string source = 4;
+    string source_message = 5;
+    google.protobuf.Timestamp due_date = 6;
+}
+
+message CreateTransferResponse {
+    SignableOperation signable_operation = 1;
+}
+
+message UpdateTransferRequest {
+    string transfer_id = 1;
+    CurrencyDenominatedAmount amount = 2;
+    google.protobuf.StringValue destination = 3;
+    google.protobuf.StringValue destination_message = 4;
+    google.protobuf.StringValue source = 5;
+    google.protobuf.StringValue source_message = 6;
+    google.protobuf.Timestamp due_date = 7;
+}
+
+message UpdateTransferResponse {
+    SignableOperation signable_operation = 1;
+}
+
+message TransferListAccountsRequest {
+    google.protobuf.StringValue id = 1;
+}
+
+message GiroLookupRequest {
+    string giro_number = 1;
+}
+
+message GiroLookupResponse {
+    repeated GiroLookupEntity giro_entities = 1;
+}
+
+message ClearingLookupRequest {
+    string clearing_number = 1;
+}
+
+message ClearingLookupResponse {
+    string bank_display_name = 1;
+    Images images = 2;
+}
+
+message SortCodeLookupRequest {
+    string sort_code = 1;
+}
+
+message SortCodeLookupResponse {
+    string bank_display_name = 1;
+    Images images = 2;
+}
+
+message CreateTransferDestinationRequest {
+    string uri = 1;
+    string name = 2;
+}
+
+message GetAccountsForTransferRequest {
+    string transfer_id = 1;
+}
+
+message GetAccountsForTransferResponse {
+    repeated Account account = 1;
+}
+
+message GetTransferDestinationsRequest {
+
+}
+
+message GetTransferDestinationsResponse {
+    repeated TransferDestinationPerAccount destinations_per_account = 1;
+}
+
+
+message CreateTransferDestinationResponse {
+    TransferDestination destination = 1;
+}
+
+message ListBusinessDaysRequest {
+    uint32 start_year = 1;
+    uint32 start_month = 2;
+    uint32 months = 3;
+
+}
+
+message ListBusinessDaysResponse {
+    repeated BusinessDays business_days = 1;
+}
+
+message NotificationSettingsRequest {
+}
+
+message NotificationSettingsResponse {
+    NotificationSettings notification_settings = 1;
+}
+
+message UpdateNotificationSettingsRequest {
+    repeated NotificationType notification_types = 1;
+}
+
+message PeriodSettingsRequest {
+}
+
+message PeriodSettingsResponse {
+    PeriodSettings period_settings = 1;
+}
+
+message UpdatePeriodSettingsRequest {
+    PeriodDateBreakType period_date_break_type = 1;
+    google.protobuf.Int32Value monthly_adjusted_day = 2;
+}
+
+message UpdateI18NSettingsRequest {
+    google.protobuf.StringValue locale_code = 1;
+}
+
+message UpdateI18NSettingsResponse {
+    I18NSettings i18n_settings = 1;
+}
+
+message DescribeOAuth2ClientRequest {
+    string client_id = 1;
+    repeated string scopes = 2;
+    string redirect_uri = 3;
+}
+
+message DescribeOAuth2ClientResponse {
+    string client_icon_url = 1;
+    string client_name = 2;
+    string client_url = 3;
+    bool embedded_allowed = 4;
+    repeated OAuth2ScopeDescription scopes = 5;
+    bool verified = 6;
+    bool aggregator = 7;
+}
+
+message LoginRequest {
+    string authentication_token = 1;
+}
+
+message LoginResponse {
+    string session_id = 1;
+}
+
+message RegisterRequest {
+    string authentication_token = 1;
+    string email = 2;
+    string locale = 3;
+}
+
+message RegisterResponse {
+    string session_id = 1;
+}
+
+message LogoutRequest {
+    bool autologout = 1;
+}
+
+message LogoutResponse {
+}
+
+message UpdateEmailRequest {
+    google.protobuf.StringValue email = 1;
+}
+
+message UpdateEmailResponse {
+    UserProfile user_profile = 1;
+}
+
+message CreateAnonymousRequest {
+    string market = 1;
+    string locale = 2;
+    string origin = 3;
+}
+
+message CreateAnonymousResponse {
+    string access_token = 1;
+}
+
+message GetProfileRequest {
+}
+
+message GetProfileResponse {
+    UserProfile user_profile = 1;
+}
+
+message DeleteUserRequest {
+    repeated string reasons = 1;
+    google.protobuf.StringValue comment = 2;
+}
+
+message DeleteUserResponse {
+}
+
+message RateAppRequest {
+    RateAppStatus status = 1;
+}
+
+message RateAppResponse {
+}
+
+// Initiate a Mobile BankId authentication request. Two different initiations are possible.
+// 1) NationalId available => Trigger a bankid for the nationalId that is provided.
+// 2) Authentication token available => Trigger a bankid for the user that is connected to the authentication token.
+message InitiateBankIdAuthenticationRequest {
+    string market_code = 2;
+
+    oneof type {
+        string national_id = 1;
+        string authentication_token = 3;
+    }
+}
+
+message InitiateBankIdAuthenticationResponse {
+    string auto_start_token = 1;
+    string authentication_token = 2;
+    BankIdAuthenticationStatus status = 3;
+}
+
+message CollectBankIdAuthenticationRequest {
+    string authentication_token = 1;
+}
+
+message CollectBankIdAuthenticationResponse {
+    string national_id = 1;
+    BankIdAuthenticationStatus status = 2;
+}
+
+message EmailAndPasswordAuthenticationRequest {
+    string email = 1;
+    string password = 2;
+    string market_code = 3;
+}
+
+message EmailAndPasswordAuthenticationResponse {
+    string authentication_token = 1;
+    AuthenticationStatus status = 2;
+}
+
+message ForgotPasswordRequest {
+    string email = 1;
+}
+
+message ForgotPasswordResponse {
+
+}
+
+message ResetPasswordRequest {
+    string tokenId = 1;
+    string password = 2;
+}
+
+message ResetPasswordResponse {
+
+}
+
+message UpdatePasswordRequest {
+    string old_password = 1;
+    string new_password = 2;
+}
+
+message UpdatePasswordResponse {
+
+}
+
+message GetIdentityEventRequest {
+    string identity_event_id = 1;
+}
+
+message SeenIdentityEventRequest {
+    repeated string identity_event_ids = 1;
+}
+
+message AnswerIdentityEventRequest {
+    string identity_event_id = 1;
+    IdentityEventAnswer answer = 2;
+}
+
+message IdentityEventListRequest {
+}
+
+message IdentityEventListResponse {
+    repeated IdentityEventSummary events = 1;
+}
+
+message IdentityEventResponse {
+    IdentityEvent event = 1;
+}
+
+message SeenIdentityEventResponse {
+    repeated IdentityEventSummary events = 1;
+}
+
+message AnswerIdentityEventResponse {
+    IdentityEvent event = 1;
+}
+
+message IdentityStateRequest {
+}
+
+message IdentityStateResponse {
+    IdentityState state = 1;
+}
+
+message ActivateIdentityServiceRequest {
+
+}
+
+message ActivateIdentityServiceResponse {
+
+}
+
+message InitiateSmsOtpRequest {
+    string phone_number = 1;
+    string locale = 2;
+}
+
+message InitiateSmsOtpResponse {
+    string sms_otp_verification_token = 1;
+    int32 otp_length = 2;
+    google.protobuf.Timestamp expire_at = 3;
+}
+
+message VerifySmsOtpRequest {
+    string sms_otp_verification_token = 1;
+    string code = 2;
+}
+
+message VerifySmsOtpResponse {
+    string sms_otp_verification_token = 1;
+    SmsOtpStatus status = 2;
+    bool existing_user = 3;
+}
+
+message SmsOtpAndPin6AuthenticationRequest {
+    string sms_otp_verification_token = 1;
+    string pin6 = 2;
+    string market_code = 3;
+}
+
+message SmsOtpAndPin6AuthenticationResponse {
+    string authentication_token = 1;
+    AuthenticationStatus status = 2;
+}
+
+message PhoneNumberAndPin6AuthenticationRequest {
+    string phone_number = 1;
+    string pin6 = 2;
+    string market_code = 3;
+}
+
+message PhoneNumberAndPin6AuthenticationResponse {
+    string authentication_token = 1;
+    AuthenticationStatus status = 2;
+}
+
+message ListConsentsRequest {
+}
+
+message ListConsentsResponse {
+    repeated Consent consents = 1;
+}
+
+message AvailableConsentsRequest {
+}
+
+message AvailableConsentsResponse {
+    repeated Consent consents = 1;
+}
+
+message ConsentDetailsRequest {
+    string key = 1;
+}
+
+message ConsentDetailsResponse {
+    Consent consent = 1;
+}
+
+message UserConsentsListRequest {
+}
+
+message UserConsentsListResponse {
+    repeated UserConsent user_consents = 1;
+}
+
+message GiveConsentRequest {
+    string key = 1;
+    string version = 2;
+    ConsentAction action = 3;
+    string checksum = 4;
+}
+
+message GiveConsentResponse {
+    UserConsent user_consent = 1;
+}
+
+message UserConsentDetailsRequest {
+    string id = 1;
+}
+
+message UserConsentDetailsResponse {
+    UserConsent user_consent = 1;
+}
+
+message UpdatePin6Request {
+    string old_pin6 = 1;
+    string new_pin6 = 2;
+}
+
+message UpdatePin6Response {
+
+}
+
+message UpdatePhoneNumberRequest {
+    string sms_otp_verification_token = 1;
+    string pin6 = 2;
+}
+
+message UpdatePhoneNumberResponse {
+
+}
+
+message ResetPin6Request {
+    oneof method {
+        string sms_otp_verification_token = 1;
+        string reset_pin_6_token = 3;
+        bool no_credentials = 4;
+    }
+    string pin6 = 2;
+}
+
+message ResetPin6Response {
+    string authentication_token = 1;
+    AuthenticationStatus status = 2;
+}
+
+message AbnAmroAuthenticationRequest {
+    string internet_banking_session_token = 1;
+}
+
+message AbnAmroAuthenticationResponse {
+    string authentication_token = 1;
+    AuthenticationStatus status = 2;
+}
+
+message AbnAmroMigrationRequest {
+    string sms_otp_verification_token = 1;
+    string pin6 = 2;
+}
+
+message AbnAmroMigrationResponse {
+
+}
+
+message PingRequest {
+    string message = 1;
+}
+
+message PingResponse {
+    string message = 1;
+}
+
+message SelectInsightActionRequest {
+    string insight_id = 1;
+    string user_id = 2;
+    InsightAction.Group action_group = 3;
+    InsightAction.Method action_method = 4;
+    string label = 5;
+}
+message SelectInsightActionResponse {
+}
+
+message ListPropertiesRequest {
+}
+
+message ListMarketsRequest {
+}
+
+message ListMarketsResponse {
+    repeated Market markets = 1;
+}
+
+message ListPropertiesResponse {
+    repeated Property properties = 1;
+}
+
+message GetPropertyRequest {
+    string property_id = 1;
+}
+
+message GetPropertyResponse {
+    Property property = 1;
+}
+
+message UpdatePropertyRequest {
+    string property_id = 1;
+    int32 number_of_rooms = 2;
+    int32 number_of_square_meters = 3;
+}
+
+message UpdatePropertyResponse {
+    Property property = 1;
+}
+
+message DeleteValuationRequest {
+    string property_id = 1;
+}
+
+message DeleteValuationResponse {
+    Property property = 1;
+}
+
+message GetValuationEventsRequest {
+    string property_id = 1;
+}
+
+message GetValuationSummaryRequest {
+    string property_id = 1;
+}
+
+message GetValuationEventsResponse {
+    repeated PropertyValuationEvent valuation_events = 1;
+}
+
+message GetValuationSummaryResponse {
+    PropertyValuationSummary valuation_summary = 1;
+}
+
+message ListInsightsRequest {
+}
+
+message ListInsightsResponse {
+    repeated Insight insights = 1;
+}
+
+message ListArchivedInsightsResponse {
+    repeated ArchivedInsight insights = 1;
+}
+
+message ListAuthenticationKeysRequest {
+}
+
+message ListAuthenticationKeysResponse {
+    repeated AuthenticationKey authentication_keys = 1;
+}
+
+message StoreAuthenticationKeyRequest {
+    string authentication_token = 1;
+    AuthenticationKeyType key_type = 2;
+    string key = 3;
+    AuthenticationSource source = 4;
+}
+
+message StoreAuthenticationKeyResponse {
+    string key_id = 1;
+}
+
+message DeleteAuthenticationKeyRequest {
+    string key_id = 1;
+}
+
+message DeleteAuthenticationKeyResponse {
+}
+
+message GetAuthenticationChallengeRequest {
+    string key_id = 1;
+}
+
+message GetAuthenticationChallengeResponse {
+    string challenge = 1;
+}
+
+message SignedChallengeAuthenticationRequest {
+    string signed_challenge = 1;
+}
+
+message SignedChallengeAuthenticationResponse {
+    string authentication_token = 1;
+    AuthenticationStatus status = 2;
+}
+
+// Request and responses for calls related to PIN6 flows by third party apps.
+
+message AbnAmroAuthenticatePhoneNumberRequest {
+    string sms_otp_verification_token = 1;
+}
+
+message AbnAmroAuthenticatePhoneNumberResponse {
+     // This access token will give access to credentials:read and user.password:reset scopes.
+    string access_token = 1;
+}
+
+message InitializePin6ResetByThirdPartyAppRequest {
+    string credentials_id = 1;
+}
+
+message InitializePin6ResetByThirdPartyAppResponse {
+    string reset_pin_6_token = 1;
+    ThirdPartyAppAuthentication third_party_app_authentication = 2;
+}
+
+message ListRecurringTransactionsRequest {
+    google.protobuf.Timestamp start = 1;
+    google.protobuf.Timestamp end = 2;
+    RecurringTransaction.Transaction.Type transaction_type = 3;
+    RecurringTransaction.Category.Type category_type = 4;
+    repeated string group_ids = 5;
+}
+
+message ListRecurringTransactionsResponse {
+    repeated RecurringTransaction.Transaction transactions = 1;
+}
+
+message ListRecurringTransactionPeriodSummariesRequest {
+    google.protobuf.Timestamp start = 1;
+    google.protobuf.Timestamp end = 2;
+    RecurringTransaction.Transaction.Type transaction_type = 3;
+    RecurringTransaction.Category.Type category_type = 4;
+}
+
+message ListRecurringTransactionPeriodSummariesResponse {
+    repeated RecurringTransaction.PeriodSummary period_summaries = 1;
+}
+
+message ListRecurringTransactionGroupsRequest {
+    RecurringTransaction.Group.State group_state = 1;
+    RecurringTransaction.Category.Type category_type = 2;
+}
+
+message ListRecurringTransactionGroupsResponse {
+    repeated RecurringTransaction.Group groups = 1;
+}
+
+message CreateRecurringTransactionGroupRequest {
+    repeated string transaction_ids = 1;
+}
+
+message CreateRecurringTransactionGroupResponse {
+    RecurringTransaction.Group group = 1;
+}
+
+message ExcludeRecurringTransactionFromGroupRequest {
+    string group_id = 1;
+    string transaction_id = 2;
+}
+
+message ExcludeRecurringTransactionFromGroupResponse {
+}
+
+message IncludeRecurringTransactionInGroupRequest {
+    string group_id = 1;
+    string transaction_id = 2;
+}
+
+message IncludeRecurringTransactionInGroupResponse {
+}
+
+message DisableRecurringTransactionGroupRequest {
+    string group_id = 1;
+}
+
+message DisableRecurringTransactionGroupResponse {
+    RecurringTransaction.Group group = 1;
+}
+
+message ActivateRecurringTransactionGroupRequest {
+    string group_id = 1;
+}
+
+message ActivateRecurringTransactionGroupResponse {
+    RecurringTransaction.Group group = 1;
+}
+
+message UpdateRecurringTransactionGroupRequest {
+    string group_id = 1;
+    string name = 2;
+}
+
+message UpdateRecurringTransactionGroupResponse {
+    RecurringTransaction.Group group = 1;
+}
+
+message StoreTransferKycRequest {
+    bool compliant = 1;
+    repeated KycQuestion questions = 2;
+}
+
+message StoreTransferKycResponse {
+
+}
+
+message GetTransferKycRequest {
+
+}
+
+message GetTransferKycResponse {
+    bool compliant = 1;
+    repeated KycQuestion questions = 2;
+}
+
+message IsTransferKycCompliantRequest {
+
+}
+
+message IsTransferKycCompliantResponse {
+    bool provided = 1;
+    bool compliant = 2;
+}
+
+message ThirdPartyCallbackRequest {
+    string state = 1;
+    map<string, string> parameters = 2;
+}
+
+message ThirdPartyCallbackResponse {
+}
