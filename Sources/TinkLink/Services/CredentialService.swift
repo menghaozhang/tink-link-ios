@@ -9,19 +9,19 @@ public final class CredentialService {
 
     private lazy var service = CredentialServiceServiceClient(channel: channel)
 
-    func credentials(completion: @escaping (Result<[GRPCCredential], Error>) -> Void) -> Cancellable {
+    func credentials(completion: @escaping (Result<[Credential], Error>) -> Void) -> Cancellable {
         let request = GRPCListCredentialsRequest()
 
-        return startCall(for: request, method: service.listCredentials, responseMap: { $0.credentials }, completion: completion)
+        return startCall(for: request, method: service.listCredentials, responseMap: { $0.credentials.map(Credential.init(grpcCredential:)) }, completion: completion)
     }
 
-    func createCredential(providerName: String, type: GRPCCredential.TypeEnum = .unknown, fields: [String: String] = [:], completion: @escaping (Result<GRPCCredential, Error>) -> Void) -> Cancellable {
+    func createCredential(providerName: String, type: Credential.`Type` = .unknown, fields: [String: String] = [:], completion: @escaping (Result<Credential, Error>) -> Void) -> Cancellable {
         var request = GRPCCreateCredentialRequest()
         request.providerName = providerName
-        request.type = type
+        request.type = type.grpcCredentialType
         request.fields = fields
 
-        return startCall(for: request, method: service.createCredential, responseMap: { $0.credential }, completion: completion)
+        return startCall(for: request, method: service.createCredential, responseMap: { Credential(grpcCredential: $0.credential) }, completion: completion)
     }
 
     func deleteCredential(credentialID: String, completion: @escaping (Result<Void, Error>) -> Void) -> Cancellable {
@@ -31,12 +31,12 @@ public final class CredentialService {
         return startCall(for: request, method: service.deleteCredential, responseMap: { _ in return }, completion: completion)
     }
 
-    func updateCredential(credentialID: String, fields: [String: String] = [:], completion: @escaping (Result<GRPCCredential, Error>) -> Void) -> Cancellable {
+    func updateCredential(credentialID: String, fields: [String: String] = [:], completion: @escaping (Result<Credential, Error>) -> Void) -> Cancellable {
         var request = GRPCUpdateCredentialRequest()
         request.credentialID = credentialID
         request.fields = fields
 
-        return startCall(for: request, method: service.updateCredential, responseMap: { $0.credential }, completion: completion)
+        return startCall(for: request, method: service.updateCredential, responseMap: { Credential(grpcCredential: $0.credential) }, completion: completion)
     }
 
     func refreshCredentials(credentialIDs: [String], completion: @escaping (Result<Void, Error>) -> Void) -> Cancellable {
