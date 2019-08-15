@@ -1,12 +1,12 @@
 /// The credentials model represents users connected providers from where financial data is accessed.
-struct Credential {
+public struct Credential {
     /// The unique identifier of the credentials.
-    var id: String
+    public var id: String
 
     /// The provider (financial institution) that the credentials is connected to.
-    var providerName: String
+    public var providerName: String
 
-    enum `Type` {
+    public enum `Type` {
         case unknown
         case password
         case mobileBankID
@@ -16,9 +16,9 @@ struct Credential {
     }
 
     /// Indicates how Tink authenticates the user to the financial institution.
-    var type: `Type`
+    public var type: `Type`
 
-    enum Status {
+    public enum Status {
         case unknown
         case created
         case authenticating
@@ -36,29 +36,29 @@ struct Credential {
     }
 
     /// The status indicates the state of the credentials. For some states there are actions which need to be performed on the credentials.
-    var status: Status
+    public var status: Status
 
     /// A user-friendly message connected to the status. Could be an error message or text describing what is currently going on in the refresh process.
-    var statusPayload: String
+    public var statusPayload: String
 
     /// A timestamp of when the credential's status was last modified.
-    var statusUpdated: Date?
+    public var statusUpdated: Date?
 
     /// A timestamp of when the credentials was the last time in status `.updated`.
-    var updated: Date?
+    public var updated: Date?
 
     /// This is a key-value map of Field name and value found on the Provider to which the credentials belongs to.
-    var fields: [String: String]
+    public var fields: [String: String]
 
     /// A key-value structure to handle if status of credentials are `.awaitingSupplementalInformation`.
-    var supplementalInformationFields: [Provider.FieldSpecification]
+    public var supplementalInformationFields: [Provider.FieldSpecification]
 
-    struct ThirdPartyAppAuthentication {
+    public struct ThirdPartyAppAuthentication {
         // TODO:
     }
 
-    var thirdPartyAppAuthentication: ThirdPartyAppAuthentication?
+    public var thirdPartyAppAuthentication: ThirdPartyAppAuthentication?
 
     /// Indicates when the session of credentials with access type OPEN_BANKING will expire. After this date automatic refreshes will not be possible without new authentication from the user.
-    var sessionExpiryDate: Date?
+    public var sessionExpiryDate: Date?
 }
