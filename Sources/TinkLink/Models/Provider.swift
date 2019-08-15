@@ -41,22 +41,22 @@ public struct Provider {
 
     public struct FieldSpecification {
         // description
-        var fieldDescription: String
+        public var fieldDescription: String
         /// Gray text in the input view (Similar to a placeholder)
-        var hint: String
-        var maxLength: Int?
-        var minLength: Int?
+        public var hint: String
+        public var maxLength: Int?
+        public var minLength: Int?
         /// Controls whether or not the field should be shown masked, like a password field.
-        var isMasked: Bool
-        var isNumeric: Bool
-        var isImmutable: Bool
-        var isOptional: Bool
-        var name: String
-        var value: String
-        var pattern: String
-        var patternError: String
+        public var isMasked: Bool
+        public var isNumeric: Bool
+        public var isImmutable: Bool
+        public var isOptional: Bool
+        public var name: String
+        public var value: String
+        public var pattern: String
+        public var patternError: String
         /// Text displayed next to the input field
-        var helpText: String
+        public var helpText: String
     }
 
     public var fields: [FieldSpecification]
