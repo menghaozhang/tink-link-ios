@@ -40,7 +40,23 @@ public struct Provider {
     public var isPopular: Bool
 
     public struct FieldSpecification {
-        // TODO:
+        // description
+        var fieldDescription: String
+        /// Gray text in the input view (Similar to a placeholder)
+        var hint: String
+        var maxLength: Int?
+        var minLength: Int?
+        /// Controls whether or not the field should be shown masked, like a password field.
+        var isMasked: Bool
+        var isNumeric: Bool
+        var isImmutable: Bool
+        var isOptional: Bool
+        var name: String
+        var value: String
+        var pattern: String
+        var patternError: String
+        /// Text displayed next to the input field
+        var helpText: String
     }
 
     public var fields: [FieldSpecification]
