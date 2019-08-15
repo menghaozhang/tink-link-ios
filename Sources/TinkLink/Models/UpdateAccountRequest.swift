@@ -1,6 +1,6 @@
 /// Request used to update the account
 public struct UpdateAccountRequest {
-    enum AccountOwnership: Double {
+    public enum AccountOwnership: Double {
         case owned = 1
         case shared = 0.5
     }
@@ -13,6 +13,7 @@ public struct UpdateAccountRequest {
     
     /// The type of the account.
     /// - Possible values: `checking`, `savings`, `investment`, `mortgage`, `credit_card`, `loan`, `pension`, `other`, `external`
+    // TODO: Create Account model and not use GRPC model
     var accountType: GRPCAccount.TypeEnum
     
     /// Indicates if the user has favored the account.
