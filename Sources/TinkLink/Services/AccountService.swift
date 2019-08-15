@@ -10,6 +10,10 @@ public final class AccountService {
     
     private lazy var service = AccountServiceServiceClient(channel: channel)
     
+    /// Lists all accounts
+    ///
+    /// - Parameter completion: The completion handler to call when the load request is complete.
+    /// - Returns: A Cancellable instance. Call cancel() on this instance if you no longer need the result of the request. Deinitializing this instance will also cancel the request.
     func listAccounts(completion: @escaping (Result<[GRPCAccount], Error>) -> Void) -> Cancellable {
         let request = GRPCListAccountsRequest()
         
@@ -30,6 +34,12 @@ public final class AccountService {
         return canceller
     }
     
+    /// Updates an account
+    ///
+    /// - Parameters:
+    ///     - request: The request to update the account with matching account ID.
+    ///     - completion: The completion handler to call when the load request is complete.
+    /// - Returns: A Cancellable instance. Call cancel() on this instance if you no longer need the result of the request. Deinitializing this instance will also cancel the request.
     func updateAccount(request: UpdateAccountRequest, completion: @escaping (Result<GRPCAccount, Error>) -> Void) -> Cancellable {
         var updateAccountRequest = GRPCUpdateAccountRequest()
         updateAccountRequest.accountID = request.accountID
