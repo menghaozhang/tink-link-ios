@@ -42,9 +42,9 @@ public final class AccountService {
     /// - Returns: A Cancellable instance. Call cancel() on this instance if you no longer need the result of the request. Deinitializing this instance will also cancel the request.
     func updateAccount(request: UpdateAccountRequest, completion: @escaping (Result<GRPCAccount, Error>) -> Void) -> Cancellable {
         var updateAccountRequest = GRPCUpdateAccountRequest()
-        updateAccountRequest.accountID = request.accountID
+        updateAccountRequest.accountID = request.accountID.rawValue
         updateAccountRequest.name = Google_Protobuf_StringValue(request.accountName)
-        updateAccountRequest.type = request.accountType
+        updateAccountRequest.type = request.accountType.toGRPCType
         updateAccountRequest.favored = Google_Protobuf_BoolValue(request.accountFavored)
         updateAccountRequest.excluded = Google_Protobuf_BoolValue(request.accountExcluded)
         updateAccountRequest.ownership = GRPCExactNumber(value: Decimal(request.accountOwnership.rawValue))
