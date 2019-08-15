@@ -25,6 +25,7 @@
 		20ED857423040066006213BB /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED857323040066006213BB /* Cancellable.swift */; };
 		20ED857623040077006213BB /* CallCanceller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED857523040077006213BB /* CallCanceller.swift */; };
 		20ED8588230408E6006213BB /* ClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED8587230408E6006213BB /* ClientTests.swift */; };
+		8F367243230557B300B92936 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F367242230557B300B92936 /* AccountService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		20ED857323040066006213BB /* Cancellable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
 		20ED857523040077006213BB /* CallCanceller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallCanceller.swift; sourceTree = "<group>"; };
 		20ED8587230408E6006213BB /* ClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTests.swift; sourceTree = "<group>"; };
+		8F367242230557B300B92936 /* AccountService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				20ED85702304004C006213BB /* ProviderService.swift */,
+				8F367242230557B300B92936 /* AccountService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				20ED85712304004C006213BB /* ProviderService.swift in Sources */,
 				20ED85412303FAEC006213BB /* rpc.pb.swift in Sources */,
 				20ED853B2303FAD9006213BB /* TinkLink.swift in Sources */,
+				8F367243230557B300B92936 /* AccountService.swift in Sources */,
 				20ED85422303FAEC006213BB /* models.pb.swift in Sources */,
 				20ED857623040077006213BB /* CallCanceller.swift in Sources */,
 			);
