@@ -25,3 +25,17 @@ public struct UpdateAccountRequest {
     /// The ownership determine the percentage of the amounts on transactions belonging to this account, that should be attributed to the user when statistics are calculated.
     var accountOwnership: AccountOwnership
 }
+
+extension UpdateAccountRequest {
+    init?(account: GRPCAccount) {
+        guard let ownerShip = AccountOwnership(rawValue: account.ownership.doubleValue) else {
+            return nil
+        }
+        accountID = account.id
+        accountName = account.name
+        accountType = account.type
+        accountFavored = account.favored
+        accountExcluded = account.excluded
+        accountOwnership = ownerShip
+    }
+}

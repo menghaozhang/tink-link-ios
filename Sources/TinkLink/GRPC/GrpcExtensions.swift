@@ -30,4 +30,8 @@ extension GRPCExactNumber {
         self.scale = 0
         self.unscaledValue = Int64(value)
     }
+    
+    public var doubleValue: Double {
+        return Double(unscaledValue) * pow(10, Double(-scale))
+    }
 }
