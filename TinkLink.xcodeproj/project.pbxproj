@@ -26,6 +26,7 @@
 		20ED857623040077006213BB /* CallCanceller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED857523040077006213BB /* CallCanceller.swift */; };
 		20ED8588230408E6006213BB /* ClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED8587230408E6006213BB /* ClientTests.swift */; };
 		8F367243230557B300B92936 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F367242230557B300B92936 /* AccountService.swift */; };
+		8F3672462305685600B92936 /* GrpcExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3672452305685600B92936 /* GrpcExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		20ED857523040077006213BB /* CallCanceller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallCanceller.swift; sourceTree = "<group>"; };
 		20ED8587230408E6006213BB /* ClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTests.swift; sourceTree = "<group>"; };
 		8F367242230557B300B92936 /* AccountService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
+		8F3672452305685600B92936 /* GrpcExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrpcExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 				20ED853E2303FAEC006213BB /* models.pb.swift */,
 				20ED853F2303FAEC006213BB /* services.grpc.swift */,
 				20ED85402303FAEC006213BB /* services.pb.swift */,
+				8F3672452305685600B92936 /* GrpcExtensions.swift */,
 			);
 			path = GRPC;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				8F367243230557B300B92936 /* AccountService.swift in Sources */,
 				20ED85422303FAEC006213BB /* models.pb.swift in Sources */,
 				20ED857623040077006213BB /* CallCanceller.swift in Sources */,
+				8F3672462305685600B92936 /* GrpcExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
