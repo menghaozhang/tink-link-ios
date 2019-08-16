@@ -20,7 +20,7 @@ public final class ProviderService {
     public func providers(marketCode: String? = nil, capabilities: Provider.Capabilities = [], includeTestProviders: Bool = false, completion: @escaping (Result<[Provider], Error>) -> Void) -> Cancellable {
         var request = GRPCProviderListRequest()
         request.marketCode = marketCode ?? ""
-        request.capability = capabilities.grcpCapabilities.first ?? .unknown
+        request.capability = .unknown
         request.includeTestType = includeTestProviders
 
         let canceller = CallCanceller()
@@ -28,7 +28,10 @@ public final class ProviderService {
         do {
             canceller.call = try service.listProviders(request) { (response, result) in
                 if let response = response {
-                    completion(.success(response.providers.map { Provider(grpcProvider: $0) }))
+                    let providers = response.providers
+                        .map { Provider(grpcProvider: $0) }
+                        .filter { !$0.capabilities.isDisjoint(with: capabilities) }
+                    completion(.success(providers))
                 } else {
                     let error = RPCError.callError(result)
                     completion(.failure(error))
