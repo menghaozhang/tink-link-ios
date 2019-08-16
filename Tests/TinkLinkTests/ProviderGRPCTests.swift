@@ -8,4 +8,10 @@ class ProviderGRPCTests: XCTestCase {
         XCTAssertTrue(capabilities.contains(.checkingAccounts))
         XCTAssertEqual(Set(capabilities.grcpCapabilities), Set(grpcCapabilities))
     }
+
+    func testCapabilitiesMatching() {
+        let predicate: Provider.Capabilities = [.checkingAccounts, .savingsAccounts]
+        XCTAssertFalse(predicate.isDisjoint(with: [.checkingAccounts, .creditCards]))
+        XCTAssertTrue(predicate.isDisjoint(with: [.creditCards, .identityData]))
+    }
 }
