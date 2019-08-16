@@ -1,11 +1,3 @@
-//
-//  TinkLink.h
-//  TinkLink
-//
-//  Created by Kasper Lahti on 2019-08-14.
-//  Copyright © 2019 Tink. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 
 //! Project version number for TinkLink.
