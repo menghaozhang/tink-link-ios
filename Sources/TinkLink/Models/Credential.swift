@@ -27,7 +27,7 @@ public struct Credential {
         case temporaryError
         case authenticationError
         case permanentError
-        @available(*, deprecated, message: "Will be replaced with `awaitingThirdPartyAppAuthentication`")
+        /// Will be deprecated and replaced with `awaitingThirdPartyAppAuthentication`
         case awaitingMobileBankIDAuthentication
         case awaitingSupplementalInformation
         case disabled
