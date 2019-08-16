@@ -1,3 +1,4 @@
+import Foundation
 import SwiftGRPC
 
 extension Provider {
