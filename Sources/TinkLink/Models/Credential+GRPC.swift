@@ -10,8 +10,7 @@ extension Credential {
         self.fields = grpcCredential.fields
         // TODO:
         self.supplementalInformationFields = []
-        // TODO:
-        self.thirdPartyAppAuthentication = ThirdPartyAppAuthentication()
+        self.thirdPartyAppAuthentication = grpcCredential.hasThirdPartyAppAuthentication ?  ThirdPartyAppAuthentication(grpcThirdPartyAppAuthentication: grpcCredential.thirdPartyAppAuthentication) : nil
         self.sessionExpiryDate = grpcCredential.hasSessionExpiryDate ? grpcCredential.sessionExpiryDate.date : nil
     }
 }
@@ -87,6 +86,24 @@ extension Credential.Status {
         case .UNRECOGNIZED(let value):
             assertionFailure("Unrecognized status:/ \(value)")
             self = .unknown
+        }
+    }
+}
+
+extension Credential.ThirdPartyAppAuthentication {
+    init(grpcThirdPartyAppAuthentication: GRPCThirdPartyAppAuthentication) {
+        self.downloadTitle = grpcThirdPartyAppAuthentication.downloadTitle
+        self.downloadMessage = grpcThirdPartyAppAuthentication.downloadMessage
+        self.upgradeTitle = grpcThirdPartyAppAuthentication.upgradeTitle
+        self.upgradeMessage = grpcThirdPartyAppAuthentication.upgradeMessage
+        if grpcThirdPartyAppAuthentication.hasIos {
+            self.appStoreURL = URL(string: grpcThirdPartyAppAuthentication.ios.appStoreURL)
+            self.scheme = grpcThirdPartyAppAuthentication.ios.scheme
+            self.deepLinkURL = URL(string: grpcThirdPartyAppAuthentication.ios.deepLinkURL)
+        } else {
+            self.appStoreURL = nil
+            self.scheme = nil
+            self.deepLinkURL = nil
         }
     }
 }
