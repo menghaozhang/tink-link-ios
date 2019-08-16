@@ -54,7 +54,13 @@ public struct Credential {
     public var supplementalInformationFields: [Provider.FieldSpecification]
 
     public struct ThirdPartyAppAuthentication {
-        // TODO:
+        var downloadTitle: String
+        var downloadMessage: String
+        var upgradeTitle: String
+        var upgradeMessage: String
+        var appStoreURL: URL?
+        var scheme: String?
+        var deepLinkURL: URL?
     }
 
     public var thirdPartyAppAuthentication: ThirdPartyAppAuthentication?
