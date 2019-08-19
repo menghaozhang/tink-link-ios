@@ -32,6 +32,7 @@
 		8F36724F230598BC00B92936 /* ExactNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F36724E230598BC00B92936 /* ExactNumber.swift */; };
 		8F3672512305A2A700B92936 /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3672502305A2A700B92936 /* Identifier.swift */; };
 		8F3672552305AAF800B92936 /* Account+GRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3672542305AAF800B92936 /* Account+GRPC.swift */; };
+		8FA5F820230AE40B00226C02 /* UpdateAccountRequest + GRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F81F230AE40B00226C02 /* UpdateAccountRequest + GRPC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		8F36724E230598BC00B92936 /* ExactNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExactNumber.swift; sourceTree = "<group>"; };
 		8F3672502305A2A700B92936 /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
 		8F3672542305AAF800B92936 /* Account+GRPC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Account+GRPC.swift"; sourceTree = "<group>"; };
+		8FA5F81F230AE40B00226C02 /* UpdateAccountRequest + GRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdateAccountRequest + GRPC.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +187,7 @@
 				8F36724A23058A3600B92936 /* Account.swift */,
 				8F3672542305AAF800B92936 /* Account+GRPC.swift */,
 				8F36724823057EAB00B92936 /* UpdateAccountRequest.swift */,
+				8FA5F81F230AE40B00226C02 /* UpdateAccountRequest + GRPC.swift */,
 				8F36724E230598BC00B92936 /* ExactNumber.swift */,
 			);
 			path = Models;
@@ -315,6 +318,7 @@
 				20ED857623040077006213BB /* CallCanceller.swift in Sources */,
 				8F3672462305685600B92936 /* GrpcExtensions.swift in Sources */,
 				8F3672512305A2A700B92936 /* Identifier.swift in Sources */,
+				8FA5F820230AE40B00226C02 /* UpdateAccountRequest + GRPC.swift in Sources */,
 				8F36724B23058A3600B92936 /* Account.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

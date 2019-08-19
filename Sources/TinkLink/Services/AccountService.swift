@@ -1,5 +1,4 @@
 import SwiftGRPC
-import SwiftProtobuf
 
 public final class AccountService {
     let channel: Channel
@@ -16,8 +15,8 @@ public final class AccountService {
     /// - Returns: A Cancellable instance. Call cancel() on this instance if you no longer need the result of the request. Deinitializing this instance will also cancel the request.
     func listAccounts(completion: @escaping (Result<[GRPCAccount], Error>) -> Void) -> Cancellable {
         let request = GRPCListAccountsRequest()
-        
         let canceller = CallCanceller()
+        
         do {
             canceller.call = try service.listAccounts(request) { (response, callResult) in
                 if let response = response {
@@ -41,14 +40,7 @@ public final class AccountService {
     ///     - completion: The completion handler to call when the load request is complete.
     /// - Returns: A Cancellable instance. Call cancel() on this instance if you no longer need the result of the request. Deinitializing this instance will also cancel the request.
     func updateAccount(request: UpdateAccountRequest, completion: @escaping (Result<GRPCAccount, Error>) -> Void) -> Cancellable {
-        var updateAccountRequest = GRPCUpdateAccountRequest()
-        updateAccountRequest.accountID = request.accountID.rawValue
-        updateAccountRequest.name = Google_Protobuf_StringValue(request.accountName)
-        updateAccountRequest.type = request.accountType.toGRPCType
-        updateAccountRequest.favored = Google_Protobuf_BoolValue(request.accountFavored)
-        updateAccountRequest.excluded = Google_Protobuf_BoolValue(request.accountExcluded)
-        updateAccountRequest.ownership = GRPCExactNumber(value: request.accountOwnership)
-        
+        let updateAccountRequest = request.toGRPCUpdateAccountRequest
         let canceller = CallCanceller()
         
         do {
