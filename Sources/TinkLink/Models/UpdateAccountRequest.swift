@@ -19,7 +19,7 @@ public struct UpdateAccountRequest {
     
     /// The ownership ratio indicating how much of the account is owned by the user.
     /// The ownership determine the percentage of the amounts on transactions belonging to this account, that should be attributed to the user when statistics are calculated.
-    public var accountOwnership: Account.AccountOwnership
+    public var accountOwnership: ExactNumber
 }
 
 extension UpdateAccountRequest {

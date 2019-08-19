@@ -1,4 +1,9 @@
 extension GRPCExactNumber {
+    init(value: ExactNumber) {
+        self.scale = value.scale
+        self.unscaledValue = value.unscaledValue
+    }
+    
     init(value: Decimal) {
         self.init()
         

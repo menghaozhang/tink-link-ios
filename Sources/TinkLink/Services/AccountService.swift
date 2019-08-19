@@ -47,7 +47,7 @@ public final class AccountService {
         updateAccountRequest.type = request.accountType.toGRPCType
         updateAccountRequest.favored = Google_Protobuf_BoolValue(request.accountFavored)
         updateAccountRequest.excluded = Google_Protobuf_BoolValue(request.accountExcluded)
-        updateAccountRequest.ownership = GRPCExactNumber(value: Decimal(request.accountOwnership.rawValue))
+        updateAccountRequest.ownership = GRPCExactNumber(value: request.accountOwnership)
         
         let canceller = CallCanceller()
         

@@ -27,11 +27,6 @@ public struct Account {
         case mandate
     }
     
-    public enum AccountOwnership: Double {
-        case owned = 1
-        case shared = 0.5
-    }
-    
     
     public var id: Identifier<Account>
     // TODO:    public var balance:
@@ -42,7 +37,7 @@ public struct Account {
     public var favored: Bool
     public var transactional: Bool
     public var name: String
-    public var ownership: AccountOwnership
+    public var ownership: ExactNumber
     public var closed: Bool
     public var exclusionType: Account.Exclusion
     public var flags: [Account.AccountFlag]
