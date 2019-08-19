@@ -29,7 +29,7 @@ public struct Account {
     
     
     public var id: Identifier<Account>
-    // TODO:    public var balance:
+    public var balance: CurrencyDenominatedAmount
     public var type: Account.`Type`
     public var accountNumber: String
     public var credentialID: String // TODO: Identifier<Credential>
