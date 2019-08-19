@@ -21,7 +21,7 @@ public struct Account {
         case none
     }
     
-    public enum AccountFlag {
+    public enum Flag {
         case unknown
         case business
         case mandate
@@ -40,6 +40,6 @@ public struct Account {
     public var ownership: ExactNumber
     public var closed: Bool
     public var exclusionType: Account.Exclusion
-    public var flags: [Account.AccountFlag]
+    public var flags: [Account.Flag]
     // TODO: public var images: Images
 }
