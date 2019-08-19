@@ -40,7 +40,7 @@ public final class AccountService {
     ///     - completion: The completion handler to call when the load request is complete.
     /// - Returns: A Cancellable instance. Call cancel() on this instance if you no longer need the result of the request. Deinitializing this instance will also cancel the request.
     func updateAccount(request: UpdateAccountRequest, completion: @escaping (Result<GRPCAccount, Error>) -> Void) -> Cancellable {
-        let updateAccountRequest = request.toGRPCUpdateAccountRequest
+        let updateAccountRequest = request.grpcUpdateAccountRequest
         let canceller = CallCanceller()
         
         do {

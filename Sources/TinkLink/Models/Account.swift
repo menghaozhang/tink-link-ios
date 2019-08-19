@@ -33,12 +33,12 @@ public struct Account {
     public var type: Account.`Type`
     public var accountNumber: String
     public var credentialID: String // TODO: Identifier<Credential>
-    public var excluded: Bool
-    public var favored: Bool
-    public var transactional: Bool
+    public var isExcluded: Bool
+    public var isFavored: Bool
+    public var isTransactional: Bool
     public var name: String
-    public var ownership: ExactNumber
-    public var closed: Bool
+    public var ownership: Double
+    public var isClosed: Bool
     public var exclusionType: Account.Exclusion
     public var flags: [Account.Flag]
     // TODO: public var images: Images

@@ -5,14 +5,15 @@ extension Account {
         self.name = grpcAccount.name
         // TODO:       grpcAccount.balance
         self.credentialID = grpcAccount.credentialID
-        self.excluded = grpcAccount.excluded
+        self.isExcluded = grpcAccount.excluded
         self.exclusionType = Account.Exclusion(grpcAccountExclustion: grpcAccount.exclusionType)
-        self.favored = grpcAccount.favored
-        self.closed = grpcAccount.closed
-        self.transactional = grpcAccount.transactional
+        self.isFavored = grpcAccount.favored
+        self.isClosed = grpcAccount.closed
+        self.isTransactional = grpcAccount.transactional
         self.flags = grpcAccount.flags.map({ Account.Flag(grpcAccountFlag: $0) })
-        self.ownership = ExactNumber(value: grpcAccount.ownership)
+        self.ownership = grpcAccount.ownership.doubleValue
         self.type = `Type`(grpcAccountType: grpcAccount.type)
+        self.balance = CurrencyDenominatedAmount(grpcCurrencyDenominatedAmount: grpcAccount.balance)
     }
 }
 
@@ -73,7 +74,7 @@ extension Account.`Type` {
             self = .external
         }
     }
-    var toGRPCType: GRPCAccount.TypeEnum {
+    var grpcType: GRPCAccount.TypeEnum {
         switch self {
         case .unknown:
             return .unknown

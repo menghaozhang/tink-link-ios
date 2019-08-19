@@ -1,24 +1,24 @@
 import SwiftProtobuf
 
 internal extension UpdateAccountRequest {
-    var toGRPCUpdateAccountRequest: GRPCUpdateAccountRequest {
+    var grpcUpdateAccountRequest: GRPCUpdateAccountRequest {
         var updateAccountRequest = GRPCUpdateAccountRequest()
-        updateAccountRequest.accountID = accountID.rawValue
-        updateAccountRequest.name = accountNameGoogleProtobuf
-        updateAccountRequest.type = accountType.toGRPCType
-        updateAccountRequest.favored = accountFavoredGoogleProtobuf
-        updateAccountRequest.excluded = accountExcludedGoogleProtobuf
-        updateAccountRequest.ownership = GRPCExactNumber(value: accountOwnership)
+        updateAccountRequest.accountID = id.rawValue
+        updateAccountRequest.name = nameGoogleProtobuf
+        updateAccountRequest.type = type.grpcType
+        updateAccountRequest.favored = favoredGoogleProtobuf
+        updateAccountRequest.excluded = excludedGoogleProtobuf
+        updateAccountRequest.ownership = GRPCExactNumber(value: ownership)
         return updateAccountRequest
     }
     
-    var accountNameGoogleProtobuf: Google_Protobuf_StringValue {
-        return Google_Protobuf_StringValue(accountName)
+    private var nameGoogleProtobuf: Google_Protobuf_StringValue {
+        return Google_Protobuf_StringValue(name)
     }
-    var accountFavoredGoogleProtobuf: Google_Protobuf_BoolValue {
-        return Google_Protobuf_BoolValue(accountFavored)
+    private var favoredGoogleProtobuf: Google_Protobuf_BoolValue {
+        return Google_Protobuf_BoolValue(isFavored)
     }
-    var accountExcludedGoogleProtobuf: Google_Protobuf_BoolValue {
-        return Google_Protobuf_BoolValue(accountExcluded)
+    private var excludedGoogleProtobuf: Google_Protobuf_BoolValue {
+        return Google_Protobuf_BoolValue(isExcluded)
     }
 }
