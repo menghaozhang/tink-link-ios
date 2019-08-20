@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		20ED852A2303FA48006213BB /* TinkLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85202303FA48006213BB /* TinkLink.framework */; };
-		20ED852F2303FA48006213BB /* TinkLinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED852E2303FA48006213BB /* TinkLinkTests.swift */; };
 		20ED85312303FA48006213BB /* TinkLink.h in Headers */ = {isa = PBXBuildFile; fileRef = 20ED85232303FA48006213BB /* TinkLink.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		20ED853B2303FAD9006213BB /* TinkLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED853A2303FAD9006213BB /* TinkLink.swift */; };
 		20ED85412303FAEC006213BB /* rpc.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED853D2303FAEC006213BB /* rpc.pb.swift */; };
 		20ED85422303FAEC006213BB /* models.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED853E2303FAEC006213BB /* models.pb.swift */; };
 		20ED85432303FAEC006213BB /* services.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED853F2303FAEC006213BB /* services.grpc.swift */; };
@@ -58,9 +56,7 @@
 		20ED85232303FA48006213BB /* TinkLink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinkLink.h; sourceTree = "<group>"; };
 		20ED85242303FA48006213BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20ED85292303FA48006213BB /* TinkLinkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinkLinkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		20ED852E2303FA48006213BB /* TinkLinkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinkLinkTests.swift; sourceTree = "<group>"; };
 		20ED85302303FA48006213BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		20ED853A2303FAD9006213BB /* TinkLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TinkLink.swift; sourceTree = "<group>"; };
 		20ED853D2303FAEC006213BB /* rpc.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rpc.pb.swift; sourceTree = "<group>"; };
 		20ED853E2303FAEC006213BB /* models.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = models.pb.swift; sourceTree = "<group>"; };
 		20ED853F2303FAEC006213BB /* services.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = services.grpc.swift; sourceTree = "<group>"; };
@@ -139,7 +135,6 @@
 			isa = PBXGroup;
 			children = (
 				20ED85232303FA48006213BB /* TinkLink.h */,
-				20ED853A2303FAD9006213BB /* TinkLink.swift */,
 				20ED856C23040025006213BB /* Client.swift */,
 				20ED856E23040039006213BB /* Environment.swift */,
 				20ED857323040066006213BB /* Cancellable.swift */,
@@ -156,7 +151,6 @@
 		20ED852D2303FA48006213BB /* TinkLinkTests */ = {
 			isa = PBXGroup;
 			children = (
-				20ED852E2303FA48006213BB /* TinkLinkTests.swift */,
 				20ED858923040974006213BB /* ProviderGRPCTests.swift */,
 				20ED8587230408E6006213BB /* ClientTests.swift */,
 				20ED85302303FA48006213BB /* Info.plist */,
@@ -340,7 +334,6 @@
 				20ED858E2304151B006213BB /* CredentialService.swift in Sources */,
 				20ED85412303FAEC006213BB /* rpc.pb.swift in Sources */,
 				20ED857A230407B3006213BB /* Provider.swift in Sources */,
-				20ED853B2303FAD9006213BB /* TinkLink.swift in Sources */,
 				8F367243230557B300B92936 /* AccountService.swift in Sources */,
 				8F3672552305AAF800B92936 /* Account+GRPC.swift in Sources */,
 				20ED85422303FAEC006213BB /* models.pb.swift in Sources */,
@@ -360,7 +353,6 @@
 			files = (
 				20ED859023041679006213BB /* ProviderGRPCTests.swift in Sources */,
 				20ED8588230408E6006213BB /* ClientTests.swift in Sources */,
-				20ED852F2303FA48006213BB /* TinkLinkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
