@@ -89,6 +89,8 @@ public struct Provider {
         public static let payments             = Capabilities(rawValue: 1 << 8)
         public static let mortgageLoan         = Capabilities(rawValue: 1 << 9)
         public static let identityData         = Capabilities(rawValue: 1 << 10)
+
+        public static let all: Capabilities = [.transfers, .mortgageAggregation, .checkingAccounts, .savingsAccounts, .creditCards, .investments, .loans, .payments, .mortgageLoan, .identityData]
     }
 
     /// Indicates what this provider is capable of, in terms of financial data it can aggregate and if it can execute payments.
