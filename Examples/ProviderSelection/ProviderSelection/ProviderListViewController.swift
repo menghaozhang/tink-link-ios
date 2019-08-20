@@ -16,23 +16,26 @@ class ProviderContext {
     let client: Client
     init(client: Client) {
         self.client = client
+        providers = [
+            Provider(name: "Avanza", financialInstitutionID: "Avanza", groupedName: "Avanza", accessType: .reverseEngineering, credentialType: .password),
+            Provider(name: "SBAB BankID", financialInstitutionID: "SBAB", groupedName: "SBAB", accessType: .reverseEngineering, credentialType: .bankID),
+            Provider(name: "SBAB Password", financialInstitutionID: "SBAB", groupedName: "SBAB", accessType: .reverseEngineering, credentialType: .password),
+            Provider(name: "SEB BankID", financialInstitutionID: "SEB", groupedName: "SEB", accessType: .reverseEngineering, credentialType: .bankID),
+            Provider(name: "SEB Password", financialInstitutionID: "SEB", groupedName: "SEB", accessType: .reverseEngineering, credentialType: .password),
+            Provider(name: "SEB openbanking", financialInstitutionID: "SEB", groupedName: "SEB", accessType: .openBanking, credentialType: .thirdParty),
+            Provider(name: "Nordea BankID", financialInstitutionID: "Nordea", groupedName: "Nordea", accessType: .reverseEngineering, credentialType: .bankID),
+            Provider(name: "Nordea Password", financialInstitutionID: "Nordea", groupedName: "Nordea", accessType: .reverseEngineering, credentialType: .password),
+            Provider(name: "Nordea Openbanking", financialInstitutionID: "Nordea", groupedName: "Nordea", accessType: .openBanking, credentialType: .thirdParty),
+            Provider(name: "Nordea", financialInstitutionID: "Nordea Other", groupedName: "Nordea", accessType: .reverseEngineering, credentialType: .password)
+        ]
     }
+    var providers: [Provider]
+    lazy var providerGroupsByGroupedName: [ProviderGroupedByGroupedName] = {
+       return _providerGroupsByGroupedName
+    }()
     weak var delegate: ProviderContextDelegate?
     
-    var providers = [
-        Provider(name: "Avanza", financialInstitutionID: "Avanza", groupedName: "Avanza", accessType: .reverseEngineering, credentialType: .password),
-        Provider(name: "SBAB BankID", financialInstitutionID: "SBAB", groupedName: "SBAB", accessType: .reverseEngineering, credentialType: .bankID),
-        Provider(name: "SBAB Password", financialInstitutionID: "SBAB", groupedName: "SBAB", accessType: .reverseEngineering, credentialType: .password),
-        Provider(name: "SEB BankID", financialInstitutionID: "SEB", groupedName: "SEB", accessType: .reverseEngineering, credentialType: .bankID),
-        Provider(name: "SEB Password", financialInstitutionID: "SEB", groupedName: "SEB", accessType: .reverseEngineering, credentialType: .password),
-        Provider(name: "SEB openbanking", financialInstitutionID: "SEB", groupedName: "SEB", accessType: .openBanking, credentialType: .bankID),
-        Provider(name: "Nordea BankID", financialInstitutionID: "Nordea", groupedName: "Nordea", accessType: .reverseEngineering, credentialType: .bankID),
-        Provider(name: "Nordea Password", financialInstitutionID: "Nordea", groupedName: "Nordea", accessType: .reverseEngineering, credentialType: .password),
-        Provider(name: "Nordea Openbanking", financialInstitutionID: "Nordea", groupedName: "Nordea", accessType: .openBanking, credentialType: .bankID),
-        Provider(name: "Nordea", financialInstitutionID: "Nordea Other", groupedName: "Nordea", accessType: .reverseEngineering, credentialType: .password)
-    ]
-    
-    lazy var providerGroupsByGroupedName: [ProviderGroupedByGroupedName] = {
+    private lazy var _providerGroupsByGroupedName: [ProviderGroupedByGroupedName] = {
         let providerGroupedByGroupedName = Dictionary(grouping: providers, by: { $0.groupedName })
         let groupedNames = providerGroupedByGroupedName.map { $0.key }
         var providerGroupsByGroupedNames = [ProviderGroupedByGroupedName]()
@@ -41,148 +44,8 @@ class ProviderContext {
             providerGroupsByGroupedNames.append(ProviderGroupedByGroupedName(providers: providersWithSameGroupedName))
             
         }
-        
         return providerGroupsByGroupedNames.sorted(by: { $0.providers.count < $1.providers.count })
     }()
-}
-
-struct Provider {
-    let name: String
-    let financialInstitutionID: String
-    let groupedName: String
-    let accessType: AccessType
-    var credentialType: CredentialType
-    
-    enum AccessType: String {
-        case reverseEngineering
-        case openBanking
-    }
-    
-    enum CredentialType: String {
-        case bankID
-        case password
-    }
-    
-}
-
-enum ProviderGroupedByAccessType {
-    case singleProvider(Provider)
-    case multipleCredentialTypes([Provider])
-    
-    init(providers: [Provider]) {
-        if providers.count == 1, let provider = providers.first {
-            self = .singleProvider(provider)
-        } else {
-            self = .multipleCredentialTypes(providers)
-        }
-    }
-    
-    var providers: [Provider] {
-        switch self {
-        case .multipleCredentialTypes(let providers):
-            return providers
-        case .singleProvider(let provider):
-            return [provider]
-        }
-    }
-    
-    var accessType: String? {
-        return providers.first?.accessType.rawValue
-    }
-}
-
-enum ProviderGroupedByFinancialInsititution {
-    case singleProvider(Provider)
-    case multipleCredentialTypes([Provider])
-    case multupleAccessTypes([ProviderGroupedByAccessType])
-    
-    init(providers: [Provider]) {
-        if providers.count == 1, let provider = providers.first {
-            self = .singleProvider(provider)
-        } else {
-            let providerGroupedByAccessTypes = Dictionary(grouping: providers, by: { $0.accessType })
-            let accessTypes = providerGroupedByAccessTypes.map { $0.key }
-            if accessTypes.count == 1 {
-                self = .multipleCredentialTypes(providers)
-            } else {
-                var providerGroupedByAccessType = [ProviderGroupedByAccessType]()
-                accessTypes.forEach { accessType in
-                    let providersWithSameAccessType = providers.filter({ $0.accessType == accessType })
-                    providerGroupedByAccessType.append(ProviderGroupedByAccessType(providers: providersWithSameAccessType))
-                }
-                self = .multupleAccessTypes(providerGroupedByAccessType)
-            }
-        }
-    }
-    
-    var providers: [Provider] {
-        switch self {
-        case .multupleAccessTypes(let providerGroupByAccessTypes):
-            return providerGroupByAccessTypes.flatMap { $0.providers }
-        case .multipleCredentialTypes(let providers):
-            return providers
-        case .singleProvider(let provider):
-            return [provider]
-        }
-    }
-    
-    var financialInsititutionID: String? {
-        return providers.first?.financialInstitutionID
-    }
-}
-
-enum ProviderGroupedByGroupedName {
-    case singleProvider(Provider)
-    case multipleCredentialTypes([Provider])
-    case multupleAccessTypes([ProviderGroupedByAccessType])
-    case financialInsititutions([ProviderGroupedByFinancialInsititution])
-    
-    init(providers: [Provider]) {
-        if providers.count == 1, let provider = providers.first {
-            self = .singleProvider(provider)
-        } else {
-            let providerGroupedByFinancialInstitutions = Dictionary(grouping: providers, by: { $0.financialInstitutionID })
-            let financialInstitutions = providerGroupedByFinancialInstitutions.map { $0.key }
-            if financialInstitutions.count == 1 {
-                let providerGroupedByAccessTypes = Dictionary(grouping: providers, by: { $0.accessType })
-                let accessTypes = providerGroupedByAccessTypes.map { $0.key }
-                if accessTypes.count == 1 {
-                    self = .multipleCredentialTypes(providers)
-                } else {
-                    var providerGroupedByAccessType = [ProviderGroupedByAccessType]()
-                    accessTypes.forEach { accessType in
-                        let providersWithSameAccessType = providers.filter({ $0.accessType == accessType })
-                        providerGroupedByAccessType.append(ProviderGroupedByAccessType(providers: providersWithSameAccessType))
-                    }
-                    self = .multupleAccessTypes(providerGroupedByAccessType)
-                }
-            } else {
-                var providerGroupedByFinancialInstitution = [ProviderGroupedByFinancialInsititution]()
-                financialInstitutions.forEach { financialInstitution in
-                    let providersWithSameFinancialInstitutions = providers.filter({ $0.financialInstitutionID == financialInstitution })
-                    providerGroupedByFinancialInstitution.append(ProviderGroupedByFinancialInsititution(providers: providersWithSameFinancialInstitutions))
-                }
-                self = .financialInsititutions(providerGroupedByFinancialInstitution)
-            }
-        }
-    }
-    
-    var providers: [Provider] {
-        switch self {
-        case .financialInsititutions(let providerGroupedByFinancialInsititutions):
-            return providerGroupedByFinancialInsititutions.flatMap{ $0.providers }
-        case .multupleAccessTypes(let providerGroupByAccessTypes):
-            return providerGroupByAccessTypes.flatMap { $0.providers }
-        case .multipleCredentialTypes(let providers):
-            return providers
-        case .singleProvider(let provider):
-            return [provider]
-        }
-    }
-    
-    var groupedName: String? {
-        return providers.first?.groupedName
-    }
 }
 
 protocol ProviderContextDelegate: AnyObject {
