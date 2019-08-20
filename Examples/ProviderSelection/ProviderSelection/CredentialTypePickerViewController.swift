@@ -14,7 +14,7 @@ class CredentialTypePickerViewController: UITableViewController, ProvidersWithCr
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = String(providers?[indexPath.item].credentialType ?? 0)
+        cell.textLabel?.text = providers?[indexPath.item].credentialType.rawValue ?? ""
         return cell
     }
     
