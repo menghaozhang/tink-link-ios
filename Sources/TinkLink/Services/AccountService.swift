@@ -1,0 +1,62 @@
+import SwiftGRPC
+
+public final class AccountService {
+    let channel: Channel
+    
+    init(channel: Channel) {
+        self.channel = channel
+    }
+    
+    private lazy var service = AccountServiceServiceClient(channel: channel)
+    
+    /// Lists all accounts
+    ///
+    /// - Parameter completion: The completion handler to call when the load request is complete.
+    /// - Returns: A Cancellable instance. Call cancel() on this instance if you no longer need the result of the request. Deinitializing this instance will also cancel the request.
+    func listAccounts(completion: @escaping (Result<[Account], Error>) -> Void) -> Cancellable {
+        let request = GRPCListAccountsRequest()
+        let canceller = CallCanceller()
+        
+        do {
+            canceller.call = try service.listAccounts(request) { (response, callResult) in
+                if let response = response {
+                    
+                    completion(.success(response.accounts.map(Account.init)))
+                } else {
+                    let error = RPCError.callError(callResult)
+                    completion(.failure(error))
+                }
+            }
+        } catch {
+            completion(.failure(error))
+        }
+        
+        return canceller
+    }
+    
+    /// Updates an account
+    ///
+    /// - Parameters:
+    ///     - request: The request to update the account with matching account ID.
+    ///     - completion: The completion handler to call when the load request is complete.
+    /// - Returns: A Cancellable instance. Call cancel() on this instance if you no longer need the result of the request. Deinitializing this instance will also cancel the request.
+    func updateAccount(request: UpdateAccountRequest, completion: @escaping (Result<Account, Error>) -> Void) -> Cancellable {
+        let updateAccountRequest = request.grpcUpdateAccountRequest
+        let canceller = CallCanceller()
+        
+        do {
+            canceller.call = try service.updateAccount(updateAccountRequest) { (response, callResult) in
+                if let response = response {
+                    completion(.success(Account(grpcAccount: response.account)))
+                } else {
+                    let error = RPCError.callError(callResult)
+                    completion(.failure(error))
+                }
+            }
+        } catch {
+            completion(.failure(error))
+        }
+        
+        return canceller
+    }
+}
