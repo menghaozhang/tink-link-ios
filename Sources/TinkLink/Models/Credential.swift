@@ -50,7 +50,7 @@ public struct Credential {
     /// This is a key-value map of Field name and value found on the Provider to which the credentials belongs to.
     public var fields: [String: String]
 
-    /// A key-value structure to handle if status of credentials are `.awaitingSupplementalInformation`.
+    /// A key-value structure to handle if status of credentials are `Credential.Status.awaitingSupplementalInformation`.
     public var supplementalInformationFields: [Provider.FieldSpecification]
 
     public struct ThirdPartyAppAuthentication {
@@ -65,6 +65,6 @@ public struct Credential {
 
     public var thirdPartyAppAuthentication: ThirdPartyAppAuthentication?
 
-    /// Indicates when the session of credentials with access type OPEN_BANKING will expire. After this date automatic refreshes will not be possible without new authentication from the user.
+    /// Indicates when the session of credentials with access type `Provider.AccessType.openBanking` will expire. After this date automatic refreshes will not be possible without new authentication from the user.
     public var sessionExpiryDate: Date?
 }
