@@ -150,15 +150,6 @@ service PingService {
     rpc Ping (PingRequest) returns (PingResponse) {}
 }
 
-service PropertyService {
-    rpc ListProperties (ListPropertiesRequest) returns (ListPropertiesResponse) {}
-    rpc GetProperty (GetPropertyRequest) returns (GetPropertyResponse) {}
-    rpc UpdateProperty (UpdatePropertyRequest) returns (UpdatePropertyResponse) {}
-    rpc DeleteValuation (DeleteValuationRequest) returns (DeleteValuationResponse) {}
-    rpc GetValuationEvents (GetValuationEventsRequest) returns (GetValuationEventsResponse) {}
-    rpc GetValuationSummary (GetValuationSummaryRequest) returns (GetValuationSummaryResponse) {}
-}
-
 service MarketService {
     rpc ListMarkets (ListMarketsRequest) returns (ListMarketsResponse) {}
 }
