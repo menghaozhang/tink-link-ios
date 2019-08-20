@@ -23,25 +23,7 @@ public final class ProviderService {
         request.capability = .unknown
         request.includeTestType = includeTestProviders
 
-        let canceller = CallCanceller()
-
-        do {
-            canceller.call = try service.listProviders(request) { (response, result) in
-                if let response = response {
-                    let providers = response.providers
-                        .map { Provider(grpcProvider: $0) }
-                        .filter { !$0.capabilities.isDisjoint(with: capabilities) }
-                    completion(.success(providers))
-                } else {
-                    let error = RPCError.callError(result)
-                    completion(.failure(error))
-                }
-            }
-        } catch {
-            completion(.failure(error))
-        }
-
-        return canceller
+        return startCall(request: request, method: service.listProviders, responseMap: { $0.providers.map({ Provider(grpcProvider: $0) }).filter({ !$0.capabilities.isDisjoint(with: capabilities) }) }, completion: completion)
     }
 
     /// Lists all markets where there are providers available.
@@ -51,22 +33,7 @@ public final class ProviderService {
     public func providerMarkets(completion: @escaping (Result<[String], Error>) -> Void) -> Cancellable {
         let request = GRPCProviderMarketListRequest()
 
-        let canceller = CallCanceller()
-
-        do {
-            canceller.call = try service.listProviderMarkets(request) { (response, result) in
-                if let response = response {
-                    completion(.success(response.providerMarkets.map({ $0.code })))
-                } else {
-                    let error = RPCError.callError(result)
-                    completion(.failure(error))
-                }
-            }
-        } catch {
-            completion(.failure(error))
-        }
-
-        return canceller
+        return startCall(request: request, method: service.listProviderMarkets, responseMap: { $0.providerMarkets.map({ $0.code }) }, completion: completion)
     }
 
 }
