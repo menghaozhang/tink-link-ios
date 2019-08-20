@@ -74,7 +74,7 @@
         <!--Choose Financial Institution-->
         <scene sceneID="3o5-4j-vkK">
             <objects>
-                <tableViewController id="2eO-In-Zsw" sceneMemberID="viewController">
+                <tableViewController id="2eO-In-Zsw" customClass="FinancialInstitutionPickerViewController" customModule="ProviderSelection" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5J9-Z1-MAO">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -108,7 +108,7 @@
         <!--Choose Access Type-->
         <scene sceneID="SW9-w6-09F">
             <objects>
-                <tableViewController id="8z6-kM-Sf7" sceneMemberID="viewController">
+                <tableViewController id="8z6-kM-Sf7" customClass="AccessTypePickerViewController" customModule="ProviderSelection" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="VbQ-B6-OJA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -218,8 +218,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Z10-Fo-lOQ"/>
-        <segue reference="ZS2-cA-SnI"/>
-        <segue reference="ZH2-LI-jno"/>
+        <segue reference="HJg-Ds-v2X"/>
+        <segue reference="zmb-Xr-sfz"/>
+        <segue reference="HRA-W6-O85"/>
     </inferredMetricsTieBreakers>
 </document>
