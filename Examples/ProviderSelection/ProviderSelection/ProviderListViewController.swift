@@ -41,7 +41,8 @@ class ProviderContext {
             providerGroupsByGroupedNames.append(ProviderGroupedByGroupedName(providers: providersWithSameGroupedName))
             
         }
-        return providerGroupsByGroupedNames
+        
+        return providerGroupsByGroupedNames.sorted(by: { $0.providers.count < $1.providers.count })
     }()
 }
 

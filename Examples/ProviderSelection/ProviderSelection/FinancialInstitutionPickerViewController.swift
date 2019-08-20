@@ -4,10 +4,11 @@ protocol ProviderGroupedByFinancialInsititutionOverview: AnyObject {
     var providerGroupedByFinancialInsititutions: [ProviderGroupedByFinancialInsititution]? { get set }
 }
 
-class FinancialInstitutionPickerViewController: UITableViewController, ProviderGroupedByFinancialInsititutionOverview {
+class FinancialInstitutionPickerViewController: UITableViewController, ProviderGroupedByFinancialInsititutionOverview, ProvidersWithCredentialTypeOverview, ProviderGroupedByAccessTypeOverview {
     
     var providerGroupedByFinancialInsititutions: [ProviderGroupedByFinancialInsititution]?
-    var providersOverview: (ProvidersWithCredentialTypeOverview & ProviderGroupedByAccessTypeOverview)?
+    var providerGroupedByAccessTypes: [ProviderGroupedByAccessType]?
+    var providers: [Provider]?
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return providerGroupedByFinancialInsititutions?.count ?? 0
@@ -23,10 +24,10 @@ class FinancialInstitutionPickerViewController: UITableViewController, ProviderG
         let providersWithSameFinancialInstitution = providerGroupedByFinancialInsititutions![indexPath.row]
         switch providersWithSameFinancialInstitution {
         case .multupleAccessTypes(let providerGroupedByAccessTypes):
-            providersOverview?.providerGroupedByAccessTypes = providerGroupedByAccessTypes
+            self.providerGroupedByAccessTypes = providerGroupedByAccessTypes
             showAccessTypePicker(for: providerGroupedByAccessTypes)
         case .multipleCredentialTypes(let providers):
-            providersOverview?.providers = providers
+            self.providers = providers
             showCredentialTypePicker(for: providers)
         case .singleProvider(let provider):
             showAddCredential(for: provider)
@@ -48,9 +49,9 @@ class FinancialInstitutionPickerViewController: UITableViewController, ProviderG
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let providerGroupOverview = segue.destination as? ProviderGroupedByAccessTypeOverview {
-            providerGroupOverview.providerGroupedByAccessTypes = providersOverview?.providerGroupedByAccessTypes
+            providerGroupOverview.providerGroupedByAccessTypes = providerGroupedByAccessTypes
         } else if let providerGroupOverview = segue.destination as? ProvidersWithCredentialTypeOverview  {
-            providerGroupOverview.providers = providersOverview?.providers
+            providerGroupOverview.providers = providers
         }
     }
 }

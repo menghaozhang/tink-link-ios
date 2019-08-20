@@ -4,11 +4,11 @@ protocol ProviderGroupedByAccessTypeOverview: AnyObject {
     var providerGroupedByAccessTypes: [ProviderGroupedByAccessType]? { get set }
 }
 
-class AccessTypePickerViewController: UITableViewController, ProviderGroupedByAccessTypeOverview {
+class AccessTypePickerViewController: UITableViewController, ProviderGroupedByAccessTypeOverview, ProvidersWithCredentialTypeOverview {
     
     var providerGroupedByAccessTypes: [ProviderGroupedByAccessType]?
     
-    var providersOverview: ProvidersWithCredentialTypeOverview?
+    var providers: [Provider]?
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return providerGroupedByAccessTypes?.count ?? 0
@@ -24,8 +24,9 @@ class AccessTypePickerViewController: UITableViewController, ProviderGroupedByAc
         
         let providersWithSameAccessType = providerGroupedByAccessTypes![indexPath.row]
         switch providersWithSameAccessType {
-        case .multipleCredentialTypes(let providerGroupedByCredentialTypes):
-            showCredentialTypePicker(for: providerGroupedByCredentialTypes)
+        case .multipleCredentialTypes(let providers):
+            self.providers = providers
+            showCredentialTypePicker(for: providers)
         case .singleProvider(let provider):
             showAddCredential(for: provider)
         }
@@ -41,7 +42,7 @@ class AccessTypePickerViewController: UITableViewController, ProviderGroupedByAc
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let providerGroupOverview = segue.destination as? ProvidersWithCredentialTypeOverview  {
-            providerGroupOverview.providers = providersOverview?.providers
+            providerGroupOverview.providers = providers
         }
     }
 }
