@@ -41,5 +41,5 @@ public struct Account {
     public var isClosed: Bool
     public var exclusionType: Account.Exclusion
     public var flags: [Account.Flag]
-    // TODO: public var images: Images
+    public var images: URL?
 }

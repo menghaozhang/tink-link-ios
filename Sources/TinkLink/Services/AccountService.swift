@@ -13,14 +13,15 @@ public final class AccountService {
     ///
     /// - Parameter completion: The completion handler to call when the load request is complete.
     /// - Returns: A Cancellable instance. Call cancel() on this instance if you no longer need the result of the request. Deinitializing this instance will also cancel the request.
-    func listAccounts(completion: @escaping (Result<[GRPCAccount], Error>) -> Void) -> Cancellable {
+    func listAccounts(completion: @escaping (Result<[Account], Error>) -> Void) -> Cancellable {
         let request = GRPCListAccountsRequest()
         let canceller = CallCanceller()
         
         do {
             canceller.call = try service.listAccounts(request) { (response, callResult) in
                 if let response = response {
-                    completion(.success(response.accounts))
+                    
+                    completion(.success(response.accounts.map(Account.init)))
                 } else {
                     let error = RPCError.callError(callResult)
                     completion(.failure(error))
@@ -39,14 +40,14 @@ public final class AccountService {
     ///     - request: The request to update the account with matching account ID.
     ///     - completion: The completion handler to call when the load request is complete.
     /// - Returns: A Cancellable instance. Call cancel() on this instance if you no longer need the result of the request. Deinitializing this instance will also cancel the request.
-    func updateAccount(request: UpdateAccountRequest, completion: @escaping (Result<GRPCAccount, Error>) -> Void) -> Cancellable {
+    func updateAccount(request: UpdateAccountRequest, completion: @escaping (Result<Account, Error>) -> Void) -> Cancellable {
         let updateAccountRequest = request.grpcUpdateAccountRequest
         let canceller = CallCanceller()
         
         do {
             canceller.call = try service.updateAccount(updateAccountRequest) { (response, callResult) in
                 if let response = response {
-                    completion(.success(response.account))
+                    completion(.success(Account(grpcAccount: response.account)))
                 } else {
                     let error = RPCError.callError(callResult)
                     completion(.failure(error))

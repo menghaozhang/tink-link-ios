@@ -3,7 +3,6 @@ extension Account {
         self.id = Identifier(stringLiteral: grpcAccount.id)
         self.accountNumber = grpcAccount.accountNumber
         self.name = grpcAccount.name
-        // TODO:       grpcAccount.balance
         self.credentialID = grpcAccount.credentialID
         self.isExcluded = grpcAccount.excluded
         self.exclusionType = Account.Exclusion(grpcAccountExclustion: grpcAccount.exclusionType)
@@ -14,6 +13,7 @@ extension Account {
         self.ownership = grpcAccount.ownership.doubleValue
         self.type = `Type`(grpcAccountType: grpcAccount.type)
         self.balance = CurrencyDenominatedAmount(grpcCurrencyDenominatedAmount: grpcAccount.balance)
+        self.images = URL(string: grpcAccount.images.iconURL)
     }
 }
 

@@ -27,6 +27,7 @@
 		20ED857A230407B3006213BB /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED8579230407B3006213BB /* Provider.swift */; };
 		20ED85832304081D006213BB /* Provider+GRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED85822304081D006213BB /* Provider+GRPC.swift */; };
 		20ED8588230408E6006213BB /* ClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED8587230408E6006213BB /* ClientTests.swift */; };
+		20ED859023041679006213BB /* ProviderGRPCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED858923040974006213BB /* ProviderGRPCTests.swift */; };
 		8F367243230557B300B92936 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F367242230557B300B92936 /* AccountService.swift */; };
 		8F3672462305685600B92936 /* GrpcExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3672452305685600B92936 /* GrpcExtensions.swift */; };
 		8F36724923057EAB00B92936 /* UpdateAccountRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F36724823057EAB00B92936 /* UpdateAccountRequest.swift */; };
@@ -34,9 +35,8 @@
 		8F36724F230598BC00B92936 /* ExactNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F36724E230598BC00B92936 /* ExactNumber.swift */; };
 		8F3672512305A2A700B92936 /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3672502305A2A700B92936 /* Identifier.swift */; };
 		8F3672552305AAF800B92936 /* Account+GRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3672542305AAF800B92936 /* Account+GRPC.swift */; };
-		8FA5F820230AE40B00226C02 /* UpdateAccountRequest + GRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F81F230AE40B00226C02 /* UpdateAccountRequest + GRPC.swift */; };
+		8FA5F820230AE40B00226C02 /* UpdateAccountRequest+GRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F81F230AE40B00226C02 /* UpdateAccountRequest+GRPC.swift */; };
 		8FA5F822230AE66100226C02 /* CurrencyDenominatedAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F821230AE66100226C02 /* CurrencyDenominatedAmount.swift */; };
-		20ED859023041679006213BB /* ProviderGRPCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED858923040974006213BB /* ProviderGRPCTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +73,7 @@
 		20ED8579230407B3006213BB /* Provider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
 		20ED85822304081D006213BB /* Provider+GRPC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Provider+GRPC.swift"; sourceTree = "<group>"; };
 		20ED8587230408E6006213BB /* ClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTests.swift; sourceTree = "<group>"; };
+		20ED858923040974006213BB /* ProviderGRPCTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderGRPCTests.swift; sourceTree = "<group>"; };
 		8F367242230557B300B92936 /* AccountService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		8F3672452305685600B92936 /* GrpcExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrpcExtensions.swift; sourceTree = "<group>"; };
 		8F36724823057EAB00B92936 /* UpdateAccountRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAccountRequest.swift; sourceTree = "<group>"; };
@@ -80,9 +81,8 @@
 		8F36724E230598BC00B92936 /* ExactNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExactNumber.swift; sourceTree = "<group>"; };
 		8F3672502305A2A700B92936 /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
 		8F3672542305AAF800B92936 /* Account+GRPC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Account+GRPC.swift"; sourceTree = "<group>"; };
-		8FA5F81F230AE40B00226C02 /* UpdateAccountRequest + GRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdateAccountRequest + GRPC.swift"; sourceTree = "<group>"; };
+		8FA5F81F230AE40B00226C02 /* UpdateAccountRequest+GRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdateAccountRequest+GRPC.swift"; sourceTree = "<group>"; };
 		8FA5F821230AE66100226C02 /* CurrencyDenominatedAmount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDenominatedAmount.swift; sourceTree = "<group>"; };
-		20ED858923040974006213BB /* ProviderGRPCTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderGRPCTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,7 +196,7 @@
 				8F36724A23058A3600B92936 /* Account.swift */,
 				8F3672542305AAF800B92936 /* Account+GRPC.swift */,
 				8F36724823057EAB00B92936 /* UpdateAccountRequest.swift */,
-				8FA5F81F230AE40B00226C02 /* UpdateAccountRequest + GRPC.swift */,
+				8FA5F81F230AE40B00226C02 /* UpdateAccountRequest+GRPC.swift */,
 				8F36724E230598BC00B92936 /* ExactNumber.swift */,
 				8FA5F821230AE66100226C02 /* CurrencyDenominatedAmount.swift */,
 				20ED8579230407B3006213BB /* Provider.swift */,
@@ -333,7 +333,7 @@
 				20ED857623040077006213BB /* CallCanceller.swift in Sources */,
 				8F3672462305685600B92936 /* GrpcExtensions.swift in Sources */,
 				8F3672512305A2A700B92936 /* Identifier.swift in Sources */,
-				8FA5F820230AE40B00226C02 /* UpdateAccountRequest + GRPC.swift in Sources */,
+				8FA5F820230AE40B00226C02 /* UpdateAccountRequest+GRPC.swift in Sources */,
 				8F36724B23058A3600B92936 /* Account.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
