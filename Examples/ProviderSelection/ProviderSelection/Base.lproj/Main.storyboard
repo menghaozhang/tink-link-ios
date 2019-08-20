@@ -141,7 +141,7 @@
         <!--Choose Credential Type-->
         <scene sceneID="7Wm-DM-QfZ">
             <objects>
-                <tableViewController id="jnC-f4-MC3" sceneMemberID="viewController">
+                <tableViewController id="jnC-f4-MC3" customClass="CredentialTypePickerViewController" customModule="ProviderSelection" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tfG-S5-QL4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -218,7 +218,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="HJg-Ds-v2X"/>
+        <segue reference="Z10-Fo-lOQ"/>
         <segue reference="zmb-Xr-sfz"/>
         <segue reference="HRA-W6-O85"/>
     </inferredMetricsTieBreakers>
