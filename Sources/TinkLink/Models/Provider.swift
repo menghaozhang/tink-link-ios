@@ -79,16 +79,16 @@ public struct Provider {
             self.rawValue = rawValue
         }
 
-        static let transfers            = Capabilities(rawValue: 1 << 1)
-        static let mortgageAggregation  = Capabilities(rawValue: 1 << 2)
-        static let checkingAccounts     = Capabilities(rawValue: 1 << 3)
-        static let savingsAccounts      = Capabilities(rawValue: 1 << 4)
-        static let creditCards          = Capabilities(rawValue: 1 << 5)
-        static let investments          = Capabilities(rawValue: 1 << 6)
-        static let loans                = Capabilities(rawValue: 1 << 7)
-        static let payments             = Capabilities(rawValue: 1 << 8)
-        static let mortgageLoan         = Capabilities(rawValue: 1 << 9)
-        static let identityData         = Capabilities(rawValue: 1 << 10)
+        public static let transfers            = Capabilities(rawValue: 1 << 1)
+        public static let mortgageAggregation  = Capabilities(rawValue: 1 << 2)
+        public static let checkingAccounts     = Capabilities(rawValue: 1 << 3)
+        public static let savingsAccounts      = Capabilities(rawValue: 1 << 4)
+        public static let creditCards          = Capabilities(rawValue: 1 << 5)
+        public static let investments          = Capabilities(rawValue: 1 << 6)
+        public static let loans                = Capabilities(rawValue: 1 << 7)
+        public static let payments             = Capabilities(rawValue: 1 << 8)
+        public static let mortgageLoan         = Capabilities(rawValue: 1 << 9)
+        public static let identityData         = Capabilities(rawValue: 1 << 10)
     }
 
     /// Indicates what this provider is capable of, in terms of financial data it can aggregate and if it can execute payments.
