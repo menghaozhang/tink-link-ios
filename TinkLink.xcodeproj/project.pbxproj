@@ -24,7 +24,10 @@
 		20ED85712304004C006213BB /* ProviderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED85702304004C006213BB /* ProviderService.swift */; };
 		20ED857423040066006213BB /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED857323040066006213BB /* Cancellable.swift */; };
 		20ED857623040077006213BB /* CallCanceller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED857523040077006213BB /* CallCanceller.swift */; };
+		20ED857A230407B3006213BB /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED8579230407B3006213BB /* Provider.swift */; };
+		20ED85832304081D006213BB /* Provider+GRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED85822304081D006213BB /* Provider+GRPC.swift */; };
 		20ED8588230408E6006213BB /* ClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED8587230408E6006213BB /* ClientTests.swift */; };
+		20ED859023041679006213BB /* ProviderGRPCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED858923040974006213BB /* ProviderGRPCTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +61,10 @@
 		20ED85702304004C006213BB /* ProviderService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderService.swift; sourceTree = "<group>"; };
 		20ED857323040066006213BB /* Cancellable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
 		20ED857523040077006213BB /* CallCanceller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallCanceller.swift; sourceTree = "<group>"; };
+		20ED8579230407B3006213BB /* Provider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
+		20ED85822304081D006213BB /* Provider+GRPC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Provider+GRPC.swift"; sourceTree = "<group>"; };
 		20ED8587230408E6006213BB /* ClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTests.swift; sourceTree = "<group>"; };
+		20ED858923040974006213BB /* ProviderGRPCTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderGRPCTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +118,7 @@
 				20ED856E23040039006213BB /* Environment.swift */,
 				20ED857323040066006213BB /* Cancellable.swift */,
 				20ED857523040077006213BB /* CallCanceller.swift */,
+				20ED8578230407B3006213BB /* Models */,
 				20ED857223040053006213BB /* Services */,
 				20ED853C2303FAEC006213BB /* GRPC */,
 				20ED85242303FA48006213BB /* Info.plist */,
@@ -124,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				20ED852E2303FA48006213BB /* TinkLinkTests.swift */,
+				20ED858923040974006213BB /* ProviderGRPCTests.swift */,
 				20ED8587230408E6006213BB /* ClientTests.swift */,
 				20ED85302303FA48006213BB /* Info.plist */,
 			);
@@ -159,6 +167,15 @@
 				20ED85702304004C006213BB /* ProviderService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		20ED8578230407B3006213BB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				20ED8579230407B3006213BB /* Provider.swift */,
+				20ED85822304081D006213BB /* Provider+GRPC.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,10 +290,12 @@
 				20ED857423040066006213BB /* Cancellable.swift in Sources */,
 				20ED85432303FAEC006213BB /* services.grpc.swift in Sources */,
 				20ED85442303FAEC006213BB /* services.pb.swift in Sources */,
+				20ED85832304081D006213BB /* Provider+GRPC.swift in Sources */,
 				20ED856D23040025006213BB /* Client.swift in Sources */,
 				20ED856F2304003A006213BB /* Environment.swift in Sources */,
 				20ED85712304004C006213BB /* ProviderService.swift in Sources */,
 				20ED85412303FAEC006213BB /* rpc.pb.swift in Sources */,
+				20ED857A230407B3006213BB /* Provider.swift in Sources */,
 				20ED853B2303FAD9006213BB /* TinkLink.swift in Sources */,
 				20ED85422303FAEC006213BB /* models.pb.swift in Sources */,
 				20ED857623040077006213BB /* CallCanceller.swift in Sources */,
@@ -287,6 +306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20ED859023041679006213BB /* ProviderGRPCTests.swift in Sources */,
 				20ED8588230408E6006213BB /* ClientTests.swift in Sources */,
 				20ED852F2303FA48006213BB /* TinkLinkTests.swift in Sources */,
 			);
