@@ -17,6 +17,10 @@ extension ProcessInfo {
     var tinkOAuthClientID: String? {
         return environment["TINK_OAUTH_CLIENT_ID"]
     }
+
+    var tinkBearerToken: String? {
+        return environment["TINK_BEARER_TOKEN"]
+    }
 }
 
 extension Metadata {
@@ -33,6 +37,9 @@ extension Metadata {
         }
         if let oAuthClientID = info.tinkOAuthClientID {
             try add(key: "X-Tink-OAuth-Client-ID".lowercased(), value: oAuthClientID)
+        }
+        if let bearerToken = info.tinkBearerToken {
+            try add(key: "Authorization".lowercased(), value: "Bearer \(bearerToken)")
         }
     }
 }
