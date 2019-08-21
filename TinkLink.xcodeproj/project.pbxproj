@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20E19DB22306E59900BF053A /* BoringSSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85462303FD85006213BB /* BoringSSL.framework */; };
+		20E19DB32306E59900BF053A /* CgRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85472303FD85006213BB /* CgRPC.framework */; };
+		20E19DB42306E59900BF053A /* SwiftGRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85492303FD85006213BB /* SwiftGRPC.framework */; };
+		20E19DB52306E59900BF053A /* SwiftProtobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85482303FD85006213BB /* SwiftProtobuf.framework */; };
 		20ED852A2303FA48006213BB /* TinkLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85202303FA48006213BB /* TinkLink.framework */; };
-		20ED852F2303FA48006213BB /* TinkLinkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED852E2303FA48006213BB /* TinkLinkTests.swift */; };
-		20ED85312303FA48006213BB /* TinkLink.h in Headers */ = {isa = PBXBuildFile; fileRef = 20ED85232303FA48006213BB /* TinkLink.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		20ED853B2303FAD9006213BB /* TinkLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED853A2303FAD9006213BB /* TinkLink.swift */; };
 		20ED85412303FAEC006213BB /* rpc.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED853D2303FAEC006213BB /* rpc.pb.swift */; };
 		20ED85422303FAEC006213BB /* models.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED853E2303FAEC006213BB /* models.pb.swift */; };
 		20ED85432303FAEC006213BB /* services.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED853F2303FAEC006213BB /* services.grpc.swift */; };
@@ -27,7 +28,11 @@
 		20ED857A230407B3006213BB /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED8579230407B3006213BB /* Provider.swift */; };
 		20ED85832304081D006213BB /* Provider+GRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED85822304081D006213BB /* Provider+GRPC.swift */; };
 		20ED8588230408E6006213BB /* ClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED8587230408E6006213BB /* ClientTests.swift */; };
+		20ED858E2304151B006213BB /* CredentialService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED858D2304151B006213BB /* CredentialService.swift */; };
 		20ED859023041679006213BB /* ProviderGRPCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED858923040974006213BB /* ProviderGRPCTests.swift */; };
+		20ED8592230429DE006213BB /* StartCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED8591230429DE006213BB /* StartCall.swift */; };
+		20ED859623045896006213BB /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED859523045896006213BB /* Credential.swift */; };
+		20EE138123053B2700C92D65 /* Credential+GRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EE138023053B2700C92D65 /* Credential+GRPC.swift */; };
 		8F367243230557B300B92936 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F367242230557B300B92936 /* AccountService.swift */; };
 		8F3672462305685600B92936 /* GrpcExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3672452305685600B92936 /* GrpcExtensions.swift */; };
 		8F36724923057EAB00B92936 /* UpdateAccountRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F36724823057EAB00B92936 /* UpdateAccountRequest.swift */; };
@@ -51,12 +56,9 @@
 
 /* Begin PBXFileReference section */
 		20ED85202303FA48006213BB /* TinkLink.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinkLink.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		20ED85232303FA48006213BB /* TinkLink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TinkLink.h; sourceTree = "<group>"; };
 		20ED85242303FA48006213BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20ED85292303FA48006213BB /* TinkLinkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinkLinkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		20ED852E2303FA48006213BB /* TinkLinkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinkLinkTests.swift; sourceTree = "<group>"; };
 		20ED85302303FA48006213BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		20ED853A2303FAD9006213BB /* TinkLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TinkLink.swift; sourceTree = "<group>"; };
 		20ED853D2303FAEC006213BB /* rpc.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rpc.pb.swift; sourceTree = "<group>"; };
 		20ED853E2303FAEC006213BB /* models.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = models.pb.swift; sourceTree = "<group>"; };
 		20ED853F2303FAEC006213BB /* services.grpc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = services.grpc.swift; sourceTree = "<group>"; };
@@ -74,6 +76,10 @@
 		20ED85822304081D006213BB /* Provider+GRPC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Provider+GRPC.swift"; sourceTree = "<group>"; };
 		20ED8587230408E6006213BB /* ClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTests.swift; sourceTree = "<group>"; };
 		20ED858923040974006213BB /* ProviderGRPCTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderGRPCTests.swift; sourceTree = "<group>"; };
+		20ED858D2304151B006213BB /* CredentialService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialService.swift; sourceTree = "<group>"; };
+		20ED8591230429DE006213BB /* StartCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCall.swift; sourceTree = "<group>"; };
+		20ED859523045896006213BB /* Credential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
+		20EE138023053B2700C92D65 /* Credential+GRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Credential+GRPC.swift"; sourceTree = "<group>"; };
 		8F367242230557B300B92936 /* AccountService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		8F3672452305685600B92936 /* GrpcExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrpcExtensions.swift; sourceTree = "<group>"; };
 		8F36724823057EAB00B92936 /* UpdateAccountRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAccountRequest.swift; sourceTree = "<group>"; };
@@ -102,6 +108,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				20ED852A2303FA48006213BB /* TinkLink.framework in Frameworks */,
+				20E19DB22306E59900BF053A /* BoringSSL.framework in Frameworks */,
+				20E19DB32306E59900BF053A /* CgRPC.framework in Frameworks */,
+				20E19DB42306E59900BF053A /* SwiftGRPC.framework in Frameworks */,
+				20E19DB52306E59900BF053A /* SwiftProtobuf.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,8 +140,6 @@
 		20ED85222303FA48006213BB /* TinkLink */ = {
 			isa = PBXGroup;
 			children = (
-				20ED85232303FA48006213BB /* TinkLink.h */,
-				20ED853A2303FAD9006213BB /* TinkLink.swift */,
 				20ED856C23040025006213BB /* Client.swift */,
 				20ED856E23040039006213BB /* Environment.swift */,
 				20ED857323040066006213BB /* Cancellable.swift */,
@@ -148,7 +156,6 @@
 		20ED852D2303FA48006213BB /* TinkLinkTests */ = {
 			isa = PBXGroup;
 			children = (
-				20ED852E2303FA48006213BB /* TinkLinkTests.swift */,
 				20ED858923040974006213BB /* ProviderGRPCTests.swift */,
 				20ED8587230408E6006213BB /* ClientTests.swift */,
 				20ED85302303FA48006213BB /* Info.plist */,
@@ -184,6 +191,8 @@
 			isa = PBXGroup;
 			children = (
 				20ED85702304004C006213BB /* ProviderService.swift */,
+				20ED858D2304151B006213BB /* CredentialService.swift */,
+				20ED8591230429DE006213BB /* StartCall.swift */,
 				8F367242230557B300B92936 /* AccountService.swift */,
 			);
 			path = Services;
@@ -201,6 +210,8 @@
 				8FA5F821230AE66100226C02 /* CurrencyDenominatedAmount.swift */,
 				20ED8579230407B3006213BB /* Provider.swift */,
 				20ED85822304081D006213BB /* Provider+GRPC.swift */,
+				20ED859523045896006213BB /* Credential.swift */,
+				20EE138023053B2700C92D65 /* Credential+GRPC.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -212,7 +223,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20ED85312303FA48006213BB /* TinkLink.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +237,7 @@
 				20ED851C2303FA48006213BB /* Sources */,
 				20ED851D2303FA48006213BB /* Frameworks */,
 				20ED851E2303FA48006213BB /* Resources */,
+				20E19DB02306E49000BF053A /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -244,6 +255,7 @@
 				20ED85252303FA48006213BB /* Sources */,
 				20ED85262303FA48006213BB /* Frameworks */,
 				20ED85272303FA48006213BB /* Resources */,
+				20E19DB12306E4E000BF053A /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -309,22 +321,80 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		20E19DB02306E49000BF053A /* Copy Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/BoringSSL.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CgRPC.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftGRPC.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftProtobuf.framework",
+			);
+			name = "Copy Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BoringSSL.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CgRPC.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftGRPC.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftProtobuf.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		20E19DB12306E4E000BF053A /* Copy Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/BoringSSL.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CgRPC.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftGRPC.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftProtobuf.framework",
+			);
+			name = "Copy Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BoringSSL.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CgRPC.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftGRPC.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftProtobuf.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		20ED851C2303FA48006213BB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20ED8592230429DE006213BB /* StartCall.swift in Sources */,
 				8F36724923057EAB00B92936 /* UpdateAccountRequest.swift in Sources */,
 				20ED857423040066006213BB /* Cancellable.swift in Sources */,
+				20EE138123053B2700C92D65 /* Credential+GRPC.swift in Sources */,
 				20ED85432303FAEC006213BB /* services.grpc.swift in Sources */,
 				20ED85442303FAEC006213BB /* services.pb.swift in Sources */,
 				20ED85832304081D006213BB /* Provider+GRPC.swift in Sources */,
 				20ED856D23040025006213BB /* Client.swift in Sources */,
 				20ED856F2304003A006213BB /* Environment.swift in Sources */,
+				20ED859623045896006213BB /* Credential.swift in Sources */,
 				20ED85712304004C006213BB /* ProviderService.swift in Sources */,
+				20ED858E2304151B006213BB /* CredentialService.swift in Sources */,
 				20ED85412303FAEC006213BB /* rpc.pb.swift in Sources */,
 				20ED857A230407B3006213BB /* Provider.swift in Sources */,
-				20ED853B2303FAD9006213BB /* TinkLink.swift in Sources */,
 				8F367243230557B300B92936 /* AccountService.swift in Sources */,
 				8F3672552305AAF800B92936 /* Account+GRPC.swift in Sources */,
 				20ED85422303FAEC006213BB /* models.pb.swift in Sources */,
@@ -344,7 +414,6 @@
 			files = (
 				20ED859023041679006213BB /* ProviderGRPCTests.swift in Sources */,
 				20ED8588230408E6006213BB /* ClientTests.swift in Sources */,
-				20ED852F2303FA48006213BB /* TinkLinkTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,7 +436,6 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -417,6 +485,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -431,7 +500,6 @@
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
@@ -474,6 +542,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -484,7 +553,6 @@
 		20ED85352303FA48006213BB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -514,7 +582,6 @@
 		20ED85362303FA48006213BB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -545,6 +612,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Tests/TinkLinkTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -563,6 +634,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Tests/TinkLinkTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

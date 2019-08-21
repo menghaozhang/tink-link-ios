@@ -17,31 +17,13 @@ public final class ProviderService {
     ///   - includeTestProviders: If set to true, Providers of TEST financial financial institution kind will be added in the response list. Defaults to false.
     ///   - completion: The completion handler to call when the load request is complete.
     /// - Returns: A Cancellable instance. Call cancel() on this instance if you no longer need the result of the request. Deinitializing this instance will also cancel the request.
-    public func providers(marketCode: String? = nil, capabilities: Provider.Capabilities = [], includeTestProviders: Bool = false, completion: @escaping (Result<[Provider], Error>) -> Void) -> Cancellable {
+    public func providers(marketCode: String? = nil, capabilities: Provider.Capabilities = .all, includeTestProviders: Bool = false, completion: @escaping (Result<[Provider], Error>) -> Void) -> Cancellable {
         var request = GRPCProviderListRequest()
         request.marketCode = marketCode ?? ""
         request.capability = .unknown
         request.includeTestType = includeTestProviders
 
-        let canceller = CallCanceller()
-
-        do {
-            canceller.call = try service.listProviders(request) { (response, result) in
-                if let response = response {
-                    let providers = response.providers
-                        .map { Provider(grpcProvider: $0) }
-                        .filter { !$0.capabilities.isDisjoint(with: capabilities) }
-                    completion(.success(providers))
-                } else {
-                    let error = RPCError.callError(result)
-                    completion(.failure(error))
-                }
-            }
-        } catch {
-            completion(.failure(error))
-        }
-
-        return canceller
+        return startCall(for: request, method: service.listProviders, responseMap: { $0.providers.map({ Provider(grpcProvider: $0) }).filter({ !$0.capabilities.isDisjoint(with: capabilities) }) }, completion: completion)
     }
 
     /// Lists all markets where there are providers available.
@@ -51,22 +33,7 @@ public final class ProviderService {
     public func providerMarkets(completion: @escaping (Result<[String], Error>) -> Void) -> Cancellable {
         let request = GRPCProviderMarketListRequest()
 
-        let canceller = CallCanceller()
-
-        do {
-            canceller.call = try service.listProviderMarkets(request) { (response, result) in
-                if let response = response {
-                    completion(.success(response.providerMarkets.map({ $0.code })))
-                } else {
-                    let error = RPCError.callError(result)
-                    completion(.failure(error))
-                }
-            }
-        } catch {
-            completion(.failure(error))
-        }
-
-        return canceller
+        return startCall(for: request, method: service.listProviderMarkets, responseMap: { $0.providerMarkets.map({ $0.code }) }, completion: completion)
     }
 
 }
