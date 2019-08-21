@@ -1,14 +1,11 @@
 import UIKit
 
-protocol ProviderGroupedByFinancialInsititutionOverview: AnyObject {
-    var providerGroupedByFinancialInsititutions: [ProviderGroupedByFinancialInsititution]? { get set }
-}
-
-class FinancialInstitutionPickerViewController: UITableViewController, ProviderGroupedByFinancialInsititutionOverview, ProvidersWithCredentialTypeOverview, ProviderGroupedByAccessTypeOverview {
+final class FinancialInstitutionPickerViewController: UITableViewController {
     
     var providerGroupedByFinancialInsititutions: [ProviderGroupedByFinancialInsititution]?
     var providerGroupedByAccessTypes: [ProviderGroupedByAccessType]?
     var providers: [Provider]?
+    var provider: Provider?
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return providerGroupedByFinancialInsititutions?.count ?? 0
@@ -30,6 +27,7 @@ class FinancialInstitutionPickerViewController: UITableViewController, ProviderG
             self.providers = providers
             showCredentialTypePicker(for: providers)
         case .singleProvider(let provider):
+            self.provider = provider
             showAddCredential(for: provider)
         }
     }
@@ -48,10 +46,12 @@ class FinancialInstitutionPickerViewController: UITableViewController, ProviderG
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let providerGroupOverview = segue.destination as? ProviderGroupedByAccessTypeOverview {
-            providerGroupOverview.providerGroupedByAccessTypes = providerGroupedByAccessTypes
-        } else if let providerGroupOverview = segue.destination as? ProvidersWithCredentialTypeOverview  {
-            providerGroupOverview.providers = providers
+        if let accessTypePickerViewController = segue.destination as? AccessTypePickerViewController {
+            accessTypePickerViewController.providerGroupedByAccessTypes = providerGroupedByAccessTypes
+        } else if let credentialTypePickerViewController = segue.destination as? CredentialTypePickerViewController {
+            credentialTypePickerViewController.providers = providers
+        } else if let addCredentialViewController = segue.destination as? AddCredentialViewController {
+            addCredentialViewController.provider = provider
         }
     }
 }

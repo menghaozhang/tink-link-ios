@@ -29,7 +29,11 @@ class ProviderContext {
             Provider(name: "Nordea", financialInstitutionID: "Nordea Other", groupedName: "Nordea", accessType: .reverseEngineering, credentialType: .password)
         ]
     }
-    var providers: [Provider]
+    var providers: [Provider] {
+        didSet {
+            delegate?.providersDidChange(self)
+        }
+    }
     lazy var providerGroupsByGroupedName: [ProviderGroupedByGroupedName] = {
        return _providerGroupsByGroupedName
     }()
@@ -49,14 +53,15 @@ class ProviderContext {
 }
 
 protocol ProviderContextDelegate: AnyObject {
-    func providersDidChange(context: ProviderContext)
+    func providersDidChange(_ context: ProviderContext)
 }
 
-class ProviderListViewController: UITableViewController, ProvidersWithCredentialTypeOverview, ProviderGroupedByAccessTypeOverview, ProviderGroupedByFinancialInsititutionOverview {
+final class ProviderListViewController: UITableViewController {
     var providerContext: ProviderContext?
     var providerGroupedByFinancialInsititutions: [ProviderGroupedByFinancialInsititution]?
     var providerGroupedByAccessTypes: [ProviderGroupedByAccessType]?
     var providers: [Provider]?
+    var provider: Provider?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -96,6 +101,7 @@ class ProviderListViewController: UITableViewController, ProvidersWithCredential
             self.providers = providers
             showCredentialTypePicker(for: providers)
         case .singleProvider(let provider):
+            self.provider = provider
             showAddCredential(for: provider)
         }
     }
@@ -117,18 +123,20 @@ class ProviderListViewController: UITableViewController, ProvidersWithCredential
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let providerGroupOverview = segue.destination as? ProviderGroupedByFinancialInsititutionOverview {
-            providerGroupOverview.providerGroupedByFinancialInsititutions = providerGroupedByFinancialInsititutions
-        } else if let providerGroupOverview = segue.destination as? ProviderGroupedByAccessTypeOverview {
-            providerGroupOverview.providerGroupedByAccessTypes = providerGroupedByAccessTypes
-        } else if let providerGroupOverview = segue.destination as? ProvidersWithCredentialTypeOverview  {
-            providerGroupOverview.providers = providers
+        if let financialInstitutionPickerViewController = segue.destination as? FinancialInstitutionPickerViewController {
+            financialInstitutionPickerViewController.providerGroupedByFinancialInsititutions = providerGroupedByFinancialInsititutions
+        } else if let accessTypePickerViewController = segue.destination as? AccessTypePickerViewController {
+            accessTypePickerViewController.providerGroupedByAccessTypes = providerGroupedByAccessTypes
+        } else if let credentialTypePickerViewController = segue.destination as? CredentialTypePickerViewController  {
+            credentialTypePickerViewController.providers = providers
+        } else if let addCredentialViewController = segue.destination as? AddCredentialViewController {
+            addCredentialViewController.provider = provider
         }
     }
 }
 
 extension ProviderListViewController: ProviderContextDelegate {
-    func providersDidChange(context: ProviderContext) {
+    func providersDidChange(_ context: ProviderContext) {
         tableView.reloadData()
     }
 }
