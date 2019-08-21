@@ -21,7 +21,7 @@ public final class Client {
         }
     }
 
-    public private(set) lazy var providerService: ProviderService = ProviderService(channel: channel)
-    public private(set) lazy var credentialService: CredentialService = CredentialService(channel: channel)
+    public private(set) lazy var providerService = ProviderService(channel: channel)
+    public private(set) lazy var credentialService = CredentialService(channel: channel)
     public private(set) lazy var accountService = AccountService(channel: channel)
 }
