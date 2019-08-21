@@ -4,6 +4,27 @@ struct Provider {
     let groupedName: String
     let accessType: AccessType
     var credentialType: CredentialType
+    var fields: [FieldSpecification]
+    
+    public struct FieldSpecification {
+        // description
+        public var fieldDescription: String
+        /// Gray text in the input view (Similar to a placeholder)
+        public var hint: String
+        public var maxLength: Int?
+        public var minLength: Int?
+        /// Controls whether or not the field should be shown masked, like a password field.
+        public var isMasked: Bool
+        public var isNumeric: Bool
+        public var isImmutable: Bool
+        public var isOptional: Bool
+        public var name: FieldName<Provider.FieldSpecification>
+        public var value: String
+        public var pattern: String
+        public var patternError: String
+        /// Text displayed next to the input field
+        public var helpText: String
+    }
     
     enum AccessType: String {
         case reverseEngineering
@@ -14,6 +35,38 @@ struct Provider {
         case bankID
         case password
         case thirdParty
+    }
+    
+    static var personalNumberFieldSpecification: FieldSpecification {
+        return FieldSpecification(fieldDescription: "PersonalNumber",
+                           hint: "YYYYMMDDXXXX",
+                           maxLength: 12,
+                           minLength: 12,
+                           isMasked: false,
+                           isNumeric: true,
+                           isImmutable: false,
+                           isOptional: false,
+                           name: "Username",
+                           value: "",
+                           pattern: "(19|20)[0-9]{10}",
+                           patternError: "Please enter a valid social security number.",
+                           helpText: "## PersonalNumber")
+    }
+    
+    static var passwordFieldSpecification: FieldSpecification {
+        return FieldSpecification(fieldDescription: "Password",
+                                  hint: "",
+                                  maxLength: nil,
+                                  minLength: nil,
+                                  isMasked: true,
+                                  isNumeric: false,
+                                  isImmutable: false,
+                                  isOptional: false,
+                                  name: "Password",
+                                  value: "",
+                                  pattern: "",
+                                  patternError: "",
+                                  helpText: "")
     }
 }
 
