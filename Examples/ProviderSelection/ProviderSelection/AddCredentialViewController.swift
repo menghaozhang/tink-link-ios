@@ -108,10 +108,24 @@ class CredentialContext {
     }
 }
 
-final class AddCredentialViewController: UITableViewController {
+final class AddCredentialViewController: UITableViewController, UITextFieldDelegate {
     var credentialContext: CredentialContext?
-    
     var provider: Provider?
+    var credentialFields: CredentialFields?
+    // TODO: find a better way to check the input field
+    var textFields: [UITextField] = []
+    
+    @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
+        let allValidationPassed = credentialFields?.values.contains(where: { (_, value) -> Bool in
+            switch value {
+            case .failure:
+                return false
+            case .success:
+                return true
+            }
+        })
+        print(allValidationPassed)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,6 +133,39 @@ final class AddCredentialViewController: UITableViewController {
         let client = Client(clientId: "123")
         credentialContext = CredentialContext(client: client)
         credentialContext?.delegate = self
+        
+        credentialFields = CredentialFields(provider: provider!)
+        
+        tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
+        tableView.allowsSelection = false
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return credentialFields!.fields.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldCell", for: indexPath)
+        if let textFieldCell = cell as? TextFieldCell, let field = credentialFields?.fields[indexPath.item] {
+            textFields.append(textFieldCell.textField)
+            textFieldCell.textField.delegate = self
+            textFieldCell.textField.placeholder = field.name
+            textFieldCell.textField.isSecureTextEntry = field.isMasked
+        }
+        return cell
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if let index = textFields.firstIndex(of: textField), let credentialFields = credentialFields {
+            let field = credentialFields.fields[index]
+            let result = credentialFields.update(for: field, value: textField.text ?? "")
+            switch result {
+            case .failure:
+                textField.textColor = .red
+            case .success:
+                textField.textColor = .green
+            }
+        }
     }
 }
 
