@@ -7,7 +7,15 @@ public final class ProviderService {
         self.channel = channel
     }
 
-    private lazy var service = ProviderServiceServiceClient(channel: channel)
+    private lazy var service: ProviderServiceServiceClient = {
+        let service = ProviderServiceServiceClient(channel: channel)
+        do {
+            try service.metadata.addTinkMetadata()
+        } catch {
+            assertionFailure(error.localizedDescription)
+        }
+        return service
+    }()
 
     /// Lists all providers
     ///
