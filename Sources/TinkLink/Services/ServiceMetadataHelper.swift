@@ -13,6 +13,10 @@ extension ProcessInfo {
     var tinkSessionID: String? {
         return environment["TINK_SESSION_ID"]
     }
+
+    var tinkOAuthClientID: String? {
+        return environment["TINK_OAUTH_CLIENT_ID"]
+    }
 }
 
 extension Metadata {
@@ -26,6 +30,9 @@ extension Metadata {
         }
         if let sessionID = info.tinkSessionID {
             try add(key: "Authorization".lowercased(), value: "Session \(sessionID)")
+        }
+        if let oAuthClientID = info.tinkOAuthClientID {
+            try add(key: "X-Tink-OAuth-Client-ID".lowercased(), value: oAuthClientID)
         }
     }
 }
