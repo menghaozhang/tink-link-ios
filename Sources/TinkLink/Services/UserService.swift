@@ -7,7 +7,15 @@ public final class UserService {
         self.channel = channel
     }
 
-    private lazy var service = UserServiceServiceClient(channel: channel)
+    private lazy var service: UserServiceServiceClient = {
+        let service = UserServiceServiceClient(channel: channel)
+        do {
+            try service.metadata.addTinkMetadata()
+        } catch {
+            assertionFailure(error.localizedDescription)
+        }
+        return service
+    }()
 
     public func createAnonymous(market: String? = nil, locale: String? = nil, origin: String? = nil, completion: @escaping (Result<String, Error>) -> Void) -> Cancellable {
         var request = GRPCCreateAnonymousRequest()

@@ -7,7 +7,15 @@ public final class AuthenticationService {
         self.channel = channel
     }
 
-    private lazy var service = AuthenticationServiceServiceClient(channel: channel)
+    private lazy var service: AuthenticationServiceServiceClient = {
+        let service = AuthenticationServiceServiceClient(channel: channel)
+        do {
+            try service.metadata.addTinkMetadata()
+        } catch {
+            assertionFailure(error.localizedDescription)
+        }
+        return service
+    }()
 
     public func login(authenticationToken: String, completion: @escaping (Result<String, Error>) -> Void) -> Cancellable {
         var request = GRPCLoginRequest()
