@@ -173,7 +173,7 @@
         <!--Enter your credentials-->
         <scene sceneID="GbA-FX-e2z">
             <objects>
-                <tableViewController id="azr-rH-z7n" sceneMemberID="viewController">
+                <tableViewController id="azr-rH-z7n" customClass="AddCredentialViewController" customModule="ProviderSelection" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="O6d-u7-z5i">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
