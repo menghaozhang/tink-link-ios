@@ -84,4 +84,28 @@ public final class AuthenticationService {
 
         return canceller
     }
+
+    public func describeOAuth2Client(clientID: String, scopes: [String], redirectURL: URL, completion: @escaping (Result<Void, Error>) -> Void) -> Cancellable {
+        var request = GRPCDescribeOAuth2ClientRequest()
+        request.clientID = clientID
+        request.scopes = scopes
+        request.redirectUri = redirectURL.absoluteString
+
+        let canceller = CallCanceller()
+
+        do {
+            canceller.call = try service.describeOAuth2Client(request) { (response, result) in
+                if response != nil {
+                    completion(.success(()))
+                } else {
+                    let error = RPCError.callError(result)
+                    completion(.failure(error))
+                }
+            }
+        } catch {
+            completion(.failure(error))
+        }
+
+        return canceller
+    }
 }
