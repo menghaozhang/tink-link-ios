@@ -17,7 +17,7 @@ public final class ProviderService {
     ///   - includeTestProviders: If set to true, Providers of TEST financial financial institution kind will be added in the response list. Defaults to false.
     ///   - completion: The completion handler to call when the load request is complete.
     /// - Returns: A Cancellable instance. Call cancel() on this instance if you no longer need the result of the request. Deinitializing this instance will also cancel the request.
-    public func providers(marketCode: String? = nil, capabilities: Provider.Capabilities = [], includeTestProviders: Bool = false, completion: @escaping (Result<[Provider], Error>) -> Void) -> Cancellable {
+    public func providers(marketCode: String? = nil, capabilities: Provider.Capabilities = .all, includeTestProviders: Bool = false, completion: @escaping (Result<[Provider], Error>) -> Void) -> Cancellable {
         var request = GRPCProviderListRequest()
         request.marketCode = marketCode ?? ""
         request.capability = .unknown
