@@ -68,12 +68,12 @@
 			children = (
 				201D5510230AC95D00641102 /* AppDelegate.swift */,
 				8FA5F82A230C2C0200226C02 /* ProviderGroup.swift */,
-				8FA5F831230D571A00226C02 /* CredentialFields.swift */,
 				201D5512230AC95D00641102 /* ProviderListViewController.swift */,
 				8FA5F823230BD13800226C02 /* FinancialInstitutionPickerViewController.swift */,
 				8FA5F825230BE85100226C02 /* AccessTypePickerViewController.swift */,
 				8FA5F827230C069500226C02 /* CredentialTypePickerViewController.swift */,
 				8FA5F82F230D36AB00226C02 /* AddCredentialViewController.swift */,
+				8FA5F831230D571A00226C02 /* CredentialFields.swift */,
 				201D5514230AC95D00641102 /* Main.storyboard */,
 				201D5517230AC95E00641102 /* Assets.xcassets */,
 				201D5519230AC95E00641102 /* LaunchScreen.storyboard */,

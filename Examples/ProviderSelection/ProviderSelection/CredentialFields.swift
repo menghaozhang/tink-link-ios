@@ -6,11 +6,11 @@ class CredentialFields {
         case validationFailed(String)
         case maxLengthLimit(Int)
         case minLengthLimit(Int)
-        case emptyRequiredField
+        case requiredFieldEmptyValue(String)
     }
     
     let fields: [Provider.FieldSpecification]
-    var values: [String: String]
+    var values: [String: Result<String, CredentialFieldError>] = [:]
     
     var requiredFields: [Provider.FieldSpecification]
     var optionalFields: [Provider.FieldSpecification]
@@ -25,37 +25,51 @@ class CredentialFields {
         optionalFields = fields.filter { $0.isOptional }
         let grouped = Dictionary(grouping: requiredFields, by: { $0.name })
         let requiredValues = grouped.mapValues { $0.first?.value ?? "" }
-        values = requiredValues.merging(initialValues, uniquingKeysWith: { return $1 })
+        let stringValues = requiredValues.merging(initialValues, uniquingKeysWith: { return $1 })
+        self.values = Dictionary(uniqueKeysWithValues: stringValues.map({ (key, value) in
+            (key, validate(for: key, value: value))
+        }))
     }
     
-    subscript(_ fieldName: String) -> String? {
+    subscript(_ fieldName: String) -> Result<String, CredentialFieldError>? {
         return values[fieldName]
     }
     
-    subscript(_ field: Provider.FieldSpecification) -> String? {
+    subscript(_ field: Provider.FieldSpecification) -> Result<String, CredentialFieldError>? {
         return values[field.name]
     }
     
+    func field(for name: String) -> Provider.FieldSpecification? {
+        return fields.first { $0.name == name }
+    }
+    
     func update(for field: Provider.FieldSpecification, value: String) -> Result<String, CredentialFieldError> {
-        return update(for: field.name, value: value)
+        let value = validate(for: field, value: value)
+        values[field.name] = value
+        return value
     }
     
     func update(for fieldName: String, value: String) -> Result<String, CredentialFieldError> {
+        let value = validate(for: fieldName, value: value)
+        switch value {
+        case .failure(.invalidField):
+            break
+        default:
+            values[fieldName] = value
+        }
+        return value
+    }
+    
+    private func validate(for fieldName: String, value: String) -> Result<String, CredentialFieldError> {
         guard let updateField = fields.first(where: { $0.name == fieldName }) else {
             return .failure(.invalidField("Field does not exist"))
         }
-        switch validate(for: updateField, value: value) {
-        case .failure(let error):
-            return .failure(error)
-        case .success(let value):
-            values[fieldName] = value
-            return .success(value)
-        }
+        return validate(for: updateField, value: value)
     }
     
     private func validate(for field: Provider.FieldSpecification, value: String) -> Result<String, CredentialFieldError> {
         if value.isEmpty, !field.isOptional {
-            return .failure(.emptyRequiredField)
+            return .failure(.requiredFieldEmptyValue(field.name))
         } else if let maxLength = field.maxLength, maxLength < value.count {
             return .failure(.maxLengthLimit(maxLength))
         } else if let minLength = field.minLength, minLength > value.count {
