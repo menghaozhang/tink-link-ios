@@ -18,7 +18,7 @@ struct Provider {
         public var isNumeric: Bool
         public var isImmutable: Bool
         public var isOptional: Bool
-        public var name: FieldName<Provider.FieldSpecification>
+        public var name: String
         public var value: String
         public var pattern: String
         public var patternError: String
