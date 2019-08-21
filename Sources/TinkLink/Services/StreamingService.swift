@@ -1,6 +1,6 @@
 import SwiftGRPC
 
-public final class StreamingService {
+final class StreamingService {
     let channel: Channel
 
     init(channel: Channel) {
