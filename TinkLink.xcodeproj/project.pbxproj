@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		200A3F99230C31E900BEF935 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200A3F98230C31E900BEF935 /* AuthenticationService.swift */; };
 		200A3FA2230C3E7800BEF935 /* ServiceMetadataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200A3FA1230C3E7800BEF935 /* ServiceMetadataHelper.swift */; };
 		201D5503230A8BEA00641102 /* StreamingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D5502230A8BEA00641102 /* StreamingService.swift */; };
 		201D5523230AEAA500641102 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D5522230AEAA500641102 /* UserService.swift */; };
@@ -58,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		200A3F98230C31E900BEF935 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		200A3FA1230C3E7800BEF935 /* ServiceMetadataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceMetadataHelper.swift; sourceTree = "<group>"; };
 		201D5502230A8BEA00641102 /* StreamingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingService.swift; sourceTree = "<group>"; };
 		201D5522230AEAA500641102 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				20ED8591230429DE006213BB /* StartCall.swift */,
 				201D5502230A8BEA00641102 /* StreamingService.swift */,
 				201D5522230AEAA500641102 /* UserService.swift */,
+				200A3F98230C31E900BEF935 /* AuthenticationService.swift */,
 				8F367242230557B300B92936 /* AccountService.swift */,
 			);
 			path = Services;
@@ -425,6 +428,7 @@
 				8F3672512305A2A700B92936 /* Identifier.swift in Sources */,
 				8FA5F820230AE40B00226C02 /* UpdateAccountRequest+GRPC.swift in Sources */,
 				8F36724B23058A3600B92936 /* Account.swift in Sources */,
+				200A3F99230C31E900BEF935 /* AuthenticationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
