@@ -23,7 +23,6 @@ enum FieldSpecificationError: Error {
 }
 
 class FieldsValidator {
-    
     static func createCredentialValues(for fields: [Provider.FieldSpecification]) -> Result<[String: String], FieldSpecificationError> {
         do {
             try fields.forEach { try validate(for: $0).get() }

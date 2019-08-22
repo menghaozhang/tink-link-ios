@@ -1,5 +1,13 @@
 import UIKit
-class TextFieldCell: UITableViewCell {
+
+protocol TextFieldCellDelegate: AnyObject {
+    func textFieldCell(_ cell: TextFieldCell, DidBeginEditing textField: UITextField)
+    func textFieldCell(_ cell: TextFieldCell, DidEndEditing textField: UITextField)
+}
+
+class TextFieldCell: UITableViewCell, UITextFieldDelegate {
+    
+    weak var delegate: TextFieldCellDelegate?
     
     static var reuseIdentifier: String {
         return "TextFieldCell"
@@ -23,7 +31,7 @@ class TextFieldCell: UITableViewCell {
     
     private func setup() {
         textField.translatesAutoresizingMaskIntoConstraints = false
-        
+        textField.delegate = self
         contentView.addSubview(textField)
         
         NSLayoutConstraint.activate([
@@ -33,6 +41,15 @@ class TextFieldCell: UITableViewCell {
             textField.rightAnchor.constraint(equalTo: contentView.rightAnchor),
             textField.heightAnchor.constraint(equalToConstant: 40)
             ])
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.textColor = .black
+        delegate?.textFieldCell(self, DidBeginEditing: textField)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        delegate?.textFieldCell(self, DidEndEditing: textField)
     }
     
 }

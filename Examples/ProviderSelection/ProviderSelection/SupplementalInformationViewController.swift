@@ -1,6 +1,6 @@
 import UIKit
 
-final class SupplementalInformationViewController: UITableViewController, UITextFieldDelegate {
+final class SupplementalInformationViewController: UITableViewController {
     
     var credentialContext: CredentialContext?
     var credential: Credential?
@@ -21,7 +21,7 @@ final class SupplementalInformationViewController: UITableViewController, UIText
         let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldCell.reuseIdentifier, for: indexPath)
         if let textFieldCell = cell as? TextFieldCell, let field = credential?.supplementalInformationFields[indexPath.item] {
             textFields.append(textFieldCell.textField)
-            textFieldCell.textField.delegate = self
+            textFieldCell.delegate = self
             textFieldCell.textField.placeholder = field.fieldDescription
             textFieldCell.textField.isSecureTextEntry = field.isMasked
             textFieldCell.textField.isEnabled = !field.isImmutable
@@ -29,15 +29,16 @@ final class SupplementalInformationViewController: UITableViewController, UIText
         }
         return cell
     }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.textColor = .black
+}
+
+extension SupplementalInformationViewController: TextFieldCellDelegate {
+    func textFieldCell(_ cell: TextFieldCell, DidBeginEditing textField: UITextField) {
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if let index = textFields.firstIndex(of: textField) {
-            credential!.supplementalInformationFields[index].value = textField.text ?? ""
-            let field = credential!.supplementalInformationFields[index]
+    func textFieldCell(_ cell: TextFieldCell, DidEndEditing textField: UITextField) {
+        if let indexPath = tableView.indexPath(for: cell) {
+            credential!.supplementalInformationFields[indexPath.item].value = textField.text ?? ""
+            let field = credential!.supplementalInformationFields[indexPath.item]
             let result = field.validatedValue()
             switch result {
             case .failure:

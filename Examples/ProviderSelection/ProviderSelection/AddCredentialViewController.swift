@@ -1,6 +1,6 @@
 import UIKit
 
-final class AddCredentialViewController: UITableViewController, UITextFieldDelegate {
+final class AddCredentialViewController: UITableViewController {
     var credentialContext: CredentialContext?
     var provider: Provider?
     // TODO: find a better way to check the input field
@@ -36,30 +36,13 @@ final class AddCredentialViewController: UITableViewController, UITextFieldDeleg
         let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldCell.reuseIdentifier, for: indexPath)
         if let textFieldCell = cell as? TextFieldCell, let field = provider?.fields[indexPath.item] {
             textFields.append(textFieldCell.textField)
-            textFieldCell.textField.delegate = self
+            textFieldCell.delegate = self
             textFieldCell.textField.placeholder = field.fieldDescription
             textFieldCell.textField.isSecureTextEntry = field.isMasked
             textFieldCell.textField.isEnabled = !field.isImmutable
             textFieldCell.textField.text = field.value
         }
         return cell
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.textColor = .black
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        if let index = textFields.firstIndex(of: textField) {
-            provider!.fields[index].value = textField.text ?? ""
-            let result = provider!.fields[index].validatedValue()
-            switch result {
-            case .failure:
-                textField.textColor = .red
-            case .success:
-                textField.textColor = .green
-            }
-        }
     }
     
     private func showSupplementalInformation(for credential: Credential) {
@@ -70,6 +53,24 @@ final class AddCredentialViewController: UITableViewController, UITextFieldDeleg
         if let supplementalInformationViewController = segue.destination as? SupplementalInformationViewController {
             supplementalInformationViewController.credential = credential
             supplementalInformationViewController.credentialContext = credentialContext
+        }
+    }
+}
+
+extension AddCredentialViewController: TextFieldCellDelegate {
+    func textFieldCell(_ cell: TextFieldCell, DidBeginEditing textField: UITextField) {
+    }
+    
+    func textFieldCell(_ cell: TextFieldCell, DidEndEditing textField: UITextField) {
+        if let indexPath = tableView.indexPath(for: cell) {
+            provider!.fields[indexPath.item].value = textField.text ?? ""
+            let result = provider!.fields[indexPath.item].validatedValue()
+            switch result {
+            case .failure:
+                textField.textColor = .red
+            case .success:
+                textField.textColor = .green
+            }
         }
     }
 }
