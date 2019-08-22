@@ -55,7 +55,7 @@ class CredentialContext {
     
     func createCredential(for provider: Provider, fields: [String: String]) {
         // Received async request response
-        DispatchQueue.main.asyncAfter(deadline: .init(uptimeNanoseconds: 1000)) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             let credential = Credential(id: provider.name + provider.accessType.rawValue, type: .mobileBankID, status: .created, providerName: provider.name, sessionExpiryDate: nil)
             self.credentials[credential.id] = credential
             self.observe(credential: credential)
@@ -64,10 +64,7 @@ class CredentialContext {
     
     private func observe(credential: Credential) {
         // Observed updates from streaming
-        DispatchQueue.main.asyncAfter(deadline: .init(uptimeNanoseconds: 2000)) {
-            guard let credential = self.credentials["1"] else {
-                return
-            }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [credential] in
             var multableCredential = credential
             multableCredential.status = .awaitingSupplementalInformation
             self.credentials[multableCredential.id] = multableCredential
@@ -116,15 +113,16 @@ final class AddCredentialViewController: UITableViewController, UITextFieldDeleg
     var textFields: [UITextField] = []
     
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
-        let allValidationPassed = credentialFields?.values.contains(where: { (_, value) -> Bool in
-            switch value {
-            case .failure:
-                return false
-            case .success:
-                return true
-            }
-        })
-        print(allValidationPassed)
+        textFields.forEach { $0.resignFirstResponder() }
+        guard let credentialFields = credentialFields else {
+            return
+        }
+        switch credentialFields.fieldValuesForCreateCredential {
+        case .failure(let error):
+            print(error)
+        case .success(let fieldValues):
+            credentialContext?.createCredential(for: provider!, fields: fieldValues)
+        }
     }
     
     override func viewDidLoad() {
@@ -171,30 +169,30 @@ final class AddCredentialViewController: UITableViewController, UITextFieldDeleg
 
 extension AddCredentialViewController: CredentialContextDelegate {
     func credentialContext(_ context: CredentialContext, awaitingSupplementalInformation credential: Credential) {
-//        showSupplementalInformation
+        print(#function)
     }
     
     func credentialContext(_ context: CredentialContext, awaitingMobileBankIDAuthentication credential: Credential) {
-//        showMobileBankIDAuthentication
+        print(#function)
     }
     
     func credentialContext(_ context: CredentialContext, awaitingThirdPartyAppAuthentication credential: Credential) {
-//        showThirdPartyAppAuthentication
+        print(#function)
     }
     
     func credentialContext(_ context: CredentialContext, didStartUpdatingCredential credential: Credential) {
-//        loading
+        print(#function)
     }
     
     func credentialContext(_ context: CredentialContext, didChangeStatusForCredential credential: Credential) {
-//        handlingStatusChanges
+        print(#function)
     }
     
     func credentialContext(_ context: CredentialContext, didFinishUpdatingCredential credential: Credential) {
-//        finishLoading
+        print(#function)
     }
     
     func credentialContext(_ context: CredentialContext, didReceiveErrorForCredential credential: Credential) {
-//        errorHandling/retry
+        print(#function)
     }
 }

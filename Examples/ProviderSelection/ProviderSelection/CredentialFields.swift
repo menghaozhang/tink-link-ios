@@ -1,16 +1,29 @@
 import Foundation
 
+// TODO: Better naming
 class CredentialFields {
     enum CredentialFieldError: Error {
+        case unknow
         case invalidField(String)
-        case validationFailed(String)
-        case maxLengthLimit(Int)
-        case minLengthLimit(Int)
-        case requiredFieldEmptyValue(String)
+        case validationFailed(fieldName: String, patternError: String)
+        case maxLengthLimit(fieldName: String, maxLength: Int)
+        case minLengthLimit(fieldName: String, minLength: Int)
+        case requiredFieldEmptyValue(fieldName: String)
     }
     
     let fields: [Provider.FieldSpecification]
     var values: [String: Result<String, CredentialFieldError>] = [:]
+    
+    var fieldValuesForCreateCredential: Result<[String: String], CredentialFieldError> {
+        do {
+             let mappedValues = try values.mapValues { try $0.get() }
+            return .success(mappedValues)
+        } catch (let error as CredentialFieldError) {
+            return .failure(error)
+        } catch {
+            return .failure(.unknow)
+        }
+    }
     
     var requiredFields: [Provider.FieldSpecification]
     var optionalFields: [Provider.FieldSpecification]
@@ -49,7 +62,7 @@ class CredentialFields {
         return value
     }
     
-    func update(for fieldName: String, value: String) -> Result<String, CredentialFieldError> {
+    private func update(for fieldName: String, value: String) -> Result<String, CredentialFieldError> {
         let value = validate(for: fieldName, value: value)
         switch value {
         case .failure(.invalidField):
@@ -62,22 +75,22 @@ class CredentialFields {
     
     private func validate(for fieldName: String, value: String) -> Result<String, CredentialFieldError> {
         guard let updateField = fields.first(where: { $0.name == fieldName }) else {
-            return .failure(.invalidField("Field does not exist"))
+            return .failure(.invalidField(fieldName + " does not exist"))
         }
         return validate(for: updateField, value: value)
     }
     
     private func validate(for field: Provider.FieldSpecification, value: String) -> Result<String, CredentialFieldError> {
         if value.isEmpty, !field.isOptional {
-            return .failure(.requiredFieldEmptyValue(field.name))
+            return .failure(.requiredFieldEmptyValue(fieldName: field.name))
         } else if let maxLength = field.maxLength, maxLength < value.count {
-            return .failure(.maxLengthLimit(maxLength))
+            return .failure(.maxLengthLimit(fieldName: field.name, maxLength: maxLength))
         } else if let minLength = field.minLength, minLength > value.count {
-            return .failure(.minLengthLimit(minLength))
+            return .failure(.minLengthLimit(fieldName: field.name, minLength: minLength))
         } else if !field.pattern.isEmpty, let regex = try? NSRegularExpression(pattern: field.pattern, options: []) {
             let range = regex.rangeOfFirstMatch(in: value, options: [], range: NSRange(location: 0, length: value.count))
             if range.location == NSNotFound {
-                return .failure(.validationFailed(field.patternError))
+                return .failure(.validationFailed(fieldName: field.name, patternError: field.patternError))
             }
         }
         return .success(value)
