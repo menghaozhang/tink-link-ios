@@ -6,6 +6,7 @@ struct Credential {
     var status: Status
     var providerName: String
     var sessionExpiryDate: Date?
+    var supplementalInformationFields: [Provider.FieldSpecification] = []
     
     enum `Type` {
         case unknown
@@ -56,7 +57,7 @@ class CredentialContext {
     func createCredential(for provider: Provider, fields: [String: String]) {
         // Received async request response
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            let credential = Credential(id: provider.name + provider.accessType.rawValue, type: .mobileBankID, status: .created, providerName: provider.name, sessionExpiryDate: nil)
+            let credential = Credential(id: provider.name + provider.accessType.rawValue, type: .mobileBankID, status: .created, providerName: provider.name, sessionExpiryDate: nil, supplementalInformationFields: [])
             self.credentials[credential.id] = credential
             self.observe(credential: credential)
         }
@@ -143,14 +144,20 @@ final class AddCredentialViewController: UITableViewController, UITextFieldDeleg
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TextFieldCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldCell.reuseIdentifier, for: indexPath)
         if let textFieldCell = cell as? TextFieldCell, let field = credentialFields?.fields[indexPath.item] {
             textFields.append(textFieldCell.textField)
             textFieldCell.textField.delegate = self
-            textFieldCell.textField.placeholder = field.name
+            textFieldCell.textField.placeholder = field.fieldDescription
             textFieldCell.textField.isSecureTextEntry = field.isMasked
+            textFieldCell.textField.isEnabled = !field.isImmutable
+            textFieldCell.textField.text = field.value
         }
         return cell
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.textColor = .black
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {

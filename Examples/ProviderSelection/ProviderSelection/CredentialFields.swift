@@ -12,7 +12,7 @@ class CredentialFields {
     }
     
     let fields: [Provider.FieldSpecification]
-    var values: [String: Result<String, CredentialFieldError>] = [:]
+    private var values: [String: Result<String, CredentialFieldError>] = [:]
     
     var fieldValuesForCreateCredential: Result<[String: String], CredentialFieldError> {
         do {
@@ -83,9 +83,9 @@ class CredentialFields {
     private func validate(for field: Provider.FieldSpecification, value: String) -> Result<String, CredentialFieldError> {
         if value.isEmpty, !field.isOptional {
             return .failure(.requiredFieldEmptyValue(fieldName: field.name))
-        } else if let maxLength = field.maxLength, maxLength < value.count {
+        } else if let maxLength = field.maxLength, maxLength > 0 && maxLength < value.count {
             return .failure(.maxLengthLimit(fieldName: field.name, maxLength: maxLength))
-        } else if let minLength = field.minLength, minLength > value.count {
+        } else if let minLength = field.minLength, minLength > 0 && minLength > value.count {
             return .failure(.minLengthLimit(fieldName: field.name, minLength: minLength))
         } else if !field.pattern.isEmpty, let regex = try? NSRegularExpression(pattern: field.pattern, options: []) {
             let range = regex.rangeOfFirstMatch(in: value, options: [], range: NSRange(location: 0, length: value.count))

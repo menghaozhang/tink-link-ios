@@ -39,18 +39,18 @@ struct Provider {
     
     static var personalNumberFieldSpecification: FieldSpecification {
         return FieldSpecification(fieldDescription: "PersonalNumber",
-                           hint: "YYYYMMDDXXXX",
-                           maxLength: 12,
-                           minLength: 12,
-                           isMasked: false,
-                           isNumeric: true,
-                           isImmutable: false,
-                           isOptional: false,
-                           name: "Username",
-                           value: "",
-                           pattern: "(19|20)[0-9]{10}",
-                           patternError: "Please enter a valid social security number.",
-                           helpText: "## PersonalNumber")
+                                  hint: "YYYYMMDDXXXX",
+                                  maxLength: 12,
+                                  minLength: 12,
+                                  isMasked: false,
+                                  isNumeric: true,
+                                  isImmutable: false,
+                                  isOptional: false,
+                                  name: "Username",
+                                  value: "",
+                                  pattern: "(19|20)[0-9]{10}",
+                                  patternError: "Please enter a valid social security number.",
+                                  helpText: "## PersonalNumber")
     }
     
     static var passwordFieldSpecification: FieldSpecification {
@@ -63,6 +63,38 @@ struct Provider {
                                   isImmutable: false,
                                   isOptional: false,
                                   name: "Password",
+                                  value: "",
+                                  pattern: "",
+                                  patternError: "",
+                                  helpText: "")
+    }
+    
+    static var securityCodeFieldSpecification: FieldSpecification {
+        return FieldSpecification(fieldDescription: "Security Code",
+                                  hint: "",
+                                  maxLength: 0,
+                                  minLength: 0,
+                                  isMasked: false,
+                                  isNumeric: false,
+                                  isImmutable: false,
+                                  isOptional: false,
+                                  name: "loginDescriptionField",
+                                  value: "9876",
+                                  pattern: "",
+                                  patternError: "",
+                                  helpText: "Login using your Card Reader. Enter the security code and press Ok. Provide the given return code in the input field to continue \n")
+    }
+    
+    static var inputCodeFieldSpecification: FieldSpecification {
+        return FieldSpecification(fieldDescription: "Input Code",
+                                  hint: "",
+                                  maxLength: 0,
+                                  minLength: 0,
+                                  isMasked: false,
+                                  isNumeric: false,
+                                  isImmutable: false,
+                                  isOptional: false,
+                                  name: "loginInputField",
                                   value: "",
                                   pattern: "",
                                   patternError: "",
