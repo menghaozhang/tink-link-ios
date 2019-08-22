@@ -7,16 +7,6 @@ final class AddCredentialViewController: UITableViewController {
     var textFields: [UITextField] = []
     var credential: Credential?
     
-    @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
-        textFields.forEach { $0.resignFirstResponder() }
-        switch provider!.fields.createCredentialValues() {
-        case .failure(let error):
-            print(error)
-        case .success(let fieldValues):
-            credentialContext?.createCredential(for: provider!, fields: fieldValues)
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,6 +16,8 @@ final class AddCredentialViewController: UITableViewController {
         
         tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
         tableView.allowsSelection = false
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonPressed(_:)))
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -45,15 +37,31 @@ final class AddCredentialViewController: UITableViewController {
         return cell
     }
     
-    private func showSupplementalInformation(for credential: Credential) {
-        performSegue(withIdentifier: "AddSupplementalInformation", sender: self)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let supplementalInformationViewController = segue.destination as? SupplementalInformationViewController {
             supplementalInformationViewController.credential = credential
             supplementalInformationViewController.credentialContext = credentialContext
+        } else if let finishedCredentialUpdatedViewController = segue.destination as? FinishedCredentialUpdatedViewController {
+            finishedCredentialUpdatedViewController.credential = credential
         }
+    }
+    
+    @objc private func doneButtonPressed(_ sender: UIBarButtonItem) {
+        textFields.forEach { $0.resignFirstResponder() }
+        switch provider!.fields.createCredentialValues() {
+        case .failure(let error):
+            print(error)
+        case .success(let fieldValues):
+            credentialContext?.createCredential(for: provider!, fields: fieldValues)
+        }
+    }
+    
+    private func showSupplementalInformation(for credential: Credential) {
+        performSegue(withIdentifier: "AddSupplementalInformation", sender: self)
+    }
+    
+    private func showCredentialUpdated(for credential: Credential) {
+        performSegue(withIdentifier: "CredentialUpdated", sender: self)
     }
 }
 
@@ -76,6 +84,10 @@ extension AddCredentialViewController: TextFieldCellDelegate {
 }
 
 extension AddCredentialViewController: CredentialContextDelegate {
+    func credentialContext(_ context: CredentialContext, didChangeStatusForCredential credential: Credential) {
+        navigationController?.popToViewController(self, animated: false)
+    }
+    
     func credentialContext(_ context: CredentialContext, awaitingSupplementalInformation credential: Credential) {
         self.credential = credential
         showSupplementalInformation(for: credential)
@@ -93,12 +105,8 @@ extension AddCredentialViewController: CredentialContextDelegate {
         print(#function)
     }
     
-    func credentialContext(_ context: CredentialContext, didChangeStatusForCredential credential: Credential) {
-        print(#function)
-    }
-    
     func credentialContext(_ context: CredentialContext, didFinishUpdatingCredential credential: Credential) {
-        print(#function)
+        showCredentialUpdated(for: credential)
     }
     
     func credentialContext(_ context: CredentialContext, didReceiveErrorForCredential credential: Credential) {

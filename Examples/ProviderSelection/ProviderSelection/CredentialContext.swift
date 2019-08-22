@@ -30,6 +30,15 @@ class CredentialContext {
         }
     }
     
+    func supplementInformation(credentialID: String, fields: [String: String]) {
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            if let credential = self.credentials[credentialID] {
+                self.update(credential: credential, to: .updated)
+            }
+        }
+    }
+    
     private func observe(credential: Credential) {
         // Observed updates from streaming
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [credential] in
@@ -71,5 +80,16 @@ class CredentialContext {
     
     subscript(_ id: String) -> Credential? {
         return credentials[id]
+    }
+}
+
+// Helper only for internal example
+extension CredentialContext {
+    func update(credential: Credential, to status: Credential.Status) {
+        var multableCredential = self.credentials[credential.id]
+        multableCredential?.status = status
+        if let credential = multableCredential {
+            handle(credential: credential)
+        }
     }
 }

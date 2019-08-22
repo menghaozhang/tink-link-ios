@@ -262,7 +262,7 @@
             </objects>
             <point key="canvasLocation" x="5941" y="-402"/>
         </scene>
-        <!--Credential Created-->
+        <!--Credential Added-->
         <scene sceneID="9dX-IC-3cs">
             <objects>
                 <viewController id="MAs-Rn-v2d" customClass="FinishedCredentialUpdatedViewController" customModule="ProviderSelection" customModuleProvider="target" sceneMemberID="viewController">
@@ -272,7 +272,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="XCh-TY-gAM"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Credential Created" id="cYX-cx-y4n"/>
+                    <navigationItem key="navigationItem" title="Credential Added" id="cYX-cx-y4n"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Up5-Zd-ipq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
