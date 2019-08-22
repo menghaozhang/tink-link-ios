@@ -21,9 +21,10 @@ class CredentialContext {
     private var credentials: [String: Credential] = [:]
     
     func createCredential(for provider: Provider, fields: [String: String]) {
+        
         // Received async request response
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            let credential = Credential(id: provider.name + provider.accessType.rawValue, type: .mobileBankID, status: .created, providerName: provider.name, sessionExpiryDate: nil, supplementalInformationFields: [], fields: [:])
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [provider] in
+            let credential = Credential(id: provider.name + provider.accessType.rawValue, type: provider.credentialType, status: .created, providerName: provider.name, sessionExpiryDate: nil, supplementalInformationFields: [], fields: [:])
             self.credentials[credential.id] = credential
             self.observe(credential: credential)
         }

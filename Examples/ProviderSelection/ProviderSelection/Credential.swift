@@ -9,7 +9,7 @@ struct Credential {
     var supplementalInformationFields: [Provider.FieldSpecification] = []
     var fields: [String: String]
     
-    enum `Type` {
+    enum `Type`: String {
         case unknown
         case password
         case mobileBankID

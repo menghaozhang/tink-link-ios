@@ -11,6 +11,8 @@ final class SupplementalInformationViewController: UITableViewController {
         super.viewDidLoad()
         
         tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonPressed(_:)))
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -28,6 +30,16 @@ final class SupplementalInformationViewController: UITableViewController {
             textFieldCell.textField.text = field.value
         }
         return cell
+    }
+    
+    @objc private func doneButtonPressed(_ sender: UIBarButtonItem) {
+        textFields.forEach { $0.resignFirstResponder() }
+        switch credential!.supplementalInformationFields.createCredentialValues() {
+        case .failure(let error):
+            print(error)
+        case .success(let fieldValues):
+            credentialContext?.supplementInformation(credentialID: credential!.id, fields: fieldValues)
+        }
     }
 }
 

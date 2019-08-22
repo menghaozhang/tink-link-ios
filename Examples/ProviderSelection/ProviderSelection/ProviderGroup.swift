@@ -5,7 +5,7 @@ struct Provider {
     let financialInstitutionID: String
     let groupedName: String
     let accessType: AccessType
-    var credentialType: CredentialType
+    var credentialType: Credential.`Type`
     var fields: [FieldSpecification]
     
     public struct FieldSpecification {
@@ -48,12 +48,6 @@ struct Provider {
     enum AccessType: String {
         case reverseEngineering
         case openBanking
-    }
-    
-    enum CredentialType: String {
-        case bankID
-        case password
-        case thirdParty
     }
 }
 
