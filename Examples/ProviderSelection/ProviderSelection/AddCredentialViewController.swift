@@ -1,127 +1,15 @@
 import UIKit
 
-struct Credential {
-    var id: String
-    var type: `Type`
-    var status: Status
-    var providerName: String
-    var sessionExpiryDate: Date?
-    var supplementalInformationFields: [Provider.FieldSpecification] = []
-    var fields: [String: String]
-    
-    enum `Type` {
-        case unknown
-        case password
-        case mobileBankID
-        case keyfob
-        case fraud
-        case thirdPartyAuthentication
-    }
-    
-    enum Status {
-        case unknown
-        case created
-        case authenticating
-        case updating
-        case updated
-        case temporaryError
-        case authenticationError
-        case permanentError
-        case awaitingMobileBankIDAuthentication
-        case awaitingSupplementalInformation
-        case awaitingThirdPartyAppAuthentication
-        case disabled
-        case sessionExpired
-    }
-}
-
-protocol CredentialContextDelegate: AnyObject {
-    func credentialContext(_ context: CredentialContext, awaitingSupplementalInformation credential: Credential)
-    func credentialContext(_ context: CredentialContext, awaitingMobileBankIDAuthentication credential: Credential)
-    func credentialContext(_ context: CredentialContext, awaitingThirdPartyAppAuthentication credential: Credential)
-    func credentialContext(_ context: CredentialContext, didStartUpdatingCredential credential: Credential)
-    func credentialContext(_ context: CredentialContext, didChangeStatusForCredential credential: Credential)
-    func credentialContext(_ context: CredentialContext, didFinishUpdatingCredential credential: Credential)
-    func credentialContext(_ context: CredentialContext, didReceiveErrorForCredential credential: Credential)
-}
-
-class CredentialContext {
-    var client: Client
-    weak var delegate: CredentialContextDelegate?
-    
-    init(client: Client) {
-        self.client = client
-    }
-    
-    private var credentials: [String: Credential] = [:]
-    
-    func createCredential(for provider: Provider, fields: [String: String]) {
-        // Received async request response
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            let credential = Credential(id: provider.name + provider.accessType.rawValue, type: .mobileBankID, status: .created, providerName: provider.name, sessionExpiryDate: nil, supplementalInformationFields: [])
-            self.credentials[credential.id] = credential
-            self.observe(credential: credential)
-        }
-    }
-    
-    private func observe(credential: Credential) {
-        // Observed updates from streaming
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [credential] in
-            var multableCredential = credential
-            multableCredential.status = .awaitingSupplementalInformation
-            multableCredential.supplementalInformationFields = [Provider.securityCodeFieldSpecification, Provider.inputCodeFieldSpecification]
-            self.credentials[multableCredential.id] = multableCredential
-            self.handle(credential: multableCredential)
-        }
-    }
-    
-    private func handle(credential: Credential) {
-        // New status update
-        delegate?.credentialContext(self, didChangeStatusForCredential: credential)
-        // Authenticating states
-        switch credential.status {
-        case .created, .authenticating:
-            break
-        // Authentications
-        case .awaitingSupplementalInformation:
-            delegate?.credentialContext(self, awaitingSupplementalInformation: credential)
-        case .awaitingMobileBankIDAuthentication:
-            delegate?.credentialContext(self, awaitingMobileBankIDAuthentication: credential)
-        case .awaitingThirdPartyAppAuthentication:
-            delegate?.credentialContext(self, awaitingThirdPartyAppAuthentication: credential)
-        // Updating states
-        case .updating:
-            delegate?.credentialContext(self, didStartUpdatingCredential: credential)
-        case .updated:
-            delegate?.credentialContext(self, didFinishUpdatingCredential: credential)
-        // Error states
-        case .permanentError, .temporaryError, .authenticationError, .sessionExpired:
-            delegate?.credentialContext(self, didReceiveErrorForCredential: credential)
-        // Unhandled states
-        case .unknown, .disabled:
-            break
-        }
-    }
-    
-    subscript(_ id: String) -> Credential? {
-        return credentials[id]
-    }
-}
-
 final class AddCredentialViewController: UITableViewController, UITextFieldDelegate {
     var credentialContext: CredentialContext?
     var provider: Provider?
-    var credentialFields: CredentialFields?
     // TODO: find a better way to check the input field
     var textFields: [UITextField] = []
     var credential: Credential?
     
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
         textFields.forEach { $0.resignFirstResponder() }
-        guard let credentialFields = credentialFields else {
-            return
-        }
-        switch credentialFields.fieldValuesForCreateCredential {
+        switch provider!.fields.createCredentialValues() {
         case .failure(let error):
             print(error)
         case .success(let fieldValues):
@@ -136,19 +24,17 @@ final class AddCredentialViewController: UITableViewController, UITextFieldDeleg
         credentialContext = CredentialContext(client: client)
         credentialContext?.delegate = self
         
-        credentialFields = CredentialFields(provider: provider!)
-        
         tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
         tableView.allowsSelection = false
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return credentialFields!.fields.count
+        return provider!.fields.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldCell.reuseIdentifier, for: indexPath)
-        if let textFieldCell = cell as? TextFieldCell, let field = credentialFields?.fields[indexPath.item] {
+        if let textFieldCell = cell as? TextFieldCell, let field = provider?.fields[indexPath.item] {
             textFields.append(textFieldCell.textField)
             textFieldCell.textField.delegate = self
             textFieldCell.textField.placeholder = field.fieldDescription
@@ -164,9 +50,9 @@ final class AddCredentialViewController: UITableViewController, UITextFieldDeleg
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if let index = textFields.firstIndex(of: textField), let credentialFields = credentialFields {
-            let field = credentialFields.fields[index]
-            let result = credentialFields.update(for: field, value: textField.text ?? "")
+        if let index = textFields.firstIndex(of: textField) {
+            provider!.fields[index].value = textField.text ?? ""
+            let result = provider!.fields[index].validatedValue()
             switch result {
             case .failure:
                 textField.textColor = .red

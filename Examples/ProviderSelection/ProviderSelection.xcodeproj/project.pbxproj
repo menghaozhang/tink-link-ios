@@ -17,9 +17,12 @@
 		8FA5F828230C069500226C02 /* CredentialTypePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F827230C069500226C02 /* CredentialTypePickerViewController.swift */; };
 		8FA5F82B230C2C0200226C02 /* ProviderGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F82A230C2C0200226C02 /* ProviderGroup.swift */; };
 		8FA5F830230D36AB00226C02 /* AddCredentialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F82F230D36AB00226C02 /* AddCredentialViewController.swift */; };
-		8FA5F832230D571A00226C02 /* CredentialFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F831230D571A00226C02 /* CredentialFields.swift */; };
+		8FA5F832230D571A00226C02 /* FieldsValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F831230D571A00226C02 /* FieldsValidator.swift */; };
 		8FA5F834230D84B900226C02 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F833230D84B900226C02 /* TextFieldCell.swift */; };
 		8FA5F836230E9DEF00226C02 /* SupplementalInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F835230E9DEF00226C02 /* SupplementalInformationViewController.swift */; };
+		8FA5F838230EC34300226C02 /* ProviderContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F837230EC34300226C02 /* ProviderContext.swift */; };
+		8FA5F83A230EC36600226C02 /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F839230EC36600226C02 /* Credential.swift */; };
+		8FA5F83C230EC38D00226C02 /* CredentialContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F83B230EC38D00226C02 /* CredentialContext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,9 +38,12 @@
 		8FA5F827230C069500226C02 /* CredentialTypePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialTypePickerViewController.swift; sourceTree = "<group>"; };
 		8FA5F82A230C2C0200226C02 /* ProviderGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderGroup.swift; sourceTree = "<group>"; };
 		8FA5F82F230D36AB00226C02 /* AddCredentialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCredentialViewController.swift; sourceTree = "<group>"; };
-		8FA5F831230D571A00226C02 /* CredentialFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialFields.swift; sourceTree = "<group>"; };
+		8FA5F831230D571A00226C02 /* FieldsValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldsValidator.swift; sourceTree = "<group>"; };
 		8FA5F833230D84B900226C02 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		8FA5F835230E9DEF00226C02 /* SupplementalInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementalInformationViewController.swift; sourceTree = "<group>"; };
+		8FA5F837230EC34300226C02 /* ProviderContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderContext.swift; sourceTree = "<group>"; };
+		8FA5F839230EC36600226C02 /* Credential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
+		8FA5F83B230EC38D00226C02 /* CredentialContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialContext.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +78,9 @@
 			children = (
 				201D5510230AC95D00641102 /* AppDelegate.swift */,
 				8FA5F82A230C2C0200226C02 /* ProviderGroup.swift */,
+				8FA5F839230EC36600226C02 /* Credential.swift */,
+				8FA5F837230EC34300226C02 /* ProviderContext.swift */,
+				8FA5F83B230EC38D00226C02 /* CredentialContext.swift */,
 				201D5512230AC95D00641102 /* ProviderListViewController.swift */,
 				8FA5F823230BD13800226C02 /* FinancialInstitutionPickerViewController.swift */,
 				8FA5F825230BE85100226C02 /* AccessTypePickerViewController.swift */,
@@ -79,7 +88,7 @@
 				8FA5F82F230D36AB00226C02 /* AddCredentialViewController.swift */,
 				8FA5F835230E9DEF00226C02 /* SupplementalInformationViewController.swift */,
 				8FA5F833230D84B900226C02 /* TextFieldCell.swift */,
-				8FA5F831230D571A00226C02 /* CredentialFields.swift */,
+				8FA5F831230D571A00226C02 /* FieldsValidator.swift */,
 				201D5514230AC95D00641102 /* Main.storyboard */,
 				201D5517230AC95E00641102 /* Assets.xcassets */,
 				201D5519230AC95E00641102 /* LaunchScreen.storyboard */,
@@ -160,14 +169,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FA5F82B230C2C0200226C02 /* ProviderGroup.swift in Sources */,
+				8FA5F838230EC34300226C02 /* ProviderContext.swift in Sources */,
+				8FA5F83C230EC38D00226C02 /* CredentialContext.swift in Sources */,
 				8FA5F826230BE85100226C02 /* AccessTypePickerViewController.swift in Sources */,
 				8FA5F824230BD13800226C02 /* FinancialInstitutionPickerViewController.swift in Sources */,
-				8FA5F832230D571A00226C02 /* CredentialFields.swift in Sources */,
+				8FA5F832230D571A00226C02 /* FieldsValidator.swift in Sources */,
 				8FA5F828230C069500226C02 /* CredentialTypePickerViewController.swift in Sources */,
 				8FA5F834230D84B900226C02 /* TextFieldCell.swift in Sources */,
 				8FA5F830230D36AB00226C02 /* AddCredentialViewController.swift in Sources */,
 				201D5513230AC95D00641102 /* ProviderListViewController.swift in Sources */,
 				201D5511230AC95D00641102 /* AppDelegate.swift in Sources */,
+				8FA5F83A230EC36600226C02 /* Credential.swift in Sources */,
 				8FA5F836230E9DEF00226C02 /* SupplementalInformationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
