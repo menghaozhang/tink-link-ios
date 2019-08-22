@@ -1,3 +1,5 @@
+import Foundation
+
 extension Account {
     init(grpcAccount: GRPCAccount) {
         self.id = Identifier(stringLiteral: grpcAccount.id)

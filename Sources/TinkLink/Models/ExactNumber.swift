@@ -1,3 +1,5 @@
+import Foundation
+
 public struct ExactNumber {
     public var scale: Int64
     public var unscaledValue: Int64
