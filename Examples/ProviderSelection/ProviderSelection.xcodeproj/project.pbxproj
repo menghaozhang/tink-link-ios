@@ -19,6 +19,7 @@
 		8FA5F830230D36AB00226C02 /* AddCredentialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F82F230D36AB00226C02 /* AddCredentialViewController.swift */; };
 		8FA5F832230D571A00226C02 /* CredentialFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F831230D571A00226C02 /* CredentialFields.swift */; };
 		8FA5F834230D84B900226C02 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F833230D84B900226C02 /* TextFieldCell.swift */; };
+		8FA5F836230E9DEF00226C02 /* SupplementalInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F835230E9DEF00226C02 /* SupplementalInformationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		8FA5F82F230D36AB00226C02 /* AddCredentialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCredentialViewController.swift; sourceTree = "<group>"; };
 		8FA5F831230D571A00226C02 /* CredentialFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialFields.swift; sourceTree = "<group>"; };
 		8FA5F833230D84B900226C02 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
+		8FA5F835230E9DEF00226C02 /* SupplementalInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementalInformationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				8FA5F825230BE85100226C02 /* AccessTypePickerViewController.swift */,
 				8FA5F827230C069500226C02 /* CredentialTypePickerViewController.swift */,
 				8FA5F82F230D36AB00226C02 /* AddCredentialViewController.swift */,
+				8FA5F835230E9DEF00226C02 /* SupplementalInformationViewController.swift */,
 				8FA5F833230D84B900226C02 /* TextFieldCell.swift */,
 				8FA5F831230D571A00226C02 /* CredentialFields.swift */,
 				201D5514230AC95D00641102 /* Main.storyboard */,
@@ -165,6 +168,7 @@
 				8FA5F830230D36AB00226C02 /* AddCredentialViewController.swift in Sources */,
 				201D5513230AC95D00641102 /* ProviderListViewController.swift in Sources */,
 				201D5511230AC95D00641102 /* AppDelegate.swift in Sources */,
+				8FA5F836230E9DEF00226C02 /* SupplementalInformationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

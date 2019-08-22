@@ -7,6 +7,7 @@ struct Credential {
     var providerName: String
     var sessionExpiryDate: Date?
     var supplementalInformationFields: [Provider.FieldSpecification] = []
+    var fields: [String: String]
     
     enum `Type` {
         case unknown
@@ -68,6 +69,7 @@ class CredentialContext {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [credential] in
             var multableCredential = credential
             multableCredential.status = .awaitingSupplementalInformation
+            multableCredential.supplementalInformationFields = [Provider.securityCodeFieldSpecification, Provider.inputCodeFieldSpecification]
             self.credentials[multableCredential.id] = multableCredential
             self.handle(credential: multableCredential)
         }
@@ -112,6 +114,7 @@ final class AddCredentialViewController: UITableViewController, UITextFieldDeleg
     var credentialFields: CredentialFields?
     // TODO: find a better way to check the input field
     var textFields: [UITextField] = []
+    var credential: Credential?
     
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
         textFields.forEach { $0.resignFirstResponder() }
@@ -172,11 +175,23 @@ final class AddCredentialViewController: UITableViewController, UITextFieldDeleg
             }
         }
     }
+    
+    private func showSupplementalInformation(for credential: Credential) {
+        performSegue(withIdentifier: "AddSupplementalInformation", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let supplementalInformationViewController = segue.destination as? SupplementalInformationViewController {
+            supplementalInformationViewController.credential = credential
+            supplementalInformationViewController.credentialContext = credentialContext
+        }
+    }
 }
 
 extension AddCredentialViewController: CredentialContextDelegate {
     func credentialContext(_ context: CredentialContext, awaitingSupplementalInformation credential: Credential) {
-        print(#function)
+        self.credential = credential
+        showSupplementalInformation(for: credential)
     }
     
     func credentialContext(_ context: CredentialContext, awaitingMobileBankIDAuthentication credential: Credential) {

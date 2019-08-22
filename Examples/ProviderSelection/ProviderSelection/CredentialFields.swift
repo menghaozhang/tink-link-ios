@@ -28,11 +28,15 @@ class CredentialFields {
     var requiredFields: [Provider.FieldSpecification]
     var optionalFields: [Provider.FieldSpecification]
     
-    convenience init(provider: Provider, initialValues: [String: String] = [:]) {
-        self.init(providerFieldSpecification: provider.fields, initialValues: initialValues)
+    convenience init(provider: Provider, credential: Credential? = nil) {
+        self.init(providerFieldSpecification: provider.fields, initialValues: credential?.fields ?? [:])
     }
     
-    init(providerFieldSpecification: [Provider.FieldSpecification], initialValues: [String: String] = [:]) {
+    convenience init(credential: Credential) {
+        self.init(providerFieldSpecification: credential.supplementalInformationFields, initialValues: [:])
+    }
+    
+    private init(providerFieldSpecification: [Provider.FieldSpecification], initialValues: [String: String] = [:]) {
         fields = providerFieldSpecification
         requiredFields = fields.filter { !$0.isOptional }
         optionalFields = fields.filter { $0.isOptional }

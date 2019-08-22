@@ -201,10 +201,42 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="11n-dp-LeJ" kind="show" identifier="AddSupplementalInformation" id="Fat-8k-kqS"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cJG-pI-iVz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4819" y="136"/>
+        </scene>
+        <!--Enter Supplemental Information-->
+        <scene sceneID="AsS-Yh-Vgo">
+            <objects>
+                <tableViewController id="11n-dp-LeJ" customClass="SupplementalInformationViewController" customModule="ProviderSelection" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="a9w-JB-tBH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="nHo-9g-KXY">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nHo-9g-KXY" id="VgW-G6-IVb">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="11n-dp-LeJ" id="adw-3u-FCF"/>
+                            <outlet property="delegate" destination="11n-dp-LeJ" id="vj3-JU-V5W"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Enter Supplemental Information" id="4uL-2n-5Ay"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fMb-jJ-q5r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5941" y="-402"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
