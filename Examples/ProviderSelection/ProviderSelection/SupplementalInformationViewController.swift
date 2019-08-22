@@ -4,25 +4,22 @@ final class SupplementalInformationViewController: UITableViewController, UIText
     
     var credentialContext: CredentialContext?
     var credential: Credential?
-    var credentialFields: CredentialFields?
     
     var textFields: [UITextField] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        credentialFields = CredentialFields(credential: credential!)
-        
         tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return credentialFields!.fields.count
+        return credential!.supplementalInformationFields.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldCell.reuseIdentifier, for: indexPath)
-        if let textFieldCell = cell as? TextFieldCell, let field = credentialFields?.fields[indexPath.item] {
+        if let textFieldCell = cell as? TextFieldCell, let field = credential?.supplementalInformationFields[indexPath.item] {
             textFields.append(textFieldCell.textField)
             textFieldCell.textField.delegate = self
             textFieldCell.textField.placeholder = field.fieldDescription
@@ -38,9 +35,10 @@ final class SupplementalInformationViewController: UITableViewController, UIText
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if let index = textFields.firstIndex(of: textField), let credentialFields = credentialFields {
-            let field = credentialFields.fields[index]
-            let result = credentialFields.update(for: field, value: textField.text ?? "")
+        if let index = textFields.firstIndex(of: textField) {
+            credential!.supplementalInformationFields[index].value = textField.text ?? ""
+            let field = credential!.supplementalInformationFields[index]
+            let result = field.validatedValue()
             switch result {
             case .failure:
                 textField.textColor = .red

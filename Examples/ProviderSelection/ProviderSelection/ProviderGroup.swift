@@ -1,3 +1,5 @@
+import Foundation
+
 struct Provider {
     let name: String
     let financialInstitutionID: String
@@ -24,6 +26,23 @@ struct Provider {
         public var patternError: String
         /// Text displayed next to the input field
         public var helpText: String
+        
+        public func validatedValue() -> Result<String, FieldSpecificationError> {
+            let value = self.value
+            if value.isEmpty, !self.isOptional {
+                return .failure(.requiredFieldEmptyValue(fieldName: self.name))
+            } else if let maxLength = self.maxLength, maxLength > 0 && maxLength < value.count {
+                return .failure(.maxLengthLimit(fieldName: self.name, maxLength: maxLength))
+            } else if let minLength = self.minLength, minLength > 0 && minLength > value.count {
+                return .failure(.minLengthLimit(fieldName: self.name, minLength: minLength))
+            } else if !self.pattern.isEmpty, let regex = try? NSRegularExpression(pattern: self.pattern, options: []) {
+                let range = regex.rangeOfFirstMatch(in: value, options: [], range: NSRange(location: 0, length: value.count))
+                if range.location == NSNotFound {
+                    return .failure(.validationFailed(fieldName: self.name, patternError: self.patternError))
+                }
+            }
+            return .success(value)
+        }
     }
     
     enum AccessType: String {
@@ -35,70 +54,6 @@ struct Provider {
         case bankID
         case password
         case thirdParty
-    }
-    
-    static var personalNumberFieldSpecification: FieldSpecification {
-        return FieldSpecification(fieldDescription: "PersonalNumber",
-                                  hint: "YYYYMMDDXXXX",
-                                  maxLength: 12,
-                                  minLength: 12,
-                                  isMasked: false,
-                                  isNumeric: true,
-                                  isImmutable: false,
-                                  isOptional: false,
-                                  name: "Username",
-                                  value: "",
-                                  pattern: "(19|20)[0-9]{10}",
-                                  patternError: "Please enter a valid social security number.",
-                                  helpText: "## PersonalNumber")
-    }
-    
-    static var passwordFieldSpecification: FieldSpecification {
-        return FieldSpecification(fieldDescription: "Password",
-                                  hint: "",
-                                  maxLength: nil,
-                                  minLength: nil,
-                                  isMasked: true,
-                                  isNumeric: false,
-                                  isImmutable: false,
-                                  isOptional: false,
-                                  name: "Password",
-                                  value: "",
-                                  pattern: "",
-                                  patternError: "",
-                                  helpText: "")
-    }
-    
-    static var securityCodeFieldSpecification: FieldSpecification {
-        return FieldSpecification(fieldDescription: "Security Code",
-                                  hint: "",
-                                  maxLength: 0,
-                                  minLength: 0,
-                                  isMasked: false,
-                                  isNumeric: false,
-                                  isImmutable: false,
-                                  isOptional: false,
-                                  name: "loginDescriptionField",
-                                  value: "9876",
-                                  pattern: "",
-                                  patternError: "",
-                                  helpText: "Login using your Card Reader. Enter the security code and press Ok. Provide the given return code in the input field to continue \n")
-    }
-    
-    static var inputCodeFieldSpecification: FieldSpecification {
-        return FieldSpecification(fieldDescription: "Input Code",
-                                  hint: "",
-                                  maxLength: 0,
-                                  minLength: 0,
-                                  isMasked: false,
-                                  isNumeric: false,
-                                  isImmutable: false,
-                                  isOptional: false,
-                                  name: "loginInputField",
-                                  value: "",
-                                  pattern: "",
-                                  patternError: "",
-                                  helpText: "")
     }
 }
 
@@ -219,5 +174,72 @@ enum ProviderGroupedByGroupedName {
     
     var groupedName: String? {
         return providers.first?.groupedName
+    }
+}
+
+
+extension Provider {
+    static var personalNumberFieldSpecification: FieldSpecification {
+        return FieldSpecification(fieldDescription: "PersonalNumber",
+                                  hint: "YYYYMMDDXXXX",
+                                  maxLength: 12,
+                                  minLength: 12,
+                                  isMasked: false,
+                                  isNumeric: true,
+                                  isImmutable: false,
+                                  isOptional: false,
+                                  name: "Username",
+                                  value: "",
+                                  pattern: "(19|20)[0-9]{10}",
+                                  patternError: "Please enter a valid social security number.",
+                                  helpText: "## PersonalNumber")
+    }
+    
+    static var passwordFieldSpecification: FieldSpecification {
+        return FieldSpecification(fieldDescription: "Password",
+                                  hint: "",
+                                  maxLength: nil,
+                                  minLength: nil,
+                                  isMasked: true,
+                                  isNumeric: false,
+                                  isImmutable: false,
+                                  isOptional: false,
+                                  name: "Password",
+                                  value: "",
+                                  pattern: "",
+                                  patternError: "",
+                                  helpText: "")
+    }
+    
+    static var securityCodeFieldSpecification: FieldSpecification {
+        return FieldSpecification(fieldDescription: "Security Code",
+                                  hint: "",
+                                  maxLength: 0,
+                                  minLength: 0,
+                                  isMasked: false,
+                                  isNumeric: false,
+                                  isImmutable: false,
+                                  isOptional: false,
+                                  name: "loginDescriptionField",
+                                  value: "9876",
+                                  pattern: "",
+                                  patternError: "",
+                                  helpText: "Login using your Card Reader. Enter the security code and press Ok. Provide the given return code in the input field to continue \n")
+    }
+    
+    static var inputCodeFieldSpecification: FieldSpecification {
+        return FieldSpecification(fieldDescription: "Input Code",
+                                  hint: "",
+                                  maxLength: 0,
+                                  minLength: 0,
+                                  isMasked: false,
+                                  isNumeric: false,
+                                  isImmutable: false,
+                                  isOptional: false,
+                                  name: "loginInputField",
+                                  value: "",
+                                  pattern: "",
+                                  patternError: "",
+                                  helpText: "")
     }
 }
