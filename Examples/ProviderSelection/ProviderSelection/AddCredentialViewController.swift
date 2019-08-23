@@ -1,5 +1,8 @@
 import UIKit
 
+/**
+ Example of how to use the provider field specification to add credential
+ */
 final class AddCredentialViewController: UITableViewController {
     var credentialContext: CredentialContext?
     var provider: Provider?

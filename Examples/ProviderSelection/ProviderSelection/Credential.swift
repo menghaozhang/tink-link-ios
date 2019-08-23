@@ -1,5 +1,5 @@
 import Foundation
-
+// Mocked Credential model
 struct Credential {
     var id: String
     var type: `Type`

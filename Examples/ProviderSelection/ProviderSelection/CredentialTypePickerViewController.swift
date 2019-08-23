@@ -1,5 +1,8 @@
 import UIKit
 
+/**
+ Example of how to use the provider grouped by credential type
+ */
 final class CredentialTypePickerViewController: UITableViewController {
     
     var providers: [Provider]?

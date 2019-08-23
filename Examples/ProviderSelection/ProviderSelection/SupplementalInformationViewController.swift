@@ -1,5 +1,8 @@
 import UIKit
 
+/**
+ Example of how to use the credential field supplementa information to update credential
+ */
 final class SupplementalInformationViewController: UITableViewController {
     
     var credentialContext: CredentialContext?

@@ -1,5 +1,5 @@
 import Foundation
-
+// Mocked Provider model
 struct Provider {
     let name: String
     let financialInstitutionID: String

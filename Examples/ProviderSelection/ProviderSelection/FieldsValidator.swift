@@ -22,6 +22,7 @@ enum FieldSpecificationError: Error {
     case requiredFieldEmptyValue(fieldName: String)
 }
 
+// Helper class to validate the provider field specification
 class FieldsValidator {
     static func createCredentialValues(for fields: [Provider.FieldSpecification]) -> Result<[String: String], FieldSpecificationError> {
         do {

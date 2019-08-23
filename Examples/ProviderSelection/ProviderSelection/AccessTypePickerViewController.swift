@@ -1,5 +1,7 @@
 import UIKit
-
+/**
+ Example of how to use the provider grouped by access type
+ */
 final class AccessTypePickerViewController: UITableViewController {
     
     var providerGroupedByAccessTypes: [ProviderGroupedByAccessType]?

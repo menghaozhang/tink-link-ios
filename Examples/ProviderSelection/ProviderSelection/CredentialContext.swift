@@ -1,5 +1,5 @@
 import Foundation
-
+// Mocked Credential context
 protocol CredentialContextDelegate: AnyObject {
     func credentialContext(_ context: CredentialContext, awaitingSupplementalInformation credential: Credential)
     func credentialContext(_ context: CredentialContext, awaitingMobileBankIDAuthentication credential: Credential)
