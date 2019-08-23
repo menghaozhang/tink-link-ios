@@ -2,7 +2,7 @@ import Foundation
 
 extension Account {
     init(grpcAccount: GRPCAccount) {
-        self.id = Identifier(stringLiteral: grpcAccount.id)
+        self.id = .init(grpcAccount.id)
         self.accountNumber = grpcAccount.accountNumber
         self.name = grpcAccount.name
         self.credentialID = grpcAccount.credentialID
