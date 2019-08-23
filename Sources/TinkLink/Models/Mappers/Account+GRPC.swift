@@ -11,7 +11,7 @@ extension Account {
         self.isFavored = grpcAccount.favored
         self.isClosed = grpcAccount.closed
         self.isTransactional = grpcAccount.transactional
-        self.flags = grpcAccount.flags.map({ Account.Flag(grpcAccountFlag: $0) })
+        self.flags = Account.Flags(grpcAccountFlags: grpcAccount.flags)
         self.ownership = grpcAccount.ownership.doubleValue
         self.type = `Type`(grpcAccountType: grpcAccount.type)
         self.balance = CurrencyDenominatedAmount(grpcCurrencyDenominatedAmount: grpcAccount.balance)
@@ -36,16 +36,21 @@ extension Account.Exclusion {
     }
 }
 
-extension Account.Flag {
-    init(grpcAccountFlag: GRPCAccount.AccountFlag) {
-        switch grpcAccountFlag {
-        case .unknown, .UNRECOGNIZED:
-            self = .unknown
-        case .business:
-            self = .business
-        case .mandate:
-            self = .mandate
-        }
+extension Account.Flags {
+    init(grpcAccountFlags: [GRPCAccount.AccountFlag]) {
+        self = grpcAccountFlags.reduce([], { (flag, grpcAccountFlag) in
+            switch grpcAccountFlag {
+            case .unknown:
+                return flag
+            case .business:
+                return flag.union(.business)
+            case .mandate:
+                return flag.union(.mandate)
+            case .UNRECOGNIZED(let value):
+                assertionFailure("Unrecognized flag: \(value)")
+                return flag
+            }
+        })
     }
 }
 
