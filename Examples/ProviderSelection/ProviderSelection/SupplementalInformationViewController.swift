@@ -3,10 +3,16 @@ import UIKit
 /**
  Example of how to use the credential field supplementa information to update credential
  */
+protocol SupplementalInformationViewControllerDelegate: AnyObject {
+    func supplementInformationViewController(_ viewController: SupplementalInformationViewController, didSupplementCredential credential: Credential)
+}
+
 final class SupplementalInformationViewController: UITableViewController {
     
     var credentialContext: CredentialContext?
     var credential: Credential?
+    
+    weak var delegate: SupplementalInformationViewControllerDelegate?
     
     var textFields: [UITextField] = []
     
@@ -41,7 +47,10 @@ final class SupplementalInformationViewController: UITableViewController {
         case .failure(let error):
             print(error)
         case .success(let fieldValues):
-            credentialContext?.supplementInformation(credentialID: credential!.id, fields: fieldValues)
+            credentialContext?.supplementInformation(credentialID: credential!.id, fields: fieldValues, completion: { [weak self] credential in
+                self?.delegate?.supplementInformationViewController(self!, didSupplementCredential: credential)
+            })
+
         }
     }
 }

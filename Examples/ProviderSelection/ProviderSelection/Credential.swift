@@ -1,11 +1,23 @@
 import Foundation
 // Mocked Credential model
+struct UpdatedtableCredentialFields {
+    let id: String
+    var supplementalInformationFields: [Provider.FieldSpecification]
+}
+
+extension UpdatedtableCredentialFields {
+    init(credential: Credential) {
+        id = credential.id
+        supplementalInformationFields = credential.supplementalInformationFields
+    }
+}
+
 struct Credential {
-    var id: String
-    var type: `Type`
+    let id: String
+    let type: `Type`
     var status: Status
-    var providerName: String
-    var sessionExpiryDate: Date?
+    let providerName: String
+    let sessionExpiryDate: Date?
     var supplementalInformationFields: [Provider.FieldSpecification] = []
     var fields: [String: String]
     

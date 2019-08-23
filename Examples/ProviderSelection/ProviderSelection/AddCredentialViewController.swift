@@ -86,9 +86,16 @@ extension AddCredentialViewController: TextFieldCellDelegate {
     }
 }
 
+extension AddCredentialViewController: SupplementalInformationViewControllerDelegate {
+    func supplementInformationViewController(_ viewController: SupplementalInformationViewController, didSupplementCredential credential: Credential) {
+        navigationController?.popToViewController(self, animated: false)
+        // Maybe show loading
+    }
+}
+
 extension AddCredentialViewController: CredentialContextDelegate {
     func credentialContext(_ context: CredentialContext, didChangeStatusForCredential credential: Credential) {
-        navigationController?.popToViewController(self, animated: false)
+//        navigationController?.popToViewController(self, animated: false)
     }
     
     func credentialContext(_ context: CredentialContext, awaitingSupplementalInformation credential: Credential) {
@@ -96,16 +103,12 @@ extension AddCredentialViewController: CredentialContextDelegate {
         showSupplementalInformation(for: credential)
     }
     
-    func credentialContext(_ context: CredentialContext, awaitingMobileBankIDAuthentication credential: Credential) {
-        print(#function)
-    }
-    
     func credentialContext(_ context: CredentialContext, awaitingThirdPartyAppAuthentication credential: Credential) {
-        print(#function)
+        //        UIApplication.shared.open(credential, options: <#T##[UIApplication.OpenExternalURLOptionsKey : Any]#>, completionHandler: <#T##((Bool) -> Void)?##((Bool) -> Void)?##(Bool) -> Void#>)
     }
     
     func credentialContext(_ context: CredentialContext, didStartUpdatingCredential credential: Credential) {
-        print(#function)
+        // Backend updating, multiple call expected, update accordingly
     }
     
     func credentialContext(_ context: CredentialContext, didFinishUpdatingCredential credential: Credential) {
@@ -113,6 +116,6 @@ extension AddCredentialViewController: CredentialContextDelegate {
     }
     
     func credentialContext(_ context: CredentialContext, didReceiveErrorForCredential credential: Credential) {
-        print(#function)
+        present(UIAlertController(title: "credential error", message: "", preferredStyle: .alert), animated: true)
     }
 }

@@ -2,7 +2,6 @@ import Foundation
 // Mocked Credential context
 protocol CredentialContextDelegate: AnyObject {
     func credentialContext(_ context: CredentialContext, awaitingSupplementalInformation credential: Credential)
-    func credentialContext(_ context: CredentialContext, awaitingMobileBankIDAuthentication credential: Credential)
     func credentialContext(_ context: CredentialContext, awaitingThirdPartyAppAuthentication credential: Credential)
     func credentialContext(_ context: CredentialContext, didStartUpdatingCredential credential: Credential)
     func credentialContext(_ context: CredentialContext, didChangeStatusForCredential credential: Credential)
@@ -30,7 +29,7 @@ class CredentialContext {
         }
     }
     
-    func supplementInformation(credentialID: String, fields: [String: String]) {
+    func supplementInformation(credentialID: String, fields: [String: String], completion: @escaping(Credential) -> Void) {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             if let credential = self.credentials[credentialID] {
@@ -60,9 +59,7 @@ class CredentialContext {
         // Authentications
         case .awaitingSupplementalInformation:
             delegate?.credentialContext(self, awaitingSupplementalInformation: credential)
-        case .awaitingMobileBankIDAuthentication:
-            delegate?.credentialContext(self, awaitingMobileBankIDAuthentication: credential)
-        case .awaitingThirdPartyAppAuthentication:
+        case .awaitingMobileBankIDAuthentication, .awaitingThirdPartyAppAuthentication:
             delegate?.credentialContext(self, awaitingThirdPartyAppAuthentication: credential)
         // Updating states
         case .updating:
