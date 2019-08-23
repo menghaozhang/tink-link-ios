@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		200A3F99230C31E900BEF935 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200A3F98230C31E900BEF935 /* AuthenticationService.swift */; };
 		200A3FA2230C3E7800BEF935 /* ServiceMetadataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200A3FA1230C3E7800BEF935 /* ServiceMetadataHelper.swift */; };
 		201D5503230A8BEA00641102 /* StreamingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D5502230A8BEA00641102 /* StreamingService.swift */; };
+		201D5523230AEAA500641102 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D5522230AEAA500641102 /* UserService.swift */; };
 		20E19DB22306E59900BF053A /* BoringSSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85462303FD85006213BB /* BoringSSL.framework */; };
 		20E19DB32306E59900BF053A /* CgRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85472303FD85006213BB /* CgRPC.framework */; };
 		20E19DB42306E59900BF053A /* SwiftGRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85492303FD85006213BB /* SwiftGRPC.framework */; };
@@ -57,8 +59,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		200A3F98230C31E900BEF935 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		200A3FA1230C3E7800BEF935 /* ServiceMetadataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceMetadataHelper.swift; sourceTree = "<group>"; };
 		201D5502230A8BEA00641102 /* StreamingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingService.swift; sourceTree = "<group>"; };
+		201D5522230AEAA500641102 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		20ED85202303FA48006213BB /* TinkLink.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinkLink.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		20ED85242303FA48006213BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20ED85292303FA48006213BB /* TinkLinkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinkLinkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -210,6 +214,8 @@
 				20ED858D2304151B006213BB /* CredentialService.swift */,
 				20ED8591230429DE006213BB /* StartCall.swift */,
 				201D5502230A8BEA00641102 /* StreamingService.swift */,
+				201D5522230AEAA500641102 /* UserService.swift */,
+				200A3F98230C31E900BEF935 /* AuthenticationService.swift */,
 				8F367242230557B300B92936 /* AccountService.swift */,
 			);
 			path = Services;
@@ -408,6 +414,7 @@
 				20ED859623045896006213BB /* Credential.swift in Sources */,
 				20ED85712304004C006213BB /* ProviderService.swift in Sources */,
 				20ED858E2304151B006213BB /* CredentialService.swift in Sources */,
+				201D5523230AEAA500641102 /* UserService.swift in Sources */,
 				20ED85412303FAEC006213BB /* rpc.pb.swift in Sources */,
 				20ED857A230407B3006213BB /* Provider.swift in Sources */,
 				201D5503230A8BEA00641102 /* StreamingService.swift in Sources */,
@@ -421,6 +428,7 @@
 				8F3672512305A2A700B92936 /* Identifier.swift in Sources */,
 				8FA5F820230AE40B00226C02 /* UpdateAccountRequest+GRPC.swift in Sources */,
 				8F36724B23058A3600B92936 /* Account.swift in Sources */,
+				200A3F99230C31E900BEF935 /* AuthenticationService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
