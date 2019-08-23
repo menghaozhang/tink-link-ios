@@ -29,7 +29,6 @@ public struct Account {
         case mandate
     }
     
-    
     public var id: Identifier<Account>
     public var balance: CurrencyDenominatedAmount
     public var type: Account.`Type`
