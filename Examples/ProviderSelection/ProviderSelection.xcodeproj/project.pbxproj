@@ -24,6 +24,7 @@
 		8FA5F83A230EC36600226C02 /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F839230EC36600226C02 /* Credential.swift */; };
 		8FA5F83C230EC38D00226C02 /* CredentialContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F83B230EC38D00226C02 /* CredentialContext.swift */; };
 		8FA5F83E230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F83D230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift */; };
+		8FA5F840230FDD1600226C02 /* CredentialContextWithCallBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F83F230FDD1600226C02 /* CredentialContextWithCallBack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		8FA5F839230EC36600226C02 /* Credential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
 		8FA5F83B230EC38D00226C02 /* CredentialContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialContext.swift; sourceTree = "<group>"; };
 		8FA5F83D230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishedCredentialUpdatedViewController.swift; sourceTree = "<group>"; };
+		8FA5F83F230FDD1600226C02 /* CredentialContextWithCallBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialContextWithCallBack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				8FA5F839230EC36600226C02 /* Credential.swift */,
 				8FA5F837230EC34300226C02 /* ProviderContext.swift */,
 				8FA5F83B230EC38D00226C02 /* CredentialContext.swift */,
+				8FA5F83F230FDD1600226C02 /* CredentialContextWithCallBack.swift */,
 				8FA5F831230D571A00226C02 /* FieldsValidator.swift */,
 				201D5512230AC95D00641102 /* ProviderListViewController.swift */,
 				8FA5F823230BD13800226C02 /* FinancialInstitutionPickerViewController.swift */,
@@ -176,6 +179,7 @@
 				8FA5F83C230EC38D00226C02 /* CredentialContext.swift in Sources */,
 				8FA5F83E230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift in Sources */,
 				8FA5F826230BE85100226C02 /* AccessTypePickerViewController.swift in Sources */,
+				8FA5F840230FDD1600226C02 /* CredentialContextWithCallBack.swift in Sources */,
 				8FA5F824230BD13800226C02 /* FinancialInstitutionPickerViewController.swift in Sources */,
 				8FA5F832230D571A00226C02 /* FieldsValidator.swift in Sources */,
 				8FA5F828230C069500226C02 /* CredentialTypePickerViewController.swift in Sources */,
