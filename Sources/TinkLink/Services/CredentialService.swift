@@ -7,7 +7,15 @@ public final class CredentialService {
         self.channel = channel
     }
 
-    private lazy var service = CredentialServiceServiceClient(channel: channel)
+    private lazy var service: CredentialServiceServiceClient = {
+        let service = CredentialServiceServiceClient(channel: channel)
+        do {
+            try service.metadata.addTinkMetadata()
+        } catch {
+            assertionFailure(error.localizedDescription)
+        }
+        return service
+    }()
 
     public func credentials(completion: @escaping (Result<[Credential], Error>) -> Void) -> Cancellable {
         let request = GRPCListCredentialsRequest()

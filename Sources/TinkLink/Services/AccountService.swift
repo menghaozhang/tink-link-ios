@@ -7,7 +7,15 @@ public final class AccountService {
         self.channel = channel
     }
     
-    private lazy var service = AccountServiceServiceClient(channel: channel)
+    private lazy var service: AccountServiceServiceClient = {
+        let service = AccountServiceServiceClient(channel: channel)
+        do {
+            try service.metadata.addTinkMetadata()
+        } catch {
+            assertionFailure(error.localizedDescription)
+        }
+        return service
+    }()
     
     /// Lists all accounts
     ///
