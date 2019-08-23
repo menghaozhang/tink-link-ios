@@ -4,7 +4,7 @@ import Foundation
 public struct Provider {
     /// The unique identifier of the provider.
     /// - Note: This is used when creating new credentials.
-    public var name: String
+    public var name: Identifier<Provider>
 
     /// The display name of the provider.
     public var displayName: String
