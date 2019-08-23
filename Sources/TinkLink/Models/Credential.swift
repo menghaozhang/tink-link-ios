@@ -1,3 +1,5 @@
+import Foundation
+
 /// The credentials model represents users connected providers from where financial data is accessed.
 public struct Credential {
     /// The unique identifier of the credentials.

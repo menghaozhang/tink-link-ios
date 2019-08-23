@@ -1,3 +1,5 @@
+import Foundation
+
 public struct Account {
     public enum `Type` {
         case unknown

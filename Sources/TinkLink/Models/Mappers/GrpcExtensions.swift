@@ -1,3 +1,5 @@
+import Foundation
+
 extension GRPCExactNumber {
     init(value: ExactNumber) {
         self.scale = value.scale
