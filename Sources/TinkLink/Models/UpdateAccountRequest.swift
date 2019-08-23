@@ -1,3 +1,5 @@
+import Foundation
+
 /// Request used to update the account
 public struct UpdateAccountRequest {
     
