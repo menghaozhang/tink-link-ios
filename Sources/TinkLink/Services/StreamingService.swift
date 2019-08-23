@@ -1,3 +1,4 @@
+import Dispatch
 import SwiftGRPC
 
 final class StreamingService {
