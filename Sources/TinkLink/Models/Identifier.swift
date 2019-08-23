@@ -7,5 +7,9 @@ public struct Identifier<Value>: Hashable, RawRepresentable, ExpressibleByString
         self.rawValue = rawValue
     }
 
+    public init(_ value: String) {
+        self.rawValue = value
+    }
+
     public let rawValue: String
 }
