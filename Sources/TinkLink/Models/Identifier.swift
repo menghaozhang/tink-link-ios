@@ -1,6 +1,11 @@
-public struct Identifier<Value>: Hashable, ExpressibleByStringLiteral {
+public struct Identifier<Value>: Hashable, RawRepresentable, ExpressibleByStringLiteral {
     public init(stringLiteral value: String) {
         rawValue = value
     }
-    let rawValue: String
+
+    public init?(rawValue: String) {
+        self.rawValue = rawValue
+    }
+
+    public let rawValue: String
 }
