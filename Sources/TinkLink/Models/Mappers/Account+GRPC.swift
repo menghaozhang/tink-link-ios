@@ -11,7 +11,7 @@ extension Account {
         self.isFavored = grpcAccount.favored
         self.isClosed = grpcAccount.closed
         self.isTransactional = grpcAccount.transactional
-        self.flags = Account.Flag(grpcAccountFlags: grpcAccount.flags)
+        self.flags = Account.Flags(grpcAccountFlags: grpcAccount.flags)
         self.ownership = grpcAccount.ownership.doubleValue
         self.type = `Type`(grpcAccountType: grpcAccount.type)
         self.balance = CurrencyDenominatedAmount(grpcCurrencyDenominatedAmount: grpcAccount.balance)
@@ -36,7 +36,7 @@ extension Account.Exclusion {
     }
 }
 
-extension Account.Flag {
+extension Account.Flags {
     init(grpcAccountFlags: [GRPCAccount.AccountFlag]) {
         self = grpcAccountFlags.reduce([], { (flag, grpcAccountFlag) in
             switch grpcAccountFlag {

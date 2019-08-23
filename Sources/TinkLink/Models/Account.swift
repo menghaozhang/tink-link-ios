@@ -24,15 +24,15 @@ public struct Account {
         case none
     }
     
-    public struct Flag: OptionSet {
+    public struct Flags: OptionSet {
         public let rawValue: Int
 
         public init(rawValue: Int) {
             self.rawValue = rawValue
         }
 
-        public static let business = Flag(rawValue: 1 << 1)
-        public static let mandate = Flag(rawValue: 1 << 2)
+        public static let business = Flags(rawValue: 1 << 1)
+        public static let mandate = Flags(rawValue: 1 << 2)
     }
 
     /// The internal identifier of account.
@@ -101,7 +101,7 @@ public struct Account {
     public var exclusionType: Account.Exclusion
 
     /// A list of flags specifying attributes on an account.
-    public var flags: Account.Flag
+    public var flags: Account.Flags
 
     public var images: URL?
 }
