@@ -1,3 +1,5 @@
+import Foundation
+
 extension Credential {
     init(grpcCredential: GRPCCredential) {
         self.id = grpcCredential.id
