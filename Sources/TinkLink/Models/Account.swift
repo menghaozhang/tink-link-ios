@@ -34,7 +34,7 @@ public struct Account {
     public var balance: CurrencyDenominatedAmount
     public var type: Account.`Type`
     public var accountNumber: String
-    public var credentialID: String // TODO: Identifier<Credential>
+    public var credentialID: Identifier<Credential>
     public var isExcluded: Bool
     public var isFavored: Bool
     public var isTransactional: Bool

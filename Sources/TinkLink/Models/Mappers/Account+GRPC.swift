@@ -2,10 +2,10 @@ import Foundation
 
 extension Account {
     init(grpcAccount: GRPCAccount) {
-        self.id = Identifier(stringLiteral: grpcAccount.id)
+        self.id = .init(grpcAccount.id)
         self.accountNumber = grpcAccount.accountNumber
         self.name = grpcAccount.name
-        self.credentialID = grpcAccount.credentialID
+        self.credentialID = .init(grpcAccount.credentialID)
         self.isExcluded = grpcAccount.excluded
         self.exclusionType = Account.Exclusion(grpcAccountExclustion: grpcAccount.exclusionType)
         self.isFavored = grpcAccount.favored

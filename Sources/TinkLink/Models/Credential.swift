@@ -3,10 +3,10 @@ import Foundation
 /// The credentials model represents users connected providers from where financial data is accessed.
 public struct Credential {
     /// The unique identifier of the credentials.
-    public var id: String
+    public var id: Identifier<Credential>
 
     /// The provider (financial institution) that the credentials is connected to.
-    public var providerName: String
+    public var providerName: Identifier<Provider>
 
     public enum `Type` {
         case unknown

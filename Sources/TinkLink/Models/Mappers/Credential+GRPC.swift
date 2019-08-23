@@ -2,8 +2,8 @@ import Foundation
 
 extension Credential {
     init(grpcCredential: GRPCCredential) {
-        self.id = grpcCredential.id
-        self.providerName = grpcCredential.providerName
+        self.id = .init(grpcCredential.id)
+        self.providerName = .init(grpcCredential.providerName)
         self.type = .init(grpcCredentialType: grpcCredential.type)
         self.status = .init(grpcCredentialStatus: grpcCredential.status)
         self.statusPayload = grpcCredential.statusPayload
