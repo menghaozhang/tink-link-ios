@@ -37,17 +37,13 @@ final class AccessTypePickerViewController: UITableViewController {
     }
     
     func showCredentialTypePicker(for providerGroup: [Provider]) {
-        performSegue(withIdentifier: "CredentialTypePicker", sender: self)
+        let viewController = CredentialTypePickerViewController(style: .plain)
+        viewController.providers = providerGroup
+        show(viewController, sender: nil)
     }
     
     func showAddCredential(for providerGroup: Provider) {
         let addCredentialViewController = AddCredentialViewController(provider: providerGroup)
         show(addCredentialViewController, sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let credentialTypePickerViewController = segue.destination as? CredentialTypePickerViewController  {
-            credentialTypePickerViewController.providers = selectedProviders
-        }
     }
 }

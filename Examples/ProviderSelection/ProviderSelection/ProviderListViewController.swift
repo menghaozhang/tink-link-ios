@@ -58,30 +58,26 @@ final class ProviderListViewController: UITableViewController {
     }
     
     func showFinancialInstitution(for providerGroup: [ProviderGroupedByFinancialInsititution]) {
-        performSegue(withIdentifier: "FinancialInstitutionPicker", sender: self)
+        let viewController = FinancialInstitutionPickerViewController(style: .plain)
+        viewController.providerGroupedByFinancialInsititutions = providerGroup
+        show(viewController, sender: nil)
     }
     
     func showAccessTypePicker(for providerGroup: [ProviderGroupedByAccessType]) {
-        performSegue(withIdentifier: "AccessTypePicker", sender: self)
+        let viewController = AccessTypePickerViewController(style: .plain)
+        viewController.providerGroupedByAccessTypes = providerGroup
+        show(viewController, sender: nil)
     }
     
     func showCredentialTypePicker(for providerGroup: [Provider]) {
-        performSegue(withIdentifier: "CredentialTypePicker", sender: self)
+        let viewController = CredentialTypePickerViewController(style: .plain)
+        viewController.providers = providerGroup
+        show(viewController, sender: nil)
     }
     
     func showAddCredential(for providerGroup: Provider) {
         let addCredentialViewController = AddCredentialViewController(provider: providerGroup)
         show(addCredentialViewController, sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let financialInstitutionPickerViewController = segue.destination as? FinancialInstitutionPickerViewController {
-            financialInstitutionPickerViewController.providerGroupedByFinancialInsititutions = selectedProviderGroupedByFinancialInsititutions
-        } else if let accessTypePickerViewController = segue.destination as? AccessTypePickerViewController {
-            accessTypePickerViewController.providerGroupedByAccessTypes = selectedProviderGroupedByAccessTypes
-        } else if let credentialTypePickerViewController = segue.destination as? CredentialTypePickerViewController  {
-            credentialTypePickerViewController.providers = selectedProviders
-        }
     }
 }
 
