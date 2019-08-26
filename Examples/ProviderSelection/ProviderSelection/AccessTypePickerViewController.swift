@@ -6,7 +6,7 @@ final class AccessTypePickerViewController: UITableViewController {
     
     var providerGroupedByAccessTypes: [ProviderGroupedByAccessType]?
     
-    var selectedProviders: [Provider]?
+    private var selectedProviders: [Provider]?
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return providerGroupedByAccessTypes?.count ?? 0

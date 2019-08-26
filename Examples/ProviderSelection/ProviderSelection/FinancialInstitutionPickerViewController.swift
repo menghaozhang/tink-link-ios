@@ -5,8 +5,9 @@ import UIKit
 final class FinancialInstitutionPickerViewController: UITableViewController {
     
     var providerGroupedByFinancialInsititutions: [ProviderGroupedByFinancialInsititution]?
-    var selectedProviderGroupedByAccessTypes: [ProviderGroupedByAccessType]?
-    var selectedProviders: [Provider]?
+
+    private var selectedProviderGroupedByAccessTypes: [ProviderGroupedByAccessType]?
+    private var selectedProviders: [Provider]?
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return providerGroupedByFinancialInsititutions?.count ?? 0

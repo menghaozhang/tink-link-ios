@@ -8,9 +8,10 @@ struct Client {
  */
 final class ProviderListViewController: UITableViewController {
     var providerContext: ProviderContext?
-    var selectedProviderGroupedByFinancialInsititutions: [ProviderGroupedByFinancialInsititution]?
-    var selectedProviderGroupedByAccessTypes: [ProviderGroupedByAccessType]?
-    var selectedProviders: [Provider]?
+
+    private var selectedProviderGroupedByFinancialInsititutions: [ProviderGroupedByFinancialInsititution]?
+    private var selectedProviderGroupedByAccessTypes: [ProviderGroupedByAccessType]?
+    private var selectedProviders: [Provider]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
