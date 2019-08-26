@@ -12,6 +12,7 @@
 		201D5516230AC95D00641102 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 201D5514230AC95D00641102 /* Main.storyboard */; };
 		201D5518230AC95E00641102 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 201D5517230AC95E00641102 /* Assets.xcassets */; };
 		201D551B230AC95E00641102 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 201D5519230AC95E00641102 /* LaunchScreen.storyboard */; };
+		20583EFA2313F47F00799B61 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20583EF92313F47F00799B61 /* Client.swift */; };
 		8FA5F824230BD13800226C02 /* FinancialInstitutionPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F823230BD13800226C02 /* FinancialInstitutionPickerViewController.swift */; };
 		8FA5F826230BE85100226C02 /* AccessTypePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F825230BE85100226C02 /* AccessTypePickerViewController.swift */; };
 		8FA5F828230C069500226C02 /* CredentialTypePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F827230C069500226C02 /* CredentialTypePickerViewController.swift */; };
@@ -37,6 +38,7 @@
 		201D5517230AC95E00641102 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		201D551A230AC95E00641102 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		201D551C230AC95E00641102 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20583EF92313F47F00799B61 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		8FA5F823230BD13800226C02 /* FinancialInstitutionPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialInstitutionPickerViewController.swift; sourceTree = "<group>"; };
 		8FA5F825230BE85100226C02 /* AccessTypePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTypePickerViewController.swift; sourceTree = "<group>"; };
 		8FA5F827230C069500226C02 /* CredentialTypePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialTypePickerViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				8FA5F831230D571A00226C02 /* FieldsValidator.swift */,
+				20583EF92313F47F00799B61 /* Client.swift */,
 				8FBA6C542313DE6600A98BA8 /* Model */,
 				8FBA6C552313DE7200A98BA8 /* Context */,
 			);
@@ -236,6 +239,7 @@
 				8FBA6C5F2313EB2600A98BA8 /* SupplementalInformationDelegationViewController.swift in Sources */,
 				8FA5F826230BE85100226C02 /* AccessTypePickerViewController.swift in Sources */,
 				8FA5F840230FDD1600226C02 /* CredentialContextWithCallBack.swift in Sources */,
+				20583EFA2313F47F00799B61 /* Client.swift in Sources */,
 				8FA5F824230BD13800226C02 /* FinancialInstitutionPickerViewController.swift in Sources */,
 				8FA5F832230D571A00226C02 /* FieldsValidator.swift in Sources */,
 				8FA5F828230C069500226C02 /* CredentialTypePickerViewController.swift in Sources */,
