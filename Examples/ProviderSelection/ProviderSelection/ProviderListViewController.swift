@@ -1,8 +1,5 @@
 import UIKit
 
-struct Client {
-    let clientId: String
-}
 /**
  Example of how to use the provider grouped by names
  */
