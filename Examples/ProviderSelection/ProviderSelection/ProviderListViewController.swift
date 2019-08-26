@@ -8,9 +8,9 @@ struct Client {
  */
 final class ProviderListViewController: UITableViewController {
     var providerContext: ProviderContext?
-    var providerGroupedByFinancialInsititutions: [ProviderGroupedByFinancialInsititution]?
-    var providerGroupedByAccessTypes: [ProviderGroupedByAccessType]?
-    var providers: [Provider]?
+    var selectedProviderGroupedByFinancialInsititutions: [ProviderGroupedByFinancialInsititution]?
+    var selectedProviderGroupedByAccessTypes: [ProviderGroupedByAccessType]?
+    var selectedProviders: [Provider]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,13 +41,13 @@ final class ProviderListViewController: UITableViewController {
         let providerGroup = providerContext!.providerGroupsByGroupedName[indexPath.item]
         switch providerGroup {
         case .financialInsititutions(let providerGroupedByFinancialInsititutions):
-            self.providerGroupedByFinancialInsititutions = providerGroupedByFinancialInsititutions
+            self.selectedProviderGroupedByFinancialInsititutions = providerGroupedByFinancialInsititutions
             showFinancialInstitution(for: providerGroupedByFinancialInsititutions)
         case .multipleAccessTypes(let providerGroupedByAccessTypes):
-            self.providerGroupedByAccessTypes = providerGroupedByAccessTypes
+            self.selectedProviderGroupedByAccessTypes = providerGroupedByAccessTypes
             showAccessTypePicker(for: providerGroupedByAccessTypes)
         case .multipleCredentialTypes(let providers):
-            self.providers = providers
+            self.selectedProviders = providers
             showCredentialTypePicker(for: providers)
         case .singleProvider(let provider):
             showAddCredential(for: provider)
@@ -73,11 +73,11 @@ final class ProviderListViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let financialInstitutionPickerViewController = segue.destination as? FinancialInstitutionPickerViewController {
-            financialInstitutionPickerViewController.providerGroupedByFinancialInsititutions = providerGroupedByFinancialInsititutions
+            financialInstitutionPickerViewController.providerGroupedByFinancialInsititutions = selectedProviderGroupedByFinancialInsititutions
         } else if let accessTypePickerViewController = segue.destination as? AccessTypePickerViewController {
-            accessTypePickerViewController.providerGroupedByAccessTypes = providerGroupedByAccessTypes
+            accessTypePickerViewController.providerGroupedByAccessTypes = selectedProviderGroupedByAccessTypes
         } else if let credentialTypePickerViewController = segue.destination as? CredentialTypePickerViewController  {
-            credentialTypePickerViewController.providers = providers
+            credentialTypePickerViewController.providers = selectedProviders
         }
     }
 }

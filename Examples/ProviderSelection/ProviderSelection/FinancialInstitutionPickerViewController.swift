@@ -5,8 +5,8 @@ import UIKit
 final class FinancialInstitutionPickerViewController: UITableViewController {
     
     var providerGroupedByFinancialInsititutions: [ProviderGroupedByFinancialInsititution]?
-    var providerGroupedByAccessTypes: [ProviderGroupedByAccessType]?
-    var providers: [Provider]?
+    var selectedProviderGroupedByAccessTypes: [ProviderGroupedByAccessType]?
+    var selectedProviders: [Provider]?
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return providerGroupedByFinancialInsititutions?.count ?? 0
@@ -22,16 +22,15 @@ final class FinancialInstitutionPickerViewController: UITableViewController {
         let providersWithSameFinancialInstitution = providerGroupedByFinancialInsititutions![indexPath.row]
         switch providersWithSameFinancialInstitution {
         case .multipleAccessTypes(let providerGroupedByAccessTypes):
-            self.providerGroupedByAccessTypes = providerGroupedByAccessTypes
+            self.selectedProviderGroupedByAccessTypes = providerGroupedByAccessTypes
             showAccessTypePicker(for: providerGroupedByAccessTypes)
         case .multipleCredentialTypes(let providers):
-            self.providers = providers
+            self.selectedProviders = providers
             showCredentialTypePicker(for: providers)
         case .singleProvider(let provider):
             showAddCredential(for: provider)
         }
     }
-    
     
     func showAccessTypePicker(for providerGroup: [ProviderGroupedByAccessType]) {
         performSegue(withIdentifier: "AccessTypePicker", sender: self)
@@ -48,9 +47,9 @@ final class FinancialInstitutionPickerViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let accessTypePickerViewController = segue.destination as? AccessTypePickerViewController {
-            accessTypePickerViewController.providerGroupedByAccessTypes = providerGroupedByAccessTypes
+            accessTypePickerViewController.providerGroupedByAccessTypes = selectedProviderGroupedByAccessTypes
         } else if let credentialTypePickerViewController = segue.destination as? CredentialTypePickerViewController {
-            credentialTypePickerViewController.providers = providers
+            credentialTypePickerViewController.providers = selectedProviders
         }
     }
 }
