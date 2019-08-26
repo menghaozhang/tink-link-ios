@@ -1,3 +1,4 @@
+import Foundation
 import SwiftGRPC
 
 public final class AuthenticationService {
