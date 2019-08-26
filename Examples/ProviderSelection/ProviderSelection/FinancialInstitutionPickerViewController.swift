@@ -22,7 +22,7 @@ final class FinancialInstitutionPickerViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let providersWithSameFinancialInstitution = providerGroupedByFinancialInsititutions![indexPath.row]
         switch providersWithSameFinancialInstitution {
-        case .multupleAccessTypes(let providerGroupedByAccessTypes):
+        case .multipleAccessTypes(let providerGroupedByAccessTypes):
             self.providerGroupedByAccessTypes = providerGroupedByAccessTypes
             showAccessTypePicker(for: providerGroupedByAccessTypes)
         case .multipleCredentialTypes(let providers):

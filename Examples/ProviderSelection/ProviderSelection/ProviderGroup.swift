@@ -80,7 +80,7 @@ enum ProviderGroupedByAccessType {
 enum ProviderGroupedByFinancialInsititution {
     case singleProvider(Provider)
     case multipleCredentialTypes([Provider])
-    case multupleAccessTypes([ProviderGroupedByAccessType])
+    case multipleAccessTypes([ProviderGroupedByAccessType])
     
     init(providers: [Provider]) {
         if providers.count == 1, let provider = providers.first {
@@ -96,14 +96,14 @@ enum ProviderGroupedByFinancialInsititution {
                     let providersWithSameAccessType = providers.filter({ $0.accessType == accessType })
                     providerGroupedByAccessType.append(ProviderGroupedByAccessType(providers: providersWithSameAccessType))
                 }
-                self = .multupleAccessTypes(providerGroupedByAccessType)
+                self = .multipleAccessTypes(providerGroupedByAccessType)
             }
         }
     }
     
     var providers: [Provider] {
         switch self {
-        case .multupleAccessTypes(let providerGroupByAccessTypes):
+        case .multipleAccessTypes(let providerGroupByAccessTypes):
             return providerGroupByAccessTypes.flatMap { $0.providers }
         case .multipleCredentialTypes(let providers):
             return providers
@@ -120,7 +120,7 @@ enum ProviderGroupedByFinancialInsititution {
 enum ProviderGroupedByGroupedName {
     case singleProvider(Provider)
     case multipleCredentialTypes([Provider])
-    case multupleAccessTypes([ProviderGroupedByAccessType])
+    case multipleAccessTypes([ProviderGroupedByAccessType])
     case financialInsititutions([ProviderGroupedByFinancialInsititution])
     
     init(providers: [Provider]) {
@@ -140,7 +140,7 @@ enum ProviderGroupedByGroupedName {
                         let providersWithSameAccessType = providers.filter({ $0.accessType == accessType })
                         providerGroupedByAccessType.append(ProviderGroupedByAccessType(providers: providersWithSameAccessType))
                     }
-                    self = .multupleAccessTypes(providerGroupedByAccessType)
+                    self = .multipleAccessTypes(providerGroupedByAccessType)
                 }
             } else {
                 var providerGroupedByFinancialInstitution = [ProviderGroupedByFinancialInsititution]()
@@ -157,7 +157,7 @@ enum ProviderGroupedByGroupedName {
         switch self {
         case .financialInsititutions(let providerGroupedByFinancialInsititutions):
             return providerGroupedByFinancialInsititutions.flatMap{ $0.providers }
-        case .multupleAccessTypes(let providerGroupByAccessTypes):
+        case .multipleAccessTypes(let providerGroupByAccessTypes):
             return providerGroupByAccessTypes.flatMap { $0.providers }
         case .multipleCredentialTypes(let providers):
             return providers

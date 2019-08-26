@@ -44,7 +44,7 @@ final class ProviderListViewController: UITableViewController {
         case .financialInsititutions(let providerGroupedByFinancialInsititutions):
             self.providerGroupedByFinancialInsititutions = providerGroupedByFinancialInsititutions
             showFinancialInstitution(for: providerGroupedByFinancialInsititutions)
-        case .multupleAccessTypes(let providerGroupedByAccessTypes):
+        case .multipleAccessTypes(let providerGroupedByAccessTypes):
             self.providerGroupedByAccessTypes = providerGroupedByAccessTypes
             showAccessTypePicker(for: providerGroupedByAccessTypes)
         case .multipleCredentialTypes(let providers):
