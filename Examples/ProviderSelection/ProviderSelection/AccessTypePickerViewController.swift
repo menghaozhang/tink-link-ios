@@ -9,6 +9,8 @@ final class AccessTypePickerViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = "Choose Access Type"
+
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
 

@@ -11,6 +11,8 @@ final class ProviderListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        title = "Choose your bank"
         
         //        let client = TinkLink.shared.client
         //        providerContext = TinkLink.shared.makeProviderContext()

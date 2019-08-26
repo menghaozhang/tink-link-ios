@@ -9,6 +9,8 @@ final class FinancialInstitutionPickerViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = "Choose Financial Institution"
+
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
     

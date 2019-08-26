@@ -10,6 +10,8 @@ final class CredentialTypePickerViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = "Choose Credential Type"
+
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
 
