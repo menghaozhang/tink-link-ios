@@ -1,0 +1,447 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		201D5511230AC95D00641102 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D5510230AC95D00641102 /* AppDelegate.swift */; };
+		201D5513230AC95D00641102 /* ProviderListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D5512230AC95D00641102 /* ProviderListViewController.swift */; };
+		201D5516230AC95D00641102 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 201D5514230AC95D00641102 /* Main.storyboard */; };
+		201D5518230AC95E00641102 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 201D5517230AC95E00641102 /* Assets.xcassets */; };
+		201D551B230AC95E00641102 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 201D5519230AC95E00641102 /* LaunchScreen.storyboard */; };
+		8FA5F824230BD13800226C02 /* FinancialInstitutionPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F823230BD13800226C02 /* FinancialInstitutionPickerViewController.swift */; };
+		8FA5F826230BE85100226C02 /* AccessTypePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F825230BE85100226C02 /* AccessTypePickerViewController.swift */; };
+		8FA5F828230C069500226C02 /* CredentialTypePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F827230C069500226C02 /* CredentialTypePickerViewController.swift */; };
+		8FA5F82B230C2C0200226C02 /* ProviderGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F82A230C2C0200226C02 /* ProviderGroup.swift */; };
+		8FA5F830230D36AB00226C02 /* AddCredentialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F82F230D36AB00226C02 /* AddCredentialViewController.swift */; };
+		8FA5F832230D571A00226C02 /* FieldsValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F831230D571A00226C02 /* FieldsValidator.swift */; };
+		8FA5F834230D84B900226C02 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F833230D84B900226C02 /* TextFieldCell.swift */; };
+		8FA5F836230E9DEF00226C02 /* SupplementalInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F835230E9DEF00226C02 /* SupplementalInformationViewController.swift */; };
+		8FA5F838230EC34300226C02 /* ProviderContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F837230EC34300226C02 /* ProviderContext.swift */; };
+		8FA5F83A230EC36600226C02 /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F839230EC36600226C02 /* Credential.swift */; };
+		8FA5F83C230EC38D00226C02 /* CredentialContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F83B230EC38D00226C02 /* CredentialContext.swift */; };
+		8FA5F83E230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F83D230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift */; };
+		8FA5F840230FDD1600226C02 /* CredentialContextWithCallBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F83F230FDD1600226C02 /* CredentialContextWithCallBack.swift */; };
+		8FBA6C5D2313EB2600A98BA8 /* AddCredentialDelegationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBA6C5A2313EB2600A98BA8 /* AddCredentialDelegationViewController.swift */; };
+		8FBA6C5F2313EB2600A98BA8 /* SupplementalInformationDelegationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBA6C5C2313EB2600A98BA8 /* SupplementalInformationDelegationViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		201D550D230AC95D00641102 /* ProviderSelection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProviderSelection.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		201D5510230AC95D00641102 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		201D5512230AC95D00641102 /* ProviderListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderListViewController.swift; sourceTree = "<group>"; };
+		201D5515230AC95D00641102 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		201D5517230AC95E00641102 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		201D551A230AC95E00641102 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		201D551C230AC95E00641102 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8FA5F823230BD13800226C02 /* FinancialInstitutionPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialInstitutionPickerViewController.swift; sourceTree = "<group>"; };
+		8FA5F825230BE85100226C02 /* AccessTypePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTypePickerViewController.swift; sourceTree = "<group>"; };
+		8FA5F827230C069500226C02 /* CredentialTypePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialTypePickerViewController.swift; sourceTree = "<group>"; };
+		8FA5F82A230C2C0200226C02 /* ProviderGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderGroup.swift; sourceTree = "<group>"; };
+		8FA5F82F230D36AB00226C02 /* AddCredentialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCredentialViewController.swift; sourceTree = "<group>"; };
+		8FA5F831230D571A00226C02 /* FieldsValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldsValidator.swift; sourceTree = "<group>"; };
+		8FA5F833230D84B900226C02 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
+		8FA5F835230E9DEF00226C02 /* SupplementalInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementalInformationViewController.swift; sourceTree = "<group>"; };
+		8FA5F837230EC34300226C02 /* ProviderContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderContext.swift; sourceTree = "<group>"; };
+		8FA5F839230EC36600226C02 /* Credential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
+		8FA5F83B230EC38D00226C02 /* CredentialContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialContext.swift; sourceTree = "<group>"; };
+		8FA5F83D230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishedCredentialUpdatedViewController.swift; sourceTree = "<group>"; };
+		8FA5F83F230FDD1600226C02 /* CredentialContextWithCallBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialContextWithCallBack.swift; sourceTree = "<group>"; };
+		8FBA6C5A2313EB2600A98BA8 /* AddCredentialDelegationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCredentialDelegationViewController.swift; sourceTree = "<group>"; };
+		8FBA6C5C2313EB2600A98BA8 /* SupplementalInformationDelegationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupplementalInformationDelegationViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		201D550A230AC95D00641102 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		201D5504230AC95D00641102 = {
+			isa = PBXGroup;
+			children = (
+				201D550F230AC95D00641102 /* ProviderSelection */,
+				201D550E230AC95D00641102 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		201D550E230AC95D00641102 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				201D550D230AC95D00641102 /* ProviderSelection.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		201D550F230AC95D00641102 /* ProviderSelection */ = {
+			isa = PBXGroup;
+			children = (
+				201D5510230AC95D00641102 /* AppDelegate.swift */,
+				8FBA6C562313DE7900A98BA8 /* TinkLink */,
+				201D5512230AC95D00641102 /* ProviderListViewController.swift */,
+				8FA5F823230BD13800226C02 /* FinancialInstitutionPickerViewController.swift */,
+				8FA5F825230BE85100226C02 /* AccessTypePickerViewController.swift */,
+				8FA5F827230C069500226C02 /* CredentialTypePickerViewController.swift */,
+				201D5514230AC95D00641102 /* Main.storyboard */,
+				8FBA6C582313E8A900A98BA8 /* CredentialViewControllers-CallBack */,
+				8FBA6C592313EAB100A98BA8 /* CredentialViewControllers-Delegation */,
+				8FBA6C572313DE8F00A98BA8 /* Cell */,
+				201D5517230AC95E00641102 /* Assets.xcassets */,
+				201D5519230AC95E00641102 /* LaunchScreen.storyboard */,
+				201D551C230AC95E00641102 /* Info.plist */,
+			);
+			path = ProviderSelection;
+			sourceTree = "<group>";
+		};
+		8FBA6C542313DE6600A98BA8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8FA5F82A230C2C0200226C02 /* ProviderGroup.swift */,
+				8FA5F839230EC36600226C02 /* Credential.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8FBA6C552313DE7200A98BA8 /* Context */ = {
+			isa = PBXGroup;
+			children = (
+				8FA5F837230EC34300226C02 /* ProviderContext.swift */,
+				8FA5F83B230EC38D00226C02 /* CredentialContext.swift */,
+				8FA5F83F230FDD1600226C02 /* CredentialContextWithCallBack.swift */,
+			);
+			path = Context;
+			sourceTree = "<group>";
+		};
+		8FBA6C562313DE7900A98BA8 /* TinkLink */ = {
+			isa = PBXGroup;
+			children = (
+				8FA5F831230D571A00226C02 /* FieldsValidator.swift */,
+				8FBA6C542313DE6600A98BA8 /* Model */,
+				8FBA6C552313DE7200A98BA8 /* Context */,
+			);
+			path = TinkLink;
+			sourceTree = "<group>";
+		};
+		8FBA6C572313DE8F00A98BA8 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8FA5F833230D84B900226C02 /* TextFieldCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		8FBA6C582313E8A900A98BA8 /* CredentialViewControllers-CallBack */ = {
+			isa = PBXGroup;
+			children = (
+				8FA5F82F230D36AB00226C02 /* AddCredentialViewController.swift */,
+				8FA5F835230E9DEF00226C02 /* SupplementalInformationViewController.swift */,
+				8FA5F83D230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift */,
+			);
+			path = "CredentialViewControllers-CallBack";
+			sourceTree = "<group>";
+		};
+		8FBA6C592313EAB100A98BA8 /* CredentialViewControllers-Delegation */ = {
+			isa = PBXGroup;
+			children = (
+				8FBA6C5A2313EB2600A98BA8 /* AddCredentialDelegationViewController.swift */,
+				8FBA6C5C2313EB2600A98BA8 /* SupplementalInformationDelegationViewController.swift */,
+			);
+			path = "CredentialViewControllers-Delegation";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		201D550C230AC95D00641102 /* ProviderSelection */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 201D551F230AC95E00641102 /* Build configuration list for PBXNativeTarget "ProviderSelection" */;
+			buildPhases = (
+				201D5509230AC95D00641102 /* Sources */,
+				201D550A230AC95D00641102 /* Frameworks */,
+				201D550B230AC95D00641102 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ProviderSelection;
+			productName = ProviderSelection;
+			productReference = 201D550D230AC95D00641102 /* ProviderSelection.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		201D5505230AC95D00641102 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1030;
+				LastUpgradeCheck = 1030;
+				ORGANIZATIONNAME = Tink;
+				TargetAttributes = {
+					201D550C230AC95D00641102 = {
+						CreatedOnToolsVersion = 10.3;
+					};
+				};
+			};
+			buildConfigurationList = 201D5508230AC95D00641102 /* Build configuration list for PBXProject "ProviderSelection" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 201D5504230AC95D00641102;
+			productRefGroup = 201D550E230AC95D00641102 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				201D550C230AC95D00641102 /* ProviderSelection */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		201D550B230AC95D00641102 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				201D551B230AC95E00641102 /* LaunchScreen.storyboard in Resources */,
+				201D5518230AC95E00641102 /* Assets.xcassets in Resources */,
+				201D5516230AC95D00641102 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		201D5509230AC95D00641102 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8FA5F82B230C2C0200226C02 /* ProviderGroup.swift in Sources */,
+				8FBA6C5D2313EB2600A98BA8 /* AddCredentialDelegationViewController.swift in Sources */,
+				8FA5F838230EC34300226C02 /* ProviderContext.swift in Sources */,
+				8FA5F83C230EC38D00226C02 /* CredentialContext.swift in Sources */,
+				8FA5F83E230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift in Sources */,
+				8FBA6C5F2313EB2600A98BA8 /* SupplementalInformationDelegationViewController.swift in Sources */,
+				8FA5F826230BE85100226C02 /* AccessTypePickerViewController.swift in Sources */,
+				8FA5F840230FDD1600226C02 /* CredentialContextWithCallBack.swift in Sources */,
+				8FA5F824230BD13800226C02 /* FinancialInstitutionPickerViewController.swift in Sources */,
+				8FA5F832230D571A00226C02 /* FieldsValidator.swift in Sources */,
+				8FA5F828230C069500226C02 /* CredentialTypePickerViewController.swift in Sources */,
+				8FA5F834230D84B900226C02 /* TextFieldCell.swift in Sources */,
+				8FA5F830230D36AB00226C02 /* AddCredentialViewController.swift in Sources */,
+				201D5513230AC95D00641102 /* ProviderListViewController.swift in Sources */,
+				201D5511230AC95D00641102 /* AppDelegate.swift in Sources */,
+				8FA5F83A230EC36600226C02 /* Credential.swift in Sources */,
+				8FA5F836230E9DEF00226C02 /* SupplementalInformationViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		201D5514230AC95D00641102 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				201D5515230AC95D00641102 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		201D5519230AC95E00641102 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				201D551A230AC95E00641102 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		201D551D230AC95E00641102 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		201D551E230AC95E00641102 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		201D5520230AC95E00641102 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ProviderSelection/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tink.ProviderSelection;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		201D5521230AC95E00641102 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ProviderSelection/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tink.ProviderSelection;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		201D5508230AC95D00641102 /* Build configuration list for PBXProject "ProviderSelection" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				201D551D230AC95E00641102 /* Debug */,
+				201D551E230AC95E00641102 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		201D551F230AC95E00641102 /* Build configuration list for PBXNativeTarget "ProviderSelection" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				201D5520230AC95E00641102 /* Debug */,
+				201D5521230AC95E00641102 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 201D5505230AC95D00641102 /* Project object */;
+}
