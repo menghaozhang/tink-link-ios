@@ -22,22 +22,7 @@ public final class AuthenticationService {
         var request = GRPCLoginRequest()
         request.authenticationToken = authenticationToken
 
-        let canceller = CallCanceller()
-
-        do {
-            canceller.call = try service.login(request) { (response, result) in
-                if let response = response {
-                    completion(.success(response.sessionID))
-                } else {
-                    let error = RPCError.callError(result)
-                    completion(.failure(error))
-                }
-            }
-        } catch {
-            completion(.failure(error))
-        }
-
-        return canceller
+        return startCall(for: request, method: service.login, responseMap: { $0.sessionID }, completion: completion)
     }
 
     public func register(authenticationToken: String, email: String, locale: Locale, completion: @escaping (Result<String, Error>) -> Void) -> Cancellable {
@@ -46,44 +31,14 @@ public final class AuthenticationService {
         request.email = email
         request.locale = locale.identifier
 
-        let canceller = CallCanceller()
-
-        do {
-            canceller.call = try service.register(request) { (response, result) in
-                if let response = response {
-                    completion(.success(response.sessionID))
-                } else {
-                    let error = RPCError.callError(result)
-                    completion(.failure(error))
-                }
-            }
-        } catch {
-            completion(.failure(error))
-        }
-
-        return canceller
+        return startCall(for: request, method: service.register, responseMap: { $0.sessionID }, completion: completion)
     }
 
     public func logout(autologout: Bool, completion: @escaping (Result<Void, Error>) -> Void) -> Cancellable {
         var request = GRPCLogoutRequest()
         request.autologout = autologout
 
-        let canceller = CallCanceller()
-
-        do {
-            canceller.call = try service.logout(request) { (response, result) in
-                if response != nil {
-                    completion(.success(()))
-                } else {
-                    let error = RPCError.callError(result)
-                    completion(.failure(error))
-                }
-            }
-        } catch {
-            completion(.failure(error))
-        }
-
-        return canceller
+        return startCall(for: request, method: service.logout, responseMap: { _ in return }, completion: completion)
     }
 
     public func describeOAuth2Client(clientID: String, scopes: [String], redirectURL: URL, completion: @escaping (Result<Void, Error>) -> Void) -> Cancellable {
@@ -92,21 +47,6 @@ public final class AuthenticationService {
         request.scopes = scopes
         request.redirectUri = redirectURL.absoluteString
 
-        let canceller = CallCanceller()
-
-        do {
-            canceller.call = try service.describeOAuth2Client(request) { (response, result) in
-                if response != nil {
-                    completion(.success(()))
-                } else {
-                    let error = RPCError.callError(result)
-                    completion(.failure(error))
-                }
-            }
-        } catch {
-            completion(.failure(error))
-        }
-
-        return canceller
+        return startCall(for: request, method: service.describeOAuth2Client, responseMap: { _ in return }, completion: completion)
     }
 }
