@@ -25,6 +25,8 @@
 		8FA5F83C230EC38D00226C02 /* CredentialContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F83B230EC38D00226C02 /* CredentialContext.swift */; };
 		8FA5F83E230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F83D230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift */; };
 		8FA5F840230FDD1600226C02 /* CredentialContextWithCallBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F83F230FDD1600226C02 /* CredentialContextWithCallBack.swift */; };
+		8FBA6C5D2313EB2600A98BA8 /* AddCredentialDelegationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBA6C5A2313EB2600A98BA8 /* AddCredentialDelegationViewController.swift */; };
+		8FBA6C5F2313EB2600A98BA8 /* SupplementalInformationDelegationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBA6C5C2313EB2600A98BA8 /* SupplementalInformationDelegationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		8FA5F83B230EC38D00226C02 /* CredentialContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialContext.swift; sourceTree = "<group>"; };
 		8FA5F83D230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishedCredentialUpdatedViewController.swift; sourceTree = "<group>"; };
 		8FA5F83F230FDD1600226C02 /* CredentialContextWithCallBack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialContextWithCallBack.swift; sourceTree = "<group>"; };
+		8FBA6C5A2313EB2600A98BA8 /* AddCredentialDelegationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCredentialDelegationViewController.swift; sourceTree = "<group>"; };
+		8FBA6C5C2313EB2600A98BA8 /* SupplementalInformationDelegationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupplementalInformationDelegationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +92,7 @@
 				8FA5F827230C069500226C02 /* CredentialTypePickerViewController.swift */,
 				201D5514230AC95D00641102 /* Main.storyboard */,
 				8FBA6C582313E8A900A98BA8 /* CredentialViewControllers-CallBack */,
+				8FBA6C592313EAB100A98BA8 /* CredentialViewControllers-Delegation */,
 				8FBA6C572313DE8F00A98BA8 /* Cell */,
 				201D5517230AC95E00641102 /* Assets.xcassets */,
 				201D5519230AC95E00641102 /* LaunchScreen.storyboard */,
@@ -141,6 +146,15 @@
 				8FA5F83D230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift */,
 			);
 			path = "CredentialViewControllers-CallBack";
+			sourceTree = "<group>";
+		};
+		8FBA6C592313EAB100A98BA8 /* CredentialViewControllers-Delegation */ = {
+			isa = PBXGroup;
+			children = (
+				8FBA6C5A2313EB2600A98BA8 /* AddCredentialDelegationViewController.swift */,
+				8FBA6C5C2313EB2600A98BA8 /* SupplementalInformationDelegationViewController.swift */,
+			);
+			path = "CredentialViewControllers-Delegation";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,9 +229,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FA5F82B230C2C0200226C02 /* ProviderGroup.swift in Sources */,
+				8FBA6C5D2313EB2600A98BA8 /* AddCredentialDelegationViewController.swift in Sources */,
 				8FA5F838230EC34300226C02 /* ProviderContext.swift in Sources */,
 				8FA5F83C230EC38D00226C02 /* CredentialContext.swift in Sources */,
 				8FA5F83E230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift in Sources */,
+				8FBA6C5F2313EB2600A98BA8 /* SupplementalInformationDelegationViewController.swift in Sources */,
 				8FA5F826230BE85100226C02 /* AccessTypePickerViewController.swift in Sources */,
 				8FA5F840230FDD1600226C02 /* CredentialContextWithCallBack.swift in Sources */,
 				8FA5F824230BD13800226C02 /* FinancialInstitutionPickerViewController.swift in Sources */,

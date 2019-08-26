@@ -3,9 +3,10 @@ import UIKit
 /**
  Example of how to use the provider field specification to add credential
  */
-final class AddCredentialViewController: UITableViewController {
-    var credentialContext: CredentialContextWithCallBack?
+final class AddCredentialDelegationViewController: UITableViewController {
+    var credentialContext: CredentialContext?
     var provider: Provider
+    var credential: Credential?
     
     init(provider: Provider) {
         self.provider = provider
@@ -20,12 +21,12 @@ final class AddCredentialViewController: UITableViewController {
         super.viewDidLoad()
         
         let client = Client(clientId: "123")
-        credentialContext = CredentialContextWithCallBack(client: client)
+        credentialContext = CredentialContext(client: client)
+        credentialContext?.delegate = self
         
         tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
         tableView.allowsSelection = false
         
-        navigationItem.title = "Enter your credentials"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonPressed(_:)))
     }
     
@@ -51,37 +52,13 @@ final class AddCredentialViewController: UITableViewController {
         case .failure(let error):
             print(error)
         case .success(let fieldValues):
-            credentialContext?.addCredential(for: provider, fields: fieldValues, progressHandler: { status in
-                switch status {
-                case .authenticating, .created:
-                    break
-                case .awaitingSupplementalInformation(let supplementalInformation):
-                    self.showSupplementalInformation(for: supplementalInformation)
-                case .awaitingThirdPartyAppAuthentication(let thirdPartyURL):
-                    UIApplication.shared.open(thirdPartyURL, options: [:], completionHandler: { success in
-                        if !success {
-                            // Open download page
-                        }
-                    })
-                case .updating(let status):
-                    break
-                }
-            }, completion: { result in
-                switch result {
-                case .failure:
-                    // Show error
-                    break
-                case .success(let credential):
-                    self.showCredentialUpdated(for: credential)
-                }
-            })
+            credentialContext?.createCredential(for: provider, fields: fieldValues)
         }
     }
     
-    private func showSupplementalInformation(for supplementalInformation: SupplementalInformationContext) {
-        let supplementalInformationViewController = SupplementalInformationViewController(supplementalInformation: supplementalInformation)
-        supplementalInformationViewController.delegate = self
-        show(supplementalInformationViewController, sender: self)
+    private func showSupplementalInformation(for credential: Credential) {
+        let supplementalInformationDelegationViewController = SupplementalInformationDelegationViewController(credential: credential)
+        show(supplementalInformationDelegationViewController, sender: self)
     }
     
     private func showCredentialUpdated(for credential: Credential) {
@@ -90,7 +67,7 @@ final class AddCredentialViewController: UITableViewController {
     }
 }
 
-extension AddCredentialViewController: TextFieldCellDelegate {
+extension AddCredentialDelegationViewController: TextFieldCellDelegate {
     func textFieldCell(_ cell: TextFieldCell, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let textField = cell.textField
         if let value = (textField.text as NSString?)?.replacingCharacters(in: range, with: string), let indexPath = tableView.indexPath(for: cell), !value.isEmpty {
@@ -107,9 +84,36 @@ extension AddCredentialViewController: TextFieldCellDelegate {
     }
 }
 
-extension AddCredentialViewController: SupplementalInformationViewControllerDelegate {
-    func supplementInformationViewController(_ viewController: SupplementalInformationViewController, didSupplementCredential credential: SupplementalInformationContext) {
+extension AddCredentialDelegationViewController: SupplementalInformationDelegationViewControllerDelegate {
+    func supplementInformationViewController(_ viewController: SupplementalInformationDelegationViewController, didSupplementCredential credential: Credential) {
         navigationController?.popToViewController(self, animated: false)
         // Maybe show loading
+    }
+}
+
+extension AddCredentialDelegationViewController: CredentialContextDelegate {
+    func credentialContext(_ context: CredentialContext, didChangeStatusForCredential credential: Credential) {
+//        navigationController?.popToViewController(self, animated: false)
+    }
+    
+    func credentialContext(_ context: CredentialContext, awaitingSupplementalInformation credential: Credential) {
+        self.credential = credential
+        showSupplementalInformation(for: credential)
+    }
+    
+    func credentialContext(_ context: CredentialContext, awaitingThirdPartyAppAuthentication credential: Credential) {
+        //        UIApplication.shared.open(credential, options: <#T##[UIApplication.OpenExternalURLOptionsKey : Any]#>, completionHandler: <#T##((Bool) -> Void)?##((Bool) -> Void)?##(Bool) -> Void#>)
+    }
+    
+    func credentialContext(_ context: CredentialContext, didStartUpdatingCredential credential: Credential) {
+        // Backend updating, multiple call expected, update accordingly
+    }
+    
+    func credentialContext(_ context: CredentialContext, didFinishUpdatingCredential credential: Credential) {
+        showCredentialUpdated(for: credential)
+    }
+    
+    func credentialContext(_ context: CredentialContext, didReceiveErrorForCredential credential: Credential) {
+        present(UIAlertController(title: "credential error", message: "", preferredStyle: .alert), animated: true)
     }
 }
