@@ -81,12 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				201D5510230AC95D00641102 /* AppDelegate.swift */,
-				8FA5F82A230C2C0200226C02 /* ProviderGroup.swift */,
-				8FA5F839230EC36600226C02 /* Credential.swift */,
-				8FA5F837230EC34300226C02 /* ProviderContext.swift */,
-				8FA5F83B230EC38D00226C02 /* CredentialContext.swift */,
-				8FA5F83F230FDD1600226C02 /* CredentialContextWithCallBack.swift */,
-				8FA5F831230D571A00226C02 /* FieldsValidator.swift */,
+				8FBA6C562313DE7900A98BA8 /* TinkLink */,
 				201D5512230AC95D00641102 /* ProviderListViewController.swift */,
 				8FA5F823230BD13800226C02 /* FinancialInstitutionPickerViewController.swift */,
 				8FA5F825230BE85100226C02 /* AccessTypePickerViewController.swift */,
@@ -94,13 +89,51 @@
 				8FA5F82F230D36AB00226C02 /* AddCredentialViewController.swift */,
 				8FA5F835230E9DEF00226C02 /* SupplementalInformationViewController.swift */,
 				8FA5F83D230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift */,
-				8FA5F833230D84B900226C02 /* TextFieldCell.swift */,
+				8FBA6C572313DE8F00A98BA8 /* Cell */,
 				201D5514230AC95D00641102 /* Main.storyboard */,
 				201D5517230AC95E00641102 /* Assets.xcassets */,
 				201D5519230AC95E00641102 /* LaunchScreen.storyboard */,
 				201D551C230AC95E00641102 /* Info.plist */,
+				8FBA6C512310240B00A98BA8 /* ProviderGroup.xcdatamodeld */,
 			);
 			path = ProviderSelection;
+			sourceTree = "<group>";
+		};
+		8FBA6C542313DE6600A98BA8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8FA5F82A230C2C0200226C02 /* ProviderGroup.swift */,
+				8FA5F839230EC36600226C02 /* Credential.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8FBA6C552313DE7200A98BA8 /* Context */ = {
+			isa = PBXGroup;
+			children = (
+				8FA5F837230EC34300226C02 /* ProviderContext.swift */,
+				8FA5F83B230EC38D00226C02 /* CredentialContext.swift */,
+				8FA5F83F230FDD1600226C02 /* CredentialContextWithCallBack.swift */,
+			);
+			path = Context;
+			sourceTree = "<group>";
+		};
+		8FBA6C562313DE7900A98BA8 /* TinkLink */ = {
+			isa = PBXGroup;
+			children = (
+				8FA5F831230D571A00226C02 /* FieldsValidator.swift */,
+				8FBA6C542313DE6600A98BA8 /* Model */,
+				8FBA6C552313DE7200A98BA8 /* Context */,
+			);
+			path = TinkLink;
+			sourceTree = "<group>";
+		};
+		8FBA6C572313DE8F00A98BA8 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8FA5F833230D84B900226C02 /* TextFieldCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
