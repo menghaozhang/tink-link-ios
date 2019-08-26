@@ -115,6 +115,10 @@ enum ProviderGroupedByFinancialInsititution {
     var financialInsititutionID: String? {
         return providers.first?.financialInstitutionID
     }
+    
+    func filter(predicate: (Provider) -> Bool) -> [Provider] {
+        return providers.filter(predicate)
+    }
 }
 
 enum ProviderGroupedByGroupedName {

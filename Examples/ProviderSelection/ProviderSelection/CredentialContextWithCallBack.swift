@@ -1,11 +1,30 @@
 import Foundation
 
+class SupplementalInformationContext {
+    init(credentialContext: CredentialContextWithCallBack, credential: Credential) {
+        self.credential = credential
+        field = credential.supplementalInformationFields
+        self.credentialContext = credentialContext
+    }
+    weak var credentialContext: CredentialContextWithCallBack?
+    private var credential: Credential
+    var field: [Provider.FieldSpecification]
+    
+    func submitUpdate() {
+        credentialContext?.addSupplementalInformation(for: credential, supplementalInformationFields: [:])
+    }
+    
+    func cancelUpdate() {
+        
+    }
+}
+
 class CredentialContextWithCallBack {
     enum AddCredentialStatus {
         case created
         case authenticating
         case updating(status: String)
-        case awaitingSupplementalInformation(supplementalInformation: [Provider.FieldSpecification], update: ([String: String]) -> Void)
+        case awaitingSupplementalInformation(supplementalInformation: SupplementalInformationContext)
         case awaitingThirdPartyAppAuthentication(thirdPartyURL: URL)
     }
     
@@ -16,11 +35,16 @@ class CredentialContextWithCallBack {
     }
     
     private var credentials: [String: Credential] = [:]
+    private var progressHandlers: [String: (AddCredentialStatus) -> Void] = [:]
+    private var completions: [String: (Result<Credential, Error>) -> Void] = [:]
     
-    func addCredential(for provider: Provider, fields: [String: String], progressHandler: @escaping(AddCredentialStatus) -> Void,  completion: @escaping(Result<Credential, Error>) -> Void) {
+    func addCredential(for provider: Provider, fields: [String: String], progressHandler: @escaping (AddCredentialStatus) -> Void,  completion: @escaping(Result<Credential, Error>) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             
             var credential = Credential(id: "1", type: provider.credentialType, status: .created, providerName: provider.name, sessionExpiryDate: nil, supplementalInformationFields: [], fields: fields)
+            self.credentials[credential.id] = credential
+            self.progressHandlers[credential.id] = progressHandler
+            self.completions[credential.id] = completion
             progressHandler(.created)
             // observe changes
             
@@ -28,31 +52,34 @@ class CredentialContextWithCallBack {
                 credential.status = .awaitingSupplementalInformation
                 credential.supplementalInformationFields = [Provider.inputCodeFieldSpecification]
                 progressHandler(
-                    .awaitingSupplementalInformation(supplementalInformation: [Provider.inputCodeFieldSpecification],
-                                                     update: { fields in
-                                                        self.addSupplementalInformation(for: credential, supplementalInformationFields: fields)
-                                                    })
+                    .awaitingSupplementalInformation(supplementalInformation: SupplementalInformationContext(credentialContext: self, credential: credential))
                 )
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-                    credential.status = .updating
-                    progressHandler(.updating(status: "Analysing"))
-                    // After multiple updates
-                    // Credential updated
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                        credential.status = .updated
-                        completion(.success(credential))
-                    })
-                })
             })
         }
     }
     
-    func addSupplementalInformation(for credential: Credential, supplementalInformationFields: [String: String]) {
-        
+    fileprivate func addSupplementalInformation(for credential: Credential, supplementalInformationFields: [String: String]) {
+        var credential = credentials[credential.id]!
+        let progressHandler = progressHandlers[credential.id]!
+        let completion = completions[credential.id]!
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+            credential.status = .updating
+            progressHandler(.updating(status: "Analysing 50%"))
+            // After multiple updates
+            // Credential updated
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                credential.status = .updating
+                progressHandler(.updating(status: "Analysing 80%"))
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                    credential.status = .updated
+                    completion(.success(credential))
+                })
+            })
+        })
     }
 }
 
+import UIKit
 
 class AddCredentialController {
     var credentialContextWithCallBack = CredentialContextWithCallBack(client: Client(clientId: "test"))
@@ -60,15 +87,24 @@ class AddCredentialController {
     func addCredential(for provider: Provider) {
         credentialContextWithCallBack.addCredential(for: provider, fields: [:], progressHandler: { addCredentialStatus in
             switch addCredentialStatus {
-            case let .awaitingSupplementalInformation(supplementalInformation, update):
+            case let .awaitingSupplementalInformation(supplementalInformation):
                 // Do something to update the supplementalInformation
-                let result = supplementalInformation.createCredentialValues()
+                let result = supplementalInformation.field.createCredentialValues()
                 switch result {
                 case .failure:
                     break
-                case .success(let updatedFields):
-                    update(updatedFields)
+                case .success:
+                    supplementalInformation.submitUpdate()
                 }
+            case .awaitingThirdPartyAppAuthentication(let thirdPartyURL):
+                UIApplication.shared.open(thirdPartyURL, options: [:], completionHandler: { success in
+                    if !success {
+                        // open download page
+                    }
+                })
+            case .updating(let status):
+                // Update status
+                break
             default:
                 break
             }
