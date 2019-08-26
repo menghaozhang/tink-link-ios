@@ -48,8 +48,8 @@ final class AddCredentialViewController: UITableViewController {
     
     @objc private func doneButtonPressed(_ sender: UIBarButtonItem) {
         switch provider.fields.createCredentialValues() {
-        case .failure(let error):
-            print(error)
+        case .failure(let fieldSpecificationsError):
+            print(fieldSpecificationsError.errors)
         case .success(let fieldValues):
             credentialContext?.addCredential(for: provider, fields: fieldValues, progressHandler: { status in
                 switch status {
@@ -93,7 +93,7 @@ final class AddCredentialViewController: UITableViewController {
 extension AddCredentialViewController: TextFieldCellDelegate {
     func textFieldCell(_ cell: TextFieldCell, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let textField = cell.textField
-        if let value = (textField.text as NSString?)?.replacingCharacters(in: range, with: string), let indexPath = tableView.indexPath(for: cell), !value.isEmpty {
+        if let value = (textField.text as NSString?)?.replacingCharacters(in: range, with: string), let indexPath = tableView.indexPath(for: cell) {
             provider.fields[indexPath.item].value = value
             let result = provider.fields[indexPath.item].validatedValue()
             switch result {

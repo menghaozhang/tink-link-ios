@@ -50,8 +50,8 @@ final class SupplementalInformationViewController: UITableViewController {
     @objc private func doneButtonPressed(_ sender: UIBarButtonItem) {
         tableView.resignFirstResponder()
         switch supplementalInformation!.fields.createCredentialValues() {
-        case .failure(let error):
-            print(error)
+        case .failure(let fieldSpecificationsError):
+            print(fieldSpecificationsError.errors)
         case .success:
             supplementalInformation?.submitUpdate()
             self.delegate?.supplementInformationViewController(self, didSupplementCredential: supplementalInformation!)
@@ -62,7 +62,7 @@ final class SupplementalInformationViewController: UITableViewController {
 extension SupplementalInformationViewController: TextFieldCellDelegate {
     func textFieldCell(_ cell: TextFieldCell, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let textField = cell.textField
-        if let value = (textField.text as NSString?)?.replacingCharacters(in: range, with: string), let indexPath = tableView.indexPath(for: cell), !value.isEmpty {
+        if let value = (textField.text as NSString?)?.replacingCharacters(in: range, with: string), let indexPath = tableView.indexPath(for: cell) {
             supplementalInformation!.fields[indexPath.item].value = value
             let field = supplementalInformation!.fields[indexPath.item]
             let result = field.validatedValue()

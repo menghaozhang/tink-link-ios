@@ -20,15 +20,20 @@ extension Provider.FieldSpecification {
 }
 
 extension Array where Element == Provider.FieldSpecification {
-    func createCredentialValues() -> Result<[String: String], FieldSpecificationError> {
-        do {
-            try self.forEach { try $0.validatedValue().get() }
-        } catch (let error as FieldSpecificationError) {
-            return .failure(error)
-        } catch {
-            fatalError()
+    func createCredentialValues() -> Result<[String: String], FieldSpecificationsError> {
+        var fieldSpecificationsError = FieldSpecificationsError(errors: [])
+        var fieldValus = [String: String]()
+        self.forEach {
+            switch $0.validatedValue() {
+            case .failure(let error):
+                fieldSpecificationsError.errors.append(error)
+            case .success(let value):
+                fieldValus[$0.name] = value
+            }
         }
-        let fieldValus = self.reduce(into: [String: String]()) { $0[$1.name] = $1.value }
+        if fieldSpecificationsError.errors.count > 0 {
+            return .failure(fieldSpecificationsError)
+        }
         return .success(fieldValus)
     }
 }
@@ -43,5 +48,5 @@ public enum FieldSpecificationError: Error {
 
 // TODO: FieldSpecificationsError description
 struct FieldSpecificationsError: Error {
-    let errors: [FieldSpecificationError]
+    var errors: [FieldSpecificationError]
 }
