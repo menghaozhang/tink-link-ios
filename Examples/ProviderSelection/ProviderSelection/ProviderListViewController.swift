@@ -9,10 +9,6 @@ struct Client {
 final class ProviderListViewController: UITableViewController {
     var providerContext: ProviderContext?
 
-    private var selectedProviderGroupedByFinancialInsititutions: [ProviderGroupedByFinancialInsititution]?
-    private var selectedProviderGroupedByAccessTypes: [ProviderGroupedByAccessType]?
-    private var selectedProviders: [Provider]?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,13 +40,10 @@ final class ProviderListViewController: UITableViewController {
         let providerGroup = providerContext!.providerGroupsByGroupedName[indexPath.item]
         switch providerGroup {
         case .financialInsititutions(let providerGroupedByFinancialInsititutions):
-            self.selectedProviderGroupedByFinancialInsititutions = providerGroupedByFinancialInsititutions
             showFinancialInstitution(for: providerGroupedByFinancialInsititutions)
         case .multipleAccessTypes(let providerGroupedByAccessTypes):
-            self.selectedProviderGroupedByAccessTypes = providerGroupedByAccessTypes
             showAccessTypePicker(for: providerGroupedByAccessTypes)
         case .multipleCredentialTypes(let providers):
-            self.selectedProviders = providers
             showCredentialTypePicker(for: providers)
         case .singleProvider(let provider):
             showAddCredential(for: provider)

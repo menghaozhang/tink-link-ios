@@ -6,8 +6,6 @@ final class AccessTypePickerViewController: UITableViewController {
     
     var providerGroupedByAccessTypes: [ProviderGroupedByAccessType]?
     
-    private var selectedProviders: [Provider]?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,7 +27,6 @@ final class AccessTypePickerViewController: UITableViewController {
         let providersWithSameAccessType = providerGroupedByAccessTypes![indexPath.row]
         switch providersWithSameAccessType {
         case .multipleCredentialTypes(let providers):
-            self.selectedProviders = providers
             showCredentialTypePicker(for: providers)
         case .singleProvider(let provider):
             showAddCredential(for: provider)

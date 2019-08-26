@@ -6,8 +6,6 @@ final class FinancialInstitutionPickerViewController: UITableViewController {
     
     var providerGroupedByFinancialInsititutions: [ProviderGroupedByFinancialInsititution]?
 
-    private var selectedProviderGroupedByAccessTypes: [ProviderGroupedByAccessType]?
-    private var selectedProviders: [Provider]?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,10 +26,8 @@ final class FinancialInstitutionPickerViewController: UITableViewController {
         let providersWithSameFinancialInstitution = providerGroupedByFinancialInsititutions![indexPath.row]
         switch providersWithSameFinancialInstitution {
         case .multipleAccessTypes(let providerGroupedByAccessTypes):
-            self.selectedProviderGroupedByAccessTypes = providerGroupedByAccessTypes
             showAccessTypePicker(for: providerGroupedByAccessTypes)
         case .multipleCredentialTypes(let providers):
-            self.selectedProviders = providers
             showCredentialTypePicker(for: providers)
         case .singleProvider(let provider):
             showAddCredential(for: provider)

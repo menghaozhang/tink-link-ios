@@ -6,7 +6,7 @@ import UIKit
 final class CredentialTypePickerViewController: UITableViewController {
     
     var providers: [Provider]?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
