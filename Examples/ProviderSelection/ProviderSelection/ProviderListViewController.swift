@@ -25,6 +25,8 @@ final class ProviderListViewController: UITableViewController {
         providerContext?.delegate = self
         //        providerContext.types = []
         //        providerContext.performFetch()
+
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

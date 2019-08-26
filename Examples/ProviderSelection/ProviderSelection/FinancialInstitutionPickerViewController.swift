@@ -8,6 +8,11 @@ final class FinancialInstitutionPickerViewController: UITableViewController {
 
     private var selectedProviderGroupedByAccessTypes: [ProviderGroupedByAccessType]?
     private var selectedProviders: [Provider]?
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return providerGroupedByFinancialInsititutions?.count ?? 0
