@@ -1,8 +1,6 @@
 import UIKit
 
 protocol TextFieldCellDelegate: AnyObject {
-    func textFieldCell(_ cell: TextFieldCell, DidBeginEditing textField: UITextField)
-    func textFieldCell(_ cell: TextFieldCell, DidEndEditing textField: UITextField)
     func textFieldCell(_ cell: TextFieldCell, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
 }
 
@@ -49,17 +47,7 @@ class TextFieldCell: UITableViewCell, UITextFieldDelegate {
             ])
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.textColor = .black
-        delegate?.textFieldCell(self, DidBeginEditing: textField)
-    }
-    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         return delegate?.textFieldCell(self, shouldChangeCharactersIn: range, replacementString: string) ?? true
     }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        delegate?.textFieldCell(self, DidEndEditing: textField)
-    }
-    
 }

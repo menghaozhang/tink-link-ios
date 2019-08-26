@@ -7,8 +7,6 @@ final class AddCredentialViewController: UITableViewController {
     var credentialContext: CredentialContextWithCallBack?
     var provider: Provider?
     var supplementalInformation: SupplementalInformationContext?
-    // TODO: find a better way to check the input field
-    var textFields: [UITextField] = []
     var credential: Credential?
     
     override func viewDidLoad() {
@@ -30,7 +28,6 @@ final class AddCredentialViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldCell.reuseIdentifier, for: indexPath)
         if let textFieldCell = cell as? TextFieldCell, let field = provider?.fields[indexPath.item] {
-            textFields.append(textFieldCell.textField)
             textFieldCell.delegate = self
             textFieldCell.textField.placeholder = field.fieldDescription
             textFieldCell.textField.isSecureTextEntry = field.isMasked
@@ -50,7 +47,6 @@ final class AddCredentialViewController: UITableViewController {
     }
     
     @objc private func doneButtonPressed(_ sender: UIBarButtonItem) {
-        textFields.forEach { $0.resignFirstResponder() }
         switch provider!.fields.createCredentialValues() {
         case .failure(let error):
             print(error)
@@ -88,17 +84,16 @@ final class AddCredentialViewController: UITableViewController {
     }
     
     private func showCredentialUpdated(for credential: Credential) {
+        self.credential = credential
         performSegue(withIdentifier: "CredentialUpdated", sender: self)
     }
 }
 
 extension AddCredentialViewController: TextFieldCellDelegate {
-    func textFieldCell(_ cell: TextFieldCell, DidBeginEditing textField: UITextField) {
-    }
-    
-    func textFieldCell(_ cell: TextFieldCell, DidEndEditing textField: UITextField) {
-        if let indexPath = tableView.indexPath(for: cell) {
-            provider!.fields[indexPath.item].value = textField.text ?? ""
+    func textFieldCell(_ cell: TextFieldCell, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let textField = cell.textField
+        if let value = (textField.text as NSString?)?.replacingCharacters(in: range, with: string), let indexPath = tableView.indexPath(for: cell), !value.isEmpty {
+            provider!.fields[indexPath.item].value = value ?? ""
             let result = provider!.fields[indexPath.item].validatedValue()
             switch result {
             case .failure:
@@ -107,6 +102,7 @@ extension AddCredentialViewController: TextFieldCellDelegate {
                 textField.textColor = .green
             }
         }
+        return true
     }
 }
 
