@@ -4,8 +4,9 @@ import UIKit
  Example of how to use the provider field specification to add credential
  */
 final class AddCredentialViewController: UITableViewController {
-    var credentialContext: CredentialContext?
+    var credentialContext: CredentialContextWithCallBack?
     var provider: Provider?
+    var supplementalInformation: SupplementalInformationContext?
     // TODO: find a better way to check the input field
     var textFields: [UITextField] = []
     var credential: Credential?
@@ -14,8 +15,7 @@ final class AddCredentialViewController: UITableViewController {
         super.viewDidLoad()
         
         let client = Client(clientId: "123")
-        credentialContext = CredentialContext(client: client)
-        credentialContext?.delegate = self
+        credentialContext = CredentialContextWithCallBack(client: client)
         
         tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
         tableView.allowsSelection = false
@@ -42,8 +42,8 @@ final class AddCredentialViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let supplementalInformationViewController = segue.destination as? SupplementalInformationViewController {
-            supplementalInformationViewController.credential = credential
-            supplementalInformationViewController.credentialContext = credentialContext
+            supplementalInformationViewController.supplementalInformation = supplementalInformation
+            supplementalInformationViewController.delegate = self
         } else if let finishedCredentialUpdatedViewController = segue.destination as? FinishedCredentialUpdatedViewController {
             finishedCredentialUpdatedViewController.credential = credential
         }
@@ -55,11 +55,35 @@ final class AddCredentialViewController: UITableViewController {
         case .failure(let error):
             print(error)
         case .success(let fieldValues):
-            credentialContext?.createCredential(for: provider!, fields: fieldValues)
+            credentialContext?.addCredential(for: provider!, fields: fieldValues, progressHandler: { status in
+                switch status {
+                case .authenticating, .created:
+                    break
+                case .awaitingSupplementalInformation(let supplementalInformation):
+                    self.showSupplementalInformation(for: supplementalInformation)
+                case .awaitingThirdPartyAppAuthentication(let thirdPartyURL):
+                    UIApplication.shared.open(thirdPartyURL, options: [:], completionHandler: { success in
+                        if !success {
+                            // Open download page
+                        }
+                    })
+                case .updating(let status):
+                    break
+                }
+            }, completion: { result in
+                switch result {
+                case .failure:
+                    // Show error
+                    break
+                case .success(let credential):
+                    self.showCredentialUpdated(for: credential)
+                }
+            })
         }
     }
     
-    private func showSupplementalInformation(for credential: Credential) {
+    private func showSupplementalInformation(for supplementalInformation: SupplementalInformationContext) {
+        self.supplementalInformation = supplementalInformation
         performSegue(withIdentifier: "AddSupplementalInformation", sender: self)
     }
     
@@ -87,7 +111,7 @@ extension AddCredentialViewController: TextFieldCellDelegate {
 }
 
 extension AddCredentialViewController: SupplementalInformationViewControllerDelegate {
-    func supplementInformationViewController(_ viewController: SupplementalInformationViewController, didSupplementCredential credential: Credential) {
+    func supplementInformationViewController(_ viewController: SupplementalInformationViewController, didSupplementCredential credential: SupplementalInformationContext) {
         navigationController?.popToViewController(self, animated: false)
         // Maybe show loading
     }
@@ -100,7 +124,7 @@ extension AddCredentialViewController: CredentialContextDelegate {
     
     func credentialContext(_ context: CredentialContext, awaitingSupplementalInformation credential: Credential) {
         self.credential = credential
-        showSupplementalInformation(for: credential)
+//        showSupplementalInformation(for: credential)
     }
     
     func credentialContext(_ context: CredentialContext, awaitingThirdPartyAppAuthentication credential: Credential) {

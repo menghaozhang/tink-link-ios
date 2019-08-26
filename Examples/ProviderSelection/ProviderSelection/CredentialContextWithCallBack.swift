@@ -3,12 +3,12 @@ import Foundation
 class SupplementalInformationContext {
     init(credentialContext: CredentialContextWithCallBack, credential: Credential) {
         self.credential = credential
-        field = credential.supplementalInformationFields
+        fields = credential.supplementalInformationFields
         self.credentialContext = credentialContext
     }
     weak var credentialContext: CredentialContextWithCallBack?
     private var credential: Credential
-    var field: [Provider.FieldSpecification]
+    var fields: [Provider.FieldSpecification]
     
     func submitUpdate() {
         credentialContext?.addSupplementalInformation(for: credential, supplementalInformationFields: [:])
@@ -77,6 +77,16 @@ class CredentialContextWithCallBack {
             })
         })
     }
+    
+    fileprivate func cancelSupplementInformation(for credentialID: String) {
+        guard let completion = completions[credentialID] else {
+            return
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            let error = NSError(domain: "User cancelled", code: NSURLErrorCancelled)
+            completion(.failure(error))
+        }
+    }
 }
 
 import UIKit
@@ -89,7 +99,7 @@ class AddCredentialController {
             switch addCredentialStatus {
             case let .awaitingSupplementalInformation(supplementalInformation):
                 // Do something to update the supplementalInformation
-                let result = supplementalInformation.field.createCredentialValues()
+                let result = supplementalInformation.fields.createCredentialValues()
                 switch result {
                 case .failure:
                     break

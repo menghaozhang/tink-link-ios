@@ -4,13 +4,12 @@ import UIKit
  Example of how to use the credential field supplementa information to update credential
  */
 protocol SupplementalInformationViewControllerDelegate: AnyObject {
-    func supplementInformationViewController(_ viewController: SupplementalInformationViewController, didSupplementCredential credential: Credential)
+    func supplementInformationViewController(_ viewController: SupplementalInformationViewController, didSupplementCredential credential: SupplementalInformationContext)
 }
 
 final class SupplementalInformationViewController: UITableViewController {
     
-    var credentialContext: CredentialContext?
-    var credential: Credential?
+    var supplementalInformation: SupplementalInformationContext?
     
     weak var delegate: SupplementalInformationViewControllerDelegate?
     
@@ -25,12 +24,12 @@ final class SupplementalInformationViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return credential!.supplementalInformationFields.count
+        return supplementalInformation!.fields.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldCell.reuseIdentifier, for: indexPath)
-        if let textFieldCell = cell as? TextFieldCell, let field = credential?.supplementalInformationFields[indexPath.item] {
+        if let textFieldCell = cell as? TextFieldCell, let field = supplementalInformation?.fields[indexPath.item] {
             textFields.append(textFieldCell.textField)
             textFieldCell.delegate = self
             textFieldCell.textField.placeholder = field.fieldDescription
@@ -42,15 +41,13 @@ final class SupplementalInformationViewController: UITableViewController {
     }
     
     @objc private func doneButtonPressed(_ sender: UIBarButtonItem) {
-        textFields.forEach { $0.resignFirstResponder() }
-        switch credential!.supplementalInformationFields.createCredentialValues() {
+        textFields.forEach { $0.resignFirstResponder() }  
+        switch supplementalInformation!.fields.createCredentialValues() {
         case .failure(let error):
             print(error)
-        case .success(let fieldValues):
-            credentialContext?.supplementInformation(credentialID: credential!.id, fields: fieldValues, completion: { [weak self] credential in
-                self?.delegate?.supplementInformationViewController(self!, didSupplementCredential: credential)
-            })
-
+        case .success:
+            supplementalInformation?.submitUpdate()
+            self.delegate?.supplementInformationViewController(self, didSupplementCredential: supplementalInformation!)
         }
     }
 }
@@ -61,8 +58,8 @@ extension SupplementalInformationViewController: TextFieldCellDelegate {
     
     func textFieldCell(_ cell: TextFieldCell, DidEndEditing textField: UITextField) {
         if let indexPath = tableView.indexPath(for: cell) {
-            credential!.supplementalInformationFields[indexPath.item].value = textField.text ?? ""
-            let field = credential!.supplementalInformationFields[indexPath.item]
+            supplementalInformation!.fields[indexPath.item].value = textField.text ?? ""
+            let field = supplementalInformation!.fields[indexPath.item]
             let result = field.validatedValue()
             switch result {
             case .failure:
