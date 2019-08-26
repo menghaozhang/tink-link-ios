@@ -6,7 +6,6 @@ import UIKit
 final class CredentialTypePickerViewController: UITableViewController {
     
     var providers: [Provider]?
-    var provider: Provider?
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return providers?.count ?? 0
@@ -20,17 +19,11 @@ final class CredentialTypePickerViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let provider = providers![indexPath.row]
-        self.provider = provider
         showAddCredential(for: provider)
     }
     
     func showAddCredential(for providerGroup: Provider) {
-        performSegue(withIdentifier: "AddCredential", sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let addCredentialViewController = segue.destination as? AddCredentialViewController {
-            addCredentialViewController.provider = provider
-        }
+        let addCredentialViewController = AddCredentialViewController(provider: providerGroup)
+        show(addCredentialViewController, sender: self)
     }
 }

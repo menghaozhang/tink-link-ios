@@ -205,34 +205,6 @@
             </objects>
             <point key="canvasLocation" x="4819" y="136"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="PSX-2T-oOL">
-            <objects>
-                <tableViewController id="ohk-O9-Zlp" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="GUU-3F-ffO">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="JbM-z4-0Wa">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JbM-z4-0Wa" id="8Mv-no-BvG">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="ohk-O9-Zlp" id="ZEt-CD-B6R"/>
-                            <outlet property="delegate" destination="ohk-O9-Zlp" id="obE-Xh-B2I"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="feg-eU-a3G" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5956" y="286"/>
-        </scene>
         <!--Enter Supplemental Information-->
         <scene sceneID="AsS-Yh-Vgo">
             <objects>
@@ -280,7 +252,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Z10-Fo-lOQ"/>
+        <segue reference="HJg-Ds-v2X"/>
         <segue reference="zmb-Xr-sfz"/>
         <segue reference="HRA-W6-O85"/>
     </inferredMetricsTieBreakers>

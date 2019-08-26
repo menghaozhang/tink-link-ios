@@ -5,9 +5,16 @@ import UIKit
  */
 final class AddCredentialViewController: UITableViewController {
     var credentialContext: CredentialContextWithCallBack?
-    var provider: Provider?
-    var supplementalInformation: SupplementalInformationContext?
-    var credential: Credential?
+    var provider: Provider
+    
+    init(provider: Provider) {
+        self.provider = provider
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,16 +25,18 @@ final class AddCredentialViewController: UITableViewController {
         tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
         tableView.allowsSelection = false
         
+        navigationItem.title = "Enter your credentials"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonPressed(_:)))
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return provider!.fields.count
+        return provider.fields.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldCell.reuseIdentifier, for: indexPath)
-        if let textFieldCell = cell as? TextFieldCell, let field = provider?.fields[indexPath.item] {
+        let field = provider.fields[indexPath.item]
+        if let textFieldCell = cell as? TextFieldCell {
             textFieldCell.delegate = self
             textFieldCell.textField.placeholder = field.fieldDescription
             textFieldCell.textField.isSecureTextEntry = field.isMasked
@@ -37,21 +46,12 @@ final class AddCredentialViewController: UITableViewController {
         return cell
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let supplementalInformationViewController = segue.destination as? SupplementalInformationViewController {
-            supplementalInformationViewController.supplementalInformation = supplementalInformation
-            supplementalInformationViewController.delegate = self
-        } else if let finishedCredentialUpdatedViewController = segue.destination as? FinishedCredentialUpdatedViewController {
-            finishedCredentialUpdatedViewController.credential = credential
-        }
-    }
-    
     @objc private func doneButtonPressed(_ sender: UIBarButtonItem) {
-        switch provider!.fields.createCredentialValues() {
+        switch provider.fields.createCredentialValues() {
         case .failure(let error):
             print(error)
         case .success(let fieldValues):
-            credentialContext?.addCredential(for: provider!, fields: fieldValues, progressHandler: { status in
+            credentialContext?.addCredential(for: provider, fields: fieldValues, progressHandler: { status in
                 switch status {
                 case .authenticating, .created:
                     break
@@ -79,13 +79,14 @@ final class AddCredentialViewController: UITableViewController {
     }
     
     private func showSupplementalInformation(for supplementalInformation: SupplementalInformationContext) {
-        self.supplementalInformation = supplementalInformation
-        performSegue(withIdentifier: "AddSupplementalInformation", sender: self)
+        let supplementalInformationViewController = SupplementalInformationViewController(supplementalInformation: supplementalInformation)
+        supplementalInformationViewController.delegate = self
+        show(supplementalInformationViewController, sender: self)
     }
     
     private func showCredentialUpdated(for credential: Credential) {
-        self.credential = credential
-        performSegue(withIdentifier: "CredentialUpdated", sender: self)
+        let finishedCredentialUpdatedViewController = FinishedCredentialUpdatedViewController(credential: credential)
+        show(finishedCredentialUpdatedViewController, sender: self)
     }
 }
 
@@ -93,8 +94,8 @@ extension AddCredentialViewController: TextFieldCellDelegate {
     func textFieldCell(_ cell: TextFieldCell, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let textField = cell.textField
         if let value = (textField.text as NSString?)?.replacingCharacters(in: range, with: string), let indexPath = tableView.indexPath(for: cell), !value.isEmpty {
-            provider!.fields[indexPath.item].value = value ?? ""
-            let result = provider!.fields[indexPath.item].validatedValue()
+            provider.fields[indexPath.item].value = value ?? ""
+            let result = provider.fields[indexPath.item].validatedValue()
             switch result {
             case .failure:
                 textField.textColor = .red
@@ -119,7 +120,6 @@ extension AddCredentialViewController: CredentialContextDelegate {
     }
     
     func credentialContext(_ context: CredentialContext, awaitingSupplementalInformation credential: Credential) {
-        self.credential = credential
 //        showSupplementalInformation(for: credential)
     }
     

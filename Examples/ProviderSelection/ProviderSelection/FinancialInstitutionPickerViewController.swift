@@ -7,7 +7,6 @@ final class FinancialInstitutionPickerViewController: UITableViewController {
     var providerGroupedByFinancialInsititutions: [ProviderGroupedByFinancialInsititution]?
     var providerGroupedByAccessTypes: [ProviderGroupedByAccessType]?
     var providers: [Provider]?
-    var provider: Provider?
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return providerGroupedByFinancialInsititutions?.count ?? 0
@@ -29,7 +28,6 @@ final class FinancialInstitutionPickerViewController: UITableViewController {
             self.providers = providers
             showCredentialTypePicker(for: providers)
         case .singleProvider(let provider):
-            self.provider = provider
             showAddCredential(for: provider)
         }
     }
@@ -44,7 +42,8 @@ final class FinancialInstitutionPickerViewController: UITableViewController {
     }
     
     func showAddCredential(for providerGroup: Provider) {
-        performSegue(withIdentifier: "AddCredential", sender: self)
+        let addCredentialViewController = AddCredentialViewController(provider: providerGroup)
+        show(addCredentialViewController, sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -52,8 +51,6 @@ final class FinancialInstitutionPickerViewController: UITableViewController {
             accessTypePickerViewController.providerGroupedByAccessTypes = providerGroupedByAccessTypes
         } else if let credentialTypePickerViewController = segue.destination as? CredentialTypePickerViewController {
             credentialTypePickerViewController.providers = providers
-        } else if let addCredentialViewController = segue.destination as? AddCredentialViewController {
-            addCredentialViewController.provider = provider
         }
     }
 }

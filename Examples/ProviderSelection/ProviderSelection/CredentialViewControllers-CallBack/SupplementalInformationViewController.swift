@@ -13,11 +13,21 @@ final class SupplementalInformationViewController: UITableViewController {
     
     weak var delegate: SupplementalInformationViewControllerDelegate?
     
+    init(supplementalInformation: SupplementalInformationContext) {
+        self.supplementalInformation = supplementalInformation
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
         
+        navigationItem.title = "Enter Supplemental Information"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonPressed(_:)))
     }
     

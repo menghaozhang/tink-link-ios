@@ -86,15 +86,12 @@
 				8FA5F823230BD13800226C02 /* FinancialInstitutionPickerViewController.swift */,
 				8FA5F825230BE85100226C02 /* AccessTypePickerViewController.swift */,
 				8FA5F827230C069500226C02 /* CredentialTypePickerViewController.swift */,
-				8FA5F82F230D36AB00226C02 /* AddCredentialViewController.swift */,
-				8FA5F835230E9DEF00226C02 /* SupplementalInformationViewController.swift */,
-				8FA5F83D230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift */,
-				8FBA6C572313DE8F00A98BA8 /* Cell */,
 				201D5514230AC95D00641102 /* Main.storyboard */,
+				8FBA6C582313E8A900A98BA8 /* CredentialViewControllers-CallBack */,
+				8FBA6C572313DE8F00A98BA8 /* Cell */,
 				201D5517230AC95E00641102 /* Assets.xcassets */,
 				201D5519230AC95E00641102 /* LaunchScreen.storyboard */,
 				201D551C230AC95E00641102 /* Info.plist */,
-				8FBA6C512310240B00A98BA8 /* ProviderGroup.xcdatamodeld */,
 			);
 			path = ProviderSelection;
 			sourceTree = "<group>";
@@ -134,6 +131,16 @@
 				8FA5F833230D84B900226C02 /* TextFieldCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		8FBA6C582313E8A900A98BA8 /* CredentialViewControllers-CallBack */ = {
+			isa = PBXGroup;
+			children = (
+				8FA5F82F230D36AB00226C02 /* AddCredentialViewController.swift */,
+				8FA5F835230E9DEF00226C02 /* SupplementalInformationViewController.swift */,
+				8FA5F83D230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift */,
+			);
+			path = "CredentialViewControllers-CallBack";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
