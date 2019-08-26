@@ -20,8 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        TinkLink.shared.clientID = "123"
 
         window = UIWindow(frame: UIScreen.main.bounds)
-        let navigatoinController = UINavigationController(rootViewController: ProviderListViewController(style: .plain))
-        window?.rootViewController = navigatoinController
+        let providerListViewController = ProviderListViewController(style: .plain)
+        let navigationController = UINavigationController(rootViewController: providerListViewController)
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
 
         return true
