@@ -23,21 +23,6 @@ public final class UserService {
         request.locale = locale ?? ""
         request.origin = origin ?? ""
 
-        let canceller = CallCanceller()
-
-        do {
-            canceller.call = try service.createAnonymous(request) { (response, result) in
-                if let response = response {
-                    completion(.success(response.accessToken))
-                } else {
-                    let error = RPCError.callError(result)
-                    completion(.failure(error))
-                }
-            }
-        } catch {
-            completion(.failure(error))
-        }
-
-        return canceller
+        return startCall(for: request, method: service.createAnonymous, responseMap: { $0.accessToken }, completion: completion)
     }
 }
