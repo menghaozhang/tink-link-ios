@@ -6,8 +6,14 @@ final class AccessTypePickerViewController: UITableViewController {
     
     var providerGroupedByAccessTypes: [ProviderGroupedByAccessType]?
     
-    var providers: [Provider]?
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        title = "Choose Access Type"
+
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return providerGroupedByAccessTypes?.count ?? 0
     }
@@ -23,7 +29,6 @@ final class AccessTypePickerViewController: UITableViewController {
         let providersWithSameAccessType = providerGroupedByAccessTypes![indexPath.row]
         switch providersWithSameAccessType {
         case .multipleCredentialTypes(let providers):
-            self.providers = providers
             showCredentialTypePicker(for: providers)
         case .singleProvider(let provider):
             showAddCredential(for: provider)
@@ -31,17 +36,13 @@ final class AccessTypePickerViewController: UITableViewController {
     }
     
     func showCredentialTypePicker(for providerGroup: [Provider]) {
-        performSegue(withIdentifier: "CredentialTypePicker", sender: self)
+        let viewController = CredentialTypePickerViewController(style: .plain)
+        viewController.providers = providerGroup
+        show(viewController, sender: nil)
     }
     
     func showAddCredential(for providerGroup: Provider) {
         let addCredentialViewController = AddCredentialViewController(provider: providerGroup)
         show(addCredentialViewController, sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let credentialTypePickerViewController = segue.destination as? CredentialTypePickerViewController  {
-            credentialTypePickerViewController.providers = providers
-        }
     }
 }

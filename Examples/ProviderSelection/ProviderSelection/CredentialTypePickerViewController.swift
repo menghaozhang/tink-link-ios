@@ -6,7 +6,15 @@ import UIKit
 final class CredentialTypePickerViewController: UITableViewController {
     
     var providers: [Provider]?
-    
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        title = "Choose Credential Type"
+
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return providers?.count ?? 0
     }

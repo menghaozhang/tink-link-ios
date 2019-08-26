@@ -5,12 +5,11 @@ import UIKit
  */
 final class ProviderListViewController: UITableViewController {
     var providerContext: ProviderContext?
-    var providerGroupedByFinancialInsititutions: [ProviderGroupedByFinancialInsititution]?
-    var providerGroupedByAccessTypes: [ProviderGroupedByAccessType]?
-    var providers: [Provider]?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        title = "Choose your bank"
         
         //        let client = TinkLink.shared.client
         //        providerContext = TinkLink.shared.makeProviderContext()
@@ -21,6 +20,8 @@ final class ProviderListViewController: UITableViewController {
         providerContext?.delegate = self
         //        providerContext.types = []
         //        providerContext.performFetch()
+
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -38,13 +39,10 @@ final class ProviderListViewController: UITableViewController {
         let providerGroup = providerContext!.providerGroupsByGroupedName[indexPath.item]
         switch providerGroup {
         case .financialInsititutions(let providerGroupedByFinancialInsititutions):
-            self.providerGroupedByFinancialInsititutions = providerGroupedByFinancialInsititutions
             showFinancialInstitution(for: providerGroupedByFinancialInsititutions)
         case .multipleAccessTypes(let providerGroupedByAccessTypes):
-            self.providerGroupedByAccessTypes = providerGroupedByAccessTypes
             showAccessTypePicker(for: providerGroupedByAccessTypes)
         case .multipleCredentialTypes(let providers):
-            self.providers = providers
             showCredentialTypePicker(for: providers)
         case .singleProvider(let provider):
             showAddCredential(for: provider)
@@ -52,30 +50,26 @@ final class ProviderListViewController: UITableViewController {
     }
     
     func showFinancialInstitution(for providerGroup: [ProviderGroupedByFinancialInsititution]) {
-        performSegue(withIdentifier: "FinancialInstitutionPicker", sender: self)
+        let viewController = FinancialInstitutionPickerViewController(style: .plain)
+        viewController.providerGroupedByFinancialInsititutions = providerGroup
+        show(viewController, sender: nil)
     }
     
     func showAccessTypePicker(for providerGroup: [ProviderGroupedByAccessType]) {
-        performSegue(withIdentifier: "AccessTypePicker", sender: self)
+        let viewController = AccessTypePickerViewController(style: .plain)
+        viewController.providerGroupedByAccessTypes = providerGroup
+        show(viewController, sender: nil)
     }
     
     func showCredentialTypePicker(for providerGroup: [Provider]) {
-        performSegue(withIdentifier: "CredentialTypePicker", sender: self)
+        let viewController = CredentialTypePickerViewController(style: .plain)
+        viewController.providers = providerGroup
+        show(viewController, sender: nil)
     }
     
     func showAddCredential(for providerGroup: Provider) {
         let addCredentialViewController = AddCredentialViewController(provider: providerGroup)
         show(addCredentialViewController, sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let financialInstitutionPickerViewController = segue.destination as? FinancialInstitutionPickerViewController {
-            financialInstitutionPickerViewController.providerGroupedByFinancialInsititutions = providerGroupedByFinancialInsititutions
-        } else if let accessTypePickerViewController = segue.destination as? AccessTypePickerViewController {
-            accessTypePickerViewController.providerGroupedByAccessTypes = providerGroupedByAccessTypes
-        } else if let credentialTypePickerViewController = segue.destination as? CredentialTypePickerViewController  {
-            credentialTypePickerViewController.providers = providers
-        }
     }
 }
 
