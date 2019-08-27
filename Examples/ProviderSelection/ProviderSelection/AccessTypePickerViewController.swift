@@ -30,7 +30,7 @@ final class AccessTypePickerViewController: UITableViewController {
         switch providersWithSameAccessType {
         case .multipleCredentialTypes(let providers):
             showCredentialTypePicker(for: providers)
-        case .singleProvider(let provider):
+        case .provider(let provider):
             showAddCredential(for: provider)
         }
     }

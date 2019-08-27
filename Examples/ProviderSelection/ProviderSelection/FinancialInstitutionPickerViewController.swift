@@ -31,7 +31,7 @@ final class FinancialInstitutionPickerViewController: UITableViewController {
             showAccessTypePicker(for: providerGroupedByAccessTypes)
         case .multipleCredentialTypes(let providers):
             showCredentialTypePicker(for: providers)
-        case .singleProvider(let provider):
+        case .provider(let provider):
             showAddCredential(for: provider)
         }
     }

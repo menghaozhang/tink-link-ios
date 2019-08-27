@@ -35,12 +35,12 @@ struct Provider {
 }
 
 enum ProvidersGroupedByAccessType {
-    case singleProvider(Provider)
+    case provider(Provider)
     case multipleCredentialTypes([Provider])
     
     init(providers: [Provider]) {
         if providers.count == 1, let provider = providers.first {
-            self = .singleProvider(provider)
+            self = .provider(provider)
         } else {
             self = .multipleCredentialTypes(providers)
         }
@@ -50,7 +50,7 @@ enum ProvidersGroupedByAccessType {
         switch self {
         case .multipleCredentialTypes(let providers):
             return providers
-        case .singleProvider(let provider):
+        case .provider(let provider):
             return [provider]
         }
     }
@@ -61,13 +61,13 @@ enum ProvidersGroupedByAccessType {
 }
 
 enum ProvidersGroupedByFinancialInsititution {
-    case singleProvider(Provider)
+    case provider(Provider)
     case multipleCredentialTypes([Provider])
     case multipleAccessTypes([ProvidersGroupedByAccessType])
     
     init(providers: [Provider]) {
         if providers.count == 1, let provider = providers.first {
-            self = .singleProvider(provider)
+            self = .provider(provider)
         } else {
             let providerGroupedByAccessTypes = Dictionary(grouping: providers, by: { $0.accessType })
             let accessTypes = providerGroupedByAccessTypes.map { $0.key }
@@ -90,7 +90,7 @@ enum ProvidersGroupedByFinancialInsititution {
             return providerGroupByAccessTypes.flatMap { $0.providers }
         case .multipleCredentialTypes(let providers):
             return providers
-        case .singleProvider(let provider):
+        case .provider(let provider):
             return [provider]
         }
     }
@@ -105,14 +105,14 @@ enum ProvidersGroupedByFinancialInsititution {
 }
 
 enum ProvidersGroupedByGroupName {
-    case singleProvider(Provider)
+    case provider(Provider)
     case multipleCredentialTypes([Provider])
     case multipleAccessTypes([ProvidersGroupedByAccessType])
     case financialInsititutions([ProvidersGroupedByFinancialInsititution])
     
     init(providers: [Provider]) {
         if providers.count == 1, let provider = providers.first {
-            self = .singleProvider(provider)
+            self = .provider(provider)
         } else {
             let providerGroupedByFinancialInstitutions = Dictionary(grouping: providers, by: { $0.financialInstitutionID })
             let financialInstitutions = providerGroupedByFinancialInstitutions.map { $0.key }
@@ -148,7 +148,7 @@ enum ProvidersGroupedByGroupName {
             return providerGroupByAccessTypes.flatMap { $0.providers }
         case .multipleCredentialTypes(let providers):
             return providers
-        case .singleProvider(let provider):
+        case .provider(let provider):
             return [provider]
         }
     }
