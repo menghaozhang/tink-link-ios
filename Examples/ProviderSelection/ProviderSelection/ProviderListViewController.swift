@@ -49,13 +49,13 @@ final class ProviderListViewController: UITableViewController {
         }
     }
     
-    func showFinancialInstitution(for providerGroup: [ProviderGroupedByFinancialInsititution]) {
+    func showFinancialInstitution(for providerGroup: [ProvidersGroupedByFinancialInsititution]) {
         let viewController = FinancialInstitutionPickerViewController(style: .plain)
         viewController.providerGroupedByFinancialInsititutions = providerGroup
         show(viewController, sender: nil)
     }
     
-    func showAccessTypePicker(for providerGroup: [ProviderGroupedByAccessType]) {
+    func showAccessTypePicker(for providerGroup: [ProvidersGroupedByAccessType]) {
         let viewController = AccessTypePickerViewController(style: .plain)
         viewController.providerGroupedByAccessTypes = providerGroup
         show(viewController, sender: nil)

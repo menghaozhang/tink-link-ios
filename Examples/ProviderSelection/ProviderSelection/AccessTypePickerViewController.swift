@@ -4,7 +4,7 @@ import UIKit
  */
 final class AccessTypePickerViewController: UITableViewController {
     
-    var providerGroupedByAccessTypes: [ProviderGroupedByAccessType]?
+    var providerGroupedByAccessTypes: [ProvidersGroupedByAccessType]?
     
     override func viewDidLoad() {
         super.viewDidLoad()

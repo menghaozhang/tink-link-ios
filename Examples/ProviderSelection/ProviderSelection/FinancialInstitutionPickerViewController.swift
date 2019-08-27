@@ -4,7 +4,7 @@ import UIKit
  */
 final class FinancialInstitutionPickerViewController: UITableViewController {
     
-    var providerGroupedByFinancialInsititutions: [ProviderGroupedByFinancialInsititution]?
+    var providerGroupedByFinancialInsititutions: [ProvidersGroupedByFinancialInsititution]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +36,7 @@ final class FinancialInstitutionPickerViewController: UITableViewController {
         }
     }
     
-    func showAccessTypePicker(for providerGroup: [ProviderGroupedByAccessType]) {
+    func showAccessTypePicker(for providerGroup: [ProvidersGroupedByAccessType]) {
         let viewController = AccessTypePickerViewController(style: .plain)
         viewController.providerGroupedByAccessTypes = providerGroup
         show(viewController, sender: nil)

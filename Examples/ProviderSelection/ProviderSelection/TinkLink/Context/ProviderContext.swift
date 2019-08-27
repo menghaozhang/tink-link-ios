@@ -21,18 +21,18 @@ class ProviderContext {
             delegate?.providersDidChange(self)
         }
     }
-    lazy var providerGroupsByGroupedName: [ProviderGroupedByGroupedName] = {
+    lazy var providerGroupsByGroupedName: [ProvidersGroupedByGroupName] = {
         return _providerGroupsByGroupedName
     }()
     weak var delegate: ProviderContextDelegate?
     
-    private lazy var _providerGroupsByGroupedName: [ProviderGroupedByGroupedName] = {
+    private lazy var _providerGroupsByGroupedName: [ProvidersGroupedByGroupName] = {
         let providerGroupedByGroupedName = Dictionary(grouping: providers, by: { $0.groupedName })
         let groupedNames = providerGroupedByGroupedName.map { $0.key }
-        var providerGroupsByGroupedNames = [ProviderGroupedByGroupedName]()
+        var providerGroupsByGroupedNames = [ProvidersGroupedByGroupName]()
         groupedNames.forEach { groupName in
             let providersWithSameGroupedName = providers.filter({ $0.groupedName == groupName })
-            providerGroupsByGroupedNames.append(ProviderGroupedByGroupedName(providers: providersWithSameGroupedName))
+            providerGroupsByGroupedNames.append(ProvidersGroupedByGroupName(providers: providersWithSameGroupedName))
             
         }
         return providerGroupsByGroupedNames.sorted(by: { $0.providers.count < $1.providers.count })
