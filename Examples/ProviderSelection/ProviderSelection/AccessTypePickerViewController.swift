@@ -28,7 +28,7 @@ final class AccessTypePickerViewController: UITableViewController {
         
         let providersWithSameAccessType = providerGroupedByAccessTypes![indexPath.row]
         switch providersWithSameAccessType {
-        case .multipleCredentialTypes(let providers):
+        case .credentialTypes(let providers):
             showCredentialTypePicker(for: providers)
         case .provider(let provider):
             showAddCredential(for: provider)

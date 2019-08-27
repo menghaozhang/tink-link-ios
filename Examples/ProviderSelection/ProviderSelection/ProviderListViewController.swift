@@ -40,11 +40,11 @@ final class ProviderListViewController: UITableViewController {
         switch providerGroup {
         case .financialInsititutions(let providerGroupedByFinancialInsititutions):
             showFinancialInstitution(for: providerGroupedByFinancialInsititutions)
-        case .multipleAccessTypes(let providerGroupedByAccessTypes):
+        case .accessTypes(let providerGroupedByAccessTypes):
             showAccessTypePicker(for: providerGroupedByAccessTypes)
-        case .multipleCredentialTypes(let providers):
+        case .credentialTypes(let providers):
             showCredentialTypePicker(for: providers)
-        case .singleProvider(let provider):
+        case .provider(let provider):
             showAddCredential(for: provider)
         }
     }
