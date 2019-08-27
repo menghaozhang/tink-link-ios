@@ -1016,34 +1016,6 @@ message ErrorCode {
     string code = 1;
 }
 
-message Property {
-    string property_id = 1;
-    string address = 2;
-    string postal_code = 3;
-    string city = 4;
-    string community = 5;
-    double latitude = 6;
-    double longitude = 7;
-    Type type = 8;
-    int32 number_of_rooms = 9;
-    int32 number_of_square_meters = 10;
-    int32 valuation = 11 [deprecated = true]; // Deprecated, use "valuation_amount"
-    repeated string loan_account_ids = 12;
-    bool registered_address = 13;
-    bool user_modified_loan_account_ids = 14;
-
-    enum Type {
-        PROPERTY_TYPE_UNKNOWN = 0;
-        PROPERTY_TYPE_HOUSE = 1;
-        PROPERTY_TYPE_APARTMENT = 2;
-        PROPERTY_TYPE_VACATION_HOUSE = 3;
-    }
-
-    CurrencyDenominatedAmount valuation_amount = 15;
-    CurrencyDenominatedAmount total_loan_amount = 16;
-    ExactNumber average_interest_rate = 17;
-}
-
 message Market {
     string code = 1;
     string label = 2;
@@ -1052,20 +1024,6 @@ message Market {
 
 message ProviderMarket {
     string code = 1;
-}
-
-message PropertyValuationEvent {
-    string property_id = 1;
-    google.protobuf.Timestamp date = 2;
-    CurrencyDenominatedAmount valuation_amount = 3;
-}
-
-message PropertyValuationSummary {
-    string property_id = 1;
-    google.protobuf.Timestamp from = 2;
-    google.protobuf.Timestamp to = 3;
-    CurrencyDenominatedAmount from_valuation_amount = 4;
-    CurrencyDenominatedAmount to_valuation_amount = 5;
 }
 
 message Insight {
