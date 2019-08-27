@@ -18,16 +18,16 @@ public final class AuthenticationService {
         return service
     }()
 
-    public func login(authenticationToken: String, completion: @escaping (Result<String, Error>) -> Void) -> Cancellable {
+    public func login(authenticationToken: AuthenticationToken, completion: @escaping (Result<String, Error>) -> Void) -> Cancellable {
         var request = GRPCLoginRequest()
-        request.authenticationToken = authenticationToken
+        request.authenticationToken = authenticationToken.rawValue
 
         return startCall(for: request, method: service.login, responseMap: { $0.sessionID }, completion: completion)
     }
 
-    public func register(authenticationToken: String, email: String, locale: Locale, completion: @escaping (Result<String, Error>) -> Void) -> Cancellable {
+    public func register(authenticationToken: AuthenticationToken, email: String, locale: Locale, completion: @escaping (Result<String, Error>) -> Void) -> Cancellable {
         var request = GRPCRegisterRequest()
-        request.authenticationToken = authenticationToken
+        request.authenticationToken = authenticationToken.rawValue
         request.email = email
         request.locale = locale.identifier
 
