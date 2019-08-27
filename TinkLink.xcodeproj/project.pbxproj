@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		200A3F99230C31E900BEF935 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200A3F98230C31E900BEF935 /* AuthenticationService.swift */; };
 		200A3FA2230C3E7800BEF935 /* ServiceMetadataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200A3FA1230C3E7800BEF935 /* ServiceMetadataHelper.swift */; };
+		200FD63B23154AA90077181A /* AuthenticationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200FD63A23154AA90077181A /* AuthenticationToken.swift */; };
 		201D5503230A8BEA00641102 /* StreamingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D5502230A8BEA00641102 /* StreamingService.swift */; };
 		201D5523230AEAA500641102 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D5522230AEAA500641102 /* UserService.swift */; };
 		20E19DB22306E59900BF053A /* BoringSSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85462303FD85006213BB /* BoringSSL.framework */; };
@@ -61,6 +62,7 @@
 /* Begin PBXFileReference section */
 		200A3F98230C31E900BEF935 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		200A3FA1230C3E7800BEF935 /* ServiceMetadataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceMetadataHelper.swift; sourceTree = "<group>"; };
+		200FD63A23154AA90077181A /* AuthenticationToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationToken.swift; sourceTree = "<group>"; };
 		201D5502230A8BEA00641102 /* StreamingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingService.swift; sourceTree = "<group>"; };
 		201D5522230AEAA500641102 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		20ED85202303FA48006213BB /* TinkLink.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinkLink.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -226,6 +228,7 @@
 			children = (
 				20B9DA2F230EE4EE00DE4999 /* Mappers */,
 				8F3672502305A2A700B92936 /* Identifier.swift */,
+				200FD63A23154AA90077181A /* AuthenticationToken.swift */,
 				8F36724A23058A3600B92936 /* Account.swift */,
 				8F36724823057EAB00B92936 /* UpdateAccountRequest.swift */,
 				8F36724E230598BC00B92936 /* ExactNumber.swift */,
@@ -412,6 +415,7 @@
 				20ED856D23040025006213BB /* Client.swift in Sources */,
 				20ED856F2304003A006213BB /* Environment.swift in Sources */,
 				20ED859623045896006213BB /* Credential.swift in Sources */,
+				200FD63B23154AA90077181A /* AuthenticationToken.swift in Sources */,
 				20ED85712304004C006213BB /* ProviderService.swift in Sources */,
 				20ED858E2304151B006213BB /* CredentialService.swift in Sources */,
 				201D5523230AEAA500641102 /* UserService.swift in Sources */,
