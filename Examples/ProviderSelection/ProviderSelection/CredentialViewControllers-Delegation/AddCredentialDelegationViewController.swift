@@ -67,10 +67,10 @@ final class AddCredentialDelegationViewController: UITableViewController {
 }
 
 extension AddCredentialDelegationViewController: TextFieldCellDelegate {
-    func textFieldCell(_ cell: TextFieldCell, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    func textFieldCell(_ cell: TextFieldCell, willChangeToText text: String) {
         let textField = cell.textField
-        if let value = (textField.text as NSString?)?.replacingCharacters(in: range, with: string), let indexPath = tableView.indexPath(for: cell) {
-            provider.fields[indexPath.item].value = value
+        if let indexPath = tableView.indexPath(for: cell) {
+            provider.fields[indexPath.item].value = text
             let result = provider.fields[indexPath.item].validatedValue()
             switch result {
             case .failure:
@@ -79,7 +79,6 @@ extension AddCredentialDelegationViewController: TextFieldCellDelegate {
                 textField.textColor = .green
             }
         }
-        return true
     }
 }
 
