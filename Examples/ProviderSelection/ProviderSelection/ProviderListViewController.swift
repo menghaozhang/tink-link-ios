@@ -74,13 +74,13 @@ extension ProviderListViewController {
 }
 
 extension ProviderListViewController: ProviderStoreDelegate {
-    func providersStore(_ context: ProviderStore, didUpdateProviders providers: [Provider]) {
+    func providerStore(_ store: ProviderStore, didUpdateProviders providers: [Provider]) {
         if isViewLoaded {
             tableView.reloadData()
         }
     }
     
-    func providersStore(_ context: ProviderStore, didReceiveError error: Error) {
+    func providerStore(_ store: ProviderStore, didReceiveError error: Error) {
         print(error)
     }
 }

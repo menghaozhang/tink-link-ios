@@ -1,6 +1,6 @@
 protocol ProviderStoreDelegate: AnyObject {
-    func providersStore(_ context: ProviderStore, didUpdateProviders providers: [Provider])
-    func providersStore(_ context: ProviderStore, didReceiveError error: Error)
+    func providerStore(_ store: ProviderStore, didUpdateProviders providers: [Provider])
+    func providerStore(_ store: ProviderStore, didReceiveError error: Error)
 }
 
 // Mocked Provider store
@@ -16,7 +16,7 @@ class ProviderStore {
     private var _providers: [Provider]? {
         didSet {
             guard let providers = _providers else { return }
-            delegate?.providersStore(self, didUpdateProviders: providers)
+            delegate?.providerStore(self, didUpdateProviders: providers)
         }
     }
     
@@ -30,7 +30,7 @@ class ProviderStore {
     
     func performFetch() {
         if let providers = _providers {
-            delegate?.providersStore(self, didUpdateProviders: providers)
+            delegate?.providerStore(self, didUpdateProviders: providers)
         } else {
             performFetchIfNeeded()
         }
@@ -43,7 +43,7 @@ class ProviderStore {
             case .success(let providers):
                 self?._providers = providers
             case .failure(let error):
-                strongSelf.delegate?.providersStore(strongSelf, didReceiveError: error)
+                strongSelf.delegate?.providerStore(strongSelf, didReceiveError: error)
             }
         }
     }
