@@ -39,10 +39,10 @@ extension ProviderListViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let providerGroup = providerContext!.providerGroupsByGroupedName[indexPath.item]
         switch providerGroup {
-        case .financialInsititutions(let providerGroupedByFinancialInsititutions):
-            showFinancialInstitution(for: providerGroupedByFinancialInsititutions)
-        case .accessTypes(let providerGroupedByAccessTypes):
-            showAccessTypePicker(for: providerGroupedByAccessTypes)
+        case .financialInsititutions(let financialInsititutionGroups):
+            showFinancialInstitution(for: financialInsititutionGroups)
+        case .accessTypes(let accessTypeGroups):
+            showAccessTypePicker(for: accessTypeGroups)
         case .credentialTypes(let providers):
             showCredentialTypePicker(for: providers)
         case .provider(let provider):
