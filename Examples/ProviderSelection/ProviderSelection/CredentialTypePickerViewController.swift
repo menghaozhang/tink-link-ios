@@ -6,7 +6,10 @@ import UIKit
 final class CredentialTypePickerViewController: UITableViewController {
     
     var providers: [Provider] = []
+}
 
+// MARK: - View Lifecycle
+extension CredentialTypePickerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 

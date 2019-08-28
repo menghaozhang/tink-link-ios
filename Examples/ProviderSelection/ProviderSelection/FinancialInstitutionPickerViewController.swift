@@ -5,7 +5,10 @@ import UIKit
 final class FinancialInstitutionPickerViewController: UITableViewController {
     
     var financialInsititutionGroups: [FinancialInsititutionGroup] = []
+}
 
+// MARK: - View Lifecycle
+extension FinancialInstitutionPickerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 

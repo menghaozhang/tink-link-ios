@@ -5,7 +5,10 @@ import UIKit
  */
 final class ProviderListViewController: UITableViewController {
     var providerContext: ProviderContext?
+}
 
+// MARK: - View Lifecycle
+extension ProviderListViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 

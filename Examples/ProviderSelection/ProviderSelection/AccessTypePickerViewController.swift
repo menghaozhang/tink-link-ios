@@ -5,7 +5,10 @@ import UIKit
 final class AccessTypePickerViewController: UITableViewController {
     
     var providerAccessTypeGroups: [ProviderAccessTypeGroup] = []
-    
+}
+
+// MARK: - View Lifecycle
+extension AccessTypePickerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
