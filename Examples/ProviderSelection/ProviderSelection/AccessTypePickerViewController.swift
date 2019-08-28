@@ -44,14 +44,14 @@ extension AccessTypePickerViewController {
 
 // MARK: - Navigation
 extension AccessTypePickerViewController {
-    func showCredentialTypePicker(for providerGroup: [Provider]) {
+    func showCredentialTypePicker(for providers: [Provider]) {
         let viewController = CredentialTypePickerViewController(style: .plain)
-        viewController.providers = providerGroup
+        viewController.providers = providers
         show(viewController, sender: nil)
     }
     
-    func showAddCredential(for providerGroup: Provider) {
-        let addCredentialViewController = AddCredentialViewController(provider: providerGroup)
+    func showAddCredential(for provider: Provider) {
+        let addCredentialViewController = AddCredentialViewController(provider: provider)
         show(addCredentialViewController, sender: self)
     }
 }

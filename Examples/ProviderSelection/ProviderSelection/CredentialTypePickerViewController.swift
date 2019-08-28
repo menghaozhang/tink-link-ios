@@ -39,8 +39,8 @@ extension CredentialTypePickerViewController {
 
 // MARK: - Navigation
 extension CredentialTypePickerViewController {
-    func showAddCredential(for providerGroup: Provider) {
-        let addCredentialViewController = AddCredentialViewController(provider: providerGroup)
+    func showAddCredential(for provider: Provider) {
+        let addCredentialViewController = AddCredentialViewController(provider: provider)
         show(addCredentialViewController, sender: self)
     }
 }
