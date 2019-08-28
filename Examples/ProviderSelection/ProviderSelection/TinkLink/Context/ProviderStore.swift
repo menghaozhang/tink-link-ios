@@ -1,32 +1,57 @@
-// Mocked Provider context
-class ProviderContext {
-    let client: Client
-    init(client: Client) {
-        self.client = client
-        providers = [
-            Provider(name: "Avanza", financialInstitutionID: "Avanza", groupedName: "Avanza", accessType: .reverseEngineering, credentialType: .password, fields: [Provider.personalNumberFieldSpecification, Provider.passwordFieldSpecification]),
-            Provider(name: "SBAB BankID", financialInstitutionID: "SBAB", groupedName: "SBAB", accessType: .reverseEngineering, credentialType: .mobileBankID, fields: [Provider.personalNumberFieldSpecification]),
-            Provider(name: "SBAB Password", financialInstitutionID: "SBAB", groupedName: "SBAB", accessType: .reverseEngineering, credentialType: .password, fields: [Provider.personalNumberFieldSpecification, Provider.passwordFieldSpecification]),
-            Provider(name: "SEB BankID", financialInstitutionID: "SEB", groupedName: "SEB", accessType: .reverseEngineering, credentialType: .mobileBankID, fields: [Provider.personalNumberFieldSpecification]),
-            Provider(name: "SEB Password", financialInstitutionID: "SEB", groupedName: "SEB", accessType: .reverseEngineering, credentialType: .password, fields: [Provider.personalNumberFieldSpecification, Provider.passwordFieldSpecification]),
-            Provider(name: "SEB openbanking", financialInstitutionID: "SEB", groupedName: "SEB", accessType: .openBanking, credentialType: .thirdPartyAuthentication, fields: [Provider.securityCodeFieldSpecification]),
-            Provider(name: "Nordea BankID", financialInstitutionID: "Nordea", groupedName: "Nordea", accessType: .reverseEngineering, credentialType: .mobileBankID, fields: [Provider.personalNumberFieldSpecification]),
-            Provider(name: "Nordea Password", financialInstitutionID: "Nordea", groupedName: "Nordea", accessType: .reverseEngineering, credentialType: .password, fields: [Provider.personalNumberFieldSpecification, Provider.passwordFieldSpecification]),
-            Provider(name: "Nordea Openbanking", financialInstitutionID: "Nordea", groupedName: "Nordea", accessType: .openBanking, credentialType: .thirdPartyAuthentication, fields: [Provider.personalNumberFieldSpecification, Provider.passwordFieldSpecification]),
-            Provider(name: "Nordea", financialInstitutionID: "Nordea Other", groupedName: "Nordea", accessType: .reverseEngineering, credentialType: .password, fields: [Provider.inputCodeFieldSpecification])
-        ]
+// Mocked Provider store
+class ProviderStore {
+    var market: String
+    private var service: ProviderService
+    
+    init(market: String) {
+        self.market = market
+        service = ProviderService(client: TinkLink.shared.client)
     }
-    var providers: [Provider] {
+    
+    private var _providers: [Provider]? {
         didSet {
             delegate?.providersDidChange(self)
         }
     }
-    lazy var providerGroupsByGroupedName: [ProviderGroupedByGroupedName] = {
-        return _providerGroupsByGroupedName
-    }()
-    weak var delegate: ProviderContextDelegate?
     
-    private lazy var _providerGroupsByGroupedName: [ProviderGroupedByGroupedName] = {
+    weak var delegate: ProviderStoreDelegate? {
+        didSet {
+            if delegate != nil {
+                performFetch()
+            }
+        }
+    }
+    
+    func performFetch() {
+        if _providers != nil {
+            delegate?.providersDidChange(self)
+        } else {
+            performFetchIfNeeded()
+        }
+    }
+    
+    private func performFetchIfNeeded() {
+        service.providers(marketCode: market) { [weak self] result in
+            guard let strongSelf = self else { return }
+            switch result {
+            case .success(let providers):
+                self?._providers = providers
+            case .failure(let error):
+                strongSelf.delegate?.providersDidReceiveError(strongSelf, error: error)
+            }
+        }
+    }
+}
+
+extension ProviderStore {
+    var providers: [Provider] {
+        if _providers == nil {
+            performFetch()
+        }
+        return _providers ?? []
+    }
+    
+    var providerGroupsByGroupedName: [ProviderGroupedByGroupedName] {
         let providerGroupedByGroupedName = Dictionary(grouping: providers, by: { $0.groupedName })
         let groupedNames = providerGroupedByGroupedName.map { $0.key }
         var providerGroupsByGroupedNames = [ProviderGroupedByGroupedName]()
@@ -36,26 +61,10 @@ class ProviderContext {
             
         }
         return providerGroupsByGroupedNames.sorted(by: { $0.providers.count < $1.providers.count })
-    }()
-}
-
-protocol ProviderContextDelegate: AnyObject {
-    func providersDidChange(_ context: ProviderContext)
-}
-
-public class ProviderStore {
-    var market: String
-    var providerService: ProviderService
-    
-    public init(market: String) {
-        self.market = market
-        providerService = ProviderService(client: TinkLink.shared.client)
     }
 }
 
-internal class ProviderService {
-    
-    init(client: Client) {
-        
-    }
+protocol ProviderStoreDelegate: AnyObject {
+    func providersDidChange(_ context: ProviderStore)
+    func providersDidReceiveError(_ context: ProviderStore, error: Error)
 }

@@ -20,7 +20,7 @@
 		8FA5F832230D571A00226C02 /* FieldsValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F831230D571A00226C02 /* FieldsValidator.swift */; };
 		8FA5F834230D84B900226C02 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F833230D84B900226C02 /* TextFieldCell.swift */; };
 		8FA5F836230E9DEF00226C02 /* SupplementalInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F835230E9DEF00226C02 /* SupplementalInformationViewController.swift */; };
-		8FA5F838230EC34300226C02 /* ProviderContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F837230EC34300226C02 /* ProviderContext.swift */; };
+		8FA5F838230EC34300226C02 /* ProviderStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F837230EC34300226C02 /* ProviderStore.swift */; };
 		8FA5F83A230EC36600226C02 /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F839230EC36600226C02 /* Credential.swift */; };
 		8FA5F83C230EC38D00226C02 /* CredentialContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F83B230EC38D00226C02 /* CredentialContext.swift */; };
 		8FA5F83E230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F83D230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift */; };
@@ -48,7 +48,7 @@
 		8FA5F831230D571A00226C02 /* FieldsValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldsValidator.swift; sourceTree = "<group>"; };
 		8FA5F833230D84B900226C02 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		8FA5F835230E9DEF00226C02 /* SupplementalInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementalInformationViewController.swift; sourceTree = "<group>"; };
-		8FA5F837230EC34300226C02 /* ProviderContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderContext.swift; sourceTree = "<group>"; };
+		8FA5F837230EC34300226C02 /* ProviderStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderStore.swift; sourceTree = "<group>"; };
 		8FA5F839230EC36600226C02 /* Credential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
 		8FA5F83B230EC38D00226C02 /* CredentialContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialContext.swift; sourceTree = "<group>"; };
 		8FA5F83D230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishedCredentialUpdatedViewController.swift; sourceTree = "<group>"; };
@@ -119,7 +119,8 @@
 		8FBA6C552313DE7200A98BA8 /* Context */ = {
 			isa = PBXGroup;
 			children = (
-				8FA5F837230EC34300226C02 /* ProviderContext.swift */,
+				8FA5F837230EC34300226C02 /* ProviderStore.swift */,
+				8FBDA97323157E0800BC39AF /* ProviderService.swift */,
 				8FA5F83B230EC38D00226C02 /* CredentialContext.swift */,
 				8FA5F83F230FDD1600226C02 /* CredentialContextWithCallBack.swift */,
 			);
@@ -236,10 +237,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FBDA97423157E0800BC39AF /* ProviderService.swift in Sources */,
 				8FA5F82B230C2C0200226C02 /* ProviderGroup.swift in Sources */,
 				8FBDA9702315536200BC39AF /* TinkLink.swift in Sources */,
 				8FBA6C5D2313EB2600A98BA8 /* AddCredentialDelegationViewController.swift in Sources */,
-				8FA5F838230EC34300226C02 /* ProviderContext.swift in Sources */,
+				8FA5F838230EC34300226C02 /* ProviderStore.swift in Sources */,
 				8FA5F83C230EC38D00226C02 /* CredentialContext.swift in Sources */,
 				8FA5F83E230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift in Sources */,
 				8FBA6C5F2313EB2600A98BA8 /* SupplementalInformationDelegationViewController.swift in Sources */,

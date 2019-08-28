@@ -4,7 +4,7 @@ import UIKit
  Example of how to use the provider grouped by names
  */
 final class ProviderListViewController: UITableViewController {
-    var providerContext: ProviderContext?
+    var providerStore: ProviderStore?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,18 +23,18 @@ final class ProviderListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return providerContext!.providerGroupsByGroupedName.count
+        return providerStore!.providerGroupsByGroupedName.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let group = providerContext!.providerGroupsByGroupedName[indexPath.item]
+        let group = providerStore!.providerGroupsByGroupedName[indexPath.item]
         cell.textLabel?.text = group.groupedName
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let providerGroup = providerContext!.providerGroupsByGroupedName[indexPath.item]
+        let providerGroup = providerStore!.providerGroupsByGroupedName[indexPath.item]
         switch providerGroup {
         case .financialInsititutions(let providerGroupedByFinancialInsititutions):
             showFinancialInstitution(for: providerGroupedByFinancialInsititutions)
@@ -71,8 +71,12 @@ final class ProviderListViewController: UITableViewController {
     }
 }
 
-extension ProviderListViewController: ProviderContextDelegate {
-    func providersDidChange(_ context: ProviderContext) {
+extension ProviderListViewController: ProviderStoreDelegate {
+    func providersDidReceiveError(_ context: ProviderStore, error: Error) {
+        print(error)
+    }
+    
+    func providersDidChange(_ context: ProviderStore) {
         tableView.reloadData()
     }
 }
