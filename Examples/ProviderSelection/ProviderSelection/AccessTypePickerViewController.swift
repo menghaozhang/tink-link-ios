@@ -15,6 +15,7 @@ final class AccessTypePickerViewController: UITableViewController {
     }
 }
 
+// MARK: - UITableViewDataSource
 extension AccessTypePickerViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return providerGroupedByAccessTypes.count
@@ -38,6 +39,7 @@ extension AccessTypePickerViewController {
     }
 }
 
+// MARK: - Navigation
 extension AccessTypePickerViewController {
     func showCredentialTypePicker(for providerGroup: [Provider]) {
         let viewController = CredentialTypePickerViewController(style: .plain)

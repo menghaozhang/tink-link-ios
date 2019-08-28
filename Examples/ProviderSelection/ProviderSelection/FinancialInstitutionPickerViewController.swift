@@ -15,6 +15,7 @@ final class FinancialInstitutionPickerViewController: UITableViewController {
     }
 }
 
+// MARK: - UITableViewDataSource
 extension FinancialInstitutionPickerViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return providerGroupedByFinancialInsititutions.count
@@ -39,6 +40,7 @@ extension FinancialInstitutionPickerViewController {
     }
 }
 
+// MARK: - Navigation
 extension FinancialInstitutionPickerViewController {
     func showAccessTypePicker(for providerGroup: [ProvidersGroupedByAccessType]) {
         let viewController = AccessTypePickerViewController(style: .plain)

@@ -25,6 +25,7 @@ final class ProviderListViewController: UITableViewController {
     }
 }
 
+// MARK: - UITableViewDataSource
 extension ProviderListViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return providerContext!.providerGroupsByGroupedName.count
@@ -52,6 +53,7 @@ extension ProviderListViewController {
     }
 }
 
+// MARK: - Navigation
 extension ProviderListViewController {
     func showFinancialInstitution(for providerGroup: [ProvidersGroupedByFinancialInsititution]) {
         let viewController = FinancialInstitutionPickerViewController(style: .plain)
