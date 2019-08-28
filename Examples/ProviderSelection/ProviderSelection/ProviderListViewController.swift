@@ -4,15 +4,15 @@ import UIKit
  Example of how to use the provider grouped by names
  */
 final class ProviderListViewController: UITableViewController {
-    var providerStore: ProviderStore?
+    let providerStore = ProviderStore(market: "SE")
 }
 
 // MARK: - View Lifecycle
 extension ProviderListViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        providerStore = ProviderStore(market: "SE")
-        providerStore?.delegate = self
+
+        providerStore.delegate = self
         
         title = "Choose your bank"
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
@@ -22,18 +22,18 @@ extension ProviderListViewController {
 // MARK: - UITableViewDataSource
 extension ProviderListViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return providerStore!.providerGroups.count
+        return providerStore.providerGroups.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let group = providerStore!.providerGroups[indexPath.item]
+        let group = providerStore.providerGroups[indexPath.item]
         cell.textLabel?.text = group.groupedName
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let providerGroup = providerStore!.providerGroups[indexPath.item]
+        let providerGroup = providerStore.providerGroups[indexPath.item]
         switch providerGroup {
         case .financialInsititutions(let financialInsititutionGroups):
             showFinancialInstitution(for: financialInsititutionGroups)
