@@ -10,11 +10,11 @@ class SupplementInformationTask {
     private(set) var credential: Credential
     var fields: [Provider.FieldSpecification]
     
-    func submitUpdate() {
+    func submit() {
         credentialContext?.addSupplementalInformation(for: credential, supplementalInformationFields: [:])
     }
     
-    func cancelUpdate() {
+    func cancel() {
         
     }
 }

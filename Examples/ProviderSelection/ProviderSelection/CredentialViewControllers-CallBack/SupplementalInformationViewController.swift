@@ -63,7 +63,7 @@ extension SupplementalInformationViewController {
         case .failure(let fieldSpecificationsError):
             print(fieldSpecificationsError.errors)
         case .success:
-            supplementInformationTask.submitUpdate()
+            supplementInformationTask.submit()
             self.delegate?.supplementalInformationViewController(self, didSupplementInformationForCredential: supplementInformationTask.credential)
         }
     }
