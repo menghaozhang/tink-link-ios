@@ -24,8 +24,8 @@ class CredentialContextWithCallBack {
         case created
         case authenticating
         case updating(status: String)
-        case awaitingSupplementalInformation(supplementalInformation: SupplementInformationTask)
-        case awaitingThirdPartyAppAuthentication(thirdPartyURL: URL)
+        case awaitingSupplementalInformation(SupplementInformationTask)
+        case awaitingThirdPartyAppAuthentication(URL)
     }
     
     var client: Client
@@ -52,7 +52,7 @@ class CredentialContextWithCallBack {
                 credential.status = .awaitingSupplementalInformation
                 credential.supplementalInformationFields = [Provider.inputCodeFieldSpecification]
                 progressHandler(
-                    .awaitingSupplementalInformation(supplementalInformation: SupplementInformationTask(credentialContext: self, credential: credential))
+                    .awaitingSupplementalInformation(SupplementInformationTask(credentialContext: self, credential: credential))
                 )
             })
         }
