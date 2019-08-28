@@ -15,9 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-
-//        TinkLink.shared.clientID = "123"
+        
+        // Can support two options to setup the TinkLink
+        // Option 1
+        let tinkLinkConfiguration = TinkLinkConfiguration(clientId: "123", redirectUrl: URL(string: "http://localhost:3000")!, timeoutIntervalForRequest: 15)
+        TinkLink.configure(with: tinkLinkConfiguration)
+        
+        // Option 2
+        try? TinkLink.configure(tinklinkUrl: Bundle.main.url(forResource: "Tinklink", withExtension: "plist")!)
 
         window = UIWindow(frame: UIScreen.main.bounds)
         let providerListViewController = ProviderListViewController(style: .plain)

@@ -20,14 +20,14 @@ public final class ProviderService {
     /// Lists all providers
     ///
     /// - Parameters:
-    ///   - marketCode: The market to fetch providers for. If no market is specified the providers for the users current market will be requested.
+    ///   - market: The market to fetch providers for. If no market is specified the providers for the users current market will be requested.
     ///   - capabilities: Use the capability to only list providers with a specific capability. If no capability the provider response will not be filtered on capability.
     ///   - includeTestProviders: If set to true, Providers of TEST financial financial institution kind will be added in the response list. Defaults to false.
     ///   - completion: The completion handler to call when the load request is complete.
     /// - Returns: A Cancellable instance. Call cancel() on this instance if you no longer need the result of the request. Deinitializing this instance will also cancel the request.
-    public func providers(marketCode: String? = nil, capabilities: Provider.Capabilities = .all, includeTestProviders: Bool = false, completion: @escaping (Result<[Provider], Error>) -> Void) -> Cancellable {
+    public func providers(market: Market? = nil, capabilities: Provider.Capabilities = .all, includeTestProviders: Bool = false, completion: @escaping (Result<[Provider], Error>) -> Void) -> Cancellable {
         var request = GRPCProviderListRequest()
-        request.marketCode = marketCode ?? ""
+        request.marketCode = market?.code ?? ""
         request.capability = .unknown
         request.includeTestType = includeTestProviders
 
@@ -38,10 +38,10 @@ public final class ProviderService {
     ///
     /// - Parameter completion: The completion handler to call when the load request is complete.
     /// - Returns: A Cancellable instance. Call cancel() on this instance if you no longer need the result of the request. Deinitializing this instance will also cancel the request.
-    public func providerMarkets(completion: @escaping (Result<[String], Error>) -> Void) -> Cancellable {
+    public func providerMarkets(completion: @escaping (Result<[Market], Error>) -> Void) -> Cancellable {
         let request = GRPCProviderMarketListRequest()
 
-        return startCall(for: request, method: service.listProviderMarkets, responseMap: { $0.providerMarkets.map({ $0.code }) }, completion: completion)
+        return startCall(for: request, method: service.listProviderMarkets, responseMap: { $0.providerMarkets.map({ Market(code: $0.code) }) }, completion: completion)
     }
 
 }

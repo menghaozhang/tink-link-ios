@@ -1,7 +1,7 @@
 import UIKit
 
 protocol TextFieldCellDelegate: AnyObject {
-    func textFieldCell(_ cell: TextFieldCell, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
+    func textFieldCell(_ cell: TextFieldCell, willChangeToText text: String)
 }
 
 class TextFieldCell: UITableViewCell, UITextFieldDelegate {
@@ -48,6 +48,8 @@ class TextFieldCell: UITableViewCell, UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        return delegate?.textFieldCell(self, shouldChangeCharactersIn: range, replacementString: string) ?? true
+        let text = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? ""
+        delegate?.textFieldCell(self, willChangeToText: text)
+        return true
     }
 }

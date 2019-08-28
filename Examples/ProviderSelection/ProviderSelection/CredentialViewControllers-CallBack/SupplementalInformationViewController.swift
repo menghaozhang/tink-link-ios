@@ -4,40 +4,49 @@ import UIKit
  Example of how to use the credential field supplementa information to update credential
  */
 protocol SupplementalInformationViewControllerDelegate: AnyObject {
-    func supplementInformationViewController(_ viewController: SupplementalInformationViewController, didSupplementCredential credential: SupplementalInformationContext)
+    func supplementalInformationViewControllerDidCancel(_ viewController: SupplementalInformationViewController)
+    func supplementalInformationViewController(_ viewController: SupplementalInformationViewController, didSupplementInformationForCredential credential: Credential)
 }
 
 final class SupplementalInformationViewController: UITableViewController {
     
-    var supplementalInformation: SupplementalInformationContext?
+    let supplementInformationTask: SupplementInformationTask
     
     weak var delegate: SupplementalInformationViewControllerDelegate?
     
-    init(supplementalInformation: SupplementalInformationContext) {
-        self.supplementalInformation = supplementalInformation
+    init(supplementInformationTask: SupplementInformationTask) {
+        self.supplementInformationTask = supplementInformationTask
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+}
+
+// MARK: - View Lifecycle
+extension SupplementalInformationViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
         
         navigationItem.title = "Enter Supplemental Information"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonPressed(_:)))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonPressed(_:)))
     }
-    
+}
+
+// MARK: - UITableViewDataSource
+extension SupplementalInformationViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return supplementalInformation!.fields.count
+        return supplementInformationTask.fields.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldCell.reuseIdentifier, for: indexPath)
-        if let textFieldCell = cell as? TextFieldCell, let field = supplementalInformation?.fields[indexPath.item] {
+        if let textFieldCell = cell as? TextFieldCell {
+            let field = supplementInformationTask.fields[indexPath.item]
             textFieldCell.delegate = self
             textFieldCell.textField.placeholder = field.fieldDescription
             textFieldCell.textField.isSecureTextEntry = field.isMasked
@@ -46,25 +55,34 @@ final class SupplementalInformationViewController: UITableViewController {
         }
         return cell
     }
-    
+}
+
+// MARK: - Actions
+extension SupplementalInformationViewController {
+    @objc private func cancelButtonPressed(_ sender: UIBarButtonItem) {
+        supplementInformationTask.cancel()
+        delegate?.supplementalInformationViewControllerDidCancel(self)
+    }
+
     @objc private func doneButtonPressed(_ sender: UIBarButtonItem) {
         tableView.resignFirstResponder()
-        switch supplementalInformation!.fields.createCredentialValues() {
+        switch supplementInformationTask.fields.createCredentialValues() {
         case .failure(let fieldSpecificationsError):
             print(fieldSpecificationsError.errors)
         case .success:
-            supplementalInformation?.submitUpdate()
-            self.delegate?.supplementInformationViewController(self, didSupplementCredential: supplementalInformation!)
+            supplementInformationTask.submit()
+            self.delegate?.supplementalInformationViewController(self, didSupplementInformationForCredential: supplementInformationTask.credential)
         }
     }
 }
 
+// MARK: - TextFieldCellDelegate
 extension SupplementalInformationViewController: TextFieldCellDelegate {
     func textFieldCell(_ cell: TextFieldCell, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let textField = cell.textField
         if let value = (textField.text as NSString?)?.replacingCharacters(in: range, with: string), let indexPath = tableView.indexPath(for: cell) {
-            supplementalInformation!.fields[indexPath.item].value = value
-            let field = supplementalInformation!.fields[indexPath.item]
+            supplementInformationTask.fields[indexPath.item].value = value
+            let field = supplementInformationTask.fields[indexPath.item]
             let result = field.validatedValue()
             switch result {
             case .failure:

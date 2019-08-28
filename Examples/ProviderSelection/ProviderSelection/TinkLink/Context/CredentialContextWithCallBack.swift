@@ -1,20 +1,20 @@
 import Foundation
 
-class SupplementalInformationContext {
+class SupplementInformationTask {
     init(credentialContext: CredentialContextWithCallBack, credential: Credential) {
         self.credential = credential
         fields = credential.supplementalInformationFields
         self.credentialContext = credentialContext
     }
     weak var credentialContext: CredentialContextWithCallBack?
-    private var credential: Credential
+    private(set) var credential: Credential
     var fields: [Provider.FieldSpecification]
     
-    func submitUpdate() {
+    func submit() {
         credentialContext?.addSupplementalInformation(for: credential, supplementalInformationFields: [:])
     }
     
-    func cancelUpdate() {
+    func cancel() {
         
     }
 }
@@ -24,8 +24,8 @@ class CredentialContextWithCallBack {
         case created
         case authenticating
         case updating(status: String)
-        case awaitingSupplementalInformation(supplementalInformation: SupplementalInformationContext)
-        case awaitingThirdPartyAppAuthentication(thirdPartyURL: URL)
+        case awaitingSupplementalInformation(SupplementInformationTask)
+        case awaitingThirdPartyAppAuthentication(URL)
     }
     
     var client: Client
@@ -52,7 +52,7 @@ class CredentialContextWithCallBack {
                 credential.status = .awaitingSupplementalInformation
                 credential.supplementalInformationFields = [Provider.inputCodeFieldSpecification]
                 progressHandler(
-                    .awaitingSupplementalInformation(supplementalInformation: SupplementalInformationContext(credentialContext: self, credential: credential))
+                    .awaitingSupplementalInformation(SupplementInformationTask(credentialContext: self, credential: credential))
                 )
             })
         }
