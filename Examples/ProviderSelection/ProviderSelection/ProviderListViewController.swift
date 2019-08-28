@@ -11,15 +11,10 @@ final class ProviderListViewController: UITableViewController {
 
         title = "Choose your bank"
         
-        //        let client = TinkLink.shared.client
-        //        providerContext = TinkLink.shared.makeProviderContext()
-        
         let client = Client(clientId: "123")
         
         providerContext = ProviderContext(client: client)
         providerContext?.delegate = self
-        //        providerContext.types = []
-        //        providerContext.performFetch()
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
