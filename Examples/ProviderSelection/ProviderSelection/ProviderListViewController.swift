@@ -23,7 +23,9 @@ final class ProviderListViewController: UITableViewController {
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
-    
+}
+
+extension ProviderListViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return providerContext!.providerGroupsByGroupedName.count
     }
@@ -48,7 +50,9 @@ final class ProviderListViewController: UITableViewController {
             showAddCredential(for: provider)
         }
     }
-    
+}
+
+extension ProviderListViewController {
     func showFinancialInstitution(for providerGroup: [ProvidersGroupedByFinancialInsititution]) {
         let viewController = FinancialInstitutionPickerViewController(style: .plain)
         viewController.providerGroupedByFinancialInsititutions = providerGroup

@@ -13,7 +13,9 @@ final class FinancialInstitutionPickerViewController: UITableViewController {
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
-    
+}
+
+extension FinancialInstitutionPickerViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return providerGroupedByFinancialInsititutions.count
     }
@@ -35,7 +37,9 @@ final class FinancialInstitutionPickerViewController: UITableViewController {
             showAddCredential(for: provider)
         }
     }
-    
+}
+
+extension FinancialInstitutionPickerViewController {
     func showAccessTypePicker(for providerGroup: [ProvidersGroupedByAccessType]) {
         let viewController = AccessTypePickerViewController(style: .plain)
         viewController.providerGroupedByAccessTypes = providerGroup

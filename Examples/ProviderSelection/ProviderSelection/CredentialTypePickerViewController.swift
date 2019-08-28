@@ -14,7 +14,9 @@ final class CredentialTypePickerViewController: UITableViewController {
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
+}
 
+extension CredentialTypePickerViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return providers.count
     }
@@ -29,7 +31,9 @@ final class CredentialTypePickerViewController: UITableViewController {
         let provider = providers[indexPath.row]
         showAddCredential(for: provider)
     }
-    
+}
+
+extension CredentialTypePickerViewController {
     func showAddCredential(for providerGroup: Provider) {
         let addCredentialViewController = AddCredentialViewController(provider: providerGroup)
         show(addCredentialViewController, sender: self)
