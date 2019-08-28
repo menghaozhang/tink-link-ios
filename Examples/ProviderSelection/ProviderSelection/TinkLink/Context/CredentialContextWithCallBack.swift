@@ -7,7 +7,7 @@ class SupplementalInformationTask {
         self.credentialContext = credentialContext
     }
     weak var credentialContext: CredentialContextWithCallBack?
-    private var credential: Credential
+    private(set) var credential: Credential
     var fields: [Provider.FieldSpecification]
     
     func submitUpdate() {
