@@ -21,7 +21,10 @@ final class SupplementalInformationViewController: UITableViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+}
+
+// MARK: - View Lifecycle
+extension SupplementalInformationViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,7 +33,10 @@ final class SupplementalInformationViewController: UITableViewController {
         navigationItem.title = "Enter Supplemental Information"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonPressed(_:)))
     }
-    
+}
+
+// MARK: - UITableViewDataSource
+extension SupplementalInformationViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return supplementalInformationTask!.fields.count
     }
@@ -46,7 +52,10 @@ final class SupplementalInformationViewController: UITableViewController {
         }
         return cell
     }
-    
+}
+
+// MARK: - Actions
+extension SupplementalInformationViewController {
     @objc private func doneButtonPressed(_ sender: UIBarButtonItem) {
         tableView.resignFirstResponder()
         switch supplementalInformationTask!.fields.createCredentialValues() {
@@ -59,6 +68,7 @@ final class SupplementalInformationViewController: UITableViewController {
     }
 }
 
+// MARK: - TextFieldCellDelegate
 extension SupplementalInformationViewController: TextFieldCellDelegate {
     func textFieldCell(_ cell: TextFieldCell, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let textField = cell.textField
