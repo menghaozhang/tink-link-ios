@@ -55,8 +55,8 @@ final class AddCredentialViewController: UITableViewController {
                 switch status {
                 case .authenticating, .created:
                     break
-                case .awaitingSupplementalInformation(let supplementalInformationTask):
-                    self.showSupplementalInformation(for: supplementalInformationTask)
+                case .awaitingSupplementalInformation(let supplementInformationTask):
+                    self.showSupplementalInformation(for: supplementInformationTask)
                 case .awaitingThirdPartyAppAuthentication(let thirdPartyURL):
                     UIApplication.shared.open(thirdPartyURL, options: [:], completionHandler: { success in
                         if !success {
@@ -78,8 +78,8 @@ final class AddCredentialViewController: UITableViewController {
         }
     }
     
-    private func showSupplementalInformation(for supplementalInformationTask: SupplementalInformationTask) {
-        let supplementalInformationViewController = SupplementalInformationViewController(supplementalInformationTask: supplementalInformationTask)
+    private func showSupplementalInformation(for supplementInformationTask: SupplementInformationTask) {
+        let supplementalInformationViewController = SupplementalInformationViewController(supplementInformationTask: supplementInformationTask)
         supplementalInformationViewController.delegate = self
         show(supplementalInformationViewController, sender: self)
     }

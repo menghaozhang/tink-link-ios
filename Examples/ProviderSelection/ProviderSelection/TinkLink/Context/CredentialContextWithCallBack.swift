@@ -1,6 +1,6 @@
 import Foundation
 
-class SupplementalInformationTask {
+class SupplementInformationTask {
     init(credentialContext: CredentialContextWithCallBack, credential: Credential) {
         self.credential = credential
         fields = credential.supplementalInformationFields
@@ -24,7 +24,7 @@ class CredentialContextWithCallBack {
         case created
         case authenticating
         case updating(status: String)
-        case awaitingSupplementalInformation(supplementalInformation: SupplementalInformationTask)
+        case awaitingSupplementalInformation(supplementalInformation: SupplementInformationTask)
         case awaitingThirdPartyAppAuthentication(thirdPartyURL: URL)
     }
     
@@ -52,7 +52,7 @@ class CredentialContextWithCallBack {
                 credential.status = .awaitingSupplementalInformation
                 credential.supplementalInformationFields = [Provider.inputCodeFieldSpecification]
                 progressHandler(
-                    .awaitingSupplementalInformation(supplementalInformation: SupplementalInformationTask(credentialContext: self, credential: credential))
+                    .awaitingSupplementalInformation(supplementalInformation: SupplementInformationTask(credentialContext: self, credential: credential))
                 )
             })
         }

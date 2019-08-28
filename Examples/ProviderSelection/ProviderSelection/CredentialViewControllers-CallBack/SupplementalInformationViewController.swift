@@ -9,12 +9,12 @@ protocol SupplementalInformationViewControllerDelegate: AnyObject {
 
 final class SupplementalInformationViewController: UITableViewController {
     
-    let supplementalInformationTask: SupplementalInformationTask
+    let supplementInformationTask: SupplementInformationTask
     
     weak var delegate: SupplementalInformationViewControllerDelegate?
     
-    init(supplementalInformationTask: SupplementalInformationTask) {
-        self.supplementalInformationTask = supplementalInformationTask
+    init(supplementInformationTask: SupplementInformationTask) {
+        self.supplementInformationTask = supplementInformationTask
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -38,13 +38,13 @@ extension SupplementalInformationViewController {
 // MARK: - UITableViewDataSource
 extension SupplementalInformationViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return supplementalInformationTask.fields.count
+        return supplementInformationTask.fields.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldCell.reuseIdentifier, for: indexPath)
         if let textFieldCell = cell as? TextFieldCell {
-            let field = supplementalInformationTask.fields[indexPath.item]
+            let field = supplementInformationTask.fields[indexPath.item]
             textFieldCell.delegate = self
             textFieldCell.textField.placeholder = field.fieldDescription
             textFieldCell.textField.isSecureTextEntry = field.isMasked
@@ -59,12 +59,12 @@ extension SupplementalInformationViewController {
 extension SupplementalInformationViewController {
     @objc private func doneButtonPressed(_ sender: UIBarButtonItem) {
         tableView.resignFirstResponder()
-        switch supplementalInformationTask.fields.createCredentialValues() {
+        switch supplementInformationTask.fields.createCredentialValues() {
         case .failure(let fieldSpecificationsError):
             print(fieldSpecificationsError.errors)
         case .success:
-            supplementalInformationTask.submitUpdate()
-            self.delegate?.supplementalInformationViewController(self, didSupplementInformationForCredential: supplementalInformationTask.credential)
+            supplementInformationTask.submitUpdate()
+            self.delegate?.supplementalInformationViewController(self, didSupplementInformationForCredential: supplementInformationTask.credential)
         }
     }
 }
@@ -74,8 +74,8 @@ extension SupplementalInformationViewController: TextFieldCellDelegate {
     func textFieldCell(_ cell: TextFieldCell, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let textField = cell.textField
         if let value = (textField.text as NSString?)?.replacingCharacters(in: range, with: string), let indexPath = tableView.indexPath(for: cell) {
-            supplementalInformationTask.fields[indexPath.item].value = value
-            let field = supplementalInformationTask.fields[indexPath.item]
+            supplementInformationTask.fields[indexPath.item].value = value
+            let field = supplementInformationTask.fields[indexPath.item]
             let result = field.validatedValue()
             switch result {
             case .failure:
