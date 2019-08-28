@@ -1,3 +1,8 @@
+protocol ProviderStoreDelegate: AnyObject {
+    func providersStore(_ context: ProviderStore, didUpdateProviders providers: [Provider])
+    func providersStore(_ context: ProviderStore, didReceiveError error: Error)
+}
+
 // Mocked Provider store
 class ProviderStore {
     var market: String
@@ -10,7 +15,8 @@ class ProviderStore {
     
     private var _providers: [Provider]? {
         didSet {
-            delegate?.providersDidChange(self)
+            guard let providers = _providers else { return }
+            delegate?.providersStore(self, didUpdateProviders: providers)
         }
     }
     
@@ -23,8 +29,8 @@ class ProviderStore {
     }
     
     func performFetch() {
-        if _providers != nil {
-            delegate?.providersDidChange(self)
+        if let providers = _providers {
+            delegate?.providersStore(self, didUpdateProviders: providers)
         } else {
             performFetchIfNeeded()
         }
@@ -37,7 +43,7 @@ class ProviderStore {
             case .success(let providers):
                 self?._providers = providers
             case .failure(let error):
-                strongSelf.delegate?.providersDidReceiveError(strongSelf, error: error)
+                strongSelf.delegate?.providersStore(strongSelf, didReceiveError: error)
             }
         }
     }
@@ -62,9 +68,4 @@ extension ProviderStore {
         }
         return providerGroupsByGroupedNames.sorted(by: { $0.providers.count < $1.providers.count })
     }
-}
-
-protocol ProviderStoreDelegate: AnyObject {
-    func providersDidChange(_ context: ProviderStore)
-    func providersDidReceiveError(_ context: ProviderStore, error: Error)
 }

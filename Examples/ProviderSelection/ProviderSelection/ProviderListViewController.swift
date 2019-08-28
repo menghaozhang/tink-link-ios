@@ -8,17 +8,10 @@ final class ProviderListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        title = "Choose your bank"
-        
-        //        let client = TinkLink.shared.client
-        //        providerContext = TinkLink.shared.makeProviderContext()
-        // OptionSet market
         providerStore = ProviderStore(market: "SE")
         providerStore?.delegate = self
-        //        providerContext.types = []
-        //        providerContext.performFetch()
-
+        
+        title = "Choose your bank"
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
     
@@ -72,11 +65,13 @@ final class ProviderListViewController: UITableViewController {
 }
 
 extension ProviderListViewController: ProviderStoreDelegate {
-    func providersDidReceiveError(_ context: ProviderStore, error: Error) {
-        print(error)
+    func providersStore(_ context: ProviderStore, didUpdateProviders providers: [Provider]) {
+        if isViewLoaded {
+            tableView.reloadData()
+        }
     }
     
-    func providersDidChange(_ context: ProviderStore) {
-        tableView.reloadData()
+    func providersStore(_ context: ProviderStore, didReceiveError error: Error) {
+        print(error)
     }
 }
