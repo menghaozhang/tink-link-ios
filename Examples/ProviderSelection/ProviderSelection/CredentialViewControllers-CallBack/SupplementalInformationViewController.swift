@@ -4,16 +4,16 @@ import UIKit
  Example of how to use the credential field supplementa information to update credential
  */
 protocol SupplementalInformationViewControllerDelegate: AnyObject {
-    func supplementInformationViewController(_ viewController: SupplementalInformationViewController, didSupplementCredential credential: SupplementalInformationContext)
+    func supplementInformationViewController(_ viewController: SupplementalInformationViewController, didSupplementCredential credential: SupplementalInformationTask)
 }
 
 final class SupplementalInformationViewController: UITableViewController {
     
-    var supplementalInformation: SupplementalInformationContext?
+    var supplementalInformation: SupplementalInformationTask?
     
     weak var delegate: SupplementalInformationViewControllerDelegate?
     
-    init(supplementalInformation: SupplementalInformationContext) {
+    init(supplementalInformation: SupplementalInformationTask) {
         self.supplementalInformation = supplementalInformation
         super.init(nibName: nil, bundle: nil)
     }

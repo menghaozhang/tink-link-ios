@@ -78,7 +78,7 @@ final class AddCredentialViewController: UITableViewController {
         }
     }
     
-    private func showSupplementalInformation(for supplementalInformation: SupplementalInformationContext) {
+    private func showSupplementalInformation(for supplementalInformation: SupplementalInformationTask) {
         let supplementalInformationViewController = SupplementalInformationViewController(supplementalInformation: supplementalInformation)
         supplementalInformationViewController.delegate = self
         show(supplementalInformationViewController, sender: self)
@@ -108,7 +108,7 @@ extension AddCredentialViewController: TextFieldCellDelegate {
 }
 
 extension AddCredentialViewController: SupplementalInformationViewControllerDelegate {
-    func supplementInformationViewController(_ viewController: SupplementalInformationViewController, didSupplementCredential credential: SupplementalInformationContext) {
+    func supplementInformationViewController(_ viewController: SupplementalInformationViewController, didSupplementCredential credential: SupplementalInformationTask) {
         navigationController?.popToViewController(self, animated: false)
         // Maybe show loading
     }
