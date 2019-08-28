@@ -4,6 +4,7 @@ import UIKit
  Example of how to use the credential field supplementa information to update credential
  */
 protocol SupplementalInformationViewControllerDelegate: AnyObject {
+    func supplementalInformationViewControllerDidCancel(_ viewController: SupplementalInformationViewController)
     func supplementalInformationViewController(_ viewController: SupplementalInformationViewController, didSupplementInformationForCredential credential: Credential)
 }
 
@@ -31,6 +32,7 @@ extension SupplementalInformationViewController {
         tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
         
         navigationItem.title = "Enter Supplemental Information"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonPressed(_:)))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonPressed(_:)))
     }
 }
@@ -57,6 +59,11 @@ extension SupplementalInformationViewController {
 
 // MARK: - Actions
 extension SupplementalInformationViewController {
+    @objc private func cancelButtonPressed(_ sender: UIBarButtonItem) {
+        supplementInformationTask.cancel()
+        delegate?.supplementalInformationViewControllerDidCancel(self)
+    }
+
     @objc private func doneButtonPressed(_ sender: UIBarButtonItem) {
         tableView.resignFirstResponder()
         switch supplementInformationTask.fields.createCredentialValues() {
