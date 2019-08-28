@@ -62,10 +62,10 @@ final class SupplementalInformationDelegationViewController: UITableViewControll
 }
 
 extension SupplementalInformationDelegationViewController: TextFieldCellDelegate {
-    func textFieldCell(_ cell: TextFieldCell, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    func textFieldCell(_ cell: TextFieldCell, willChangeToText text: String) {
         let textField = cell.textField
-        if let value = (textField.text as NSString?)?.replacingCharacters(in: range, with: string), let indexPath = tableView.indexPath(for: cell) {
-            credential.supplementalInformationFields[indexPath.item].value = value
+        if let indexPath = tableView.indexPath(for: cell) {
+            credential.supplementalInformationFields[indexPath.item].value = text
             let field = credential.supplementalInformationFields[indexPath.item]
             let result = field.validatedValue()
             switch result {
@@ -75,6 +75,5 @@ extension SupplementalInformationDelegationViewController: TextFieldCellDelegate
                 textField.textColor = .green
             }
         }
-        return true
     }
 }

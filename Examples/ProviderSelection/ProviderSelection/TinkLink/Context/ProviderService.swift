@@ -5,7 +5,7 @@ internal class ProviderService {
     init(client: Client) {
         self.client = client
     }
-    
+
     func providers(marketCode: String? = nil, completion: @escaping (Result<[Provider], Error>) -> Void) {
         if hasOnGoingCall {
             return

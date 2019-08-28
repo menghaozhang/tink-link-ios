@@ -1,6 +1,6 @@
 protocol ProviderStoreDelegate: AnyObject {
-    func providersStore(_ context: ProviderStore, didUpdateProviders providers: [Provider])
-    func providersStore(_ context: ProviderStore, didReceiveError error: Error)
+    func providerStore(_ store: ProviderStore, didUpdateProviders providers: [Provider])
+    func providerStore(_ store: ProviderStore, didReceiveError error: Error)
 }
 
 // Mocked Provider store
@@ -16,7 +16,7 @@ class ProviderStore {
     private var _providers: [Provider]? {
         didSet {
             guard let providers = _providers else { return }
-            delegate?.providersStore(self, didUpdateProviders: providers)
+            delegate?.providerStore(self, didUpdateProviders: providers)
         }
     }
     
@@ -30,7 +30,7 @@ class ProviderStore {
     
     func performFetch() {
         if let providers = _providers {
-            delegate?.providersStore(self, didUpdateProviders: providers)
+            delegate?.providerStore(self, didUpdateProviders: providers)
         } else {
             performFetchIfNeeded()
         }
@@ -43,7 +43,7 @@ class ProviderStore {
             case .success(let providers):
                 self?._providers = providers
             case .failure(let error):
-                strongSelf.delegate?.providersStore(strongSelf, didReceiveError: error)
+                strongSelf.delegate?.providerStore(strongSelf, didReceiveError: error)
             }
         }
     }
@@ -57,13 +57,13 @@ extension ProviderStore {
         return _providers ?? []
     }
     
-    var providerGroupsByGroupedName: [ProviderGroupedByGroupedName] {
+    var providerGroups: [ProviderGroup] {
         let providerGroupedByGroupedName = Dictionary(grouping: providers, by: { $0.groupedName })
         let groupedNames = providerGroupedByGroupedName.map { $0.key }
-        var providerGroupsByGroupedNames = [ProviderGroupedByGroupedName]()
+        var providerGroupsByGroupedNames = [ProviderGroup]()
         groupedNames.forEach { groupName in
             let providersWithSameGroupedName = providers.filter({ $0.groupedName == groupName })
-            providerGroupsByGroupedNames.append(ProviderGroupedByGroupedName(providers: providersWithSameGroupedName))
+            providerGroupsByGroupedNames.append(ProviderGroup(providers: providersWithSameGroupedName))
             
         }
         return providerGroupsByGroupedNames.sorted(by: { $0.providers.count < $1.providers.count })

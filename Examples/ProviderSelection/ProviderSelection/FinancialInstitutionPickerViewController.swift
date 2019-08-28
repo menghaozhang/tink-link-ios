@@ -4,8 +4,11 @@ import UIKit
  */
 final class FinancialInstitutionPickerViewController: UITableViewController {
     
-    var providerGroupedByFinancialInsititutions: [ProviderGroupedByFinancialInsititution]?
+    var financialInsititutionGroups: [FinancialInsititutionGroup] = []
+}
 
+// MARK: - View Lifecycle
+extension FinancialInstitutionPickerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -13,43 +16,49 @@ final class FinancialInstitutionPickerViewController: UITableViewController {
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
-    
+}
+
+// MARK: - UITableViewDataSource
+extension FinancialInstitutionPickerViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return providerGroupedByFinancialInsititutions?.count ?? 0
+        return financialInsititutionGroups.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = providerGroupedByFinancialInsititutions?[indexPath.row].financialInsititutionID ?? ""
+        cell.textLabel?.text = financialInsititutionGroups[indexPath.row].financialInsititutionID
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let providersWithSameFinancialInstitution = providerGroupedByFinancialInsititutions![indexPath.row]
+        let providersWithSameFinancialInstitution = financialInsititutionGroups[indexPath.row]
         switch providersWithSameFinancialInstitution {
-        case .multipleAccessTypes(let providerGroupedByAccessTypes):
-            showAccessTypePicker(for: providerGroupedByAccessTypes)
-        case .multipleCredentialTypes(let providers):
+        case .accessTypes(let accessTypeGroups):
+            showAccessTypePicker(for: accessTypeGroups)
+        case .credentialTypes(let providers):
             showCredentialTypePicker(for: providers)
-        case .singleProvider(let provider):
+        case .provider(let provider):
             showAddCredential(for: provider)
         }
     }
-    
-    func showAccessTypePicker(for providerGroup: [ProviderGroupedByAccessType]) {
+}
+
+// MARK: - Navigation
+extension FinancialInstitutionPickerViewController {
+    func showAccessTypePicker(for groups: [ProviderAccessTypeGroup]) {
         let viewController = AccessTypePickerViewController(style: .plain)
-        viewController.providerGroupedByAccessTypes = providerGroup
+        viewController.providerAccessTypeGroups = groups
         show(viewController, sender: nil)
     }
     
-    func showCredentialTypePicker(for providerGroup: [Provider]) {
+    func showCredentialTypePicker(for providers: [Provider]) {
         let viewController = CredentialTypePickerViewController(style: .plain)
-        viewController.providers = providerGroup
+        viewController.providers = providers
         show(viewController, sender: nil)
     }
     
-    func showAddCredential(for providerGroup: Provider) {
-        let addCredentialViewController = AddCredentialViewController(provider: providerGroup)
+    func showAddCredential(for provider: Provider) {
+        let addCredentialViewController = AddCredentialViewController(provider: provider)
         show(addCredentialViewController, sender: self)
     }
 }

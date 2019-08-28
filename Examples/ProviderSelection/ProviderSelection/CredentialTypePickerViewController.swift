@@ -5,8 +5,11 @@ import UIKit
  */
 final class CredentialTypePickerViewController: UITableViewController {
     
-    var providers: [Provider]?
+    var providers: [Provider] = []
+}
 
+// MARK: - View Lifecycle
+extension CredentialTypePickerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -14,24 +17,30 @@ final class CredentialTypePickerViewController: UITableViewController {
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
+}
 
+// MARK: - UITableViewDataSource
+extension CredentialTypePickerViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return providers?.count ?? 0
+        return providers.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = providers?[indexPath.item].credentialType.rawValue ?? ""
+        cell.textLabel?.text = providers[indexPath.item].credentialType.rawValue
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let provider = providers![indexPath.row]
+        let provider = providers[indexPath.row]
         showAddCredential(for: provider)
     }
-    
-    func showAddCredential(for providerGroup: Provider) {
-        let addCredentialViewController = AddCredentialViewController(provider: providerGroup)
+}
+
+// MARK: - Navigation
+extension CredentialTypePickerViewController {
+    func showAddCredential(for provider: Provider) {
+        let addCredentialViewController = AddCredentialViewController(provider: provider)
         show(addCredentialViewController, sender: self)
     }
 }

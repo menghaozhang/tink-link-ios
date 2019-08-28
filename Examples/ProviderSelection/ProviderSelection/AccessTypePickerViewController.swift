@@ -4,8 +4,11 @@ import UIKit
  */
 final class AccessTypePickerViewController: UITableViewController {
     
-    var providerGroupedByAccessTypes: [ProviderGroupedByAccessType]?
-    
+    var providerAccessTypeGroups: [ProviderAccessTypeGroup] = []
+}
+
+// MARK: - View Lifecycle
+extension AccessTypePickerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -13,36 +16,42 @@ final class AccessTypePickerViewController: UITableViewController {
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
+}
 
+// MARK: - UITableViewDataSource
+extension AccessTypePickerViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return providerGroupedByAccessTypes?.count ?? 0
+        return providerAccessTypeGroups.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = providerGroupedByAccessTypes?[indexPath.row].accessType ?? ""
+        cell.textLabel?.text = providerAccessTypeGroups[indexPath.row].accessType
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let providersWithSameAccessType = providerGroupedByAccessTypes![indexPath.row]
+        let providersWithSameAccessType = providerAccessTypeGroups[indexPath.row]
         switch providersWithSameAccessType {
-        case .multipleCredentialTypes(let providers):
+        case .credentialTypes(let providers):
             showCredentialTypePicker(for: providers)
-        case .singleProvider(let provider):
+        case .provider(let provider):
             showAddCredential(for: provider)
         }
     }
-    
-    func showCredentialTypePicker(for providerGroup: [Provider]) {
+}
+
+// MARK: - Navigation
+extension AccessTypePickerViewController {
+    func showCredentialTypePicker(for providers: [Provider]) {
         let viewController = CredentialTypePickerViewController(style: .plain)
-        viewController.providers = providerGroup
+        viewController.providers = providers
         show(viewController, sender: nil)
     }
     
-    func showAddCredential(for providerGroup: Provider) {
-        let addCredentialViewController = AddCredentialViewController(provider: providerGroup)
+    func showAddCredential(for provider: Provider) {
+        let addCredentialViewController = AddCredentialViewController(provider: provider)
         show(addCredentialViewController, sender: self)
     }
 }
