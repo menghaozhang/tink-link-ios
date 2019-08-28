@@ -15,7 +15,10 @@ final class AddCredentialViewController: UITableViewController {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+}
+
+// MARK: - View Lifecycle
+extension AddCredentialViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,7 +31,10 @@ final class AddCredentialViewController: UITableViewController {
         navigationItem.title = "Enter your credentials"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonPressed(_:)))
     }
-    
+}
+
+// MARK: - UITableViewDataSource
+extension AddCredentialViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return provider.fields.count
     }
@@ -45,7 +51,10 @@ final class AddCredentialViewController: UITableViewController {
         }
         return cell
     }
-    
+}
+
+// MARK: - Actions
+extension AddCredentialViewController {
     @objc private func doneButtonPressed(_ sender: UIBarButtonItem) {
         switch provider.fields.createCredentialValues() {
         case .failure(let fieldSpecificationsError):
@@ -77,7 +86,10 @@ final class AddCredentialViewController: UITableViewController {
             })
         }
     }
-    
+}
+
+// MARK: - Navigation
+extension AddCredentialViewController {
     private func showSupplementalInformation(for supplementInformationTask: SupplementInformationTask) {
         let supplementalInformationViewController = SupplementalInformationViewController(supplementInformationTask: supplementInformationTask)
         supplementalInformationViewController.delegate = self
@@ -91,6 +103,7 @@ final class AddCredentialViewController: UITableViewController {
     }
 }
 
+// MARK: - TextFieldCellDelegate
 extension AddCredentialViewController: TextFieldCellDelegate {
     func textFieldCell(_ cell: TextFieldCell, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let textField = cell.textField
@@ -108,6 +121,7 @@ extension AddCredentialViewController: TextFieldCellDelegate {
     }
 }
 
+// MARK: - SupplementalInformationViewControllerDelegate
 extension AddCredentialViewController: SupplementalInformationViewControllerDelegate {
     func supplementalInformationViewControllerDidCancel(_ viewController: SupplementalInformationViewController) {
         dismiss(animated: true)
