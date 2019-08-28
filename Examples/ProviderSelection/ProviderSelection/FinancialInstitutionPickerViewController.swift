@@ -4,7 +4,7 @@ import UIKit
  */
 final class FinancialInstitutionPickerViewController: UITableViewController {
     
-    var providerGroupedByFinancialInsititutions: [ProvidersGroupedByFinancialInsititution]?
+    var providerGroupedByFinancialInsititutions: [ProvidersGroupedByFinancialInsititution] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,17 +15,17 @@ final class FinancialInstitutionPickerViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return providerGroupedByFinancialInsititutions?.count ?? 0
+        return providerGroupedByFinancialInsititutions.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = providerGroupedByFinancialInsititutions?[indexPath.row].financialInsititutionID ?? ""
+        cell.textLabel?.text = providerGroupedByFinancialInsititutions[indexPath.row].financialInsititutionID
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let providersWithSameFinancialInstitution = providerGroupedByFinancialInsititutions![indexPath.row]
+        let providersWithSameFinancialInstitution = providerGroupedByFinancialInsititutions[indexPath.row]
         switch providersWithSameFinancialInstitution {
         case .accessTypes(let providerGroupedByAccessTypes):
             showAccessTypePicker(for: providerGroupedByAccessTypes)
