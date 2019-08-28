@@ -22,18 +22,18 @@ extension ProviderListViewController {
 // MARK: - UITableViewDataSource
 extension ProviderListViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return providerStore!.providerGroupsByGroupedName.count
+        return providerStore!.providerGroups.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let group = providerStore!.providerGroupsByGroupedName[indexPath.item]
+        let group = providerStore!.providerGroups[indexPath.item]
         cell.textLabel?.text = group.groupedName
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let providerGroup = providerStore!.providerGroupsByGroupedName[indexPath.item]
+        let providerGroup = providerStore!.providerGroups[indexPath.item]
         switch providerGroup {
         case .financialInsititutions(let financialInsititutionGroups):
             showFinancialInstitution(for: financialInsititutionGroups)

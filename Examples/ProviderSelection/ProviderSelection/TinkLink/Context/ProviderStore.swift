@@ -57,7 +57,7 @@ extension ProviderStore {
         return _providers ?? []
     }
     
-    var providerGroupsByGroupedName: [ProviderGroup] {
+    var providerGroups: [ProviderGroup] {
         let providerGroupedByGroupedName = Dictionary(grouping: providers, by: { $0.groupedName })
         let groupedNames = providerGroupedByGroupedName.map { $0.key }
         var providerGroupsByGroupedNames = [ProviderGroup]()
