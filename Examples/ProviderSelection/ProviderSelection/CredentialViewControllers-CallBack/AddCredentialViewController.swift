@@ -108,7 +108,7 @@ extension AddCredentialViewController: TextFieldCellDelegate {
 }
 
 extension AddCredentialViewController: SupplementalInformationViewControllerDelegate {
-    func supplementInformationViewController(_ viewController: SupplementalInformationViewController, didSupplementInformationForCredential credential: Credential) {
+    func supplementalInformationViewController(_ viewController: SupplementalInformationViewController, didSupplementInformationForCredential credential: Credential) {
         navigationController?.popToViewController(self, animated: false)
         // Maybe show loading
     }
