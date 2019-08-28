@@ -17,7 +17,7 @@ final class SupplementalInformationViewController: UITableViewController {
         self.supplementalInformationTask = supplementalInformationTask
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
