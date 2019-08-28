@@ -20,8 +20,7 @@ final class AddCredentialDelegationViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let client = Client(clientId: "123")
-        credentialContext = CredentialContext(client: client)
+        credentialContext = CredentialContext(client: TinkLink.shared.client)
         credentialContext?.delegate = self
         
         tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)

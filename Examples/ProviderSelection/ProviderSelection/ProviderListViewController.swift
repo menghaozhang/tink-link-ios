@@ -4,39 +4,30 @@ import UIKit
  Example of how to use the provider grouped by names
  */
 final class ProviderListViewController: UITableViewController {
-    var providerContext: ProviderContext?
+    var providerStore: ProviderStore?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        providerStore = ProviderStore(market: "SE")
+        providerStore?.delegate = self
+        
         title = "Choose your bank"
-        
-        //        let client = TinkLink.shared.client
-        //        providerContext = TinkLink.shared.makeProviderContext()
-        
-        let client = Client(clientId: "123")
-        
-        providerContext = ProviderContext(client: client)
-        providerContext?.delegate = self
-        //        providerContext.types = []
-        //        providerContext.performFetch()
-
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return providerContext!.providerGroupsByGroupedName.count
+        return providerStore!.providerGroupsByGroupedName.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let group = providerContext!.providerGroupsByGroupedName[indexPath.item]
+        let group = providerStore!.providerGroupsByGroupedName[indexPath.item]
         cell.textLabel?.text = group.groupedName
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let providerGroup = providerContext!.providerGroupsByGroupedName[indexPath.item]
+        let providerGroup = providerStore!.providerGroupsByGroupedName[indexPath.item]
         switch providerGroup {
         case .financialInsititutions(let providerGroupedByFinancialInsititutions):
             showFinancialInstitution(for: providerGroupedByFinancialInsititutions)
@@ -73,8 +64,14 @@ final class ProviderListViewController: UITableViewController {
     }
 }
 
-extension ProviderListViewController: ProviderContextDelegate {
-    func providersDidChange(_ context: ProviderContext) {
-        tableView.reloadData()
+extension ProviderListViewController: ProviderStoreDelegate {
+    func providersStore(_ context: ProviderStore, didUpdateProviders providers: [Provider]) {
+        if isViewLoaded {
+            tableView.reloadData()
+        }
+    }
+    
+    func providersStore(_ context: ProviderStore, didReceiveError error: Error) {
+        print(error)
     }
 }

@@ -22,8 +22,7 @@ extension AddCredentialViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let client = Client(clientId: "123")
-        credentialContext = CredentialContextWithCallBack(client: client)
+        credentialContext = CredentialContextWithCallBack(client: TinkLink.shared.client)
         
         tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
         tableView.allowsSelection = false
