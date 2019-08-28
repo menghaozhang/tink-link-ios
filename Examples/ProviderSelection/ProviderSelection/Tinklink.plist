@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>TINK_CLIENT_ID</key>
+	<string>test</string>
+	<key>TINK_REDIRECT_URL</key>
+	<string>http://localhost:3000</string>
+	<key>TINK_TIMEOUT_INTERVAL</key>
+	<integer>15</integer>
+</dict>
+</plist>

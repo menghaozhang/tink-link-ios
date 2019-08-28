@@ -42,3 +42,20 @@ class ProviderContext {
 protocol ProviderContextDelegate: AnyObject {
     func providersDidChange(_ context: ProviderContext)
 }
+
+public class ProviderStore {
+    var market: String
+    var providerService: ProviderService
+    
+    public init(market: String) {
+        self.market = market
+        providerService = ProviderService(client: TinkLink.shared.client)
+    }
+}
+
+internal class ProviderService {
+    
+    init(client: Client) {
+        
+    }
+}
