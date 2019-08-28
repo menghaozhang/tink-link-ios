@@ -4,7 +4,7 @@ import UIKit
  Example of how to use the credential field supplementa information to update credential
  */
 protocol SupplementalInformationViewControllerDelegate: AnyObject {
-    func supplementInformationViewController(_ viewController: SupplementalInformationViewController, didSupplementCredential credential: SupplementalInformationTask)
+    func supplementInformationViewController(_ viewController: SupplementalInformationViewController, didSupplementInformationForCredential credential: Credential)
 }
 
 final class SupplementalInformationViewController: UITableViewController {
@@ -64,7 +64,7 @@ extension SupplementalInformationViewController {
             print(fieldSpecificationsError.errors)
         case .success:
             supplementalInformationTask.submitUpdate()
-            self.delegate?.supplementInformationViewController(self, didSupplementCredential: supplementalInformationTask)
+            self.delegate?.supplementInformationViewController(self, didSupplementInformationForCredential: supplementalInformationTask.credential)
         }
     }
 }
