@@ -4,7 +4,7 @@ import UIKit
  */
 final class AccessTypePickerViewController: UITableViewController {
     
-    var providerGroupedByAccessTypes: [ProvidersGroupedByAccessType] = []
+    var providerAccessTypeGroups: [ProviderAccessTypeGroup] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,18 +18,18 @@ final class AccessTypePickerViewController: UITableViewController {
 // MARK: - UITableViewDataSource
 extension AccessTypePickerViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return providerGroupedByAccessTypes.count
+        return providerAccessTypeGroups.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = providerGroupedByAccessTypes[indexPath.row].accessType
+        cell.textLabel?.text = providerAccessTypeGroups[indexPath.row].accessType
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let providersWithSameAccessType = providerGroupedByAccessTypes[indexPath.row]
+        let providersWithSameAccessType = providerAccessTypeGroups[indexPath.row]
         switch providersWithSameAccessType {
         case .credentialTypes(let providers):
             showCredentialTypePicker(for: providers)

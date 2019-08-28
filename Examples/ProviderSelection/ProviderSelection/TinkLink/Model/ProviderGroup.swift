@@ -34,7 +34,7 @@ struct Provider {
     }
 }
 
-enum ProvidersGroupedByAccessType {
+enum ProviderAccessTypeGroup {
     case provider(Provider)
     case credentialTypes([Provider])
     
@@ -60,10 +60,10 @@ enum ProvidersGroupedByAccessType {
     }
 }
 
-enum ProvidersGroupedByFinancialInsititution {
+enum FinancialInsititutionGroup {
     case provider(Provider)
     case credentialTypes([Provider])
-    case accessTypes([ProvidersGroupedByAccessType])
+    case accessTypes([ProviderAccessTypeGroup])
     
     init(providers: [Provider]) {
         if providers.count == 1, let provider = providers.first {
@@ -74,10 +74,10 @@ enum ProvidersGroupedByFinancialInsititution {
             if accessTypes.count == 1 {
                 self = .credentialTypes(providers)
             } else {
-                var providerGroupedByAccessType = [ProvidersGroupedByAccessType]()
+                var providerGroupedByAccessType = [ProviderAccessTypeGroup]()
                 accessTypes.forEach { accessType in
                     let providersWithSameAccessType = providers.filter({ $0.accessType == accessType })
-                    providerGroupedByAccessType.append(ProvidersGroupedByAccessType(providers: providersWithSameAccessType))
+                    providerGroupedByAccessType.append(ProviderAccessTypeGroup(providers: providersWithSameAccessType))
                 }
                 self = .accessTypes(providerGroupedByAccessType)
             }
@@ -104,11 +104,11 @@ enum ProvidersGroupedByFinancialInsititution {
     }
 }
 
-enum ProvidersGroupedByGroupName {
+enum ProviderGroup {
     case provider(Provider)
     case credentialTypes([Provider])
-    case accessTypes([ProvidersGroupedByAccessType])
-    case financialInsititutions([ProvidersGroupedByFinancialInsititution])
+    case accessTypes([ProviderAccessTypeGroup])
+    case financialInsititutions([FinancialInsititutionGroup])
     
     init(providers: [Provider]) {
         if providers.count == 1, let provider = providers.first {
@@ -122,18 +122,18 @@ enum ProvidersGroupedByGroupName {
                 if accessTypes.count == 1 {
                     self = .credentialTypes(providers)
                 } else {
-                    var providerGroupedByAccessType = [ProvidersGroupedByAccessType]()
+                    var providerGroupedByAccessType = [ProviderAccessTypeGroup]()
                     accessTypes.forEach { accessType in
                         let providersWithSameAccessType = providers.filter({ $0.accessType == accessType })
-                        providerGroupedByAccessType.append(ProvidersGroupedByAccessType(providers: providersWithSameAccessType))
+                        providerGroupedByAccessType.append(ProviderAccessTypeGroup(providers: providersWithSameAccessType))
                     }
                     self = .accessTypes(providerGroupedByAccessType)
                 }
             } else {
-                var providerGroupedByFinancialInstitution = [ProvidersGroupedByFinancialInsititution]()
+                var providerGroupedByFinancialInstitution = [FinancialInsititutionGroup]()
                 financialInstitutions.forEach { financialInstitution in
                     let providersWithSameFinancialInstitutions = providers.filter({ $0.financialInstitutionID == financialInstitution })
-                    providerGroupedByFinancialInstitution.append(ProvidersGroupedByFinancialInsititution(providers: providersWithSameFinancialInstitutions))
+                    providerGroupedByFinancialInstitution.append(FinancialInsititutionGroup(providers: providersWithSameFinancialInstitutions))
                 }
                 self = .financialInsititutions(providerGroupedByFinancialInstitution)
             }

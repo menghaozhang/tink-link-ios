@@ -55,15 +55,15 @@ extension ProviderListViewController {
 
 // MARK: - Navigation
 extension ProviderListViewController {
-    func showFinancialInstitution(for providerGroup: [ProvidersGroupedByFinancialInsititution]) {
+    func showFinancialInstitution(for providerGroup: [FinancialInsititutionGroup]) {
         let viewController = FinancialInstitutionPickerViewController(style: .plain)
-        viewController.providerGroupedByFinancialInsititutions = providerGroup
+        viewController.financialInsititutionGroups = providerGroup
         show(viewController, sender: nil)
     }
     
-    func showAccessTypePicker(for providerGroup: [ProvidersGroupedByAccessType]) {
+    func showAccessTypePicker(for providerGroup: [ProviderAccessTypeGroup]) {
         let viewController = AccessTypePickerViewController(style: .plain)
-        viewController.providerGroupedByAccessTypes = providerGroup
+        viewController.providerAccessTypeGroups = providerGroup
         show(viewController, sender: nil)
     }
     

@@ -4,7 +4,7 @@ import UIKit
  */
 final class FinancialInstitutionPickerViewController: UITableViewController {
     
-    var providerGroupedByFinancialInsititutions: [ProvidersGroupedByFinancialInsititution] = []
+    var financialInsititutionGroups: [FinancialInsititutionGroup] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,17 +18,17 @@ final class FinancialInstitutionPickerViewController: UITableViewController {
 // MARK: - UITableViewDataSource
 extension FinancialInstitutionPickerViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return providerGroupedByFinancialInsititutions.count
+        return financialInsititutionGroups.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = providerGroupedByFinancialInsititutions[indexPath.row].financialInsititutionID
+        cell.textLabel?.text = financialInsititutionGroups[indexPath.row].financialInsititutionID
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let providersWithSameFinancialInstitution = providerGroupedByFinancialInsititutions[indexPath.row]
+        let providersWithSameFinancialInstitution = financialInsititutionGroups[indexPath.row]
         switch providersWithSameFinancialInstitution {
         case .accessTypes(let providerGroupedByAccessTypes):
             showAccessTypePicker(for: providerGroupedByAccessTypes)
@@ -42,9 +42,9 @@ extension FinancialInstitutionPickerViewController {
 
 // MARK: - Navigation
 extension FinancialInstitutionPickerViewController {
-    func showAccessTypePicker(for providerGroup: [ProvidersGroupedByAccessType]) {
+    func showAccessTypePicker(for providerGroup: [ProviderAccessTypeGroup]) {
         let viewController = AccessTypePickerViewController(style: .plain)
-        viewController.providerGroupedByAccessTypes = providerGroup
+        viewController.providerAccessTypeGroups = providerGroup
         show(viewController, sender: nil)
     }
     
