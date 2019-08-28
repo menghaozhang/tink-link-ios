@@ -13,11 +13,9 @@ final class ProviderListViewController: UITableViewController {
         
         //        let client = TinkLink.shared.client
         //        providerContext = TinkLink.shared.makeProviderContext()
-        
-        let client = Client(clientId: "123")
-        
-        providerContext = ProviderContext(client: client)
-        providerContext?.delegate = self
+        // OptionSet market
+        providerStore = ProviderStore(market: "SE")
+        providerStore?.delegate = self
         //        providerContext.types = []
         //        providerContext.performFetch()
 
