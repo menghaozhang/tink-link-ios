@@ -57,10 +57,8 @@ extension AddCredentialViewController {
 // MARK: - Actions
 extension AddCredentialViewController {
     @objc private func doneButtonPressed(_ sender: UIBarButtonItem) {
-        switch provider.fields.createCredentialValues() {
-        case .failure(let fieldSpecificationsError):
-            print(fieldSpecificationsError.errors)
-        case .success(let fieldValues):
+        do {
+            let fieldValues = try provider.fields.createCredentialValues()
             credentialContext?.addCredential(for: provider, fields: fieldValues, progressHandler: { status in
                 switch status {
                 case .authenticating, .created:
@@ -85,6 +83,10 @@ extension AddCredentialViewController {
                     self.showCredentialUpdated(for: credential)
                 }
             })
+        } catch let error as FieldSpecificationsError {
+            print(error.errors)
+        } catch {
+            print(error)
         }
     }
 }
