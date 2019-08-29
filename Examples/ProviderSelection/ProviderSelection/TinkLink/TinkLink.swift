@@ -13,7 +13,7 @@ public class TinkLink {
     private(set) public static var timeoutIntervalForRequest: TimeInterval = 15
     
     private static let fallbackClient: Client = {
-        let fallbackUrl = Bundle.main.bundleURL
+        let fallbackUrl = Bundle.main.url(forResource: "Info", withExtension: "plist")!
         do {
             let data = try Data(contentsOf: fallbackUrl)
             let configration = try PropertyListDecoder().decode(TinkLink.Configuration.self, from: data)
