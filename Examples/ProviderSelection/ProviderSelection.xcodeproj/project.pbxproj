@@ -31,6 +31,8 @@
 		8FBDA972231553A600BC39AF /* Tinklink.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FBDA971231553A600BC39AF /* Tinklink.plist */; };
 		8FBDA97423157E0800BC39AF /* ProviderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBDA97323157E0800BC39AF /* ProviderService.swift */; };
 		8FBDA9762316AA0F00BC39AF /* ProviderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBDA9752316AA0F00BC39AF /* ProviderRepository.swift */; };
+		8FBDA9782316AFC800BC39AF /* ProviderMarketRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBDA9772316AFC800BC39AF /* ProviderMarketRepository.swift */; };
+		8FBDA97A2316BE9400BC39AF /* ProviderMarketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBDA9792316BE9400BC39AF /* ProviderMarketsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,8 @@
 		8FBDA971231553A600BC39AF /* Tinklink.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Tinklink.plist; sourceTree = "<group>"; };
 		8FBDA97323157E0800BC39AF /* ProviderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderService.swift; sourceTree = "<group>"; };
 		8FBDA9752316AA0F00BC39AF /* ProviderRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderRepository.swift; sourceTree = "<group>"; };
+		8FBDA9772316AFC800BC39AF /* ProviderMarketRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderMarketRepository.swift; sourceTree = "<group>"; };
+		8FBDA9792316BE9400BC39AF /* ProviderMarketsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderMarketsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +98,7 @@
 			children = (
 				201D5510230AC95D00641102 /* AppDelegate.swift */,
 				8FBA6C562313DE7900A98BA8 /* TinkLink */,
+				8FBDA9792316BE9400BC39AF /* ProviderMarketsViewController.swift */,
 				201D5512230AC95D00641102 /* ProviderListViewController.swift */,
 				8FA5F823230BD13800226C02 /* FinancialInstitutionPickerViewController.swift */,
 				8FA5F825230BE85100226C02 /* AccessTypePickerViewController.swift */,
@@ -122,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				8FBDA9752316AA0F00BC39AF /* ProviderRepository.swift */,
+				8FBDA9772316AFC800BC39AF /* ProviderMarketRepository.swift */,
 				8FA5F837230EC34300226C02 /* ProviderStore.swift */,
 				8FBDA97323157E0800BC39AF /* ProviderService.swift */,
 				8FA5F83B230EC38D00226C02 /* CredentialContext.swift */,
@@ -252,12 +258,14 @@
 				8FA5F826230BE85100226C02 /* AccessTypePickerViewController.swift in Sources */,
 				8FA5F840230FDD1600226C02 /* CredentialContextWithCallBack.swift in Sources */,
 				20583EFA2313F47F00799B61 /* Client.swift in Sources */,
+				8FBDA9782316AFC800BC39AF /* ProviderMarketRepository.swift in Sources */,
 				8FA5F824230BD13800226C02 /* FinancialInstitutionPickerViewController.swift in Sources */,
 				8FA5F832230D571A00226C02 /* FieldsValidator.swift in Sources */,
 				8FA5F828230C069500226C02 /* CredentialTypePickerViewController.swift in Sources */,
 				8FA5F834230D84B900226C02 /* TextFieldCell.swift in Sources */,
 				8FA5F830230D36AB00226C02 /* AddCredentialViewController.swift in Sources */,
 				201D5513230AC95D00641102 /* ProviderListViewController.swift in Sources */,
+				8FBDA97A2316BE9400BC39AF /* ProviderMarketsViewController.swift in Sources */,
 				201D5511230AC95D00641102 /* AppDelegate.swift in Sources */,
 				8FA5F83A230EC36600226C02 /* Credential.swift in Sources */,
 				8FA5F836230E9DEF00226C02 /* SupplementalInformationViewController.swift in Sources */,

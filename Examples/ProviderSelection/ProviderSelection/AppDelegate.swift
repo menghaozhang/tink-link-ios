@@ -25,8 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         try? TinkLink.configure(tinklinkUrl: Bundle.main.url(forResource: "Tinklink", withExtension: "plist")!)
 
         window = UIWindow(frame: UIScreen.main.bounds)
-        let providerListViewController = ProviderListViewController(style: .plain)
-        let navigationController = UINavigationController(rootViewController: providerListViewController)
+        let providerMarketsViewController = ProviderMarketsViewController()
+        let navigationController = UINavigationController(rootViewController: providerMarketsViewController)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
 

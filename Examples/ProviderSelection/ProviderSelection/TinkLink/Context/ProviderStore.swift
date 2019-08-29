@@ -1,71 +1,93 @@
-protocol ProviderStoreDelegate: AnyObject {
-    func providerStore(_ store: ProviderStore, didUpdateProviders providers: [Provider])
-    func providerStore(_ store: ProviderStore, didReceiveError error: Error)
-}
-
+import Foundation
 // Mocked Provider store
 class ProviderStore {
-    var market: String
-    private var service: ProviderService
-    
-    init(market: String) {
-        self.market = market
+    static let shared: ProviderStore = ProviderStore()
+    private init() {
         service = ProviderService(client: TinkLink.shared.client)
     }
-    
-    private var _providers: [Provider]? {
+    private var service: ProviderService
+    var providerMarketGroups: [String: [Provider]] = [:]
+    var markets: [String]? {
         didSet {
-            guard let providers = _providers else { return }
-            delegate?.providerStore(self, didUpdateProviders: providers)
-        }
-    }
-    
-    weak var delegate: ProviderStoreDelegate? {
-        didSet {
-            if delegate != nil {
-                performFetch()
+            guard let markets = markets else { return }
+            providerStoreMarketObservers.forEach { (id, handler) in
+                handler(id, markets)
             }
         }
     }
     
-    func performFetch() {
-        if let providers = _providers {
-            delegate?.providerStore(self, didUpdateProviders: providers)
-        } else {
-            performFetchIfNeeded()
-        }
-    }
-    
-    private func performFetchIfNeeded() {
+    func performFetchProvidersIfNeeded(for market: String?) {
         service.providers(marketCode: market) { [weak self] result in
             guard let strongSelf = self else { return }
             switch result {
-            case .success(let providers):
-                self?._providers = providers
+            case .success(let fetchedProviders):
+                if let market = market {
+                    strongSelf.providerMarketGroups[market] = fetchedProviders
+                } else {
+                    let groupedProviders = Dictionary(grouping: fetchedProviders, by: { $0.market })
+                    strongSelf.providerMarketGroups.merge(groupedProviders, uniquingKeysWith: { (_, new) -> [Provider] in
+                        return new
+                    })
+                }
+                strongSelf.providerStoreObservers.forEach({ (id, handler) in
+                    handler(id, fetchedProviders)
+                })
             case .failure(let error):
-                strongSelf.delegate?.providerStore(strongSelf, didReceiveError: error)
+                break
+                //error
             }
         }
     }
-}
-
-extension ProviderStore {
-    var providers: [Provider] {
-        if _providers == nil {
-            performFetch()
+    
+    func performFetchMarketsIfNeeded() {
+        service.providerMarkets { [weak self] result in
+            guard let strongSelf = self else { return }
+            switch result {
+            case .success(let markets):
+                strongSelf.markets = markets
+            case .failure(let error):
+                break
+                //error
+            }
         }
-        return _providers ?? []
     }
     
-    var providerGroups: [ProviderGroup] {
-        let providerGroupedByGroupedName = Dictionary(grouping: providers, by: { $0.groupedName })
-        let groupedNames = providerGroupedByGroupedName.map { $0.key }
-        var providerGroupsByGroupedNames = [ProviderGroup]()
-        groupedNames.forEach { groupName in
-            let providersWithSameGroupedName = providers.filter({ $0.groupedName == groupName })
-            providerGroupsByGroupedNames.append(ProviderGroup(providers: providersWithSameGroupedName))
-            
+    // Provider Observer
+    typealias ProviderStoreObserverHandler = (_ tokenIdentifier: UUID, _ providers: [Provider]) -> Void
+    var providerStoreObservers: [UUID: ProviderStoreObserverHandler] = [:]
+    func addProvidersObserver(token: StoreObserverToken, handler: @escaping ProviderStoreObserverHandler) {
+        token.addReleaseHandler { [weak self] in
+            self?.providerStoreObservers[token.identifier] = nil
         }
-        return providerGroupsByGroupedNames.sorted(by: { $0.providers.count < $1.providers.count })
+        providerStoreObservers[token.identifier] = handler
+    }
+    
+    // Market Observer
+    typealias ProviderStoreMarketObserverHandler = (_ tokenIdentifier: UUID, _ markets: [String]) -> Void
+    var providerStoreMarketObservers: [UUID: ProviderStoreMarketObserverHandler] = [:]
+    func addMarketsObserver(token: StoreObserverToken, handler: @escaping ProviderStoreMarketObserverHandler) {
+        token.addReleaseHandler { [weak self] in
+            self?.providerStoreObservers[token.identifier] = nil
+        }
+        providerStoreMarketObservers[token.identifier] = handler
+    }
+}
+
+final class StoreObserverToken {
+    fileprivate let identifier = UUID()
+    private var releaseHandlers = [() -> Void]()
+    
+    init() {}
+    
+    func match(id: UUID) -> Bool {
+        return identifier == id
+    }
+    
+    func addReleaseHandler(releaseHandler: @escaping () -> Void) {
+        releaseHandlers.append(releaseHandler)
+    }
+    
+    deinit {
+        releaseHandlers.forEach { $0() }
     }
 }
