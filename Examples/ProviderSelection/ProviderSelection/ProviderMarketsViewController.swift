@@ -44,7 +44,7 @@ extension ProviderMarketsViewController {
         
         view.backgroundColor = .white
         collectionView.translatesAutoresizingMaskIntoConstraints  = false
-        separatorLine.backgroundColor = .black
+        separatorLine.backgroundColor = UIColor(white: 0.87, alpha: 1.0)
         separatorLine.translatesAutoresizingMaskIntoConstraints  = false
         
         NSLayoutConstraint.activate([
@@ -107,11 +107,9 @@ extension ProviderMarketsViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath)
-        if let marketCell = cell as? MarketCell {
-            marketCell.update(label: providerMarketRepository.market[indexPath.item])
-        }
-        return cell
+        let marketCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! MarketCell
+        marketCell.labelView.text = providerMarketRepository.market[indexPath.item]
+        return marketCell
     }
 }
 
@@ -120,26 +118,8 @@ class MarketCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        setup()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        setup()
-    }
-    
-    func update(label: String) {
-        labelView.text = label
-    }
-    
-    private func setup() {
         selectedBackgroundView = UIView()
-        selectedBackgroundView?.backgroundColor = .lightGray
+        selectedBackgroundView?.backgroundColor = UIColor(white: 0.85, alpha: 1.0)
         
         labelView.backgroundColor = .clear
         labelView.translatesAutoresizingMaskIntoConstraints = false
@@ -148,5 +128,9 @@ class MarketCell: UICollectionViewCell {
             labelView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             labelView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
             ])
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }
