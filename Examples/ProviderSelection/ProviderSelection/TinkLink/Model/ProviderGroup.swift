@@ -1,6 +1,6 @@
 import Foundation
 // Mocked Provider model
-struct Provider {
+public struct Provider {
     let name: String
     let financialInstitutionID: String
     let groupedName: String
