@@ -1,7 +1,7 @@
 import Foundation
 
 extension Provider.FieldSpecification {
-    public func validatedValue() throws -> String {
+    public func validateValue() throws {
         let value = self.value
         if value.isEmpty, !self.isOptional {
             throw FieldSpecificationError.requiredFieldEmptyValue(fieldName: self.name)
@@ -15,7 +15,6 @@ extension Provider.FieldSpecification {
                 throw FieldSpecificationError.validationFailed(fieldName: self.name, patternError: self.patternError)
             }
         }
-        return value
     }
 }
 
@@ -25,8 +24,8 @@ extension Array where Element == Provider.FieldSpecification {
         var fieldValus = [String: String]()
         for fieldSpecification in self {
             do {
-                let value = try fieldSpecification.validatedValue()
-                fieldValus[fieldSpecification.name] = value
+                try fieldSpecification.validateValue()
+                fieldValus[fieldSpecification.name] = fieldSpecification.value
             } catch let error as FieldSpecificationError {
                 fieldSpecificationsError.errors.append(error)
             } catch {
