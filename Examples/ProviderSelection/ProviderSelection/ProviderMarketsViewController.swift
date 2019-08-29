@@ -25,6 +25,8 @@ extension ProviderMarketsViewController {
         
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .horizontal
+        collectionViewLayout.itemSize = CGSize(width: 56, height: 44)
+        collectionViewLayout.minimumLineSpacing = 0
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -49,7 +51,7 @@ extension ProviderMarketsViewController {
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.heightAnchor.constraint(equalToConstant: 40),
+            collectionView.heightAnchor.constraint(equalToConstant: 44),
             
             separatorLine.topAnchor.constraint(equalTo: collectionView.bottomAnchor),
             separatorLine.leadingAnchor.constraint(equalTo: view.leadingAnchor),
