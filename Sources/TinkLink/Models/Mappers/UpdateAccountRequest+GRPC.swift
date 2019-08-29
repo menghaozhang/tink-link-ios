@@ -1,3 +1,4 @@
+import Foundation
 import SwiftProtobuf
 
 internal extension UpdateAccountRequest {
@@ -8,7 +9,7 @@ internal extension UpdateAccountRequest {
         updateAccountRequest.type = type.grpcType
         updateAccountRequest.favored = favoredGoogleProtobuf
         updateAccountRequest.excluded = excludedGoogleProtobuf
-        updateAccountRequest.ownership = GRPCExactNumber(value: ownership)
+        updateAccountRequest.ownership = GRPCExactNumber(value: Decimal(ownership))
         return updateAccountRequest
     }
     

@@ -1,5 +1,3 @@
-import Foundation
-
 /// Request used to update the account
 public struct UpdateAccountRequest {
     
@@ -21,7 +19,7 @@ public struct UpdateAccountRequest {
     
     /// The ownership ratio indicating how much of the account is owned by the user.
     /// The ownership determine the percentage of the amounts on transactions belonging to this account, that should be attributed to the user when statistics are calculated.
-    public var ownership: ExactNumber
+    public var ownership: Double
 }
 
 extension UpdateAccountRequest {
@@ -31,6 +29,6 @@ extension UpdateAccountRequest {
         type = account.type
         isFavored = account.isFavored
         isExcluded = account.isExcluded
-        ownership = ExactNumber(value: Decimal(account.ownership))
+        ownership = account.ownership
     }
 }
