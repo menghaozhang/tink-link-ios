@@ -30,6 +30,7 @@
 		8FBDA9702315536200BC39AF /* TinkLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBDA96F2315536200BC39AF /* TinkLink.swift */; };
 		8FBDA972231553A600BC39AF /* Tinklink.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FBDA971231553A600BC39AF /* Tinklink.plist */; };
 		8FBDA97423157E0800BC39AF /* ProviderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBDA97323157E0800BC39AF /* ProviderService.swift */; };
+		8FBDA9762316AA0F00BC39AF /* ProviderRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBDA9752316AA0F00BC39AF /* ProviderRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		8FBDA96F2315536200BC39AF /* TinkLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinkLink.swift; sourceTree = "<group>"; };
 		8FBDA971231553A600BC39AF /* Tinklink.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Tinklink.plist; sourceTree = "<group>"; };
 		8FBDA97323157E0800BC39AF /* ProviderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderService.swift; sourceTree = "<group>"; };
+		8FBDA9752316AA0F00BC39AF /* ProviderRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 		8FBA6C552313DE7200A98BA8 /* Context */ = {
 			isa = PBXGroup;
 			children = (
+				8FBDA9752316AA0F00BC39AF /* ProviderRepository.swift */,
 				8FA5F837230EC34300226C02 /* ProviderStore.swift */,
 				8FBDA97323157E0800BC39AF /* ProviderService.swift */,
 				8FA5F83B230EC38D00226C02 /* CredentialContext.swift */,
@@ -244,6 +247,7 @@
 				8FA5F838230EC34300226C02 /* ProviderStore.swift in Sources */,
 				8FA5F83C230EC38D00226C02 /* CredentialContext.swift in Sources */,
 				8FA5F83E230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift in Sources */,
+				8FBDA9762316AA0F00BC39AF /* ProviderRepository.swift in Sources */,
 				8FBA6C5F2313EB2600A98BA8 /* SupplementalInformationDelegationViewController.swift in Sources */,
 				8FA5F826230BE85100226C02 /* AccessTypePickerViewController.swift in Sources */,
 				8FA5F840230FDD1600226C02 /* CredentialContextWithCallBack.swift in Sources */,

@@ -7,6 +7,7 @@ struct Provider {
     let accessType: AccessType
     var credentialType: Credential.`Type`
     var fields: [FieldSpecification]
+    var market: String
     
     public struct FieldSpecification {
         // description
