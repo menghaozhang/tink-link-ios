@@ -62,7 +62,6 @@ class CredentialRepository {
             case .success(let credential):
                 strongSelf.progressHandlers[credential.id] = progressHandler
                 strongSelf.completions[credential.id] = completion
-                strongSelf.handleUpdate(for: credential)
             }
         }
     }

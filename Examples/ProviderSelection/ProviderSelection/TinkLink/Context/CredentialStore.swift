@@ -32,8 +32,8 @@ class CredentialStore {
             self.service.createCredential(for: provider, fields: fields, completion: { [weak self] (result) in
                 guard let strongSelf = self else { return }
                 let credential = try! result.get()
-                strongSelf.credentials[credential.id] = credential
                 completion(.success(credential))
+                strongSelf.credentials[credential.id] = credential
             })
         }
     }
