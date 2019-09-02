@@ -60,7 +60,7 @@ extension ProviderMarketsViewController {
             ])
     }
     
-    private func addProviderListView(for market: String) {
+    private func setupProviderListView(for market: String) {
         let providerListViewController = ProviderListViewController(market: market, style: .plain)
         addChild(providerListViewController)
         view.addSubview(providerListViewController.view)
@@ -79,10 +79,12 @@ extension ProviderMarketsViewController {
 
 extension ProviderMarketsViewController: ProviderMarketRepositoryDelegate {
     func providerMarketRepository(_ store: ProviderMarketRepository, didUpdateMarkets markets: [String]) {
-        collectionView.reloadData()
-        if let market = markets.first {
-            collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: UICollectionView.ScrollPosition())
-            addProviderListView(for: market)
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+            if let market = markets.first {
+                self.collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: UICollectionView.ScrollPosition())
+                self.setupProviderListView(for: market)
+            }
         }
     }
     
@@ -96,7 +98,7 @@ extension ProviderMarketsViewController: UICollectionViewDelegate {
         if let providerListViewController = providerListViewController {
             providerListViewController.updateMarket(market: market)
         } else {
-            addProviderListView(for: market)
+            setupProviderListView(for: market)
         }
     }
 }
