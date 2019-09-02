@@ -6,13 +6,35 @@ protocol ProviderRepositoryDelegate: AnyObject {
 public class ProviderRepository {
     var market: String
     private let storeObserverToken = StoreObserverToken()
+    private let providerStore = ProviderStore.shared
     init(market: String) {
         self.market = market
-        ProviderStore.shared.addProvidersObserver(token: storeObserverToken) { [weak self] (tokenId, providers) in
-            guard let strongSelf = self, strongSelf.storeObserverToken.match(id: tokenId) else {
+        providerStore.addProvidersObserver(token: storeObserverToken) { [weak self] tokenId in
+            guard let strongSelf = self, strongSelf.storeObserverToken.has(id: tokenId) else {
                 return
             }
-            strongSelf._providers = providers
+            strongSelf._providers = strongSelf.providerStore.providerMarketGroups[market]
+        }
+    }
+    
+    enum ProvidersStatus {
+        case loading
+        case cached([Provider])
+        case loaded([Provider])
+        case error(Error)
+    }
+    
+    private var _providersStatus: ProvidersStatus? {
+        didSet {
+            guard let providersStatus = _providersStatus else { return }
+            switch providersStatus {
+            case .cached(let providers), .loaded(let providers):
+                _providers = providers
+            case .error(let error):
+                delegate?.providerRepository(self, didReceiveError: error)
+            default:
+                break
+            }
         }
     }
     
@@ -32,10 +54,10 @@ public class ProviderRepository {
     }
     
     func performFetch() {
-        if let providers = ProviderStore.shared.providerMarketGroups[market] {
+        if let providers = providerStore.providerMarketGroups[market] {
             _providers = providers
         } else {
-            ProviderStore.shared.performFetchProvidersIfNeeded(for: market)
+            providerStore.performFetchProvidersIfNeeded(for: market)
         }
     }
 }
