@@ -1,3 +1,4 @@
+import Foundation
 import SwiftGRPC
 
 public final class UserService {
@@ -17,10 +18,10 @@ public final class UserService {
         return service
     }()
 
-    public func createAnonymous(market: Market? = nil, locale: String? = nil, origin: String? = nil, completion: @escaping (Result<AccessToken, Error>) -> Void) -> Cancellable {
+    public func createAnonymous(market: Market? = nil, locale: Locale = .current, origin: String? = nil, completion: @escaping (Result<AccessToken, Error>) -> Void) -> Cancellable {
         var request = GRPCCreateAnonymousRequest()
         request.market = market?.code ?? ""
-        request.locale = locale ?? ""
+        request.locale = locale.identifier
         request.origin = origin ?? ""
 
         return startCall(for: request, method: service.createAnonymous, responseMap: { AccessToken($0.accessToken) }, completion: completion)
