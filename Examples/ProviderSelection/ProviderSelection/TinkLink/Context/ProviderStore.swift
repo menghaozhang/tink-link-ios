@@ -59,7 +59,7 @@ class ProviderStore {
         }
     }
     
-    // TODO: Abustract this part
+    // TODO: Abstract this part
     typealias ObserverHandler = (_ tokenIdentifier: UUID) -> Void
     // Provider Observer
     var providerStoreObservers: [UUID: ObserverHandler] = [:]

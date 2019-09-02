@@ -11,11 +11,13 @@ class SupplementInformationTask {
     var fields: [Provider.FieldSpecification]
     
     func submit() {
-        credentialRepository?.addSupplementalInformation(for: credential, supplementalInformationFields: [:])
+        if let fields = try? fields.createCredentialValues().get() {
+            credentialRepository?.addSupplementalInformation(for: credential, supplementalInformationFields: fields)
+        }
     }
     
     func cancel() {
-        
+        credentialRepository?.cancelSupplementInformation(for: credential)
     }
 }
 

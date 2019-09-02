@@ -7,6 +7,8 @@ final class AddCredentialViewController: UITableViewController {
     var credentialRepository: CredentialRepository?
     var provider: Provider
     
+    private lazy var statusLabelView = UILabel()
+    
     init(provider: Provider) {
         self.provider = provider
         super.init(nibName: nil, bundle: nil)
@@ -90,6 +92,7 @@ extension AddCredentialViewController {
 // MARK: - Navigation
 extension AddCredentialViewController {
     private func showSupplementalInformation(for supplementInformationTask: SupplementInformationTask) {
+        hideUpdatingView()
         let supplementalInformationViewController = SupplementalInformationViewController(supplementInformationTask: supplementInformationTask)
         supplementalInformationViewController.delegate = self
         let navigationController = UINavigationController(rootViewController: supplementalInformationViewController)
@@ -97,10 +100,29 @@ extension AddCredentialViewController {
     }
     
     private func showUpdating(status: String) {
-        
+        if statusLabelView.superview == nil {
+            statusLabelView.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(statusLabelView)
+            
+            NSLayoutConstraint.activate([
+                statusLabelView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                statusLabelView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+                statusLabelView.heightAnchor.constraint(equalToConstant: 200),
+                statusLabelView.widthAnchor.constraint(equalToConstant: 200)
+                ])
+            statusLabelView.backgroundColor = .white
+            statusLabelView.textAlignment = .center
+            statusLabelView.numberOfLines = 0
+        }
+        statusLabelView.text = status
+    }
+    
+    private func hideUpdatingView() {
+        statusLabelView.removeFromSuperview()
     }
     
     private func showCredentialUpdated(for credential: Credential) {
+        hideUpdatingView()
         let finishedCredentialUpdatedViewController = FinishedCredentialUpdatedViewController(credential: credential)
         show(finishedCredentialUpdatedViewController, sender: self)
     }
