@@ -4,7 +4,7 @@ import UIKit
  Example of how to use the provider field specification to add credential
  */
 final class AddCredentialViewController: UITableViewController {
-    var credentialContext: CredentialContextWithCallBack?
+    var credentialContext: CredentialRepository?
     var provider: Provider
     
     init(provider: Provider) {
@@ -22,7 +22,7 @@ extension AddCredentialViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        credentialContext = CredentialContextWithCallBack(client: TinkLink.shared.client)
+        credentialContext = CredentialRepository(client: TinkLink.shared.client)
         
         tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
         tableView.allowsSelection = false
