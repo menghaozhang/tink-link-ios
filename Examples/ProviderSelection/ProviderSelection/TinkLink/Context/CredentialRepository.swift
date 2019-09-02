@@ -28,7 +28,6 @@ class CredentialRepository {
         case awaitingThirdPartyAppAuthentication(URL)
     }
     
-    var client: Client
     private let credentialStore = CredentialStore.shared
     private let storeObserverToken = StoreObserverToken()
     
@@ -36,8 +35,7 @@ class CredentialRepository {
     private var progressHandlers: [String: (AddCredentialStatus) -> Void] = [:]
     private var completions: [String: (Result<Credential, Error>) -> Void] = [:]
     
-    init(client: Client) {
-        self.client = client
+    init() {
         credentials = credentialStore.credentials
         credentialStore.addCredentialsObserver(token: storeObserverToken) { [weak self] tokenId in
             guard let strongSelf = self, strongSelf.storeObserverToken.has(id: tokenId) else {
