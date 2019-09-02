@@ -9,8 +9,8 @@ class ProviderStore {
     var providerMarketGroups: [String: [Provider]] = [:] {
         didSet {
             DispatchQueue.main.async {
-                self.providerStoreObservers.forEach({ (id, handler) in
-                    handler(id)
+                self.providerStoreObservers.forEach({ (tokenID, handler) in
+                    handler(tokenID)
                 })
             }
         }

@@ -4,7 +4,7 @@ import UIKit
  Example of how to use the provider field specification to add credential
  */
 final class AddCredentialViewController: UITableViewController {
-    var credentialContext: CredentialRepository?
+    var credentialRepository: CredentialRepository?
     var provider: Provider
     
     init(provider: Provider) {
@@ -22,7 +22,7 @@ extension AddCredentialViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        credentialContext = CredentialRepository(client: TinkLink.shared.client)
+        credentialRepository = CredentialRepository()
         
         tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
         tableView.allowsSelection = false
@@ -59,7 +59,7 @@ extension AddCredentialViewController {
         case .failure(let fieldSpecificationsError):
             print(fieldSpecificationsError.errors)
         case .success(let fieldValues):
-            credentialContext?.addCredential(for: provider, fields: fieldValues, progressHandler: { status in
+            credentialRepository?.addCredential(for: provider, fields: fieldValues, progressHandler: { status in
                 switch status {
                 case .authenticating, .created:
                     break
@@ -72,7 +72,7 @@ extension AddCredentialViewController {
                         }
                     })
                 case .updating(let status):
-                    break
+                    self.showUpdating(status: status)
                 }
             }, completion: { result in
                 switch result {
@@ -94,6 +94,10 @@ extension AddCredentialViewController {
         supplementalInformationViewController.delegate = self
         let navigationController = UINavigationController(rootViewController: supplementalInformationViewController)
         show(navigationController, sender: self)
+    }
+    
+    private func showUpdating(status: String) {
+        
     }
     
     private func showCredentialUpdated(for credential: Credential) {
