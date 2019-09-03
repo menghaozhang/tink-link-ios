@@ -186,6 +186,7 @@
 				20ED857323040066006213BB /* Cancellable.swift */,
 				20ED857523040077006213BB /* CallCanceller.swift */,
 				8F36724723057E0700B92936 /* Models */,
+				8FA35595231EB14C0054115D /* Context */,
 				8FA35588231E6FFE0054115D /* Stores */,
 				20ED857223040053006213BB /* Services */,
 				20ED853C2303FAEC006213BB /* GRPC */,
@@ -266,12 +267,19 @@
 		8FA35588231E6FFE0054115D /* Stores */ = {
 			isa = PBXGroup;
 			children = (
-				8FA3558F231EA3820054115D /* ProviderContext.swift */,
 				8FA35589231E703C0054115D /* ProviderStore.swift */,
-				8FA35591231EADAB0054115D /* CredentialContext.swift */,
 				8FA3558B231E839E0054115D /* CredentialStore.swift */,
 			);
 			path = Stores;
+			sourceTree = "<group>";
+		};
+		8FA35595231EB14C0054115D /* Context */ = {
+			isa = PBXGroup;
+			children = (
+				8FA3558F231EA3820054115D /* ProviderContext.swift */,
+				8FA35591231EADAB0054115D /* CredentialContext.swift */,
+			);
+			path = Context;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
