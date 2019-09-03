@@ -54,14 +54,9 @@ extension ProviderContext {
         let groupedNames = providerGroupedByGroupedName.map { $0.key }
         var providerGroups = [ProviderGroup]()
         groupedNames.forEach { groupName in
-            if groupName.isEmpty {
-                let providersWithEmptyGroupedName = providers.filter({ $0.groupDisplayName == groupName })
-                providerGroups.append(ProviderGroup(providers: providersWithEmptyGroupedName))
-            } else {
-                let providersWithSameGroupedName = providers.filter({ $0.groupDisplayName == groupName })
-                providerGroups.append(ProviderGroup(providers: providersWithSameGroupedName))
-            }
+            let providersWithSameGroupedName = providers.filter({ $0.groupDisplayName == groupName })
+            providerGroups.append(ProviderGroup(providers: providersWithSameGroupedName))
         }
-        return providerGroups.sorted(by: { $0.displayName < $1.displayName })
+        return providerGroups.sorted(by: { $0.providers.count < $1.providers.count })
     }
 }

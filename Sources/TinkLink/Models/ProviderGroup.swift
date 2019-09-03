@@ -64,7 +64,7 @@ public enum FinancialInsititutionGroup {
     }
 }
 
-public enum ProviderGroupDisplayNameGroup {
+public enum ProviderGroup {
     case provider(Provider)
     case credentialTypes([Provider])
     case accessTypes([ProviderAccessTypeGroup])
@@ -115,36 +115,5 @@ public enum ProviderGroupDisplayNameGroup {
     
     public var groupedDisplayName: String? {
         return providers.first?.groupDisplayName
-    }
-}
-
-public enum ProviderGroup {
-    init(providers: [Provider]) {
-        if providers.contains(where: { $0.groupDisplayName.isEmpty
-        }) {
-            self = .financialInsititution(FinancialInsititutionGroup(providers: providers))
-        } else {
-            self = .groupDisplayName(ProviderGroupDisplayNameGroup(providers: providers))
-        }
-    }
-    case groupDisplayName(ProviderGroupDisplayNameGroup)
-    case financialInsititution(FinancialInsititutionGroup)
-    
-    public var providers: [Provider] {
-        switch self {
-        case .financialInsititution(let financialInsititutionGroup):
-            return financialInsititutionGroup.providers
-        case .groupDisplayName(let providerGroupDisplayNameGroup):
-            return providerGroupDisplayNameGroup.providers
-        }
-    }
-    
-    public var displayName: String {
-        switch self {
-        case .financialInsititution(let financialInsititutionGroup):
-            return financialInsititutionGroup.financialInsititutionID ?? ""
-        case .groupDisplayName(let providerGroupDisplayNameGroup):
-            return providerGroupDisplayNameGroup.groupedDisplayName ?? ""
-        }
     }
 }
