@@ -17,7 +17,7 @@ extension Provider.FieldSpecification {
         }
     }
 
-    var isValueValid: Bool {
+    public var isValueValid: Bool {
         do {
             try validateValue()
             return true
@@ -28,23 +28,35 @@ extension Provider.FieldSpecification {
 }
 
 extension Array where Element == Provider.FieldSpecification {
-    func createCredentialValues() throws -> [String: String] {
+    public func validateValues() throws {
         var fieldSpecificationsError = FieldSpecificationsError(errors: [])
-        var fieldValus = [String: String]()
         for fieldSpecification in self {
             do {
                 try fieldSpecification.validateValue()
-                fieldValus[fieldSpecification.name] = fieldSpecification.value
             } catch let error as FieldSpecificationError {
                 fieldSpecificationsError.errors.append(error)
             } catch {
                 fatalError()
             }
         }
-        if fieldSpecificationsError.errors.count > 0 {
-            throw fieldSpecificationsError
+        guard fieldSpecificationsError.errors.isEmpty else { throw fieldSpecificationsError }
+    }
+
+    public var areValuesValid: Bool {
+        do {
+            try validateValues()
+            return true
+        } catch {
+            return false
         }
-        return fieldValus
+    }
+
+    internal func makeFields() -> [String: String] {
+        var fieldValues: [String: String] = [:]
+        for fieldSpecification in self {
+            fieldValues[fieldSpecification.name] = fieldSpecification.value
+        }
+        return fieldValues
     }
 }
 

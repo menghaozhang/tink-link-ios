@@ -67,7 +67,7 @@ extension SupplementalInformationViewController {
     @objc private func doneButtonPressed(_ sender: UIBarButtonItem) {
         tableView.resignFirstResponder()
         do {
-            _ = try supplementInformationTask.fields.createCredentialValues()
+            try supplementInformationTask.fields.validateValues()
             supplementInformationTask.submit()
             self.delegate?.supplementalInformationViewController(self, didSupplementInformationForCredential: supplementInformationTask.credential)
         } catch let fieldSpecificationsError as FieldSpecificationsError {
