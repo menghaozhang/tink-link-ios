@@ -11,7 +11,7 @@ final class AddCredentialViewController: UITableViewController {
     
     init(provider: Provider) {
         self.provider = provider
-        super.init(nibName: nil, bundle: nil)
+        super.init(style: .grouped)
     }
     
     required init?(coder aDecoder: NSCoder) {
