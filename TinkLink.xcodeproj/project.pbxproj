@@ -54,6 +54,7 @@
 		8FA35590231EA3820054115D /* ProviderContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA3558F231EA3820054115D /* ProviderContext.swift */; };
 		8FA35592231EADAB0054115D /* CredentialContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA35591231EADAB0054115D /* CredentialContext.swift */; };
 		8FA35594231EAE000054115D /* FieldsValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA35593231EAE000054115D /* FieldsValidator.swift */; };
+		8FA35597231EB2F10054115D /* ProviderMarketContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA35596231EB2F10054115D /* ProviderMarketContext.swift */; };
 		8FA5F820230AE40B00226C02 /* UpdateAccountRequest+GRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F81F230AE40B00226C02 /* UpdateAccountRequest+GRPC.swift */; };
 		8FA5F822230AE66100226C02 /* CurrencyDenominatedAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F821230AE66100226C02 /* CurrencyDenominatedAmount.swift */; };
 /* End PBXBuildFile section */
@@ -115,6 +116,7 @@
 		8FA3558F231EA3820054115D /* ProviderContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderContext.swift; sourceTree = "<group>"; };
 		8FA35591231EADAB0054115D /* CredentialContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialContext.swift; sourceTree = "<group>"; };
 		8FA35593231EAE000054115D /* FieldsValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldsValidator.swift; sourceTree = "<group>"; };
+		8FA35596231EB2F10054115D /* ProviderMarketContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderMarketContext.swift; sourceTree = "<group>"; };
 		8FA5F81F230AE40B00226C02 /* UpdateAccountRequest+GRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdateAccountRequest+GRPC.swift"; sourceTree = "<group>"; };
 		8FA5F821230AE66100226C02 /* CurrencyDenominatedAmount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDenominatedAmount.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -277,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				8FA3558F231EA3820054115D /* ProviderContext.swift */,
+				8FA35596231EB2F10054115D /* ProviderMarketContext.swift */,
 				8FA35591231EADAB0054115D /* CredentialContext.swift */,
 			);
 			path = Context;
@@ -461,6 +464,7 @@
 				200FD63F23154B660077181A /* Market.swift in Sources */,
 				20ED856F2304003A006213BB /* Environment.swift in Sources */,
 				8FA35592231EADAB0054115D /* CredentialContext.swift in Sources */,
+				8FA35597231EB2F10054115D /* ProviderMarketContext.swift in Sources */,
 				8FA35590231EA3820054115D /* ProviderContext.swift in Sources */,
 				20ED859623045896006213BB /* Credential.swift in Sources */,
 				200FD63B23154AA90077181A /* AuthenticationToken.swift in Sources */,

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,12 +15,9 @@
 		8FA5F824230BD13800226C02 /* FinancialInstitutionPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F823230BD13800226C02 /* FinancialInstitutionPickerViewController.swift */; };
 		8FA5F826230BE85100226C02 /* AccessTypePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F825230BE85100226C02 /* AccessTypePickerViewController.swift */; };
 		8FA5F828230C069500226C02 /* CredentialTypePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F827230C069500226C02 /* CredentialTypePickerViewController.swift */; };
-		8FA5F82B230C2C0200226C02 /* ProviderGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F82A230C2C0200226C02 /* ProviderGroup.swift */; };
 		8FA5F830230D36AB00226C02 /* AddCredentialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F82F230D36AB00226C02 /* AddCredentialViewController.swift */; };
 		8FA5F834230D84B900226C02 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F833230D84B900226C02 /* TextFieldCell.swift */; };
 		8FA5F836230E9DEF00226C02 /* SupplementalInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F835230E9DEF00226C02 /* SupplementalInformationViewController.swift */; };
-		8FA5F838230EC34300226C02 /* ProviderStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F837230EC34300226C02 /* ProviderStore.swift */; };
-		8FA5F83A230EC36600226C02 /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F839230EC36600226C02 /* Credential.swift */; };
 		8FA5F83E230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F83D230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift */; };
 		8FA5F840230FDD1600226C02 /* CredentialContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F83F230FDD1600226C02 /* CredentialContext.swift */; };
 		8FBDA972231553A600BC39AF /* Tinklink.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FBDA971231553A600BC39AF /* Tinklink.plist */; };
@@ -29,7 +26,6 @@
 		8FBDA9782316AFC800BC39AF /* ProviderMarketRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBDA9772316AFC800BC39AF /* ProviderMarketRepository.swift */; };
 		8FBDA97A2316BE9400BC39AF /* ProviderMarketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBDA9792316BE9400BC39AF /* ProviderMarketsViewController.swift */; };
 		8FBDA9802317CDB800BC39AF /* CredentialService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBDA97F2317CDB800BC39AF /* CredentialService.swift */; };
-		8FBDA9822317F25000BC39AF /* CredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBDA9812317F25000BC39AF /* CredentialStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,12 +40,9 @@
 		8FA5F823230BD13800226C02 /* FinancialInstitutionPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialInstitutionPickerViewController.swift; sourceTree = "<group>"; };
 		8FA5F825230BE85100226C02 /* AccessTypePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTypePickerViewController.swift; sourceTree = "<group>"; };
 		8FA5F827230C069500226C02 /* CredentialTypePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialTypePickerViewController.swift; sourceTree = "<group>"; };
-		8FA5F82A230C2C0200226C02 /* ProviderGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderGroup.swift; sourceTree = "<group>"; };
 		8FA5F82F230D36AB00226C02 /* AddCredentialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCredentialViewController.swift; sourceTree = "<group>"; };
 		8FA5F833230D84B900226C02 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		8FA5F835230E9DEF00226C02 /* SupplementalInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementalInformationViewController.swift; sourceTree = "<group>"; };
-		8FA5F837230EC34300226C02 /* ProviderStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderStore.swift; sourceTree = "<group>"; };
-		8FA5F839230EC36600226C02 /* Credential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
 		8FA5F83D230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishedCredentialUpdatedViewController.swift; sourceTree = "<group>"; };
 		8FA5F83F230FDD1600226C02 /* CredentialContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialContext.swift; sourceTree = "<group>"; };
 		8FBDA971231553A600BC39AF /* Tinklink.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Tinklink.plist; sourceTree = "<group>"; };
@@ -58,7 +51,6 @@
 		8FBDA9772316AFC800BC39AF /* ProviderMarketRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderMarketRepository.swift; sourceTree = "<group>"; };
 		8FBDA9792316BE9400BC39AF /* ProviderMarketsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderMarketsViewController.swift; sourceTree = "<group>"; };
 		8FBDA97F2317CDB800BC39AF /* CredentialService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialService.swift; sourceTree = "<group>"; };
-		8FBDA9812317F25000BC39AF /* CredentialStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialStore.swift; sourceTree = "<group>"; };
 		C2228129CC6DE436D8BA8417 /* Pods-ProviderSelection.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProviderSelection.release.xcconfig"; path = "Target Support Files/Pods-ProviderSelection/Pods-ProviderSelection.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,24 +129,13 @@
 			path = ProviderViewControllers;
 			sourceTree = "<group>";
 		};
-		8FBA6C542313DE6600A98BA8 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				8FA5F82A230C2C0200226C02 /* ProviderGroup.swift */,
-				8FA5F839230EC36600226C02 /* Credential.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		8FBA6C552313DE7200A98BA8 /* Context */ = {
 			isa = PBXGroup;
 			children = (
 				8FBDA9752316AA0F00BC39AF /* ProviderContext.swift */,
 				8FBDA9772316AFC800BC39AF /* ProviderMarketRepository.swift */,
-				8FA5F837230EC34300226C02 /* ProviderStore.swift */,
 				8FBDA97323157E0800BC39AF /* ProviderService.swift */,
 				8FA5F83F230FDD1600226C02 /* CredentialContext.swift */,
-				8FBDA9812317F25000BC39AF /* CredentialStore.swift */,
 				8FBDA97F2317CDB800BC39AF /* CredentialService.swift */,
 			);
 			path = Context;
@@ -163,7 +144,6 @@
 		8FBA6C562313DE7900A98BA8 /* TinkLink */ = {
 			isa = PBXGroup;
 			children = (
-				8FBA6C542313DE6600A98BA8 /* Model */,
 				8FBA6C552313DE7200A98BA8 /* Context */,
 			);
 			path = TinkLink;
@@ -284,11 +264,9 @@
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ProviderSelection/Pods-ProviderSelection-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ProviderSelection/Pods-ProviderSelection-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -303,9 +281,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FBDA97423157E0800BC39AF /* ProviderService.swift in Sources */,
-				8FBDA9822317F25000BC39AF /* CredentialStore.swift in Sources */,
-				8FA5F82B230C2C0200226C02 /* ProviderGroup.swift in Sources */,
-				8FA5F838230EC34300226C02 /* ProviderStore.swift in Sources */,
 				8FA5F83E230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift in Sources */,
 				8FBDA9762316AA0F00BC39AF /* ProviderContext.swift in Sources */,
 				8FA5F826230BE85100226C02 /* AccessTypePickerViewController.swift in Sources */,
@@ -319,7 +294,6 @@
 				201D5513230AC95D00641102 /* ProviderListViewController.swift in Sources */,
 				8FBDA97A2316BE9400BC39AF /* ProviderMarketsViewController.swift in Sources */,
 				201D5511230AC95D00641102 /* AppDelegate.swift in Sources */,
-				8FA5F83A230EC36600226C02 /* Credential.swift in Sources */,
 				8FA5F836230E9DEF00226C02 /* SupplementalInformationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
