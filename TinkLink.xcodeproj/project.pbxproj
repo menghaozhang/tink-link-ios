@@ -50,6 +50,8 @@
 		8FA35586231E673B0054115D /* TinkLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA35585231E673B0054115D /* TinkLink.swift */; };
 		8FA3558A231E703C0054115D /* ProviderStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA35589231E703C0054115D /* ProviderStore.swift */; };
 		8FA3558C231E839E0054115D /* CredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA3558B231E839E0054115D /* CredentialStore.swift */; };
+		8FA3558E231EA1840054115D /* ProviderGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA3558D231EA1840054115D /* ProviderGroup.swift */; };
+		8FA35590231EA3820054115D /* ProviderContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA3558F231EA3820054115D /* ProviderContext.swift */; };
 		8FA5F820230AE40B00226C02 /* UpdateAccountRequest+GRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F81F230AE40B00226C02 /* UpdateAccountRequest+GRPC.swift */; };
 		8FA5F822230AE66100226C02 /* CurrencyDenominatedAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F821230AE66100226C02 /* CurrencyDenominatedAmount.swift */; };
 /* End PBXBuildFile section */
@@ -107,6 +109,8 @@
 		8FA35585231E673B0054115D /* TinkLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinkLink.swift; sourceTree = "<group>"; };
 		8FA35589231E703C0054115D /* ProviderStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderStore.swift; sourceTree = "<group>"; };
 		8FA3558B231E839E0054115D /* CredentialStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialStore.swift; sourceTree = "<group>"; };
+		8FA3558D231EA1840054115D /* ProviderGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderGroup.swift; sourceTree = "<group>"; };
+		8FA3558F231EA3820054115D /* ProviderContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderContext.swift; sourceTree = "<group>"; };
 		8FA5F81F230AE40B00226C02 /* UpdateAccountRequest+GRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdateAccountRequest+GRPC.swift"; sourceTree = "<group>"; };
 		8FA5F821230AE66100226C02 /* CurrencyDenominatedAmount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDenominatedAmount.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -248,6 +252,7 @@
 				8F36724E230598BC00B92936 /* ExactNumber.swift */,
 				8FA5F821230AE66100226C02 /* CurrencyDenominatedAmount.swift */,
 				20ED8579230407B3006213BB /* Provider.swift */,
+				8FA3558D231EA1840054115D /* ProviderGroup.swift */,
 				20ED859523045896006213BB /* Credential.swift */,
 			);
 			path = Models;
@@ -256,6 +261,7 @@
 		8FA35588231E6FFE0054115D /* Stores */ = {
 			isa = PBXGroup;
 			children = (
+				8FA3558F231EA3820054115D /* ProviderContext.swift */,
 				8FA35589231E703C0054115D /* ProviderStore.swift */,
 				8FA3558B231E839E0054115D /* CredentialStore.swift */,
 			);
@@ -431,6 +437,7 @@
 				8F36724923057EAB00B92936 /* UpdateAccountRequest.swift in Sources */,
 				20ED857423040066006213BB /* Cancellable.swift in Sources */,
 				20EE138123053B2700C92D65 /* Credential+GRPC.swift in Sources */,
+				8FA3558E231EA1840054115D /* ProviderGroup.swift in Sources */,
 				20ED85432303FAEC006213BB /* services.grpc.swift in Sources */,
 				20ED85442303FAEC006213BB /* services.pb.swift in Sources */,
 				20ED85832304081D006213BB /* Provider+GRPC.swift in Sources */,
@@ -438,6 +445,7 @@
 				20ED856D23040025006213BB /* Client.swift in Sources */,
 				200FD63F23154B660077181A /* Market.swift in Sources */,
 				20ED856F2304003A006213BB /* Environment.swift in Sources */,
+				8FA35590231EA3820054115D /* ProviderContext.swift in Sources */,
 				20ED859623045896006213BB /* Credential.swift in Sources */,
 				200FD63B23154AA90077181A /* AuthenticationToken.swift in Sources */,
 				8FA3558A231E703C0054115D /* ProviderStore.swift in Sources */,
