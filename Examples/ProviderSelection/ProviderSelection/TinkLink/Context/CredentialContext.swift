@@ -11,9 +11,7 @@ class SupplementInformationTask {
     var fields: [Provider.FieldSpecification]
     
     func submit() {
-        if let fields = try? fields.createCredentialValues().get() {
-            credentialContext?.addSupplementalInformation(for: credential, supplementalInformationFields: fields)
-        }
+        credentialContext?.addSupplementalInformation(for: credential, supplementalInformationFields: fields)
     }
     
     func cancel() {
