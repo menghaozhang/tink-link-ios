@@ -27,6 +27,7 @@ extension AccessTypePickerViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = providerAccessTypeGroups[indexPath.row].accessType
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
     
