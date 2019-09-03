@@ -135,12 +135,11 @@ extension AddCredentialViewController: TextFieldCellDelegate {
     func textFieldCell(_ cell: TextFieldCell, willChangeToText text: String) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         provider.fields[indexPath.item].value = text
-        let result = provider.fields[indexPath.item].validatedValue()
-        switch result {
-        case .failure:
-            cell.textField.textColor = .red
-        case .success:
+        do {
+            _ = try provider.fields[indexPath.item].validateValue()
             cell.textField.textColor = .green
+        } catch {
+            cell.textField.textColor = .red
         }
     }
 }
