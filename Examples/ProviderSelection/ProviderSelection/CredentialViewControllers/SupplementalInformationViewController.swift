@@ -16,7 +16,7 @@ final class SupplementalInformationViewController: UITableViewController {
     
     init(supplementInformationTask: SupplementInformationTask) {
         self.supplementInformationTask = supplementInformationTask
-        super.init(nibName: nil, bundle: nil)
+        super.init(style: .grouped)
     }
 
     required init?(coder aDecoder: NSCoder) {

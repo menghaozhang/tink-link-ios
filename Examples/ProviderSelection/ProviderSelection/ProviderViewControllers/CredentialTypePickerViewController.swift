@@ -28,6 +28,7 @@ extension CredentialTypePickerViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = providers[indexPath.item].credentialType.rawValue
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
     
