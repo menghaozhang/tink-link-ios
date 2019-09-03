@@ -1,6 +1,6 @@
 import Dispatch
 internal class ProviderService {
-    var client: Client
+    private var client: Client
     private var hasOnGoingProviderCall: Bool = false
     private var hasOnGoingMarketCall: Bool = false
     init(client: Client) {

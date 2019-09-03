@@ -46,7 +46,6 @@ public enum FieldSpecificationError: Error {
     case requiredFieldEmptyValue(fieldName: String)
 }
 
-// TODO: FieldSpecificationsError description
 struct FieldSpecificationsError: Error {
     var errors: [FieldSpecificationError]
 }

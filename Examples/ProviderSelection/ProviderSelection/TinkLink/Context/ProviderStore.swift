@@ -6,12 +6,22 @@ class ProviderStore {
         service = ProviderService(client: TinkLink.shared.client)
     }
     private var service: ProviderService
-    var providerMarketGroups: [String: [Provider]] = [:]
+    var providerMarketGroups: [String: [Provider]] = [:] {
+        didSet {
+            DispatchQueue.main.async {
+                self.providerStoreObservers.forEach({ (tokenID, handler) in
+                    handler(tokenID)
+                })
+            }
+        }
+    }
     var markets: [String]? {
         didSet {
-            guard let markets = markets else { return }
-            providerStoreMarketObservers.forEach { (id, handler) in
-                handler(id, markets)
+            guard let markets = markets, !markets.isEmpty else { return }
+            DispatchQueue.main.async {
+                self.providerStoreMarketObservers.forEach { (tokenID, handler) in
+                    handler(tokenID)
+                }
             }
         }
     }
@@ -29,10 +39,7 @@ class ProviderStore {
                         return new
                     })
                 }
-                strongSelf.providerStoreObservers.forEach({ (id, handler) in
-                    handler(id, fetchedProviders)
-                })
-            case .failure(let error):
+            case .failure:
                 break
                 //error
             }
@@ -45,17 +52,18 @@ class ProviderStore {
             switch result {
             case .success(let markets):
                 strongSelf.markets = markets
-            case .failure(let error):
+            case .failure:
                 break
                 //error
             }
         }
     }
     
+    // TODO: Abstract this part
+    typealias ObserverHandler = (_ tokenIdentifier: UUID) -> Void
     // Provider Observer
-    typealias ProviderStoreObserverHandler = (_ tokenIdentifier: UUID, _ providers: [Provider]) -> Void
-    var providerStoreObservers: [UUID: ProviderStoreObserverHandler] = [:]
-    func addProvidersObserver(token: StoreObserverToken, handler: @escaping ProviderStoreObserverHandler) {
+    var providerStoreObservers: [UUID: ObserverHandler] = [:]
+    func addProvidersObserver(token: StoreObserverToken, handler: @escaping ObserverHandler) {
         token.addReleaseHandler { [weak self] in
             self?.providerStoreObservers[token.identifier] = nil
         }
@@ -63,23 +71,22 @@ class ProviderStore {
     }
     
     // Market Observer
-    typealias ProviderStoreMarketObserverHandler = (_ tokenIdentifier: UUID, _ markets: [String]) -> Void
-    var providerStoreMarketObservers: [UUID: ProviderStoreMarketObserverHandler] = [:]
-    func addMarketsObserver(token: StoreObserverToken, handler: @escaping ProviderStoreMarketObserverHandler) {
+    var providerStoreMarketObservers: [UUID: ObserverHandler] = [:]
+    func addMarketsObserver(token: StoreObserverToken, handler: @escaping ObserverHandler) {
         token.addReleaseHandler { [weak self] in
-            self?.providerStoreObservers[token.identifier] = nil
+            self?.providerStoreMarketObservers[token.identifier] = nil
         }
         providerStoreMarketObservers[token.identifier] = handler
     }
 }
 
 final class StoreObserverToken {
-    fileprivate let identifier = UUID()
+    let identifier = UUID()
     private var releaseHandlers = [() -> Void]()
     
     init() {}
     
-    func match(id: UUID) -> Bool {
+    func has(id: UUID) -> Bool {
         return identifier == id
     }
     

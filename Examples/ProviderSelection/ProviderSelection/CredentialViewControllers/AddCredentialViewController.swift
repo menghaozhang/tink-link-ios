@@ -4,8 +4,10 @@ import UIKit
  Example of how to use the provider field specification to add credential
  */
 final class AddCredentialViewController: UITableViewController {
-    var credentialContext: CredentialContextWithCallBack?
+    var credentialContext: CredentialContext?
     var provider: Provider
+    
+    private lazy var statusLabelView = UILabel()
     
     init(provider: Provider) {
         self.provider = provider
@@ -22,7 +24,7 @@ extension AddCredentialViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        credentialContext = CredentialContextWithCallBack(client: TinkLink.shared.client)
+        credentialContext = CredentialContext()
         
         tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
         tableView.allowsSelection = false
@@ -72,7 +74,7 @@ extension AddCredentialViewController {
                         }
                     })
                 case .updating(let status):
-                    break
+                    self.showUpdating(status: status)
                 }
             }, completion: { result in
                 switch result {
@@ -90,13 +92,37 @@ extension AddCredentialViewController {
 // MARK: - Navigation
 extension AddCredentialViewController {
     private func showSupplementalInformation(for supplementInformationTask: SupplementInformationTask) {
+        hideUpdatingView()
         let supplementalInformationViewController = SupplementalInformationViewController(supplementInformationTask: supplementInformationTask)
         supplementalInformationViewController.delegate = self
         let navigationController = UINavigationController(rootViewController: supplementalInformationViewController)
         show(navigationController, sender: self)
     }
     
+    private func showUpdating(status: String) {
+        if statusLabelView.superview == nil {
+            statusLabelView.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview(statusLabelView)
+            
+            NSLayoutConstraint.activate([
+                statusLabelView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                statusLabelView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+                statusLabelView.heightAnchor.constraint(equalToConstant: 200),
+                statusLabelView.widthAnchor.constraint(equalToConstant: 200)
+                ])
+            statusLabelView.backgroundColor = .white
+            statusLabelView.textAlignment = .center
+            statusLabelView.numberOfLines = 0
+        }
+        statusLabelView.text = status
+    }
+    
+    private func hideUpdatingView() {
+        statusLabelView.removeFromSuperview()
+    }
+    
     private func showCredentialUpdated(for credential: Credential) {
+        hideUpdatingView()
         let finishedCredentialUpdatedViewController = FinishedCredentialUpdatedViewController(credential: credential)
         show(finishedCredentialUpdatedViewController, sender: self)
     }

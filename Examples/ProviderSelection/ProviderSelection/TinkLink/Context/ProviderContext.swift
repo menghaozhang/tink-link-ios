@@ -1,29 +1,30 @@
-protocol ProviderRepositoryDelegate: AnyObject {
-    func providerRepository(_ store: ProviderRepository, didUpdateProviders providers: [Provider])
-    func providerRepository(_ store: ProviderRepository, didReceiveError error: Error)
+protocol providerContextDelegate: AnyObject {
+    func providerContext(_ store: ProviderContext, didUpdateProviders providers: [Provider])
+    func providerContext(_ store: ProviderContext, didReceiveError error: Error)
 }
 
-public class ProviderRepository {
+public class ProviderContext {
     var market: String
     private let storeObserverToken = StoreObserverToken()
+    private let providerStore = ProviderStore.shared
     init(market: String) {
         self.market = market
-        ProviderStore.shared.addProvidersObserver(token: storeObserverToken) { [weak self] (tokenId, providers) in
-            guard let strongSelf = self, strongSelf.storeObserverToken.match(id: tokenId) else {
+        providerStore.addProvidersObserver(token: storeObserverToken) { [weak self] tokenId in
+            guard let strongSelf = self, strongSelf.storeObserverToken.has(id: tokenId) else {
                 return
             }
-            strongSelf._providers = providers
+            strongSelf._providers = strongSelf.providerStore.providerMarketGroups[market]
         }
     }
     
     private var _providers: [Provider]? {
         didSet {
             guard let providers = _providers else { return }
-            delegate?.providerRepository(self, didUpdateProviders: providers)
+            delegate?.providerContext(self, didUpdateProviders: providers)
         }
     }
     
-    weak var delegate: ProviderRepositoryDelegate? {
+    weak var delegate: providerContextDelegate? {
         didSet {
             if delegate != nil {
                 performFetch()
@@ -32,15 +33,15 @@ public class ProviderRepository {
     }
     
     func performFetch() {
-        if let providers = ProviderStore.shared.providerMarketGroups[market] {
+        if let providers = providerStore.providerMarketGroups[market] {
             _providers = providers
         } else {
-            ProviderStore.shared.performFetchProvidersIfNeeded(for: market)
+            providerStore.performFetchProvidersIfNeeded(for: market)
         }
     }
 }
 
-extension ProviderRepository {
+extension ProviderContext {
     var providers: [Provider] {
         guard let providers = _providers else {
             performFetch()

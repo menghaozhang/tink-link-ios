@@ -4,12 +4,13 @@ protocol ProviderMarketRepositoryDelegate: AnyObject {
 }
 
 class ProviderMarketRepository {
+    private let providerStore = ProviderStore.shared
     init() {
-        ProviderStore.shared.addMarketsObserver(token: storeObserverToken) { [weak self] (tokenId, markets) in
-            guard let strongSelf = self, strongSelf.storeObserverToken.match(id: tokenId) else {
+        providerStore.addMarketsObserver(token: storeObserverToken) { [weak self] tokenId in
+            guard let strongSelf = self, strongSelf.storeObserverToken.has(id: tokenId) else {
                 return
             }
-            strongSelf._markets = markets
+            strongSelf._markets = strongSelf.providerStore.markets
         }
     }
     
@@ -23,10 +24,10 @@ class ProviderMarketRepository {
     }
     
     func performFetch() {
-        if let markets = ProviderStore.shared.markets {
+        if let markets = providerStore.markets {
             _markets = markets
         } else {
-            ProviderStore.shared.performFetchMarketsIfNeeded()
+            providerStore.performFetchMarketsIfNeeded()
         }
     }
 }
