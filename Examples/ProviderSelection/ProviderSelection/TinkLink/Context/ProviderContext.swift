@@ -1,9 +1,9 @@
-protocol ProviderRepositoryDelegate: AnyObject {
-    func providerRepository(_ store: ProviderRepository, didUpdateProviders providers: [Provider])
-    func providerRepository(_ store: ProviderRepository, didReceiveError error: Error)
+protocol providerContextDelegate: AnyObject {
+    func providerContext(_ store: ProviderContext, didUpdateProviders providers: [Provider])
+    func providerContext(_ store: ProviderContext, didReceiveError error: Error)
 }
 
-public class ProviderRepository {
+public class ProviderContext {
     var market: String
     private let storeObserverToken = StoreObserverToken()
     private let providerStore = ProviderStore.shared
@@ -17,35 +17,14 @@ public class ProviderRepository {
         }
     }
     
-    enum ProvidersStatus {
-        case loading
-        case cached([Provider])
-        case loaded([Provider])
-        case error(Error)
-    }
-    
-    private var _providersStatus: ProvidersStatus? {
-        didSet {
-            guard let providersStatus = _providersStatus else { return }
-            switch providersStatus {
-            case .cached(let providers), .loaded(let providers):
-                _providers = providers
-            case .error(let error):
-                delegate?.providerRepository(self, didReceiveError: error)
-            default:
-                break
-            }
-        }
-    }
-    
     private var _providers: [Provider]? {
         didSet {
             guard let providers = _providers else { return }
-            delegate?.providerRepository(self, didUpdateProviders: providers)
+            delegate?.providerContext(self, didUpdateProviders: providers)
         }
     }
     
-    weak var delegate: ProviderRepositoryDelegate? {
+    weak var delegate: providerContextDelegate? {
         didSet {
             if delegate != nil {
                 performFetch()
@@ -62,7 +41,7 @@ public class ProviderRepository {
     }
 }
 
-extension ProviderRepository {
+extension ProviderContext {
     var providers: [Provider] {
         guard let providers = _providers else {
             performFetch()

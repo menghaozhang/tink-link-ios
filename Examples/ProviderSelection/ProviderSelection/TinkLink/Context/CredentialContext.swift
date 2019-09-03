@@ -1,27 +1,27 @@
 import Foundation
 
 class SupplementInformationTask {
-    init(credentialRepository: CredentialRepository, credential: Credential) {
+    init(credentialContext: CredentialContext, credential: Credential) {
         self.credential = credential
         fields = credential.supplementalInformationFields
-        self.credentialRepository = credentialRepository
+        self.credentialContext = credentialContext
     }
-    weak var credentialRepository: CredentialRepository?
+    weak var credentialContext: CredentialContext?
     private(set) var credential: Credential
     var fields: [Provider.FieldSpecification]
     
     func submit() {
         if let fields = try? fields.createCredentialValues().get() {
-            credentialRepository?.addSupplementalInformation(for: credential, supplementalInformationFields: fields)
+            credentialContext?.addSupplementalInformation(for: credential, supplementalInformationFields: fields)
         }
     }
     
     func cancel() {
-        credentialRepository?.cancelSupplementInformation(for: credential)
+        credentialContext?.cancelSupplementInformation(for: credential)
     }
 }
 
-class CredentialRepository {
+class CredentialContext {
     enum AddCredentialStatus {
         case created
         case authenticating
@@ -76,7 +76,7 @@ class CredentialRepository {
         case .authenticating:
             progressHandler(.authenticating)
         case .awaitingSupplementalInformation:
-            let supplementInformationTask = SupplementInformationTask(credentialRepository: self, credential: credential)
+            let supplementInformationTask = SupplementInformationTask(credentialContext: self, credential: credential)
             progressHandler(.awaitingSupplementalInformation(supplementInformationTask))
         case .awaitingThirdPartyAppAuthentication:
             progressHandler(.awaitingThirdPartyAppAuthentication(URL(string: "https://www.google.com")!))
