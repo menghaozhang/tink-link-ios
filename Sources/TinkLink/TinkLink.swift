@@ -6,6 +6,12 @@ public class TinkLink {
         var clientId: String
         var redirectUrl: URL
         var timeoutIntervalForRequest: TimeInterval?
+        public init (environment: Environment, clientId: String, redirectUrl: URL, timeoutIntervalForRequest: TimeInterval? = nil) {
+            self.environment = environment
+            self.clientId = clientId
+            self.redirectUrl = redirectUrl
+            self.timeoutIntervalForRequest = timeoutIntervalForRequest
+        }
     }
     
     internal static let shared: TinkLink = TinkLink(client: TinkLink.client ?? fallbackClient)

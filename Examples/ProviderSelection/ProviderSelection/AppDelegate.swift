@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TinkLink
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Can support two options to setup the TinkLink
         // Option 1
-        let tinkLinkConfiguration = TinkLink.Configuration(clientId: "123", redirectUrl: URL(string: "http://localhost:3000")!, timeoutIntervalForRequest: 15)
+        let tinkLinkConfiguration = TinkLink.Configuration(environment: .production, clientId: "123", redirectUrl: URL(string: "http://localhost:3000")!)
         TinkLink.configure(with: tinkLinkConfiguration)
         
         // Option 2
