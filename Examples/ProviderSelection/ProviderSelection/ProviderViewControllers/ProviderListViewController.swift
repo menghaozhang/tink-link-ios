@@ -46,6 +46,7 @@ extension ProviderListViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let group = providerContext.providerGroups[indexPath.item]
         cell.textLabel?.text = group.groupedName
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
     

@@ -10,10 +10,8 @@ public class SupplementInformationTask {
     private var credential: Credential
     public var fields: [Provider.FieldSpecification]
     
-    public func submit() {
-        if let fields = try? fields.createCredentialValues().get() {
-            credentialContext?.addSupplementalInformation(for: credential, supplementalInformationFields: fields)
-        }
+    func submit() {
+        credentialContext?.addSupplementalInformation(for: credential, supplementalInformationFields: fields)
     }
     
     public func cancel() {
@@ -54,7 +52,7 @@ public class CredentialContext {
         }
     }
     
-    public func addCredential(for provider: Provider, fields: [String: String], progressHandler: @escaping (AddCredentialStatus) -> Void,  completion: @escaping(Result<Credential, Error>) -> Void) {
+    func addCredential(for provider: Provider, fields: [Provider.FieldSpecification], progressHandler: @escaping (AddCredentialStatus) -> Void,  completion: @escaping(Result<Credential, Error>) -> Void) {
         credentialStore.addCredential(for: provider, fields: fields) { [weak self] result in
             guard let strongSelf = self else { return }
             switch result {
@@ -88,7 +86,7 @@ public class CredentialContext {
         }
     }
     
-    fileprivate func addSupplementalInformation(for credential: Credential, supplementalInformationFields: [String: String]) {
+    fileprivate func addSupplementalInformation(for credential: Credential, supplementalInformationFields: [Provider.FieldSpecification]) {
         credentialStore.addSupplementalInformation(for: credential, supplementalInformationFields: supplementalInformationFields)
     }
     
