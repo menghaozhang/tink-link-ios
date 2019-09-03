@@ -19,13 +19,8 @@
 		8FA5F834230D84B900226C02 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F833230D84B900226C02 /* TextFieldCell.swift */; };
 		8FA5F836230E9DEF00226C02 /* SupplementalInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F835230E9DEF00226C02 /* SupplementalInformationViewController.swift */; };
 		8FA5F83E230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F83D230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift */; };
-		8FA5F840230FDD1600226C02 /* CredentialContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F83F230FDD1600226C02 /* CredentialContext.swift */; };
 		8FBDA972231553A600BC39AF /* Tinklink.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FBDA971231553A600BC39AF /* Tinklink.plist */; };
-		8FBDA97423157E0800BC39AF /* ProviderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBDA97323157E0800BC39AF /* ProviderService.swift */; };
-		8FBDA9762316AA0F00BC39AF /* ProviderContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBDA9752316AA0F00BC39AF /* ProviderContext.swift */; };
-		8FBDA9782316AFC800BC39AF /* ProviderMarketRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBDA9772316AFC800BC39AF /* ProviderMarketRepository.swift */; };
 		8FBDA97A2316BE9400BC39AF /* ProviderMarketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBDA9792316BE9400BC39AF /* ProviderMarketsViewController.swift */; };
-		8FBDA9802317CDB800BC39AF /* CredentialService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBDA97F2317CDB800BC39AF /* CredentialService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,13 +39,8 @@
 		8FA5F833230D84B900226C02 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		8FA5F835230E9DEF00226C02 /* SupplementalInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementalInformationViewController.swift; sourceTree = "<group>"; };
 		8FA5F83D230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishedCredentialUpdatedViewController.swift; sourceTree = "<group>"; };
-		8FA5F83F230FDD1600226C02 /* CredentialContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialContext.swift; sourceTree = "<group>"; };
 		8FBDA971231553A600BC39AF /* Tinklink.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Tinklink.plist; sourceTree = "<group>"; };
-		8FBDA97323157E0800BC39AF /* ProviderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderService.swift; sourceTree = "<group>"; };
-		8FBDA9752316AA0F00BC39AF /* ProviderContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderContext.swift; sourceTree = "<group>"; };
-		8FBDA9772316AFC800BC39AF /* ProviderMarketRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderMarketRepository.swift; sourceTree = "<group>"; };
 		8FBDA9792316BE9400BC39AF /* ProviderMarketsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderMarketsViewController.swift; sourceTree = "<group>"; };
-		8FBDA97F2317CDB800BC39AF /* CredentialService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialService.swift; sourceTree = "<group>"; };
 		C2228129CC6DE436D8BA8417 /* Pods-ProviderSelection.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProviderSelection.release.xcconfig"; path = "Target Support Files/Pods-ProviderSelection/Pods-ProviderSelection.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -88,7 +78,6 @@
 			isa = PBXGroup;
 			children = (
 				201D5510230AC95D00641102 /* AppDelegate.swift */,
-				8FBA6C562313DE7900A98BA8 /* TinkLink */,
 				8FA35583231D3E690054115D /* ProviderViewControllers */,
 				8FBA6C582313E8A900A98BA8 /* CredentialViewControllers */,
 				8FBA6C572313DE8F00A98BA8 /* Cell */,
@@ -127,26 +116,6 @@
 				8FA5F827230C069500226C02 /* CredentialTypePickerViewController.swift */,
 			);
 			path = ProviderViewControllers;
-			sourceTree = "<group>";
-		};
-		8FBA6C552313DE7200A98BA8 /* Context */ = {
-			isa = PBXGroup;
-			children = (
-				8FBDA9752316AA0F00BC39AF /* ProviderContext.swift */,
-				8FBDA9772316AFC800BC39AF /* ProviderMarketRepository.swift */,
-				8FBDA97323157E0800BC39AF /* ProviderService.swift */,
-				8FA5F83F230FDD1600226C02 /* CredentialContext.swift */,
-				8FBDA97F2317CDB800BC39AF /* CredentialService.swift */,
-			);
-			path = Context;
-			sourceTree = "<group>";
-		};
-		8FBA6C562313DE7900A98BA8 /* TinkLink */ = {
-			isa = PBXGroup;
-			children = (
-				8FBA6C552313DE7200A98BA8 /* Context */,
-			);
-			path = TinkLink;
 			sourceTree = "<group>";
 		};
 		8FBA6C572313DE8F00A98BA8 /* Cell */ = {
@@ -280,14 +249,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8FBDA97423157E0800BC39AF /* ProviderService.swift in Sources */,
 				8FA5F83E230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift in Sources */,
-				8FBDA9762316AA0F00BC39AF /* ProviderContext.swift in Sources */,
 				8FA5F826230BE85100226C02 /* AccessTypePickerViewController.swift in Sources */,
-				8FA5F840230FDD1600226C02 /* CredentialContext.swift in Sources */,
-				8FBDA9782316AFC800BC39AF /* ProviderMarketRepository.swift in Sources */,
 				8FA5F824230BD13800226C02 /* FinancialInstitutionPickerViewController.swift in Sources */,
-				8FBDA9802317CDB800BC39AF /* CredentialService.swift in Sources */,
 				8FA5F828230C069500226C02 /* CredentialTypePickerViewController.swift in Sources */,
 				8FA5F834230D84B900226C02 /* TextFieldCell.swift in Sources */,
 				8FA5F830230D36AB00226C02 /* AddCredentialViewController.swift in Sources */,
