@@ -96,7 +96,7 @@ public struct Provider {
     /// Indicates what this provider is capable of, in terms of financial data it can aggregate and if it can execute payments.
     public var capabilities: Capabilities
 
-    public enum AccessType {
+    public enum AccessType: String {
         case unknown
         case openBanking
         case other
