@@ -49,6 +49,7 @@
 		8F3672552305AAF800B92936 /* Account+GRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3672542305AAF800B92936 /* Account+GRPC.swift */; };
 		8FA35586231E673B0054115D /* TinkLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA35585231E673B0054115D /* TinkLink.swift */; };
 		8FA3558A231E703C0054115D /* ProviderStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA35589231E703C0054115D /* ProviderStore.swift */; };
+		8FA3558C231E839E0054115D /* CredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA3558B231E839E0054115D /* CredentialStore.swift */; };
 		8FA5F820230AE40B00226C02 /* UpdateAccountRequest+GRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F81F230AE40B00226C02 /* UpdateAccountRequest+GRPC.swift */; };
 		8FA5F822230AE66100226C02 /* CurrencyDenominatedAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F821230AE66100226C02 /* CurrencyDenominatedAmount.swift */; };
 /* End PBXBuildFile section */
@@ -105,6 +106,7 @@
 		8F3672542305AAF800B92936 /* Account+GRPC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Account+GRPC.swift"; sourceTree = "<group>"; };
 		8FA35585231E673B0054115D /* TinkLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinkLink.swift; sourceTree = "<group>"; };
 		8FA35589231E703C0054115D /* ProviderStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderStore.swift; sourceTree = "<group>"; };
+		8FA3558B231E839E0054115D /* CredentialStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialStore.swift; sourceTree = "<group>"; };
 		8FA5F81F230AE40B00226C02 /* UpdateAccountRequest+GRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UpdateAccountRequest+GRPC.swift"; sourceTree = "<group>"; };
 		8FA5F821230AE66100226C02 /* CurrencyDenominatedAmount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDenominatedAmount.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -255,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				8FA35589231E703C0054115D /* ProviderStore.swift */,
+				8FA3558B231E839E0054115D /* CredentialStore.swift */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 				8FA5F822230AE66100226C02 /* CurrencyDenominatedAmount.swift in Sources */,
 				20ED857623040077006213BB /* CallCanceller.swift in Sources */,
 				8F3672462305685600B92936 /* GrpcExtensions.swift in Sources */,
+				8FA3558C231E839E0054115D /* CredentialStore.swift in Sources */,
 				8F3672512305A2A700B92936 /* Identifier.swift in Sources */,
 				8FA5F820230AE40B00226C02 /* UpdateAccountRequest+GRPC.swift in Sources */,
 				8F36724B23058A3600B92936 /* Account.swift in Sources */,
