@@ -1,13 +1,6 @@
 import Foundation
 
 class CredentialStore {
-    enum AddCredentialStatus {
-        case created
-        case authenticating
-        case updating(status: String)
-        case awaitingSupplementalInformation(SupplementInformationTask)
-        case awaitingThirdPartyAppAuthentication(URL)
-    }
     static let shared = CredentialStore()
     
     var credentials: [String: Credential] = [:] {

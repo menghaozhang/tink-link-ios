@@ -59,9 +59,9 @@ class CredentialService {
 // Helper only for mock example
 extension CredentialService {
     func update(credential: Credential, to status: Credential.Status, completion: @escaping(Result<Credential, Error>) -> Void) {
-        var multableCredential = self.credentials[credential.id]
-        multableCredential?.status = status
-        if let credential = multableCredential {
+        var mutableCredential = self.credentials[credential.id]
+        mutableCredential?.status = status
+        if let credential = mutableCredential {
             completion(.success(credential))
         }
     }
