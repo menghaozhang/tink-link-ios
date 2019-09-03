@@ -3,7 +3,7 @@ public class TinkLink {
     
     public struct Configuration {
         var environment: Environment
-        var clientKey: String
+        var clientId: String
         var redirectUrl: URL
         var timeoutIntervalForRequest: TimeInterval?
     }
@@ -19,7 +19,7 @@ public class TinkLink {
             let data = try Data(contentsOf: fallbackUrl)
             let configuration = try PropertyListDecoder().decode(TinkLink.Configuration.self, from: data)
             
-            return Client(environment: .production, clientKey: configuration.clientKey)
+            return Client(environment: .production, clientKey: configuration.clientId)
         } catch {
             fatalError("Cannot find client")
         }
@@ -34,7 +34,7 @@ public class TinkLink {
     
     // Setup via configration object
     public static func configure(with configuration: TinkLink.Configuration) {
-        client = Client(environment: configuration.environment , clientKey: configuration.clientKey)
+        client = Client(environment: configuration.environment , clientKey: configuration.clientId)
     }
     
     // TODO: Some configurations can be changed after setup, for example timeoutIntervalForRequest and Qos, the changes should reflect to the stores and services
@@ -55,14 +55,14 @@ public class TinkLink {
 extension TinkLink.Configuration: Decodable {
     enum CodingKeys: String, CodingKey {
         case environment = "TINK_ENVIRONMENT"
-        case clientKey = "TINK_CLIENT_KEY"
+        case clientId = "TINK_CLIENT_ID"
         case redirectUrl = "TINK_REDIRECT_URL"
         case timeoutInterval = "TINK_TIMEOUT_INTERVAL"
     }
     
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        clientKey = try values.decode(String.self, forKey: .clientKey)
+        clientId = try values.decode(String.self, forKey: .clientId)
         timeoutIntervalForRequest = try? values.decode(Double.self, forKey: .timeoutInterval)
         if let environmentString = try? values.decode(String.self, forKey: .environment),
             let environment = Environment(rawValue: environmentString) {
