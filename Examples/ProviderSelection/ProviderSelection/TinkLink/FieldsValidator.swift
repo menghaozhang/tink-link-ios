@@ -16,6 +16,15 @@ extension Provider.FieldSpecification {
             }
         }
     }
+
+    var isValueValid: Bool {
+        do {
+            try validateValue()
+            return true
+        } catch {
+            return false
+        }
+    }
 }
 
 extension Array where Element == Provider.FieldSpecification {

@@ -85,10 +85,9 @@ extension SupplementalInformationViewController: TextFieldCellDelegate {
         if let indexPath = tableView.indexPath(for: cell) {
             supplementInformationTask.fields[indexPath.item].value = text
             let field = supplementInformationTask.fields[indexPath.item]
-            do {
-                try field.validateValue()
+            if field.isValueValid {
                 textField.textColor = .green
-            } catch {
+            } else {
                 textField.textColor = .red
             }
         }
