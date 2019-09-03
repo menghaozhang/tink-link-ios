@@ -57,11 +57,9 @@ extension AddCredentialViewController {
 // MARK: - Actions
 extension AddCredentialViewController {
     @objc private func doneButtonPressed(_ sender: UIBarButtonItem) {
-        switch provider.fields.createCredentialValues() {
-        case .failure(let fieldSpecificationsError):
-            print(fieldSpecificationsError.errors)
-        case .success(let fieldValues):
-            credentialContext?.addCredential(for: provider, fields: fieldValues, progressHandler: { status in
+        do {
+            try provider.fields.validateValues()
+            credentialContext?.addCredential(for: provider, fields: provider.fields, progressHandler: { status in
                 switch status {
                 case .authenticating, .created:
                     break
@@ -85,6 +83,10 @@ extension AddCredentialViewController {
                     self.showCredentialUpdated(for: credential)
                 }
             })
+        } catch let error as FieldSpecificationsError {
+            print(error.errors)
+        } catch {
+            print(error)
         }
     }
 }
@@ -133,12 +135,10 @@ extension AddCredentialViewController: TextFieldCellDelegate {
     func textFieldCell(_ cell: TextFieldCell, willChangeToText text: String) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         provider.fields[indexPath.item].value = text
-        let result = provider.fields[indexPath.item].validatedValue()
-        switch result {
-        case .failure:
-            cell.textField.textColor = .red
-        case .success:
+        if provider.fields[indexPath.item].isValueValid {
             cell.textField.textColor = .green
+        } else {
+            cell.textField.textColor = .red
         }
     }
 }

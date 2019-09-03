@@ -66,12 +66,14 @@ extension SupplementalInformationViewController {
 
     @objc private func doneButtonPressed(_ sender: UIBarButtonItem) {
         tableView.resignFirstResponder()
-        switch supplementInformationTask.fields.createCredentialValues() {
-        case .failure(let fieldSpecificationsError):
-            print(fieldSpecificationsError.errors)
-        case .success:
+        do {
+            try supplementInformationTask.fields.validateValues()
             supplementInformationTask.submit()
             self.delegate?.supplementalInformationViewController(self, didSupplementInformationForCredential: supplementInformationTask.credential)
+        } catch let fieldSpecificationsError as FieldSpecificationsError {
+            print(fieldSpecificationsError.errors)
+        } catch {
+            print(error)
         }
     }
 }
@@ -83,12 +85,10 @@ extension SupplementalInformationViewController: TextFieldCellDelegate {
         if let indexPath = tableView.indexPath(for: cell) {
             supplementInformationTask.fields[indexPath.item].value = text
             let field = supplementInformationTask.fields[indexPath.item]
-            let result = field.validatedValue()
-            switch result {
-            case .failure:
-                textField.textColor = .red
-            case .success:
+            if field.isValueValid {
                 textField.textColor = .green
+            } else {
+                textField.textColor = .red
             }
         }
     }

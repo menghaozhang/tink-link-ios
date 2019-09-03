@@ -1,6 +1,6 @@
 import Foundation
 // Mocked Provider model
-struct Provider {
+public struct Provider {
     let name: String
     let financialInstitutionID: String
     let groupedName: String
@@ -11,22 +11,22 @@ struct Provider {
     
     public struct FieldSpecification {
         // description
-        public var fieldDescription: String
+        public let fieldDescription: String
         /// Gray text in the input view (Similar to a placeholder)
-        public var hint: String
-        public var maxLength: Int?
-        public var minLength: Int?
+        public let hint: String
+        public let maxLength: Int?
+        public let minLength: Int?
         /// Controls whether or not the field should be shown masked, like a password field.
-        public var isMasked: Bool
-        public var isNumeric: Bool
-        public var isImmutable: Bool
-        public var isOptional: Bool
-        public var name: String
+        public let isMasked: Bool
+        public let isNumeric: Bool
+        public let isImmutable: Bool
+        public let isOptional: Bool
+        public let name: String
         public var value: String
-        public var pattern: String
-        public var patternError: String
+        public let pattern: String
+        public let patternError: String
         /// Text displayed next to the input field
-        public var helpText: String
+        public let helpText: String
     }
     
     enum AccessType: String {
