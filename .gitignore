@@ -3,4 +3,5 @@
 xcuserdata/
 IDEWorkspaceChecks.plist
 Carthage/
-
+Pods/
+*.xcworkspace

@@ -8,5 +8,9 @@
 	<string>http://localhost:3000</string>
 	<key>TINK_TIMEOUT_INTERVAL</key>
 	<integer>15</integer>
+	<key>TINK_ENVIRONMENT</key>
+	<string>staging</string>
+	<key>TINK_CERTIFICATE_FILE_NAME</key>
+	<string>certificate</string>
 </dict>
 </plist>

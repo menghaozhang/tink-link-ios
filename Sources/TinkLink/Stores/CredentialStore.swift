@@ -3,7 +3,7 @@ import Foundation
 class CredentialStore {
     static let shared = CredentialStore()
     
-    var credentials: [String: Credential] = [:] {
+    var credentials: [Identifier<Credential>: Credential] = [:] {
         didSet {
             DispatchQueue.main.async {
                 self.credentialStoreObservers.forEach { (tokenID, handler) in
@@ -15,14 +15,13 @@ class CredentialStore {
     private var service: CredentialService
     
     private init() {
-        service = CredentialService(client: TinkLink.shared.client)
+        service = TinkLink.shared.client.credentialService
     }
     
     func addCredential(for provider: Provider, fields: [Provider.FieldSpecification], completion: @escaping(Result<Credential, Error>) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-
             // observe changes
-            self.service.createCredential(for: provider, fields: fields.makeFields(), completion: { [weak self] (result) in
+            self.service.createCredential(providerName: provider.name, fields: fields.makeFields(), completion: { [weak self] (result) in
                 guard let strongSelf = self else { return }
                 let credential = try! result.get()
                 completion(.success(credential))
@@ -36,9 +35,21 @@ class CredentialStore {
             guard let strongSelf = self else { return }
             switch result {
             case .failure:
+                // error
                 break
-            case .success(let credential):
-                strongSelf.credentials[credential.id] = credential
+            case .success:
+                // polling
+                strongSelf.service.credentials(completion: { result in
+                    switch result {
+                    case .failure:
+                        // error
+                        break
+                    case .success(let credentials):
+                        credentials.forEach({ credential in
+                            strongSelf.credentials[credential.id] = credential
+                        })
+                    }
+                })
             }
         }
     }
@@ -50,7 +61,8 @@ class CredentialStore {
             case .failure:
                 break
             case .success(let credential):
-                strongSelf.credentials[credential.id] = credential
+                // polling
+                break
             }
         }
     }

@@ -1,26 +1,26 @@
 import Foundation
 
-class SupplementInformationTask {
-    init(credentialContext: CredentialContext, credential: Credential) {
+public class SupplementInformationTask {
+    public init(credentialContext: CredentialContext, credential: Credential) {
         self.credential = credential
         fields = credential.supplementalInformationFields
         self.credentialContext = credentialContext
     }
-    weak var credentialContext: CredentialContext?
-    private(set) var credential: Credential
-    var fields: [Provider.FieldSpecification]
+    private weak var credentialContext: CredentialContext?
+    public private(set) var credential: Credential
+    public var fields: [Provider.FieldSpecification]
     
-    func submit() {
+    public func submit() {
         credentialContext?.addSupplementalInformation(for: credential, supplementalInformationFields: fields)
     }
     
-    func cancel() {
+    public func cancel() {
         credentialContext?.cancelSupplementInformation(for: credential)
     }
 }
 
-class CredentialContext {
-    enum AddCredentialStatus {
+public class CredentialContext {
+    public enum AddCredentialStatus {
         case created
         case authenticating
         case updating(status: String)
@@ -28,14 +28,14 @@ class CredentialContext {
         case awaitingThirdPartyAppAuthentication(URL)
     }
     
+    public private(set) var credentials: [Identifier<Credential>: Credential] = [:]
     private let credentialStore = CredentialStore.shared
     private let storeObserverToken = StoreObserverToken()
     
-    private var credentials: [String: Credential] = [:]
-    private var progressHandlers: [String: (AddCredentialStatus) -> Void] = [:]
-    private var completions: [String: (Result<Credential, Error>) -> Void] = [:]
+    private var progressHandlers: [Identifier<Credential>: (AddCredentialStatus) -> Void] = [:]
+    private var completions: [Identifier<Credential>: (Result<Credential, Error>) -> Void] = [:]
     
-    init() {
+    public init() {
         credentials = credentialStore.credentials
         credentialStore.addCredentialsObserver(token: storeObserverToken) { [weak self] tokenId in
             guard let strongSelf = self, strongSelf.storeObserverToken.has(id: tokenId) else {
@@ -52,8 +52,7 @@ class CredentialContext {
         }
     }
     
-    
-    func addCredential(for provider: Provider, fields: [Provider.FieldSpecification], progressHandler: @escaping (AddCredentialStatus) -> Void,  completion: @escaping(Result<Credential, Error>) -> Void) {
+    public func addCredential(for provider: Provider, fields: [Provider.FieldSpecification], progressHandler: @escaping (AddCredentialStatus) -> Void,  completion: @escaping(Result<Credential, Error>) -> Void) {
         credentialStore.addCredential(for: provider, fields: fields) { [weak self] result in
             guard let strongSelf = self else { return }
             switch result {
@@ -87,11 +86,11 @@ class CredentialContext {
         }
     }
     
-    func addSupplementalInformation(for credential: Credential, supplementalInformationFields: [Provider.FieldSpecification]) {
+    fileprivate func addSupplementalInformation(for credential: Credential, supplementalInformationFields: [Provider.FieldSpecification]) {
         credentialStore.addSupplementalInformation(for: credential, supplementalInformationFields: supplementalInformationFields)
     }
     
-    func cancelSupplementInformation(for credential: Credential) {
+    fileprivate func cancelSupplementInformation(for credential: Credential) {
         credentialStore.cancelSupplementInformation(for: credential)
     }
 }

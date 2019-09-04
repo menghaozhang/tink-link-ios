@@ -1,10 +1,10 @@
 import Foundation
 import SwiftGRPC
 
-public final class Client {
+final class Client {
     let channel: Channel
 
-    public init(environment: Environment, clientKey: String, userAgent: String? = nil, certificateURL: URL? = nil) {
+    init(environment: Environment, clientKey: String, userAgent: String? = nil, certificateURL: URL? = nil) {
         var arguments: [Channel.Argument] = []
 
         arguments.append(.maxReceiveMessageLength(20 * 1024 * 1024))

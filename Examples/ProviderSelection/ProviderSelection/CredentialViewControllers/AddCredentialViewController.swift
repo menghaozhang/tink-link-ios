@@ -1,4 +1,5 @@
 import UIKit
+import TinkLink
 
 /**
  Example of how to use the provider field specification to add credential

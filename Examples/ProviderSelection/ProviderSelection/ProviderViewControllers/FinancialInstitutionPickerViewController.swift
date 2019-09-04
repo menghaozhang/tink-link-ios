@@ -1,4 +1,6 @@
 import UIKit
+import TinkLink
+
 /**
  Example of how to use the provider grouped by financialInstitution
  */
@@ -26,7 +28,7 @@ extension FinancialInstitutionPickerViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = financialInsititutionGroups[indexPath.row].financialInsititutionID
+        cell.textLabel?.text = financialInsititutionGroups[indexPath.row].financialInsititutionName
         cell.accessoryType = .disclosureIndicator
         return cell
     }

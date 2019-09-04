@@ -8,7 +8,7 @@ public struct Credential {
     /// The provider (financial institution) that the credentials is connected to.
     public var providerName: Identifier<Provider>
 
-    public enum `Type` {
+    public enum `Type`: String {
         case unknown
         case password
         case mobileBankID

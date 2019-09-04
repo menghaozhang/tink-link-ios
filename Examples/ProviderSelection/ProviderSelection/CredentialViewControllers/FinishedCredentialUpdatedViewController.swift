@@ -1,4 +1,5 @@
 import UIKit
+import TinkLink
 
 class FinishedCredentialUpdatedViewController: UIViewController {
     var credential: Credential
@@ -22,7 +23,7 @@ class FinishedCredentialUpdatedViewController: UIViewController {
         stackView.axis = .vertical
         let providerNameLabel = UILabel()
         providerNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        providerNameLabel.text = "Provider name: " + credential.providerName
+        providerNameLabel.text = "Provider name: " + credential.providerName.rawValue
         let typeLabel = UILabel()
         typeLabel.translatesAutoresizingMaskIntoConstraints = false
         typeLabel.text = "Credential type: " + credential.type.rawValue

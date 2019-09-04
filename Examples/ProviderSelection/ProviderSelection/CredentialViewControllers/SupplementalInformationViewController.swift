@@ -1,4 +1,5 @@
 import UIKit
+import TinkLink
 
 /**
  Example of how to use the credential field supplementa information to update credential
