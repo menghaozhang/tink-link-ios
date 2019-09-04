@@ -1,4 +1,5 @@
 import UIKit
+import TinkLink
 
 /**
  Example of how to use the provider grouped by names
@@ -10,7 +11,7 @@ final class ProviderListViewController: UITableViewController {
         }
     }
     
-    init(market: String, style: UITableView.Style) {
+    init(market: Market, style: UITableView.Style) {
         providerContext = ProviderContext(market: market)
         super.init(style: style)
     }
@@ -19,7 +20,7 @@ final class ProviderListViewController: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func updateMarket(market: String) {
+    func updateMarket(market: Market) {
         providerContext = ProviderContext(market: market)
         providerContext.delegate = self
     }
@@ -45,7 +46,7 @@ extension ProviderListViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let group = providerContext.providerGroups[indexPath.item]
-        cell.textLabel?.text = group.groupedName
+        cell.textLabel?.text = group.groupedDisplayName
         cell.accessoryType = .disclosureIndicator
         return cell
     }

@@ -1,7 +1,8 @@
 import UIKit
+import TinkLink
 
 class ProviderMarketsViewController: UIViewController {
-    private var providerMarketRepository = ProviderMarketRepository()
+    private var providerMarketContext = ProviderMarketContext()
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     private lazy var separatorLine = UIView()
     private var providerListViewController: ProviderListViewController?
@@ -21,7 +22,7 @@ extension ProviderMarketsViewController {
         
         title = "Choose your bank"
         
-        providerMarketRepository.delegate = self
+        providerMarketContext.delegate = self
         
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .horizontal
@@ -60,7 +61,7 @@ extension ProviderMarketsViewController {
             ])
     }
     
-    private func setupProviderListView(for market: String) {
+    private func setupProviderListView(for market: Market) {
         let providerListViewController = ProviderListViewController(market: market, style: .plain)
         addChild(providerListViewController)
         view.addSubview(providerListViewController.view)
@@ -77,8 +78,8 @@ extension ProviderMarketsViewController {
     }
 }
 
-extension ProviderMarketsViewController: ProviderMarketRepositoryDelegate {
-    func providerMarketRepository(_ store: ProviderMarketRepository, didUpdateMarkets markets: [String]) {
+extension ProviderMarketsViewController: ProviderMarketContextDelegate {
+    func providerMarketContext(_ store: ProviderMarketContext, didUpdateMarkets markets: [Market]) {
         DispatchQueue.main.async {
             self.collectionView.reloadData()
             if let market = markets.first {
@@ -88,13 +89,13 @@ extension ProviderMarketsViewController: ProviderMarketRepositoryDelegate {
         }
     }
     
-    func providerMarketRepository(_ store: ProviderMarketRepository, didReceiveError error: Error) {
+    func providerMarketContext(_ store: ProviderMarketContext, didReceiveError error: Error) {
     }
 }
 
 extension ProviderMarketsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let market = providerMarketRepository.market[indexPath.item]
+        let market = providerMarketContext.market[indexPath.item]
         if let providerListViewController = providerListViewController {
             providerListViewController.updateMarket(market: market)
         } else {
@@ -105,12 +106,12 @@ extension ProviderMarketsViewController: UICollectionViewDelegate {
 
 extension ProviderMarketsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return providerMarketRepository.market.count
+        return providerMarketContext.market.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let marketCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! MarketCell
-        marketCell.labelView.text = providerMarketRepository.market[indexPath.item]
+        marketCell.labelView.text = providerMarketContext.market[indexPath.item].code
         return marketCell
     }
 }

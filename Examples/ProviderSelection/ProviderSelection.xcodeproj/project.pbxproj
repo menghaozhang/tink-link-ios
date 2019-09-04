@@ -12,6 +12,7 @@
 		201D5518230AC95E00641102 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 201D5517230AC95E00641102 /* Assets.xcassets */; };
 		201D551B230AC95E00641102 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 201D5519230AC95E00641102 /* LaunchScreen.storyboard */; };
 		7C4076BB87A7E08D9AF89D2B /* Pods_ProviderSelection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 721C3816EEFC9F33462E6DCE /* Pods_ProviderSelection.framework */; };
+		8FA3559B231F9CBB0054115D /* Tinklink.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FA3559A231F9CBB0054115D /* Tinklink.plist */; };
 		8FA5F824230BD13800226C02 /* FinancialInstitutionPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F823230BD13800226C02 /* FinancialInstitutionPickerViewController.swift */; };
 		8FA5F826230BE85100226C02 /* AccessTypePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F825230BE85100226C02 /* AccessTypePickerViewController.swift */; };
 		8FA5F828230C069500226C02 /* CredentialTypePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F827230C069500226C02 /* CredentialTypePickerViewController.swift */; };
@@ -19,7 +20,6 @@
 		8FA5F834230D84B900226C02 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F833230D84B900226C02 /* TextFieldCell.swift */; };
 		8FA5F836230E9DEF00226C02 /* SupplementalInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F835230E9DEF00226C02 /* SupplementalInformationViewController.swift */; };
 		8FA5F83E230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F83D230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift */; };
-		8FBDA972231553A600BC39AF /* Tinklink.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FBDA971231553A600BC39AF /* Tinklink.plist */; };
 		8FBDA97A2316BE9400BC39AF /* ProviderMarketsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBDA9792316BE9400BC39AF /* ProviderMarketsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +32,7 @@
 		201D551C230AC95E00641102 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		61B26BF5DAF2FC35AB93DC98 /* Pods-ProviderSelection.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProviderSelection.debug.xcconfig"; path = "Target Support Files/Pods-ProviderSelection/Pods-ProviderSelection.debug.xcconfig"; sourceTree = "<group>"; };
 		721C3816EEFC9F33462E6DCE /* Pods_ProviderSelection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProviderSelection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8FA3559A231F9CBB0054115D /* Tinklink.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Tinklink.plist; sourceTree = "<group>"; };
 		8FA5F823230BD13800226C02 /* FinancialInstitutionPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialInstitutionPickerViewController.swift; sourceTree = "<group>"; };
 		8FA5F825230BE85100226C02 /* AccessTypePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTypePickerViewController.swift; sourceTree = "<group>"; };
 		8FA5F827230C069500226C02 /* CredentialTypePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialTypePickerViewController.swift; sourceTree = "<group>"; };
@@ -39,7 +40,6 @@
 		8FA5F833230D84B900226C02 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		8FA5F835230E9DEF00226C02 /* SupplementalInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementalInformationViewController.swift; sourceTree = "<group>"; };
 		8FA5F83D230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishedCredentialUpdatedViewController.swift; sourceTree = "<group>"; };
-		8FBDA971231553A600BC39AF /* Tinklink.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Tinklink.plist; sourceTree = "<group>"; };
 		8FBDA9792316BE9400BC39AF /* ProviderMarketsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderMarketsViewController.swift; sourceTree = "<group>"; };
 		C2228129CC6DE436D8BA8417 /* Pods-ProviderSelection.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProviderSelection.release.xcconfig"; path = "Target Support Files/Pods-ProviderSelection/Pods-ProviderSelection.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,7 +84,7 @@
 				201D5517230AC95E00641102 /* Assets.xcassets */,
 				201D5519230AC95E00641102 /* LaunchScreen.storyboard */,
 				201D551C230AC95E00641102 /* Info.plist */,
-				8FBDA971231553A600BC39AF /* Tinklink.plist */,
+				8FA3559A231F9CBB0054115D /* Tinklink.plist */,
 			);
 			path = ProviderSelection;
 			sourceTree = "<group>";
@@ -197,8 +197,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				201D551B230AC95E00641102 /* LaunchScreen.storyboard in Resources */,
-				8FBDA972231553A600BC39AF /* Tinklink.plist in Resources */,
 				201D5518230AC95E00641102 /* Assets.xcassets in Resources */,
+				8FA3559B231F9CBB0054115D /* Tinklink.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
