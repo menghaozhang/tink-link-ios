@@ -18,6 +18,7 @@ extension Provider {
         self.accessType = .init(grpcAccessType: grpcProvider.accessType)
         self.financialInstitutionID = grpcProvider.financialInstitutionID
         self.financialInstitutionName = grpcProvider.financialInstitutionName
+        self.credentialType = .init(grpcCredentialType: grpcProvider.credentialType)
     }
 }
 

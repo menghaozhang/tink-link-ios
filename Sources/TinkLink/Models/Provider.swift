@@ -34,7 +34,7 @@ public struct Provider {
     /// - Note: It is only possible to perform credentials create or refresh actions on providers which are enabled.
     public var status: Status
 
-    // TODO: var credentialType: Credential.`Type`
+    public var credentialType: Credential.`Type`
 
     public var helpText: String
 
