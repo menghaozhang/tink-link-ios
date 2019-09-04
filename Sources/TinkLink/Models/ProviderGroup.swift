@@ -59,8 +59,8 @@ public enum FinancialInsititutionGroup {
         }
     }
     
-    public var financialInsititutionID: String? {
-        return providers.first?.financialInstitutionID
+    public var financialInsititutionName: String? {
+        return providers.first?.financialInstitutionName
     }
 }
 
