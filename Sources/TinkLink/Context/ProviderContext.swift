@@ -32,11 +32,7 @@ public class ProviderContext {
     }
     
     private func performFetch() {
-        if let providers = providerStore.providerMarketGroups[market] {
-            _providers = providers
-        } else {
-            providerStore.performFetchProvidersIfNeeded(for: market)
-        }
+        providerStore.performFetchProvidersIfNeeded(for: market)
     }
 }
 

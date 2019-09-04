@@ -25,11 +25,7 @@ public class ProviderMarketContext {
     }
     
     private func performFetch() {
-        if let markets = providerStore.markets {
-            _markets = markets
-        } else {
-            providerStore.performFetchMarketsIfNeeded()
-        }
+        providerStore.performFetchMarketsIfNeeded()
     }
 }
 
