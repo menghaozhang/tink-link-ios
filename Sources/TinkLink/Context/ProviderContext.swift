@@ -41,7 +41,7 @@ public class ProviderContext {
 }
 
 extension ProviderContext {
-    var providers: [Provider] {
+    public var providers: [Provider] {
         guard let providers = _providers else {
             performFetch()
             return []
@@ -49,7 +49,7 @@ extension ProviderContext {
         return providers
     }
     
-    var providerGroups: [ProviderGroup] {
+    public var providerGroups: [ProviderGroup] {
         let providerGroupedByGroupedName = Dictionary(grouping: providers, by: { $0.groupDisplayName })
         let groupedNames = providerGroupedByGroupedName.map { $0.key }
         var providerGroups = [ProviderGroup]()

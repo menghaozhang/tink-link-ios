@@ -7,10 +7,10 @@ public class SupplementInformationTask {
         self.credentialContext = credentialContext
     }
     private weak var credentialContext: CredentialContext?
-    private var credential: Credential
+    public private(set) var credential: Credential
     public var fields: [Provider.FieldSpecification]
     
-    func submit() {
+    public func submit() {
         credentialContext?.addSupplementalInformation(for: credential, supplementalInformationFields: fields)
     }
     
@@ -52,7 +52,7 @@ public class CredentialContext {
         }
     }
     
-    func addCredential(for provider: Provider, fields: [Provider.FieldSpecification], progressHandler: @escaping (AddCredentialStatus) -> Void,  completion: @escaping(Result<Credential, Error>) -> Void) {
+    public func addCredential(for provider: Provider, fields: [Provider.FieldSpecification], progressHandler: @escaping (AddCredentialStatus) -> Void,  completion: @escaping(Result<Credential, Error>) -> Void) {
         credentialStore.addCredential(for: provider, fields: fields) { [weak self] result in
             guard let strongSelf = self else { return }
             switch result {

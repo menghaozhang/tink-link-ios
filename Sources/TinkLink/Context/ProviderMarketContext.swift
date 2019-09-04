@@ -1,11 +1,10 @@
-protocol ProviderMarketContextDelegate: AnyObject {
+public protocol ProviderMarketContextDelegate: AnyObject {
     func providerMarketContext(_ store: ProviderMarketContext, didUpdateMarkets markets: [Market])
     func providerMarketContext(_ store: ProviderMarketContext, didReceiveError error: Error)
 }
 
-class ProviderMarketContext {
-    private let providerStore = ProviderStore.shared
-    init() {
+public class ProviderMarketContext {
+    public init() {
         providerStore.addMarketsObserver(token: storeObserverToken) { [weak self] tokenId in
             guard let strongSelf = self, strongSelf.storeObserverToken.has(id: tokenId) else {
                 return
@@ -14,7 +13,9 @@ class ProviderMarketContext {
         }
     }
     
-    weak var delegate: ProviderMarketContextDelegate?
+    public weak var delegate: ProviderMarketContextDelegate?
+    
+    private let providerStore = ProviderStore.shared
     private let storeObserverToken = StoreObserverToken()
     private var _markets: [Market]? {
         didSet {
@@ -23,7 +24,7 @@ class ProviderMarketContext {
         }
     }
     
-    func performFetch() {
+    private func performFetch() {
         if let markets = providerStore.markets {
             _markets = markets
         } else {
@@ -32,8 +33,9 @@ class ProviderMarketContext {
     }
 }
 
+// Markets
 extension ProviderMarketContext {
-    var market: [Market] {
+    public var market: [Market] {
         guard let markets = _markets else {
             performFetch()
             return []
