@@ -5,10 +5,15 @@ import TinkLink
  Example of how to use the provider field specification to add credential
  */
 final class AddCredentialViewController: UITableViewController {
+    
+    typealias CredentialProgressHandler = (CredentialContext.AddCredentialStatus) -> Void
+    typealias CredentialComplition = (Result<Credential, Error>) -> Void
     var credentialContext: CredentialContext?
     var provider: Provider
     
     private lazy var statusLabelView = UILabel()
+    private var progressHandler: CredentialProgressHandler?
+    private var complition: CredentialComplition?
     
     init(provider: Provider) {
         self.provider = provider
@@ -48,7 +53,6 @@ extension AddCredentialViewController {
             textFieldCell.delegate = self
             textFieldCell.textField.placeholder = field.fieldDescription
             textFieldCell.textField.isSecureTextEntry = field.isMasked
-            textFieldCell.textField.isEnabled = !field.isImmutable
             textFieldCell.textField.text = field.value
         }
         return cell
@@ -58,32 +62,36 @@ extension AddCredentialViewController {
 // MARK: - Actions
 extension AddCredentialViewController {
     @objc private func doneButtonPressed(_ sender: UIBarButtonItem) {
+        let progressHandler: CredentialProgressHandler = { status in
+            switch status {
+            case .authenticating, .created:
+                break
+            case .awaitingSupplementalInformation(let supplementInformationTask):
+                self.showSupplementalInformation(for: supplementInformationTask)
+            case .awaitingThirdPartyAppAuthentication(let thirdPartyURL):
+                UIApplication.shared.open(thirdPartyURL, options: [:], completionHandler: { success in
+                    if !success {
+                        // Open download page
+                    }
+                })
+            case .updating(let status):
+                self.showUpdating(status: status)
+            }
+        }
+        let complition: CredentialComplition = { result in
+            switch result {
+            case .failure:
+                // Show error
+                break
+            case .success(let credential):
+                self.showCredentialUpdated(for: credential)
+            }
+        }
+        self.progressHandler = progressHandler
+        self.complition = complition
         do {
             try provider.fields.validateValues()
-            credentialContext?.addCredential(for: provider, fields: provider.fields, progressHandler: { status in
-                switch status {
-                case .authenticating, .created:
-                    break
-                case .awaitingSupplementalInformation(let supplementInformationTask):
-                    self.showSupplementalInformation(for: supplementInformationTask)
-                case .awaitingThirdPartyAppAuthentication(let thirdPartyURL):
-                    UIApplication.shared.open(thirdPartyURL, options: [:], completionHandler: { success in
-                        if !success {
-                            // Open download page
-                        }
-                    })
-                case .updating(let status):
-                    self.showUpdating(status: status)
-                }
-            }, completion: { result in
-                switch result {
-                case .failure:
-                    // Show error
-                    break
-                case .success(let credential):
-                    self.showCredentialUpdated(for: credential)
-                }
-            })
+            credentialContext?.addCredential(for: provider, fields: provider.fields, progressHandler: progressHandler, completion: complition)
         } catch let error as FieldSpecificationsError {
             print(error.errors)
         } catch {
