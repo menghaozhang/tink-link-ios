@@ -6,11 +6,13 @@ public class TinkLink {
         var clientId: String
         var redirectUrl: URL
         var timeoutIntervalForRequest: TimeInterval?
-        public init (environment: Environment, clientId: String, redirectUrl: URL, timeoutIntervalForRequest: TimeInterval? = nil) {
+        var certificateURL: URL?
+        public init (environment: Environment, clientId: String, redirectUrl: URL, timeoutIntervalForRequest: TimeInterval? = nil, certificateURL: URL? = nil) {
             self.environment = environment
             self.clientId = clientId
             self.redirectUrl = redirectUrl
             self.timeoutIntervalForRequest = timeoutIntervalForRequest
+            self.certificateURL = certificateURL
         }
     }
     
@@ -40,7 +42,7 @@ public class TinkLink {
     
     // Setup via configration object
     public static func configure(with configuration: TinkLink.Configuration) {
-        client = Client(environment: configuration.environment , clientKey: configuration.clientId)
+        client = Client(environment: configuration.environment , clientKey: configuration.clientId, certificateURL: configuration.certificateURL)
     }
     
     // TODO: Some configurations can be changed after setup, for example timeoutIntervalForRequest and Qos, the changes should reflect to the stores and services
@@ -64,6 +66,7 @@ extension TinkLink.Configuration: Decodable {
         case clientId = "TINK_CLIENT_ID"
         case redirectUrl = "TINK_REDIRECT_URL"
         case timeoutInterval = "TINK_TIMEOUT_INTERVAL"
+        case certificateFileName = "TINK_CERTIFICATE_FILE_NAME"
     }
     
     public init(from decoder: Decoder) throws {
@@ -77,9 +80,14 @@ extension TinkLink.Configuration: Decodable {
             self.environment = .production
         }
         let redirectUrlString = try values.decode(String.self, forKey: .redirectUrl)
+        let certificateFileName = try values.decode(String.self, forKey: .certificateFileName)
         guard let redirectUrl = URL(string: redirectUrlString) else {
-            fatalError("Invalid URL")
+            fatalError("Invalid redirect URL")
         }
+        guard let certificateURL = Bundle.main.url(forResource: certificateFileName, withExtension: "pem") else {
+            fatalError("Cannot find certificate file")
+        }
+        self.certificateURL = certificateURL
         self.redirectUrl = redirectUrl
     }
 }
