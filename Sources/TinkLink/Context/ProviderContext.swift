@@ -57,6 +57,6 @@ extension ProviderContext {
             let providersWithSameGroupedName = providers.filter({ $0.groupDisplayName == groupName })
             providerGroups.append(ProviderGroup(providers: providersWithSameGroupedName))
         }
-        return providerGroups.sorted(by: { $0.providers.count < $1.providers.count })
+        return providerGroups.sorted(by: { $0.groupedDisplayName ?? "" < $1.groupedDisplayName ?? "" })
     }
 }
