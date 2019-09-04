@@ -67,6 +67,35 @@ class CredentialStore {
         }
     }
     
+    private func pollingStatus(for credential: Credential) {
+        guard credentialStatusPollingCallerCanceller[credential.id] == nil else { return }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+            self.credentialStatusPollingCallerCanceller[credential.id] = self.service.credentials { [weak self, credential] result in
+                guard let strongSelf = self else { return }
+                strongSelf.credentialStatusPollingCallerCanceller[credential.id] = nil
+                do {
+                    let credentials = try result.get()
+                    if let updatedCredential = credentials.first(where: { $0.id == credential.id}) {
+                        if updatedCredential.status == .updating {
+                            strongSelf.credentials[credential.id] = updatedCredential
+                            strongSelf.pollingStatus(for: updatedCredential)
+                        } else if updatedCredential.status == .awaitingSupplementalInformation {
+                            strongSelf.credentials[credential.id] = updatedCredential
+                        } else if updatedCredential.status == credential.status {
+                            strongSelf.pollingStatus(for: updatedCredential)
+                        } else {
+                            strongSelf.credentials[credential.id] = updatedCredential
+                        }
+                    } else {
+                        fatalError("No such credential with " + credential.id.rawValue)
+                    }
+                } catch let error {
+                    print(error)
+                }
+            }
+        })
+    }
+    
     // Credential Observer
     typealias ObserverHandler = (_ tokenIdentifier: UUID) -> Void
     var credentialStoreObservers: [UUID: ObserverHandler] = [:]
