@@ -32,6 +32,7 @@ extension AddCredentialViewController {
         
         navigationItem.title = "Enter your credentials"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonPressed(_:)))
+        navigationItem.rightBarButtonItem?.isEnabled = false
     }
 }
 
@@ -139,11 +140,7 @@ extension AddCredentialViewController: TextFieldCellDelegate {
     func textFieldCell(_ cell: TextFieldCell, willChangeToText text: String) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         provider.fields[indexPath.item].value = text
-        if provider.fields[indexPath.item].isValueValid {
-            cell.textField.textColor = .green
-        } else {
-            cell.textField.textColor = .red
-        }
+        navigationItem.rightBarButtonItem?.isEnabled = provider.fields[indexPath.item].isValueValid
     }
 }
 
