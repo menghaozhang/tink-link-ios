@@ -5,15 +5,10 @@ import TinkLink
  Example of how to use the provider field specification to add credential
  */
 final class AddCredentialViewController: UITableViewController {
-    
-    typealias CredentialProgressHandler = (CredentialContext.AddCredentialStatus) -> Void
-    typealias CredentialCompletion = (Result<Credential, Error>) -> Void
     var credentialContext: CredentialContext?
     var provider: Provider
     
     private lazy var statusLabelView = UILabel()
-    private var progressHandler: CredentialProgressHandler?
-    private var completion: CredentialCompletion?
     
     init(provider: Provider) {
         self.provider = provider
@@ -63,40 +58,39 @@ extension AddCredentialViewController {
 // MARK: - Actions
 extension AddCredentialViewController {
     @objc private func doneButtonPressed(_ sender: UIBarButtonItem) {
-        let progressHandler: CredentialProgressHandler = { status in
-            switch status {
-            case .authenticating, .created:
-                break
-            case .awaitingSupplementalInformation(let supplementInformationTask):
-                self.showSupplementalInformation(for: supplementInformationTask)
-            case .awaitingThirdPartyAppAuthentication(let thirdPartyURL):
-                UIApplication.shared.open(thirdPartyURL, options: [:], completionHandler: { success in
-                    if !success {
-                        // Open download page
-                    }
-                })
-            case .updating(let status):
-                self.showUpdating(status: status)
-            }
-        }
-        let completion: CredentialCompletion = { result in
-            switch result {
-            case .failure:
-                // Show error
-                break
-            case .success(let credential):
-                self.showCredentialUpdated(for: credential)
-            }
-        }
-        self.progressHandler = progressHandler
-        self.completion = completion
         do {
             try provider.fields.validateValues()
-            credentialContext?.addCredential(for: provider, fields: provider.fields, progressHandler: progressHandler, completion: completion)
+            credentialContext?.addCredential(for: provider, fields: provider.fields, progressHandler: onUpdate, completion: onCompletion)
         } catch let error as FieldSpecificationsError {
             print(error.errors)
         } catch {
             print(error)
+        }
+    }
+    
+    private func onUpdate(for status: CredentialContext.AddCredentialStatus) {
+        switch status {
+        case .authenticating, .created:
+            break
+        case .awaitingSupplementalInformation(let supplementInformationTask):
+            self.showSupplementalInformation(for: supplementInformationTask)
+        case .awaitingThirdPartyAppAuthentication(let thirdPartyURL):
+            UIApplication.shared.open(thirdPartyURL, options: [:], completionHandler: { success in
+                if !success {
+                    // Open download page
+                }
+            })
+        case .updating(let status):
+            self.showUpdating(status: status)
+        }
+    }
+    
+    private func onCompletion(result: Result<Credential, Error>) {
+        switch result {
+        case .failure(let error):
+            showUpdating(status: error.localizedDescription)
+        case .success(let credential):
+            showCredentialUpdated(for: credential)
         }
     }
 }
