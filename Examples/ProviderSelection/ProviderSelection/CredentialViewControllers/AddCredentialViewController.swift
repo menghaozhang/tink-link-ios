@@ -48,7 +48,7 @@ extension AddCredentialViewController {
             textFieldCell.delegate = self
             textFieldCell.textField.placeholder = field.fieldDescription
             textFieldCell.textField.isSecureTextEntry = field.isMasked
-            textFieldCell.textField.isEnabled = !field.isImmutable
+            textFieldCell.textField.isEnabled = !field.isImmutable || field.value.isEmpty
             textFieldCell.textField.text = field.value
         }
         return cell
@@ -60,34 +60,37 @@ extension AddCredentialViewController {
     @objc private func doneButtonPressed(_ sender: UIBarButtonItem) {
         do {
             try provider.fields.validateValues()
-            credentialContext?.addCredential(for: provider, fields: provider.fields, progressHandler: { status in
-                switch status {
-                case .authenticating, .created:
-                    break
-                case .awaitingSupplementalInformation(let supplementInformationTask):
-                    self.showSupplementalInformation(for: supplementInformationTask)
-                case .awaitingThirdPartyAppAuthentication(let thirdPartyURL):
-                    UIApplication.shared.open(thirdPartyURL, options: [:], completionHandler: { success in
-                        if !success {
-                            // Open download page
-                        }
-                    })
-                case .updating(let status):
-                    self.showUpdating(status: status)
-                }
-            }, completion: { result in
-                switch result {
-                case .failure:
-                    // Show error
-                    break
-                case .success(let credential):
-                    self.showCredentialUpdated(for: credential)
-                }
-            })
+            credentialContext?.addCredential(for: provider, fields: provider.fields, progressHandler: onUpdate, completion: onCompletion)
         } catch let error as FieldSpecificationsError {
             print(error.errors)
         } catch {
             print(error)
+        }
+    }
+    
+    private func onUpdate(for status: CredentialContext.AddCredentialStatus) {
+        switch status {
+        case .authenticating, .created:
+            break
+        case .awaitingSupplementalInformation(let supplementInformationTask):
+            self.showSupplementalInformation(for: supplementInformationTask)
+        case .awaitingThirdPartyAppAuthentication(let thirdPartyURL):
+            UIApplication.shared.open(thirdPartyURL, options: [:], completionHandler: { success in
+                if !success {
+                    // Open download page
+                }
+            })
+        case .updating(let status):
+            self.showUpdating(status: status)
+        }
+    }
+    
+    private func onCompletion(result: Result<Credential, Error>) {
+        switch result {
+        case .failure(let error):
+            showUpdating(status: error.localizedDescription)
+        case .success(let credential):
+            showCredentialUpdated(for: credential)
         }
     }
 }

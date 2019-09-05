@@ -45,7 +45,10 @@ public class CredentialContext {
             }
             strongSelf.credentials.forEach({ (key, value) in
                 if let credential = strongSelf.credentialStore.credentials[key] {
+                    // TODO: Make credential equatable
                     if value.status != credential.status {
+                        strongSelf.handleUpdate(for: credential)
+                    } else if value.status == .updating || value.status == .awaitingSupplementalInformation {
                         strongSelf.handleUpdate(for: credential)
                     }
                 }
@@ -80,7 +83,7 @@ public class CredentialContext {
         case .awaitingThirdPartyAppAuthentication:
             progressHandler(.awaitingThirdPartyAppAuthentication(URL(string: "https://www.google.com")!))
         case .updating:
-            progressHandler(.updating(status: "fetching transaction"))
+            progressHandler(.updating(status: credential.statusPayload))
         case .updated:
             completion(.success(credential))
         default:

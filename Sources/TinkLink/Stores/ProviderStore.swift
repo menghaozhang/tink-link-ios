@@ -1,6 +1,5 @@
 import Foundation
 
-// Mocked Provider store
 final class ProviderStore {
     static let shared: ProviderStore = ProviderStore()
 
@@ -9,9 +8,8 @@ final class ProviderStore {
     }
 
     private var service: ProviderService
-
-    private var marketCallerCanceller: Cancellable?
-    private var providerCallerCancellers: [Market: Cancellable?] = [:]
+    private var marketFetchCanceller: Cancellable?
+    private var providerFetchCancellers: [Market: Cancellable?] = [:]
 
     var providerMarketGroups: [Market: [Provider]] = [:] {
         didSet {
@@ -35,7 +33,7 @@ final class ProviderStore {
     }
     
     func performFetchProvidersIfNeeded(for market: Market) {
-        guard providerCallerCancellers[market] == nil else {
+        guard providerFetchCancellers[market] == nil else {
             return
         }
         let cancellable = service.providers(market: market, includeTestProviders: true) { [weak self, market] result in
@@ -48,14 +46,14 @@ final class ProviderStore {
                     break
                     //error
                 }
-                strongSelf.providerCallerCancellers[market] = nil
+                strongSelf.providerFetchCancellers[market] = nil
             }
         }
-        providerCallerCancellers[market] = cancellable
+        providerFetchCancellers[market] = cancellable
     }
     
     func performFetchMarketsIfNeeded() {
-        guard marketCallerCanceller == nil else {
+        guard marketFetchCanceller == nil else {
             return
         }
         let cancellable = service.providerMarkets { [weak self] result in
@@ -68,10 +66,10 @@ final class ProviderStore {
                     break
                     //error
                 }
-                strongSelf.marketCallerCanceller = nil
+                strongSelf.marketFetchCanceller = nil
             }
         }
-        marketCallerCanceller = cancellable
+        marketFetchCanceller = cancellable
     }
     
     // TODO: Abstract this part

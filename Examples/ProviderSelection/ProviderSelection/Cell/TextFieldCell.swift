@@ -34,6 +34,8 @@ class TextFieldCell: UITableViewCell, UITextFieldDelegate {
     }
     
     private func setup() {
+        textField.autocorrectionType = .no
+        textField.autocapitalizationType = .none
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.delegate = self
         contentView.addSubview(textField)
