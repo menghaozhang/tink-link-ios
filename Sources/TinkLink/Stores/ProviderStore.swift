@@ -6,8 +6,8 @@ final class ProviderStore {
         service = TinkLink.shared.client.providerService
     }
     private var service: ProviderService
-    private var marketCallerCanceller: Cancellable?
-    private var providerCallerCancellers: [Market: Cancellable?] = [:]
+    private var marketFetchCanceller: Cancellable?
+    private var providerFetchCancellers: [Market: Cancellable?] = [:]
 var providerMarketGroups: [Market: [Provider]] = [:] {
         didSet {
             DispatchQueue.main.async {
@@ -29,7 +29,7 @@ var providerMarketGroups: [Market: [Provider]] = [:] {
     }
     
     func performFetchProvidersIfNeeded(for market: Market) {
-        guard providerCallerCancellers[market] == nil else {
+        guard providerFetchCancellers[market] == nil else {
             return
         }
         let cancellable = service.providers(market: market, includeTestProviders: true) { [weak self, market] result in
@@ -42,14 +42,14 @@ var providerMarketGroups: [Market: [Provider]] = [:] {
                     break
                     //error
                 }
-                strongSelf.providerCallerCancellers[market] = nil
+                strongSelf.providerFetchCancellers[market] = nil
             }
         }
-        providerCallerCancellers[market] = cancellable
+        providerFetchCancellers[market] = cancellable
     }
     
     func performFetchMarketsIfNeeded() {
-        guard marketCallerCanceller == nil else {
+        guard marketFetchCanceller == nil else {
             return
         }
         let cancellable = service.providerMarkets { [weak self] result in
@@ -62,10 +62,10 @@ var providerMarketGroups: [Market: [Provider]] = [:] {
                     break
                     //error
                 }
-                strongSelf.marketCallerCanceller = nil
+                strongSelf.marketFetchCanceller = nil
             }
         }
-        marketCallerCanceller = cancellable
+        marketFetchCanceller = cancellable
     }
     
     // TODO: Abstract this part

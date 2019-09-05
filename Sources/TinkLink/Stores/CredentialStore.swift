@@ -13,20 +13,20 @@ class CredentialStore {
         }
     }
     private var service: CredentialService
-    private var createCredentialCallerCanceller: [Identifier<Provider>: Cancellable?] = [:]
-    private var credentialStatusPollingCallerCanceller: [Identifier<Credential>: Cancellable?] = [:]
-    private var addSupplementalInformationCallerCanceller: [Identifier<Credential>: Cancellable?] = [:]
-    private var cancelSupplementInformationCallerCanceller: [Identifier<Credential>: Cancellable?] = [:]
+    private var createCredentialCanceller: [Identifier<Provider>: Cancellable?] = [:]
+    private var credentialStatusPollingCanceller: [Identifier<Credential>: Cancellable?] = [:]
+    private var addSupplementalInformationCanceller: [Identifier<Credential>: Cancellable?] = [:]
+    private var cancelSupplementInformationCanceller: [Identifier<Credential>: Cancellable?] = [:]
     
     private init() {
         service = TinkLink.shared.client.credentialService
     }
     
     func addCredential(for provider: Provider, fields: [Provider.FieldSpecification], completion: @escaping(Result<Credential, Error>) -> Void) {
-        guard createCredentialCallerCanceller[provider.name] == nil else {
+        guard createCredentialCanceller[provider.name] == nil else {
             return
         }
-        createCredentialCallerCanceller[provider.name] = service.createCredential(providerName: provider.name, fields: fields.makeFields(), completion: { [weak self, provider] (result) in
+        createCredentialCanceller[provider.name] = service.createCredential(providerName: provider.name, fields: fields.makeFields(), completion: { [weak self, provider] (result) in
             guard let strongSelf = self else { return }
             DispatchQueue.main.async {
                 do {
@@ -37,13 +37,13 @@ class CredentialStore {
                 } catch let error {
                     completion(.failure(error))
                 }
-                strongSelf.createCredentialCallerCanceller[provider.name] = nil
+                strongSelf.createCredentialCanceller[provider.name] = nil
             }
         })
     }
     
     func addSupplementalInformation(for credential: Credential, supplementalInformationFields: [Provider.FieldSpecification]) {
-        addSupplementalInformationCallerCanceller[credential.id] = service.supplementInformation(credentialID: credential.id, fields: supplementalInformationFields.makeFields()) { [weak self] result in
+        addSupplementalInformationCanceller[credential.id] = service.supplementInformation(credentialID: credential.id, fields: supplementalInformationFields.makeFields()) { [weak self] result in
             guard let strongSelf = self else { return }
             DispatchQueue.main.async {
                 switch result {
@@ -55,13 +55,13 @@ class CredentialStore {
                     strongSelf.pollingStatus(for: credential)
                 }
             }
-            strongSelf.addSupplementalInformationCallerCanceller[credential.id] = nil
+            strongSelf.addSupplementalInformationCanceller[credential.id] = nil
         }
     }
     
     func cancelSupplementInformation(for credential: Credential) {
-        guard cancelSupplementInformationCallerCanceller[credential.id] == nil else { return }
-        cancelSupplementInformationCallerCanceller[credential.id] = service.cancelSupplementInformation(credentialID: credential.id) { [weak self] result in
+        guard cancelSupplementInformationCanceller[credential.id] == nil else { return }
+        cancelSupplementInformationCanceller[credential.id] = service.cancelSupplementInformation(credentialID: credential.id) { [weak self] result in
             guard let strongSelf = self else { return }
             DispatchQueue.main.async {
                 switch result {
@@ -71,17 +71,17 @@ class CredentialStore {
                     // polling
                     break
                 }
-                strongSelf.cancelSupplementInformationCallerCanceller[credential.id] = nil
+                strongSelf.cancelSupplementInformationCanceller[credential.id] = nil
             }
         }
     }
     
     private func pollingStatus(for credential: Credential) {
-        guard credentialStatusPollingCallerCanceller[credential.id] == nil else { return }
+        guard credentialStatusPollingCanceller[credential.id] == nil else { return }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-            self.credentialStatusPollingCallerCanceller[credential.id] = self.service.credentials { [weak self, credential] result in
+            self.credentialStatusPollingCanceller[credential.id] = self.service.credentials { [weak self, credential] result in
                 guard let strongSelf = self else { return }
-                strongSelf.credentialStatusPollingCallerCanceller[credential.id] = nil
+                strongSelf.credentialStatusPollingCanceller[credential.id] = nil
                 do {
                     let credentials = try result.get()
                     if let updatedCredential = credentials.first(where: { $0.id == credential.id}) {
