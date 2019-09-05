@@ -1,14 +1,19 @@
 import Foundation
+
 // Mocked Provider store
 final class ProviderStore {
     static let shared: ProviderStore = ProviderStore()
+
     private init() {
         service = TinkLink.shared.client.providerService
     }
+
     private var service: ProviderService
+
     private var marketCallerCanceller: Cancellable?
     private var providerCallerCancellers: [Market: Cancellable?] = [:]
-var providerMarketGroups: [Market: [Provider]] = [:] {
+
+    var providerMarketGroups: [Market: [Provider]] = [:] {
         didSet {
             DispatchQueue.main.async {
                 self.providerStoreObservers.forEach({ (tokenID, handler) in
@@ -17,6 +22,7 @@ var providerMarketGroups: [Market: [Provider]] = [:] {
             }
         }
     }
+    
     var markets: [Market]? {
         didSet {
             guard let markets = markets, !markets.isEmpty else { return }

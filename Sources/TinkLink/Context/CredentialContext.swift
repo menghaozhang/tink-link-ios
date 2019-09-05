@@ -6,7 +6,9 @@ public class SupplementInformationTask {
         fields = credential.supplementalInformationFields
         self.credentialContext = credentialContext
     }
+
     private weak var credentialContext: CredentialContext?
+
     public private(set) var credential: Credential
     public var fields: [Provider.FieldSpecification]
     

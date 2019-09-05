@@ -5,14 +5,17 @@ public protocol providerContextDelegate: AnyObject {
 
 public class ProviderContext {
     var market: Market
+
     private let providerStore = ProviderStore.shared
     private let storeObserverToken = StoreObserverToken()
+
     private var _providers: [Provider]? {
         didSet {
             guard let providers = _providers else { return }
             delegate?.providerContext(self, didUpdateProviders: providers)
         }
     }
+
     public weak var delegate: providerContextDelegate? {
         didSet {
             if delegate != nil {

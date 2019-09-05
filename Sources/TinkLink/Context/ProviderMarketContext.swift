@@ -17,6 +17,7 @@ public class ProviderMarketContext {
     
     private let providerStore = ProviderStore.shared
     private let storeObserverToken = StoreObserverToken()
+
     private var _markets: [Market]? {
         didSet {
             guard let markets = _markets else { return }
