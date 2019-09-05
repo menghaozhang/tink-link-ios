@@ -1,6 +1,6 @@
 import Foundation
 
-class CredentialStore {
+final class CredentialStore {
     static let shared = CredentialStore()
     
     var credentials: [Identifier<Credential>: Credential] = [:] {
