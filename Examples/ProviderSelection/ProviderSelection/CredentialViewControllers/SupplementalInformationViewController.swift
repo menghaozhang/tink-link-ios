@@ -35,6 +35,7 @@ extension SupplementalInformationViewController {
         navigationItem.title = "Enter Supplemental Information"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonPressed(_:)))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonPressed(_:)))
+        navigationItem.rightBarButtonItem?.isEnabled = false
     }
 }
 
@@ -86,11 +87,7 @@ extension SupplementalInformationViewController: TextFieldCellDelegate {
         if let indexPath = tableView.indexPath(for: cell) {
             supplementInformationTask.fields[indexPath.item].value = text
             let field = supplementInformationTask.fields[indexPath.item]
-            if field.isValueValid {
-                textField.textColor = .green
-            } else {
-                textField.textColor = .red
-            }
+            navigationItem.rightBarButtonItem?.isEnabled = field.isValueValid
         }
     }
 }
