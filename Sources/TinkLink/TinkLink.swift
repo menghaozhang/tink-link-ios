@@ -1,6 +1,6 @@
 import Foundation
+
 public class TinkLink {
-    
     public struct Configuration {
         var environment: Environment
         var clientId: String
