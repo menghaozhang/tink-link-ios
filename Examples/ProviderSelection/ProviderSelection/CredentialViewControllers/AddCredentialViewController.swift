@@ -7,13 +7,13 @@ import TinkLink
 final class AddCredentialViewController: UITableViewController {
     
     typealias CredentialProgressHandler = (CredentialContext.AddCredentialStatus) -> Void
-    typealias CredentialComplition = (Result<Credential, Error>) -> Void
+    typealias CredentialCompletion = (Result<Credential, Error>) -> Void
     var credentialContext: CredentialContext?
     var provider: Provider
     
     private lazy var statusLabelView = UILabel()
     private var progressHandler: CredentialProgressHandler?
-    private var complition: CredentialComplition?
+    private var completion: CredentialCompletion?
     
     init(provider: Provider) {
         self.provider = provider
@@ -78,7 +78,7 @@ extension AddCredentialViewController {
                 self.showUpdating(status: status)
             }
         }
-        let complition: CredentialComplition = { result in
+        let completion: CredentialCompletion = { result in
             switch result {
             case .failure:
                 // Show error
@@ -88,10 +88,10 @@ extension AddCredentialViewController {
             }
         }
         self.progressHandler = progressHandler
-        self.complition = complition
+        self.completion = completion
         do {
             try provider.fields.validateValues()
-            credentialContext?.addCredential(for: provider, fields: provider.fields, progressHandler: progressHandler, completion: complition)
+            credentialContext?.addCredential(for: provider, fields: provider.fields, progressHandler: progressHandler, completion: completion)
         } catch let error as FieldSpecificationsError {
             print(error.errors)
         } catch {
