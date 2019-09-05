@@ -27,7 +27,7 @@ public class TinkLink {
             let data = try Data(contentsOf: fallbackUrl)
             let configuration = try PropertyListDecoder().decode(TinkLink.Configuration.self, from: data)
             
-            return Client(environment: .production, clientKey: configuration.clientId)
+            return Client(environment: configuration.environment, clientKey: configuration.clientId, certificateURL: configuration.certificateURL)
         } catch {
             fatalError("Cannot find client")
         }
