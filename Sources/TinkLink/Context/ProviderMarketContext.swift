@@ -9,7 +9,12 @@ public class ProviderMarketContext {
             guard let strongSelf = self, strongSelf.storeObserverToken.has(id: tokenId) else {
                 return
             }
-            strongSelf._markets = strongSelf.providerStore.markets
+            var markets = strongSelf.providerStore.markets?.sorted() ?? []
+            if let currentRegionCode = Locale.current.regionCode, let index = markets.firstIndex(of: Market(code: currentRegionCode)) {
+                let currentMarket = markets.remove(at: index)
+                markets.insert(currentMarket, at: 0)
+            }
+            strongSelf._markets = markets
         }
     }
     
