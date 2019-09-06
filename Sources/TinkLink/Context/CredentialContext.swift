@@ -90,8 +90,18 @@ public class CredentialContext {
             progressHandler(.updating(status: credential.statusPayload))
         case .updated:
             completion(.success(credential))
-        default:
-            completion(.failure(NSError()))
+        case .permanentError:
+            completion(.failure(CredentialContextError.permanentFailure))
+        case .temporaryError:
+            completion(.failure(CredentialContextError.temporaryFailure))
+        case .authenticationError:
+            completion(.failure(CredentialContextError.authenticationFailed))
+        case .disabled:
+            fatalError("Credential shouldn't be disabled during creation.")
+        case .sessionExpired:
+            fatalError("Credential's session shouldn't expire during creation.")
+        case .unknown:
+            assertionFailure("Unknown credential status!")
         }
     }
     
@@ -102,4 +112,10 @@ public class CredentialContext {
     fileprivate func cancelSupplementInformation(for credential: Credential) {
         credentialStore.cancelSupplementInformation(for: credential)
     }
+}
+
+enum CredentialContextError: Error {
+    case authenticationFailed
+    case temporaryFailure
+    case permanentFailure
 }
