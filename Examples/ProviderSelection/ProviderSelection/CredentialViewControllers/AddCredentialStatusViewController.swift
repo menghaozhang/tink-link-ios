@@ -39,7 +39,6 @@ final class AddCredentialStatusViewController: UIViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         visualEffectView.contentView.addSubview(stackView)
 
-        statusLabelView.textAlignment = .center
         statusLabelView.numberOfLines = 0
         statusLabelView.preferredMaxLayoutWidth = 160
 
