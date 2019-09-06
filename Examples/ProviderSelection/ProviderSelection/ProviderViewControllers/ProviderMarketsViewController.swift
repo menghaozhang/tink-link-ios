@@ -74,12 +74,13 @@ extension ProviderMarketsViewController {
     private func setupProviderListView(for market: Market) {
         let providerListViewController = ProviderListViewController(market: market, style: .plain)
         addChild(providerListViewController)
-        view.addSubview(providerListViewController.view)
+        view.insertSubview(providerListViewController.view, at: 0)
         providerListViewController.view.translatesAutoresizingMaskIntoConstraints = false
         providerListViewController.didMove(toParent: self)
+        providerListViewController.additionalSafeAreaInsets.top = 44
         
         NSLayoutConstraint.activate([
-            providerListViewController.view.topAnchor.constraint(equalTo: separatorLine.bottomAnchor),
+            providerListViewController.view.topAnchor.constraint(equalTo: view.topAnchor),
             providerListViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             providerListViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             providerListViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
