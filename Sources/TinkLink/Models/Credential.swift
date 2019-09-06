@@ -8,13 +8,30 @@ public struct Credential {
     /// The provider (financial institution) that the credentials is connected to.
     public var providerName: Identifier<Provider>
 
-    public enum `Type`: String {
+    public enum `Type`: CustomStringConvertible {
         case unknown
         case password
         case mobileBankID
         case keyfob
         case fraud
         case thirdPartyAuthentication
+
+        public var description: String {
+            switch self {
+            case .unknown:
+                return "Unknown"
+            case .password:
+                return "Password"
+            case .mobileBankID:
+                return "Mobile BankID"
+            case .keyfob:
+                return "Key Fob"
+            case .fraud:
+                return "Fraud"
+            case .thirdPartyAuthentication:
+                return "Third Party Authentication"
+            }
+        }
     }
 
     /// Indicates how Tink authenticates the user to the financial institution.

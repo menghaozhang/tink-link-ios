@@ -26,7 +26,7 @@ class FinishedCredentialUpdatedViewController: UIViewController {
         providerNameLabel.text = "Provider name: " + credential.providerName.rawValue
         let typeLabel = UILabel()
         typeLabel.translatesAutoresizingMaskIntoConstraints = false
-        typeLabel.text = "Credential type: " + credential.type.rawValue
+        typeLabel.text = "Credential type: " + credential.type.description
         stackView.addArrangedSubview(providerNameLabel)
         stackView.addArrangedSubview(typeLabel)
         

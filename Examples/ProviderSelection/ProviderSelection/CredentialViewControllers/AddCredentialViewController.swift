@@ -10,7 +10,7 @@ final class AddCredentialViewController: UITableViewController {
     
     private lazy var statusLabelView = UILabel()
 
-    private lazy var doneBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonPressed(_:)))
+    private lazy var doneBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(doneButtonPressed(_:)))
     
     init(provider: Provider) {
         self.provider = provider
@@ -32,7 +32,7 @@ extension AddCredentialViewController {
         tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
         tableView.allowsSelection = false
         
-        navigationItem.title = "Enter your credentials"
+        navigationItem.title = "Enter Credentials"
         navigationItem.rightBarButtonItem = doneBarButtonItem
         navigationItem.rightBarButtonItem?.isEnabled = false
     }
