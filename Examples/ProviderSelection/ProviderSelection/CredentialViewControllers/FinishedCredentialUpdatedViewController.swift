@@ -1,12 +1,15 @@
 import UIKit
 import TinkLink
 
-class FinishedCredentialUpdatedViewController: UIViewController {
+final class FinishedCredentialUpdatedViewController: UITableViewController, AccountContextDelegate {
     var credential: Credential
+    var accountContext: AccountContext
+    var accounts: [Account] = []
     
     init(credential: Credential) {
         self.credential = credential
-        super.init(nibName: nil, bundle: nil)
+        accountContext = AccountContext()
+        super.init(style: .grouped)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -16,26 +19,37 @@ class FinishedCredentialUpdatedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.title = "Credential Updated"
+        accountContext.delegate = self
+        
+        navigationItem.title = "Accounts"
         navigationItem.largeTitleDisplayMode = .never
+        let activityIndicator = UIActivityIndicatorView(style: .gray)
+        activityIndicator.startAnimating()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
         
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        let providerNameLabel = UILabel()
-        providerNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        providerNameLabel.text = "Provider name: " + credential.providerName.rawValue
-        let typeLabel = UILabel()
-        typeLabel.translatesAutoresizingMaskIntoConstraints = false
-        typeLabel.text = "Credential type: " + credential.type.description
-        stackView.addArrangedSubview(providerNameLabel)
-        stackView.addArrangedSubview(typeLabel)
-        
-        view.backgroundColor = .white
-        view.addSubview(stackView)
-        NSLayoutConstraint.activate([
-            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-            ])
+        tableView.register(ValueTableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.allowsSelection = false
+    }
+    
+    // MARK: - UITableViewDataSource
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return accounts.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ValueTableViewCell
+        cell.textLabel?.text = accounts[indexPath.item].name
+        cell.detailTextLabel?.text = String(accounts[indexPath.item].balance.value.doubleValue) + " kr"
+        return cell
+    }
+    
+    // MARK: - AccountContextDelegate
+    func accountContext(_ store: AccountContext, didUpdateAccounts accounts: [Identifier<Credential> : [Account]]) {
+        self.accounts = accounts[credential.id] ?? []
+        tableView.reloadData()
+        navigationItem.rightBarButtonItem = nil
+    }
+    
+    func accountContext(_ store: AccountContext, didReceiveError error: Error) {
     }
 }
