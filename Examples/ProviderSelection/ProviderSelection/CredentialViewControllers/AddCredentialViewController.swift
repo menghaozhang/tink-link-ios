@@ -8,7 +8,7 @@ final class AddCredentialViewController: UITableViewController {
     var credentialContext: CredentialContext?
     var provider: Provider
     
-    private lazy var statusLabelView = UILabel()
+    private var statusViewController: AddCredentialStatusViewController?
 
     private lazy var doneBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addCredential))
     
@@ -112,25 +112,20 @@ extension AddCredentialViewController {
     }
     
     private func showUpdating(status: String) {
-        if statusLabelView.superview == nil {
-            statusLabelView.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(statusLabelView)
-            
-            NSLayoutConstraint.activate([
-                statusLabelView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                statusLabelView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-                statusLabelView.heightAnchor.constraint(equalToConstant: 200),
-                statusLabelView.widthAnchor.constraint(equalToConstant: 200)
-                ])
-            statusLabelView.backgroundColor = .white
-            statusLabelView.textAlignment = .center
-            statusLabelView.numberOfLines = 0
+        if statusViewController == nil {
+            let statusViewController = AddCredentialStatusViewController()
+            statusViewController.modalTransitionStyle = .crossDissolve
+            statusViewController.modalPresentationStyle = .overFullScreen
+            present(statusViewController, animated: true)
+            self.statusViewController = statusViewController
         }
-        statusLabelView.text = status
+        statusViewController?.status = status
     }
     
     private func hideUpdatingView() {
-        statusLabelView.removeFromSuperview()
+        guard statusViewController != nil else { return }
+        dismiss(animated: true)
+        statusViewController = nil
     }
     
     private func showCredentialUpdated(for credential: Credential) {
