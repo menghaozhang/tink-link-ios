@@ -56,6 +56,10 @@ extension AddCredentialViewController {
         }
         return cell
     }
+
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return provider.helpText
+    }
 }
 
 // MARK: - Actions
