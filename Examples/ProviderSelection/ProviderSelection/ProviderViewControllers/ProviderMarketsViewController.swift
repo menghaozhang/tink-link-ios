@@ -33,6 +33,7 @@ extension ProviderMarketsViewController {
         collectionView.dataSource = self
         collectionView.collectionViewLayout = collectionViewLayout
         collectionView.backgroundColor = .white
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.allowsSelection = true
         collectionView.register(MarketCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
         
