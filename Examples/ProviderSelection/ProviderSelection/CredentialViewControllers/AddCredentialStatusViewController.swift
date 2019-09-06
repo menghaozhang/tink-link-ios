@@ -40,9 +40,10 @@ final class AddCredentialStatusViewController: UIViewController {
         visualEffectView.contentView.addSubview(stackView)
 
         statusLabelView.numberOfLines = 0
-        statusLabelView.preferredMaxLayoutWidth = 160
+        statusLabelView.preferredMaxLayoutWidth = 240
 
         activityIndicator.startAnimating()
+        activityIndicator.setContentHuggingPriority(.defaultLow, for: .vertical)
 
         NSLayoutConstraint.activate([
             visualEffectView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
