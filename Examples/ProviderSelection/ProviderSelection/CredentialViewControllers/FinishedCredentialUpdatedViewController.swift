@@ -4,7 +4,7 @@ import TinkLink
 final class FinishedCredentialUpdatedViewController: UITableViewController, AccountContextDelegate {
     var credential: Credential
     var accountContext: AccountContext
-    var accounts: [Account]?
+    var accounts: [Account] = []
     
     init(credential: Credential) {
         self.credential = credential
@@ -33,21 +33,19 @@ final class FinishedCredentialUpdatedViewController: UITableViewController, Acco
     
     // MARK: - UITableViewDataSource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return accounts?.count ?? 0
+        return accounts.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! StyledTableViewCell
-        if let accounts = accounts {
             cell.textLabel?.text = accounts[indexPath.item].name
             cell.detailTextLabel?.text = String(accounts[indexPath.item].balance.value.doubleValue) + " kr"
-        }
         return cell
     }
     
     // MARK: - AccountContextDelegate
     func accountContext(_ store: AccountContext, didUpdateAccounts accounts: [Identifier<Credential> : [Account]]) {
-        self.accounts = accounts[credential.id]
+        self.accounts = accounts[credential.id] ?? []
         tableView.reloadData()
         navigationItem.rightBarButtonItem = nil
     }
