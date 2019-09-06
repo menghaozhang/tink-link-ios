@@ -81,11 +81,7 @@ extension AddCredentialViewController {
         case .awaitingSupplementalInformation(let supplementInformationTask):
             self.showSupplementalInformation(for: supplementInformationTask)
         case .awaitingThirdPartyAppAuthentication(let thirdPartyURL):
-            UIApplication.shared.open(thirdPartyURL, options: [:], completionHandler: { success in
-                if !success {
-                    // Open download page
-                }
-            })
+            UIApplication.shared.open(thirdPartyURL)
         case .updating(let status):
             self.showUpdating(status: status)
         }
