@@ -111,7 +111,8 @@ extension ProviderMarketsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let marketCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! MarketCell
-        marketCell.labelView.text = providerMarketContext.market[indexPath.item].code
+        let market = providerMarketContext.market[indexPath.item]
+        marketCell.labelView.text = market.emojiFlag
         return marketCell
     }
 }
