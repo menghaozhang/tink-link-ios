@@ -11,6 +11,8 @@ final class AddCredentialViewController: UITableViewController {
     private lazy var statusLabelView = UILabel()
 
     private lazy var doneBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(doneButtonPressed(_:)))
+
+    private var didFirstFieldBecomeFirstResponder = false
     
     init(provider: Provider) {
         self.provider = provider
@@ -35,6 +37,15 @@ extension AddCredentialViewController {
         navigationItem.title = "Enter Credentials"
         navigationItem.rightBarButtonItem = doneBarButtonItem
         navigationItem.rightBarButtonItem?.isEnabled = false
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        if !didFirstFieldBecomeFirstResponder, !provider.fields.isEmpty, let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TextFieldCell {
+            cell.textField.becomeFirstResponder()
+            didFirstFieldBecomeFirstResponder = true
+        }
     }
 }
 

@@ -15,6 +15,8 @@ final class SupplementalInformationViewController: UITableViewController {
     
     weak var delegate: SupplementalInformationViewControllerDelegate?
     
+    private var didFirstFieldBecomeFirstResponder = false
+
     init(supplementInformationTask: SupplementInformationTask) {
         self.supplementInformationTask = supplementInformationTask
         super.init(style: .grouped)
@@ -36,6 +38,15 @@ extension SupplementalInformationViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonPressed(_:)))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Submit", style: .done, target: self, action: #selector(doneButtonPressed(_:)))
         navigationItem.rightBarButtonItem?.isEnabled = false
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        if !didFirstFieldBecomeFirstResponder, !supplementInformationTask.fields.isEmpty, let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TextFieldCell {
+            cell.textField.becomeFirstResponder()
+            didFirstFieldBecomeFirstResponder = true
+        }
     }
 }
 
