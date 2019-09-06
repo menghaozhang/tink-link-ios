@@ -4,6 +4,7 @@ import TinkLink
 class ProviderMarketsViewController: UIViewController {
     private var providerMarketContext = ProviderMarketContext()
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    private lazy var effectView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
     private lazy var separatorLine = UIView()
     private var providerListViewController: ProviderListViewController?
     
@@ -32,7 +33,7 @@ extension ProviderMarketsViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.collectionViewLayout = collectionViewLayout
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.allowsSelection = true
         collectionView.register(MarketCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
@@ -41,15 +42,23 @@ extension ProviderMarketsViewController {
     }
     
     private func setup() {
+        view.addSubview(effectView)
         view.addSubview(collectionView)
         view.addSubview(separatorLine)
         
+        effectView.translatesAutoresizingMaskIntoConstraints = false
+
         view.backgroundColor = .white
         collectionView.translatesAutoresizingMaskIntoConstraints  = false
         separatorLine.backgroundColor = UIColor(white: 0.87, alpha: 1.0)
         separatorLine.translatesAutoresizingMaskIntoConstraints  = false
         
         NSLayoutConstraint.activate([
+            effectView.topAnchor.constraint(equalTo: collectionView.topAnchor),
+            effectView.leadingAnchor.constraint(equalTo: collectionView.leadingAnchor),
+            effectView.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor),
+            effectView.bottomAnchor.constraint(equalTo: collectionView.bottomAnchor),
+
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
