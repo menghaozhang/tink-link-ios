@@ -9,6 +9,8 @@ final class AddCredentialViewController: UITableViewController {
     var provider: Provider
     
     private lazy var statusLabelView = UILabel()
+
+    private lazy var doneBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonPressed(_:)))
     
     init(provider: Provider) {
         self.provider = provider
@@ -31,7 +33,7 @@ extension AddCredentialViewController {
         tableView.allowsSelection = false
         
         navigationItem.title = "Enter your credentials"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonPressed(_:)))
+        navigationItem.rightBarButtonItem = doneBarButtonItem
         navigationItem.rightBarButtonItem?.isEnabled = false
     }
 }
@@ -59,6 +61,9 @@ extension AddCredentialViewController {
 // MARK: - Actions
 extension AddCredentialViewController {
     @objc private func doneButtonPressed(_ sender: UIBarButtonItem) {
+        let activityIndicator = UIActivityIndicatorView(style: .gray)
+        activityIndicator.startAnimating()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
         do {
             try provider.fields.validateValues()
             credentialContext?.addCredential(for: provider, fields: provider.fields, progressHandler: onUpdate, completion: onCompletion)
@@ -87,6 +92,8 @@ extension AddCredentialViewController {
     }
     
     private func onCompletion(result: Result<Credential, Error>) {
+        navigationItem.rightBarButtonItem = doneBarButtonItem
+
         switch result {
         case .failure(let error):
             showUpdating(status: error.localizedDescription)
