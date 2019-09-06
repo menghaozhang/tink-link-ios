@@ -10,7 +10,7 @@ final class AccountStore {
     private var service: AccountService
     private var listAccountCanceller: Cancellable?
     
-    var accounts: [Identifier<Credential>: [Account]] = [:] {
+    var accounts: [Account] = [] {
         didSet {
             DispatchQueue.main.async {
                 self.accountStoreObservers.forEach { (tokenId, handler) in
@@ -26,8 +26,8 @@ final class AccountStore {
         }
         let cancellable = service.listAccounts { [weak self] result in
             switch result {
-            case .success(let accountList):
-                self?.accounts = Dictionary(grouping: accountList, by: { $0.credentialID })
+            case .success(let accounts):
+                self?.accounts = accounts
             case .failure(let error):
                 break
                 // Handle error

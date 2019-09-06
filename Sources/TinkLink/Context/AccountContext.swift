@@ -9,7 +9,7 @@ public class AccountContext {
             guard let strongSelf = self, strongSelf.storeObserverToken.has(id: tokenId) else {
                 return
             }
-            strongSelf._accounts = strongSelf.accountStore.accounts
+            strongSelf._accounts = Dictionary(grouping: strongSelf.accountStore.accounts, by: { $0.credentialID })
         }
     }
     
