@@ -15,6 +15,7 @@ extension CredentialTypePickerViewController {
         super.viewDidLoad()
 
         title = "Choose Credential Type"
+        navigationItem.largeTitleDisplayMode = .never
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
