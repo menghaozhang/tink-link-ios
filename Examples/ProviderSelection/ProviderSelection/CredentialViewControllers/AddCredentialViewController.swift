@@ -9,9 +9,11 @@ final class AddCredentialViewController: UITableViewController {
     var provider: Provider
     
     private var statusViewController: AddCredentialStatusViewController?
-
+ 
     private lazy var doneBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addCredential))
-    
+
+    private var didFirstFieldBecomeFirstResponder = false
+
     init(provider: Provider) {
         self.provider = provider
         super.init(style: .grouped)
@@ -37,6 +39,15 @@ extension AddCredentialViewController {
         navigationItem.rightBarButtonItem = doneBarButtonItem
         navigationItem.rightBarButtonItem?.isEnabled = false
     }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        if !didFirstFieldBecomeFirstResponder, !provider.fields.isEmpty, let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TextFieldCell {
+            cell.textField.becomeFirstResponder()
+            didFirstFieldBecomeFirstResponder = true
+        }
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -56,6 +67,10 @@ extension AddCredentialViewController {
             textFieldCell.textField.text = field.value
         }
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return provider.helpText
     }
 }
 
