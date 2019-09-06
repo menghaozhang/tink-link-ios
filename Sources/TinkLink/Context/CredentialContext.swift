@@ -80,7 +80,7 @@ public class CredentialContext {
         case .awaitingSupplementalInformation:
             let supplementInformationTask = SupplementInformationTask(credentialContext: self, credential: credential)
             progressHandler(.awaitingSupplementalInformation(supplementInformationTask))
-        case .awaitingThirdPartyAppAuthentication:
+        case .awaitingThirdPartyAppAuthentication, .awaitingMobileBankIDAuthentication:
             guard let url = credential.thirdPartyAppAuthentication?.deepLinkURL else {
                 assertionFailure("Missing third pary app authentication deeplink URL!")
                 return
