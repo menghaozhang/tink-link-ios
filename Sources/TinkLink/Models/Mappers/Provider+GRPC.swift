@@ -10,7 +10,7 @@ extension Provider {
         self.helpText = grpcProvider.helpText
         self.isPopular = grpcProvider.popular
         self.fields = grpcProvider.fields.map(FieldSpecification.init(grpcProviderFieldSpecification:))
-        self.groupDisplayName = grpcProvider.groupDisplayName
+        self.groupDisplayName = grpcProvider.groupDisplayName.isEmpty ? grpcProvider.displayName : grpcProvider.groupDisplayName
         self.image = grpcProvider.hasImages ? URL(string: grpcProvider.images.iconURL) : nil
         self.displayDescription = grpcProvider.displayDescription
         self.capabilities = .init(grpcCapabilities: grpcProvider.capabilities)

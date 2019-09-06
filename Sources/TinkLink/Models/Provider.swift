@@ -112,13 +112,3 @@ public struct Provider {
     public var financialInstitutionID: String
     public var financialInstitutionName: String
 }
-
-extension Provider {
-    public var validGroupDisplayName: String {
-        if !groupDisplayName.isEmpty {
-            return groupDisplayName
-        } else {
-            return displayName
-        }
-    }
-}

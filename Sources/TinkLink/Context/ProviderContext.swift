@@ -49,15 +49,11 @@ extension ProviderContext {
     }
     
     public var providerGroups: [ProviderGroup] {
-        let providerGroupedByGroupedName = Dictionary(grouping: providers, by: { provider -> String in
-            provider.validGroupDisplayName
-        })
+        let providerGroupedByGroupedName = Dictionary(grouping: providers, by: { $0.groupDisplayName })
         let groupedNames = providerGroupedByGroupedName.map { $0.key }
         var providerGroups = [ProviderGroup]()
         groupedNames.forEach { groupName in
-            let providersWithSameGroupedName = providers.filter({ provider -> Bool in
-                provider.validGroupDisplayName == groupName
-            })
+            let providersWithSameGroupedName = providers.filter({ $0.groupDisplayName == groupName })
             providerGroups.append(ProviderGroup(providers: providersWithSameGroupedName))
         }
         return providerGroups.sorted(by: { $0.groupedDisplayName ?? "" < $1.groupedDisplayName ?? "" })

@@ -114,6 +114,6 @@ public enum ProviderGroup {
     }
     
     public var groupedDisplayName: String? {
-        return providers.first?.validGroupDisplayName
+        return providers.first?.groupDisplayName
     }
 }
