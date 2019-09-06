@@ -29,6 +29,12 @@ public class CredentialContext {
         case awaitingSupplementalInformation(SupplementInformationTask)
         case awaitingThirdPartyAppAuthentication(URL)
     }
+
+    enum AddCredentialError: Error {
+        case authenticationFailed
+        case temporaryFailure
+        case permanentFailure
+    }
     
     public private(set) var credentials: [Identifier<Credential>: Credential] = [:]
     private let credentialStore = CredentialStore.shared
@@ -91,11 +97,11 @@ public class CredentialContext {
         case .updated:
             completion(.success(credential))
         case .permanentError:
-            completion(.failure(CredentialContextError.permanentFailure))
+            completion(.failure(AddCredentialError.permanentFailure))
         case .temporaryError:
-            completion(.failure(CredentialContextError.temporaryFailure))
+            completion(.failure(AddCredentialError.temporaryFailure))
         case .authenticationError:
-            completion(.failure(CredentialContextError.authenticationFailed))
+            completion(.failure(AddCredentialError.authenticationFailed))
         case .disabled:
             fatalError("Credential shouldn't be disabled during creation.")
         case .sessionExpired:
@@ -112,10 +118,4 @@ public class CredentialContext {
     fileprivate func cancelSupplementInformation(for credential: Credential) {
         credentialStore.cancelSupplementInformation(for: credential)
     }
-}
-
-enum CredentialContextError: Error {
-    case authenticationFailed
-    case temporaryFailure
-    case permanentFailure
 }
