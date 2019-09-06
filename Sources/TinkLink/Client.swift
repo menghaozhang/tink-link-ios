@@ -4,7 +4,12 @@ import SwiftGRPC
 final class Client {
     let channel: Channel
 
-    init(environment: Environment, clientKey: String, userAgent: String? = nil, certificateURL: URL? = nil) {
+    convenience init(environment: Environment, clientKey: String, userAgent: String? = nil, certificateURL: URL? = nil) {
+        let certificateContents = certificateURL.flatMap { try? String(contentsOf: $0, encoding: .utf8) }
+        self.init(environment: environment, clientKey: clientKey, userAgent: userAgent, certificate: certificateContents)
+    }
+
+    init(environment: Environment, clientKey: String, userAgent: String? = nil, certificate: String? = nil) {
         var arguments: [Channel.Argument] = []
 
         arguments.append(.maxReceiveMessageLength(20 * 1024 * 1024))
@@ -13,8 +18,7 @@ final class Client {
             arguments.append(.primaryUserAgent(userAgent))
         }
 
-        if let certificateURL = certificateURL {
-            let certificateContents = try! String(contentsOf: certificateURL, encoding: .utf8)
+        if let certificateContents = certificate ?? ProcessInfo.processInfo.tinkCertificate {
             self.channel = Channel(address: environment.url.absoluteString, certificates: certificateContents, clientCertificates: nil, clientKey: clientKey, arguments: arguments)
         } else {
             self.channel = Channel(address: environment.url.absoluteString, secure: false, arguments: arguments)

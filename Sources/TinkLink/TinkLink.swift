@@ -80,14 +80,16 @@ extension TinkLink.Configuration: Decodable {
             self.environment = .production
         }
         let redirectUrlString = try values.decode(String.self, forKey: .redirectUrl)
-        let certificateFileName = try values.decode(String.self, forKey: .certificateFileName)
         guard let redirectUrl = URL(string: redirectUrlString) else {
             fatalError("Invalid redirect URL")
         }
-        guard let certificateURL = Bundle.main.url(forResource: certificateFileName, withExtension: "pem") else {
-            fatalError("Cannot find certificate file")
-        }
-        self.certificateURL = certificateURL
         self.redirectUrl = redirectUrl
+
+        if let certificateFileName = try values.decodeIfPresent(String.self, forKey: .certificateFileName) {
+            guard let certificateURL = Bundle.main.url(forResource: certificateFileName, withExtension: "pem") else {
+                fatalError("Cannot find certificate file")
+            }
+            self.certificateURL = certificateURL
+        }
     }
 }
