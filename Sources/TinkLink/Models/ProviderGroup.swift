@@ -20,7 +20,7 @@ public enum ProviderAccessTypeGroup {
     }
     
     public var accessType: String? {
-        return providers.first?.accessType.rawValue
+        return providers.first?.accessType.description
     }
 }
 
