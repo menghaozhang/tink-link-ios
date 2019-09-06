@@ -61,6 +61,8 @@ extension AddCredentialViewController {
 // MARK: - Actions
 extension AddCredentialViewController {
     @objc private func addCredential(_ sender: UIBarButtonItem) {
+        view.endEditing(false)
+        
         let activityIndicator = UIActivityIndicatorView(style: .gray)
         activityIndicator.startAnimating()
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
