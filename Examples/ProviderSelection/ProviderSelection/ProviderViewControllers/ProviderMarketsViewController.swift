@@ -20,7 +20,7 @@ extension ProviderMarketsViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Choose your bank"
+        title = "Choose Bank"
         
         providerMarketContext.delegate = self
         
