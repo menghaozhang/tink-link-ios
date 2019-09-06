@@ -37,11 +37,11 @@ public class AccountContext {
 }
 
 extension AccountContext {
-    public var accounts: [Identifier<Credential>: [Account]] {
+    public subscript(_ id: Identifier<Credential>) -> [Account]? {
         guard let accounts = _accounts else {
             performFetch()
-            return [:]
+            return nil
         }
-        return accounts
+        return accounts[id]
     }
 }
