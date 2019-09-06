@@ -16,4 +16,14 @@ public struct Market: Hashable, RawRepresentable, ExpressibleByStringLiteral {
     public var code: String {
         return rawValue
     }
+
+    public var localizedString: String? {
+        return Locale.current.localizedString(forRegionCode: code)
+    }
+}
+
+extension Market: Comparable {
+    public static func < (lhs: Market, rhs: Market) -> Bool {
+        return (lhs.localizedString ?? lhs.code).caseInsensitiveCompare(rhs.localizedString ?? rhs.code) == .orderedAscending
+    }
 }
