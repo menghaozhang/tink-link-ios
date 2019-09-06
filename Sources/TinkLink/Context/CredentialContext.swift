@@ -29,6 +29,12 @@ public class CredentialContext {
         case awaitingSupplementalInformation(SupplementInformationTask)
         case awaitingThirdPartyAppAuthentication(URL)
     }
+
+    enum AddCredentialError: Error {
+        case authenticationFailed
+        case temporaryFailure
+        case permanentFailure
+    }
     
     public private(set) var credentials: [Identifier<Credential>: Credential] = [:]
     private let credentialStore = CredentialStore.shared
@@ -80,14 +86,28 @@ public class CredentialContext {
         case .awaitingSupplementalInformation:
             let supplementInformationTask = SupplementInformationTask(credentialContext: self, credential: credential)
             progressHandler(.awaitingSupplementalInformation(supplementInformationTask))
-        case .awaitingThirdPartyAppAuthentication:
-            progressHandler(.awaitingThirdPartyAppAuthentication(URL(string: "https://www.google.com")!))
+        case .awaitingThirdPartyAppAuthentication, .awaitingMobileBankIDAuthentication:
+            guard let url = credential.thirdPartyAppAuthentication?.deepLinkURL else {
+                assertionFailure("Missing third pary app authentication deeplink URL!")
+                return
+            }
+            progressHandler(.awaitingThirdPartyAppAuthentication(url))
         case .updating:
             progressHandler(.updating(status: credential.statusPayload))
         case .updated:
             completion(.success(credential))
-        default:
-            completion(.failure(NSError()))
+        case .permanentError:
+            completion(.failure(AddCredentialError.permanentFailure))
+        case .temporaryError:
+            completion(.failure(AddCredentialError.temporaryFailure))
+        case .authenticationError:
+            completion(.failure(AddCredentialError.authenticationFailed))
+        case .disabled:
+            fatalError("Credential shouldn't be disabled during creation.")
+        case .sessionExpired:
+            fatalError("Credential's session shouldn't expire during creation.")
+        case .unknown:
+            assertionFailure("Unknown credential status!")
         }
     }
     
