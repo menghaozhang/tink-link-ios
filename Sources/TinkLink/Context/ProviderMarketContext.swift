@@ -9,7 +9,8 @@ public class ProviderMarketContext {
             guard let strongSelf = self, strongSelf.storeObserverToken.has(id: tokenId) else {
                 return
             }
-            strongSelf._markets = strongSelf.providerStore.markets
+            var markets = strongSelf.providerStore.markets?.sorted() ?? []
+            strongSelf._markets = markets
         }
     }
     
