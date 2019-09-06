@@ -125,6 +125,7 @@ class MarketCell: UICollectionViewCell {
         selectedBackgroundView = UIView()
         selectedBackgroundView?.backgroundColor = UIColor(white: 0.85, alpha: 1.0)
         
+        labelView.font = UIFont.preferredFont(forTextStyle: .title1)
         labelView.backgroundColor = .clear
         labelView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(labelView)
