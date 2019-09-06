@@ -50,21 +50,13 @@ extension ProviderContext {
     
     public var providerGroups: [ProviderGroup] {
         let providerGroupedByGroupedName = Dictionary(grouping: providers, by: { provider -> String in
-            if !provider.groupDisplayName.isEmpty {
-                return provider.groupDisplayName
-            } else {
-                return provider.displayName
-            }
+            provider.validGroupDisplayName
         })
         let groupedNames = providerGroupedByGroupedName.map { $0.key }
         var providerGroups = [ProviderGroup]()
         groupedNames.forEach { groupName in
             let providersWithSameGroupedName = providers.filter({ provider -> Bool in
-                if !provider.groupDisplayName.isEmpty {
-                    return provider.groupDisplayName == groupName
-                } else {
-                    return provider.displayName == groupName
-                }
+                provider.validGroupDisplayName == groupName
             })
             providerGroups.append(ProviderGroup(providers: providersWithSameGroupedName))
         }

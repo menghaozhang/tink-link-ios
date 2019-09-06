@@ -114,10 +114,6 @@ public enum ProviderGroup {
     }
     
     public var groupedDisplayName: String? {
-        if let groupDisplayName = providers.first?.groupDisplayName, !groupDisplayName.isEmpty {
-            return providers.first?.groupDisplayName
-        } else {
-            return providers.first?.displayName
-        }
+        return providers.first?.validGroupDisplayName
     }
 }
