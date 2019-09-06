@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         let providerMarketsViewController = ProviderMarketsViewController()
         let navigationController = UINavigationController(rootViewController: providerMarketsViewController)
+        navigationController.navigationBar.prefersLargeTitles = true
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
 

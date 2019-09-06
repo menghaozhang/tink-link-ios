@@ -4,6 +4,7 @@ import TinkLink
 class ProviderMarketsViewController: UIViewController {
     private var providerMarketContext = ProviderMarketContext()
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    private lazy var effectView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
     private lazy var separatorLine = UIView()
     private var providerListViewController: ProviderListViewController?
     
@@ -32,7 +33,8 @@ extension ProviderMarketsViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.collectionViewLayout = collectionViewLayout
-        collectionView.backgroundColor = .white
+        collectionView.backgroundColor = .clear
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.allowsSelection = true
         collectionView.register(MarketCell.self, forCellWithReuseIdentifier: "CollectionViewCell")
         
@@ -40,15 +42,23 @@ extension ProviderMarketsViewController {
     }
     
     private func setup() {
+        view.addSubview(effectView)
         view.addSubview(collectionView)
         view.addSubview(separatorLine)
         
+        effectView.translatesAutoresizingMaskIntoConstraints = false
+
         view.backgroundColor = .white
         collectionView.translatesAutoresizingMaskIntoConstraints  = false
         separatorLine.backgroundColor = UIColor(white: 0.87, alpha: 1.0)
         separatorLine.translatesAutoresizingMaskIntoConstraints  = false
         
         NSLayoutConstraint.activate([
+            effectView.topAnchor.constraint(equalTo: collectionView.topAnchor),
+            effectView.leadingAnchor.constraint(equalTo: collectionView.leadingAnchor),
+            effectView.trailingAnchor.constraint(equalTo: collectionView.trailingAnchor),
+            effectView.bottomAnchor.constraint(equalTo: collectionView.bottomAnchor),
+
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -64,12 +74,13 @@ extension ProviderMarketsViewController {
     private func setupProviderListView(for market: Market) {
         let providerListViewController = ProviderListViewController(market: market, style: .plain)
         addChild(providerListViewController)
-        view.addSubview(providerListViewController.view)
+        view.insertSubview(providerListViewController.view, at: 0)
         providerListViewController.view.translatesAutoresizingMaskIntoConstraints = false
         providerListViewController.didMove(toParent: self)
+        providerListViewController.additionalSafeAreaInsets.top = 44
         
         NSLayoutConstraint.activate([
-            providerListViewController.view.topAnchor.constraint(equalTo: separatorLine.bottomAnchor),
+            providerListViewController.view.topAnchor.constraint(equalTo: view.topAnchor),
             providerListViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             providerListViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             providerListViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
@@ -125,6 +136,7 @@ class MarketCell: UICollectionViewCell {
         selectedBackgroundView = UIView()
         selectedBackgroundView?.backgroundColor = UIColor(white: 0.85, alpha: 1.0)
         
+        labelView.font = UIFont.preferredFont(forTextStyle: .title1)
         labelView.backgroundColor = .clear
         labelView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(labelView)

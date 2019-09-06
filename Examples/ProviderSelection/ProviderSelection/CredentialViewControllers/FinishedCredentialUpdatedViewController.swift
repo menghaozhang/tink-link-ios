@@ -22,6 +22,7 @@ final class FinishedCredentialUpdatedViewController: UITableViewController, Acco
         accountContext.delegate = self
         
         navigationItem.title = "Credential: " + credential.providerName.rawValue
+        navigationItem.largeTitleDisplayMode = .never
         let activityIndicator = UIActivityIndicatorView(style: .gray)
         activityIndicator.startAnimating()
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)

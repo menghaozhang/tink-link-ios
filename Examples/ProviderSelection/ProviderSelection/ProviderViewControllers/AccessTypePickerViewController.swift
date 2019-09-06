@@ -15,6 +15,7 @@ extension AccessTypePickerViewController {
         super.viewDidLoad()
 
         title = "Choose Access Type"
+        navigationItem.largeTitleDisplayMode = .never
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }

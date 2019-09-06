@@ -21,6 +21,10 @@ extension ProcessInfo {
     var tinkBearerToken: String? {
         return environment["TINK_BEARER_TOKEN"]
     }
+
+    var tinkCertificate: String? {
+        return environment["TINK_CERTIFICATE"]
+    }
 }
 
 extension Metadata {
