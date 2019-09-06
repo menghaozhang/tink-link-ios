@@ -10,7 +10,7 @@ final class AddCredentialViewController: UITableViewController {
     
     private lazy var statusLabelView = UILabel()
 
-    private lazy var doneBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(doneButtonPressed(_:)))
+    private lazy var doneBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addCredential))
     
     init(provider: Provider) {
         self.provider = provider
@@ -60,7 +60,7 @@ extension AddCredentialViewController {
 
 // MARK: - Actions
 extension AddCredentialViewController {
-    @objc private func doneButtonPressed(_ sender: UIBarButtonItem) {
+    @objc private func addCredential(_ sender: UIBarButtonItem) {
         let activityIndicator = UIActivityIndicatorView(style: .gray)
         activityIndicator.startAnimating()
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
