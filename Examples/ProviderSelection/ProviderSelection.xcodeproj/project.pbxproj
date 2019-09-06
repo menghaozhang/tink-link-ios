@@ -83,12 +83,21 @@
 				8FA35583231D3E690054115D /* ProviderViewControllers */,
 				8FBA6C582313E8A900A98BA8 /* CredentialViewControllers */,
 				8FBA6C572313DE8F00A98BA8 /* Cell */,
+				20AD0FF223223AA700E2F570 /* Extensions */,
 				201D5517230AC95E00641102 /* Assets.xcassets */,
 				201D5519230AC95E00641102 /* LaunchScreen.storyboard */,
 				201D551C230AC95E00641102 /* Info.plist */,
 				8FA3559A231F9CBB0054115D /* Tinklink.plist */,
 			);
 			path = ProviderSelection;
+			sourceTree = "<group>";
+		};
+		20AD0FF223223AA700E2F570 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				20AD0FF0232233EE00E2F570 /* Market+Emoji.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		220375E318466B44E90DA3AA /* Frameworks */ = {
@@ -112,7 +121,6 @@
 			isa = PBXGroup;
 			children = (
 				8FBDA9792316BE9400BC39AF /* ProviderMarketsViewController.swift */,
-				20AD0FF0232233EE00E2F570 /* Market+Emoji.swift */,
 				201D5512230AC95D00641102 /* ProviderListViewController.swift */,
 				8FA5F823230BD13800226C02 /* FinancialInstitutionPickerViewController.swift */,
 				8FA5F825230BE85100226C02 /* AccessTypePickerViewController.swift */,
