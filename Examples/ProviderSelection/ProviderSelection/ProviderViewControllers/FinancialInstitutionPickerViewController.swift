@@ -15,6 +15,7 @@ extension FinancialInstitutionPickerViewController {
         super.viewDidLoad()
 
         title = "Choose Financial Institution"
+        navigationItem.largeTitleDisplayMode = .never
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }

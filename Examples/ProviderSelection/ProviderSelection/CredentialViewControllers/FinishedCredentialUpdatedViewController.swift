@@ -17,6 +17,7 @@ class FinishedCredentialUpdatedViewController: UIViewController {
         super.viewDidLoad()
         
         navigationItem.title = "Credential Updated"
+        navigationItem.largeTitleDisplayMode = .never
         
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false

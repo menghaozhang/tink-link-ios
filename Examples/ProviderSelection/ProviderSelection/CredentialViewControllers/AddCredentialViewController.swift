@@ -33,6 +33,7 @@ extension AddCredentialViewController {
         tableView.allowsSelection = false
         
         navigationItem.title = "Enter Credentials"
+        navigationItem.largeTitleDisplayMode = .never
         navigationItem.rightBarButtonItem = doneBarButtonItem
         navigationItem.rightBarButtonItem?.isEnabled = false
     }
