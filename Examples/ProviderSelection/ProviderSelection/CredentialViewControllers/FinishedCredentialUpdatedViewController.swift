@@ -21,13 +21,13 @@ final class FinishedCredentialUpdatedViewController: UITableViewController, Acco
         
         accountContext.delegate = self
         
-        navigationItem.title = "Credential: " + credential.providerName.rawValue
+        navigationItem.title = "Accounts"
         navigationItem.largeTitleDisplayMode = .never
         let activityIndicator = UIActivityIndicatorView(style: .gray)
         activityIndicator.startAnimating()
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
         
-        tableView.register(StyledTableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.register(ValueTableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.allowsSelection = false
     }
     
@@ -37,9 +37,9 @@ final class FinishedCredentialUpdatedViewController: UITableViewController, Acco
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! StyledTableViewCell
-            cell.textLabel?.text = accounts[indexPath.item].name
-            cell.detailTextLabel?.text = String(accounts[indexPath.item].balance.value.doubleValue) + " kr"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ValueTableViewCell
+        cell.textLabel?.text = accounts[indexPath.item].name
+        cell.detailTextLabel?.text = String(accounts[indexPath.item].balance.value.doubleValue) + " kr"
         return cell
     }
     
