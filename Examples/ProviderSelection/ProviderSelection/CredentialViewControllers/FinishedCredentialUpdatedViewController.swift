@@ -21,7 +21,7 @@ final class FinishedCredentialUpdatedViewController: UITableViewController, Acco
         
         accountContext.delegate = self
         
-        navigationItem.title = "Accounts for Credential " + credential.providerName.rawValue
+        navigationItem.title = "Credential: " + credential.providerName.rawValue
         let activityIndicator = UIActivityIndicatorView(style: .gray)
         activityIndicator.startAnimating()
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
@@ -36,7 +36,7 @@ final class FinishedCredentialUpdatedViewController: UITableViewController, Acco
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: "Cell") as! StyledTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! StyledTableViewCell
         if let accounts = accounts {
             cell.textLabel?.text = accounts[indexPath.item].name
             cell.detailTextLabel?.text = String(accounts[indexPath.item].balance.value.doubleValue) + " kr"
@@ -44,6 +44,7 @@ final class FinishedCredentialUpdatedViewController: UITableViewController, Acco
         return cell
     }
     
+    // MARK: - AccountContextDelegate
     func accountContext(_ store: AccountContext, didUpdateAccounts accounts: [Identifier<Credential> : [Account]]) {
         self.accounts = accounts[credential.id]
         tableView.reloadData()
