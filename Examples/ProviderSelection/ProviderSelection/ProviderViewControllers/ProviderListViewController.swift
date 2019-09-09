@@ -92,7 +92,7 @@ extension ProviderListViewController {
     }
 }
 
-extension ProviderListViewController: providerContextDelegate {
+extension ProviderListViewController: ProviderContextDelegate {
     func providerContext(_ store: ProviderContext, didUpdateProviders providers: [Provider]) {
         if isViewLoaded {
             tableView.reloadData()
