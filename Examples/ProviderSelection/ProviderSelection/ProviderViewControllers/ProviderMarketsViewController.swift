@@ -106,7 +106,7 @@ extension ProviderMarketsViewController: ProviderMarketContextDelegate {
 
 extension ProviderMarketsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let market = providerMarketContext.market[indexPath.item]
+        let market = providerMarketContext.markets[indexPath.item]
         if let providerListViewController = providerListViewController {
             providerListViewController.updateMarket(market: market)
         } else {
@@ -117,12 +117,12 @@ extension ProviderMarketsViewController: UICollectionViewDelegate {
 
 extension ProviderMarketsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return providerMarketContext.market.count
+        return providerMarketContext.markets.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let marketCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewCell", for: indexPath) as! MarketCell
-        let market = providerMarketContext.market[indexPath.item]
+        let market = providerMarketContext.markets[indexPath.item]
         marketCell.labelView.text = market.emojiFlag
         return marketCell
     }
