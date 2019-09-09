@@ -18,7 +18,7 @@ public class ProviderContext {
 
     public weak var delegate: providerContextDelegate? {
         didSet {
-            if delegate != nil {
+            if delegate != nil, _providers == nil {
                 performFetch()
             }
         }
@@ -26,6 +26,7 @@ public class ProviderContext {
     
     public init(market: Market) {
         self.market = market
+        _providers = providerStore.providerMarketGroups[market]
         providerStore.addProvidersObserver(token: storeObserverToken) { [weak self] tokenId in
             guard let strongSelf = self, strongSelf.storeObserverToken.has(id: tokenId) else {
                 return
@@ -49,6 +50,9 @@ extension ProviderContext {
     }
     
     public var providerGroups: [ProviderGroup] {
+        guard let providers = _providers, !providers.isEmpty else {
+            return []
+        }
         let providerGroupedByGroupedName = Dictionary(grouping: providers, by: { $0.groupDisplayName })
         let groupedNames = providerGroupedByGroupedName.map { $0.key }
         var providerGroups = [ProviderGroup]()
