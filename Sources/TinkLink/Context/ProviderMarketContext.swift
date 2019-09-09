@@ -1,3 +1,5 @@
+import Foundation
+
 public protocol ProviderMarketContextDelegate: AnyObject {
     func providerMarketContext(_ store: ProviderMarketContext, didUpdateMarkets markets: [Market])
     func providerMarketContext(_ store: ProviderMarketContext, didReceiveError error: Error)

@@ -1,3 +1,5 @@
+import Foundation
+
 public struct Market: Hashable, RawRepresentable, ExpressibleByStringLiteral {
     public let rawValue: String
 
