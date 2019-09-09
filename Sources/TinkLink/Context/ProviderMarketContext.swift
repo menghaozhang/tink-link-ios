@@ -5,17 +5,15 @@ public protocol ProviderMarketContextDelegate: AnyObject {
 
 public class ProviderMarketContext {
     public init() {
-        var markets = providerStore.markets?.sorted() ?? []
+        var markets = providerStore.markets?.sorted()
+        markets = markets.map(updateAccordingToCurrentRegion(for:))
+        _markets = markets
         providerStore.addMarketsObserver(token: storeObserverToken) { [weak self] tokenId in
             guard let strongSelf = self, strongSelf.storeObserverToken.has(id: tokenId) else {
                 return
             }
             var markets = strongSelf.providerStore.markets?.sorted() ?? []
-            if let currentRegionCode = Locale.current.regionCode, let index = markets.firstIndex(of: Market(code: currentRegionCode)) {
-                let currentMarket = markets.remove(at: index)
-                markets.insert(currentMarket, at: 0)
-            }
-            strongSelf._markets = markets
+            strongSelf._markets = strongSelf.updateAccordingToCurrentRegion(for: markets)
         }
     }
     
@@ -34,11 +32,21 @@ public class ProviderMarketContext {
     private func performFetch() {
         providerStore.performFetchMarketsIfNeeded()
     }
+    
+    private func updateAccordingToCurrentRegion(for markets: [Market]) -> [Market] {
+        if let currentRegionCode = Locale.current.regionCode, let index = markets.firstIndex(of: Market(code: currentRegionCode)) {
+            var multableMarkets = markets
+            let currentMarket = multableMarkets.remove(at: index)
+            multableMarkets.insert(currentMarket, at: 0)
+            return multableMarkets
+        }
+        return markets
+    }
 }
 
 // Markets
 extension ProviderMarketContext {
-    public var market: [Market] {
+    public var markets: [Market] {
         guard let markets = _markets else {
             performFetch()
             return []
