@@ -90,11 +90,11 @@ public class CredentialContext {
         }
     }
     
-    fileprivate func addSupplementalInformation(for credential: Credential, supplementalInformationFields: [Provider.FieldSpecification]) {
+    func addSupplementalInformation(for credential: Credential, supplementalInformationFields: [Provider.FieldSpecification]) {
         credentialStore.addSupplementalInformation(for: credential, supplementalInformationFields: supplementalInformationFields)
     }
     
-    fileprivate func cancelSupplementInformation(for credential: Credential) {
+    func cancelSupplementInformation(for credential: Credential) {
         credentialStore.cancelSupplementInformation(for: credential)
     }
 }
