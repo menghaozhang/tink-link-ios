@@ -5,6 +5,7 @@ final class FinishedCredentialUpdatedViewController: UITableViewController, Acco
     var credential: Credential
     var accountContext: AccountContext
     var accounts: [Account] = []
+    var numberFormatter: NumberFormatter = NumberFormatter()
     
     init(credential: Credential) {
         self.credential = credential
@@ -20,6 +21,9 @@ final class FinishedCredentialUpdatedViewController: UITableViewController, Acco
         super.viewDidLoad()
         
         accountContext.delegate = self
+        
+        numberFormatter.maximumFractionDigits = 2
+        numberFormatter.minimumFractionDigits = 0
         
         navigationItem.title = "Accounts"
         navigationItem.largeTitleDisplayMode = .never
@@ -39,7 +43,7 @@ final class FinishedCredentialUpdatedViewController: UITableViewController, Acco
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ValueTableViewCell
         cell.textLabel?.text = accounts[indexPath.item].name
-        cell.detailTextLabel?.text = String(accounts[indexPath.item].balance.value.doubleValue) + " kr"
+        cell.detailTextLabel?.text = numberFormatter.string(from: NSNumber(value: accounts[indexPath.item].balance.value.doubleValue))
         return cell
     }
     
