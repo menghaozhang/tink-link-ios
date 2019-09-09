@@ -1,4 +1,4 @@
-public protocol providerContextDelegate: AnyObject {
+public protocol ProviderContextDelegate: AnyObject {
     func providerContext(_ store: ProviderContext, didUpdateProviders providers: [Provider])
     func providerContext(_ store: ProviderContext, didReceiveError error: Error)
 }
@@ -16,7 +16,7 @@ public class ProviderContext {
         }
     }
 
-    public weak var delegate: providerContextDelegate? {
+    public weak var delegate: ProviderContextDelegate? {
         didSet {
             if delegate != nil {
                 performFetch()
