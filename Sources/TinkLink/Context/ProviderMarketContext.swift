@@ -5,6 +5,7 @@ public protocol ProviderMarketContextDelegate: AnyObject {
 
 public class ProviderMarketContext {
     public init() {
+        var markets = providerStore.markets?.sorted() ?? []
         providerStore.addMarketsObserver(token: storeObserverToken) { [weak self] tokenId in
             guard let strongSelf = self, strongSelf.storeObserverToken.has(id: tokenId) else {
                 return

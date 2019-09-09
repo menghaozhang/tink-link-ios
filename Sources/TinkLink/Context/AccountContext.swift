@@ -5,6 +5,7 @@ public protocol AccountContextDelegate: AnyObject {
 
 public class AccountContext {
     public init() {
+        _accounts = Dictionary(grouping: accountStore.accounts, by: { $0.credentialID })
         accountStore.addAccountsObserver(token: storeObserverToken) { [weak self] tokenId in
             guard let strongSelf = self, strongSelf.storeObserverToken.has(id: tokenId) else {
                 return
@@ -15,7 +16,7 @@ public class AccountContext {
     
     public weak var delegate: AccountContextDelegate? {
         didSet {
-            if delegate != nil {
+            if delegate != nil, _accounts == nil {
                 performFetch()
             }
         }
