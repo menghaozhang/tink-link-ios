@@ -33,12 +33,12 @@ public class CredentialContext {
         let task = AddCredentialTask()
         task.callCanceller = credentialStore.addCredential(for: provider, fields: fields) { [weak self] result in
             guard let self = self else { return }
-            switch result {
-            case .failure(let error):
-                completion(.failure(error))
-            case .success(let credential):
+            do {
+                let credential = try result.get()
                 self.progressHandlers[credential.id] = progressHandler
                 self.completions[credential.id] = completion
+            } catch {
+                completion(.failure(error))
             }
         }
         return task
