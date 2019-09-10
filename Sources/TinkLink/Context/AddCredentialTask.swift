@@ -9,7 +9,7 @@ public class AddCredentialTask {
         case awaitingThirdPartyAppAuthentication(URL)
     }
 
-    enum Error: Swift.Error {
+    public enum Error: Swift.Error {
         case authenticationFailed
         case temporaryFailure
         case permanentFailure
