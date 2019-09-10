@@ -21,7 +21,7 @@ public final class Client {
         if let certificateContents = certificate {
             self.channel = Channel(address: environment.url.absoluteString, certificates: certificateContents, clientCertificates: nil, clientKey: clientKey, arguments: arguments)
         } else {
-            self.channel = Channel(address: environment.url.absoluteString, secure: false, arguments: arguments)
+            self.channel = Channel(address: environment.url.absoluteString, secure: true, arguments: arguments)
         }
     }
 
