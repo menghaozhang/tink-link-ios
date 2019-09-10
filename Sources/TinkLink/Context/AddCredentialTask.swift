@@ -18,8 +18,6 @@ public class AddCredentialTask {
     let progressHandler: (Status) -> Void
     let completion: (Result<Credential, Swift.Error>) -> Void
 
-    weak var context: CredentialContext?
-
     var callCanceller: Cancellable?
 
     init(progressHandler: @escaping (Status) -> Void, completion: @escaping (Result<Credential, Swift.Error>) -> Void) {
@@ -38,11 +36,7 @@ public class AddCredentialTask {
         case .authenticating:
             progressHandler(.authenticating)
         case .awaitingSupplementalInformation:
-            guard let context = context else {
-                assertionFailure("Missing context!")
-                return
-            }
-            let supplementInformationTask = SupplementInformationTask(credentialContext: context, credential: credential)
+            let supplementInformationTask = SupplementInformationTask(credential: credential)
             progressHandler(.awaitingSupplementalInformation(supplementInformationTask))
         case .awaitingThirdPartyAppAuthentication, .awaitingMobileBankIDAuthentication:
             guard let url = credential.thirdPartyAppAuthentication?.deepLinkURL else {

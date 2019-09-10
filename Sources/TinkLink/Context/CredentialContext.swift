@@ -30,7 +30,6 @@ public class CredentialContext {
     
     public func addCredential(for provider: Provider, fields: [Provider.FieldSpecification], progressHandler: @escaping (AddCredentialTask.Status) -> Void,  completion: @escaping(Result<Credential, Error>) -> Void) -> AddCredentialTask {
         let task = AddCredentialTask(progressHandler: progressHandler, completion: completion)
-        task.context = self
         task.callCanceller = credentialStore.addCredential(for: provider, fields: fields) { [weak task] result in
             do {
                 let credential = try result.get()
@@ -45,13 +44,5 @@ public class CredentialContext {
     private func handleUpdate(for credential: Credential) {
         guard let task = addCredentialTasks[credential.id] else { return }
         task.handleUpdate(for: credential)
-    }
-    
-    func addSupplementalInformation(for credential: Credential, supplementalInformationFields: [Provider.FieldSpecification]) {
-        credentialStore.addSupplementalInformation(for: credential, supplementalInformationFields: supplementalInformationFields)
-    }
-    
-    func cancelSupplementInformation(for credential: Credential) {
-        credentialStore.cancelSupplementInformation(for: credential)
     }
 }
