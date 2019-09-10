@@ -6,9 +6,7 @@ final class CredentialStore {
     var credentials: [Identifier<Credential>: Credential] = [:] {
         didSet {
             DispatchQueue.main.async {
-                self.credentialStoreObservers.forEach { (tokenID, handler) in
-                    handler(tokenID)
-                }
+                NotificationCenter.default.post(name: .credentialStoreChanged, object: self)
             }
         }
     }
@@ -106,14 +104,8 @@ final class CredentialStore {
             }
         })
     }
-    
-    // Credential Observer
-    typealias ObserverHandler = (_ tokenIdentifier: UUID) -> Void
-    var credentialStoreObservers: [UUID: ObserverHandler] = [:]
-    func addCredentialsObserver(token: StoreObserverToken, handler: @escaping ObserverHandler) {
-        token.addReleaseHandler { [weak self] in
-            self?.credentialStoreObservers[token.identifier] = nil
-        }
-        credentialStoreObservers[token.identifier] = handler
-    }
+}
+
+extension Notification.Name {
+    static let credentialStoreChanged = Notification.Name("TinkLinkCredentialStoreChangedNotificationName")
 }

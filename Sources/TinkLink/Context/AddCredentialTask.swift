@@ -16,7 +16,7 @@ public class AddCredentialTask {
     }
 
     private let credentialStore = CredentialStore.shared
-    private let storeObserverToken = StoreObserverToken()
+    private var credentialStoreObserver: Any?
 
     private(set) var credential: Credential?
 
@@ -35,10 +35,8 @@ public class AddCredentialTask {
 
         handleUpdate(for: credential)
 
-        credentialStore.addCredentialsObserver(token: storeObserverToken) { [weak self] tokenId in
-            guard let self = self, self.storeObserverToken.has(id: tokenId) else {
-                return
-            }
+        credentialStoreObserver = NotificationCenter.default.addObserver(forName: .credentialStoreChanged, object: credentialStore, queue: .main) { [weak self] _ in
+            guard let self = self else { return }
             if let credential = self.credentialStore.credentials[credential.id], let value = self.credential {
                 if value.status != credential.status {
                     self.handleUpdate(for: credential)
