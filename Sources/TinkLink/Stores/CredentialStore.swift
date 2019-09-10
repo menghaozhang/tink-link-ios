@@ -5,9 +5,7 @@ final class CredentialStore {
     
     var credentials: [Identifier<Credential>: Credential] = [:] {
         didSet {
-            DispatchQueue.main.async {
-                NotificationCenter.default.post(name: .credentialStoreChanged, object: self)
-            }
+            NotificationCenter.default.post(name: .credentialStoreChanged, object: self)
         }
     }
     private var service: CredentialService
@@ -81,25 +79,27 @@ final class CredentialStore {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
             self.credentialStatusPollingCanceller[credential.id] = self.service.credentials { [weak self, credential] result in
                 guard let strongSelf = self else { return }
-                strongSelf.credentialStatusPollingCanceller[credential.id] = nil
-                do {
-                    let credentials = try result.get()
-                    if let updatedCredential = credentials.first(where: { $0.id == credential.id}) {
-                        if updatedCredential.status == .updating {
-                            strongSelf.credentials[credential.id] = updatedCredential
-                            strongSelf.pollingStatus(for: updatedCredential)
-                        } else if updatedCredential.status == .awaitingSupplementalInformation {
-                            strongSelf.credentials[credential.id] = updatedCredential
-                        } else if updatedCredential.status == credential.status {
-                            strongSelf.pollingStatus(for: updatedCredential)
+                DispatchQueue.main.async {
+                    strongSelf.credentialStatusPollingCanceller[credential.id] = nil
+                    do {
+                        let credentials = try result.get()
+                        if let updatedCredential = credentials.first(where: { $0.id == credential.id}) {
+                            if updatedCredential.status == .updating {
+                                strongSelf.credentials[credential.id] = updatedCredential
+                                strongSelf.pollingStatus(for: updatedCredential)
+                            } else if updatedCredential.status == .awaitingSupplementalInformation {
+                                strongSelf.credentials[credential.id] = updatedCredential
+                            } else if updatedCredential.status == credential.status {
+                                strongSelf.pollingStatus(for: updatedCredential)
+                            } else {
+                                strongSelf.credentials[credential.id] = updatedCredential
+                            }
                         } else {
-                            strongSelf.credentials[credential.id] = updatedCredential
+                            fatalError("No such credential with " + credential.id.rawValue)
                         }
-                    } else {
-                        fatalError("No such credential with " + credential.id.rawValue)
+                    } catch let error {
+                        print(error)
                     }
-                } catch let error {
-                    print(error)
                 }
             }
         })
