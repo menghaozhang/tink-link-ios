@@ -6,9 +6,8 @@ public class CredentialContext {
     private let credentialStore = CredentialStore.shared
     private let storeObserverToken = StoreObserverToken()
     
-    private var progressHandlers: [Identifier<Credential>: (AddCredentialTask.Status) -> Void] = [:]
-    private var completions: [Identifier<Credential>: (Result<Credential, Error>) -> Void] = [:]
-    
+    private var addCredentialTasks: [Identifier<Credential>: AddCredentialTask] = [:]
+
     public init() {
         credentials = credentialStore.credentials
         credentialStore.addCredentialsObserver(token: storeObserverToken) { [weak self] tokenId in
@@ -30,13 +29,12 @@ public class CredentialContext {
     }
     
     public func addCredential(for provider: Provider, fields: [Provider.FieldSpecification], progressHandler: @escaping (AddCredentialTask.Status) -> Void,  completion: @escaping(Result<Credential, Error>) -> Void) -> AddCredentialTask {
-        let task = AddCredentialTask()
+        let task = AddCredentialTask(progressHandler: progressHandler, completion: completion)
         task.callCanceller = credentialStore.addCredential(for: provider, fields: fields) { [weak self] result in
             guard let self = self else { return }
             do {
                 let credential = try result.get()
-                self.progressHandlers[credential.id] = progressHandler
-                self.completions[credential.id] = completion
+                self.handleUpdate(for: credential)
             } catch {
                 completion(.failure(error))
             }
@@ -45,31 +43,31 @@ public class CredentialContext {
     }
     
     private func handleUpdate(for credential: Credential) {
-        guard let progressHandler = progressHandlers[credential.id], let completion = completions[credential.id] else { return }
+        guard let task = addCredentialTasks[credential.id] else { return }
         switch credential.status {
         case .created:
-            progressHandler(.created)
+            task.progressHandler(.created)
         case .authenticating:
-            progressHandler(.authenticating)
+            task.progressHandler(.authenticating)
         case .awaitingSupplementalInformation:
             let supplementInformationTask = SupplementInformationTask(credentialContext: self, credential: credential)
-            progressHandler(.awaitingSupplementalInformation(supplementInformationTask))
+            task.progressHandler(.awaitingSupplementalInformation(supplementInformationTask))
         case .awaitingThirdPartyAppAuthentication, .awaitingMobileBankIDAuthentication:
             guard let url = credential.thirdPartyAppAuthentication?.deepLinkURL else {
                 assertionFailure("Missing third pary app authentication deeplink URL!")
                 return
             }
-            progressHandler(.awaitingThirdPartyAppAuthentication(url))
+            task.progressHandler(.awaitingThirdPartyAppAuthentication(url))
         case .updating:
-            progressHandler(.updating(status: credential.statusPayload))
+            task.progressHandler(.updating(status: credential.statusPayload))
         case .updated:
-            completion(.success(credential))
+            task.completion(.success(credential))
         case .permanentError:
-            completion(.failure(AddCredentialTask.Error.permanentFailure))
+            task.completion(.failure(AddCredentialTask.Error.permanentFailure))
         case .temporaryError:
-            completion(.failure(AddCredentialTask.Error.temporaryFailure))
+            task.completion(.failure(AddCredentialTask.Error.temporaryFailure))
         case .authenticationError:
-            completion(.failure(AddCredentialTask.Error.authenticationFailed))
+            task.completion(.failure(AddCredentialTask.Error.authenticationFailed))
         case .disabled:
             fatalError("Credential shouldn't be disabled during creation.")
         case .sessionExpired:

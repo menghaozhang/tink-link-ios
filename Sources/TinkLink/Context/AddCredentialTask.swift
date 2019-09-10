@@ -15,7 +15,15 @@ public class AddCredentialTask {
         case permanentFailure
     }
 
+    let progressHandler: (Status) -> Void
+    let completion: (Result<Credential, Swift.Error>) -> Void
+
     var callCanceller: Cancellable?
+
+    init(progressHandler: @escaping (Status) -> Void, completion: @escaping (Result<Credential, Swift.Error>) -> Void) {
+        self.progressHandler = progressHandler
+        self.completion = completion
+    }
 
     public func cancel() {
         callCanceller?.cancel()
