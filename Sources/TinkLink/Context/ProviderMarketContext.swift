@@ -8,18 +8,16 @@ public protocol ProviderMarketContextDelegate: AnyObject {
 public class ProviderMarketContext {
     public init() {
         _markets = providerStore.markets.sortedWithCurrentRegionFirst()
-        providerStore.addMarketsObserver(token: storeObserverToken) { [weak self] tokenId in
-            guard let strongSelf = self, strongSelf.storeObserverToken.has(id: tokenId) else {
-                return
-            }
-            strongSelf._markets = strongSelf.providerStore.markets?.sortedWithCurrentRegionFirst() ?? []
+        NotificationCenter.default.addObserver(forName: .providerStoreMarketsChanged, object: providerStore, queue: .main) { [weak self] _ in
+            guard let self = self else { return }
+            self._markets = self.providerStore.markets.sortedWithCurrentRegionFirst()
         }
     }
     
     public weak var delegate: ProviderMarketContextDelegate?
     
     private let providerStore = ProviderStore.shared
-    private let storeObserverToken = StoreObserverToken()
+    private var providerStoreObserver: Any?
 
     private var _markets: [Market]? {
         didSet {
