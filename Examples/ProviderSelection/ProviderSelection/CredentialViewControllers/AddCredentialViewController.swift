@@ -6,16 +6,17 @@ import TinkLink
  */
 final class AddCredentialViewController: UITableViewController {
     var credentialContext: CredentialContext?
-    var provider: Provider
+    let provider: Provider
     
+    private var form: Form
     private var statusViewController: AddCredentialStatusViewController?
- 
     private lazy var doneBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addCredential))
-
     private var didFirstFieldBecomeFirstResponder = false
 
     init(provider: Provider) {
         self.provider = provider
+        form = Form(provider: provider)
+        
         super.init(style: .grouped)
     }
     
@@ -43,7 +44,7 @@ extension AddCredentialViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        if !didFirstFieldBecomeFirstResponder, !provider.fields.isEmpty, let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TextFieldCell {
+        if !didFirstFieldBecomeFirstResponder, !form.fields.isEmpty, let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TextFieldCell {
             cell.textField.becomeFirstResponder()
             didFirstFieldBecomeFirstResponder = true
         }
@@ -53,18 +54,18 @@ extension AddCredentialViewController {
 // MARK: - UITableViewDataSource
 extension AddCredentialViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return provider.fields.count
+        return form.fields.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldCell.reuseIdentifier, for: indexPath)
-        let field = provider.fields[indexPath.item]
+        let field = form.fields[indexPath.item]
         if let textFieldCell = cell as? TextFieldCell {
             textFieldCell.delegate = self
-            textFieldCell.textField.placeholder = field.fieldDescription
-            textFieldCell.textField.isSecureTextEntry = field.isMasked
-            textFieldCell.textField.isEnabled = !field.isImmutable || field.value.isEmpty
-            textFieldCell.textField.text = field.value
+            textFieldCell.textField.placeholder = field.attributes.placeholder
+            textFieldCell.textField.isSecureTextEntry = field.attributes.isSecureTextEntry
+            textFieldCell.textField.isEnabled = field.attributes.isEnabled
+            textFieldCell.textField.text = field.text
         }
         return cell
     }
@@ -83,8 +84,8 @@ extension AddCredentialViewController {
         activityIndicator.startAnimating()
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
         do {
-            try provider.fields.validateValues()
-            credentialContext?.addCredential(for: provider, fields: provider.fields, progressHandler: onUpdate, completion: onCompletion)
+            try form.validateValues()
+            credentialContext?.addCredential(for: provider, with: form, progressHandler: onUpdate, completion: onCompletion)
         } catch let error as FieldSpecificationsError {
             print(error.errors)
         } catch {
@@ -155,8 +156,8 @@ extension AddCredentialViewController {
 extension AddCredentialViewController: TextFieldCellDelegate {
     func textFieldCell(_ cell: TextFieldCell, willChangeToText text: String) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
-        provider.fields[indexPath.item].value = text
-        navigationItem.rightBarButtonItem?.isEnabled = provider.fields[indexPath.item].isValueValid
+        form.fields[indexPath.item].text = text
+        navigationItem.rightBarButtonItem?.isEnabled = form.fields[indexPath.item].isValueValid
     }
 }
 

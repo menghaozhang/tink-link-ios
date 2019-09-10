@@ -22,11 +22,11 @@ final class CredentialStore {
         service = TinkLink.shared.client.credentialService
     }
     
-    func addCredential(for provider: Provider, fields: [Provider.FieldSpecification], completion: @escaping(Result<Credential, Error>) -> Void) {
+    func addCredential(for provider: Provider, fields: [String: String], completion: @escaping(Result<Credential, Error>) -> Void) {
         guard createCredentialCanceller[provider.name] == nil else {
             return
         }
-        createCredentialCanceller[provider.name] = service.createCredential(providerName: provider.name, fields: fields.makeFields(), completion: { [weak self, provider] (result) in
+        createCredentialCanceller[provider.name] = service.createCredential(providerName: provider.name, fields: fields, completion: { [weak self, provider] (result) in
             guard let strongSelf = self else { return }
             DispatchQueue.main.async {
                 do {
@@ -42,8 +42,8 @@ final class CredentialStore {
         })
     }
     
-    func addSupplementalInformation(for credential: Credential, supplementalInformationFields: [Provider.FieldSpecification]) {
-        addSupplementalInformationCanceller[credential.id] = service.supplementInformation(credentialID: credential.id, fields: supplementalInformationFields.makeFields()) { [weak self] result in
+    func addSupplementalInformation(for credential: Credential, supplementalInformationFields: [String: String]) {
+        addSupplementalInformationCanceller[credential.id] = service.supplementInformation(credentialID: credential.id, fields: supplementalInformationFields) { [weak self] result in
             guard let strongSelf = self else { return }
             DispatchQueue.main.async {
                 switch result {

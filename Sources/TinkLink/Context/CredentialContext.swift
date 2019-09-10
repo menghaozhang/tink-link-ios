@@ -42,8 +42,8 @@ public class CredentialContext {
         }
     }
     
-    public func addCredential(for provider: Provider, fields: [Provider.FieldSpecification], progressHandler: @escaping (AddCredentialStatus) -> Void,  completion: @escaping(Result<Credential, Error>) -> Void) {
-        credentialStore.addCredential(for: provider, fields: fields) { [weak self] result in
+    public func addCredential(for provider: Provider, with form: Form, progressHandler: @escaping (AddCredentialStatus) -> Void,  completion: @escaping(Result<Credential, Error>) -> Void) {
+        credentialStore.addCredential(for: provider, fields: form.makeFields()) { [weak self] result in
             guard let strongSelf = self else { return }
             switch result {
             case .failure(let error):
@@ -90,8 +90,8 @@ public class CredentialContext {
         }
     }
     
-    func addSupplementalInformation(for credential: Credential, supplementalInformationFields: [Provider.FieldSpecification]) {
-        credentialStore.addSupplementalInformation(for: credential, supplementalInformationFields: supplementalInformationFields)
+    func addSupplementalInformation(for credential: Credential, with form: Form) {
+        credentialStore.addSupplementalInformation(for: credential, supplementalInformationFields: form.makeFields())
     }
     
     func cancelSupplementInformation(for credential: Credential) {
