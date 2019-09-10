@@ -92,7 +92,7 @@ extension AddCredentialViewController {
         }
     }
     
-    private func onUpdate(for status: CredentialContext.AddCredentialStatus) {
+    private func onUpdate(for status: AddCredentialTask.Status) {
         switch status {
         case .authenticating, .created:
             break

@@ -1,20 +1,19 @@
 public class SupplementInformationTask {
-    public init(credentialContext: CredentialContext, credential: Credential) {
-        self.credential = credential
-        fields = credential.supplementalInformationFields
-        self.credentialContext = credentialContext
-    }
-
-    weak var credentialContext: CredentialContext?
+    private let credentialStore = CredentialStore.shared
 
     public private(set) var credential: Credential
     public var fields: [Provider.FieldSpecification]
 
+    public init(credential: Credential) {
+        self.credential = credential
+        fields = credential.supplementalInformationFields
+    }
+
     public func submit() {
-        credentialContext?.addSupplementalInformation(for: credential, supplementalInformationFields: fields)
+        credentialStore.addSupplementalInformation(for: credential, supplementalInformationFields: fields)
     }
 
     public func cancel() {
-        credentialContext?.cancelSupplementInformation(for: credential)
+        credentialStore.cancelSupplementInformation(for: credential)
     }
 }

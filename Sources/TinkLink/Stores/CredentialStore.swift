@@ -13,20 +13,20 @@ final class CredentialStore {
         }
     }
     private var service: CredentialService
-    private var createCredentialCanceller: [Identifier<Provider>: Cancellable?] = [:]
-    private var credentialStatusPollingCanceller: [Identifier<Credential>: Cancellable?] = [:]
-    private var addSupplementalInformationCanceller: [Identifier<Credential>: Cancellable?] = [:]
-    private var cancelSupplementInformationCanceller: [Identifier<Credential>: Cancellable?] = [:]
+    private var createCredentialCanceller: [Identifier<Provider>: Cancellable] = [:]
+    private var credentialStatusPollingCanceller: [Identifier<Credential>: Cancellable] = [:]
+    private var addSupplementalInformationCanceller: [Identifier<Credential>: Cancellable] = [:]
+    private var cancelSupplementInformationCanceller: [Identifier<Credential>: Cancellable] = [:]
     
     private init() {
         service = TinkLink.shared.client.credentialService
     }
     
-    func addCredential(for provider: Provider, fields: [Provider.FieldSpecification], completion: @escaping(Result<Credential, Error>) -> Void) {
-        guard createCredentialCanceller[provider.name] == nil else {
-            return
+    func addCredential(for provider: Provider, fields: [Provider.FieldSpecification], completion: @escaping(Result<Credential, Error>) -> Void) -> Cancellable {
+        if let canceller = createCredentialCanceller[provider.name] {
+            return canceller
         }
-        createCredentialCanceller[provider.name] = service.createCredential(providerName: provider.name, fields: fields.makeFields(), completion: { [weak self, provider] (result) in
+        let canceller = service.createCredential(providerName: provider.name, fields: fields.makeFields(), completion: { [weak self, provider] (result) in
             guard let strongSelf = self else { return }
             DispatchQueue.main.async {
                 do {
@@ -40,6 +40,8 @@ final class CredentialStore {
                 strongSelf.createCredentialCanceller[provider.name] = nil
             }
         })
+        createCredentialCanceller[provider.name] = canceller
+        return canceller
     }
     
     func addSupplementalInformation(for credential: Credential, supplementalInformationFields: [Provider.FieldSpecification]) {
