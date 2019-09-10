@@ -38,7 +38,6 @@ public class AddCredentialTask {
                 return
             }
             if let credential = self.credentialStore.credentials[credential.id], let value = self.credential {
-                // TODO: Make credential equatable
                 if value.status != credential.status {
                     self.handleUpdate(for: credential)
                 } else if value.status == .updating || value.status == .awaitingSupplementalInformation {
