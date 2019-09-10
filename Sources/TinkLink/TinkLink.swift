@@ -27,8 +27,15 @@ public class TinkLink {
                 do {
                     _client = try Client(configurationUrl: fallbackUrl)
                 } catch {
+                    if let client = Client(processInfo: .processInfo) {
+                        _client = client
+                    } else {
+                    }
                     fatalError("Cannot find client")
                 }
+                return _client!
+            } else if let client = Client(processInfo: .processInfo) {
+                _client = client
                 return _client!
             } else {
                 fatalError("Cannot find client")
@@ -106,5 +113,14 @@ extension Client {
         let data = try Data(contentsOf: configurationUrl)
         let configuration = try PropertyListDecoder().decode(TinkLink.Configuration.self, from: data)
         self.init(environment: configuration.environment, clientKey: configuration.clientId, certificateURL: configuration.certificateURL)
+    }
+
+    convenience init?(processInfo: ProcessInfo) {
+        guard let clientKey = processInfo.tinkClientKey else { return nil }
+        self.init(
+            environment: processInfo.tinkEnvironment ?? .staging,
+            clientKey: clientKey,
+            certificate: processInfo.tinkCertificate
+        )
     }
 }
