@@ -1,25 +1,12 @@
 import Foundation
 
 public class CredentialContext {
-    public enum AddCredentialStatus {
-        case created
-        case authenticating
-        case updating(status: String)
-        case awaitingSupplementalInformation(SupplementInformationTask)
-        case awaitingThirdPartyAppAuthentication(URL)
-    }
 
-    enum AddCredentialError: Error {
-        case authenticationFailed
-        case temporaryFailure
-        case permanentFailure
-    }
-    
     public private(set) var credentials: [Identifier<Credential>: Credential] = [:]
     private let credentialStore = CredentialStore.shared
     private let storeObserverToken = StoreObserverToken()
     
-    private var progressHandlers: [Identifier<Credential>: (AddCredentialStatus) -> Void] = [:]
+    private var progressHandlers: [Identifier<Credential>: (AddCredentialTask.Status) -> Void] = [:]
     private var completions: [Identifier<Credential>: (Result<Credential, Error>) -> Void] = [:]
     
     public init() {
@@ -42,7 +29,7 @@ public class CredentialContext {
         }
     }
     
-    public func addCredential(for provider: Provider, fields: [Provider.FieldSpecification], progressHandler: @escaping (AddCredentialStatus) -> Void,  completion: @escaping(Result<Credential, Error>) -> Void) {
+    public func addCredential(for provider: Provider, fields: [Provider.FieldSpecification], progressHandler: @escaping (AddCredentialTask.Status) -> Void,  completion: @escaping(Result<Credential, Error>) -> Void) {
         credentialStore.addCredential(for: provider, fields: fields) { [weak self] result in
             guard let strongSelf = self else { return }
             switch result {
@@ -76,11 +63,11 @@ public class CredentialContext {
         case .updated:
             completion(.success(credential))
         case .permanentError:
-            completion(.failure(AddCredentialError.permanentFailure))
+            completion(.failure(AddCredentialTask.Error.permanentFailure))
         case .temporaryError:
-            completion(.failure(AddCredentialError.temporaryFailure))
+            completion(.failure(AddCredentialTask.Error.temporaryFailure))
         case .authenticationError:
-            completion(.failure(AddCredentialError.authenticationFailed))
+            completion(.failure(AddCredentialTask.Error.authenticationFailed))
         case .disabled:
             fatalError("Credential shouldn't be disabled during creation.")
         case .sessionExpired:
