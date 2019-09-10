@@ -7,10 +7,10 @@ public protocol ProviderMarketContextDelegate: AnyObject {
 
 public class ProviderMarketContext {
     public init() {
-        _markets = providerStore.markets.sortedWithCurrentRegionFirst()
+        _markets = providerStore.markets?.sortedWithCurrentRegionFirst()
         NotificationCenter.default.addObserver(forName: .providerStoreMarketsChanged, object: providerStore, queue: .main) { [weak self] _ in
             guard let self = self else { return }
-            self._markets = self.providerStore.markets.sortedWithCurrentRegionFirst()
+            self._markets = self.providerStore.markets?.sortedWithCurrentRegionFirst() ?? []
         }
     }
     

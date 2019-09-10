@@ -17,7 +17,7 @@ final class ProviderStore {
         }
     }
     
-    var markets: [Market] = [] {
+    var markets: [Market]? {
         didSet {
             NotificationCenter.default.post(name: .providerStoreMarketsChanged, object: self)
         }
