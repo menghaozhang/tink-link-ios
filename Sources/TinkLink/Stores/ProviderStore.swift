@@ -21,7 +21,7 @@ final class ProviderStore {
         }
     }
     
-    var markets: [Market]? {
+    var markets: [Market] = [] {
         didSet {
             guard let markets = markets, !markets.isEmpty else { return }
             DispatchQueue.main.async {
