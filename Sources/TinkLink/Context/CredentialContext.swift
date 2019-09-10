@@ -30,11 +30,11 @@ public class CredentialContext {
     
     public func addCredential(for provider: Provider, fields: [Provider.FieldSpecification], progressHandler: @escaping (AddCredentialTask.Status) -> Void,  completion: @escaping(Result<Credential, Error>) -> Void) -> AddCredentialTask {
         let task = AddCredentialTask(progressHandler: progressHandler, completion: completion)
-        task.callCanceller = credentialStore.addCredential(for: provider, fields: fields) { [weak self] result in
-            guard let self = self else { return }
+        task.context = self
+        task.callCanceller = credentialStore.addCredential(for: provider, fields: fields) { [weak task] result in
             do {
                 let credential = try result.get()
-                self.handleUpdate(for: credential)
+                task?.handleUpdate(for: credential)
             } catch {
                 completion(.failure(error))
             }
@@ -44,37 +44,7 @@ public class CredentialContext {
     
     private func handleUpdate(for credential: Credential) {
         guard let task = addCredentialTasks[credential.id] else { return }
-        switch credential.status {
-        case .created:
-            task.progressHandler(.created)
-        case .authenticating:
-            task.progressHandler(.authenticating)
-        case .awaitingSupplementalInformation:
-            let supplementInformationTask = SupplementInformationTask(credentialContext: self, credential: credential)
-            task.progressHandler(.awaitingSupplementalInformation(supplementInformationTask))
-        case .awaitingThirdPartyAppAuthentication, .awaitingMobileBankIDAuthentication:
-            guard let url = credential.thirdPartyAppAuthentication?.deepLinkURL else {
-                assertionFailure("Missing third pary app authentication deeplink URL!")
-                return
-            }
-            task.progressHandler(.awaitingThirdPartyAppAuthentication(url))
-        case .updating:
-            task.progressHandler(.updating(status: credential.statusPayload))
-        case .updated:
-            task.completion(.success(credential))
-        case .permanentError:
-            task.completion(.failure(AddCredentialTask.Error.permanentFailure))
-        case .temporaryError:
-            task.completion(.failure(AddCredentialTask.Error.temporaryFailure))
-        case .authenticationError:
-            task.completion(.failure(AddCredentialTask.Error.authenticationFailed))
-        case .disabled:
-            fatalError("Credential shouldn't be disabled during creation.")
-        case .sessionExpired:
-            fatalError("Credential's session shouldn't expire during creation.")
-        case .unknown:
-            assertionFailure("Unknown credential status!")
-        }
+        task.handleUpdate(for: credential)
     }
     
     func addSupplementalInformation(for credential: Credential, supplementalInformationFields: [Provider.FieldSpecification]) {
