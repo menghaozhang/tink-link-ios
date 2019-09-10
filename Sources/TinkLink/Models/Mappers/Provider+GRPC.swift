@@ -162,7 +162,7 @@ extension Provider.FieldSpecification {
         self.isImmutable = grpcProviderFieldSpecification.immutable
         self.isOptional = grpcProviderFieldSpecification.optional
         self.name = grpcProviderFieldSpecification.name
-        self.value = grpcProviderFieldSpecification.value
+        self.initialValue = grpcProviderFieldSpecification.value
         self.pattern = grpcProviderFieldSpecification.pattern
         self.patternError = grpcProviderFieldSpecification.patternError
         self.helpText = grpcProviderFieldSpecification.helpText

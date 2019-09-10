@@ -54,7 +54,7 @@ public struct Provider {
         internal let isImmutable: Bool
         internal let isOptional: Bool
         internal let name: String
-        internal let value: String
+        internal let initialValue: String
         internal let pattern: String
         internal let patternError: String
         /// Text displayed next to the input field

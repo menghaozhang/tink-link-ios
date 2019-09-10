@@ -43,7 +43,7 @@ public struct Field {
     public let attributes: Attributes
     
     internal init(fieldSpecification: Provider.FieldSpecification) {
-        text = fieldSpecification.value
+        text = fieldSpecification.initialValue
         name = fieldSpecification.name
         isOptional = fieldSpecification.isOptional
         helpText = fieldSpecification.helpText
@@ -56,7 +56,7 @@ public struct Field {
             placeholder: fieldSpecification.fieldDescription,
             isSecureTextEntry: fieldSpecification.isMasked,
             inputType: fieldSpecification.isNumeric ? .numeric : .default,
-            isEnabled: !fieldSpecification.isImmutable || fieldSpecification.value.isEmpty)
+            isEnabled: !fieldSpecification.isImmutable || fieldSpecification.initialValue.isEmpty)
     }
     
     public struct ValidationRules {
