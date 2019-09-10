@@ -93,3 +93,11 @@ extension TinkLink.Configuration: Decodable {
         }
     }
 }
+
+extension Client {
+    convenience init(configurationUrl: URL) throws {
+        let data = try Data(contentsOf: configurationUrl)
+        let configuration = try PropertyListDecoder().decode(TinkLink.Configuration.self, from: data)
+        self.init(environment: configuration.environment, clientKey: configuration.clientId, certificateURL: configuration.certificateURL)
+    }
+}
