@@ -1,1 +1,1 @@
-# tink-link-ios
+# Tink Link iOS
