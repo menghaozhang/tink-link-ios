@@ -28,16 +28,16 @@ final class ProviderStore {
             return
         }
         let cancellable = service.providers(market: market, includeTestProviders: true) { [weak self, market] result in
-            guard let strongSelf = self else { return }
+            guard let self = self else { return }
             DispatchQueue.main.async {
                 switch result {
                 case .success(let fetchedProviders):
-                    strongSelf.providerMarketGroups[market] = fetchedProviders
+                    self.providerMarketGroups[market] = fetchedProviders
                 case .failure:
                     break
                     //error
                 }
-                strongSelf.providerFetchCancellers[market] = nil
+                self.providerFetchCancellers[market] = nil
             }
         }
         providerFetchCancellers[market] = cancellable
@@ -48,16 +48,16 @@ final class ProviderStore {
             return
         }
         let cancellable = service.providerMarkets { [weak self] result in
-            guard let strongSelf = self else { return }
+            guard let self = self else { return }
             DispatchQueue.main.async {
                 switch result {
                 case .success(let markets):
-                    strongSelf.markets = markets
+                    self.markets = markets
                 case .failure:
                     break
                     //error
                 }
-                strongSelf.marketFetchCanceller = nil
+                self.marketFetchCanceller = nil
             }
         }
         marketFetchCanceller = cancellable
