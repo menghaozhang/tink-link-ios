@@ -31,3 +31,9 @@ Key | Value
 `TINK_CERTIFICATE`| 
 `TINK_BEARER_TOKEN` | *For testing*
 `TINK_SESSION_ID` | *For testing*
+
+### Swift
+```swift
+let configuration = TinkLink.Configuration(environment: <#Environment#>, clientId: <#String#>, redirectUrl: <#URL#>)
+TinkLink.configure(with: configuration)
+```
