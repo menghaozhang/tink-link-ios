@@ -25,6 +25,10 @@ extension ProcessInfo {
     var tinkCertificate: String? {
         return environment["TINK_CERTIFICATE"]
     }
+
+    var tinkEnvironment: Environment? {
+        return environment["TINK_ENVIRONMENT"].flatMap(Environment.init(rawValue:))
+    }
 }
 
 extension Metadata {
