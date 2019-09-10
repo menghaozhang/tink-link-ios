@@ -18,7 +18,7 @@ final class Client {
             arguments.append(.primaryUserAgent(userAgent))
         }
 
-        if let certificateContents = certificate ?? ProcessInfo.processInfo.tinkCertificate {
+        if let certificateContents = certificate {
             self.channel = Channel(address: environment.url.absoluteString, certificates: certificateContents, clientCertificates: nil, clientKey: clientKey, arguments: arguments)
         } else {
             self.channel = Channel(address: environment.url.absoluteString, secure: false, arguments: arguments)
