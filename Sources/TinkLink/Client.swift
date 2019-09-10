@@ -1,7 +1,7 @@
 import Foundation
 import SwiftGRPC
 
-final class Client {
+public final class Client {
     let channel: Channel
 
     convenience init(environment: Environment, clientKey: String, userAgent: String? = nil, certificateURL: URL? = nil) {
