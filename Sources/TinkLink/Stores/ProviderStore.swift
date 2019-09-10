@@ -13,18 +13,13 @@ final class ProviderStore {
 
     var providerMarketGroups: [Market: [Provider]] = [:] {
         didSet {
-            DispatchQueue.main.async {
-                NotificationCenter.default.post(name: .providerStoreMarketGroupsChanged, object: self)
-            }
+            NotificationCenter.default.post(name: .providerStoreMarketGroupsChanged, object: self)
         }
     }
     
     var markets: [Market] = [] {
         didSet {
-            guard let markets = markets, !markets.isEmpty else { return }
-            DispatchQueue.main.async {
-                NotificationCenter.default.post(name: .providerStoreMarketsChanged, object: self)
-            }
+            NotificationCenter.default.post(name: .providerStoreMarketsChanged, object: self)
         }
     }
     
