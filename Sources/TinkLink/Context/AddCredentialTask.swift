@@ -33,6 +33,8 @@ public class AddCredentialTask {
     func startObserving(_ credential: Credential) {
         self.credential = credential
 
+        handleUpdate(for: credential)
+
         credentialStore.addCredentialsObserver(token: storeObserverToken) { [weak self] tokenId in
             guard let self = self, self.storeObserverToken.has(id: tokenId) else {
                 return
