@@ -14,4 +14,10 @@ public class AddCredentialTask {
         case temporaryFailure
         case permanentFailure
     }
+
+    var callCanceller: Cancellable?
+
+    public func cancel() {
+        callCanceller?.cancel()
+    }
 }
