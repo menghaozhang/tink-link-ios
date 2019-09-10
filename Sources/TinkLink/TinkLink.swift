@@ -30,8 +30,8 @@ public class TinkLink {
                     if let client = Client(processInfo: .processInfo) {
                         _client = client
                     } else {
+                        fatalError("Cannot find client")
                     }
-                    fatalError("Cannot find client")
                 }
                 return _client!
             } else if let client = Client(processInfo: .processInfo) {
