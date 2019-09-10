@@ -15,6 +15,11 @@ public class AddCredentialTask {
         case permanentFailure
     }
 
+    private let credentialStore = CredentialStore.shared
+    private let storeObserverToken = StoreObserverToken()
+
+    private(set) var credential: Credential?
+
     let progressHandler: (Status) -> Void
     let completion: (Result<Credential, Swift.Error>) -> Void
 
@@ -25,11 +30,29 @@ public class AddCredentialTask {
         self.completion = completion
     }
 
+    func startObserving(_ credential: Credential) {
+        self.credential = credential
+
+        credentialStore.addCredentialsObserver(token: storeObserverToken) { [weak self] tokenId in
+            guard let self = self, self.storeObserverToken.has(id: tokenId) else {
+                return
+            }
+            if let credential = self.credentialStore.credentials[credential.id], let value = self.credential {
+                // TODO: Make credential equatable
+                if value.status != credential.status {
+                    self.handleUpdate(for: credential)
+                } else if value.status == .updating || value.status == .awaitingSupplementalInformation {
+                    self.handleUpdate(for: credential)
+                }
+            }
+        }
+    }
+
     public func cancel() {
         callCanceller?.cancel()
     }
 
-    func handleUpdate(for credential: Credential) {
+    private func handleUpdate(for credential: Credential) {
         switch credential.status {
         case .created:
             progressHandler(.created)
