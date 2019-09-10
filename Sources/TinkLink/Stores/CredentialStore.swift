@@ -13,10 +13,10 @@ final class CredentialStore {
         }
     }
     private var service: CredentialService
-    private var createCredentialCanceller: [Identifier<Provider>: Cancellable?] = [:]
-    private var credentialStatusPollingCanceller: [Identifier<Credential>: Cancellable?] = [:]
-    private var addSupplementalInformationCanceller: [Identifier<Credential>: Cancellable?] = [:]
-    private var cancelSupplementInformationCanceller: [Identifier<Credential>: Cancellable?] = [:]
+    private var createCredentialCanceller: [Identifier<Provider>: Cancellable] = [:]
+    private var credentialStatusPollingCanceller: [Identifier<Credential>: Cancellable] = [:]
+    private var addSupplementalInformationCanceller: [Identifier<Credential>: Cancellable] = [:]
+    private var cancelSupplementInformationCanceller: [Identifier<Credential>: Cancellable] = [:]
     
     private init() {
         service = TinkLink.shared.client.credentialService
