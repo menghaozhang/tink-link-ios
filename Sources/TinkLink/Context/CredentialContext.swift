@@ -29,8 +29,9 @@ public class CredentialContext {
         }
     }
     
-    public func addCredential(for provider: Provider, fields: [Provider.FieldSpecification], progressHandler: @escaping (AddCredentialTask.Status) -> Void,  completion: @escaping(Result<Credential, Error>) -> Void) {
-        credentialStore.addCredential(for: provider, fields: fields) { [weak self] result in
+    public func addCredential(for provider: Provider, fields: [Provider.FieldSpecification], progressHandler: @escaping (AddCredentialTask.Status) -> Void,  completion: @escaping(Result<Credential, Error>) -> Void) -> AddCredentialTask {
+        let task = AddCredentialTask()
+        task.callCanceller = credentialStore.addCredential(for: provider, fields: fields) { [weak self] result in
             guard let strongSelf = self else { return }
             switch result {
             case .failure(let error):
@@ -40,6 +41,7 @@ public class CredentialContext {
                 strongSelf.completions[credential.id] = completion
             }
         }
+        return task
     }
     
     private func handleUpdate(for credential: Credential) {
