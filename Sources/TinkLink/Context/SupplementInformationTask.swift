@@ -8,7 +8,7 @@ public class SupplementInformationTask {
 
     public private(set) var credential: Credential
 
-    public func submit(with form: Form) {
+    public func submit(form: Form) {
         credentialContext?.addSupplementalInformation(for: credential, with: form)
     }
 
