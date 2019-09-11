@@ -4,15 +4,13 @@ public class CredentialContext {
 
     public private(set) var credentials: [Identifier<Credential>: Credential] = [:]
     private let credentialStore = CredentialStore.shared
-    private let storeObserverToken = StoreObserverToken()
+    private var credentialStoreObserver: Any?
     
     public init() {
         credentials = credentialStore.credentials
-        credentialStore.addCredentialsObserver(token: storeObserverToken) { [weak self] tokenId in
-            guard let strongSelf = self, strongSelf.storeObserverToken.has(id: tokenId) else {
-                return
-            }
-            strongSelf.credentials = strongSelf.credentialStore.credentials
+        credentialStoreObserver = NotificationCenter.default.addObserver(forName: .credentialStoreChanged, object: credentialStore, queue: .main) { [weak self] _ in
+            guard let self = self else { return }
+            self.credentials = self.credentialStore.credentials
         }
     }
     

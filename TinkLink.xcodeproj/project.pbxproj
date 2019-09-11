@@ -15,6 +15,7 @@
 		201D5503230A8BEA00641102 /* StreamingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D5502230A8BEA00641102 /* StreamingService.swift */; };
 		201D5523230AEAA500641102 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D5522230AEAA500641102 /* UserService.swift */; };
 		203BE969232784440033F879 /* AddCredentialTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203BE968232784440033F879 /* AddCredentialTask.swift */; };
+		203BE96B2327A1730033F879 /* AccountStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203BE96A2327A1730033F879 /* AccountStore.swift */; };
 		209D69282326878800B4DBB8 /* SupplementInformationTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209D69272326878800B4DBB8 /* SupplementInformationTask.swift */; };
 		20E19DB22306E59900BF053A /* BoringSSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85462303FD85006213BB /* BoringSSL.framework */; };
 		20E19DB32306E59900BF053A /* CgRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85472303FD85006213BB /* CgRPC.framework */; };
@@ -80,6 +81,7 @@
 		201D5502230A8BEA00641102 /* StreamingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingService.swift; sourceTree = "<group>"; };
 		201D5522230AEAA500641102 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		203BE968232784440033F879 /* AddCredentialTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCredentialTask.swift; sourceTree = "<group>"; };
+		203BE96A2327A1730033F879 /* AccountStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountStore.swift; sourceTree = "<group>"; };
 		209D69272326878800B4DBB8 /* SupplementInformationTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementInformationTask.swift; sourceTree = "<group>"; };
 		20ED85202303FA48006213BB /* TinkLink.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinkLink.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		20ED85242303FA48006213BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 		8FA35588231E6FFE0054115D /* Stores */ = {
 			isa = PBXGroup;
 			children = (
+				203BE96A2327A1730033F879 /* AccountStore.swift */,
 				8FA35589231E703C0054115D /* ProviderStore.swift */,
 				8FA3558B231E839E0054115D /* CredentialStore.swift */,
 			);
@@ -459,6 +462,7 @@
 				20ED8592230429DE006213BB /* StartCall.swift in Sources */,
 				8F36724923057EAB00B92936 /* UpdateAccountRequest.swift in Sources */,
 				20ED857423040066006213BB /* Cancellable.swift in Sources */,
+				203BE96B2327A1730033F879 /* AccountStore.swift in Sources */,
 				20EE138123053B2700C92D65 /* Credential+GRPC.swift in Sources */,
 				8FA3558E231EA1840054115D /* ProviderGroup.swift in Sources */,
 				20ED85432303FAEC006213BB /* services.grpc.swift in Sources */,
