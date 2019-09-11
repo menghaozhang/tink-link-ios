@@ -20,12 +20,19 @@ public class AddCredentialTask {
 
     private(set) var credential: Credential?
 
+    enum CompletionPredicate {
+        case updating
+        case updated
+    }
+    let completionPredicate: CompletionPredicate
+
     let progressHandler: (Status) -> Void
     let completion: (Result<Credential, Swift.Error>) -> Void
 
     var callCanceller: Cancellable?
 
-    init(progressHandler: @escaping (Status) -> Void, completion: @escaping (Result<Credential, Swift.Error>) -> Void) {
+    init(completionPredicate: CompletionPredicate = .updated, progressHandler: @escaping (Status) -> Void, completion: @escaping (Result<Credential, Swift.Error>) -> Void) {
+        self.completionPredicate = completionPredicate
         self.progressHandler = progressHandler
         self.completion = completion
     }
@@ -67,9 +74,15 @@ public class AddCredentialTask {
             }
             progressHandler(.awaitingThirdPartyAppAuthentication(url))
         case .updating:
-            progressHandler(.updating(status: credential.statusPayload))
+            if completionPredicate == .updating {
+                completion(.success(credential))
+            } else {
+                progressHandler(.updating(status: credential.statusPayload))
+            }
         case .updated:
-            completion(.success(credential))
+            if completionPredicate == .updated {
+                completion(.success(credential))
+            }
         case .permanentError:
             completion(.failure(AddCredentialTask.Error.permanentFailure))
         case .temporaryError:
