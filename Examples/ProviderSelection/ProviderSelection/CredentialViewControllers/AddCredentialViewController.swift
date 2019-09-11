@@ -85,7 +85,7 @@ extension AddCredentialViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
         do {
             try form.validateValues()
-            credentialContext?.addCredential(for: provider, with: form, progressHandler: onUpdate, completion: onCompletion)
+            credentialContext?.addCredential(for: provider, form: form, progressHandler: onUpdate, completion: onCompletion)
         } catch let error as Form.FieldsError {
             print(error.errors)
         } catch {
@@ -93,7 +93,7 @@ extension AddCredentialViewController {
         }
     }
     
-    private func onUpdate(for status: CredentialContext.AddCredentialStatus) {
+    private func onUpdate(for status: AddCredentialTask.Status) {
         switch status {
         case .authenticating, .created:
             break

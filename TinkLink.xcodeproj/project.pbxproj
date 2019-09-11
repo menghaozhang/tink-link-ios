@@ -14,6 +14,7 @@
 		200FD63F23154B660077181A /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200FD63E23154B660077181A /* Market.swift */; };
 		201D5503230A8BEA00641102 /* StreamingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D5502230A8BEA00641102 /* StreamingService.swift */; };
 		201D5523230AEAA500641102 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D5522230AEAA500641102 /* UserService.swift */; };
+		203BE969232784440033F879 /* AddCredentialTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203BE968232784440033F879 /* AddCredentialTask.swift */; };
 		209D69282326878800B4DBB8 /* SupplementInformationTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209D69272326878800B4DBB8 /* SupplementInformationTask.swift */; };
 		20E19DB22306E59900BF053A /* BoringSSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85462303FD85006213BB /* BoringSSL.framework */; };
 		20E19DB32306E59900BF053A /* CgRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85472303FD85006213BB /* CgRPC.framework */; };
@@ -78,6 +79,7 @@
 		200FD63E23154B660077181A /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		201D5502230A8BEA00641102 /* StreamingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingService.swift; sourceTree = "<group>"; };
 		201D5522230AEAA500641102 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		203BE968232784440033F879 /* AddCredentialTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCredentialTask.swift; sourceTree = "<group>"; };
 		209D69272326878800B4DBB8 /* SupplementInformationTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementInformationTask.swift; sourceTree = "<group>"; };
 		20ED85202303FA48006213BB /* TinkLink.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinkLink.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		20ED85242303FA48006213BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 				8FA3558F231EA3820054115D /* ProviderContext.swift */,
 				8FA35596231EB2F10054115D /* ProviderMarketContext.swift */,
 				8FA35591231EADAB0054115D /* CredentialContext.swift */,
+				203BE968232784440033F879 /* AddCredentialTask.swift */,
 				209D69272326878800B4DBB8 /* SupplementInformationTask.swift */,
 			);
 			path = Context;
@@ -479,6 +482,7 @@
 				20ED85412303FAEC006213BB /* rpc.pb.swift in Sources */,
 				209D69282326878800B4DBB8 /* SupplementInformationTask.swift in Sources */,
 				20ED857A230407B3006213BB /* Provider.swift in Sources */,
+				203BE969232784440033F879 /* AddCredentialTask.swift in Sources */,
 				201D5503230A8BEA00641102 /* StreamingService.swift in Sources */,
 				8F367243230557B300B92936 /* AccountService.swift in Sources */,
 				8F3672552305AAF800B92936 /* Account+GRPC.swift in Sources */,
