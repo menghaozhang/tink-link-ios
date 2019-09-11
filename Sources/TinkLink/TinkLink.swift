@@ -16,22 +16,37 @@ public class TinkLink {
         }
     }
     
-    internal static let shared: TinkLink = TinkLink(client: TinkLink.client ?? fallbackClient)
+    public static let shared: TinkLink = TinkLink()
     
-    private static var client: Client?
-    private(set) public static var timeoutIntervalForRequest: TimeInterval = 15
-    
-    private static let fallbackClient: Client = {
-        let fallbackUrl = Bundle.main.url(forResource: "Info", withExtension: "plist")!
-        do {
-            let data = try Data(contentsOf: fallbackUrl)
-            let configuration = try PropertyListDecoder().decode(TinkLink.Configuration.self, from: data)
-            
-            return Client(environment: configuration.environment, clientKey: configuration.clientId, certificateURL: configuration.certificateURL)
-        } catch {
-            fatalError("Cannot find client")
+    private var _client: Client?
+    private(set) var client: Client {
+        get {
+            if let client = _client {
+                return client
+            } else if let fallbackUrl = Bundle.main.url(forResource: "Info", withExtension: "plist") {
+                do {
+                    _client = try Client(configurationUrl: fallbackUrl)
+                } catch {
+                    if let client = Client(processInfo: .processInfo) {
+                        _client = client
+                    } else {
+                        fatalError("Cannot find client")
+                    }
+                }
+                return _client!
+            } else if let client = Client(processInfo: .processInfo) {
+                _client = client
+                return _client!
+            } else {
+                fatalError("Cannot find client")
+            }
         }
-    }()
+        set {
+            _client = newValue
+        }
+    }
+
+    private(set) public static var timeoutIntervalForRequest: TimeInterval = 15
     
     // Setup via configration files
     public static func configure(tinklinkUrl: URL) throws {
@@ -42,7 +57,7 @@ public class TinkLink {
     
     // Setup via configration object
     public static func configure(with configuration: TinkLink.Configuration) {
-        client = Client(environment: configuration.environment , clientKey: configuration.clientId, certificateURL: configuration.certificateURL)
+        shared._client = Client(environment: configuration.environment , clientKey: configuration.clientId, certificateURL: configuration.certificateURL)
     }
     
     // TODO: Some configurations can be changed after setup, for example timeoutIntervalForRequest and Qos, the changes should reflect to the stores and services
@@ -50,11 +65,10 @@ public class TinkLink {
         TinkLink.timeoutIntervalForRequest = timeoutInterval
     }
     
-    private init(client: Client) {
-        self.client = client
+    private init() {
+
     }
     
-    let client: Client
     var timeoutIntervalForRequest: TimeInterval {
         return TinkLink.timeoutIntervalForRequest
     }
@@ -91,5 +105,22 @@ extension TinkLink.Configuration: Decodable {
             }
             self.certificateURL = certificateURL
         }
+    }
+}
+
+extension Client {
+    convenience init(configurationUrl: URL) throws {
+        let data = try Data(contentsOf: configurationUrl)
+        let configuration = try PropertyListDecoder().decode(TinkLink.Configuration.self, from: data)
+        self.init(environment: configuration.environment, clientKey: configuration.clientId, certificateURL: configuration.certificateURL)
+    }
+
+    convenience init?(processInfo: ProcessInfo) {
+        guard let clientKey = processInfo.tinkClientKey else { return nil }
+        self.init(
+            environment: processInfo.tinkEnvironment ?? .staging,
+            clientKey: clientKey,
+            certificate: processInfo.tinkCertificate
+        )
     }
 }
