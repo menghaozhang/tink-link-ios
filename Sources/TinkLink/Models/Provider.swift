@@ -111,6 +111,8 @@ public struct Provider {
                 return "Other"
             }
         }
+        
+        public static let all: Set<AccessType> = [.openBanking, .other, .unknown]
     }
 
     /// What Tink uses to access the data.
