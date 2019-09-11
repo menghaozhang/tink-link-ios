@@ -12,11 +12,7 @@ final class AccountStore {
     
     var accounts: [Account] = [] {
         didSet {
-            DispatchQueue.main.async {
-                self.accountStoreObservers.forEach { (tokenId, handler) in
-                    handler(tokenId)
-                }
-            }
+            NotificationCenter.default.post(name: .accountStoreChanged, object: self)
         }
     }
     
@@ -25,25 +21,21 @@ final class AccountStore {
             return
         }
         let cancellable = service.listAccounts { [weak self] result in
-            switch result {
-            case .success(let accounts):
-                self?.accounts = accounts
-            case .failure(let error):
-                break
-                // Handle error
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let accounts):
+                    self?.accounts = accounts
+                case .failure(let error):
+                    break
+                    // Handle error
+                }
+                self?.listAccountCanceller = nil
             }
-            self?.listAccountCanceller = nil
         }
         listAccountCanceller = cancellable
     }
-    
-    typealias ObserverHandler = (_ tokenIdentifier: UUID) -> Void
-    // Provider Observer
-    var accountStoreObservers: [UUID: ObserverHandler] = [:]
-    func addAccountsObserver(token: StoreObserverToken, handler: @escaping ObserverHandler) {
-        token.addReleaseHandler { [weak self] in
-            self?.accountStoreObservers[token.identifier] = nil
-        }
-        accountStoreObservers[token.identifier] = handler
-    }
+}
+
+extension Notification.Name {
+    static let accountStoreChanged = Notification.Name("TinkLinkAccountStoreChangedNotificationName")
 }

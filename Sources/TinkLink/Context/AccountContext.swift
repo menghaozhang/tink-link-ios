@@ -6,8 +6,8 @@ public protocol AccountContextDelegate: AnyObject {
 public class AccountContext {
     public init() {
         _accounts = Dictionary(grouping: accountStore.accounts, by: { $0.credentialID })
-        accountStore.addAccountsObserver(token: storeObserverToken) { [weak self] tokenId in
-            guard let strongSelf = self, strongSelf.storeObserverToken.has(id: tokenId) else {
+        accountStoreObserver = NotificationCenter.default.addObserver(forName: .accountStoreChanged, object: accountStore, queue: .main) { [weak self] _ in
+            guard let strongSelf = self else {
                 return
             }
             strongSelf._accounts = Dictionary(grouping: strongSelf.accountStore.accounts, by: { $0.credentialID })
@@ -30,7 +30,7 @@ public class AccountContext {
     }
     
     private let accountStore = AccountStore.shared
-    private let storeObserverToken = StoreObserverToken()
+    private var accountStoreObserver: Any?
     
     private func performFetch() {
         accountStore.performListAccountsIfNeeded()

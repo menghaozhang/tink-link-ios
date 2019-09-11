@@ -1,3 +1,5 @@
+import Foundation
+
 public protocol ProviderContextDelegate: AnyObject {
     func providerContext(_ store: ProviderContext, didUpdateProviders providers: [Provider])
     func providerContext(_ store: ProviderContext, didReceiveError error: Error)
@@ -7,7 +9,7 @@ public class ProviderContext {
     var market: Market
 
     private let providerStore = ProviderStore.shared
-    private let storeObserverToken = StoreObserverToken()
+    private var providerStoreObserver: Any?
 
     private var _providers: [Provider]? {
         didSet {
@@ -27,11 +29,11 @@ public class ProviderContext {
     public init(market: Market) {
         self.market = market
         _providers = providerStore.providerMarketGroups[market]
-        providerStore.addProvidersObserver(token: storeObserverToken) { [weak self] tokenId in
-            guard let strongSelf = self, strongSelf.storeObserverToken.has(id: tokenId) else {
+        providerStoreObserver = NotificationCenter.default.addObserver(forName: .providerStoreMarketGroupsChanged, object: providerStore, queue: .main) { [weak self] _ in
+            guard let self = self else {
                 return
             }
-            strongSelf._providers = strongSelf.providerStore.providerMarketGroups[market]
+            self._providers = self.providerStore.providerMarketGroups[market]
         }
     }
     
