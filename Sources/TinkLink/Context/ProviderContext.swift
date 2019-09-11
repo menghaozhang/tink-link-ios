@@ -46,16 +46,6 @@ public class ProviderContext {
     private func performFetch() {
         providerStore.performFetchProvidersIfNeeded(for: market)
     }
-}
-
-extension ProviderContext {
-    public var providers: [Provider] {
-        guard let providers = _providers else {
-            performFetch()
-            return []
-        }
-        return providers
-    }
     
     private func makeGroups(_ providers: [Provider]) -> [ProviderGroup] {
         guard let providers = _providers, !providers.isEmpty else {
@@ -69,6 +59,16 @@ extension ProviderContext {
             providerGroups.append(ProviderGroup(providers: providersWithSameGroupedName))
         }
         return providerGroups.sorted(by: { $0.groupedDisplayName ?? "" < $1.groupedDisplayName ?? "" })
+    }
+}
+
+extension ProviderContext {
+    public var providers: [Provider] {
+        guard let providers = _providers else {
+            performFetch()
+            return []
+        }
+        return providers
     }
     
     public var providerGroups: [ProviderGroup] {
