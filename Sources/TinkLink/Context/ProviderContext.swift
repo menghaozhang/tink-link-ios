@@ -64,4 +64,11 @@ extension ProviderContext {
         }
         return providerGroups.sorted(by: { $0.groupedDisplayName ?? "" < $1.groupedDisplayName ?? "" })
     }
+    public func search(_ query: String) -> [ProviderGroup] {
+        guard !query.isEmpty else {
+            return providerGroups
+        }
+        
+        return providerGroups.filter({ $0.groupedDisplayName?.localizedCaseInsensitiveContains(query) ?? false })
+    }
 }
