@@ -70,7 +70,7 @@ public struct Credential {
     public var fields: [String: String]
 
     /// A key-value structure to handle if status of credentials are `Credential.Status.awaitingSupplementalInformation`.
-    public var supplementalInformationFields: [Provider.FieldSpecification]
+    internal var supplementalInformationFields: [Provider.FieldSpecification]
 
     public struct ThirdPartyAppAuthentication {
         var downloadTitle: String

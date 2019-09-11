@@ -15,10 +15,13 @@ final class SupplementalInformationViewController: UITableViewController {
     
     weak var delegate: SupplementalInformationViewControllerDelegate?
     
+    private var form: Form
     private var didFirstFieldBecomeFirstResponder = false
 
     init(supplementInformationTask: SupplementInformationTask) {
         self.supplementInformationTask = supplementInformationTask
+        self.form = Form(credential: supplementInformationTask.credential)
+        
         super.init(style: .grouped)
     }
 
@@ -43,8 +46,8 @@ extension SupplementalInformationViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
-        if !didFirstFieldBecomeFirstResponder, !supplementInformationTask.fields.isEmpty, let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TextFieldCell {
+        
+        if !didFirstFieldBecomeFirstResponder, !form.fields.isEmpty, let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TextFieldCell {
             cell.textField.becomeFirstResponder()
             didFirstFieldBecomeFirstResponder = true
         }
@@ -54,18 +57,19 @@ extension SupplementalInformationViewController {
 // MARK: - UITableViewDataSource
 extension SupplementalInformationViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return supplementInformationTask.fields.count
+        return form.fields.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldCell.reuseIdentifier, for: indexPath)
         if let textFieldCell = cell as? TextFieldCell {
-            let field = supplementInformationTask.fields[indexPath.item]
+            let field = form.fields[indexPath.item]
+            
             textFieldCell.delegate = self
-            textFieldCell.textField.placeholder = field.fieldDescription
-            textFieldCell.textField.isSecureTextEntry = field.isMasked
-            textFieldCell.textField.isEnabled = !field.isImmutable || field.value.isEmpty
-            textFieldCell.textField.text = field.value
+            textFieldCell.textField.placeholder = field.attributes.placeholder
+            textFieldCell.textField.isSecureTextEntry = field.attributes.isSecureTextEntry
+            textFieldCell.textField.isEnabled = field.attributes.isEnabled
+            textFieldCell.textField.text = field.text
         }
         return cell
     }
@@ -81,10 +85,10 @@ extension SupplementalInformationViewController {
     @objc private func doneButtonPressed(_ sender: UIBarButtonItem) {
         tableView.resignFirstResponder()
         do {
-            try supplementInformationTask.fields.validateValues()
-            supplementInformationTask.submit()
+            try form.validateValues()
+            supplementInformationTask.submit(form)
             self.delegate?.supplementalInformationViewController(self, didSupplementInformationForCredential: supplementInformationTask.credential)
-        } catch let fieldSpecificationsError as FieldSpecificationsError {
+        } catch let fieldSpecificationsError as Form.FieldsError {
             print(fieldSpecificationsError.errors)
         } catch {
             print(error)
@@ -95,11 +99,9 @@ extension SupplementalInformationViewController {
 // MARK: - TextFieldCellDelegate
 extension SupplementalInformationViewController: TextFieldCellDelegate {
     func textFieldCell(_ cell: TextFieldCell, willChangeToText text: String) {
-        let textField = cell.textField
         if let indexPath = tableView.indexPath(for: cell) {
-            supplementInformationTask.fields[indexPath.item].value = text
-            let field = supplementInformationTask.fields[indexPath.item]
-            navigationItem.rightBarButtonItem?.isEnabled = field.isValueValid
+            form.fields[indexPath.item].text = text
+            navigationItem.rightBarButtonItem?.isEnabled = form.fields[indexPath.item].isValueValid
         }
     }
 }
