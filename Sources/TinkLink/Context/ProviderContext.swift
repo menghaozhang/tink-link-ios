@@ -13,10 +13,16 @@ public class ProviderContext {
 
     private var _providers: [Provider]? {
         didSet {
-            guard let providers = _providers else { return }
+            guard let providers = _providers else {
+                _providerGroups = nil
+                return
+            }
+            _providerGroups = makeGroups(providers)
             delegate?.providerContext(self, didUpdateProviders: providers)
         }
     }
+    
+    private var _providerGroups: [ProviderGroup]?
 
     public weak var delegate: ProviderContextDelegate? {
         didSet {
@@ -51,7 +57,7 @@ extension ProviderContext {
         return providers
     }
     
-    public var providerGroups: [ProviderGroup] {
+    private func makeGroups(_ providers: [Provider]) -> [ProviderGroup] {
         guard let providers = _providers, !providers.isEmpty else {
             return []
         }
@@ -64,6 +70,15 @@ extension ProviderContext {
         }
         return providerGroups.sorted(by: { $0.groupedDisplayName ?? "" < $1.groupedDisplayName ?? "" })
     }
+    
+    public var providerGroups: [ProviderGroup] {
+        guard let providerGroups = _providerGroups else {
+            performFetch()
+            return []
+        }
+        return providerGroups
+    }
+    
     public func search(_ query: String) -> [ProviderGroup] {
         guard !query.isEmpty else {
             return providerGroups
