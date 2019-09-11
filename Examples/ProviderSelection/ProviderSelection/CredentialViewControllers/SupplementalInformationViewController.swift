@@ -86,7 +86,7 @@ extension SupplementalInformationViewController {
         tableView.resignFirstResponder()
         do {
             try form.validateValues()
-            supplementInformationTask.submit(form: form)
+            supplementInformationTask.submit(form)
             self.delegate?.supplementalInformationViewController(self, didSupplementInformationForCredential: supplementInformationTask.credential)
         } catch let fieldSpecificationsError as Form.FieldsError {
             print(fieldSpecificationsError.errors)
