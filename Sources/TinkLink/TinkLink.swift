@@ -19,7 +19,7 @@ public class TinkLink {
     public static let shared: TinkLink = TinkLink()
     
     private var _client: Client?
-    public private(set) var client: Client {
+    private(set) var client: Client {
         get {
             if let client = _client {
                 return client
