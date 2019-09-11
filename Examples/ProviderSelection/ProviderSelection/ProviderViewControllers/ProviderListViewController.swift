@@ -5,6 +5,7 @@ import TinkLink
  Example of how to use the provider grouped by names
  */
 final class ProviderListViewController: UITableViewController {
+    private var market: Market
     var providerContext: ProviderContext {
         didSet {
             tableView.reloadData()
@@ -18,7 +19,9 @@ final class ProviderListViewController: UITableViewController {
     }
     
     init(market: Market, style: UITableView.Style) {
-        providerContext = ProviderContext(market: market)
+        self.market = market
+        let attributes = ProviderContext.Attributes(capabilities: .checkingAccounts, includeTestProviders: false, accessTypes: Provider.AccessType.all, market: market)
+        providerContext = ProviderContext(attributes: attributes)
         providerGroups = providerContext.providerGroups
         super.init(style: style)
     }
@@ -28,6 +31,10 @@ final class ProviderListViewController: UITableViewController {
     }
     
     func updateMarket(market: Market) {
+        guard self.market != market else {
+            return
+        }
+        self.market = market
         providerContext = ProviderContext(market: market)
         providerGroups = providerContext.providerGroups
         providerContext.delegate = self
