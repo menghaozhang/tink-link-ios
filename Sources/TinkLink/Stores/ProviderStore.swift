@@ -9,7 +9,7 @@ final class ProviderStore {
 
     private var service: ProviderService
     private var marketFetchCanceller: Cancellable?
-    private var providerFetchCancellers: [Market: Cancellable?] = [:]
+    private var providerFetchCancellers: [UUID: Cancellable?] = [:]
 
     var providerMarketGroups: [Market: [Provider]] = [:] {
         didSet {
@@ -23,24 +23,25 @@ final class ProviderStore {
         }
     }
     
-    func performFetchProvidersIfNeeded(for market: Market) {
-        guard providerFetchCancellers[market] == nil else {
+    func performFetchProvidersIfNeeded(for attributes: ProviderContext.Attributes) {
+        guard providerFetchCancellers[attributes.id] == nil else {
             return
         }
-        let cancellable = service.providers(market: market, includeTestProviders: true) { [weak self, market] result in
+        let cancellable = service.providers(market: attributes.market, capabilities: attributes.capabilities, includeTestProviders: attributes.includeTestProviders) { [weak self, attributes] result in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 switch result {
                 case .success(let fetchedProviders):
-                    self.providerMarketGroups[market] = fetchedProviders
+                    let filteredProviders = fetchedProviders.filter({ attributes.accessTypes.contains($0.accessType) })
+                    self.providerMarketGroups[attributes.market] = filteredProviders
                 case .failure:
                     break
                     //error
                 }
-                self.providerFetchCancellers[market] = nil
+                self.providerFetchCancellers[attributes.id] = nil
             }
         }
-        providerFetchCancellers[market] = cancellable
+        providerFetchCancellers[attributes.id] = cancellable
     }
     
     func performFetchMarketsIfNeeded() {
