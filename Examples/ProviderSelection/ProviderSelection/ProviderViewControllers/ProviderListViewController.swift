@@ -11,8 +11,15 @@ final class ProviderListViewController: UITableViewController {
         }
     }
     
+    private var providerGroups: [ProviderGroup] {
+        didSet {
+            tableView.reloadSections(IndexSet(integer: tableViewSections.providers.rawValue), with: .automatic)
+        }
+    }
+    
     init(market: Market, style: UITableView.Style) {
         providerContext = ProviderContext(market: market)
+        providerGroups = providerContext.providerGroups
         super.init(style: style)
     }
     
@@ -22,6 +29,7 @@ final class ProviderListViewController: UITableViewController {
     
     func updateMarket(market: Market) {
         providerContext = ProviderContext(market: market)
+        providerGroups = providerContext.providerGroups
         providerContext.delegate = self
     }
 }
@@ -34,25 +42,53 @@ extension ProviderListViewController {
         
         providerContext.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
     }
 }
 
 // MARK: - UITableViewDataSource
 extension ProviderListViewController {
+    enum tableViewSections: Int, CaseIterable {
+        case searchBar = 0
+        case providers = 1
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return tableViewSections.allCases.count
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return providerContext.providerGroups.count
+        switch section {
+        case tableViewSections.searchBar.rawValue:
+            return 1
+        case tableViewSections.providers.rawValue:
+            return providerGroups.count
+        default: fatalError("Should not have more sections than \(tableViewSections.allCases.count)")
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let group = providerContext.providerGroups[indexPath.item]
-        cell.textLabel?.text = group.groupedDisplayName
-        cell.accessoryType = .disclosureIndicator
-        return cell
+        switch indexPath.section {
+        case tableViewSections.searchBar.rawValue:
+            let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldCell.reuseIdentifier, for: indexPath)
+            cell.separatorInset = UIEdgeInsets.zero
+            if let textFieldCell = cell as? TextFieldCell {
+                textFieldCell.textField.placeholder = "Search"
+                textFieldCell.delegate = self
+            }
+            return cell
+        case tableViewSections.providers.rawValue:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+            let group = providerGroups[indexPath.item]
+            cell.textLabel?.text = group.groupedDisplayName
+            cell.accessoryType = .disclosureIndicator
+            return cell
+        default: fatalError("Should not have more sections than \(tableViewSections.allCases.count)")
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let providerGroup = providerContext.providerGroups[indexPath.item]
+        let providerGroup = providerGroups[indexPath.item]
         switch providerGroup {
         case .financialInsititutions(let financialInsititutionGroups):
             showFinancialInstitution(for: financialInsititutionGroups)
@@ -93,13 +129,17 @@ extension ProviderListViewController {
 }
 
 extension ProviderListViewController: ProviderContextDelegate {
-    func providerContext(_ store: ProviderContext, didUpdateProviders providers: [Provider]) {
-        if isViewLoaded {
-            tableView.reloadData()
-        }
+    func providerContext(_ context: ProviderContext, didUpdateProviders providers: [Provider]) {
+        providerGroups = context.providerGroups
     }
     
-    func providerContext(_ store: ProviderContext, didReceiveError error: Error) {
+    func providerContext(_ context: ProviderContext, didReceiveError error: Error) {
         print(error)
+    }
+}
+
+extension ProviderListViewController: TextFieldCellDelegate {
+    func textFieldCell(_ cell: TextFieldCell, willChangeToText text: String) {
+        providerGroups = providerContext.search(text)
     }
 }
