@@ -1,8 +1,8 @@
 import Foundation
 
 public protocol ProviderContextDelegate: AnyObject {
-    func providerContext(_ store: ProviderContext, didUpdateProviders providers: [Provider])
-    func providerContext(_ store: ProviderContext, didReceiveError error: Error)
+    func providerContext(_ context: ProviderContext, didUpdateProviders providers: [Provider])
+    func providerContext(_ context: ProviderContext, didReceiveError error: Error)
 }
 
 public class ProviderContext {
