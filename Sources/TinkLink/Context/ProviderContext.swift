@@ -80,7 +80,7 @@ extension ProviderContext {
     }
     
     public func search(_ query: String) -> [ProviderGroup] {
-        guard !query.isEmpty else {
+        if query.isEmpty {
             return providerGroups
         }
         
