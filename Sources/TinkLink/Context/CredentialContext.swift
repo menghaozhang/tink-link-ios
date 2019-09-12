@@ -15,6 +15,16 @@ public class CredentialContext {
         }
     }
     
+    /// Adds a credential for the user.
+    ///
+    /// - Parameters:
+    ///   - provider: The provider (financial institution) that the credentials is connected to.
+    ///   - form: This is a form with fields from the Provider to which the credentials belongs to.
+    ///   - progressHandler: The block to execute with progress information about the credential's status.
+    ///   - status: Indicates the state of a credential being added.
+    ///   - completion: The block to execute when the credential has been added successfuly or if it failed.
+    ///   - result: Represents either a successfuly added credential or an error if adding the credential failed.
+    /// - Returns: The add credential task.
     public func addCredential(for provider: Provider, form: Form, progressHandler: @escaping (_ status: AddCredentialTask.Status) -> Void,  completion: @escaping (_ result: Result<Credential, Error>) -> Void) -> AddCredentialTask {
         let task = AddCredentialTask(progressHandler: progressHandler, completion: completion)
         task.callCanceller = credentialStore.addCredential(for: provider, fields: form.makeFields()) { [weak task] result in
