@@ -138,6 +138,14 @@ extension ProviderListViewController: ProviderContextDelegate {
     }
 }
 
+extension ProviderListViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        if let text = searchController.searchBar.text {
+            providerGroups = providerContext.search(text)
+        }
+    }
+}
+
 extension ProviderListViewController: TextFieldCellDelegate {
     func textFieldCell(_ cell: TextFieldCell, willChangeToText text: String) {
         providerGroups = providerContext.search(text)
