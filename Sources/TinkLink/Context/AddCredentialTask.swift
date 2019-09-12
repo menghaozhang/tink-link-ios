@@ -1,11 +1,23 @@
 import Foundation
 
 public class AddCredentialTask {
+    /// Indicates the state of a credential being added.
+    ///
+    /// - Note: For some states there are actions which need to be performed on the credentials.
     public enum Status {
+        /// Initial status
         case created
+
+        /// When starting the authentication process
         case authenticating
+
+        /// User has been successfully authenticated, now downloading data.
         case updating(status: String)
+
+        /// Trigger for the client to prompt the user to fill out supplemental information.
         case awaitingSupplementalInformation(SupplementInformationTask)
+
+        /// Trigger for the client to prompt the user to open the third party authentication flow
         case awaitingThirdPartyAppAuthentication(URL)
     }
 
