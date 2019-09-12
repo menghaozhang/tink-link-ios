@@ -1,5 +1,6 @@
 import Foundation
 
+/// An object that accesses the user's credentials and supports the flow for adding credentials.
 public class CredentialContext {
 
     public private(set) var credentials: [Identifier<Credential>: Credential] = [:]

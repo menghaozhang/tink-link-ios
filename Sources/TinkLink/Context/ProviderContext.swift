@@ -5,6 +5,7 @@ public protocol ProviderContextDelegate: AnyObject {
     func providerContext(_ context: ProviderContext, didReceiveError error: Error)
 }
 
+/// An object that accesses providers for a specific market and supports the grouping of providers.
 public class ProviderContext {
     public struct Attributes: Hashable {
         public let capabilities: Provider.Capabilities

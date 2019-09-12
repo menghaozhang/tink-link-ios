@@ -5,6 +5,7 @@ public protocol ProviderMarketContextDelegate: AnyObject {
     func providerMarketContext(_ store: ProviderMarketContext, didReceiveError error: Error)
 }
 
+/// An object that accesses available markets.
 public class ProviderMarketContext {
     public init() {
         _markets = providerStore.markets?.sortedWithCurrentRegionFirst()
