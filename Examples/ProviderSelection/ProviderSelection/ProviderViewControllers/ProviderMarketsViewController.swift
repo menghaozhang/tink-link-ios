@@ -46,6 +46,7 @@ extension ProviderMarketsViewController {
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search"
         navigationItem.searchController = searchController
+        definesPresentationContext = true
         
         view.addSubview(effectView)
         view.addSubview(collectionView)
