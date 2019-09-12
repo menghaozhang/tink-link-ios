@@ -7,6 +7,7 @@ class ProviderMarketsViewController: UIViewController {
     private lazy var effectView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
     private lazy var separatorLine = UIView()
     private var providerListViewController: ProviderListViewController?
+    private let searchController = UISearchController(searchResultsController: nil)
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -42,6 +43,10 @@ extension ProviderMarketsViewController {
     }
     
     private func setup() {
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search"
+        navigationItem.searchController = searchController
+        
         view.addSubview(effectView)
         view.addSubview(collectionView)
         view.addSubview(separatorLine)
@@ -86,6 +91,7 @@ extension ProviderMarketsViewController {
             providerListViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             ])
         self.providerListViewController = providerListViewController
+        searchController.searchResultsUpdater = providerListViewController
     }
 }
 
