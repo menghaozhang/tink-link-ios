@@ -1,8 +1,8 @@
 import Foundation
 
 public protocol ProviderContextDelegate: AnyObject {
-    func providerContext(_ store: ProviderContext, didUpdateProviders providers: [Provider])
-    func providerContext(_ store: ProviderContext, didReceiveError error: Error)
+    func providerContext(_ context: ProviderContext, didUpdateProviders providers: [Provider])
+    func providerContext(_ context: ProviderContext, didReceiveError error: Error)
 }
 
 public class ProviderContext {
@@ -13,10 +13,16 @@ public class ProviderContext {
 
     private var _providers: [Provider]? {
         didSet {
-            guard let providers = _providers else { return }
+            guard let providers = _providers else {
+                _providerGroups = nil
+                return
+            }
+            _providerGroups = makeGroups(providers)
             delegate?.providerContext(self, didUpdateProviders: providers)
         }
     }
+    
+    private var _providerGroups: [ProviderGroup]?
 
     public weak var delegate: ProviderContextDelegate? {
         didSet {
@@ -40,6 +46,20 @@ public class ProviderContext {
     private func performFetch() {
         providerStore.performFetchProvidersIfNeeded(for: market)
     }
+    
+    private func makeGroups(_ providers: [Provider]) -> [ProviderGroup] {
+        guard let providers = _providers, !providers.isEmpty else {
+            return []
+        }
+        let providerGroupedByGroupedName = Dictionary(grouping: providers, by: { $0.groupDisplayName })
+        let groupedNames = providerGroupedByGroupedName.map { $0.key }
+        var providerGroups = [ProviderGroup]()
+        groupedNames.forEach { groupName in
+            let providersWithSameGroupedName = providers.filter({ $0.groupDisplayName == groupName })
+            providerGroups.append(ProviderGroup(providers: providersWithSameGroupedName))
+        }
+        return providerGroups.sorted(by: { $0.groupedDisplayName ?? "" < $1.groupedDisplayName ?? "" })
+    }
 }
 
 extension ProviderContext {
@@ -52,16 +72,18 @@ extension ProviderContext {
     }
     
     public var providerGroups: [ProviderGroup] {
-        guard let providers = _providers, !providers.isEmpty else {
+        guard let providerGroups = _providerGroups else {
+            performFetch()
             return []
         }
-        let providerGroupedByGroupedName = Dictionary(grouping: providers, by: { $0.groupDisplayName })
-        let groupedNames = providerGroupedByGroupedName.map { $0.key }
-        var providerGroups = [ProviderGroup]()
-        groupedNames.forEach { groupName in
-            let providersWithSameGroupedName = providers.filter({ $0.groupDisplayName == groupName })
-            providerGroups.append(ProviderGroup(providers: providersWithSameGroupedName))
+        return providerGroups
+    }
+    
+    public func search(_ query: String) -> [ProviderGroup] {
+        if query.isEmpty {
+            return providerGroups
         }
-        return providerGroups.sorted(by: { $0.groupedDisplayName ?? "" < $1.groupedDisplayName ?? "" })
+        
+        return providerGroups.filter({ $0.groupedDisplayName?.localizedCaseInsensitiveContains(query) ?? false })
     }
 }

@@ -11,8 +11,15 @@ final class ProviderListViewController: UITableViewController {
         }
     }
     
+    private var providerGroups: [ProviderGroup] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     init(market: Market, style: UITableView.Style) {
         providerContext = ProviderContext(market: market)
+        providerGroups = providerContext.providerGroups
         super.init(style: style)
     }
     
@@ -22,6 +29,7 @@ final class ProviderListViewController: UITableViewController {
     
     func updateMarket(market: Market) {
         providerContext = ProviderContext(market: market)
+        providerGroups = providerContext.providerGroups
         providerContext.delegate = self
     }
 }
@@ -34,25 +42,31 @@ extension ProviderListViewController {
         
         providerContext.delegate = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
     }
 }
 
 // MARK: - UITableViewDataSource
 extension ProviderListViewController {
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return providerContext.providerGroups.count
+        return providerGroups.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let group = providerContext.providerGroups[indexPath.item]
+        let group = providerGroups[indexPath.item]
         cell.textLabel?.text = group.groupedDisplayName
         cell.accessoryType = .disclosureIndicator
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let providerGroup = providerContext.providerGroups[indexPath.item]
+        let providerGroup = providerGroups[indexPath.item]
         switch providerGroup {
         case .financialInsititutions(let financialInsititutionGroups):
             showFinancialInstitution(for: financialInsititutionGroups)
@@ -93,13 +107,25 @@ extension ProviderListViewController {
 }
 
 extension ProviderListViewController: ProviderContextDelegate {
-    func providerContext(_ store: ProviderContext, didUpdateProviders providers: [Provider]) {
-        if isViewLoaded {
-            tableView.reloadData()
-        }
+    func providerContext(_ context: ProviderContext, didUpdateProviders providers: [Provider]) {
+        providerGroups = context.providerGroups
     }
     
-    func providerContext(_ store: ProviderContext, didReceiveError error: Error) {
+    func providerContext(_ context: ProviderContext, didReceiveError error: Error) {
         print(error)
+    }
+}
+
+extension ProviderListViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        if let text = searchController.searchBar.text {
+            providerGroups = providerContext.search(text)
+        }
+    }
+}
+
+extension ProviderListViewController: TextFieldCellDelegate {
+    func textFieldCell(_ cell: TextFieldCell, willChangeToText text: String) {
+        providerGroups = providerContext.search(text)
     }
 }
