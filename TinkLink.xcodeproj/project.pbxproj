@@ -51,7 +51,6 @@
 		8F36724F230598BC00B92936 /* ExactNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F36724E230598BC00B92936 /* ExactNumber.swift */; };
 		8F3672512305A2A700B92936 /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3672502305A2A700B92936 /* Identifier.swift */; };
 		8F3672552305AAF800B92936 /* Account+GRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3672542305AAF800B92936 /* Account+GRPC.swift */; };
-		8F576A34232A73AA00A81E8E /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F576A33232A73A900A81E8E /* UserStore.swift */; };
 		8F84A776232B8B6500EA878F /* TokenConfigurableService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F84A775232B8B6500EA878F /* TokenConfigurableService.swift */; };
 		8FA35586231E673B0054115D /* TinkLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA35585231E673B0054115D /* TinkLink.swift */; };
 		8FA3558A231E703C0054115D /* ProviderStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA35589231E703C0054115D /* ProviderStore.swift */; };
@@ -118,7 +117,6 @@
 		8F36724E230598BC00B92936 /* ExactNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExactNumber.swift; sourceTree = "<group>"; };
 		8F3672502305A2A700B92936 /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
 		8F3672542305AAF800B92936 /* Account+GRPC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Account+GRPC.swift"; sourceTree = "<group>"; };
-		8F576A33232A73A900A81E8E /* UserStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
 		8F84A775232B8B6500EA878F /* TokenConfigurableService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenConfigurableService.swift; sourceTree = "<group>"; };
 		8FA35585231E673B0054115D /* TinkLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinkLink.swift; sourceTree = "<group>"; };
 		8FA35589231E703C0054115D /* ProviderStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderStore.swift; sourceTree = "<group>"; };
@@ -283,7 +281,6 @@
 				203BE96A2327A1730033F879 /* AccountStore.swift */,
 				8FA35589231E703C0054115D /* ProviderStore.swift */,
 				8FA3558B231E839E0054115D /* CredentialStore.swift */,
-				8F576A33232A73A900A81E8E /* UserStore.swift */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -487,7 +484,6 @@
 				200FD63B23154AA90077181A /* AuthenticationToken.swift in Sources */,
 				8FA3558A231E703C0054115D /* ProviderStore.swift in Sources */,
 				8FA35586231E673B0054115D /* TinkLink.swift in Sources */,
-				8F576A34232A73AA00A81E8E /* UserStore.swift in Sources */,
 				20ED85712304004C006213BB /* ProviderService.swift in Sources */,
 				20ED858E2304151B006213BB /* CredentialService.swift in Sources */,
 				201D5523230AEAA500641102 /* UserService.swift in Sources */,
