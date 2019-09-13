@@ -7,6 +7,7 @@ final class AddCredentialViewController: UITableViewController {
     let provider: Provider
     
     private var form: Form
+    private var task: AddCredentialTask?
     private var statusViewController: AddCredentialStatusViewController?
     private lazy var doneBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addCredential))
     private var didFirstFieldBecomeFirstResponder = false
@@ -83,7 +84,7 @@ extension AddCredentialViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
         do {
             try form.validateValues()
-            credentialContext?.addCredential(for: provider, form: form, progressHandler: onUpdate, completion: onCompletion)
+            task = credentialContext?.addCredential(for: provider, form: form, progressHandler: onUpdate, completion: onCompletion)
         } catch let error as Form.FieldsError {
             print(error.errors)
         } catch {
