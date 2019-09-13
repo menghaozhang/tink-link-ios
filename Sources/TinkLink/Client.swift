@@ -26,14 +26,15 @@ final class Client {
         }
     }
     
-    func fetchAccessToken() {
+    func fetchAccessToken(completion: @escaping (Result<AccessToken, Error>) -> Void) {
         guard cancellable == nil else { return }
-        cancellable = userService.createAnonymous { [weak self] result in
+        cancellable = userService.createAnonymous(market: Market(code: "SE")) { [weak self] result in
             guard let self = self else { return }
             if let accessToken = try? result.get() {
                 self.accessToken = accessToken
             }
             self.cancellable = nil
+            completion(result)
         }
     }
     
