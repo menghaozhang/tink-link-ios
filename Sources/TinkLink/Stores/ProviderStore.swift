@@ -5,8 +5,14 @@ final class ProviderStore {
 
     private init() {
         service = TinkLink.shared.client.providerService
+        if TinkLink.shared.client.accessToken == nil {
+            dispatchGroup.enter()
+            TinkLink.shared.client.fetchAccessToken { [weak self] _ in
+                self?.dispatchGroup.leave()
+            }
+        }
     }
-
+    private let dispatchGroup = DispatchGroup()
     private var service: ProviderService
     private var marketFetchCanceller: Cancellable?
     private var providerFetchCancellers: [Market: Cancellable?] = [:]
@@ -24,43 +30,48 @@ final class ProviderStore {
     }
     
     func performFetchProvidersIfNeeded(for market: Market) {
-        guard providerFetchCancellers[market] == nil else {
-            return
-        }
-        let cancellable = service.providers(market: market, includeTestProviders: true) { [weak self, market] result in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let fetchedProviders):
-                    self.providerMarketGroups[market] = fetchedProviders
-                case .failure:
-                    break
-                    //error
-                }
-                self.providerFetchCancellers[market] = nil
+        dispatchGroup.notify(queue: .main) {
+            guard self.providerFetchCancellers[market] == nil else {
+                return
             }
+            let cancellable = self.service.providers(market: market, includeTestProviders: true) { [weak self, market] result in
+                guard let self = self else { return }
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let fetchedProviders):
+                        self.providerMarketGroups[market] = fetchedProviders
+                    case .failure:
+                        break
+                        //error
+                    }
+                    self.providerFetchCancellers[market] = nil
+                }
+            }
+            self.providerFetchCancellers[market] = cancellable
         }
-        providerFetchCancellers[market] = cancellable
     }
     
     func performFetchMarketsIfNeeded() {
-        guard marketFetchCanceller == nil else {
-            return
-        }
-        let cancellable = service.providerMarkets { [weak self] result in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let markets):
-                    self.markets = markets
-                case .failure:
-                    break
-                    //error
-                }
-                self.marketFetchCanceller = nil
+        dispatchGroup.notify(queue: .main) {
+            guard self.marketFetchCanceller == nil else {
+                return
             }
+            let cancellable = self.service.providerMarkets { [weak self] result in
+                guard let self = self else { return }
+                DispatchQueue.main.async {
+                    self.markets = [Market(code: "SE"), Market(code: "NO")]
+                    //                switch result {
+                    //                case .success(let markets):
+                    //                    self.markets = markets
+                    //                case .failure:
+                    //                    break
+                    //                    //error
+                    //                }
+                    self.marketFetchCanceller = nil
+                }
+            }
+            self.marketFetchCanceller = cancellable
         }
-        marketFetchCanceller = cancellable
     }
 }
 
