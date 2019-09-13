@@ -32,6 +32,26 @@ extension ProcessInfo {
 }
 
 extension Metadata {
+    private enum HeaderKeys: CustomStringConvertible {
+        case clientKey
+        case deviceId
+        case authorization
+        case clientId
+        
+        public var description: String {
+            switch self {
+            case .clientKey:
+                return "X-Tink-Client-Key".lowercased()
+            case .deviceId:
+                return  "X-Tink-Device-Id".lowercased()
+            case .authorization:
+                return "Authorization".lowercased()
+            case .clientId:
+                return "X-Tink-OAuth-Client-ID".lowercased()
+            }
+        }
+    }
+    
     func addAccessToken(_ token: String? = nil) throws {
         let info = ProcessInfo.processInfo
         if let bearerToken = info.tinkBearerToken {
@@ -44,17 +64,18 @@ extension Metadata {
     func addTinkMetadata() throws {
         let info = ProcessInfo.processInfo
         if let clientKey = info.tinkClientKey {
-            try add(key: "X-Tink-Client-Key".lowercased(), value: clientKey)
+            try add(key: HeaderKeys.clientKey.description, value: clientKey)
         }
         if let deviceID = info.tinkDeviceID {
-            try add(key: "X-Tink-Device-Id".lowercased(), value: deviceID)
+            try add(key: HeaderKeys.deviceId.description, value: deviceID)
         }
         if let sessionID = info.tinkSessionID {
-            try add(key: "Authorization".lowercased(), value: "Session \(sessionID)")
+            try add(key: HeaderKeys.authorization.description, value: "Session \(sessionID)")
         }
         if let oAuthClientID = info.tinkOAuthClientID {
-            try add(key: "X-Tink-OAuth-Client-ID".lowercased(), value: oAuthClientID)
+            try add(key: HeaderKeys.clientId.description, value: oAuthClientID)
         }
-        try addAccessToken()
+        let authorization = dictionaryRepresentation[HeaderKeys.authorization.description]
+        try addAccessToken(authorization)
     }
 }
