@@ -135,8 +135,8 @@
 		8FBA6C572313DE8F00A98BA8 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				8FA5F833230D84B900226C02 /* TextFieldCell.swift */,
 				20D14ABD232BA70000D46495 /* MarketCell.swift */,
+				8FA5F833230D84B900226C02 /* TextFieldCell.swift */,
 				8F576A2823228BE300A81E8E /* ValueTableViewCell.swift */,
 			);
 			path = Cell;
@@ -146,8 +146,8 @@
 			isa = PBXGroup;
 			children = (
 				8FA5F82F230D36AB00226C02 /* AddCredentialViewController.swift */,
-				2023EB1E232268C400B219A3 /* AddCredentialStatusViewController.swift */,
 				8FA5F835230E9DEF00226C02 /* SupplementalInformationViewController.swift */,
+				2023EB1E232268C400B219A3 /* AddCredentialStatusViewController.swift */,
 				8FA5F83D230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift */,
 			);
 			path = CredentialViewControllers;
