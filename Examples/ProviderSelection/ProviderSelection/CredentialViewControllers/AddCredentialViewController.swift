@@ -123,7 +123,7 @@ extension AddCredentialViewController {
         let supplementalInformationViewController = SupplementalInformationViewController(supplementInformationTask: supplementInformationTask)
         supplementalInformationViewController.delegate = self
         let navigationController = UINavigationController(rootViewController: supplementalInformationViewController)
-        show(navigationController, sender: self)
+        show(navigationController, sender: nil)
     }
     
     private func showUpdating(status: String) {
@@ -146,7 +146,7 @@ extension AddCredentialViewController {
     private func showCredentialUpdated(for credential: Credential) {
         hideUpdatingView()
         let finishedCredentialUpdatedViewController = FinishedCredentialUpdatedViewController(credential: credential)
-        show(finishedCredentialUpdatedViewController, sender: self)
+        show(finishedCredentialUpdatedViewController, sender: nil)
     }
 }
 
