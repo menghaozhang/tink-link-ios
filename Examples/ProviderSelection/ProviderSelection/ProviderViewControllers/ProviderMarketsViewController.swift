@@ -3,12 +3,17 @@ import TinkLink
 
 class ProviderMarketsViewController: UIViewController {
     private var providerMarketContext = ProviderMarketContext()
+
+    // MARK: Views
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     private lazy var effectView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
     private lazy var separatorLine = UIView()
+
+    // MARK: View Controllers
     private var providerListViewController: ProviderListViewController?
     private let searchController = UISearchController(searchResultsController: nil)
-    
+
+    // MARK: Initializers
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -18,6 +23,7 @@ class ProviderMarketsViewController: UIViewController {
     }
 }
 
+// MARK: - View Lifecycle
 extension ProviderMarketsViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +47,10 @@ extension ProviderMarketsViewController {
         
         setup()
     }
-    
+}
+
+// MARK: - Setup
+extension ProviderMarketsViewController {
     private func setup() {
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search"
@@ -96,6 +105,7 @@ extension ProviderMarketsViewController {
     }
 }
 
+// MARK: - ProviderMarketContextDelegate
 extension ProviderMarketsViewController: ProviderMarketContextDelegate {
     func providerMarketContext(_ store: ProviderMarketContext, didUpdateMarkets markets: [Market]) {
         DispatchQueue.main.async {
@@ -111,6 +121,7 @@ extension ProviderMarketsViewController: ProviderMarketContextDelegate {
     }
 }
 
+// MARK: - UICollectionViewDelegate
 extension ProviderMarketsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let market = providerMarketContext.markets[indexPath.item]
@@ -122,6 +133,7 @@ extension ProviderMarketsViewController: UICollectionViewDelegate {
     }
 }
 
+// MARK: - UICollectionViewDataSource
 extension ProviderMarketsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return providerMarketContext.markets.count
