@@ -87,8 +87,10 @@ extension SupplementalInformationViewController {
             supplementInformationTask.submit(form)
             self.delegate?.supplementalInformationViewController(self, didSupplementInformationForCredential: supplementInformationTask.credential)
         } catch let fieldSpecificationsError as Form.FieldsError {
+            // TODO: Handle Error
             print(fieldSpecificationsError.errors)
         } catch {
+            // TODO: Handle Error
             print(error)
         }
     }

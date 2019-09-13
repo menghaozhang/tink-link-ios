@@ -118,6 +118,7 @@ extension ProviderMarketsViewController: ProviderMarketContextDelegate {
     }
     
     func providerMarketContext(_ store: ProviderMarketContext, didReceiveError error: Error) {
+        // TODO: Handle Error
     }
 }
 

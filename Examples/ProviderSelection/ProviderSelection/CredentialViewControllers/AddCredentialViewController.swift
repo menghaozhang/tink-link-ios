@@ -86,8 +86,10 @@ extension AddCredentialViewController {
             try form.validateValues()
             task = credentialContext?.addCredential(for: provider, form: form, progressHandler: onUpdate, completion: onCompletion)
         } catch let error as Form.FieldsError {
+            // TODO: Handle Error
             print(error.errors)
         } catch {
+            // TODO: Handle Error
             print(error)
         }
     }
