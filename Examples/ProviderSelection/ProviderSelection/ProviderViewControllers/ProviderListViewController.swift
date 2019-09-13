@@ -14,7 +14,7 @@ final class ProviderListViewController: UITableViewController {
     
     private var providerGroups: [ProviderGroup] {
         didSet {
-            tableView.reloadSections(IndexSet(integer: tableViewSections.providers.rawValue), with: .automatic)
+            tableView.reloadData()
         }
     }
     
@@ -55,43 +55,20 @@ extension ProviderListViewController {
 
 // MARK: - UITableViewDataSource
 extension ProviderListViewController {
-    enum tableViewSections: Int, CaseIterable {
-        case searchBar = 0
-        case providers = 1
-    }
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return tableViewSections.allCases.count
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case tableViewSections.searchBar.rawValue:
-            return 1
-        case tableViewSections.providers.rawValue:
-            return providerGroups.count
-        default: fatalError("Should not have more sections than \(tableViewSections.allCases.count)")
-        }
+        return providerGroups.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.section {
-        case tableViewSections.searchBar.rawValue:
-            let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldCell.reuseIdentifier, for: indexPath)
-            cell.separatorInset = UIEdgeInsets.zero
-            if let textFieldCell = cell as? TextFieldCell {
-                textFieldCell.textField.placeholder = "Search"
-                textFieldCell.delegate = self
-            }
-            return cell
-        case tableViewSections.providers.rawValue:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-            let group = providerGroups[indexPath.item]
-            cell.textLabel?.text = group.groupedDisplayName
-            cell.accessoryType = .disclosureIndicator
-            return cell
-        default: fatalError("Should not have more sections than \(tableViewSections.allCases.count)")
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let group = providerGroups[indexPath.item]
+        cell.textLabel?.text = group.groupedDisplayName
+        cell.accessoryType = .disclosureIndicator
+        return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -145,8 +122,10 @@ extension ProviderListViewController: ProviderContextDelegate {
     }
 }
 
-extension ProviderListViewController: TextFieldCellDelegate {
-    func textFieldCell(_ cell: TextFieldCell, willChangeToText text: String) {
-        providerGroups = providerContext.search(text)
+extension ProviderListViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        if let text = searchController.searchBar.text {
+            providerGroups = providerContext.search(text)
+        }
     }
 }
