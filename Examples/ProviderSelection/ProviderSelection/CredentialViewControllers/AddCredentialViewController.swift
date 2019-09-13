@@ -1,14 +1,13 @@
 import UIKit
 import TinkLink
 
-/**
- Example of how to use the provider field specification to add credential
- */
+/// Example of how to use the provider field specification to add credential
 final class AddCredentialViewController: UITableViewController {
     var credentialContext: CredentialContext?
     let provider: Provider
-    
+
     private var form: Form
+    private var task: AddCredentialTask?
     private var statusViewController: AddCredentialStatusViewController?
     private lazy var doneBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addCredential))
     private var didFirstFieldBecomeFirstResponder = false
@@ -85,10 +84,12 @@ extension AddCredentialViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
         do {
             try form.validateValues()
-            credentialContext?.addCredential(for: provider, form: form, progressHandler: onUpdate, completion: onCompletion)
+            task = credentialContext?.addCredential(for: provider, form: form, progressHandler: onUpdate, completion: onCompletion)
         } catch let error as Form.FieldsError {
+            // TODO: Handle Error
             print(error.errors)
         } catch {
+            // TODO: Handle Error
             print(error)
         }
     }
@@ -125,7 +126,7 @@ extension AddCredentialViewController {
         let supplementalInformationViewController = SupplementalInformationViewController(supplementInformationTask: supplementInformationTask)
         supplementalInformationViewController.delegate = self
         let navigationController = UINavigationController(rootViewController: supplementalInformationViewController)
-        show(navigationController, sender: self)
+        show(navigationController, sender: nil)
     }
     
     private func showUpdating(status: String) {
@@ -148,7 +149,7 @@ extension AddCredentialViewController {
     private func showCredentialUpdated(for credential: Credential) {
         hideUpdatingView()
         let finishedCredentialUpdatedViewController = FinishedCredentialUpdatedViewController(credential: credential)
-        show(finishedCredentialUpdatedViewController, sender: self)
+        show(finishedCredentialUpdatedViewController, sender: nil)
     }
 }
 
@@ -169,6 +170,6 @@ extension AddCredentialViewController: SupplementalInformationViewControllerDele
 
     func supplementalInformationViewController(_ viewController: SupplementalInformationViewController, didSupplementInformationForCredential credential: Credential) {
         dismiss(animated: true)
-        // Maybe show loading
+        // TODO: Maybe show loading
     }
 }

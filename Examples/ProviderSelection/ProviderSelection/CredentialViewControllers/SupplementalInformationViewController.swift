@@ -1,14 +1,12 @@
 import UIKit
 import TinkLink
 
-/**
- Example of how to use the credential field supplementa information to update credential
- */
 protocol SupplementalInformationViewControllerDelegate: AnyObject {
     func supplementalInformationViewControllerDidCancel(_ viewController: SupplementalInformationViewController)
     func supplementalInformationViewController(_ viewController: SupplementalInformationViewController, didSupplementInformationForCredential credential: Credential)
 }
 
+/// Example of how to use the credential field supplemental information to update credential
 final class SupplementalInformationViewController: UITableViewController {
     
     let supplementInformationTask: SupplementInformationTask
@@ -89,8 +87,10 @@ extension SupplementalInformationViewController {
             supplementInformationTask.submit(form)
             self.delegate?.supplementalInformationViewController(self, didSupplementInformationForCredential: supplementInformationTask.credential)
         } catch let fieldSpecificationsError as Form.FieldsError {
+            // TODO: Handle Error
             print(fieldSpecificationsError.errors)
         } catch {
+            // TODO: Handle Error
             print(error)
         }
     }

@@ -3,12 +3,17 @@ import TinkLink
 
 class ProviderMarketsViewController: UIViewController {
     private var providerMarketContext = ProviderMarketContext()
+
+    // MARK: Views
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     private lazy var effectView = UIVisualEffectView(effect: UIBlurEffect(style: .extraLight))
     private lazy var separatorLine = UIView()
+
+    // MARK: View Controllers
     private var providerListViewController: ProviderListViewController?
     private let searchController = UISearchController(searchResultsController: nil)
-    
+
+    // MARK: Initializers
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -18,6 +23,7 @@ class ProviderMarketsViewController: UIViewController {
     }
 }
 
+// MARK: - View Lifecycle
 extension ProviderMarketsViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +32,7 @@ extension ProviderMarketsViewController {
         
         providerMarketContext.delegate = self
         
-        let collectionViewLayout = UICollectionViewFlowLayout()
+        let collectionViewLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         collectionViewLayout.scrollDirection = .horizontal
         collectionViewLayout.itemSize = CGSize(width: 56, height: 44)
         collectionViewLayout.minimumLineSpacing = 0
@@ -41,7 +47,10 @@ extension ProviderMarketsViewController {
         
         setup()
     }
-    
+}
+
+// MARK: - Setup
+extension ProviderMarketsViewController {
     private func setup() {
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search"
@@ -96,6 +105,7 @@ extension ProviderMarketsViewController {
     }
 }
 
+// MARK: - ProviderMarketContextDelegate
 extension ProviderMarketsViewController: ProviderMarketContextDelegate {
     func providerMarketContext(_ store: ProviderMarketContext, didUpdateMarkets markets: [Market]) {
         DispatchQueue.main.async {
@@ -108,9 +118,11 @@ extension ProviderMarketsViewController: ProviderMarketContextDelegate {
     }
     
     func providerMarketContext(_ store: ProviderMarketContext, didReceiveError error: Error) {
+        // TODO: Handle Error
     }
 }
 
+// MARK: - UICollectionViewDelegate
 extension ProviderMarketsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let market = providerMarketContext.markets[indexPath.item]
@@ -122,6 +134,7 @@ extension ProviderMarketsViewController: UICollectionViewDelegate {
     }
 }
 
+// MARK: - UICollectionViewDataSource
 extension ProviderMarketsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return providerMarketContext.markets.count
@@ -132,28 +145,5 @@ extension ProviderMarketsViewController: UICollectionViewDataSource {
         let market = providerMarketContext.markets[indexPath.item]
         marketCell.labelView.text = market.emojiFlag
         return marketCell
-    }
-}
-
-class MarketCell: UICollectionViewCell {
-    let labelView = UILabel()
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        selectedBackgroundView = UIView()
-        selectedBackgroundView?.backgroundColor = UIColor(white: 0.85, alpha: 1.0)
-        
-        labelView.font = UIFont.preferredFont(forTextStyle: .title1)
-        labelView.backgroundColor = .clear
-        labelView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.addSubview(labelView)
-        NSLayoutConstraint.activate([
-            labelView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            labelView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
-            ])
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }

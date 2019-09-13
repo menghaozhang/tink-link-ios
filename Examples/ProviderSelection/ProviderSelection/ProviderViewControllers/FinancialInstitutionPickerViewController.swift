@@ -1,9 +1,7 @@
 import UIKit
 import TinkLink
 
-/**
- Example of how to use the provider grouped by financialInstitution
- */
+/// Example of how to use the provider grouped by financialInstitution
 final class FinancialInstitutionPickerViewController: UITableViewController {
     
     var financialInsititutionGroups: [FinancialInsititutionGroup] = []
@@ -63,6 +61,6 @@ extension FinancialInstitutionPickerViewController {
     
     func showAddCredential(for provider: Provider) {
         let addCredentialViewController = AddCredentialViewController(provider: provider)
-        show(addCredentialViewController, sender: self)
+        show(addCredentialViewController, sender: nil)
     }
 }

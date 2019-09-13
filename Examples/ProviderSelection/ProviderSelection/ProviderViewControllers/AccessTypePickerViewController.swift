@@ -1,9 +1,7 @@
 import UIKit
 import TinkLink
 
-/**
- Example of how to use the provider grouped by access type
- */
+/// Example of how to use the provider grouped by access type
 final class AccessTypePickerViewController: UITableViewController {
     
     var providerAccessTypeGroups: [ProviderAccessTypeGroup] = []
@@ -56,6 +54,6 @@ extension AccessTypePickerViewController {
     
     func showAddCredential(for provider: Provider) {
         let addCredentialViewController = AddCredentialViewController(provider: provider)
-        show(addCredentialViewController, sender: self)
+        show(addCredentialViewController, sender: nil)
     }
 }
