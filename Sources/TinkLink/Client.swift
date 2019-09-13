@@ -3,6 +3,7 @@ import SwiftGRPC
 
 final class Client {
     let channel: Channel
+    private var cancellable: Cancellable?
 
     convenience init(environment: Environment, clientKey: String, userAgent: String? = nil, certificateURL: URL? = nil) {
         let certificateContents = certificateURL.flatMap { try? String(contentsOf: $0, encoding: .utf8) }
@@ -22,6 +23,17 @@ final class Client {
             self.channel = Channel(address: environment.url.absoluteString, certificates: certificateContents, clientCertificates: nil, clientKey: clientKey, arguments: arguments)
         } else {
             self.channel = Channel(address: environment.url.absoluteString, secure: true, arguments: arguments)
+        }
+    }
+    
+    func fetchAccessToken() {
+        guard cancellable == nil else { return }
+        cancellable = userService.createAnonymous { [weak self] result in
+            guard let self = self else { return }
+            if let accessToken = try? result.get() {
+                self.accessToken = accessToken
+            }
+            self.cancellable = nil
         }
     }
     
