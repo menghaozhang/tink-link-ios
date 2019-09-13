@@ -32,6 +32,15 @@ extension ProcessInfo {
 }
 
 extension Metadata {
+    func addAccessToken(_ token: String? = nil) throws {
+        let info = ProcessInfo.processInfo
+        if let bearerToken = info.tinkBearerToken {
+            try add(key: "Authorization".lowercased(), value: "Bearer \(bearerToken)")
+        } else if let accessToken = token {
+            try add(key: "Authorization".lowercased(), value: "Bearer \(accessToken)")
+        }
+    }
+    
     func addTinkMetadata() throws {
         let info = ProcessInfo.processInfo
         if let clientKey = info.tinkClientKey {
@@ -46,8 +55,6 @@ extension Metadata {
         if let oAuthClientID = info.tinkOAuthClientID {
             try add(key: "X-Tink-OAuth-Client-ID".lowercased(), value: oAuthClientID)
         }
-        if let bearerToken = info.tinkBearerToken {
-            try add(key: "Authorization".lowercased(), value: "Bearer \(bearerToken)")
-        }
+        try addAccessToken()
     }
 }
