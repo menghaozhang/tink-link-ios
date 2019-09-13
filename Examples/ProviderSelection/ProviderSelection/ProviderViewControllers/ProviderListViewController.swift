@@ -105,6 +105,7 @@ extension ProviderListViewController {
     }
 }
 
+// MARK: - ProviderContextDelegate
 extension ProviderListViewController: ProviderContextDelegate {
     func providerContext(_ context: ProviderContext, didUpdateProviders providers: [Provider]) {
         providerGroups = context.providerGroups
@@ -115,6 +116,7 @@ extension ProviderListViewController: ProviderContextDelegate {
     }
 }
 
+// MARK: - UISearchResultsUpdating
 extension ProviderListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if let text = searchController.searchBar.text {
