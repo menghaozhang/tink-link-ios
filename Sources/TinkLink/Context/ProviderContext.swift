@@ -6,8 +6,7 @@ public protocol ProviderContextDelegate: AnyObject {
 }
 
 public class ProviderContext {
-    public struct Attributes {
-        let id = UUID()
+    public struct Attributes: Hashable {
         public let capabilities: Provider.Capabilities
         public let includeTestProviders: Bool
         public let accessTypes: Set<Provider.AccessType>

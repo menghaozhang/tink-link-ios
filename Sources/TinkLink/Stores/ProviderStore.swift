@@ -9,7 +9,7 @@ final class ProviderStore {
 
     private var service: ProviderService
     private var marketFetchCanceller: Cancellable?
-    private var providerFetchCancellers: [UUID: Cancellable?] = [:]
+    private var providerFetchCancellers: [ProviderContext.Attributes: Cancellable?] = [:]
 
     var providerMarketGroups: [Market: [Provider]] = [:] {
         didSet {
@@ -24,7 +24,7 @@ final class ProviderStore {
     }
     
     func performFetchProvidersIfNeeded(for attributes: ProviderContext.Attributes) {
-        guard providerFetchCancellers[attributes.id] == nil else {
+        guard providerFetchCancellers[attributes] == nil else {
             return
         }
         let cancellable = service.providers(market: attributes.market, capabilities: attributes.capabilities, includeTestProviders: attributes.includeTestProviders) { [weak self, attributes] result in
@@ -38,10 +38,10 @@ final class ProviderStore {
                     break
                     //error
                 }
-                self.providerFetchCancellers[attributes.id] = nil
+                self.providerFetchCancellers[attributes] = nil
             }
         }
-        providerFetchCancellers[attributes.id] = cancellable
+        providerFetchCancellers[attributes] = cancellable
     }
     
     func performFetchMarketsIfNeeded() {
