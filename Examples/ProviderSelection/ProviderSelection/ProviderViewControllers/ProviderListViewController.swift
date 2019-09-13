@@ -43,7 +43,6 @@ final class ProviderListViewController: UITableViewController {
 
 // MARK: - View Lifecycle
 extension ProviderListViewController {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
