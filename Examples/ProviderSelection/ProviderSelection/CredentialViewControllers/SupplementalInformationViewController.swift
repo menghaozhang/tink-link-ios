@@ -1,12 +1,12 @@
 import UIKit
 import TinkLink
 
-/// Example of how to use the credential field supplementa information to update credential
 protocol SupplementalInformationViewControllerDelegate: AnyObject {
     func supplementalInformationViewControllerDidCancel(_ viewController: SupplementalInformationViewController)
     func supplementalInformationViewController(_ viewController: SupplementalInformationViewController, didSupplementInformationForCredential credential: Credential)
 }
 
+/// Example of how to use the credential field supplemental information to update credential
 final class SupplementalInformationViewController: UITableViewController {
     
     let supplementInformationTask: SupplementInformationTask
