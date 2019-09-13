@@ -35,6 +35,7 @@ public class ProviderContext {
     public init(market: Market) {
         self.market = market
         _providers = providerStore.providerMarketGroups[market]
+        _providerGroups = _providers.map{ makeGroups($0) }
         providerStoreObserver = NotificationCenter.default.addObserver(forName: .providerStoreMarketGroupsChanged, object: providerStore, queue: .main) { [weak self] _ in
             guard let self = self else {
                 return
