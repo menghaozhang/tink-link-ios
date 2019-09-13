@@ -1,9 +1,7 @@
 import UIKit
 import TinkLink
 
-/**
- Example of how to use the provider field specification to add credential
- */
+/// Example of how to use the provider field specification to add credential
 final class AddCredentialViewController: UITableViewController {
     var credentialContext: CredentialContext?
     let provider: Provider

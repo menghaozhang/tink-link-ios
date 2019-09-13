@@ -1,9 +1,7 @@
 import UIKit
 import TinkLink
 
-/**
- Example of how to use the provider grouped by names
- */
+/// Example of how to use the provider grouped by names
 final class ProviderListViewController: UITableViewController {
     private var market: Market
     var providerContext: ProviderContext {
