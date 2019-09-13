@@ -36,22 +36,22 @@ final class Client {
     private var tokenConfigurableServices: [TokenConfigurableServiceBase] = []
 
     private(set) lazy var providerService: ProviderService = {
-        let service = ProviderService(channel: channel)
+        let service = ProviderService(channel: channel, accessToken: accessToken)
         tokenConfigurableServices.append(service)
         return service
     }()
     private(set) lazy var credentialService: CredentialService = {
-        let service = CredentialService(channel: channel)
+        let service = CredentialService(channel: channel, accessToken: accessToken)
         tokenConfigurableServices.append(service)
         return service
     }()
     private(set) lazy var accountService: AccountService = {
-        let service = AccountService(channel: channel)
+        let service = AccountService(channel: channel, accessToken: accessToken)
         tokenConfigurableServices.append(service)
         return service
     }()
     private(set) lazy var authenticationService: AuthenticationService = {
-        let service = AuthenticationService(channel: channel)
+        let service = AuthenticationService(channel: channel, accessToken: accessToken)
         tokenConfigurableServices.append(service)
         return service
     }()

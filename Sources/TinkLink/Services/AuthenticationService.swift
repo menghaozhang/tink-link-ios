@@ -4,8 +4,11 @@ import SwiftGRPC
 public final class AuthenticationService: TokenConfigurableService, TokenConfigurableServiceBase {
     let channel: Channel
 
-    init(channel: Channel) {
+    init(channel: Channel, accessToken: AccessToken? = nil) {
         self.channel = channel
+        if let accessToken = accessToken {
+            configure(accessToken)
+        }
     }
 
     internal lazy var service: AuthenticationServiceServiceClient = {
