@@ -45,6 +45,7 @@ extension ProviderListViewController {
         super.viewDidLoad()
         
         providerContext.delegate = self
+
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
     }
