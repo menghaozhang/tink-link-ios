@@ -9,7 +9,7 @@ final class ProviderStore {
 
     private var service: ProviderService
     private var marketFetchCanceller: Cancellable?
-    private var providerFetchCancellers: [ProviderContext.Attributes: Cancellable?] = [:]
+    private var providerFetchCancellers: [ProviderContext.Attributes: Cancellable] = [:]
 
     var providerMarketGroups: [Market: [Provider]] = [:] {
         didSet {
