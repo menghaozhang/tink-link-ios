@@ -1,13 +1,13 @@
 import SwiftGRPC
 
-public final class ProviderService {
+public class ProviderService: TokenConfigurableService, TokenConfigurableServiceBase {
     let channel: Channel
 
     init(channel: Channel) {
         self.channel = channel
     }
 
-    private lazy var service: ProviderServiceServiceClient = {
+    internal lazy var service: ProviderServiceServiceClient = {
         let service = ProviderServiceServiceClient(channel: channel)
         do {
             try service.metadata.addTinkMetadata()
@@ -43,5 +43,4 @@ public final class ProviderService {
 
         return startCall(for: request, method: service.listProviderMarkets, responseMap: { $0.providerMarkets.map({ Market(code: $0.code) }) }, completion: completion)
     }
-
 }

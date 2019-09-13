@@ -1,13 +1,13 @@
 import SwiftGRPC
 
-public final class AccountService {
+public final class AccountService: TokenConfigurableService, TokenConfigurableServiceBase {
     let channel: Channel
     
     init(channel: Channel) {
         self.channel = channel
     }
     
-    private lazy var service: AccountServiceServiceClient = {
+    internal lazy var service: AccountServiceServiceClient = {
         let service = AccountServiceServiceClient(channel: channel)
         do {
             try service.metadata.addTinkMetadata()

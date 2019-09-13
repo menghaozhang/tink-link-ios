@@ -1,13 +1,13 @@
 import SwiftGRPC
 
-public final class CredentialService {
+public final class CredentialService: TokenConfigurableService, TokenConfigurableServiceBase {
     let channel: Channel
 
     init(channel: Channel) {
         self.channel = channel
     }
 
-    private lazy var service: CredentialServiceServiceClient = {
+    internal lazy var service: CredentialServiceServiceClient = {
         let service = CredentialServiceServiceClient(channel: channel)
         do {
             try service.metadata.addTinkMetadata()

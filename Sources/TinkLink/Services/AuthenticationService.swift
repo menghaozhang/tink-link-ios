@@ -1,14 +1,14 @@
 import Foundation
 import SwiftGRPC
 
-public final class AuthenticationService {
+public final class AuthenticationService: TokenConfigurableService, TokenConfigurableServiceBase {
     let channel: Channel
 
     init(channel: Channel) {
         self.channel = channel
     }
 
-    private lazy var service: AuthenticationServiceServiceClient = {
+    internal lazy var service: AuthenticationServiceServiceClient = {
         let service = AuthenticationServiceServiceClient(channel: channel)
         do {
             try service.metadata.addTinkMetadata()
