@@ -5,7 +5,7 @@ import TinkLink
 final class AddCredentialViewController: UITableViewController {
     var credentialContext: CredentialContext?
     let provider: Provider
-    
+
     private var form: Form
     private var task: AddCredentialTask?
     private var statusViewController: AddCredentialStatusViewController?
