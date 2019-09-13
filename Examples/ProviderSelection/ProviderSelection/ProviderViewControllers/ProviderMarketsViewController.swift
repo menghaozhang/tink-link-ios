@@ -32,7 +32,7 @@ extension ProviderMarketsViewController {
         
         providerMarketContext.delegate = self
         
-        let collectionViewLayout = UICollectionViewFlowLayout()
+        let collectionViewLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         collectionViewLayout.scrollDirection = .horizontal
         collectionViewLayout.itemSize = CGSize(width: 56, height: 44)
         collectionViewLayout.minimumLineSpacing = 0
