@@ -17,7 +17,7 @@ final class AccountStore {
     private var service: AccountService
     private var listAccountCanceller: Cancellable?
     
-    var accounts: [Account] = [] {
+    var accounts: [Account]? {
         didSet {
             NotificationCenter.default.post(name: .accountStoreChanged, object: self)
         }

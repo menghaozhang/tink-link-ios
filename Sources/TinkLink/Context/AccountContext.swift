@@ -5,12 +5,16 @@ public protocol AccountContextDelegate: AnyObject {
 
 public class AccountContext {
     public init() {
-        _accounts = Dictionary(grouping: accountStore.accounts, by: { $0.credentialID })
+        if let accounts = accountStore.accounts {
+            _accounts = Dictionary(grouping: accounts, by: { $0.credentialID })
+        }
         accountStoreObserver = NotificationCenter.default.addObserver(forName: .accountStoreChanged, object: accountStore, queue: .main) { [weak self] _ in
-            guard let strongSelf = self else {
+            guard let self = self else {
                 return
             }
-            strongSelf._accounts = Dictionary(grouping: strongSelf.accountStore.accounts, by: { $0.credentialID })
+            if let accounts = self.accountStore.accounts {
+                self._accounts = Dictionary(grouping: accounts, by: { $0.credentialID })
+            }
         }
     }
     
