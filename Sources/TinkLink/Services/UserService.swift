@@ -21,7 +21,7 @@ public final class UserService {
     public func createAnonymous(market: Market? = nil, locale: Locale = .current, origin: String? = nil, completion: @escaping (Result<AccessToken, Error>) -> Void) -> Cancellable {
         var request = GRPCCreateAnonymousRequest()
         request.market = market?.code ?? ""
-        // TODO: Use the correct/acceptable locale
+        // TODO: Use the correct/acceptable locale PFMF-1298
         request.locale = "sv_SE"
         request.origin = origin ?? ""
 
