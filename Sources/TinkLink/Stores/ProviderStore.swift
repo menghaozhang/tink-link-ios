@@ -8,7 +8,6 @@ final class ProviderStore {
         authenticationManager = AuthenticationManager.shared
     }
     private let authenticationManager: AuthenticationManager
-    private let dispatchGroup = DispatchGroup()
     private var service: ProviderService
     private var marketFetchCanceller: Cancellable?
     private var providerFetchCancellers: [ProviderContext.Attributes: Cancellable] = [:]

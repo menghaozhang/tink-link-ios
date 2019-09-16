@@ -9,7 +9,6 @@ final class AccountStore {
     }
     
     private let authenticationManager: AuthenticationManager
-    private let dispatchGroup = DispatchGroup()
     private var service: AccountService
     private var listAccountCanceller: Cancellable?
     

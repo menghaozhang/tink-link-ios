@@ -8,7 +8,6 @@ final class CredentialStore {
             NotificationCenter.default.post(name: .credentialStoreChanged, object: self)
         }
     }
-    private let dispatchGroup = DispatchGroup()
     private let authenticationManager: AuthenticationManager
     private var service: CredentialService
     private var createCredentialCanceller: [Identifier<Provider>: Cancellable] = [:]
