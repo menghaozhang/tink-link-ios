@@ -1,15 +1,15 @@
 import Foundation
 
 public protocol ProviderContextDelegate: AnyObject {
-    func providerContextWillUpdateProviders(_ context: ProviderContext)
-    func providerContext(_ context: ProviderContext, didUpdateProviders providers: [Provider])
+    func providerContextWillChangeProviders(_ context: ProviderContext)
+    func providerContext(_ context: ProviderContext, didChangeProviders providers: [Provider])
     func providerContext(_ context: ProviderContext, didReceiveError error: Error)
-    func providerContextDidUpdateProviders(_ context: ProviderContext)
+    func providerContextDidChangeProviders(_ context: ProviderContext)
 }
 
 extension ProviderContextDelegate {
-    func providerContextWillUpdateProviders(_ context: ProviderContext) { }
-    func providerContextDidUpdateProviders(_ context: ProviderContext) { }
+    func providerContextWillChangeProviders(_ context: ProviderContext) { }
+    func providerContextDidChangeProviders(_ context: ProviderContext) { }
 }
 
 public class ProviderContext {
@@ -42,10 +42,10 @@ public class ProviderContext {
                 _providerGroups = nil
                 return
             }
-            delegate?.providerContextWillUpdateProviders(self)
+            delegate?.providerContextWillChangeProviders(self)
             _providerGroups = makeGroups(providers)
-            delegate?.providerContext(self, didUpdateProviders: providers)
-            delegate?.providerContextDidUpdateProviders(self)
+            delegate?.providerContext(self, didChangeProviders: providers)
+            delegate?.providerContextDidChangeProviders(self)
         }
     }
     
