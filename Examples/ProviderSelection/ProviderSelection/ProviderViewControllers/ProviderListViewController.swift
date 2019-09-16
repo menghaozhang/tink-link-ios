@@ -49,12 +49,13 @@ extension ProviderListViewController {
         searchController.searchBar.placeholder = "Search"
         searchController.searchResultsUpdater = self
         navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true
         
         title = "Choose Bank"
         view.backgroundColor = .white
         providerContext.delegate = self
-
+        
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
     }
