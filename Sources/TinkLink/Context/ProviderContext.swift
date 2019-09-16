@@ -1,8 +1,15 @@
 import Foundation
 
 public protocol ProviderContextDelegate: AnyObject {
+    func providerContextWillUpdateProviders(_ context: ProviderContext)
     func providerContext(_ context: ProviderContext, didUpdateProviders providers: [Provider])
     func providerContext(_ context: ProviderContext, didReceiveError error: Error)
+    func providerContextDidUpdateProviders(_ context: ProviderContext)
+}
+
+extension ProviderContextDelegate {
+    func providerContextWillUpdateProviders(_ context: ProviderContext) { }
+    func providerContextDidUpdateProviders(_ context: ProviderContext) { }
 }
 
 public class ProviderContext {
@@ -35,8 +42,10 @@ public class ProviderContext {
                 _providerGroups = nil
                 return
             }
+            delegate?.providerContextWillUpdateProviders(self)
             _providerGroups = makeGroups(providers)
             delegate?.providerContext(self, didUpdateProviders: providers)
+            delegate?.providerContextDidUpdateProviders(self)
         }
     }
     
