@@ -53,14 +53,13 @@ final class ProviderStore {
             }
             let cancellable = self.service.providerMarkets { result in
                 DispatchQueue.main.async {
-                    self.markets = [Market(code: "SE"), Market(code: "NO")]
-                    //                switch result {
-                    //                case .success(let markets):
-                    //                    self.markets = markets
-                    //                case .failure:
-                    //                    break
-                    //                    //error
-                    //                }
+                    switch result {
+                    case .success(let markets):
+                        self.markets = markets
+                    case .failure:
+                        break
+                        //error
+                    }                    
                     self.marketFetchCanceller = nil
                 }
             }
