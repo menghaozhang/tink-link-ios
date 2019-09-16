@@ -44,6 +44,7 @@ public class ProviderContext {
         }
     }
     
+    // TODO: performFetch is triggered multiple times
     private func performFetch() {
         providerStore.performFetchProvidersIfNeeded(for: market)
     }
