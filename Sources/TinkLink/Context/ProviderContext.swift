@@ -63,12 +63,16 @@ public class ProviderContext {
     
     public init(attributes: Attributes) {
         self.attributes = attributes
-        _providers = providerStore.providerMarketGroups[attributes.market]
+        _providers = try? providerStore.providerMarketGroups[attributes.market]?.get()
         providerStoreObserver = NotificationCenter.default.addObserver(forName: .providerStoreMarketGroupsChanged, object: providerStore, queue: .main) { [weak self] _ in
             guard let self = self else {
                 return
             }
-            self._providers = self.providerStore.providerMarketGroups[attributes.market]
+            do {
+                self._providers = try self.providerStore.providerMarketGroups[attributes.market]?.get()
+            } catch {
+                self.delegate?.providerContext(self, didReceiveError: error)
+            }
         }
     }
     

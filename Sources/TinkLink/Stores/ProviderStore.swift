@@ -11,7 +11,7 @@ final class ProviderStore {
     private var marketFetchCanceller: Cancellable?
     private var providerFetchCancellers: [ProviderContext.Attributes: Cancellable] = [:]
 
-    var providerMarketGroups: [Market: [Provider]] = [:] {
+    var providerMarketGroups: [Market: Result<[Provider], Error>] = [:] {
         didSet {
             NotificationCenter.default.post(name: .providerStoreMarketGroupsChanged, object: self)
         }
@@ -33,10 +33,9 @@ final class ProviderStore {
                 switch result {
                 case .success(let fetchedProviders):
                     let filteredProviders = fetchedProviders.filter({ attributes.accessTypes.contains($0.accessType) })
-                    self.providerMarketGroups[attributes.market] = filteredProviders
-                case .failure:
-                    break
-                    //error
+                    self.providerMarketGroups[attributes.market] = .success(filteredProviders)
+                case .failure(let error):
+                    self.providerMarketGroups[attributes.market] = .failure(error)
                 }
                 self.providerFetchCancellers[attributes] = nil
             }
