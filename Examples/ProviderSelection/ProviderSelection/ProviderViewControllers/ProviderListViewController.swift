@@ -10,6 +10,7 @@ final class ProviderListViewController: UITableViewController {
         }
     }
     
+    private let searchController = UISearchController(searchResultsController: nil)
     private var providerGroups: [ProviderGroup] {
         didSet {
             tableView.reloadData()
@@ -44,6 +45,14 @@ extension ProviderListViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search"
+        searchController.searchResultsUpdater = self
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+        
+        title = "Choose Bank"
+        view.backgroundColor = .white
         providerContext.delegate = self
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
