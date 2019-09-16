@@ -5,9 +5,9 @@ final class ProviderStore {
 
     private init() {
         service = TinkLink.shared.client.providerService
-        if TinkLink.shared.client.accessToken == nil {
+        if UserStore.shared.accessToken == nil {
             dispatchGroup.enter()
-            TinkLink.shared.client.fetchAccessToken { [weak self] _ in
+            UserStore.shared.fetchAccessToken { [weak self] _ in
                 self?.dispatchGroup.leave()
             }
         }

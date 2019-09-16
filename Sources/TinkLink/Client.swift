@@ -3,8 +3,15 @@ import SwiftGRPC
 
 final class Client {
     let channel: Channel
-    private var cancellable: Cancellable?
-
+    private var accessToken: AccessToken? {
+        didSet {
+            if let accessToken = accessToken {
+                tokenConfigurableServices.forEach { $0.configure(accessToken) }
+            }
+        }
+    }
+    private var tokenStoreObserver: Any?
+    
     convenience init(environment: Environment, clientKey: String, userAgent: String? = nil, certificateURL: URL? = nil) {
         let certificateContents = certificateURL.flatMap { try? String(contentsOf: $0, encoding: .utf8) }
         self.init(environment: environment, clientKey: clientKey, userAgent: userAgent, certificate: certificateContents)
@@ -24,26 +31,10 @@ final class Client {
         } else {
             self.channel = Channel(address: environment.url.absoluteString, secure: true, arguments: arguments)
         }
-    }
-    
-    func fetchAccessToken(completion: @escaping (Result<AccessToken, Error>) -> Void) {
-        guard cancellable == nil else { return }
-        cancellable = userService.createAnonymous(market: Market(code: "SE")) { [weak self] result in
-            guard let self = self else { return }
-            if let accessToken = try? result.get() {
-                self.accessToken = accessToken
-            }
-            self.cancellable = nil
-            completion(result)
-        }
-    }
-    
-    var accessToken: AccessToken? {
-        didSet {
-            if let accessToken = accessToken {
-                tokenConfigurableServices.forEach { $0.configure(accessToken) }
-            }
-        }
+        
+        tokenStoreObserver = NotificationCenter.default.addObserver(forName: .accessTokenChanged, object: nil, queue: .main, using: { [weak self] notification in
+            self?.accessToken = notification.userInfo?["access_token"] as? AccessToken
+        })
     }
     
     private var tokenConfigurableServices: [TokenConfigurableServiceBase] = []

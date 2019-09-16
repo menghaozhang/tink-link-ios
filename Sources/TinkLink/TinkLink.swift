@@ -66,7 +66,7 @@ public class TinkLink {
     }
     
     public static func warmUp() {
-        shared.client.fetchAccessToken {_ in }
+        UserStore.shared.fetchAccessToken { _ in }
     }
     
     private init() {
