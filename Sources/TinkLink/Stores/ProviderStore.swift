@@ -17,7 +17,7 @@ final class ProviderStore {
         }
     }
     
-    var markets: [Market]? {
+    var markets: Result<[Market], Error>? {
         didSet {
             NotificationCenter.default.post(name: .providerStoreMarketsChanged, object: self)
         }
@@ -50,13 +50,7 @@ final class ProviderStore {
         let cancellable = service.providerMarkets { [weak self] result in
             guard let self = self else { return }
             DispatchQueue.main.async {
-                switch result {
-                case .success(let markets):
-                    self.markets = markets
-                case .failure:
-                    break
-                    //error
-                }
+                self.markets = result
                 self.marketFetchCanceller = nil
             }
         }

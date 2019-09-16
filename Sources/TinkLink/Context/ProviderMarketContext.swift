@@ -12,10 +12,14 @@ extension ProviderMarketContextDelegate {
 
 public class ProviderMarketContext {
     public init() {
-        _markets = providerStore.markets?.sortedWithCurrentRegionFirst()
+        _markets = try? providerStore.markets?.get().sortedWithCurrentRegionFirst()
         NotificationCenter.default.addObserver(forName: .providerStoreMarketsChanged, object: providerStore, queue: .main) { [weak self] _ in
             guard let self = self else { return }
-            self._markets = self.providerStore.markets?.sortedWithCurrentRegionFirst() ?? []
+            do {
+                self._markets = try self.providerStore.markets?.get().sortedWithCurrentRegionFirst() ?? []
+            } catch {
+                self.delegate?.providerMarketContext(self, didReceiveError: error)
+            }
         }
     }
     
