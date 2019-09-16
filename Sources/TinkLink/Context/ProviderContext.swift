@@ -7,7 +7,7 @@ public protocol ProviderContextDelegate: AnyObject {
 }
 
 extension ProviderContextDelegate {
-    func providerContextWillChangeProviders(_ context: ProviderContext) { }
+    public func providerContextWillChangeProviders(_ context: ProviderContext) { }
 }
 
 public class ProviderContext {
