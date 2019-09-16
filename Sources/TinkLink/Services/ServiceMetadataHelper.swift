@@ -32,50 +32,37 @@ extension ProcessInfo {
 }
 
 extension Metadata {
-    private enum HeaderKeys: CustomStringConvertible {
-        case clientKey
-        case deviceId
-        case authorization
-        case clientId
-        
-        public var description: String {
-            switch self {
-            case .clientKey:
-                return "X-Tink-Client-Key".lowercased()
-            case .deviceId:
-                return  "X-Tink-Device-Id".lowercased()
-            case .authorization:
-                return "Authorization".lowercased()
-            case .clientId:
-                return "X-Tink-OAuth-Client-ID".lowercased()
-            }
-        }
+    private enum HeaderKeys: String {
+        case clientKey = "x-tin-client-key"
+        case deviceId = "x-tink-device-id"
+        case authorization = "authorization"
+        case clientId = "x-tink-oauth-client-id"
     }
     
     func addAccessToken(_ token: String? = nil) throws {
         let info = ProcessInfo.processInfo
         if let bearerToken = info.tinkBearerToken {
-            try add(key: "Authorization".lowercased(), value: "Bearer \(bearerToken)")
+            try add(key: HeaderKeys.authorization.rawValue, value: "Bearer \(bearerToken)")
         } else if let accessToken = token {
-            try add(key: "Authorization".lowercased(), value: "Bearer \(accessToken)")
+            try add(key: HeaderKeys.authorization.rawValue, value: "Bearer \(accessToken)")
         }
     }
     
     func addTinkMetadata() throws {
         let info = ProcessInfo.processInfo
         if let clientKey = info.tinkClientKey {
-            try add(key: HeaderKeys.clientKey.description, value: clientKey)
+            try add(key: HeaderKeys.clientKey.rawValue, value: clientKey)
         }
         if let deviceID = info.tinkDeviceID {
-            try add(key: HeaderKeys.deviceId.description, value: deviceID)
+            try add(key: HeaderKeys.deviceId.rawValue, value: deviceID)
         }
         if let sessionID = info.tinkSessionID {
-            try add(key: HeaderKeys.authorization.description, value: "Session \(sessionID)")
+            try add(key: HeaderKeys.authorization.rawValue, value: "Session \(sessionID)")
         }
         if let oAuthClientID = info.tinkOAuthClientID {
-            try add(key: HeaderKeys.clientId.description, value: oAuthClientID)
+            try add(key: HeaderKeys.clientId.rawValue, value: oAuthClientID)
         }
-        let authorization = dictionaryRepresentation[HeaderKeys.authorization.description]
+        let authorization = dictionaryRepresentation[HeaderKeys.authorization.rawValue]
         try addAccessToken(authorization)
     }
 }
