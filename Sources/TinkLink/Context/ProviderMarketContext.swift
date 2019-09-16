@@ -1,13 +1,13 @@
 import Foundation
 
 public protocol ProviderMarketContextDelegate: AnyObject {
-    func providerMarketContextWillChange(_ store: ProviderMarketContext)
-    func providerMarketContextDidChange(_ store: ProviderMarketContext)
-    func providerMarketContext(_ store: ProviderMarketContext, didReceiveError error: Error)
+    func providerMarketContextWillChange(_ context: ProviderMarketContext)
+    func providerMarketContextDidChange(_ context: ProviderMarketContext)
+    func providerMarketContext(_ context: ProviderMarketContext, didReceiveError error: Error)
 }
 
 extension ProviderMarketContextDelegate {
-    public func providerMarketContextWillChange(_ store: ProviderMarketContext) { }
+    public func providerMarketContextWillChange(_ context: ProviderMarketContext) { }
 }
 
 public class ProviderMarketContext {
