@@ -35,13 +35,11 @@ public class ProviderContext {
     private var providerStoreObserver: Any?
 
     private var _providers: [Provider]? {
-        didSet {
-            guard let providers = _providers else {
-                _providerGroups = nil
-                return
-            }
+        willSet {
             delegate?.providerContextWillChangeProviders(self)
-            _providerGroups = makeGroups(providers)
+        }
+        didSet {
+            _providerGroups = _providers.map(makeGroups)
             delegate?.providerContextDidChangeProviders(self)
         }
     }
