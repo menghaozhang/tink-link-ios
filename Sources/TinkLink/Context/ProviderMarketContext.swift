@@ -1,7 +1,7 @@
 import Foundation
 
 public protocol ProviderMarketContextDelegate: AnyObject {
-    func providerMarketContext(_ store: ProviderMarketContext, didUpdateMarkets markets: [Market])
+    func providerMarketContextDidChange(_ store: ProviderMarketContext)
     func providerMarketContext(_ store: ProviderMarketContext, didReceiveError error: Error)
 }
 
@@ -21,8 +21,7 @@ public class ProviderMarketContext {
 
     private var _markets: [Market]? {
         didSet {
-            guard let markets = _markets else { return }
-            delegate?.providerMarketContext(self, didUpdateMarkets: markets)
+            delegate?.providerMarketContextDidChange(self)
         }
     }
     
