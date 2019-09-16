@@ -7,6 +7,7 @@ public protocol ProviderContextDelegate: AnyObject {
 
 /// An object that accesses providers for a specific market and supports the grouping of providers.
 public class ProviderContext {
+    /// Attributes representing which providers a context should access.
     public struct Attributes: Hashable {
         public let capabilities: Provider.Capabilities
         public let includeTestProviders: Bool
