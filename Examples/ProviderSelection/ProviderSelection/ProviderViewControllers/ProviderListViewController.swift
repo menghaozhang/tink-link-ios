@@ -1,10 +1,9 @@
 import UIKit
 import TinkLink
 
-/**
- Example of how to use the provider grouped by names
- */
+/// Example of how to use the provider grouped by names
 final class ProviderListViewController: UITableViewController {
+    private var market: Market
     var providerContext: ProviderContext {
         didSet {
             tableView.reloadData()
@@ -18,7 +17,9 @@ final class ProviderListViewController: UITableViewController {
     }
     
     init(market: Market, style: UITableView.Style) {
-        providerContext = ProviderContext(market: market)
+        self.market = market
+        let attributes = ProviderContext.Attributes(capabilities: .checkingAccounts, includeTestProviders: false, accessTypes: Provider.AccessType.all, market: market)
+        providerContext = ProviderContext(attributes: attributes)
         providerGroups = providerContext.providerGroups
         super.init(style: style)
     }
@@ -28,6 +29,10 @@ final class ProviderListViewController: UITableViewController {
     }
     
     func updateMarket(market: Market) {
+        guard self.market != market else {
+            return
+        }
+        self.market = market
         providerContext = ProviderContext(market: market)
         providerGroups = providerContext.providerGroups
         providerContext.delegate = self
@@ -36,11 +41,11 @@ final class ProviderListViewController: UITableViewController {
 
 // MARK: - View Lifecycle
 extension ProviderListViewController {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         providerContext.delegate = self
+
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
     }
@@ -48,11 +53,6 @@ extension ProviderListViewController {
 
 // MARK: - UITableViewDataSource
 extension ProviderListViewController {
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return providerGroups.count
     }
@@ -102,30 +102,27 @@ extension ProviderListViewController {
     
     func showAddCredential(for provider: Provider) {
         let addCredentialViewController = AddCredentialViewController(provider: provider)
-        show(addCredentialViewController, sender: self)
+        show(addCredentialViewController, sender: nil)
     }
 }
 
+// MARK: - ProviderContextDelegate
 extension ProviderListViewController: ProviderContextDelegate {
     func providerContext(_ context: ProviderContext, didUpdateProviders providers: [Provider]) {
         providerGroups = context.providerGroups
     }
     
     func providerContext(_ context: ProviderContext, didReceiveError error: Error) {
+        // TODO: Handle Error
         print(error)
     }
 }
 
+// MARK: - UISearchResultsUpdating
 extension ProviderListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if let text = searchController.searchBar.text {
             providerGroups = providerContext.search(text)
         }
-    }
-}
-
-extension ProviderListViewController: TextFieldCellDelegate {
-    func textFieldCell(_ cell: TextFieldCell, willChangeToText text: String) {
-        providerGroups = providerContext.search(text)
     }
 }

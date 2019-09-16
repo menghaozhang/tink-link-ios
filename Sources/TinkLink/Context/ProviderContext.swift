@@ -6,7 +6,25 @@ public protocol ProviderContextDelegate: AnyObject {
 }
 
 public class ProviderContext {
-    var market: Market
+    public struct Attributes: Hashable {
+        public let capabilities: Provider.Capabilities
+        public let includeTestProviders: Bool
+        public let accessTypes: Set<Provider.AccessType>
+        public let market: Market
+        
+        public init(capabilities: Provider.Capabilities, includeTestProviders: Bool, accessTypes: Set<Provider.AccessType>, market: Market) {
+            self.capabilities = capabilities
+            self.includeTestProviders = includeTestProviders
+            self.accessTypes = accessTypes
+            self.market = market
+        }
+    }
+    
+    public var attributes: ProviderContext.Attributes {
+        didSet {
+            providerStore.performFetchProvidersIfNeeded(for: attributes)
+        }
+    }
 
     private let providerStore = ProviderStore.shared
     private var providerStoreObserver: Any?
@@ -32,21 +50,25 @@ public class ProviderContext {
         }
     }
     
-    public init(market: Market) {
-        self.market = market
-        _providers = providerStore.providerMarketGroups[market]
-        _providerGroups = _providers.map{ makeGroups($0) }
+    public convenience init(market: Market) {
+        let attributes = Attributes(capabilities: .all, includeTestProviders: false, accessTypes: Provider.AccessType.all, market: market)
+        self.init(attributes: attributes)
+    }
+    
+    public init(attributes: Attributes) {
+        self.attributes = attributes
+        _providers = providerStore.providerMarketGroups[attributes.market]
         providerStoreObserver = NotificationCenter.default.addObserver(forName: .providerStoreMarketGroupsChanged, object: providerStore, queue: .main) { [weak self] _ in
             guard let self = self else {
                 return
             }
-            self._providers = self.providerStore.providerMarketGroups[market]
+            self._providers = self.providerStore.providerMarketGroups[attributes.market]
         }
     }
     
     // TODO: performFetch is triggered multiple times
     private func performFetch() {
-        providerStore.performFetchProvidersIfNeeded(for: market)
+        providerStore.performFetchProvidersIfNeeded(for: attributes)
     }
     
     private func makeGroups(_ providers: [Provider]) -> [ProviderGroup] {

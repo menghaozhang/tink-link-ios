@@ -72,7 +72,7 @@ public struct Provider {
     public var displayDescription: String
 
     /// Indicates what a provider is capable of.
-    public struct Capabilities: OptionSet {
+    public struct Capabilities: OptionSet, Hashable {
         public let rawValue: Int
 
         public init(rawValue: Int) {
@@ -96,7 +96,7 @@ public struct Provider {
     /// Indicates what this provider is capable of, in terms of financial data it can aggregate and if it can execute payments.
     public var capabilities: Capabilities
 
-    public enum AccessType: CustomStringConvertible {
+    public enum AccessType: CustomStringConvertible, Hashable {
         case unknown
         case openBanking
         case other
@@ -111,6 +111,8 @@ public struct Provider {
                 return "Other"
             }
         }
+        
+        public static let all: Set<AccessType> = [.openBanking, .other, .unknown]
     }
 
     /// What Tink uses to access the data.

@@ -1,9 +1,7 @@
 import UIKit
 import TinkLink
 
-/**
- Example of how to use the provider grouped by credential type
- */
+/// Example of how to use the provider grouped by credential type
 final class CredentialTypePickerViewController: UITableViewController {
     
     var providers: [Provider] = []
@@ -44,6 +42,6 @@ extension CredentialTypePickerViewController {
 extension CredentialTypePickerViewController {
     func showAddCredential(for provider: Provider) {
         let addCredentialViewController = AddCredentialViewController(provider: provider)
-        show(addCredentialViewController, sender: self)
+        show(addCredentialViewController, sender: nil)
     }
 }

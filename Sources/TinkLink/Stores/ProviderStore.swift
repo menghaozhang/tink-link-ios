@@ -15,7 +15,7 @@ final class ProviderStore {
     private let dispatchGroup = DispatchGroup()
     private var service: ProviderService
     private var marketFetchCanceller: Cancellable?
-    private var providerFetchCancellers: [Market: Cancellable?] = [:]
+    private var providerFetchCancellers: [ProviderContext.Attributes: Cancellable] = [:]
 
     var providerMarketGroups: [Market: [Provider]] = [:] {
         didSet {
@@ -28,26 +28,27 @@ final class ProviderStore {
             NotificationCenter.default.post(name: .providerStoreMarketsChanged, object: self)
         }
     }
-    
-    func performFetchProvidersIfNeeded(for market: Market) {
+
+    func performFetchProvidersIfNeeded(for attributes: ProviderContext.Attributes) {
         dispatchGroup.notify(queue: .main) {
-            guard self.providerFetchCancellers[market] == nil else {
+            guard self.providerFetchCancellers[attributes] == nil else {
                 return
             }
-            let cancellable = self.service.providers(market: market, includeTestProviders: true) { [weak self, market] result in
+            let cancellable = self.service.providers(market: attributes.market, capabilities: attributes.capabilities, includeTestProviders: attributes.includeTestProviders) { [weak self, attributes] result in
                 guard let self = self else { return }
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let fetchedProviders):
-                        self.providerMarketGroups[market] = fetchedProviders
+                        let filteredProviders = fetchedProviders.filter({ attributes.accessTypes.contains($0.accessType) })
+                        self.providerMarketGroups[attributes.market] = filteredProviders
                     case .failure:
                         break
                         //error
                     }
-                    self.providerFetchCancellers[market] = nil
+                    self.providerFetchCancellers[attributes] = nil
                 }
             }
-            self.providerFetchCancellers[market] = cancellable
+            self.providerFetchCancellers[attributes] = cancellable
         }
     }
     
