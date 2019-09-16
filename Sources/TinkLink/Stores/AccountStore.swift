@@ -5,14 +5,10 @@ final class AccountStore {
     
     private init() {
         service = TinkLink.shared.client.accountService
-        if UserStore.shared.accessToken == nil {
-            dispatchGroup.enter()
-            UserStore.shared.fetchAccessToken { [weak self] _ in
-                self?.dispatchGroup.leave()
-            }
-        }
+        authenticationManager = AuthenticationManager.shared
     }
     
+    private let authenticationManager: AuthenticationManager
     private let dispatchGroup = DispatchGroup()
     private var service: AccountService
     private var listAccountCanceller: Cancellable?
@@ -24,7 +20,7 @@ final class AccountStore {
     }
     
     func performListAccountsIfNeeded() {
-        dispatchGroup.notify(queue: .main) { [weak self] in
+        authenticationManager.authenticateIfNeeded { [weak self] _ in
             guard let self = self, self.listAccountCanceller == nil else {
                 return
             }

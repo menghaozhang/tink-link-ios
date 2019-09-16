@@ -9,6 +9,7 @@ final class CredentialStore {
         }
     }
     private let dispatchGroup = DispatchGroup()
+    private let authenticationManager: AuthenticationManager
     private var service: CredentialService
     private var createCredentialCanceller: [Identifier<Provider>: Cancellable] = [:]
     private var credentialStatusPollingCanceller: [Identifier<Credential>: Cancellable] = [:]
@@ -17,16 +18,11 @@ final class CredentialStore {
     
     private init() {
         service = TinkLink.shared.client.credentialService
-        if UserStore.shared.accessToken == nil {
-            dispatchGroup.enter()
-            UserStore.shared.fetchAccessToken { [weak self] _ in
-                self?.dispatchGroup.leave()
-            }
-        }
+        authenticationManager = AuthenticationManager.shared
     }
     
     func addCredential(for provider: Provider, fields: [String: String], completion: @escaping(Result<Credential, Error>) -> Void) {
-        dispatchGroup.notify(queue: .main) { [weak self, provider] in
+        authenticationManager.authenticateIfNeeded { [weak self] _ in
             guard let self = self, self.createCredentialCanceller[provider.name] == nil else { return }
             let canceller = self.service.createCredential(providerName: provider.name, fields: fields, completion: { (result) in
                 DispatchQueue.main.async {
@@ -46,7 +42,7 @@ final class CredentialStore {
     }
     
     func addSupplementalInformation(for credential: Credential, supplementalInformationFields: [String: String]) {
-        dispatchGroup.notify(queue: .main) { [weak self] in
+        authenticationManager.authenticateIfNeeded { [weak self] _ in
             guard let self = self else { return }
             self.addSupplementalInformationCanceller[credential.id] = self.service.supplementInformation(credentialID: credential.id, fields: supplementalInformationFields) { result in
                 DispatchQueue.main.async {
@@ -65,7 +61,7 @@ final class CredentialStore {
     }
     
     func cancelSupplementInformation(for credential: Credential) {
-        dispatchGroup.notify(queue: .main) { [weak self] in
+        authenticationManager.authenticateIfNeeded { [weak self] _ in
             guard let self = self, self.cancelSupplementInformationCanceller[credential.id] == nil else { return }
             self.cancelSupplementInformationCanceller[credential.id] = self.service.cancelSupplementInformation(credentialID: credential.id) { result in
                 DispatchQueue.main.async {
@@ -82,6 +78,7 @@ final class CredentialStore {
         }
     }
     
+    // TODO: Create polling handler for handle all the pollings
     private func pollingStatus(for credential: Credential) {
         guard credentialStatusPollingCanceller[credential.id] == nil else { return }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {

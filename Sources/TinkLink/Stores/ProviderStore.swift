@@ -5,13 +5,9 @@ final class ProviderStore {
 
     private init() {
         service = TinkLink.shared.client.providerService
-        if UserStore.shared.accessToken == nil {
-            dispatchGroup.enter()
-            UserStore.shared.fetchAccessToken { [weak self] _ in
-                self?.dispatchGroup.leave()
-            }
-        }
+        authenticationManager = AuthenticationManager.shared
     }
+    private let authenticationManager: AuthenticationManager
     private let dispatchGroup = DispatchGroup()
     private var service: ProviderService
     private var marketFetchCanceller: Cancellable?
@@ -30,12 +26,11 @@ final class ProviderStore {
     }
 
     func performFetchProvidersIfNeeded(for attributes: ProviderContext.Attributes) {
-        dispatchGroup.notify(queue: .main) {
-            guard self.providerFetchCancellers[attributes] == nil else {
+        authenticationManager.authenticateIfNeeded { [weak self] _ in
+            guard let self = self, self.providerFetchCancellers[attributes] == nil else {
                 return
             }
-            let cancellable = self.service.providers(market: attributes.market, capabilities: attributes.capabilities, includeTestProviders: attributes.includeTestProviders) { [weak self, attributes] result in
-                guard let self = self else { return }
+            let cancellable = self.service.providers(market: attributes.market, capabilities: attributes.capabilities, includeTestProviders: attributes.includeTestProviders) { [attributes] result in
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let fetchedProviders):
@@ -53,12 +48,11 @@ final class ProviderStore {
     }
     
     func performFetchMarketsIfNeeded() {
-        dispatchGroup.notify(queue: .main) {
-            guard self.marketFetchCanceller == nil else {
+        authenticationManager.authenticateIfNeeded { [weak self] _ in
+            guard let self = self, self.marketFetchCanceller == nil else {
                 return
             }
-            let cancellable = self.service.providerMarkets { [weak self] result in
-                guard let self = self else { return }
+            let cancellable = self.service.providerMarkets { result in
                 DispatchQueue.main.async {
                     self.markets = [Market(code: "SE"), Market(code: "NO")]
                     //                switch result {
