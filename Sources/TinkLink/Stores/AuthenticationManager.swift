@@ -5,6 +5,7 @@ final class AuthenticationManager {
     
     private var cancellable: Cancellable?
     private var service: UserService
+    private var completionHandlers: [(AccessToken) -> Void] = []
     
     private init() {
         service = TinkLink.shared.client.userService
@@ -19,18 +20,24 @@ final class AuthenticationManager {
         if let accessToken = accessToken {
             completion(accessToken)
         } else {
-            guard cancellable == nil else { return }
-            cancellable = service.createAnonymous(market: Market(code: "SE")) { [weak self] result in
-                guard let self = self else { return }
-                if let accessToken = try? result.get() {
-                    self.accessToken = accessToken
-                    completion(accessToken)
-                } else {
-                    // TODO: Auto retry? Maybe should use some auto retry handler for this same as the credential status polling
-                    self.authenticateIfNeeded(for: market, completion: completion)
+            if cancellable == nil {
+                cancellable = service.createAnonymous(market: Market(code: "SE")) { [weak self] result in
+                    guard let self = self else { return }
+                    if let accessToken = try? result.get() {
+                        self.accessToken = accessToken
+                        self.completionHandlers.forEach{ $0(accessToken) }
+                        self.completionHandlers.removeAll()
+                    } else {
+                        // TODO: Auto retry? Maybe should use some auto retry handler for this same as the credential status polling
+                        self.authenticateIfNeeded(for: market, completion: completion)
+                    }
+                    self.cancellable = nil
                 }
-                self.cancellable = nil
+            } else {
+                // In case of multiple requests at the same time
+                completionHandlers.append(completion)
             }
+            
         }
     }
     
