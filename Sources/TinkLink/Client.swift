@@ -49,16 +49,12 @@ final class Client {
         tokenConfigurableServices.append(service)
         return service
     }()
-    private(set) lazy var accountService: AccountService = {
-        let service = AccountService(channel: channel, accessToken: accessToken)
-        tokenConfigurableServices.append(service)
-        return service
-    }()
     private(set) lazy var authenticationService: AuthenticationService = {
         let service = AuthenticationService(channel: channel, accessToken: accessToken)
         tokenConfigurableServices.append(service)
         return service
     }()
+    private(set) lazy var accountService = AccountService(channel: channel)
     private(set) lazy var streamingService = StreamingService(channel: channel)
     private(set) lazy var userService = UserService(channel: channel)
 }
