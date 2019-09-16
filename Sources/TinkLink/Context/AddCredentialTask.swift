@@ -47,8 +47,6 @@ public class AddCredentialTask {
             if let updatedCredential = self.credentialStore.credentials[credential.id], let initialCredential = self.credential {
                 if initialCredential.status != updatedCredential.status {
                     self.handleUpdate(for: updatedCredential)
-                } else if initialCredential.status == .updating || initialCredential.status == .awaitingSupplementalInformation {
-                    self.handleUpdate(for: updatedCredential)
                 }
             }
         }
