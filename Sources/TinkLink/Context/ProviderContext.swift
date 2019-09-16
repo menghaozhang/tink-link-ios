@@ -52,6 +52,9 @@ public class ProviderContext {
         }
     }
     
+    /// A convenience initializer that accesses providers from a market including all capabilities and access types but no test providers.
+    ///
+    /// - Parameter market: Market to access.
     public convenience init(market: Market) {
         let attributes = Attributes(capabilities: .all, includeTestProviders: false, accessTypes: Provider.AccessType.all, market: market)
         self.init(attributes: attributes)
