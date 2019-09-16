@@ -9,9 +9,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-
-        let providerMarketsViewController = ProviderMarketsViewController()
-        let navigationController = UINavigationController(rootViewController: providerMarketsViewController)
+        let providerListViewController = ProviderListViewController(market: Market(code: "SE"), style: .plain)
+        let navigationController = UINavigationController(rootViewController: providerListViewController)
         navigationController.navigationBar.prefersLargeTitles = true
 
         window?.rootViewController = navigationController
