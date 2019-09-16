@@ -27,7 +27,7 @@ public class CredentialContext {
     /// - Returns: The add credential task.
     public func addCredential(for provider: Provider, form: Form, progressHandler: @escaping (_ status: AddCredentialTask.Status) -> Void,  completion: @escaping (_ result: Result<Credential, Error>) -> Void) -> AddCredentialTask {
         let task = AddCredentialTask(progressHandler: progressHandler, completion: completion)
-        task.callCanceller = credentialStore.addCredential(for: provider, fields: form.makeFields()) { [weak task] result in
+        credentialStore.addCredential(for: provider, fields: form.makeFields()) { [weak task] result in
             do {
                 let credential = try result.get()
                 task?.startObserving(credential)

@@ -32,22 +32,37 @@ extension ProcessInfo {
 }
 
 extension Metadata {
+    private enum HeaderKeys: String {
+        case clientKey = "x-tin-client-key"
+        case deviceId = "x-tink-device-id"
+        case authorization = "authorization"
+        case clientId = "x-tink-oauth-client-id"
+    }
+    
+    func addAccessToken(_ token: String? = nil) throws {
+        let info = ProcessInfo.processInfo
+        if let bearerToken = info.tinkBearerToken {
+            try add(key: HeaderKeys.authorization.rawValue, value: "Bearer \(bearerToken)")
+        } else if let accessToken = token {
+            try add(key: HeaderKeys.authorization.rawValue, value: "Bearer \(accessToken)")
+        }
+    }
+    
     func addTinkMetadata() throws {
         let info = ProcessInfo.processInfo
         if let clientKey = info.tinkClientKey {
-            try add(key: "X-Tink-Client-Key".lowercased(), value: clientKey)
+            try add(key: HeaderKeys.clientKey.rawValue, value: clientKey)
         }
         if let deviceID = info.tinkDeviceID {
-            try add(key: "X-Tink-Device-Id".lowercased(), value: deviceID)
+            try add(key: HeaderKeys.deviceId.rawValue, value: deviceID)
         }
         if let sessionID = info.tinkSessionID {
-            try add(key: "Authorization".lowercased(), value: "Session \(sessionID)")
+            try add(key: HeaderKeys.authorization.rawValue, value: "Session \(sessionID)")
         }
         if let oAuthClientID = info.tinkOAuthClientID {
-            try add(key: "X-Tink-OAuth-Client-ID".lowercased(), value: oAuthClientID)
+            try add(key: HeaderKeys.clientId.rawValue, value: oAuthClientID)
         }
-        if let bearerToken = info.tinkBearerToken {
-            try add(key: "Authorization".lowercased(), value: "Bearer \(bearerToken)")
-        }
+        let authorization = dictionaryRepresentation[HeaderKeys.authorization.rawValue]
+        try addAccessToken(authorization)
     }
 }
