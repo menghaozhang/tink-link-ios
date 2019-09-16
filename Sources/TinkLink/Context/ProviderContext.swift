@@ -2,14 +2,12 @@ import Foundation
 
 public protocol ProviderContextDelegate: AnyObject {
     func providerContextWillChangeProviders(_ context: ProviderContext)
-    func providerContext(_ context: ProviderContext, didChangeProviders providers: [Provider])
     func providerContext(_ context: ProviderContext, didReceiveError error: Error)
     func providerContextDidChangeProviders(_ context: ProviderContext)
 }
 
 extension ProviderContextDelegate {
     func providerContextWillChangeProviders(_ context: ProviderContext) { }
-    func providerContextDidChangeProviders(_ context: ProviderContext) { }
 }
 
 public class ProviderContext {
@@ -44,7 +42,6 @@ public class ProviderContext {
             }
             delegate?.providerContextWillChangeProviders(self)
             _providerGroups = makeGroups(providers)
-            delegate?.providerContext(self, didChangeProviders: providers)
             delegate?.providerContextDidChangeProviders(self)
         }
     }
