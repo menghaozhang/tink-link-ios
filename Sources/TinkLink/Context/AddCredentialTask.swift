@@ -44,11 +44,11 @@ public class AddCredentialTask {
 
         credentialStoreObserver = NotificationCenter.default.addObserver(forName: .credentialStoreChanged, object: credentialStore, queue: .main) { [weak self] _ in
             guard let self = self else { return }
-            if let credential = self.credentialStore.credentials[credential.id], let value = self.credential {
-                if value.status != credential.status {
-                    self.handleUpdate(for: credential)
-                } else if value.status == .updating || value.status == .awaitingSupplementalInformation {
-                    self.handleUpdate(for: credential)
+            if let updatedCredential = self.credentialStore.credentials[credential.id], let initialCredential = self.credential {
+                if initialCredential.status != updatedCredential.status {
+                    self.handleUpdate(for: updatedCredential)
+                } else if initialCredential.status == .updating || initialCredential.status == .awaitingSupplementalInformation {
+                    self.handleUpdate(for: updatedCredential)
                 }
             }
         }
