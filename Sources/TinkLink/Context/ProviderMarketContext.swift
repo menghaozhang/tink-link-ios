@@ -1,8 +1,13 @@
 import Foundation
 
 public protocol ProviderMarketContextDelegate: AnyObject {
+    func providerMarketContextWillChange(_ store: ProviderMarketContext)
     func providerMarketContextDidChange(_ store: ProviderMarketContext)
     func providerMarketContext(_ store: ProviderMarketContext, didReceiveError error: Error)
+}
+
+extension ProviderMarketContextDelegate {
+    public func providerMarketContextWillChange(_ store: ProviderMarketContext) { }
 }
 
 public class ProviderMarketContext {
@@ -20,6 +25,9 @@ public class ProviderMarketContext {
     private var providerStoreObserver: Any?
 
     private var _markets: [Market]? {
+        willSet {
+            delegate?.providerMarketContextWillChange(self)
+        }
         didSet {
             delegate?.providerMarketContextDidChange(self)
         }
