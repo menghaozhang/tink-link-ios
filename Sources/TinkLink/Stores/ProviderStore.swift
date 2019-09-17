@@ -5,9 +5,13 @@ final class ProviderStore {
 
     private init() {
         service = TinkLink.shared.client.providerService
+        market = TinkLink.shared.client.market
+        locale = TinkLink.shared.client.locale
         authenticationManager = AuthenticationManager.shared
     }
     private let authenticationManager: AuthenticationManager
+    private let market: Market
+    private let locale: Locale
     private var service: ProviderService
     private var marketFetchCanceller: Cancellable?
     private var providerFetchCancellers: [ProviderContext.Attributes: Cancellable] = [:]
@@ -25,7 +29,7 @@ final class ProviderStore {
     }
 
     func performFetchProvidersIfNeeded(for attributes: ProviderContext.Attributes) {
-        authenticationManager.authenticateIfNeeded(service: service, for: attributes.market, locale: attributes.locale) { [weak self] _ in
+        authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
             guard let self = self, self.providerFetchCancellers[attributes] == nil else {
                 return
             }
@@ -46,7 +50,7 @@ final class ProviderStore {
     }
     
     func performFetchMarketsIfNeeded() {
-        authenticationManager.authenticateIfNeeded(service: service) { [weak self] _ in
+        authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
             guard let self = self, self.marketFetchCanceller == nil else {
                 return
             }

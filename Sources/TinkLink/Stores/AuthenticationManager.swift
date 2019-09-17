@@ -12,7 +12,7 @@ final class AuthenticationManager {
         service = TinkLink.shared.client.userService
     }
     
-    func authenticateIfNeeded<Service: TokenConfigurableService>(service otherService: Service, for market: Market = Market(code: "SE"), locale: Locale = Locale(identifier: "sv_SE"), completion: @escaping (Result<AccessToken, Error>) -> Void) {
+    func authenticateIfNeeded<Service: TokenConfigurableService>(service otherService: Service, for market: Market, locale: Locale, completion: @escaping (Result<AccessToken, Error>) -> Void) {
         if let accessToken = accessToken {
             otherService.configure(accessToken)
             self.accessToken = accessToken
@@ -33,7 +33,7 @@ final class AuthenticationManager {
                             switch callResult.statusCode {
                             case .unauthenticated:
                                 // TODO: Auto retry? Maybe should use some auto retry handler for this same as the credential status polling
-                                self.authenticateIfNeeded(service: otherService, for: market, completion: completion)
+                                self.authenticateIfNeeded(service: otherService, for: market, locale: locale, completion: completion)
                             default:
                                 completion(.failure(error))
                                 self.completionHandlers.forEach{ $0(.failure(error)) }
