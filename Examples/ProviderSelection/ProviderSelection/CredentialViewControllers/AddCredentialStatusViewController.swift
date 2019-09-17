@@ -50,7 +50,7 @@ final class AddCredentialStatusViewController: UIViewController {
             visualEffectView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             visualEffectView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
 
-            statusLabelView.widthAnchor.constraint(equalToConstant: 240),
+            statusLabelView.widthAnchor.constraint(equalToConstant: 160),
 
             stackView.topAnchor.constraint(equalTo: visualEffectView.contentView.topAnchor),
             stackView.leadingAnchor.constraint(equalTo: visualEffectView.contentView.leadingAnchor),
