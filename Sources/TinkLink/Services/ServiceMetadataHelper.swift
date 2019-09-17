@@ -29,6 +29,19 @@ extension ProcessInfo {
     var tinkEnvironment: Environment? {
         return environment["TINK_ENVIRONMENT"].flatMap(Environment.init(rawValue:))
     }
+    
+    var tinkMarket: Market? {
+        return environment["TINK_MARKET"].flatMap(Market.init(code: ))
+    }
+    
+    var tinkLoacle: Locale? {
+        if let locale = environment["TINK_LOCALE"].flatMap(Locale.init(identifier: )) {
+            if Locale.tink.availableLocales.contains(locale) {
+                return locale
+            }
+        }
+        return nil
+    }
 }
 
 extension Metadata {
