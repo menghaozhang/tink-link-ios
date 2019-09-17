@@ -2,7 +2,7 @@ public class SupplementInformationTask {
     private let credentialStore = CredentialStore.shared
     public private(set) var credential: Credential
     
-    public init(credential: Credential) {
+    init(credential: Credential) {
         self.credential = credential
     }
 

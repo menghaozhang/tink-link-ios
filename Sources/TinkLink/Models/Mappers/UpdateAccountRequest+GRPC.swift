@@ -1,7 +1,7 @@
 import Foundation
 import SwiftProtobuf
 
-internal extension UpdateAccountRequest {
+extension UpdateAccountRequest {
     var grpcUpdateAccountRequest: GRPCUpdateAccountRequest {
         var updateAccountRequest = GRPCUpdateAccountRequest()
         updateAccountRequest.accountID = id.rawValue

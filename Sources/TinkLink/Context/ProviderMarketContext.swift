@@ -7,7 +7,7 @@ protocol ProviderMarketContextDelegate: AnyObject {
 }
 
 extension ProviderMarketContextDelegate {
-    public func providerMarketContextWillChange(_ context: ProviderMarketContext) { }
+    func providerMarketContextWillChange(_ context: ProviderMarketContext) { }
 }
 
 /// An object that accesses available markets.
