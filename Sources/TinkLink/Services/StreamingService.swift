@@ -10,7 +10,15 @@ final class StreamingService {
         self.clientKey = clientKey
     }
 
-    private lazy var service = StreamingServiceServiceClient(channel: channel)
+    private lazy var service: StreamingServiceServiceClient = {
+        let service = StreamingServiceServiceClient(channel: channel)
+        do {
+            try service.metadata.addTinkMetadata()
+        } catch {
+            assertionFailure(error.localizedDescription)
+        }
+        return service
+    }()
 
     private lazy var receiverQueue = DispatchQueue(label: "com.tink.TinkLink.StreamingService.receiver")
 
