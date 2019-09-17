@@ -33,36 +33,40 @@ extension ProcessInfo {
 
 extension Metadata {
     private enum HeaderKeys: String {
-        case clientKey = "x-tin-client-key"
-        case deviceId = "x-tink-device-id"
-        case authorization = "authorization"
-        case clientId = "x-tink-oauth-client-id"
+        case clientKey = "X-Tink-Client-Key"
+        case deviceId = "X-Tink-Device-ID"
+        case authorization = "Authorization"
+        case clientId = "X-Tink-OAuth-Client-ID"
+
+        var key: String {
+            return rawValue.lowercased()
+        }
     }
     
     func addAccessToken(_ token: String? = nil) throws {
         let info = ProcessInfo.processInfo
         if let bearerToken = info.tinkBearerToken {
-            try add(key: HeaderKeys.authorization.rawValue, value: "Bearer \(bearerToken)")
+            try add(key: HeaderKeys.authorization.key, value: "Bearer \(bearerToken)")
         } else if let accessToken = token {
-            try add(key: HeaderKeys.authorization.rawValue, value: "Bearer \(accessToken)")
+            try add(key: HeaderKeys.authorization.key, value: "Bearer \(accessToken)")
         }
     }
     
     func addTinkMetadata() throws {
         let info = ProcessInfo.processInfo
         if let clientKey = info.tinkClientKey {
-            try add(key: HeaderKeys.clientKey.rawValue, value: clientKey)
+            try add(key: HeaderKeys.clientKey.key, value: clientKey)
         }
         if let deviceID = info.tinkDeviceID {
-            try add(key: HeaderKeys.deviceId.rawValue, value: deviceID)
+            try add(key: HeaderKeys.deviceId.key, value: deviceID)
         }
         if let sessionID = info.tinkSessionID {
-            try add(key: HeaderKeys.authorization.rawValue, value: "Session \(sessionID)")
+            try add(key: HeaderKeys.authorization.key, value: "Session \(sessionID)")
         }
         if let oAuthClientID = info.tinkOAuthClientID {
-            try add(key: HeaderKeys.clientId.rawValue, value: oAuthClientID)
+            try add(key: HeaderKeys.clientId.key, value: oAuthClientID)
         }
-        let authorization = dictionaryRepresentation[HeaderKeys.authorization.rawValue]
+        let authorization = dictionaryRepresentation[HeaderKeys.authorization.key]
         try addAccessToken(authorization)
     }
 }

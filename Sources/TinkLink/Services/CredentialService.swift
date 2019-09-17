@@ -1,13 +1,10 @@
 import SwiftGRPC
 
-public final class CredentialService: TokenConfigurableService, TokenConfigurableServiceBase {
+public final class CredentialService: TokenConfigurableService {
     let channel: Channel
 
-    init(channel: Channel, accessToken: AccessToken? = nil) {
+    init(channel: Channel) {
         self.channel = channel
-        if let accessToken = accessToken {
-            configure(accessToken)
-        }
     }
 
     internal lazy var service: CredentialServiceServiceClient = {
