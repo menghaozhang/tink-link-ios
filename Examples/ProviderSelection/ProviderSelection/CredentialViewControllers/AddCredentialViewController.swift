@@ -103,6 +103,8 @@ extension AddCredentialViewController {
         case .awaitingThirdPartyAppAuthentication(let thirdPartyAppAuthentication):
             if let deepLinkURL = thirdPartyAppAuthentication.deepLinkURL, UIApplication.shared.canOpenURL(deepLinkURL) {
                 UIApplication.shared.open(deepLinkURL)
+            } else {
+                showDownloadPrompt(for: thirdPartyAppAuthentication)
             }
         case .updating(let status):
             self.showUpdating(status: status)
@@ -152,6 +154,22 @@ extension AddCredentialViewController {
         hideUpdatingView()
         let finishedCredentialUpdatedViewController = FinishedCredentialUpdatedViewController(credential: credential)
         show(finishedCredentialUpdatedViewController, sender: nil)
+    }
+
+    private func showDownloadPrompt(for thirdPartyAppAuthentication: Credential.ThirdPartyAppAuthentication) {
+        let alertController = UIAlertController(title: thirdPartyAppAuthentication.downloadTitle, message: thirdPartyAppAuthentication.downloadMessage, preferredStyle: .alert)
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let downloadAction = UIAlertAction(title: "Download", style: .default, handler: { _ in
+            if let appStoreURL = thirdPartyAppAuthentication.appStoreURL, UIApplication.shared.canOpenURL(appStoreURL) {
+                UIApplication.shared.open(appStoreURL)
+            }
+        })
+
+        alertController.addAction(cancelAction)
+        alertController.addAction(downloadAction)
+
+        present(alertController, animated: true)
     }
 }
 
