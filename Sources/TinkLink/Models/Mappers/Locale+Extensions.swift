@@ -27,7 +27,7 @@ extension TinkLink {
     }
     
     /// Fallback locales if no other locale is available
-    public static var fallBackLocale: Locale {
+    static var fallBackLocale: Locale {
         return Locale(identifier: "en_US")
     }
     
