@@ -17,13 +17,13 @@ public class TinkLink {
             self.certificateURL = certificateURL
             self.market = market
             if let locale = locale {
-                if Locale.tink.availableLocales.contains(locale) {
+                if TinkLink.availableLocales.contains(locale) {
                     self.locale = locale
                 } else {
                     fatalError(locale.identifier + " is not an available locale")
                 }
             } else {
-                self.locale = Locale.tink.defaultLocale
+                self.locale = TinkLink.defaultLocale
             }
         }
     }
@@ -124,14 +124,14 @@ extension TinkLink.Configuration: Decodable {
         market = Market(code: marketCode)
         
         if let localeIdentifier = try values.decodeIfPresent(String.self, forKey: .locale) {
-            let availableLocale = Locale.tink.availableLocales.first{ $0.identifier == localeIdentifier }
+            let availableLocale = TinkLink.availableLocales.first{ $0.identifier == localeIdentifier }
             if let locale = availableLocale {
                 self.locale = locale
             } else {
                 fatalError(localeIdentifier + " is not an available locale")
             }
         } else {
-            locale = Locale.tink.defaultLocale
+            locale = TinkLink.defaultLocale
         }
     }
 }
@@ -149,8 +149,8 @@ extension Client {
             environment: processInfo.tinkEnvironment ?? .staging,
             clientKey: clientKey,
             certificate: processInfo.tinkCertificate,
-            market: processInfo.tinkMarket ?? Market.defaultMarket,
-            locale: processInfo.tinkLocale ?? Locale.tink.defaultLocale
+            market: processInfo.tinkMarket ?? TinkLink.defaultMarket,
+            locale: processInfo.tinkLocale ?? TinkLink.defaultLocale
         )
     }
 }

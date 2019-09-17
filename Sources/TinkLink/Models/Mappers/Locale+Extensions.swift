@@ -1,10 +1,9 @@
 import Foundation
 
-extension Locale: TinkCompatible { }
-
-/// Availabl locales for Tink link
-extension Tink where Base == Locale {
+extension TinkLink {
+    /// Available locales for Tink link
     public static var availableLocales: [Locale] {
+        // Thread with current supported locales https://tink.slack.com/archives/CG84WBWLS/p1568020310012900
         let locales = [
             Locale(identifier: "da_DK"),
             Locale(identifier: "de_DE"),
@@ -34,9 +33,9 @@ extension Tink where Base == Locale {
     
     /// Default available locale that will be used based on the current locale
     public static var defaultLocale: Locale {
-        if let languageCode = Locale.current.languageCode, let locale = Locale.tink.availableLocaleWith(languageCode: languageCode) {
+        if let languageCode = Locale.current.languageCode, let locale = availableLocaleWith(languageCode: languageCode) {
             return locale
-        } else if let regionCode = Locale.current.regionCode, let locale = Locale.tink.availableLocaleWith(regionCode: regionCode) {
+        } else if let regionCode = Locale.current.regionCode, let locale = availableLocaleWith(regionCode: regionCode) {
             return  locale
         } else {
             return fallBackLocale
