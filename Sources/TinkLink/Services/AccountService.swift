@@ -7,7 +7,7 @@ public final class AccountService {
         self.channel = channel
     }
     
-    private lazy var service: AccountServiceServiceClient = {
+    internal lazy var service: AccountServiceServiceClient = {
         let service = AccountServiceServiceClient(channel: channel)
         do {
             try service.metadata.addTinkMetadata()

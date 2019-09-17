@@ -10,7 +10,9 @@ extension ProviderContextDelegate {
     public func providerContextWillChangeProviders(_ context: ProviderContext) { }
 }
 
+/// An object that accesses providers for a specific market and supports the grouping of providers.
 public class ProviderContext {
+    /// Attributes representing which providers a context should access.
     public struct Attributes: Hashable {
         public let capabilities: Provider.Capabilities
         public let includeTestProviders: Bool
@@ -25,6 +27,9 @@ public class ProviderContext {
         }
     }
     
+    /// Attributes representing which providers a context should access.
+    ///
+    /// Changing this property will update `providers` and `providerGroups` to only access providers matching the new attributes.
     public var attributes: ProviderContext.Attributes {
         didSet {
             providerStore.performFetchProvidersIfNeeded(for: attributes)
@@ -54,6 +59,9 @@ public class ProviderContext {
         }
     }
     
+    /// A convenience initializer that accesses providers from a market including all capabilities and access types but no test providers.
+    ///
+    /// - Parameter market: Market to access.
     public convenience init(market: Market) {
         let attributes = Attributes(capabilities: .all, includeTestProviders: false, accessTypes: Provider.AccessType.all, market: market)
         self.init(attributes: attributes)
@@ -74,6 +82,7 @@ public class ProviderContext {
         }
     }
     
+    // TODO: performFetch is triggered multiple times
     private func performFetch() {
         providerStore.performFetchProvidersIfNeeded(for: attributes)
     }

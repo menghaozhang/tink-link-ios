@@ -65,6 +65,10 @@ public class TinkLink {
         TinkLink.timeoutIntervalForRequest = timeoutInterval
     }
     
+    public static func warmUp() {
+        AuthenticationManager.shared.authenticate()
+    }
+    
     private init() {
 
     }

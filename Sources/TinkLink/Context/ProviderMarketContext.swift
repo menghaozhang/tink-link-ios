@@ -10,6 +10,7 @@ extension ProviderMarketContextDelegate {
     public func providerMarketContextWillChange(_ context: ProviderMarketContext) { }
 }
 
+/// An object that accesses available markets.
 public class ProviderMarketContext {
     public init() {
         _markets = try? providerStore.markets?.get().sortedWithCurrentRegionFirst()

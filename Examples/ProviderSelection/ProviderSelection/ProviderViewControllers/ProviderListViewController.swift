@@ -18,7 +18,7 @@ final class ProviderListViewController: UITableViewController {
     
     init(market: Market, style: UITableView.Style) {
         self.market = market
-        let attributes = ProviderContext.Attributes(capabilities: .checkingAccounts, includeTestProviders: false, accessTypes: Provider.AccessType.all, market: market)
+        let attributes = ProviderContext.Attributes(capabilities: .all, includeTestProviders: true, accessTypes: Provider.AccessType.all, market: market)
         providerContext = ProviderContext(attributes: attributes)
         providerGroups = providerContext.providerGroups
         super.init(style: style)
