@@ -60,7 +60,5 @@ extension Metadata {
         if let sessionID = info.tinkSessionID {
             try add(key: HeaderKeys.authorization.key, value: "Session \(sessionID)")
         }
-        let authorization = dictionaryRepresentation[HeaderKeys.authorization.key]
-        try addAccessToken(authorization)
     }
 }
