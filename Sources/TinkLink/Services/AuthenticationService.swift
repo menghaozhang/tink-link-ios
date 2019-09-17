@@ -13,6 +13,7 @@ public final class AuthenticationService: TokenConfigurableService {
     internal lazy var service: AuthenticationServiceServiceClient = {
         let service = AuthenticationServiceServiceClient(channel: channel)
         do {
+            try service.metadata.add(key: Metadata.HeaderKeys.clientId.key, value: clientKey)
             try service.metadata.addTinkMetadata()
         } catch {
             assertionFailure(error.localizedDescription)

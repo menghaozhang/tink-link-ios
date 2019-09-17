@@ -12,6 +12,7 @@ public class ProviderService: TokenConfigurableService {
     internal lazy var service: ProviderServiceServiceClient = {
         let service = ProviderServiceServiceClient(channel: channel)
         do {
+            try service.metadata.add(key: Metadata.HeaderKeys.clientId.key, value: clientKey)
             try service.metadata.addTinkMetadata()
         } catch {
             assertionFailure(error.localizedDescription)

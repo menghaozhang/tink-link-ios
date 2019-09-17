@@ -12,6 +12,7 @@ public final class CredentialService: TokenConfigurableService {
     internal lazy var service: CredentialServiceServiceClient = {
         let service = CredentialServiceServiceClient(channel: channel)
         do {
+            try service.metadata.add(key: Metadata.HeaderKeys.clientId.key, value: clientKey)
             try service.metadata.addTinkMetadata()
         } catch {
             assertionFailure(error.localizedDescription)

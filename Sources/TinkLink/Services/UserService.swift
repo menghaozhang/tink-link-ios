@@ -13,6 +13,7 @@ public final class UserService {
     private lazy var service: UserServiceServiceClient = {
         let service = UserServiceServiceClient(channel: channel)
         do {
+            try service.metadata.add(key: Metadata.HeaderKeys.clientId.key, value: clientKey)
             try service.metadata.addTinkMetadata()
         } catch {
             assertionFailure(error.localizedDescription)

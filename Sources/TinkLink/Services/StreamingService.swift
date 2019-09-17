@@ -13,6 +13,7 @@ final class StreamingService {
     private lazy var service: StreamingServiceServiceClient = {
         let service = StreamingServiceServiceClient(channel: channel)
         do {
+            try service.metadata.add(key: Metadata.HeaderKeys.clientId.key, value: clientKey)
             try service.metadata.addTinkMetadata()
         } catch {
             assertionFailure(error.localizedDescription)
