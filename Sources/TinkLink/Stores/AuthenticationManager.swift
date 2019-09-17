@@ -43,15 +43,5 @@ final class AuthenticationManager {
         }
     }
     
-    var accessToken: AccessToken? {
-        didSet {
-            if let accessToken = accessToken {
-                NotificationCenter.default.post(name: .accessTokenChanged, object: self, userInfo: ["access_token": accessToken])
-            }
-        }
-    }
-}
-
-extension Notification.Name {
-    static let accessTokenChanged = Notification.Name("TinkLinkAccessTokenChangedNotificationName")
+    var accessToken: AccessToken?
 }
