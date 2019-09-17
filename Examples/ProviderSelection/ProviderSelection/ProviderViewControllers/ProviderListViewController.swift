@@ -118,7 +118,7 @@ extension ProviderListViewController {
 
 // MARK: - ProviderContextDelegate
 extension ProviderListViewController: ProviderContextDelegate {
-    func providerContext(_ context: ProviderContext, didUpdateProviders providers: [Provider]) {
+    func providerContextDidChangeProviders(_ context: ProviderContext) {
         providerGroups = context.providerGroups
     }
     

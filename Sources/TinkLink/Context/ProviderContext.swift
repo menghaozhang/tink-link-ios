@@ -1,8 +1,13 @@
 import Foundation
 
 public protocol ProviderContextDelegate: AnyObject {
-    func providerContext(_ context: ProviderContext, didUpdateProviders providers: [Provider])
+    func providerContextWillChangeProviders(_ context: ProviderContext)
     func providerContext(_ context: ProviderContext, didReceiveError error: Error)
+    func providerContextDidChangeProviders(_ context: ProviderContext)
+}
+
+extension ProviderContextDelegate {
+    public func providerContextWillChangeProviders(_ context: ProviderContext) { }
 }
 
 /// An object that accesses providers for a specific market and supports the grouping of providers.
@@ -35,13 +40,12 @@ public class ProviderContext {
     private var providerStoreObserver: Any?
 
     private var _providers: [Provider]? {
+        willSet {
+            delegate?.providerContextWillChangeProviders(self)
+        }
         didSet {
-            guard let providers = _providers else {
-                _providerGroups = nil
-                return
-            }
-            _providerGroups = makeGroups(providers)
-            delegate?.providerContext(self, didUpdateProviders: providers)
+            _providerGroups = _providers.map(makeGroups)
+            delegate?.providerContextDidChangeProviders(self)
         }
     }
     
@@ -65,13 +69,17 @@ public class ProviderContext {
     
     public init(attributes: Attributes) {
         self.attributes = attributes
-        _providers = providerStore.providerMarketGroups[attributes.market]
+        _providers = try? providerStore.providerMarketGroups[attributes.market]?.get()
         _providerGroups = _providers.map{ makeGroups($0) }
         providerStoreObserver = NotificationCenter.default.addObserver(forName: .providerStoreMarketGroupsChanged, object: providerStore, queue: .main) { [weak self] _ in
             guard let self = self else {
                 return
             }
-            self._providers = self.providerStore.providerMarketGroups[attributes.market]
+            do {
+                self._providers = try self.providerStore.providerMarketGroups[attributes.market]?.get()
+            } catch {
+                self.delegate?.providerContext(self, didReceiveError: error)
+            }
         }
     }
     
