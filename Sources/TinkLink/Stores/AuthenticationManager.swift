@@ -10,19 +10,21 @@ final class AuthenticationManager {
         service = TinkLink.shared.client.userService
     }
     
-    func authenticateIfNeeded(for market: Market = Market(code: "SE"), completion: @escaping (AccessToken) -> Void) {
+    func authenticateIfNeeded<Service: TokenConfigurableServiceBase>(service otherService: Service, for market: Market = Market(code: "SE"), completion: @escaping (AccessToken) -> Void) {
         if let accessToken = accessToken {
+            otherService.configure(accessToken)
             completion(accessToken)
         } else {
             guard cancellable == nil else { return }
             cancellable = service.createAnonymous(market: Market(code: "SE")) { [weak self] result in
                 guard let self = self else { return }
                 if let accessToken = try? result.get() {
+                    otherService.configure(accessToken)
                     self.accessToken = accessToken
                     completion(accessToken)
                 } else {
                     // TODO: Auto retry? Maybe should use some auto retry handler for this same as the credential status polling
-                    self.authenticateIfNeeded(for: market, completion: completion)
+                    self.authenticateIfNeeded(service: otherService, for: market, completion: completion)
                 }
                 self.cancellable = nil
             }
