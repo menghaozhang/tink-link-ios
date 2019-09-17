@@ -33,7 +33,7 @@ extension ProcessInfo {
 
 extension Metadata {
     private enum HeaderKeys: String {
-        case clientKey = "x-tin-client-key"
+        case clientKey = "x-tink-client-key"
         case deviceId = "x-tink-device-id"
         case authorization = "authorization"
         case clientId = "x-tink-oauth-client-id"
