@@ -36,7 +36,6 @@ final class Client {
     private(set) lazy var providerService = ProviderService(channel: channel, metadata: metadata)
     private(set) lazy var credentialService = CredentialService(channel: channel, metadata: metadata)
     private(set) lazy var authenticationService = AuthenticationService(channel: channel, metadata: metadata)
-    private(set) lazy var accountService = AccountService(channel: channel, metadata: metadata)
     private(set) lazy var streamingService = StreamingService(channel: channel, metadata: metadata)
     private(set) lazy var userService = UserService(channel: channel, metadata: metadata)
 }
