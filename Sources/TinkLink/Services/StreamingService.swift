@@ -3,12 +3,14 @@ import SwiftGRPC
 
 final class StreamingService {
     let channel: Channel
+    let metadata: Metadata
 
-    init(channel: Channel) {
+    init(channel: Channel, metadata: Metadata) {
         self.channel = channel
+        self.metadata = metadata
     }
 
-    private lazy var service = StreamingServiceServiceClient(channel: channel)
+    private lazy var service = StreamingServiceServiceClient(channel: channel, metadata: metadata)
 
     private lazy var receiverQueue = DispatchQueue(label: "com.tink.TinkLink.StreamingService.receiver")
 

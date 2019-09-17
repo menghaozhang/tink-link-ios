@@ -3,20 +3,14 @@ import SwiftGRPC
 
 public final class AuthenticationService: TokenConfigurableService {
     let channel: Channel
+    let metadata: Metadata
 
-    init(channel: Channel) {
+    init(channel: Channel, metadata: Metadata) {
         self.channel = channel
+        self.metadata = metadata
     }
 
-    internal lazy var service: AuthenticationServiceServiceClient = {
-        let service = AuthenticationServiceServiceClient(channel: channel)
-        do {
-            try service.metadata.addTinkMetadata()
-        } catch {
-            assertionFailure(error.localizedDescription)
-        }
-        return service
-    }()
+    internal lazy var service = AuthenticationServiceServiceClient(channel: channel, metadata: metadata)
 
     public func login(authenticationToken: AuthenticationToken, completion: @escaping (Result<String, Error>) -> Void) -> Cancellable {
         var request = GRPCLoginRequest()
