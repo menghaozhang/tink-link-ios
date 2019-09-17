@@ -32,7 +32,7 @@ extension ProcessInfo {
 }
 
 extension Metadata {
-    private enum HeaderKeys: String {
+    enum HeaderKeys: String {
         case clientKey = "X-Tink-Client-Key"
         case deviceId = "X-Tink-Device-ID"
         case authorization = "Authorization"
