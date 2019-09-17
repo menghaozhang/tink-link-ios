@@ -16,3 +16,7 @@ test:
 
 clean: 
 	-rm -rf ./Sources/TinkLink/GRPC/
+
+# Install via `$ brew install swiftlint`
+lint:
+	swiftlint
