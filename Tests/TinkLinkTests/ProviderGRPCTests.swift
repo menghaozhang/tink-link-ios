@@ -6,7 +6,7 @@ class ProviderGRPCTests: XCTestCase {
         let grpcCapabilities: [GRPCProvider.Capability] = [.transfers, .checkingAccounts, .savingsAccounts]
         let capabilities = Provider.Capabilities(grpcCapabilities: grpcCapabilities)
         XCTAssertTrue(capabilities.contains(.checkingAccounts))
-        XCTAssertEqual(Set(capabilities.grcpCapabilities), Set(grpcCapabilities))
+        XCTAssertEqual(Set(capabilities.grpcCapabilities), Set(grpcCapabilities))
     }
 
     func testCapabilitiesMatching() {
