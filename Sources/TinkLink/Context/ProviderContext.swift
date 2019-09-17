@@ -18,12 +18,14 @@ public class ProviderContext {
         public let includeTestProviders: Bool
         public let accessTypes: Set<Provider.AccessType>
         public let market: Market
+        public let locale: Locale
         
-        public init(capabilities: Provider.Capabilities, includeTestProviders: Bool, accessTypes: Set<Provider.AccessType>, market: Market) {
+        public init(capabilities: Provider.Capabilities, includeTestProviders: Bool, accessTypes: Set<Provider.AccessType>, market: Market, locale: Locale) {
             self.capabilities = capabilities
             self.includeTestProviders = includeTestProviders
             self.accessTypes = accessTypes
             self.market = market
+            self.locale = locale
         }
     }
     
@@ -63,7 +65,8 @@ public class ProviderContext {
     ///
     /// - Parameter market: Market to access.
     public convenience init(market: Market) {
-        let attributes = Attributes(capabilities: .all, includeTestProviders: false, accessTypes: Provider.AccessType.all, market: market)
+        let locale = Locale.tink.availableLocalesGroupedByRegionCode[market.code] ?? Locale(identifier: "SE")
+        let attributes = Attributes(capabilities: .all, includeTestProviders: false, accessTypes: Provider.AccessType.all, market: market, locale: locale)
         self.init(attributes: attributes)
     }
     
