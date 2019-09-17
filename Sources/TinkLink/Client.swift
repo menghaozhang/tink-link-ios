@@ -3,7 +3,7 @@ import SwiftGRPC
 
 final class Client {
     let channel: Channel
-    let clientKey: String
+    private var metadata = Metadata()
 
     convenience init(environment: Environment, clientKey: String, userAgent: String? = nil, certificateURL: URL? = nil) {
         let certificateContents = certificateURL.flatMap { try? String(contentsOf: $0, encoding: .utf8) }
@@ -11,8 +11,6 @@ final class Client {
     }
 
     init(environment: Environment, clientKey: String, userAgent: String? = nil, certificate: String? = nil) {
-        self.clientKey = clientKey
-
         var arguments: [Channel.Argument] = []
 
         arguments.append(.maxReceiveMessageLength(20 * 1024 * 1024))
@@ -26,12 +24,19 @@ final class Client {
         } else {
             self.channel = Channel(address: environment.url.absoluteString, secure: true, arguments: arguments)
         }
+
+        do {
+            try metadata.add(key: Metadata.HeaderKeys.clientId.key, value: clientKey)
+            try metadata.addTinkMetadata()
+        } catch {
+            assertionFailure(error.localizedDescription)
+        }
     }
     
-    private(set) lazy var providerService = ProviderService(channel: channel, clientKey: clientKey)
-    private(set) lazy var credentialService = CredentialService(channel: channel, clientKey: clientKey)
-    private(set) lazy var authenticationService = AuthenticationService(channel: channel, clientKey: clientKey)
-    private(set) lazy var accountService = AccountService(channel: channel, clientKey: clientKey)
-    private(set) lazy var streamingService = StreamingService(channel: channel, clientKey: clientKey)
-    private(set) lazy var userService = UserService(channel: channel, clientKey: clientKey)
+    private(set) lazy var providerService = ProviderService(channel: channel, metadata: metadata)
+    private(set) lazy var credentialService = CredentialService(channel: channel, metadata: metadata)
+    private(set) lazy var authenticationService = AuthenticationService(channel: channel, metadata: metadata)
+    private(set) lazy var accountService = AccountService(channel: channel, metadata: metadata)
+    private(set) lazy var streamingService = StreamingService(channel: channel, metadata: metadata)
+    private(set) lazy var userService = UserService(channel: channel, metadata: metadata)
 }
