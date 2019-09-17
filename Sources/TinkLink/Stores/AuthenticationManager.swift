@@ -43,5 +43,5 @@ final class AuthenticationManager {
         }
     }
     
-    var accessToken: AccessToken?
+    private var accessToken: AccessToken?
 }
