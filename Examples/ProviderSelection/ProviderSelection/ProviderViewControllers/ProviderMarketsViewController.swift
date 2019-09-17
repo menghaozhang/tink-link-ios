@@ -107,10 +107,10 @@ extension ProviderMarketsViewController {
 
 // MARK: - ProviderMarketContextDelegate
 extension ProviderMarketsViewController: ProviderMarketContextDelegate {
-    func providerMarketContext(_ store: ProviderMarketContext, didUpdateMarkets markets: [Market]) {
+    func providerMarketContextDidChange(_ context: ProviderMarketContext) {
         DispatchQueue.main.async {
             self.collectionView.reloadData()
-            if let market = markets.first {
+            if let market = context.markets.first {
                 self.collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: UICollectionView.ScrollPosition())
                 self.setupProviderListView(for: market)
             }
