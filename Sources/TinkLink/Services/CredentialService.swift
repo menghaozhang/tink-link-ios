@@ -2,20 +2,14 @@ import SwiftGRPC
 
 public final class CredentialService: TokenConfigurableService {
     let channel: Channel
+    let metadata: Metadata
 
-    init(channel: Channel) {
+    init(channel: Channel, metadata: Metadata) {
         self.channel = channel
+        self.metadata = metadata
     }
 
-    internal lazy var service: CredentialServiceServiceClient = {
-        let service = CredentialServiceServiceClient(channel: channel)
-        do {
-            try service.metadata.addTinkMetadata()
-        } catch {
-            assertionFailure(error.localizedDescription)
-        }
-        return service
-    }()
+    internal lazy var service = CredentialServiceServiceClient(channel: channel, metadata: metadata)
 
     public func credentials(completion: @escaping (Result<[Credential], Error>) -> Void) -> Cancellable {
         let request = GRPCListCredentialsRequest()

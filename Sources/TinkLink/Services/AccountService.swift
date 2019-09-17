@@ -2,20 +2,14 @@ import SwiftGRPC
 
 public final class AccountService {
     let channel: Channel
+    let metadata: Metadata
     
-    init(channel: Channel) {
+    init(channel: Channel, metadata: Metadata) {
         self.channel = channel
+        self.metadata = metadata
     }
     
-    internal lazy var service: AccountServiceServiceClient = {
-        let service = AccountServiceServiceClient(channel: channel)
-        do {
-            try service.metadata.addTinkMetadata()
-        } catch {
-            assertionFailure(error.localizedDescription)
-        }
-        return service
-    }()
+    internal lazy var service = AccountServiceServiceClient(channel: channel, metadata: metadata)
     
     /// Lists all accounts
     ///

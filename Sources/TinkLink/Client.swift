@@ -3,6 +3,7 @@ import SwiftGRPC
 
 final class Client {
     let channel: Channel
+    private var metadata = Metadata()
 
     convenience init(environment: Environment, clientKey: String, userAgent: String? = nil, certificateURL: URL? = nil) {
         let certificateContents = certificateURL.flatMap { try? String(contentsOf: $0, encoding: .utf8) }
@@ -23,12 +24,19 @@ final class Client {
         } else {
             self.channel = Channel(address: environment.url.absoluteString, secure: true, arguments: arguments)
         }
+
+        do {
+            try metadata.add(key: Metadata.HeaderKeys.clientId.key, value: clientKey)
+            try metadata.addTinkMetadata()
+        } catch {
+            assertionFailure(error.localizedDescription)
+        }
     }
     
-    private(set) lazy var providerService = ProviderService(channel: channel)
-    private(set) lazy var credentialService = CredentialService(channel: channel)
-    private(set) lazy var authenticationService = AuthenticationService(channel: channel)
-    private(set) lazy var accountService = AccountService(channel: channel)
-    private(set) lazy var streamingService = StreamingService(channel: channel)
-    private(set) lazy var userService = UserService(channel: channel)
+    private(set) lazy var providerService = ProviderService(channel: channel, metadata: metadata)
+    private(set) lazy var credentialService = CredentialService(channel: channel, metadata: metadata)
+    private(set) lazy var authenticationService = AuthenticationService(channel: channel, metadata: metadata)
+    private(set) lazy var accountService = AccountService(channel: channel, metadata: metadata)
+    private(set) lazy var streamingService = StreamingService(channel: channel, metadata: metadata)
+    private(set) lazy var userService = UserService(channel: channel, metadata: metadata)
 }
