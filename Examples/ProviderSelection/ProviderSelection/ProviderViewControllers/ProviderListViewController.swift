@@ -19,8 +19,7 @@ final class ProviderListViewController: UITableViewController {
     
     init(market: Market, style: UITableView.Style) {
         self.market = market
-        let locale = Locale.tink.availableLocalesGroupedByRegionCode[market.code] ?? Locale(identifier: "sv_SE")
-        let attributes = ProviderContext.Attributes(capabilities: .all, includeTestProviders: true, accessTypes: Provider.AccessType.all, market: market, locale: locale)
+        let attributes = ProviderContext.Attributes(capabilities: .all, includeTestProviders: true, accessTypes: Provider.AccessType.all)
         providerContext = ProviderContext(attributes: attributes)
         providerGroups = providerContext.providerGroups
         super.init(style: style)
@@ -28,16 +27,6 @@ final class ProviderListViewController: UITableViewController {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func updateMarket(market: Market) {
-        guard self.market != market else {
-            return
-        }
-        self.market = market
-        providerContext = ProviderContext(market: market)
-        providerGroups = providerContext.providerGroups
-        providerContext.delegate = self
     }
 }
 
