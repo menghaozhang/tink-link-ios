@@ -20,3 +20,7 @@ clean:
 # Install via `$ brew install swiftlint`
 lint:
 	swiftlint
+
+# Install via `$ brew install swiftformat`
+format:
+	swiftformat .
