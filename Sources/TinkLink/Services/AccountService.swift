@@ -1,6 +1,6 @@
 import SwiftGRPC
 
-public final class AccountService {
+final class AccountService {
     let channel: Channel
     let metadata: Metadata
     

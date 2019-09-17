@@ -1,6 +1,6 @@
 import SwiftGRPC
 
-public class ProviderService: TokenConfigurableService {
+class ProviderService: TokenConfigurableService {
     let channel: Channel
     let metadata: Metadata
 
@@ -19,7 +19,7 @@ public class ProviderService: TokenConfigurableService {
     ///   - includeTestProviders: If set to true, Providers of TEST financial financial institution kind will be added in the response list. Defaults to false.
     ///   - completion: The completion handler to call when the load request is complete.
     /// - Returns: A Cancellable instance. Call cancel() on this instance if you no longer need the result of the request. Deinitializing this instance will also cancel the request.
-    public func providers(market: Market? = nil, capabilities: Provider.Capabilities = .all, includeTestProviders: Bool = false, completion: @escaping (Result<[Provider], Error>) -> Void) -> Cancellable {
+    func providers(market: Market? = nil, capabilities: Provider.Capabilities = .all, includeTestProviders: Bool = false, completion: @escaping (Result<[Provider], Error>) -> Void) -> Cancellable {
         var request = GRPCProviderListRequest()
         request.marketCode = market?.code ?? ""
         request.capability = .unknown
@@ -32,7 +32,7 @@ public class ProviderService: TokenConfigurableService {
     ///
     /// - Parameter completion: The completion handler to call when the load request is complete.
     /// - Returns: A Cancellable instance. Call cancel() on this instance if you no longer need the result of the request. Deinitializing this instance will also cancel the request.
-    public func providerMarkets(completion: @escaping (Result<[Market], Error>) -> Void) -> Cancellable {
+    func providerMarkets(completion: @escaping (Result<[Market], Error>) -> Void) -> Cancellable {
         let request = GRPCProviderMarketListRequest()
 
         return startCall(for: request, method: service.listProviderMarkets, responseMap: { $0.providerMarkets.map({ Market(code: $0.code) }) }, completion: completion)
