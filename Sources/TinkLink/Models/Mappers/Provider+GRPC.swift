@@ -99,7 +99,7 @@ extension Provider.Capabilities {
         })
     }
 
-    var grcpCapabilities: [GRPCProvider.Capability] {
+    var grpcCapabilities: [GRPCProvider.Capability] {
         var result: [GRPCProvider.Capability] = []
         if self.contains(.transfers) {
             result.append(.transfers)
