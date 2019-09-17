@@ -1,13 +1,11 @@
 import SwiftGRPC
 
-protocol TokenConfigurableServiceBase {
-    func configure(_ accessToken: AccessToken)
-}
-
-protocol TokenConfigurableService: TokenConfigurableServiceBase {
+protocol TokenConfigurableService {
     associatedtype ServiceClient: ServiceClientBase
     
     var service: ServiceClient { get set }
+
+    func configure(_ accessToken: AccessToken)
 }
 
 extension TokenConfigurableService {
