@@ -8,11 +8,6 @@ final class AuthenticationManager {
     
     private init() {
         service = TinkLink.shared.client.userService
-        authenticate()
-    }
-    
-    func authenticate() {
-        authenticateIfNeeded { _ in }
     }
     
     func authenticateIfNeeded(for market: Market = Market(code: "SE"), completion: @escaping (AccessToken) -> Void) {
