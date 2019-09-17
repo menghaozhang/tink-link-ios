@@ -41,7 +41,9 @@ final class FinishedCredentialUpdatedViewController: UITableViewController, Acco
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ValueTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? ValueTableViewCell else {
+            fatalError()
+        }
         cell.textLabel?.text = accounts[indexPath.item].name
         cell.detailTextLabel?.text = numberFormatter.string(from: NSNumber(value: accounts[indexPath.item].balance.value.doubleValue))
         return cell
