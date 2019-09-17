@@ -21,7 +21,7 @@ final class AuthenticationManager {
             completion(accessToken)
         } else {
             if cancellable == nil {
-                cancellable = service.createAnonymous(market: Market(code: "SE")) { [weak self] result in
+                cancellable = service.createAnonymous(market: market) { [weak self] result in
                     guard let self = self else { return }
                     if let accessToken = try? result.get() {
                         self.accessToken = accessToken

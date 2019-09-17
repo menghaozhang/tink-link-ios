@@ -12,8 +12,6 @@
 		201D5518230AC95E00641102 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 201D5517230AC95E00641102 /* Assets.xcassets */; };
 		201D551B230AC95E00641102 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 201D5519230AC95E00641102 /* LaunchScreen.storyboard */; };
 		2023EB1F232268C400B219A3 /* AddCredentialStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2023EB1E232268C400B219A3 /* AddCredentialStatusViewController.swift */; };
-		20AD0FF1232233EE00E2F570 /* Market+Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AD0FF0232233EE00E2F570 /* Market+Emoji.swift */; };
-		20D14ABE232BA70000D46495 /* MarketCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D14ABD232BA70000D46495 /* MarketCell.swift */; };
 		7C4076BB87A7E08D9AF89D2B /* Pods_ProviderSelection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 721C3816EEFC9F33462E6DCE /* Pods_ProviderSelection.framework */; };
 		8F576A2923228BE300A81E8E /* ValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F576A2823228BE300A81E8E /* ValueTableViewCell.swift */; };
 		8FA5F824230BD13800226C02 /* FinancialInstitutionPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F823230BD13800226C02 /* FinancialInstitutionPickerViewController.swift */; };
@@ -33,8 +31,6 @@
 		201D551A230AC95E00641102 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		201D551C230AC95E00641102 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2023EB1E232268C400B219A3 /* AddCredentialStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCredentialStatusViewController.swift; sourceTree = "<group>"; };
-		20AD0FF0232233EE00E2F570 /* Market+Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Market+Emoji.swift"; sourceTree = "<group>"; };
-		20D14ABD232BA70000D46495 /* MarketCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketCell.swift; sourceTree = "<group>"; };
 		61B26BF5DAF2FC35AB93DC98 /* Pods-ProviderSelection.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProviderSelection.debug.xcconfig"; path = "Target Support Files/Pods-ProviderSelection/Pods-ProviderSelection.debug.xcconfig"; sourceTree = "<group>"; };
 		721C3816EEFC9F33462E6DCE /* Pods_ProviderSelection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProviderSelection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F576A2823228BE300A81E8E /* ValueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueTableViewCell.swift; sourceTree = "<group>"; };
@@ -96,7 +92,6 @@
 		20AD0FF223223AA700E2F570 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				20AD0FF0232233EE00E2F570 /* Market+Emoji.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -132,7 +127,6 @@
 		8FBA6C572313DE8F00A98BA8 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				20D14ABD232BA70000D46495 /* MarketCell.swift */,
 				8FA5F833230D84B900226C02 /* TextFieldCell.swift */,
 				8F576A2823228BE300A81E8E /* ValueTableViewCell.swift */,
 			);
@@ -263,11 +257,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FA5F83E230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift in Sources */,
-				20D14ABE232BA70000D46495 /* MarketCell.swift in Sources */,
 				8FA5F826230BE85100226C02 /* AccessTypePickerViewController.swift in Sources */,
 				8FA5F824230BD13800226C02 /* FinancialInstitutionPickerViewController.swift in Sources */,
 				8FA5F828230C069500226C02 /* CredentialTypePickerViewController.swift in Sources */,
-				20AD0FF1232233EE00E2F570 /* Market+Emoji.swift in Sources */,
 				2023EB1F232268C400B219A3 /* AddCredentialStatusViewController.swift in Sources */,
 				8FA5F834230D84B900226C02 /* TextFieldCell.swift in Sources */,
 				8F576A2923228BE300A81E8E /* ValueTableViewCell.swift in Sources */,
