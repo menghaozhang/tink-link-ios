@@ -24,6 +24,12 @@ public struct Market: Hashable, RawRepresentable, ExpressibleByStringLiteral {
     }
 }
 
+public extension Market {
+    static var defaultMarket: Market {
+        return Market(code: "SE")
+    }
+}
+
 extension Market: Comparable {
     public static func < (lhs: Market, rhs: Market) -> Bool {
         return (lhs.localizedString ?? lhs.code).caseInsensitiveCompare(rhs.localizedString ?? rhs.code) == .orderedAscending

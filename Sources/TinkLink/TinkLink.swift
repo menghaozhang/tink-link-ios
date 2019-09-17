@@ -7,12 +7,24 @@ public class TinkLink {
         var redirectUrl: URL
         var timeoutIntervalForRequest: TimeInterval?
         var certificateURL: URL?
-        public init (environment: Environment, clientId: String, redirectUrl: URL, timeoutIntervalForRequest: TimeInterval? = nil, certificateURL: URL? = nil) {
+        var market: Market
+        var locale: Locale
+        public init (environment: Environment, clientId: String, redirectUrl: URL, timeoutIntervalForRequest: TimeInterval? = nil, certificateURL: URL? = nil, market: Market, locale: Locale? = nil) {
             self.environment = environment
             self.clientId = clientId
             self.redirectUrl = redirectUrl
             self.timeoutIntervalForRequest = timeoutIntervalForRequest
             self.certificateURL = certificateURL
+            self.market = market
+            if let locale = locale {
+                if Locale.tink.availableLocales.contains(locale) {
+                    self.locale = locale
+                } else {
+                    fatalError(locale.identifier + " is not an available locale")
+                }
+            } else {
+                self.locale = Locale.tink.defaultLocale
+            }
         }
     }
     
@@ -81,6 +93,8 @@ extension TinkLink.Configuration: Decodable {
         case redirectUrl = "TINK_REDIRECT_URL"
         case timeoutInterval = "TINK_TIMEOUT_INTERVAL"
         case certificateFileName = "TINK_CERTIFICATE_FILE_NAME"
+        case market = "TINK_MARKET_CODE"
+        case locale = "TINK_LOCALE_IDENTIFIER"
     }
     
     public init(from decoder: Decoder) throws {
@@ -104,6 +118,20 @@ extension TinkLink.Configuration: Decodable {
                 fatalError("Cannot find certificate file")
             }
             self.certificateURL = certificateURL
+        }
+        
+        let marketCode = try values.decode(String.self, forKey: .market)
+        market = Market(code: marketCode)
+        
+        if let localeIdentifier = try values.decodeIfPresent(String.self, forKey: .locale) {
+            let availableLocale = Locale.tink.availableLocales.first{ $0.identifier == localeIdentifier }
+            if let locale = availableLocale {
+                self.locale = locale
+            } else {
+                fatalError(localeIdentifier + " is not an available locale")
+            }
+        } else {
+            locale = Locale.tink.defaultLocale
         }
     }
 }

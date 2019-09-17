@@ -65,8 +65,7 @@ public class ProviderContext {
     ///
     /// - Parameter market: Market to access.
     public convenience init(market: Market) {
-        let locale = Locale.tink.availableLocalesGroupedByRegionCode[market.code] ?? Locale(identifier: "sv_SE")
-        let attributes = Attributes(capabilities: .all, includeTestProviders: false, accessTypes: Provider.AccessType.all, market: market, locale: locale)
+        let attributes = Attributes(capabilities: .all, includeTestProviders: false, accessTypes: Provider.AccessType.all, market: market, locale: Locale.tink.defaultLocale)
         self.init(attributes: attributes)
     }
     
