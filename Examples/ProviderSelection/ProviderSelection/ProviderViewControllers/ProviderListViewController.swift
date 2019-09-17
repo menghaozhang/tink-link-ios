@@ -19,7 +19,7 @@ final class ProviderListViewController: UITableViewController {
     
     init(market: Market, style: UITableView.Style) {
         self.market = market
-        let locale = Locale.tink.availableLocalesGroupedByRegionCode[market.code] ?? Locale(identifier: "SE")
+        let locale = Locale.tink.availableLocalesGroupedByRegionCode[market.code] ?? Locale(identifier: "sv_SE")
         let attributes = ProviderContext.Attributes(capabilities: .all, includeTestProviders: true, accessTypes: Provider.AccessType.all, market: market, locale: locale)
         providerContext = ProviderContext(attributes: attributes)
         providerGroups = providerContext.providerGroups
