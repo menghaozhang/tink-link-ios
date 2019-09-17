@@ -1,7 +1,7 @@
 import Foundation
 import SwiftGRPC
 
-public final class AuthenticationService: TokenConfigurableService, TokenConfigurableServiceBase {
+public final class AuthenticationService: TokenConfigurableService {
     let channel: Channel
 
     init(channel: Channel, accessToken: AccessToken? = nil) {
