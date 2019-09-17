@@ -16,12 +16,12 @@ final class AuthenticationManager {
         authenticateIfNeeded { _ in }
     }
     
-    func authenticateIfNeeded(for market: Market = Market(code: "SE"), completion: @escaping (AccessToken) -> Void) {
+    func authenticateIfNeeded(for market: Market = Market(code: "SE"), locale: Locale = Locale(identifier: "sv_SE"), completion: @escaping (AccessToken) -> Void) {
         if let accessToken = accessToken {
             completion(accessToken)
         } else {
             if cancellable == nil {
-                cancellable = service.createAnonymous(market: market) { [weak self] result in
+                cancellable = service.createAnonymous(market: market, locale: locale) { [weak self] result in
                     guard let self = self else { return }
                     if let accessToken = try? result.get() {
                         self.accessToken = accessToken
