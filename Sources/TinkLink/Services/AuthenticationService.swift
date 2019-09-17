@@ -1,7 +1,7 @@
 import Foundation
 import SwiftGRPC
 
-public final class AuthenticationService: TokenConfigurableService {
+final class AuthenticationService: TokenConfigurableService {
     let channel: Channel
     let metadata: Metadata
 
@@ -12,14 +12,14 @@ public final class AuthenticationService: TokenConfigurableService {
 
     internal lazy var service = AuthenticationServiceServiceClient(channel: channel, metadata: metadata)
 
-    public func login(authenticationToken: AuthenticationToken, completion: @escaping (Result<String, Error>) -> Void) -> Cancellable {
+    func login(authenticationToken: AuthenticationToken, completion: @escaping (Result<String, Error>) -> Void) -> Cancellable {
         var request = GRPCLoginRequest()
         request.authenticationToken = authenticationToken.rawValue
 
         return startCall(for: request, method: service.login, responseMap: { $0.sessionID }, completion: completion)
     }
 
-    public func register(authenticationToken: AuthenticationToken, email: String, locale: Locale, completion: @escaping (Result<String, Error>) -> Void) -> Cancellable {
+    func register(authenticationToken: AuthenticationToken, email: String, locale: Locale, completion: @escaping (Result<String, Error>) -> Void) -> Cancellable {
         var request = GRPCRegisterRequest()
         request.authenticationToken = authenticationToken.rawValue
         request.email = email
@@ -28,14 +28,14 @@ public final class AuthenticationService: TokenConfigurableService {
         return startCall(for: request, method: service.register, responseMap: { $0.sessionID }, completion: completion)
     }
 
-    public func logout(autologout: Bool, completion: @escaping (Result<Void, Error>) -> Void) -> Cancellable {
+    func logout(autologout: Bool, completion: @escaping (Result<Void, Error>) -> Void) -> Cancellable {
         var request = GRPCLogoutRequest()
         request.autologout = autologout
 
         return startCall(for: request, method: service.logout, responseMap: { _ in return }, completion: completion)
     }
 
-    public func describeOAuth2Client(clientID: String, scopes: [String], redirectURL: URL, completion: @escaping (Result<Void, Error>) -> Void) -> Cancellable {
+    func describeOAuth2Client(clientID: String, scopes: [String], redirectURL: URL, completion: @escaping (Result<Void, Error>) -> Void) -> Cancellable {
         var request = GRPCDescribeOAuth2ClientRequest()
         request.clientID = clientID
         request.scopes = scopes
