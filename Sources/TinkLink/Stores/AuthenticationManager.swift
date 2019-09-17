@@ -11,7 +11,7 @@ final class AuthenticationManager {
         service = TinkLink.shared.client.userService
     }
     
-    func authenticateIfNeeded<Service: TokenConfigurableServiceBase>(service otherService: Service, for market: Market = Market(code: "SE"), completion: @escaping (Result<AccessToken, Error>) -> Void) {
+    func authenticateIfNeeded<Service: TokenConfigurableService>(service otherService: Service, for market: Market = Market(code: "SE"), completion: @escaping (Result<AccessToken, Error>) -> Void) {
         if let accessToken = accessToken {
             otherService.configure(accessToken)
             self.accessToken = accessToken
