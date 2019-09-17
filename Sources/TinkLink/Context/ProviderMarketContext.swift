@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol ProviderMarketContextDelegate: AnyObject {
+protocol ProviderMarketContextDelegate: AnyObject {
     func providerMarketContextWillChange(_ context: ProviderMarketContext)
     func providerMarketContextDidChange(_ context: ProviderMarketContext)
     func providerMarketContext(_ context: ProviderMarketContext, didReceiveError error: Error)
@@ -11,8 +11,8 @@ extension ProviderMarketContextDelegate {
 }
 
 /// An object that accesses available markets.
-public class ProviderMarketContext {
-    public init() {
+class ProviderMarketContext {
+    init() {
         _markets = try? providerStore.markets?.get().sortedWithCurrentRegionFirst()
         NotificationCenter.default.addObserver(forName: .providerStoreMarketsChanged, object: providerStore, queue: .main) { [weak self] _ in
             guard let self = self else { return }
@@ -23,9 +23,9 @@ public class ProviderMarketContext {
             }
         }
     }
-    
-    public weak var delegate: ProviderMarketContextDelegate?
-    
+
+    weak var delegate: ProviderMarketContextDelegate?
+
     private let providerStore = ProviderStore.shared
     private var providerStoreObserver: Any?
 
@@ -37,7 +37,7 @@ public class ProviderMarketContext {
             delegate?.providerMarketContextDidChange(self)
         }
     }
-    
+
     private func performFetch() {
         providerStore.performFetchMarketsIfNeeded()
     }
@@ -45,7 +45,7 @@ public class ProviderMarketContext {
 
 // Markets
 extension ProviderMarketContext {
-    public var markets: [Market] {
+    var markets: [Market] {
         guard let markets = _markets else {
             performFetch()
             return []
