@@ -5,5 +5,5 @@ inhibit_all_warnings!
 install! 'cocoapods', :disable_input_output_paths => true
 
 target 'ProviderSelection' do
-	pod 'TinkLink', :path => '../../'
+	pod 'TinkLink', :path => '../../', :testspecs => ['Tests'] 
 end
