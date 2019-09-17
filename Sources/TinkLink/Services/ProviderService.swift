@@ -2,9 +2,11 @@ import SwiftGRPC
 
 public class ProviderService: TokenConfigurableService {
     let channel: Channel
+    let clientKey: String
 
-    init(channel: Channel) {
+    init(channel: Channel, clientKey: String) {
         self.channel = channel
+        self.clientKey = clientKey
     }
 
     internal lazy var service: ProviderServiceServiceClient = {

@@ -3,9 +3,11 @@ import SwiftGRPC
 
 final class StreamingService {
     let channel: Channel
+    let clientKey: String
 
-    init(channel: Channel) {
+    init(channel: Channel, clientKey: String) {
         self.channel = channel
+        self.clientKey = clientKey
     }
 
     private lazy var service = StreamingServiceServiceClient(channel: channel)
