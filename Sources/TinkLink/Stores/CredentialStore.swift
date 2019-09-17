@@ -22,7 +22,7 @@ final class CredentialStore {
     
     func addCredential(for provider: Provider, fields: [String: String], completion: @escaping(Result<Credential, Error>) -> Void) {
         let market = Market(code: provider.marketCode)
-        authenticationManager.authenticateIfNeeded(for: market) { [weak self] _ in
+        authenticationManager.authenticateIfNeeded(service: service, for: market) { [weak self] _ in
             guard let self = self, self.createCredentialCanceller[provider.name] == nil else { return }
             let canceller = self.service.createCredential(providerName: provider.name, fields: fields, completion: { (result) in
                 DispatchQueue.main.async {
@@ -43,7 +43,7 @@ final class CredentialStore {
     
     func addSupplementalInformation(for credential: Credential, supplementalInformationFields: [String: String]) {
         // TODO: Need to have a way to regenerate a accessToken while getting authentication error(due to access token expired)
-        authenticationManager.authenticateIfNeeded { [weak self] _ in
+        authenticationManager.authenticateIfNeeded(service: service) { [weak self] _ in
             guard let self = self else { return }
             self.addSupplementalInformationCanceller[credential.id] = self.service.supplementInformation(credentialID: credential.id, fields: supplementalInformationFields) { result in
                 DispatchQueue.main.async {
@@ -62,7 +62,7 @@ final class CredentialStore {
     }
     
     func cancelSupplementInformation(for credential: Credential) {
-        authenticationManager.authenticateIfNeeded { [weak self] _ in
+        authenticationManager.authenticateIfNeeded(service: service) { [weak self] _ in
             guard let self = self, self.cancelSupplementInformationCanceller[credential.id] == nil else { return }
             self.cancelSupplementInformationCanceller[credential.id] = self.service.cancelSupplementInformation(credentialID: credential.id) { result in
                 DispatchQueue.main.async {
