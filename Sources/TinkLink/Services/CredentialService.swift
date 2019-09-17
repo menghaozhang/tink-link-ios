@@ -9,11 +9,7 @@ public final class CredentialService: TokenConfigurableService {
         self.metadata = metadata
     }
 
-    internal lazy var service: CredentialServiceServiceClient = {
-        let service = CredentialServiceServiceClient(channel: channel)
-        service.metadata = metadata
-        return service
-    }()
+    internal lazy var service = CredentialServiceServiceClient(channel: channel, metadata: metadata)
 
     public func credentials(completion: @escaping (Result<[Credential], Error>) -> Void) -> Cancellable {
         let request = GRPCListCredentialsRequest()

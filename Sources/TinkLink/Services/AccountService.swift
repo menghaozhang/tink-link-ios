@@ -9,11 +9,7 @@ public final class AccountService {
         self.metadata = metadata
     }
     
-    internal lazy var service: AccountServiceServiceClient = {
-        let service = AccountServiceServiceClient(channel: channel)
-        service.metadata = metadata
-        return service
-    }()
+    internal lazy var service = AccountServiceServiceClient(channel: channel, metadata: metadata)
     
     /// Lists all accounts
     ///

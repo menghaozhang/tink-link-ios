@@ -10,11 +10,7 @@ public final class AuthenticationService: TokenConfigurableService {
         self.metadata = metadata
     }
 
-    internal lazy var service: AuthenticationServiceServiceClient = {
-        let service = AuthenticationServiceServiceClient(channel: channel)
-        service.metadata = metadata
-        return service
-    }()
+    internal lazy var service = AuthenticationServiceServiceClient(channel: channel, metadata: metadata)
 
     public func login(authenticationToken: AuthenticationToken, completion: @escaping (Result<String, Error>) -> Void) -> Cancellable {
         var request = GRPCLoginRequest()

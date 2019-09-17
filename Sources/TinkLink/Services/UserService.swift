@@ -10,11 +10,7 @@ public final class UserService {
         self.metadata = metadata
     }
 
-    private lazy var service: UserServiceServiceClient = {
-        let service = UserServiceServiceClient(channel: channel)
-        service.metadata = metadata
-        return service
-    }()
+    private lazy var service = UserServiceServiceClient(channel: channel, metadata: metadata)
 
     public func createAnonymous(market: Market? = nil, locale: Locale = .current, origin: String? = nil, completion: @escaping (Result<AccessToken, Error>) -> Void) -> Cancellable {
         var request = GRPCCreateAnonymousRequest()

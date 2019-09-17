@@ -9,11 +9,7 @@ public class ProviderService: TokenConfigurableService {
         self.metadata = metadata
     }
 
-    internal lazy var service: ProviderServiceServiceClient = {
-        let service = ProviderServiceServiceClient(channel: channel)
-        service.metadata = metadata
-        return service
-    }()
+    internal lazy var service = ProviderServiceServiceClient(channel: channel, metadata: metadata)
 
     /// Lists all providers
     ///
