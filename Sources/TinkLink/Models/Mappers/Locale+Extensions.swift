@@ -29,10 +29,10 @@ extension Tink where Base == Locale {
     
     /// Fallback locales if no other locale is available
     public static var fallBackLocale: Locale {
-        return Locale(identifier: "en_GB")
+        return Locale(identifier: "en_US")
     }
     
-    /// Defaule available local that will be used based on the current locale
+    /// Default available locale that will be used based on the current locale
     public static var defaultLocale: Locale {
         if let languageCode = Locale.current.languageCode, let locale = Locale.tink.availableLocaleWith(languageCode: languageCode) {
             return locale

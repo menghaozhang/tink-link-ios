@@ -34,7 +34,7 @@ extension ProcessInfo {
         return environment["TINK_MARKET"].flatMap(Market.init(code: ))
     }
     
-    var tinkLoacle: Locale? {
+    var tinkLocale: Locale? {
         if let locale = environment["TINK_LOCALE"].flatMap(Locale.init(identifier: )) {
             if Locale.tink.availableLocales.contains(locale) {
                 return locale

@@ -150,7 +150,7 @@ extension Client {
             clientKey: clientKey,
             certificate: processInfo.tinkCertificate,
             market: processInfo.tinkMarket ?? Market.defaultMarket,
-            locale: processInfo.tinkLoacle ?? Locale.tink.defaultLocale
+            locale: processInfo.tinkLocale ?? Locale.tink.defaultLocale
         )
     }
 }
