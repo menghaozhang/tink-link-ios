@@ -53,6 +53,8 @@
 		8F3672552305AAF800B92936 /* Account+GRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3672542305AAF800B92936 /* Account+GRPC.swift */; };
 		8F84A776232B8B6500EA878F /* TokenConfigurableService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F84A775232B8B6500EA878F /* TokenConfigurableService.swift */; };
 		8F84A778232F816B00EA878F /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F84A777232F816B00EA878F /* AuthenticationManager.swift */; };
+		8F84A77A2330D34C00EA878F /* TinkExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F84A7792330D34C00EA878F /* TinkExtension.swift */; };
+		8F84A77C2330D39600EA878F /* Locale+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F84A77B2330D39600EA878F /* Locale+Extensions.swift */; };
 		8FA35586231E673B0054115D /* TinkLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA35585231E673B0054115D /* TinkLink.swift */; };
 		8FA3558A231E703C0054115D /* ProviderStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA35589231E703C0054115D /* ProviderStore.swift */; };
 		8FA3558C231E839E0054115D /* CredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA3558B231E839E0054115D /* CredentialStore.swift */; };
@@ -120,6 +122,8 @@
 		8F3672542305AAF800B92936 /* Account+GRPC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Account+GRPC.swift"; sourceTree = "<group>"; };
 		8F84A775232B8B6500EA878F /* TokenConfigurableService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenConfigurableService.swift; sourceTree = "<group>"; };
 		8F84A777232F816B00EA878F /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		8F84A7792330D34C00EA878F /* TinkExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinkExtension.swift; sourceTree = "<group>"; };
+		8F84A77B2330D39600EA878F /* Locale+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+Extensions.swift"; sourceTree = "<group>"; };
 		8FA35585231E673B0054115D /* TinkLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinkLink.swift; sourceTree = "<group>"; };
 		8FA35589231E703C0054115D /* ProviderStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderStore.swift; sourceTree = "<group>"; };
 		8FA3558B231E839E0054115D /* CredentialStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialStore.swift; sourceTree = "<group>"; };
@@ -166,6 +170,7 @@
 				20ED85822304081D006213BB /* Provider+GRPC.swift */,
 				20EE138023053B2700C92D65 /* Credential+GRPC.swift */,
 				8F3672452305685600B92936 /* GrpcExtensions.swift */,
+				8F84A77B2330D39600EA878F /* Locale+Extensions.swift */,
 			);
 			path = Mappers;
 			sourceTree = "<group>";
@@ -273,6 +278,7 @@
 				8FA3558D231EA1840054115D /* ProviderGroup.swift */,
 				20ED859523045896006213BB /* Credential.swift */,
 				20492599232A3AF000D4461D /* Form.swift */,
+				8F84A7792330D34C00EA878F /* TinkExtension.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -490,6 +496,7 @@
 				8FA35586231E673B0054115D /* TinkLink.swift in Sources */,
 				20ED85712304004C006213BB /* ProviderService.swift in Sources */,
 				20ED858E2304151B006213BB /* CredentialService.swift in Sources */,
+				8F84A77C2330D39600EA878F /* Locale+Extensions.swift in Sources */,
 				201D5523230AEAA500641102 /* UserService.swift in Sources */,
 				20ED85412303FAEC006213BB /* rpc.pb.swift in Sources */,
 				209D69282326878800B4DBB8 /* SupplementInformationTask.swift in Sources */,
@@ -506,6 +513,7 @@
 				8FA3558C231E839E0054115D /* CredentialStore.swift in Sources */,
 				8F3672512305A2A700B92936 /* Identifier.swift in Sources */,
 				8FA5F820230AE40B00226C02 /* UpdateAccountRequest+GRPC.swift in Sources */,
+				8F84A77A2330D34C00EA878F /* TinkExtension.swift in Sources */,
 				8F36724B23058A3600B92936 /* Account.swift in Sources */,
 				200A3F99230C31E900BEF935 /* AuthenticationService.swift in Sources */,
 				200FD63D23154AFC0077181A /* AccessToken.swift in Sources */,
