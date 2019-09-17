@@ -12,20 +12,20 @@ final class ProviderStore {
     private var marketFetchCanceller: Cancellable?
     private var providerFetchCancellers: [ProviderContext.Attributes: Cancellable] = [:]
 
-    var providerMarketGroups: [Market: [Provider]] = [:] {
+    var providerMarketGroups: [Market: Result<[Provider], Error>] = [:] {
         didSet {
             NotificationCenter.default.post(name: .providerStoreMarketGroupsChanged, object: self)
         }
     }
     
-    var markets: [Market]? {
+    var markets: Result<[Market], Error>? {
         didSet {
             NotificationCenter.default.post(name: .providerStoreMarketsChanged, object: self)
         }
     }
 
     func performFetchProvidersIfNeeded(for attributes: ProviderContext.Attributes) {
-        authenticationManager.authenticateIfNeeded(service: service) { [weak self] _ in
+        authenticationManager.authenticateIfNeeded(service: service, for: attributes.market) { [weak self] _ in
             guard let self = self, self.providerFetchCancellers[attributes] == nil else {
                 return
             }
@@ -34,10 +34,9 @@ final class ProviderStore {
                     switch result {
                     case .success(let fetchedProviders):
                         let filteredProviders = fetchedProviders.filter({ attributes.accessTypes.contains($0.accessType) })
-                        self.providerMarketGroups[attributes.market] = filteredProviders
-                    case .failure:
-                        break
-                        //error
+                        self.providerMarketGroups[attributes.market] = .success(filteredProviders)
+                    case .failure(let error):
+                        self.providerMarketGroups[attributes.market] = .failure(error)
                     }
                     self.providerFetchCancellers[attributes] = nil
                 }
@@ -53,14 +52,7 @@ final class ProviderStore {
             }
             let cancellable = self.service.providerMarkets { result in
                 DispatchQueue.main.async {
-                    self.markets = [Market(code: "SE"), Market(code: "NO")]
-                    //                switch result {
-                    //                case .success(let markets):
-                    //                    self.markets = markets
-                    //                case .failure:
-                    //                    break
-                    //                    //error
-                    //                }
+                    self.markets = result
                     self.marketFetchCanceller = nil
                 }
             }
