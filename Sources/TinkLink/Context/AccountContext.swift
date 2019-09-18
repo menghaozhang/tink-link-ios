@@ -1,3 +1,5 @@
+import NotificationCenter
+
 public protocol AccountContextDelegate: AnyObject {
     func accountContext(_ store: AccountContext, didUpdateAccounts accounts: [Identifier<Credential>: [Account]])
     func accountContext(_ store: AccountContext, didReceiveError error: Error)
