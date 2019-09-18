@@ -12,7 +12,7 @@ final class AuthenticationManager {
         service = TinkLink.shared.client.userService
     }
     
-    func authenticateIfNeeded<Service: TokenConfigurableService>(service otherService: Service, for market: Market, locale: Locale, completion: @escaping (Result<Void, Error>) -> Void) {
+    func authenticateIfNeeded<Service: TokenConfigurableService>(service otherService: Service, for market: Market, locale: Locale, completion: @escaping (Result<Void, Error>) -> Void) -> Cancellable? {
         if let accessToken = accessToken {
             otherService.configure(accessToken)
             self.accessToken = accessToken
@@ -52,6 +52,7 @@ final class AuthenticationManager {
                 completionHandlers.append(completion)
             }
         }
+        return cancellable
     }
     
     private var accessToken: AccessToken?
