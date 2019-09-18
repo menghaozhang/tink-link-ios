@@ -159,15 +159,19 @@ extension AddCredentialViewController {
     private func showDownloadPrompt(for thirdPartyAppAuthentication: Credential.ThirdPartyAppAuthentication) {
         let alertController = UIAlertController(title: thirdPartyAppAuthentication.downloadTitle, message: thirdPartyAppAuthentication.downloadMessage, preferredStyle: .alert)
 
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        let downloadAction = UIAlertAction(title: "Download", style: .default, handler: { _ in
-            if let appStoreURL = thirdPartyAppAuthentication.appStoreURL, UIApplication.shared.canOpenURL(appStoreURL) {
-                UIApplication.shared.open(appStoreURL)
-            }
-        })
-
-        alertController.addAction(cancelAction)
-        alertController.addAction(downloadAction)
+        if let appStoreURL = thirdPartyAppAuthentication.appStoreURL, UIApplication.shared.canOpenURL(appStoreURL) {
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            let downloadAction = UIAlertAction(title: "Download", style: .default, handler: { _ in
+                if let appStoreURL = thirdPartyAppAuthentication.appStoreURL, UIApplication.shared.canOpenURL(appStoreURL) {
+                    UIApplication.shared.open(appStoreURL)
+                }
+            })
+            alertController.addAction(cancelAction)
+            alertController.addAction(downloadAction)
+        } else {
+            let okAction = UIAlertAction(title: "OK", style: .default)
+            alertController.addAction(okAction)
+        }
 
         present(alertController, animated: true)
     }
