@@ -45,6 +45,7 @@ final class AuthenticationManager {
                         self.completionHandlers.forEach{ $0(.failure(error)) }
                         self.completionHandlers.removeAll()
                     }
+                    self.cancellable = nil
                 }
             } else {
                 // In case of multiple requests at the same time
