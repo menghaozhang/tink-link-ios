@@ -19,11 +19,11 @@ public class ProviderContext {
         public let accessTypes: Set<Provider.AccessType>
         public let market: Market
         
-        public init(capabilities: Provider.Capabilities, includeTestProviders: Bool, accessTypes: Set<Provider.AccessType>, market: Market) {
+        public init(capabilities: Provider.Capabilities, includeTestProviders: Bool, accessTypes: Set<Provider.AccessType>) {
             self.capabilities = capabilities
             self.includeTestProviders = includeTestProviders
             self.accessTypes = accessTypes
-            self.market = market
+            self.market = TinkLink.shared.client.market
         }
     }
     
@@ -59,11 +59,9 @@ public class ProviderContext {
         }
     }
     
-    /// A convenience initializer that accesses providers from a market including all capabilities and access types but no test providers.
-    ///
-    /// - Parameter market: Market to access.
-    public convenience init(market: Market) {
-        let attributes = Attributes(capabilities: .all, includeTestProviders: false, accessTypes: Provider.AccessType.all, market: market)
+    /// A convenience initializer that accesses providers including all capabilities and access types but no test providers.
+    public convenience init() {
+        let attributes = Attributes(capabilities: .all, includeTestProviders: false, accessTypes: Provider.AccessType.all)
         self.init(attributes: attributes)
     }
     

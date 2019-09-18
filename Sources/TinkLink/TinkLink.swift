@@ -7,12 +7,24 @@ public class TinkLink {
         var redirectUrl: URL
         var timeoutIntervalForRequest: TimeInterval?
         var certificateURL: URL?
-        public init (environment: Environment, clientId: String, redirectUrl: URL, timeoutIntervalForRequest: TimeInterval? = nil, certificateURL: URL? = nil) {
+        var market: Market
+        var locale: Locale
+        public init (environment: Environment, clientId: String, redirectUrl: URL, timeoutIntervalForRequest: TimeInterval? = nil, certificateURL: URL? = nil, market: Market, locale: Locale? = nil) {
             self.environment = environment
             self.clientId = clientId
             self.redirectUrl = redirectUrl
             self.timeoutIntervalForRequest = timeoutIntervalForRequest
             self.certificateURL = certificateURL
+            self.market = market
+            if let locale = locale {
+                if TinkLink.availableLocales.contains(locale) {
+                    self.locale = locale
+                } else {
+                    fatalError(locale.identifier + " is not an available locale")
+                }
+            } else {
+                self.locale = TinkLink.defaultLocale
+            }
         }
     }
     
@@ -57,7 +69,7 @@ public class TinkLink {
     
     // Setup via configration object
     public static func configure(with configuration: TinkLink.Configuration) {
-        shared._client = Client(environment: configuration.environment , clientKey: configuration.clientId, certificateURL: configuration.certificateURL)
+        shared._client = Client(environment: configuration.environment , clientKey: configuration.clientId, certificateURL: configuration.certificateURL, market: configuration.market, locale: configuration.locale)
     }
     
     // TODO: Some configurations can be changed after setup, for example timeoutIntervalForRequest and Qos, the changes should reflect to the stores and services
@@ -81,6 +93,8 @@ extension TinkLink.Configuration: Decodable {
         case redirectUrl = "TINK_REDIRECT_URL"
         case timeoutInterval = "TINK_TIMEOUT_INTERVAL"
         case certificateFileName = "TINK_CERTIFICATE_FILE_NAME"
+        case market = "TINK_MARKET_CODE"
+        case locale = "TINK_LOCALE_IDENTIFIER"
     }
     
     public init(from decoder: Decoder) throws {
@@ -105,6 +119,20 @@ extension TinkLink.Configuration: Decodable {
             }
             self.certificateURL = certificateURL
         }
+        
+        let marketCode = try values.decode(String.self, forKey: .market)
+        market = Market(code: marketCode)
+        
+        if let localeIdentifier = try values.decodeIfPresent(String.self, forKey: .locale) {
+            let availableLocale = TinkLink.availableLocales.first{ $0.identifier == localeIdentifier }
+            if let locale = availableLocale {
+                self.locale = locale
+            } else {
+                fatalError(localeIdentifier + " is not an available locale")
+            }
+        } else {
+            locale = TinkLink.defaultLocale
+        }
     }
 }
 
@@ -112,7 +140,7 @@ extension Client {
     convenience init(configurationUrl: URL) throws {
         let data = try Data(contentsOf: configurationUrl)
         let configuration = try PropertyListDecoder().decode(TinkLink.Configuration.self, from: data)
-        self.init(environment: configuration.environment, clientKey: configuration.clientId, certificateURL: configuration.certificateURL)
+        self.init(environment: configuration.environment, clientKey: configuration.clientId, certificateURL: configuration.certificateURL, market: configuration.market, locale: configuration.locale)
     }
 
     convenience init?(processInfo: ProcessInfo) {
@@ -120,7 +148,9 @@ extension Client {
         self.init(
             environment: processInfo.tinkEnvironment ?? .staging,
             clientKey: clientKey,
-            certificate: processInfo.tinkCertificate
+            certificate: processInfo.tinkCertificate,
+            market: processInfo.tinkMarket ?? TinkLink.defaultMarket,
+            locale: processInfo.tinkLocale ?? TinkLink.defaultLocale
         )
     }
 }
