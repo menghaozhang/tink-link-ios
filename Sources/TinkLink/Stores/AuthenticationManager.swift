@@ -6,17 +6,17 @@ final class AuthenticationManager {
     
     private var cancellable: Cancellable?
     private var service: UserService
-    private var completionHandlers: [(Result<AccessToken, Error>) -> Void] = []
+    private var completionHandlers: [(Result<Void, Error>) -> Void] = []
     
     private init() {
         service = TinkLink.shared.client.userService
     }
     
-    func authenticateIfNeeded<Service: TokenConfigurableService>(service otherService: Service, for market: Market, locale: Locale, completion: @escaping (Result<AccessToken, Error>) -> Void) {
+    func authenticateIfNeeded<Service: TokenConfigurableService>(service otherService: Service, for market: Market, locale: Locale, completion: @escaping (Result<Void, Error>) -> Void) {
         if let accessToken = accessToken {
             otherService.configure(accessToken)
             self.accessToken = accessToken
-            completion(.success(accessToken))
+            completion(.success(()))
         } else {
             if cancellable == nil {
                 cancellable = service.createAnonymous(market: market, locale: locale) { [weak self] result in
@@ -25,8 +25,8 @@ final class AuthenticationManager {
                         let accessToken = try result.get()
                         otherService.configure(accessToken)
                         self.accessToken = accessToken
-                        completion(.success(accessToken))
-                        self.completionHandlers.forEach{ $0(.success(accessToken)) }
+                        completion(.success(()))
+                        self.completionHandlers.forEach{ $0(.success(())) }
                         self.completionHandlers.removeAll()
                     } catch let error as RPCError {
                         if let callResult = error.callResult {
