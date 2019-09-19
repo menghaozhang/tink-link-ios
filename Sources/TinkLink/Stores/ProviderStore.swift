@@ -41,23 +41,11 @@ final class ProviderStore {
     private func performFetchProviders(for attributes: ProviderContext.Attributes) -> Cancellable {
         var multiCanceller = MultiCanceller()
         
-        let authCanceller = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] authenticationResult in
+        let authCanceller = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self, attributes] authenticationResult in
             guard let self = self, !multiCanceller.isCancelled else { return }
             do {
                 try authenticationResult.get()
-
-                let cancellable = self.service.providers(market: attributes.market, capabilities: attributes.capabilities, includeTestProviders: attributes.includeTestProviders) { [attributes] result in
-                    DispatchQueue.main.async {
-                        switch result {
-                        case .success(let fetchedProviders):
-                            let filteredProviders = fetchedProviders.filter({ attributes.accessTypes.contains($0.accessType) })
-                            self.providerMarketGroups[attributes.market] = .success(filteredProviders)
-                        case .failure(let error):
-                            self.providerMarketGroups[attributes.market] = .failure(error)
-                        }
-                        self.providerFetchCancellers[attributes] = nil
-                    }
-                }
+                let cancellable = unauthenticatedPerformFetchProviders(attributes: attributes)
                 multiCanceller.add(cancellable)
             } catch {
                 self.providerMarketGroups[attributes.market] = .failure(error)
@@ -69,6 +57,22 @@ final class ProviderStore {
         }
 
         return multiCanceller
+    }
+
+    private func unauthenticatedPerformFetchProviders(attributes: ProviderContext.Attributes) -> Cancellable {
+        return service.providers(market: attributes.market, capabilities: attributes.capabilities, includeTestProviders: attributes.includeTestProviders) { [weak self, attributes] result in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let fetchedProviders):
+                    let filteredProviders = fetchedProviders.filter({ attributes.accessTypes.contains($0.accessType) })
+                    self.providerMarketGroups[attributes.market] = .success(filteredProviders)
+                case .failure(let error):
+                    self.providerMarketGroups[attributes.market] = .failure(error)
+                }
+                self.providerFetchCancellers[attributes] = nil
+            }
+        }
     }
     
     func performFetchMarketsIfNeeded() {
