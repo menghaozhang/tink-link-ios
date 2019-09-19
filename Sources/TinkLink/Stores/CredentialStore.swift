@@ -25,7 +25,7 @@ final class CredentialStore {
     }
     
     func addCredential(for provider: Provider, fields: [String: String], completion: @escaping(Result<Credential, Error>) -> Void) -> Cancellable {
-        var multiCanceller = MultiCanceller(name: #function)
+        var multiCanceller = MultiCanceller()
         let market = Market(code: provider.marketCode)
         let authCanceller = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
             guard let self = self, self.createCredentialCanceller[provider.name] == nil else { return }
