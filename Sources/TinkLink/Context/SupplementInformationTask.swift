@@ -1,30 +1,19 @@
 public class SupplementInformationTask {
-    private let credentialStore = CredentialStore.shared
+    private let credentialService = TinkLink.shared.client.credentialService
     public private(set) var credential: Credential
-    
-    init(credential: Credential) {
+
+    private let completionHandler: (Result<Void, Error>) -> Void
+
+    init(credential: Credential, completionHandler: @escaping (Result<Void, Error>) -> Void) {
         self.credential = credential
+        self.completionHandler = completionHandler
     }
 
     public func submit(_ form: Form) {
-        credentialStore.addSupplementalInformation(for: credential, supplementalInformationFields: form.makeFields()) { [weak credentialStore, credential] result in
-            do {
-                try result.get()
-                credentialStore?.pollingStatus(for: credential)
-            } catch {
-                // TODO: Handle Error
-            }
-        }
+        credentialService.supplementInformation(credentialID: credential.id, fields: form.makeFields(), completion: completionHandler)
     }
     
     public func cancel() {
-        credentialStore.cancelSupplementInformation(for: credential) { [weak credentialStore, credential] result in
-            do {
-                try result.get()
-                credentialStore?.pollingStatus(for: credential)
-            } catch {
-                // TODO: Handle Error
-            }
-        }
+        credentialService.cancelSupplementInformation(credentialID: credential.id, completion: completionHandler)
     }
 }

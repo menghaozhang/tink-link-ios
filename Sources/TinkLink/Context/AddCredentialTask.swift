@@ -81,7 +81,14 @@ public class AddCredentialTask {
         case .authenticating:
             progressHandler(.authenticating)
         case .awaitingSupplementalInformation:
-            let supplementInformationTask = SupplementInformationTask(credential: credential)
+            let supplementInformationTask = SupplementInformationTask(credential: credential) { [weak self] result in
+                do {
+                    try result.get()
+                    self?.credentialStore.pollingStatus(for: credential)
+                } catch {
+                    self?.completion(.failure(error))
+                }
+            }
             progressHandler(.awaitingSupplementalInformation(supplementInformationTask))
         case .awaitingThirdPartyAppAuthentication, .awaitingMobileBankIDAuthentication:
             guard let thirdPartyAppAuthentication = credential.thirdPartyAppAuthentication else {
