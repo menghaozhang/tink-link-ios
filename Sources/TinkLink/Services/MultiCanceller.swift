@@ -13,11 +13,14 @@ private class AnyCancellable {
 class MultiCanceller: Cancellable {
     private var cancellers: [AnyCancellable] = []
 
+    private(set) var isCancelled: Bool = false
+
     func add(_ canceller: Cancellable) {
         cancellers.append(AnyCancellable(cancellable: canceller))
     }
 
     func cancel() {
+        isCancelled = true
         for canceller in cancellers {
             canceller.cancel()
         }
