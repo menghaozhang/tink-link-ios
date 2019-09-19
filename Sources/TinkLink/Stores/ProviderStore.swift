@@ -63,11 +63,11 @@ final class ProviderStore {
         return service.providers(market: attributes.market, capabilities: attributes.capabilities, includeTestProviders: attributes.includeTestProviders) { [weak self, attributes] result in
             guard let self = self else { return }
             DispatchQueue.main.async {
-                switch result {
-                case .success(let fetchedProviders):
+                do {
+                    let fetchedProviders = try result.get()
                     let filteredProviders = fetchedProviders.filter({ attributes.accessTypes.contains($0.accessType) })
                     self.providerMarketGroups[attributes.market] = .success(filteredProviders)
-                case .failure(let error):
+                } catch {
                     self.providerMarketGroups[attributes.market] = .failure(error)
                 }
                 self.providerFetchCancellers[attributes] = nil
