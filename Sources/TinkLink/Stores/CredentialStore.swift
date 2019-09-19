@@ -51,7 +51,9 @@ final class CredentialStore {
         return multiCanceller
     }
     
+    /// - Precondition: Service should be configured with access token before this method is called.
     func addSupplementalInformation(for credential: Credential, supplementalInformationFields: [String: String]) {
+        precondition(service.metadata[Metadata.HeaderKeys.authorization.key] != nil, "Service doesn't have authentication metadata set!")
         addSupplementalInformationCanceller[credential.id] = self.service.supplementInformation(credentialID: credential.id, fields: supplementalInformationFields) { [weak self] result in
             DispatchQueue.main.async {
                 self?.addSupplementalInformationCanceller[credential.id] = nil
@@ -59,7 +61,9 @@ final class CredentialStore {
         }
     }
     
+    /// - Precondition: Service should be configured with access token before this method is called.
     func cancelSupplementInformation(for credential: Credential) {
+        precondition(service.metadata[Metadata.HeaderKeys.authorization.key] != nil, "Service doesn't have authentication metadata set!")
         cancelSupplementInformationCanceller[credential.id] = self.service.cancelSupplementInformation(credentialID: credential.id) { [weak self] result in
             DispatchQueue.main.async {
                 self?.cancelSupplementInformationCanceller[credential.id] = nil
