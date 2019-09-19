@@ -1,4 +1,5 @@
 import Foundation
+import SwiftGRPC
 
 final class CredentialStore {
     static let shared = CredentialStore()
@@ -35,7 +36,6 @@ final class CredentialStore {
                         let credential = try result.get()
                         completion(.success(credential))
                         self.credentials[credential.id] = credential
-                        self.pollingStatus(for: credential)
                     } catch let error {
                         completion(.failure(error))
                     }
@@ -72,7 +72,7 @@ final class CredentialStore {
     }
     
     // TODO: Create polling handler for handle all the pollings
-    private func pollingStatus(for credential: Credential) {
+    func pollingStatus(for credential: Credential) {
         guard credentialStatusPollingCanceller[credential.id] == nil else { return }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
             self.credentialStatusPollingCanceller[credential.id] = self.service.credentials { [weak self, credential] result in

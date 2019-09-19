@@ -54,6 +54,8 @@ public class AddCredentialTask {
 
         handleUpdate(for: credential)
 
+        credentialStore.pollingStatus(for: credential)
+
         credentialStoreObserver = NotificationCenter.default.addObserver(forName: .credentialStoreChanged, object: credentialStore, queue: .main) { [weak self] _ in
             guard let self = self else { return }
             let latestCredential = self.credential ?? credential
