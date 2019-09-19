@@ -83,7 +83,9 @@ final class ProviderStore {
     }
     
     func performFetchMarketsIfNeeded() {
-        authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
+        if marketFetchCanceller != nil { return }
+        var multiCanceller = MultiCanceller()
+        let authCanceller = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
             guard let self = self, self.marketFetchCanceller == nil else {
                 return
             }
@@ -93,8 +95,12 @@ final class ProviderStore {
                     self.marketFetchCanceller = nil
                 }
             }
-            self.marketFetchCanceller = cancellable
+            multiCanceller.add(cancellable)
         }
+        if let canceller = authCanceller {
+            multiCanceller.add(canceller)
+        }
+        self.marketFetchCanceller = multiCanceller
     }
 }
 
