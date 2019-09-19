@@ -32,7 +32,7 @@ public class ProviderContext {
     /// Changing this property will update `providers` and `providerGroups` to only access providers matching the new attributes.
     public var attributes: ProviderContext.Attributes {
         didSet {
-            providerStore.performFetchProvidersIfNeeded(for: attributes)
+            performFetch()
         }
     }
 
