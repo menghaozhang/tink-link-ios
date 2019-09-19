@@ -28,6 +28,10 @@ final class ProviderStore {
         }
     }
 
+    func cancelFetchingProviders(for attributes: ProviderContext.Attributes) {
+        providerFetchCancellers[attributes]?.cancel()
+    }
+
     func performFetchProvidersIfNeeded(for attributes: ProviderContext.Attributes) {
         authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
             guard let self = self, self.providerFetchCancellers[attributes] == nil else {
