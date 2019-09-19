@@ -1,3 +1,5 @@
+all:
+
 generate:
 	mkdir ./Sources/TinkLink/GRPC/
 	./GRPC/vendor/protoc \
@@ -17,10 +19,22 @@ test:
 clean: 
 	-rm -rf ./Sources/TinkLink/GRPC/
 
-# Install via `$ brew install swiftlint`
-lint:
-	swiftlint
+bootstrap:
+ifeq ($(strip $(shell command -v brew 2> /dev/null)),)
+	$(error "`brew` is not available, please install homebrew")
+endif
+	brew install swiftlint swiftformat 2> /dev/null
 
-# Install via `$ brew install swiftformat`
+lint:
+ifeq ($(strip $(shell command -v swiftlint 2> /dev/null)),)
+	$(error "`swiftlint` is not available, please run `make bootstrap` first")
+endif
+	swiftlint 2> /dev/null
+
 format:
-	swiftformat .
+ifeq ($(strip $(shell command -v swiftformat 2> /dev/null)),)
+	$(error "`swiftformat` is not available, please run `make bootstrap` first")
+endif
+	swiftformat . 2> /dev/null
+
+release: format lint
