@@ -3,7 +3,7 @@ import Foundation
 final class CredentialStore {
     static let shared = CredentialStore()
     
-    var credentials: [Identifier<Credential>: Credential] = [:] {
+    private(set) var credentials: [Identifier<Credential>: Credential] = [:] {
         didSet {
             NotificationCenter.default.post(name: .credentialStoreChanged, object: self)
         }
