@@ -17,13 +17,13 @@ final class ProviderStore {
     private var marketFetchCanceller: Cancellable?
     private var providerFetchCancellers: [ProviderContext.Attributes: Cancellable] = [:]
 
-    var providerMarketGroups: [Market: Result<[Provider], Error>] = [:] {
+    private(set) var providerMarketGroups: [Market: Result<[Provider], Error>] = [:] {
         didSet {
             NotificationCenter.default.post(name: .providerStoreMarketGroupsChanged, object: self)
         }
     }
     
-    var markets: Result<[Market], Error>? {
+    private(set) var markets: Result<[Market], Error>? {
         didSet {
             NotificationCenter.default.post(name: .providerStoreMarketsChanged, object: self)
         }
