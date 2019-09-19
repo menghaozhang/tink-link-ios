@@ -48,8 +48,10 @@ final class ProviderStore {
                 let cancellable = self.unauthenticatedPerformFetchProviders(attributes: attributes)
                 multiCanceller.add(cancellable)
             } catch {
-                self.providerMarketGroups[attributes.market] = .failure(error)
-                self.providerFetchCancellers[attributes] = nil
+                DispatchQueue.main.async {
+                    self.providerMarketGroups[attributes.market] = .failure(error)
+                    self.providerFetchCancellers[attributes] = nil
+                }
             }
         }
         if let canceller = authCanceller {
