@@ -65,7 +65,7 @@ final class ProviderStore {
             DispatchQueue.main.async {
                 do {
                     let fetchedProviders = try result.get()
-                    let filteredProviders = fetchedProviders.filter({ attributes.accessTypes.contains($0.accessType) })
+                    let filteredProviders = fetchedProviders.filter { attributes.accessTypes.contains($0.accessType) }
                     self.providerMarketGroups[attributes.market] = .success(filteredProviders)
                 } catch {
                     self.providerMarketGroups[attributes.market] = .failure(error)
