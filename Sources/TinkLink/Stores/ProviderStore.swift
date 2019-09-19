@@ -45,7 +45,7 @@ final class ProviderStore {
             guard let self = self, !multiCanceller.isCancelled else { return }
             do {
                 try authenticationResult.get()
-                let cancellable = unauthenticatedPerformFetchProviders(attributes: attributes)
+                let cancellable = self.unauthenticatedPerformFetchProviders(attributes: attributes)
                 multiCanceller.add(cancellable)
             } catch {
                 self.providerMarketGroups[attributes.market] = .failure(error)
