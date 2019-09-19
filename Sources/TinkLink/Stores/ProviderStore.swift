@@ -34,6 +34,11 @@ final class ProviderStore {
     }
 
     func performFetchProvidersIfNeeded(for attributes: ProviderContext.Attributes) {
+        if providerFetchCancellers[attributes] != nil { return }
+        providerFetchCancellers[attributes] = performFetchProviders(for: attributes)
+    }
+
+    private func performFetchProviders(for attributes: ProviderContext.Attributes) -> Cancellable {
         var multiCanceller = MultiCanceller()
         
         let authCanceller = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] authenticationResult in
@@ -63,7 +68,7 @@ final class ProviderStore {
             multiCanceller.add(canceller)
         }
 
-        providerFetchCancellers[attributes] = multiCanceller
+        return multiCanceller
     }
     
     func performFetchMarketsIfNeeded() {
