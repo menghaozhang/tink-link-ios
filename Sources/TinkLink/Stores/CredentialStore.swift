@@ -52,21 +52,23 @@ final class CredentialStore {
     }
     
     /// - Precondition: Service should be configured with access token before this method is called.
-    func addSupplementalInformation(for credential: Credential, supplementalInformationFields: [String: String]) {
+    func addSupplementalInformation(for credential: Credential, supplementalInformationFields: [String: String], completion: @escaping (Result<Void, Error>) -> Void) {
         precondition(service.metadata.hasAuthorization, "Service doesn't have authentication metadata set!")
         addSupplementalInformationCanceller[credential.id] = self.service.supplementInformation(credentialID: credential.id, fields: supplementalInformationFields) { [weak self] result in
             DispatchQueue.main.async {
                 self?.addSupplementalInformationCanceller[credential.id] = nil
+                completion(result)
             }
         }
     }
     
     /// - Precondition: Service should be configured with access token before this method is called.
-    func cancelSupplementInformation(for credential: Credential) {
+    func cancelSupplementInformation(for credential: Credential, completion: @escaping (Result<Void, Error>) -> Void) {
         precondition(service.metadata.hasAuthorization, "Service doesn't have authentication metadata set!")
         cancelSupplementInformationCanceller[credential.id] = self.service.cancelSupplementInformation(credentialID: credential.id) { [weak self] result in
             DispatchQueue.main.async {
                 self?.cancelSupplementInformationCanceller[credential.id] = nil
+                completion(result)
             }
         }
     }
