@@ -9,6 +9,8 @@ final class CredentialStore {
         }
     }
     private let authenticationManager: AuthenticationManager
+    private let market: Market
+    private let locale: Locale
     private var service: CredentialService
     private var createCredentialCanceller: [Identifier<Provider>: Cancellable] = [:]
     private var credentialStatusPollingCanceller: [Identifier<Credential>: Cancellable] = [:]
@@ -17,12 +19,15 @@ final class CredentialStore {
     
     private init() {
         service = TinkLink.shared.client.credentialService
+        market = TinkLink.shared.client.market
+        locale = TinkLink.shared.client.locale
         authenticationManager = AuthenticationManager.shared
     }
     
-    func addCredential(for provider: Provider, fields: [String: String], completion: @escaping(Result<Credential, Error>) -> Void) {
+    func addCredential(for provider: Provider, fields: [String: String], completion: @escaping(Result<Credential, Error>) -> Void) -> Cancellable {
+        var multiCanceller = MultiCanceller()
         let market = Market(code: provider.marketCode)
-        authenticationManager.authenticateIfNeeded(service: service, for: market) { [weak self] _ in
+        let authCanceller = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
             guard let self = self, self.createCredentialCanceller[provider.name] == nil else { return }
             let canceller = self.service.createCredential(providerName: provider.name, fields: fields, completion: { (result) in
                 DispatchQueue.main.async {
@@ -38,12 +43,17 @@ final class CredentialStore {
                 }
             })
             self.createCredentialCanceller[provider.name] = canceller
+            multiCanceller.add(canceller)
         }
+        if let canceller = authCanceller {
+            multiCanceller.add(canceller)
+        }
+        return multiCanceller
     }
     
     func addSupplementalInformation(for credential: Credential, supplementalInformationFields: [String: String]) {
         // TODO: Need to have a way to regenerate a accessToken while getting authentication error(due to access token expired)
-        authenticationManager.authenticateIfNeeded(service: service) { [weak self] _ in
+        authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
             guard let self = self else { return }
             self.addSupplementalInformationCanceller[credential.id] = self.service.supplementInformation(credentialID: credential.id, fields: supplementalInformationFields) { result in
                 DispatchQueue.main.async {
@@ -62,7 +72,7 @@ final class CredentialStore {
     }
     
     func cancelSupplementInformation(for credential: Credential) {
-        authenticationManager.authenticateIfNeeded(service: service) { [weak self] _ in
+        authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
             guard let self = self, self.cancelSupplementInformationCanceller[credential.id] == nil else { return }
             self.cancelSupplementInformationCanceller[credential.id] = self.service.cancelSupplementInformation(credentialID: credential.id) { result in
                 DispatchQueue.main.async {

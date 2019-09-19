@@ -18,7 +18,7 @@ public class AddCredentialTask {
         case awaitingSupplementalInformation(SupplementInformationTask)
 
         /// Trigger for the client to prompt the user to open the third party authentication flow
-        case awaitingThirdPartyAppAuthentication(URL)
+        case awaitingThirdPartyAppAuthentication(Credential.ThirdPartyAppAuthentication)
     }
 
     public enum Error: Swift.Error {
@@ -82,11 +82,11 @@ public class AddCredentialTask {
             let supplementInformationTask = SupplementInformationTask(credential: credential)
             progressHandler(.awaitingSupplementalInformation(supplementInformationTask))
         case .awaitingThirdPartyAppAuthentication, .awaitingMobileBankIDAuthentication:
-            guard let url = credential.thirdPartyAppAuthentication?.deepLinkURL else {
+            guard let thirdPartyAppAuthentication = credential.thirdPartyAppAuthentication else {
                 assertionFailure("Missing third pary app authentication deeplink URL!")
                 return
             }
-            progressHandler(.awaitingThirdPartyAppAuthentication(url))
+            progressHandler(.awaitingThirdPartyAppAuthentication(thirdPartyAppAuthentication))
         case .updating:
             if completionPredicate == .updating {
                 completion(.success(credential))

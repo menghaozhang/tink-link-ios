@@ -4,11 +4,7 @@ import SwiftGRPC
 
 class ClientTests: XCTestCase {
     func testUnauthenticatedClient() {
-        let client = Client(
-            environment: .staging,
-            clientKey: ProcessInfo.processInfo.environment["TINK_CLIENT_KEY"]!,
-            certificateURL: Bundle(for: Client.self).url(forResource: "staging", withExtension: "pem")!
-        )
+        let client = Client(environment: .staging, clientKey: "not_work_client", certificateURL: nil, market: TinkLink.defaultMarket, locale: TinkLink.defaultLocale)
 
         let requestExpectation = expectation(description: "Providers Request")
 
@@ -23,7 +19,7 @@ class ClientTests: XCTestCase {
                 case .timedOut:
                     XCTFail("Request timed out")
                 case .callError(let callResult):
-                    XCTAssertEqual(callResult.statusCode, .unauthenticated)
+                    XCTAssertEqual(callResult.statusCode, .unknown)
                 }
             } catch {
                 XCTFail(error.localizedDescription)

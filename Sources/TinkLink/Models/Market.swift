@@ -40,3 +40,9 @@ extension Array where Element == Market {
         return sortedMarkets
     }
 }
+
+extension TinkLink {
+    public static var defaultMarket: Market {
+        return Market(code: "SE")
+    }
+}

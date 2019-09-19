@@ -4,14 +4,18 @@ import SwiftGRPC
 final class Client {
     let channel: Channel
     private var metadata = Metadata()
+    var market: Market
+    var locale: Locale
 
-    convenience init(environment: Environment, clientKey: String, userAgent: String? = nil, certificateURL: URL? = nil) {
+    convenience init(environment: Environment, clientKey: String, userAgent: String? = nil, certificateURL: URL? = nil, market: Market, locale: Locale) {
         let certificateContents = certificateURL.flatMap { try? String(contentsOf: $0, encoding: .utf8) }
-        self.init(environment: environment, clientKey: clientKey, userAgent: userAgent, certificate: certificateContents)
+        self.init(environment: environment, clientKey: clientKey, userAgent: userAgent, certificate: certificateContents, market: market, locale: locale)
     }
 
-    init(environment: Environment, clientKey: String, userAgent: String? = nil, certificate: String? = nil) {
+    init(environment: Environment, clientKey: String, userAgent: String? = nil, certificate: String? = nil, market: Market, locale: Locale) {
         var arguments: [Channel.Argument] = []
+        self.market = market
+        self.locale = locale
 
         arguments.append(.maxReceiveMessageLength(20 * 1024 * 1024))
 
