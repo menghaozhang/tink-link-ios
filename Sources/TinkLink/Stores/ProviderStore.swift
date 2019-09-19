@@ -84,6 +84,10 @@ final class ProviderStore {
     
     func performFetchMarketsIfNeeded() {
         if marketFetchCanceller != nil { return }
+        self.marketFetchCanceller = performFetchMarkets()
+    }
+
+    private func performFetchMarkets() -> Cancellable {
         var multiCanceller = MultiCanceller()
         let authCanceller = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
             guard let self = self, self.marketFetchCanceller == nil else {
@@ -100,7 +104,7 @@ final class ProviderStore {
         if let canceller = authCanceller {
             multiCanceller.add(canceller)
         }
-        self.marketFetchCanceller = multiCanceller
+        return multiCanceller
     }
 }
 
