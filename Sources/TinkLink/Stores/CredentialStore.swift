@@ -52,39 +52,17 @@ final class CredentialStore {
     }
     
     func addSupplementalInformation(for credential: Credential, supplementalInformationFields: [String: String]) {
-        // TODO: Need to have a way to regenerate a accessToken while getting authentication error(due to access token expired)
-        authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
-            guard let self = self else { return }
-            self.addSupplementalInformationCanceller[credential.id] = self.service.supplementInformation(credentialID: credential.id, fields: supplementalInformationFields) { result in
-                DispatchQueue.main.async {
-                    switch result {
-                    case .failure:
-                        // error
-                        break
-                    case .success:
-                        // polling
-                        self.pollingStatus(for: credential)
-                    }
-                }
-                self.addSupplementalInformationCanceller[credential.id] = nil
+        addSupplementalInformationCanceller[credential.id] = self.service.supplementInformation(credentialID: credential.id, fields: supplementalInformationFields) { [weak self] result in
+            DispatchQueue.main.async {
+                self?.addSupplementalInformationCanceller[credential.id] = nil
             }
         }
     }
     
     func cancelSupplementInformation(for credential: Credential) {
-        authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
-            guard let self = self, self.cancelSupplementInformationCanceller[credential.id] == nil else { return }
-            self.cancelSupplementInformationCanceller[credential.id] = self.service.cancelSupplementInformation(credentialID: credential.id) { result in
-                DispatchQueue.main.async {
-                    switch result {
-                    case .failure:
-                        break
-                    case .success(let credential):
-                        // polling
-                        break
-                    }
-                    self.cancelSupplementInformationCanceller[credential.id] = nil
-                }
+        cancelSupplementInformationCanceller[credential.id] = self.service.cancelSupplementInformation(credentialID: credential.id) { [weak self] result in
+            DispatchQueue.main.async {
+                self?.cancelSupplementInformationCanceller[credential.id] = nil
             }
         }
     }
