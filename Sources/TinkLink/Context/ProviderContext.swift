@@ -32,7 +32,8 @@ public class ProviderContext {
     /// Changing this property will update `providers` and `providerGroups` to only access providers matching the new attributes.
     public var attributes: ProviderContext.Attributes {
         didSet {
-            providerStore.performFetchProvidersIfNeeded(for: attributes)
+            guard attributes != oldValue else { return }
+            performFetch()
         }
     }
 
@@ -81,7 +82,6 @@ public class ProviderContext {
         }
     }
     
-    // TODO: performFetch is triggered multiple times
     private func performFetch() {
         providerStore.performFetchProvidersIfNeeded(for: attributes)
     }

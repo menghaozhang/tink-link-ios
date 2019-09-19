@@ -24,9 +24,10 @@ final class CredentialStore {
         authenticationManager = AuthenticationManager.shared
     }
     
-    func addCredential(for provider: Provider, fields: [String: String], completion: @escaping(Result<Credential, Error>) -> Void) {
+    func addCredential(for provider: Provider, fields: [String: String], completion: @escaping(Result<Credential, Error>) -> Void) -> Cancellable {
+        var multiCanceller = MultiCanceller()
         let market = Market(code: provider.marketCode)
-        authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
+        let authCanceller = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
             guard let self = self, self.createCredentialCanceller[provider.name] == nil else { return }
             let canceller = self.service.createCredential(providerName: provider.name, fields: fields, completion: { (result) in
                 DispatchQueue.main.async {
@@ -42,7 +43,12 @@ final class CredentialStore {
                 }
             })
             self.createCredentialCanceller[provider.name] = canceller
+            multiCanceller.add(canceller)
         }
+        if let canceller = authCanceller {
+            multiCanceller.add(canceller)
+        }
+        return multiCanceller
     }
     
     func addSupplementalInformation(for credential: Credential, supplementalInformationFields: [String: String]) {

@@ -1,4 +1,5 @@
 import Foundation
+import SwiftGRPC
 
 final class ProviderStore {
     static let shared: ProviderStore = ProviderStore()
@@ -28,29 +29,67 @@ final class ProviderStore {
         }
     }
 
+    func cancelFetchingProviders(for attributes: ProviderContext.Attributes) {
+        providerFetchCancellers[attributes]?.cancel()
+    }
+
     func performFetchProvidersIfNeeded(for attributes: ProviderContext.Attributes) {
-        authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
-            guard let self = self, self.providerFetchCancellers[attributes] == nil else {
-                return
-            }
-            let cancellable = self.service.providers(market: attributes.market, capabilities: attributes.capabilities, includeTestProviders: attributes.includeTestProviders) { [attributes] result in
+        if providerFetchCancellers[attributes] != nil { return }
+        providerFetchCancellers[attributes] = performFetchProviders(for: attributes)
+    }
+
+    private func performFetchProviders(for attributes: ProviderContext.Attributes) -> Cancellable {
+        var multiCanceller = MultiCanceller()
+        
+        let authCanceller = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self, attributes] authenticationResult in
+            guard let self = self, !multiCanceller.isCancelled else { return }
+            do {
+                try authenticationResult.get()
+                let cancellable = self.unauthenticatedPerformFetchProviders(attributes: attributes)
+                multiCanceller.add(cancellable)
+            } catch {
                 DispatchQueue.main.async {
-                    switch result {
-                    case .success(let fetchedProviders):
-                        let filteredProviders = fetchedProviders.filter({ attributes.accessTypes.contains($0.accessType) })
-                        self.providerMarketGroups[attributes.market] = .success(filteredProviders)
-                    case .failure(let error):
-                        self.providerMarketGroups[attributes.market] = .failure(error)
-                    }
+                    self.providerMarketGroups[attributes.market] = .failure(error)
                     self.providerFetchCancellers[attributes] = nil
                 }
             }
-            self.providerFetchCancellers[attributes] = cancellable
+        }
+        if let canceller = authCanceller {
+            multiCanceller.add(canceller)
+        }
+
+        return multiCanceller
+    }
+
+    /// Requests providers for a market.
+    ///
+    /// - Parameter attributes: Attributes for providers to fetch
+    /// - Precondition: Service should be configured with access token before this method is called.
+    private func unauthenticatedPerformFetchProviders(attributes: ProviderContext.Attributes) -> Cancellable {
+        precondition(service.metadata[Metadata.HeaderKeys.authorization.key] != nil, "Service doesn't have authentication metadata set!")
+        return service.providers(market: attributes.market, capabilities: attributes.capabilities, includeTestProviders: attributes.includeTestProviders) { [weak self, attributes] result in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                do {
+                    let fetchedProviders = try result.get()
+                    let filteredProviders = fetchedProviders.filter { attributes.accessTypes.contains($0.accessType) }
+                    self.providerMarketGroups[attributes.market] = .success(filteredProviders)
+                } catch {
+                    self.providerMarketGroups[attributes.market] = .failure(error)
+                }
+                self.providerFetchCancellers[attributes] = nil
+            }
         }
     }
     
     func performFetchMarketsIfNeeded() {
-        authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
+        if marketFetchCanceller != nil { return }
+        self.marketFetchCanceller = performFetchMarkets()
+    }
+
+    private func performFetchMarkets() -> Cancellable {
+        var multiCanceller = MultiCanceller()
+        let authCanceller = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
             guard let self = self, self.marketFetchCanceller == nil else {
                 return
             }
@@ -60,8 +99,12 @@ final class ProviderStore {
                     self.marketFetchCanceller = nil
                 }
             }
-            self.marketFetchCanceller = cancellable
+            multiCanceller.add(cancellable)
         }
+        if let canceller = authCanceller {
+            multiCanceller.add(canceller)
+        }
+        return multiCanceller
     }
 }
 
