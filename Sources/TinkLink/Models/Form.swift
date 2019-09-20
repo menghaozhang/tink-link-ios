@@ -64,7 +64,7 @@ public struct Form {
                 } else if !regex.isEmpty, let regex = try? NSRegularExpression(pattern: regex, options: []) {
                     let range = regex.rangeOfFirstMatch(in: value, options: [], range: NSRange(location: 0, length: value.count))
                     if range.location == NSNotFound {
-                        throw ValidationError.validationFailed(fieldName: name, patternError: regexError)
+                        throw ValidationError.validationFailed(fieldName: name, reason: regexError)
                     }
                 }
             }
@@ -83,7 +83,7 @@ public struct Form {
         }
         
         public enum ValidationError: Error {
-            case validationFailed(fieldName: String, patternError: String)
+            case validationFailed(fieldName: String, reason: String)
             case maxLengthLimit(fieldName: String, maxLength: Int)
             case minLengthLimit(fieldName: String, minLength: Int)
             case requiredFieldEmptyValue(fieldName: String)
