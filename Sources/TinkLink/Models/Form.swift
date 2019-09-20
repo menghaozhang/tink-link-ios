@@ -43,6 +43,7 @@ public struct Form {
                 regexError: fieldSpecification.patternError
             )
             attributes = Attributes(
+                description: fieldSpecification.fieldDescription,
                 placeholder: fieldSpecification.hint,
                 isSecureTextEntry: fieldSpecification.isMasked,
                 inputType: fieldSpecification.isNumeric ? .numeric : .default,
@@ -76,6 +77,7 @@ public struct Form {
                 case numeric
             }
             
+            public let description: String
             public let placeholder: String
             public let isSecureTextEntry: Bool
             public let inputType: InputType
