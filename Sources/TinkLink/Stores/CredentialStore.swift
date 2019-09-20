@@ -17,6 +17,7 @@ final class CredentialStore {
     private var credentialStatusPollingCanceller: [Identifier<Credential>: Cancellable] = [:]
     private var addSupplementalInformationCanceller: [Identifier<Credential>: Cancellable] = [:]
     private var cancelSupplementInformationCanceller: [Identifier<Credential>: Cancellable] = [:]
+    private var fetchCredentialsCanceller: Cancellable?
     
     private init() {
         service = TinkLink.shared.client.credentialService
@@ -69,6 +70,18 @@ final class CredentialStore {
             DispatchQueue.main.async {
                 self?.cancelSupplementInformationCanceller[credential.id] = nil
                 completion(result)
+            }
+        }
+    }
+
+    func performFetch() {
+        fetchCredentialsCanceller = service.credentials { [weak self] result in
+            do {
+                let credentials = try result.get()
+                self?.credentials = Dictionary(grouping: credentials, by: { $0.id })
+                    .compactMapValues { $0.first }
+            } catch {
+                NotificationCenter.default.post(name: .credentialStoreErrorOccured, object: self, userInfo: [CredentialStoreErrorOccuredNotificationErrorKey: error])
             }
         }
     }
