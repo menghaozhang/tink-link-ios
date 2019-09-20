@@ -7,6 +7,10 @@ public struct Form {
         fields = fieldSpecifications.map({ Field(fieldSpecification: $0) })
     }
 
+    public subscript(fieldName fieldName: String) -> Form.Field? {
+        return fields.first(where: { $0.name == fieldName })
+    }
+
     public var areFieldsValid: Bool {
         return fields.areFieldsValid
     }
