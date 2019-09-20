@@ -84,7 +84,7 @@ public struct Form {
             public let isEnabled: Bool
         }
         
-        public enum ValidationError: Error {
+        public enum ValidationError: Error, LocalizedError {
             case validationFailed(fieldName: String, reason: String)
             case maxLengthLimit(fieldName: String, maxLength: Int)
             case minLengthLimit(fieldName: String, minLength: Int)
@@ -100,6 +100,19 @@ public struct Form {
                     return fieldName
                 case .requiredFieldEmptyValue(let fieldName):
                     return fieldName
+                }
+            }
+
+            public var errorDescription: String? {
+                switch self {
+                case .validationFailed(_, let reason):
+                    return reason
+                case .maxLengthLimit(_, let maxLength):
+                    return "Field can't be longer than \(maxLength)"
+                case .minLengthLimit(_, let minLength):
+                    return "Field can't be shorter than \(minLength)"
+                case .requiredFieldEmptyValue:
+                    return "Required field"
                 }
             }
         }
