@@ -6,7 +6,7 @@ public struct Form {
     internal init(fieldSpecifications: [Provider.FieldSpecification]) {
         fields = fieldSpecifications.map({ Field(fieldSpecification: $0) })
     }
-    
+
     public var areFieldsValid: Bool {
         return fields.areFieldsValid
     }
