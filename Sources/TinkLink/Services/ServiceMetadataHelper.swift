@@ -14,10 +14,6 @@ extension ProcessInfo {
         return environment["TINK_SESSION_ID"]
     }
 
-    var tinkOAuthClientID: String? {
-        return environment["TINK_OAUTH_CLIENT_ID"]
-    }
-
     var tinkBearerToken: String? {
         return environment["TINK_BEARER_TOKEN"]
     }
