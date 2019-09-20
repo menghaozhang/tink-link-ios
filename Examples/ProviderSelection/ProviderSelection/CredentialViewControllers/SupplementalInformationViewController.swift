@@ -101,7 +101,7 @@ extension SupplementalInformationViewController: TextFieldCellDelegate {
     func textFieldCell(_ cell: TextFieldCell, willChangeToText text: String) {
         if let indexPath = tableView.indexPath(for: cell) {
             form.fields[indexPath.item].text = text
-            navigationItem.rightBarButtonItem?.isEnabled = form.fields[indexPath.item].isValueValid
+            navigationItem.rightBarButtonItem?.isEnabled = form.fields[indexPath.item].isValid
         }
     }
 }

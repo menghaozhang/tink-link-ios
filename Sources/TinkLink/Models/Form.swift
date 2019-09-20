@@ -77,7 +77,7 @@ public struct Form {
             case requiredFieldEmptyValue(fieldName: String)
         }
         
-        public var isValueValid: Bool {
+        public var isValid: Bool {
             do {
                 try validate(value: text)
                 return true
