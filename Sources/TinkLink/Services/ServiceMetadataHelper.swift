@@ -64,6 +64,10 @@ extension Metadata {
             try add(key: HeaderKeys.authorization.key, value: "Bearer \(accessToken)")
         }
     }
+
+    var hasAuthorization: Bool {
+        self[Metadata.HeaderKeys.authorization.key] != nil
+    }
     
     func addTinkMetadata() throws {
         let info = ProcessInfo.processInfo

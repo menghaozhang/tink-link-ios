@@ -1,9 +1,10 @@
 import Foundation
+import SwiftGRPC
 
 final class CredentialStore {
     static let shared = CredentialStore()
     
-    var credentials: [Identifier<Credential>: Credential] = [:] {
+    private(set) var credentials: [Identifier<Credential>: Credential] = [:] {
         didSet {
             NotificationCenter.default.post(name: .credentialStoreChanged, object: self)
         }
@@ -35,7 +36,6 @@ final class CredentialStore {
                         let credential = try result.get()
                         completion(.success(credential))
                         self.credentials[credential.id] = credential
-                        self.pollingStatus(for: credential)
                     } catch let error {
                         completion(.failure(error))
                     }
@@ -51,46 +51,30 @@ final class CredentialStore {
         return multiCanceller
     }
     
-    func addSupplementalInformation(for credential: Credential, supplementalInformationFields: [String: String]) {
-        // TODO: Need to have a way to regenerate a accessToken while getting authentication error(due to access token expired)
-        authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
-            guard let self = self else { return }
-            self.addSupplementalInformationCanceller[credential.id] = self.service.supplementInformation(credentialID: credential.id, fields: supplementalInformationFields) { result in
-                DispatchQueue.main.async {
-                    switch result {
-                    case .failure:
-                        // error
-                        break
-                    case .success:
-                        // polling
-                        self.pollingStatus(for: credential)
-                    }
-                }
-                self.addSupplementalInformationCanceller[credential.id] = nil
+    /// - Precondition: Service should be configured with access token before this method is called.
+    func addSupplementalInformation(for credential: Credential, supplementalInformationFields: [String: String], completion: @escaping (Result<Void, Error>) -> Void) {
+        precondition(service.metadata.hasAuthorization, "Service doesn't have authentication metadata set!")
+        addSupplementalInformationCanceller[credential.id] = self.service.supplementInformation(credentialID: credential.id, fields: supplementalInformationFields) { [weak self] result in
+            DispatchQueue.main.async {
+                self?.addSupplementalInformationCanceller[credential.id] = nil
+                completion(result)
             }
         }
     }
     
-    func cancelSupplementInformation(for credential: Credential) {
-        authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
-            guard let self = self, self.cancelSupplementInformationCanceller[credential.id] == nil else { return }
-            self.cancelSupplementInformationCanceller[credential.id] = self.service.cancelSupplementInformation(credentialID: credential.id) { result in
-                DispatchQueue.main.async {
-                    switch result {
-                    case .failure:
-                        break
-                    case .success(let credential):
-                        // polling
-                        break
-                    }
-                    self.cancelSupplementInformationCanceller[credential.id] = nil
-                }
+    /// - Precondition: Service should be configured with access token before this method is called.
+    func cancelSupplementInformation(for credential: Credential, completion: @escaping (Result<Void, Error>) -> Void) {
+        precondition(service.metadata.hasAuthorization, "Service doesn't have authentication metadata set!")
+        cancelSupplementInformationCanceller[credential.id] = self.service.cancelSupplementInformation(credentialID: credential.id) { [weak self] result in
+            DispatchQueue.main.async {
+                self?.cancelSupplementInformationCanceller[credential.id] = nil
+                completion(result)
             }
         }
     }
     
     // TODO: Create polling handler for handle all the pollings
-    private func pollingStatus(for credential: Credential) {
+    func pollingStatus(for credential: Credential) {
         guard credentialStatusPollingCanceller[credential.id] == nil else { return }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
             self.credentialStatusPollingCanceller[credential.id] = self.service.credentials { [weak self, credential] result in

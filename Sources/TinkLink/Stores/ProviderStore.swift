@@ -17,13 +17,13 @@ final class ProviderStore {
     private var marketFetchCanceller: Cancellable?
     private var providerFetchCancellers: [ProviderContext.Attributes: Cancellable] = [:]
 
-    var providerMarketGroups: [Market: Result<[Provider], Error>] = [:] {
+    private(set) var providerMarketGroups: [Market: Result<[Provider], Error>] = [:] {
         didSet {
             NotificationCenter.default.post(name: .providerStoreMarketGroupsChanged, object: self)
         }
     }
     
-    var markets: Result<[Market], Error>? {
+    private(set) var markets: Result<[Market], Error>? {
         didSet {
             NotificationCenter.default.post(name: .providerStoreMarketsChanged, object: self)
         }
@@ -66,7 +66,7 @@ final class ProviderStore {
     /// - Parameter attributes: Attributes for providers to fetch
     /// - Precondition: Service should be configured with access token before this method is called.
     private func unauthenticatedPerformFetchProviders(attributes: ProviderContext.Attributes) -> Cancellable {
-        precondition(service.metadata[Metadata.HeaderKeys.authorization.key] != nil, "Service doesn't have authentication metadata set!")
+        precondition(service.metadata.hasAuthorization, "Service doesn't have authentication metadata set!")
         return service.providers(market: attributes.market, capabilities: attributes.capabilities, includeTestProviders: attributes.includeTestProviders) { [weak self, attributes] result in
             guard let self = self else { return }
             DispatchQueue.main.async {
