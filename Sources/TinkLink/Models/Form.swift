@@ -76,7 +76,7 @@ public struct Form {
                 case `default`
                 case numeric
             }
-            
+
             public let description: String
             public let placeholder: String
             public let isSecureTextEntry: Bool
