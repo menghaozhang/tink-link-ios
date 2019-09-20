@@ -30,7 +30,7 @@ final class Client {
         }
 
         do {
-            try metadata.add(key: Metadata.HeaderKeys.oauthClientID.key, value: clientID)
+            try metadata.add(key: Metadata.HeaderKey.oauthClientID.key, value: clientID)
             try metadata.addTinkMetadata()
         } catch {
             assertionFailure(error.localizedDescription)
