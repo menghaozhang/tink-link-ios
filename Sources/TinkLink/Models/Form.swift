@@ -43,7 +43,7 @@ public struct Form {
                 regexError: fieldSpecification.patternError
             )
             attributes = Attributes(
-                placeholder: fieldSpecification.fieldDescription,
+                placeholder: fieldSpecification.hint,
                 isSecureTextEntry: fieldSpecification.isMasked,
                 inputType: fieldSpecification.isNumeric ? .numeric : .default,
                 isEnabled: !fieldSpecification.isImmutable || fieldSpecification.initialValue.isEmpty
