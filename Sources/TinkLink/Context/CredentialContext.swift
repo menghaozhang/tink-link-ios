@@ -26,6 +26,7 @@ public class CredentialContext {
         didSet {
             if delegate != nil {
                 addStoreObservers()
+                performFetch()
             } else {
                 removeStoreObservers()
             }
@@ -82,5 +83,9 @@ public class CredentialContext {
             }
         }
         return task
+    }
+
+    private func performFetch() {
+        credentialStore.performFetch()
     }
 }
