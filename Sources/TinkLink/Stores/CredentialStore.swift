@@ -82,13 +82,15 @@ final class CredentialStore {
 
     func performFetch() {
         fetchCredentialsCanceller = service.credentials { [weak self] result in
-            self?.fetchCredentialsCanceller = nil
-            do {
-                let credentials = try result.get()
-                self?.credentials = Dictionary(grouping: credentials, by: { $0.id })
-                    .compactMapValues { $0.first }
-            } catch {
-                NotificationCenter.default.post(name: .credentialStoreErrorOccured, object: self, userInfo: [CredentialStoreErrorOccuredNotificationErrorKey: error])
+            DispatchQueue.main.async {
+                self?.fetchCredentialsCanceller = nil
+                do {
+                    let credentials = try result.get()
+                    self?.credentials = Dictionary(grouping: credentials, by: { $0.id })
+                        .compactMapValues { $0.first }
+                } catch {
+                    NotificationCenter.default.post(name: .credentialStoreErrorOccured, object: self, userInfo: [CredentialStoreErrorOccuredNotificationErrorKey: error])
+                }
             }
         }
     }
