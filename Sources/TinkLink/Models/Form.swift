@@ -8,11 +8,11 @@ public struct Form {
     }
     
     public var areFieldsValid: Bool {
-        return fields.areValuesValid
+        return fields.areFieldsValid
     }
     
     public func validateFields() throws {
-        try fields.validateValues()
+        try fields.validateFields()
     }
     
     internal func makeFields() -> [String: String] {
@@ -118,7 +118,7 @@ extension Form {
 }
 
 extension Array where Element == Form.Field {
-    func validateValues() throws {
+    func validateFields() throws {
         var fieldsValidationError = Form.FieldsError(errors: [])
         for field in self {
             do {
@@ -132,9 +132,9 @@ extension Array where Element == Form.Field {
         guard fieldsValidationError.errors.isEmpty else { throw fieldsValidationError }
     }
     
-    var areValuesValid: Bool {
+    var areFieldsValid: Bool {
         do {
-            try validateValues()
+            try validateFields()
             return true
         } catch {
             return false
