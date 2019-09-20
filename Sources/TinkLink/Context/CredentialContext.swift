@@ -13,13 +13,25 @@ extension CredentialContextDelegate {
 /// An object that accesses the user's credentials and supports the flow for adding credentials.
 public class CredentialContext {
 
-    public private(set) var credentials: [Credential] = [] {
+    private var _credentials: [Credential]? {
         willSet {
             delegate?.credentialContextWillChangeCredentials(self)
         }
         didSet {
             delegate?.credentialContextDidChangeCredentials(self)
         }
+    }
+
+    var credentials: [Credential] {
+        guard let credentials = _credentials else {
+            let storedCredentials = credentialStore.credentials
+                .values
+                .sorted(by: { $0.id.rawValue < $1.id.rawValue })
+            _credentials = storedCredentials
+            performFetch()
+            return storedCredentials
+        }
+        return credentials
     }
 
     weak var delegate: CredentialContextDelegate? {
@@ -38,15 +50,13 @@ public class CredentialContext {
     private var credentialStoreErrorObserver: Any?
     
     public init() {
-        credentials = credentialStore.credentials
-            .values
-            .sorted(by: { $0.id.rawValue < $1.id.rawValue })
+
     }
 
     private func addStoreObservers() {
         credentialStoreChangeObserver = NotificationCenter.default.addObserver(forName: .credentialStoreChanged, object: credentialStore, queue: .main) { [weak self] _ in
             guard let self = self else { return }
-            self.credentials = self.credentialStore.credentials
+            self._credentials = self.credentialStore.credentials
                 .values
                 .sorted(by: { $0.id.rawValue < $1.id.rawValue })
         }
