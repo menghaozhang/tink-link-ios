@@ -25,18 +25,24 @@ public class CredentialContext {
     weak var delegate: CredentialContextDelegate?
 
     private let credentialStore = CredentialStore.shared
-    private var credentialStoreObserver: Any?
+    private var credentialStoreChangeObserver: Any?
+    private var credentialStoreErrorObserver: Any?
     
     public init() {
         credentials = credentialStore.credentials
             .values
             .sorted(by: { $0.id.rawValue < $1.id.rawValue })
 
-        credentialStoreObserver = NotificationCenter.default.addObserver(forName: .credentialStoreChanged, object: credentialStore, queue: .main) { [weak self] _ in
+        credentialStoreChangeObserver = NotificationCenter.default.addObserver(forName: .credentialStoreChanged, object: credentialStore, queue: .main) { [weak self] _ in
             guard let self = self else { return }
             self.credentials = self.credentialStore.credentials
                 .values
                 .sorted(by: { $0.id.rawValue < $1.id.rawValue })
+        }
+
+        credentialStoreErrorObserver = NotificationCenter.default.addObserver(forName: .credentialStoreErrorOccured, object: credentialStore, queue: .main) { [weak self] notification in
+            guard let self = self, let error = notification.userInfo?[CredentialStoreErrorOccuredNotificationErrorKey] as? Error else { return }
+            self.delegate?.credentialContext(self, didReceiveError: error)
         }
     }
     
