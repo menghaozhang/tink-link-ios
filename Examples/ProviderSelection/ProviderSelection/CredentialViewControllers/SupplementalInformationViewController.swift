@@ -14,6 +14,11 @@ final class SupplementalInformationViewController: UITableViewController {
     weak var delegate: SupplementalInformationViewControllerDelegate?
     
     private var form: Form
+    private var formError: Form.ValidationError? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     private var didFirstFieldBecomeFirstResponder = false
 
     init(supplementInformationTask: SupplementInformationTask) {
@@ -80,6 +85,19 @@ extension SupplementalInformationViewController {
         let field = form.fields[section]
         return field.attributes.description
     }
+
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        if let error = formError {
+            let field = form.fields[section]
+            if let fieldError = error[fieldName: field.name] {
+                return fieldError.errorDescription
+            } else {
+                return nil
+            }
+        } else {
+            return nil
+        }
+    }
 }
 
 // MARK: - Actions
@@ -95,12 +113,8 @@ extension SupplementalInformationViewController {
             try form.validateFields()
             supplementInformationTask.submit(form)
             self.delegate?.supplementalInformationViewController(self, didSupplementInformationForCredential: supplementInformationTask.credential)
-        } catch let fieldSpecificationsError as Form.ValidationError {
-            // TODO: Handle Error
-            print(fieldSpecificationsError.errors)
         } catch {
-            // TODO: Handle Error
-            print(error)
+            formError = error as? Form.ValidationError
         }
     }
 }
