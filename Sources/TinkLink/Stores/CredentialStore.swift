@@ -97,15 +97,20 @@ final class CredentialStore {
                         } else {
                             fatalError("No such credential with " + credential.id.rawValue)
                         }
-                    } catch let error {
-                        print(error)
+                    } catch {
+                        NotificationCenter.default.post(name: .credentialStoreErrorOccured, object: self, userInfo: [CredentialStoreErrorOccuredNotificationErrorKey: error])
                     }
                 }
             }
         })
     }
+
 }
 
 extension Notification.Name {
     static let credentialStoreChanged = Notification.Name("TinkLinkCredentialStoreChangedNotificationName")
+    static let credentialStoreErrorOccured = Notification.Name("TinkLinkCredentialStoreErrorOccuredNotificationName")
 }
+
+/// User info key for credentialStoreErrorOccured notification.
+let CredentialStoreErrorOccuredNotificationErrorKey = "error"
