@@ -3,15 +3,20 @@ import Foundation
 /// An object that accesses the user's credentials and supports the flow for adding credentials.
 public class CredentialContext {
 
-    public private(set) var credentials: [Identifier<Credential>: Credential] = [:]
+    public private(set) var credentials: [Credential] = []
     private let credentialStore = CredentialStore.shared
     private var credentialStoreObserver: Any?
     
     public init() {
         credentials = credentialStore.credentials
+            .values
+            .sorted(by: { $0.id.rawValue < $1.id.rawValue })
+
         credentialStoreObserver = NotificationCenter.default.addObserver(forName: .credentialStoreChanged, object: credentialStore, queue: .main) { [weak self] _ in
             guard let self = self else { return }
             self.credentials = self.credentialStore.credentials
+                .values
+                .sorted(by: { $0.id.rawValue < $1.id.rawValue })
         }
     }
     
