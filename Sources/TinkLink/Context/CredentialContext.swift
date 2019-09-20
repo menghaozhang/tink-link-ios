@@ -1,9 +1,29 @@
 import Foundation
 
+public protocol CredentialContextDelegate: AnyObject {
+    func credentialContextWillChangeCredentials(_ context: CredentialContext)
+    func credentialContext(_ context: CredentialContext, didReceiveError error: Error)
+    func credentialContextDidChangeCredentials(_ context: CredentialContext)
+}
+
+extension CredentialContextDelegate {
+    public func credentialContextWillChangeCredentials(_ context: CredentialContext) { }
+}
+
 /// An object that accesses the user's credentials and supports the flow for adding credentials.
 public class CredentialContext {
 
-    public private(set) var credentials: [Credential] = []
+    public private(set) var credentials: [Credential] = [] {
+        willSet {
+            delegate?.credentialContextWillChangeCredentials(self)
+        }
+        didSet {
+            delegate?.credentialContextDidChangeCredentials(self)
+        }
+    }
+
+    weak var delegate: CredentialContextDelegate?
+
     private let credentialStore = CredentialStore.shared
     private var credentialStoreObserver: Any?
     
