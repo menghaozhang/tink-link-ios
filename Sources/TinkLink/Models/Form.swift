@@ -125,6 +125,10 @@ public struct Form {
     
     public struct FieldsError: Error {
         public var errors: [Form.Field.ValidationError]
+
+        public subscript(fieldName fieldName: String) -> Form.Field.ValidationError? {
+            errors.first(where: { $0.fieldName == fieldName })
+        }
     }
 }
 
