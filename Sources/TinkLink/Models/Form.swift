@@ -83,7 +83,6 @@ public struct Form {
         }
         
         public enum ValidationError: Error {
-            case invalidField(String)
             case validationFailed(fieldName: String, patternError: String)
             case maxLengthLimit(fieldName: String, maxLength: Int)
             case minLengthLimit(fieldName: String, minLength: Int)
