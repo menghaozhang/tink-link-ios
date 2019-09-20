@@ -54,10 +54,14 @@ extension SupplementalInformationViewController {
 
 // MARK: - UITableViewDataSource
 extension SupplementalInformationViewController {
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return form.fields.count
     }
-    
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldCell.reuseIdentifier, for: indexPath)
         if let textFieldCell = cell as? TextFieldCell {
@@ -70,6 +74,11 @@ extension SupplementalInformationViewController {
             textFieldCell.textField.text = field.text
         }
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let field = form.fields[section]
+        return field.attributes.description
     }
 }
 
