@@ -22,7 +22,15 @@ public class CredentialContext {
         }
     }
 
-    weak var delegate: CredentialContextDelegate?
+    weak var delegate: CredentialContextDelegate? {
+        didSet {
+            if delegate != nil {
+                addStoreObservers()
+            } else {
+                removeStoreObservers()
+            }
+        }
+    }
 
     private let credentialStore = CredentialStore.shared
     private var credentialStoreChangeObserver: Any?
@@ -32,7 +40,9 @@ public class CredentialContext {
         credentials = credentialStore.credentials
             .values
             .sorted(by: { $0.id.rawValue < $1.id.rawValue })
+    }
 
+    private func addStoreObservers() {
         credentialStoreChangeObserver = NotificationCenter.default.addObserver(forName: .credentialStoreChanged, object: credentialStore, queue: .main) { [weak self] _ in
             guard let self = self else { return }
             self.credentials = self.credentialStore.credentials
@@ -44,6 +54,11 @@ public class CredentialContext {
             guard let self = self, let error = notification.userInfo?[CredentialStoreErrorOccuredNotificationErrorKey] as? Error else { return }
             self.delegate?.credentialContext(self, didReceiveError: error)
         }
+    }
+
+    private func removeStoreObservers() {
+        credentialStoreChangeObserver = nil
+        credentialStoreErrorObserver = nil
     }
     
     /// Adds a credential for the user.
