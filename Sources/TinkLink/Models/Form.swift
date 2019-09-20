@@ -88,7 +88,7 @@ public struct Form {
             case minLengthLimit(fieldName: String, minLength: Int)
             case requiredFieldEmptyValue(fieldName: String)
         }
-        
+
         public var isValid: Bool {
             do {
                 try validate()
@@ -97,7 +97,7 @@ public struct Form {
                 return false
             }
         }
-        
+
         public func validate() throws {
             let value = text
             if value.isEmpty, !isOptional {
