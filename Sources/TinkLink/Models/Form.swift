@@ -55,6 +55,19 @@ public struct Form {
             public let minLength: Int?
             internal let regex: String
             internal let regexError: String
+
+            public func validate(_ value: String, fieldName name: String) throws {
+                if let maxLength = maxLength, maxLength > 0 && maxLength < value.count {
+                    throw ValidationError.maxLengthLimit(fieldName: name, maxLength: maxLength)
+                } else if let minLength = minLength, minLength > 0 && minLength > value.count {
+                    throw ValidationError.minLengthLimit(fieldName: name, minLength: minLength)
+                } else if !regex.isEmpty, let regex = try? NSRegularExpression(pattern: regex, options: []) {
+                    let range = regex.rangeOfFirstMatch(in: value, options: [], range: NSRange(location: 0, length: value.count))
+                    if range.location == NSNotFound {
+                        throw ValidationError.validationFailed(fieldName: name, patternError: regexError)
+                    }
+                }
+            }
         }
         
         public struct Attributes {
@@ -90,15 +103,8 @@ public struct Form {
             let value = text
             if value.isEmpty, !isOptional {
                 throw ValidationError.requiredFieldEmptyValue(fieldName: name)
-            } else if let maxLength = validationRules.maxLength, maxLength > 0 && maxLength < value.count {
-                throw ValidationError.maxLengthLimit(fieldName: name, maxLength: maxLength)
-            } else if let minLength = validationRules.minLength, minLength > 0 && minLength > value.count {
-                throw ValidationError.minLengthLimit(fieldName: name, minLength: minLength)
-            } else if !validationRules.regex.isEmpty, let regex = try? NSRegularExpression(pattern: validationRules.regex, options: []) {
-                let range = regex.rangeOfFirstMatch(in: value, options: [], range: NSRange(location: 0, length: value.count))
-                if range.location == NSNotFound {
-                    throw ValidationError.validationFailed(fieldName: name, patternError: validationRules.regexError)
-                }
+            } else {
+                try validationRules.validate(value, fieldName: name)
             }
         }
     }
