@@ -89,6 +89,19 @@ public struct Form {
             case maxLengthLimit(fieldName: String, maxLength: Int)
             case minLengthLimit(fieldName: String, minLength: Int)
             case requiredFieldEmptyValue(fieldName: String)
+
+            var fieldName: String {
+                switch self {
+                case .validationFailed(let fieldName, _):
+                    return fieldName
+                case .maxLengthLimit(let fieldName, _):
+                    return fieldName
+                case .minLengthLimit(let fieldName, _):
+                    return fieldName
+                case .requiredFieldEmptyValue(let fieldName):
+                    return fieldName
+                }
+            }
         }
 
         public var isValid: Bool {
