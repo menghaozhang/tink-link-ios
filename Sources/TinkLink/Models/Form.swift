@@ -10,7 +10,7 @@ public struct Form {
     public var areFieldsValid: Bool {
         return fields.areFieldsValid
     }
-    
+
     public func validateFields() throws {
         try fields.validateFields()
     }
@@ -22,7 +22,7 @@ public struct Form {
         }
         return fieldValues
     }
-    
+
     public struct Field {
         public var text: String
         public let name: String
