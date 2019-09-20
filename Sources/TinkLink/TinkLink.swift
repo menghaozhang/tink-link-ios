@@ -69,7 +69,7 @@ public class TinkLink {
     
     // Setup via configration object
     public static func configure(with configuration: TinkLink.Configuration) {
-        shared._client = Client(environment: configuration.environment , clientKey: configuration.clientId, certificateURL: configuration.certificateURL, market: configuration.market, locale: configuration.locale)
+        shared._client = Client(environment: configuration.environment , clientID: configuration.clientId, certificateURL: configuration.certificateURL, market: configuration.market, locale: configuration.locale)
     }
     
     // TODO: Some configurations can be changed after setup, for example timeoutIntervalForRequest and Qos, the changes should reflect to the stores and services
@@ -140,14 +140,14 @@ extension Client {
     convenience init(configurationUrl: URL) throws {
         let data = try Data(contentsOf: configurationUrl)
         let configuration = try PropertyListDecoder().decode(TinkLink.Configuration.self, from: data)
-        self.init(environment: configuration.environment, clientKey: configuration.clientId, certificateURL: configuration.certificateURL, market: configuration.market, locale: configuration.locale)
+        self.init(environment: configuration.environment, clientID: configuration.clientId, certificateURL: configuration.certificateURL, market: configuration.market, locale: configuration.locale)
     }
 
     convenience init?(processInfo: ProcessInfo) {
-        guard let clientKey = processInfo.tinkClientKey else { return nil }
+        guard let clientID = processInfo.tinkClientID else { return nil }
         self.init(
             environment: processInfo.tinkEnvironment ?? .staging,
-            clientKey: clientKey,
+            clientID: clientID,
             certificate: processInfo.tinkCertificate,
             market: processInfo.tinkMarket ?? TinkLink.defaultMarket,
             locale: processInfo.tinkLocale ?? TinkLink.defaultLocale

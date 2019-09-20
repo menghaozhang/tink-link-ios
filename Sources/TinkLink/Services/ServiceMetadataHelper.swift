@@ -2,8 +2,8 @@ import Foundation
 import SwiftGRPC
 
 extension ProcessInfo {
-    var tinkClientKey: String? {
-        return environment["TINK_CLIENT_KEY"]
+    var tinkClientID: String? {
+        return environment["TINK_CLIENT_ID"]
     }
 
     var tinkDeviceID: String? {
