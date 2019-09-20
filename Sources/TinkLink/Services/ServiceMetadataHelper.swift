@@ -49,7 +49,7 @@ extension Metadata {
         case clientKey = "X-Tink-Client-Key"
         case deviceId = "X-Tink-Device-ID"
         case authorization = "Authorization"
-        case clientId = "X-Tink-OAuth-Client-ID"
+        case oauthClientID = "X-Tink-OAuth-Client-ID"
 
         var key: String {
             return rawValue.lowercased()
