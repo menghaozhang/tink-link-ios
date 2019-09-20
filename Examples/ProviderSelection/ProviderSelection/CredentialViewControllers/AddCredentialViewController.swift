@@ -52,13 +52,17 @@ extension AddCredentialViewController {
 
 // MARK: - UITableViewDataSource
 extension AddCredentialViewController {
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return form.fields.count
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldCell.reuseIdentifier, for: indexPath)
-        let field = form.fields[indexPath.item]
+        let field = form.fields[indexPath.section]
         if let textFieldCell = cell as? TextFieldCell {
             textFieldCell.delegate = self
             textFieldCell.textField.placeholder = field.attributes.placeholder
@@ -69,8 +73,17 @@ extension AddCredentialViewController {
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let field = form.fields[section]
+        return field.attributes.description
+    }
+
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return provider.helpText
+        if section == form.fields.count - 1 {
+            return provider.helpText
+        } else {
+            return nil
+        }
     }
 }
 
@@ -181,8 +194,8 @@ extension AddCredentialViewController {
 extension AddCredentialViewController: TextFieldCellDelegate {
     func textFieldCell(_ cell: TextFieldCell, willChangeToText text: String) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
-        form.fields[indexPath.item].text = text
-        navigationItem.rightBarButtonItem?.isEnabled = form.fields[indexPath.item].isValid
+        form.fields[indexPath.section].text = text
+        navigationItem.rightBarButtonItem?.isEnabled = form.fields[indexPath.section].isValid
     }
 }
 
