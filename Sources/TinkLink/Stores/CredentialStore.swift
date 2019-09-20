@@ -74,8 +74,15 @@ final class CredentialStore {
         }
     }
 
+    func performFetchIfNeeded() {
+        if fetchCredentialsCanceller == nil {
+            performFetch()
+        }
+    }
+
     func performFetch() {
         fetchCredentialsCanceller = service.credentials { [weak self] result in
+            self?.fetchCredentialsCanceller = nil
             do {
                 let credentials = try result.get()
                 self?.credentials = Dictionary(grouping: credentials, by: { $0.id })

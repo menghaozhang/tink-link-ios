@@ -96,6 +96,6 @@ public class CredentialContext {
     }
 
     private func performFetch() {
-        credentialStore.performFetch()
+        credentialStore.performFetchIfNeeded()
     }
 }
