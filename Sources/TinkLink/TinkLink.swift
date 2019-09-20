@@ -89,7 +89,7 @@ public class TinkLink {
 extension TinkLink.Configuration: Decodable {
     enum CodingKeys: String, CodingKey {
         case environment = "TINK_ENVIRONMENT"
-        case clientId = "TINK_CLIENT_ID"
+        case clientID = "TINK_CLIENT_ID"
         case redirectUrl = "TINK_REDIRECT_URL"
         case timeoutInterval = "TINK_TIMEOUT_INTERVAL"
         case certificateFileName = "TINK_CERTIFICATE_FILE_NAME"
@@ -99,7 +99,7 @@ extension TinkLink.Configuration: Decodable {
     
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        clientId = try values.decode(String.self, forKey: .clientId)
+        clientId = try values.decode(String.self, forKey: .clientID)
         timeoutIntervalForRequest = try? values.decode(Double.self, forKey: .timeoutInterval)
         if let environmentString = try? values.decode(String.self, forKey: .environment),
             let environment = Environment(rawValue: environmentString) {
