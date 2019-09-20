@@ -4,7 +4,7 @@ import SwiftGRPC
 final class AuthenticationManager {
     static let shared = AuthenticationManager()
     
-    private var cancellable: Cancellable?
+    private var handlable: (Cancellable & Retriable)?
     private var service: UserService
     private var completionHandlers: [(Result<Void, Error>) -> Void] = []
     
@@ -12,14 +12,14 @@ final class AuthenticationManager {
         service = TinkLink.shared.client.userService
     }
     
-    func authenticateIfNeeded<Service: TokenConfigurableService>(service otherService: Service, for market: Market, locale: Locale, completion: @escaping (Result<Void, Error>) -> Void) -> Cancellable? {
+    func authenticateIfNeeded<Service: TokenConfigurableService>(service otherService: Service, for market: Market, locale: Locale, completion: @escaping (Result<Void, Error>) -> Void) -> (Cancellable & Retriable)? {
         if let accessToken = accessToken {
             otherService.configure(accessToken)
             self.accessToken = accessToken
             completion(.success(()))
         } else {
-            if cancellable == nil {
-                cancellable = service.createAnonymous(market: market, locale: locale) { [weak self] result in
+            if handlable == nil {
+                handlable = service.createAnonymous(market: market, locale: locale) { [weak self] result in
                     guard let self = self else { return }
                     do {
                         let accessToken = try result.get()
@@ -45,14 +45,14 @@ final class AuthenticationManager {
                         self.completionHandlers.forEach{ $0(.failure(error)) }
                         self.completionHandlers.removeAll()
                     }
-                    self.cancellable = nil
+                    self.handlable = nil
                 }
             } else {
                 // In case of multiple requests at the same time
                 completionHandlers.append(completion)
             }
         }
-        return cancellable
+        return handlable
     }
     
     private var accessToken: AccessToken?

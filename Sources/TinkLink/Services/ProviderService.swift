@@ -19,22 +19,22 @@ class ProviderService: TokenConfigurableService {
     ///   - includeTestProviders: If set to true, Providers of TEST financial financial institution kind will be added in the response list. Defaults to false.
     ///   - completion: The completion handler to call when the load request is complete.
     /// - Returns: A Cancellable instance. Call cancel() on this instance if you no longer need the result of the request. Deinitializing this instance will also cancel the request.
-    func providers(market: Market? = nil, capabilities: Provider.Capabilities = .all, includeTestProviders: Bool = false, completion: @escaping (Result<[Provider], Error>) -> Void) -> Cancellable {
+    func providers(market: Market? = nil, capabilities: Provider.Capabilities = .all, includeTestProviders: Bool = false, completion: @escaping (Result<[Provider], Error>) -> Void) -> (Cancellable & Retriable) {
         var request = GRPCProviderListRequest()
         request.marketCode = market?.code ?? ""
         request.capability = .unknown
         request.includeTestType = includeTestProviders
 
-        return startCall(for: request, method: service.listProviders, responseMap: { $0.providers.map({ Provider(grpcProvider: $0) }).filter({ !$0.capabilities.isDisjoint(with: capabilities) }) }, completion: completion)
+        return CallHandler(for: request, method: service.listProviders, responseMap: { $0.providers.map({ Provider(grpcProvider: $0) }).filter({ !$0.capabilities.isDisjoint(with: capabilities) }) }, completion: completion)
     }
 
     /// Lists all markets where there are providers available.
     ///
     /// - Parameter completion: The completion handler to call when the load request is complete.
     /// - Returns: A Cancellable instance. Call cancel() on this instance if you no longer need the result of the request. Deinitializing this instance will also cancel the request.
-    func providerMarkets(completion: @escaping (Result<[Market], Error>) -> Void) -> Cancellable {
+    func providerMarkets(completion: @escaping (Result<[Market], Error>) -> Void) -> (Cancellable & Retriable) {
         let request = GRPCProviderMarketListRequest()
 
-        return startCall(for: request, method: service.listProviderMarkets, responseMap: { $0.providerMarkets.map({ Market(code: $0.code) }) }, completion: completion)
+        return CallHandler(for: request, method: service.listProviderMarkets, responseMap: { $0.providerMarkets.map({ Market(code: $0.code) }) }, completion: completion)
     }
 }

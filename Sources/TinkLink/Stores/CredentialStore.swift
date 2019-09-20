@@ -13,10 +13,10 @@ final class CredentialStore {
     private let market: Market
     private let locale: Locale
     private var service: CredentialService
-    private var createCredentialCanceller: [Identifier<Provider>: Cancellable] = [:]
-    private var credentialStatusPollingCanceller: [Identifier<Credential>: Cancellable] = [:]
-    private var addSupplementalInformationCanceller: [Identifier<Credential>: Cancellable] = [:]
-    private var cancelSupplementInformationCanceller: [Identifier<Credential>: Cancellable] = [:]
+    private var createCredentialHandler: [Identifier<Provider>: (Cancellable & Retriable)] = [:]
+    private var credentialStatusPollingHandler: [Identifier<Credential>: (Cancellable & Retriable)] = [:]
+    private var addSupplementalInformationHandler: [Identifier<Credential>: (Cancellable & Retriable)] = [:]
+    private var cancelSupplementInformationHandler: [Identifier<Credential>: (Cancellable & Retriable)] = [:]
     
     private init() {
         service = TinkLink.shared.client.credentialService
@@ -25,12 +25,12 @@ final class CredentialStore {
         authenticationManager = AuthenticationManager.shared
     }
     
-    func addCredential(for provider: Provider, fields: [String: String], completion: @escaping(Result<Credential, Error>) -> Void) -> Cancellable {
-        var multiCanceller = MultiCanceller()
+    func addCredential(for provider: Provider, fields: [String: String], completion: @escaping(Result<Credential, Error>) -> Void) -> (Cancellable & Retriable) {
+        var multiHandler = MultiHandler()
         let market = Market(code: provider.marketCode)
-        let authCanceller = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
-            guard let self = self, self.createCredentialCanceller[provider.name] == nil else { return }
-            let canceller = self.service.createCredential(providerName: provider.name, fields: fields, completion: { (result) in
+        let authHandler = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
+            guard let self = self, self.createCredentialHandler[provider.name] == nil else { return }
+            let handler = self.service.createCredential(providerName: provider.name, fields: fields, completion: { (result) in
                 DispatchQueue.main.async {
                     do {
                         let credential = try result.get()
@@ -39,24 +39,24 @@ final class CredentialStore {
                     } catch let error {
                         completion(.failure(error))
                     }
-                    self.createCredentialCanceller[provider.name] = nil
+                    self.createCredentialHandler[provider.name] = nil
                 }
             })
-            self.createCredentialCanceller[provider.name] = canceller
-            multiCanceller.add(canceller)
+            self.createCredentialHandler[provider.name] = handler
+            multiHandler.add(handler)
         }
-        if let canceller = authCanceller {
-            multiCanceller.add(canceller)
+        if let handler = authHandler {
+            multiHandler.add(handler)
         }
-        return multiCanceller
+        return multiHandler
     }
     
     /// - Precondition: Service should be configured with access token before this method is called.
     func addSupplementalInformation(for credential: Credential, supplementalInformationFields: [String: String], completion: @escaping (Result<Void, Error>) -> Void) {
         precondition(service.metadata.hasAuthorization, "Service doesn't have authentication metadata set!")
-        addSupplementalInformationCanceller[credential.id] = self.service.supplementInformation(credentialID: credential.id, fields: supplementalInformationFields) { [weak self] result in
+        addSupplementalInformationHandler[credential.id] = self.service.supplementInformation(credentialID: credential.id, fields: supplementalInformationFields) { [weak self] result in
             DispatchQueue.main.async {
-                self?.addSupplementalInformationCanceller[credential.id] = nil
+                self?.addSupplementalInformationHandler[credential.id] = nil
                 completion(result)
             }
         }
@@ -65,9 +65,9 @@ final class CredentialStore {
     /// - Precondition: Service should be configured with access token before this method is called.
     func cancelSupplementInformation(for credential: Credential, completion: @escaping (Result<Void, Error>) -> Void) {
         precondition(service.metadata.hasAuthorization, "Service doesn't have authentication metadata set!")
-        cancelSupplementInformationCanceller[credential.id] = self.service.cancelSupplementInformation(credentialID: credential.id) { [weak self] result in
+        cancelSupplementInformationHandler[credential.id] = self.service.cancelSupplementInformation(credentialID: credential.id) { [weak self] result in
             DispatchQueue.main.async {
-                self?.cancelSupplementInformationCanceller[credential.id] = nil
+                self?.cancelSupplementInformationHandler[credential.id] = nil
                 completion(result)
             }
         }
@@ -75,12 +75,12 @@ final class CredentialStore {
     
     // TODO: Create polling handler for handle all the pollings
     func pollingStatus(for credential: Credential) {
-        guard credentialStatusPollingCanceller[credential.id] == nil else { return }
+        guard credentialStatusPollingHandler[credential.id] == nil else { return }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-            self.credentialStatusPollingCanceller[credential.id] = self.service.credentials { [weak self, credential] result in
+            self.credentialStatusPollingHandler[credential.id] = self.service.credentials { [weak self, credential] result in
                 guard let self = self else { return }
                 DispatchQueue.main.async {
-                    self.credentialStatusPollingCanceller[credential.id] = nil
+                    self.credentialStatusPollingHandler[credential.id] = nil
                     do {
                         let credentials = try result.get()
                         if let updatedCredential = credentials.first(where: { $0.id == credential.id}) {
