@@ -7,7 +7,7 @@ final class AddCredentialViewController: UITableViewController {
     let provider: Provider
 
     private var form: Form
-    private var formError: Form.FieldsError? {
+    private var formError: Form.ValidationError? {
         didSet {
             tableView.reloadData()
         }
@@ -110,7 +110,7 @@ extension AddCredentialViewController {
         do {
             try form.validateFields()
             task = credentialContext?.addCredential(for: provider, form: form, progressHandler: onUpdate, completion: onCompletion)
-        } catch let error as Form.FieldsError {
+        } catch let error as Form.ValidationError {
             formError = error
         } catch {
             // TODO: Handle Error

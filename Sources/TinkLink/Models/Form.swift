@@ -136,7 +136,7 @@ public struct Form {
         }
     }
     
-    public struct FieldsError: Error {
+    public struct ValidationError: Error {
         public var errors: [Form.Field.ValidationError]
 
         public subscript(fieldName fieldName: String) -> Form.Field.ValidationError? {
@@ -157,7 +157,7 @@ extension Form {
 
 extension Array where Element == Form.Field {
     func validateFields() throws {
-        var fieldsValidationError = Form.FieldsError(errors: [])
+        var fieldsValidationError = Form.ValidationError(errors: [])
         for field in self {
             do {
                 try field.validate()
