@@ -7,11 +7,11 @@ public struct Form {
         fields = fieldSpecifications.map({ Field(fieldSpecification: $0) })
     }
     
-    public var areValuesValid: Bool {
+    public var areFieldsValid: Bool {
         return fields.areValuesValid
     }
     
-    public func validateValues() throws {
+    public func validateFields() throws {
         try fields.validateValues()
     }
     
