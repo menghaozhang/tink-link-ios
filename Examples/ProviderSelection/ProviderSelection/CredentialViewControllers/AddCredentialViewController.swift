@@ -7,6 +7,11 @@ final class AddCredentialViewController: UITableViewController {
     let provider: Provider
 
     private var form: Form
+    private var formError: Form.FieldsError? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     private var task: AddCredentialTask?
     private var statusViewController: AddCredentialStatusViewController?
     private lazy var doneBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addCredential))
@@ -79,7 +84,14 @@ extension AddCredentialViewController {
     }
 
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        if section == form.fields.count - 1 {
+        if let error = formError {
+            let field = form.fields[section]
+            if let fieldError = error[fieldName: field.name] {
+                return fieldError.errorDescription
+            } else {
+                return nil
+            }
+        } else if section == form.fields.count - 1 {
             return provider.helpText
         } else {
             return nil
@@ -99,8 +111,7 @@ extension AddCredentialViewController {
             try form.validateFields()
             task = credentialContext?.addCredential(for: provider, form: form, progressHandler: onUpdate, completion: onCompletion)
         } catch let error as Form.FieldsError {
-            // TODO: Handle Error
-            print(error.errors)
+            formError = error
         } catch {
             // TODO: Handle Error
             print(error)
