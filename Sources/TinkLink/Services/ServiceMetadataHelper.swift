@@ -43,7 +43,7 @@ extension ProcessInfo {
 extension Metadata {
     enum HeaderKeys: String {
         case clientKey = "X-Tink-Client-Key"
-        case deviceId = "X-Tink-Device-ID"
+        case deviceID = "X-Tink-Device-ID"
         case authorization = "Authorization"
         case oauthClientID = "X-Tink-OAuth-Client-ID"
 
@@ -68,7 +68,7 @@ extension Metadata {
     func addTinkMetadata() throws {
         let info = ProcessInfo.processInfo
         if let deviceID = info.tinkDeviceID {
-            try add(key: HeaderKeys.deviceId.key, value: deviceID)
+            try add(key: HeaderKeys.deviceID.key, value: deviceID)
         }
         if let sessionID = info.tinkSessionID {
             try add(key: HeaderKeys.authorization.key, value: "Session \(sessionID)")
