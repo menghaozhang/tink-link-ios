@@ -79,14 +79,15 @@ public struct Form {
         
         public var isValid: Bool {
             do {
-                try validate(value: text)
+                try validate()
                 return true
             } catch {
                 return false
             }
         }
         
-        public func validate(value: String) throws {
+        public func validate() throws {
+            let value = text
             if value.isEmpty, !isOptional {
                 throw ValidationError.requiredFieldEmptyValue(fieldName: name)
             } else if let maxLength = validationRules.maxLength, maxLength > 0 && maxLength < value.count {
@@ -122,7 +123,7 @@ extension Array where Element == Form.Field {
         var fieldsValidationError = Form.FieldsError(errors: [])
         for field in self {
             do {
-                try field.validate(value: field.text)
+                try field.validate()
             } catch let error as Form.Field.ValidationError {
                 fieldsValidationError.errors.append(error)
             } catch {
