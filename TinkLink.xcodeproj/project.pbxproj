@@ -48,6 +48,7 @@
 		8F3672462305685600B92936 /* GrpcExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3672452305685600B92936 /* GrpcExtensions.swift */; };
 		8F36724F230598BC00B92936 /* ExactNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F36724E230598BC00B92936 /* ExactNumber.swift */; };
 		8F3672512305A2A700B92936 /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3672502305A2A700B92936 /* Identifier.swift */; };
+		8F613A002334CB2D00BFB04D /* CredentialStatusPollingTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6139FF2334CB2C00BFB04D /* CredentialStatusPollingTask.swift */; };
 		8F84A776232B8B6500EA878F /* TokenConfigurableService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F84A775232B8B6500EA878F /* TokenConfigurableService.swift */; };
 		8F84A778232F816B00EA878F /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F84A777232F816B00EA878F /* AuthenticationManager.swift */; };
 		8F84A77C2330D39600EA878F /* Locale+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F84A77B2330D39600EA878F /* Locale+Extensions.swift */; };
@@ -112,6 +113,7 @@
 		8F3672452305685600B92936 /* GrpcExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrpcExtensions.swift; sourceTree = "<group>"; };
 		8F36724E230598BC00B92936 /* ExactNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExactNumber.swift; sourceTree = "<group>"; };
 		8F3672502305A2A700B92936 /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
+		8F6139FF2334CB2C00BFB04D /* CredentialStatusPollingTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialStatusPollingTask.swift; sourceTree = "<group>"; };
 		8F84A775232B8B6500EA878F /* TokenConfigurableService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenConfigurableService.swift; sourceTree = "<group>"; };
 		8F84A777232F816B00EA878F /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		8F84A77B2330D39600EA878F /* Locale+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+Extensions.swift"; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				8FA35591231EADAB0054115D /* CredentialContext.swift */,
 				203BE968232784440033F879 /* AddCredentialTask.swift */,
 				209D69272326878800B4DBB8 /* SupplementInformationTask.swift */,
+				8F6139FF2334CB2C00BFB04D /* CredentialStatusPollingTask.swift */,
 			);
 			path = Context;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				20ED85442303FAEC006213BB /* services.pb.swift in Sources */,
 				8F0CE77F2332151700FB84B0 /* Client.swift in Sources */,
 				20ED85832304081D006213BB /* Provider+GRPC.swift in Sources */,
+				8F613A002334CB2D00BFB04D /* CredentialStatusPollingTask.swift in Sources */,
 				200A3FA2230C3E7800BEF935 /* ServiceMetadataHelper.swift in Sources */,
 				200FD63F23154B660077181A /* Market.swift in Sources */,
 				20ED856F2304003A006213BB /* Environment.swift in Sources */,
