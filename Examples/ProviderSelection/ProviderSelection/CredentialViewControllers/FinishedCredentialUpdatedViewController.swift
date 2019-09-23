@@ -7,7 +7,7 @@ final class FinishedCredentialUpdatedViewController: UIViewController {
     init(credential: Credential) {
         self.credential = credential
         super.init(nibName: nil, bundle: nil)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(done))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
     }
 
     required init?(coder aDecoder: NSCoder) {
