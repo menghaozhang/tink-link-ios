@@ -1,10 +1,12 @@
 import Foundation
 import SwiftGRPC
 
+typealias Handleable = (Cancellable & Retriable)
+
 final class AuthenticationManager {
     static let shared = AuthenticationManager()
     
-    private var handlable: (Cancellable & Retriable)?
+    private var handleable: Handleable?
     private var service: UserService
     private var completionHandlers: [(Result<Void, Error>) -> Void] = []
     
@@ -12,14 +14,14 @@ final class AuthenticationManager {
         service = TinkLink.shared.client.userService
     }
     
-    func authenticateIfNeeded<Service: TokenConfigurableService>(service otherService: Service, for market: Market, locale: Locale, completion: @escaping (Result<Void, Error>) -> Void) -> (Cancellable & Retriable)? {
+    func authenticateIfNeeded<Service: TokenConfigurableService>(service otherService: Service, for market: Market, locale: Locale, completion: @escaping (Result<Void, Error>) -> Void) -> Handleable? {
         if let accessToken = accessToken {
             otherService.configure(accessToken)
             self.accessToken = accessToken
             completion(.success(()))
         } else {
-            if handlable == nil {
-                handlable = service.createAnonymous(market: market, locale: locale) { [weak self] result in
+            if handleable == nil {
+                handleable = service.createAnonymous(market: market, locale: locale) { [weak self] result in
                     guard let self = self else { return }
                     do {
                         let accessToken = try result.get()
@@ -45,14 +47,14 @@ final class AuthenticationManager {
                         self.completionHandlers.forEach{ $0(.failure(error)) }
                         self.completionHandlers.removeAll()
                     }
-                    self.handlable = nil
+                    self.handleable = nil
                 }
             } else {
                 // In case of multiple requests at the same time
                 completionHandlers.append(completion)
             }
         }
-        return handlable
+        return handleable
     }
     
     private var accessToken: AccessToken?

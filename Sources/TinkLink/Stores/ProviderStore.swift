@@ -14,8 +14,8 @@ final class ProviderStore {
     private let market: Market
     private let locale: Locale
     private var service: ProviderService
-    private var marketFetchHandler: (Cancellable & Retriable)?
-    private var providerFetchHandlers: [ProviderContext.Attributes: (Cancellable & Retriable)] = [:]
+    private var marketFetchHandler: Handleable?
+    private var providerFetchHandlers: [ProviderContext.Attributes: Handleable] = [:]
 
     private(set) var providerMarketGroups: [Market: Result<[Provider], Error>] = [:] {
         didSet {
@@ -38,15 +38,15 @@ final class ProviderStore {
         providerFetchHandlers[attributes] = performFetchProviders(for: attributes)
     }
 
-    private func performFetchProviders(for attributes: ProviderContext.Attributes) -> (Cancellable & Retriable) {
+    private func performFetchProviders(for attributes: ProviderContext.Attributes) -> Handleable {
         var multiHandler = MultiHandler()
     
         let authCanceller = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self, attributes] authenticationResult in
             guard let self = self, !multiHandler.isCancelled else { return }
             do {
                 try authenticationResult.get()
-                let handlable = self.unauthenticatedPerformFetchProviders(attributes: attributes)
-                multiHandler.add(handlable)
+                let Handleable = self.unauthenticatedPerformFetchProviders(attributes: attributes)
+                multiHandler.add(Handleable)
             } catch {
                 DispatchQueue.main.async {
                     self.providerMarketGroups[attributes.market] = .failure(error)
@@ -65,7 +65,7 @@ final class ProviderStore {
     ///
     /// - Parameter attributes: Attributes for providers to fetch
     /// - Precondition: Service should be configured with access token before this method is called.
-    private func unauthenticatedPerformFetchProviders(attributes: ProviderContext.Attributes) -> (Cancellable & Retriable) {
+    private func unauthenticatedPerformFetchProviders(attributes: ProviderContext.Attributes) -> Handleable {
         precondition(service.metadata.hasAuthorization, "Service doesn't have authentication metadata set!")
         return service.providers(market: attributes.market, capabilities: attributes.capabilities, includeTestProviders: attributes.includeTestProviders) { [weak self, attributes] result in
             guard let self = self else { return }
@@ -87,19 +87,19 @@ final class ProviderStore {
         self.marketFetchHandler = performFetchMarkets()
     }
 
-    private func performFetchMarkets() -> (Cancellable & Retriable) {
+    private func performFetchMarkets() -> Handleable {
         var multiHandler = MultiHandler()
         let authHandler = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
             guard let self = self, self.marketFetchHandler == nil else {
                 return
             }
-            let handlable = self.service.providerMarkets { result in
+            let handleable = self.service.providerMarkets { result in
                 DispatchQueue.main.async {
                     self.markets = result
                     self.marketFetchHandler = nil
                 }
             }
-            multiHandler.add(handlable)
+            multiHandler.add(handleable)
         }
         if let handler = authHandler {
             multiHandler.add(handler)

@@ -19,7 +19,7 @@ class ProviderService: TokenConfigurableService {
     ///   - includeTestProviders: If set to true, Providers of TEST financial financial institution kind will be added in the response list. Defaults to false.
     ///   - completion: The completion handler to call when the load request is complete.
     /// - Returns: A Cancellable instance. Call cancel() on this instance if you no longer need the result of the request. Deinitializing this instance will also cancel the request.
-    func providers(market: Market? = nil, capabilities: Provider.Capabilities = .all, includeTestProviders: Bool = false, completion: @escaping (Result<[Provider], Error>) -> Void) -> (Cancellable & Retriable) {
+    func providers(market: Market? = nil, capabilities: Provider.Capabilities = .all, includeTestProviders: Bool = false, completion: @escaping (Result<[Provider], Error>) -> Void) -> Handleable {
         var request = GRPCProviderListRequest()
         request.marketCode = market?.code ?? ""
         request.capability = .unknown
@@ -32,7 +32,7 @@ class ProviderService: TokenConfigurableService {
     ///
     /// - Parameter completion: The completion handler to call when the load request is complete.
     /// - Returns: A Cancellable instance. Call cancel() on this instance if you no longer need the result of the request. Deinitializing this instance will also cancel the request.
-    func providerMarkets(completion: @escaping (Result<[Market], Error>) -> Void) -> (Cancellable & Retriable) {
+    func providerMarkets(completion: @escaping (Result<[Market], Error>) -> Void) -> Handleable {
         let request = GRPCProviderMarketListRequest()
 
         return CallHandler(for: request, method: service.listProviderMarkets, responseMap: { $0.providerMarkets.map({ Market(code: $0.code) }) }, completion: completion)

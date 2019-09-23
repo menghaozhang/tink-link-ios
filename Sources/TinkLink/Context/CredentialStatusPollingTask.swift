@@ -3,7 +3,7 @@ import Foundation
 
 class CredentialStatusPollingTask {
     private var service = TinkLink.shared.client.credentialService
-    private var callHandler: (Cancellable & Retriable)?
+    private var callHandler: Handleable?
     private var retryInterval: TimeInterval = 1
     private(set) var credential: Credential
     private var updateHandler: (Credential) -> Void

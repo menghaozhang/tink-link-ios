@@ -7,12 +7,12 @@ final class Client {
     var market: Market
     var locale: Locale
 
-    convenience init(environment: Environment, clientKey: String, userAgent: String? = nil, certificateURL: URL? = nil, market: Market, locale: Locale) {
+    convenience init(environment: Environment, clientID: String, userAgent: String? = nil, certificateURL: URL? = nil, market: Market, locale: Locale) {
         let certificateContents = certificateURL.flatMap { try? String(contentsOf: $0, encoding: .utf8) }
-        self.init(environment: environment, clientKey: clientKey, userAgent: userAgent, certificate: certificateContents, market: market, locale: locale)
+        self.init(environment: environment, clientID: clientID, userAgent: userAgent, certificate: certificateContents, market: market, locale: locale)
     }
 
-    init(environment: Environment, clientKey: String, userAgent: String? = nil, certificate: String? = nil, market: Market, locale: Locale) {
+    init(environment: Environment, clientID: String, userAgent: String? = nil, certificate: String? = nil, market: Market, locale: Locale) {
         var arguments: [Channel.Argument] = []
         self.market = market
         self.locale = locale
@@ -24,13 +24,13 @@ final class Client {
         }
 
         if let certificateContents = certificate {
-            self.channel = Channel(address: environment.url.absoluteString, certificates: certificateContents, clientCertificates: nil, clientKey: clientKey, arguments: arguments)
+            self.channel = Channel(address: environment.url.absoluteString, certificates: certificateContents, clientCertificates: nil, clientKey: clientID, arguments: arguments)
         } else {
             self.channel = Channel(address: environment.url.absoluteString, secure: true, arguments: arguments)
         }
 
         do {
-            try metadata.add(key: Metadata.HeaderKeys.clientId.key, value: clientKey)
+            try metadata.add(key: Metadata.HeaderKey.oauthClientID.key, value: clientID)
             try metadata.addTinkMetadata()
         } catch {
             assertionFailure(error.localizedDescription)

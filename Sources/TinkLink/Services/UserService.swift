@@ -12,7 +12,7 @@ final class UserService {
 
     private lazy var service = UserServiceServiceClient(channel: channel, metadata: metadata)
 
-    func createAnonymous(market: Market? = nil, locale: Locale, origin: String? = nil, completion: @escaping (Result<AccessToken, Error>) -> Void) -> (Cancellable & Retriable) {
+    func createAnonymous(market: Market? = nil, locale: Locale, origin: String? = nil, completion: @escaping (Result<AccessToken, Error>) -> Void) -> Handleable {
         var request = GRPCCreateAnonymousRequest()
         request.market = market?.code ?? ""
         // TODO: Use the correct/acceptable locale PFMF-1298

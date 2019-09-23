@@ -14,6 +14,11 @@ final class SupplementalInformationViewController: UITableViewController {
     weak var delegate: SupplementalInformationViewControllerDelegate?
     
     private var form: Form
+    private var formError: Form.ValidationError? {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     private var didFirstFieldBecomeFirstResponder = false
 
     init(supplementInformationTask: SupplementInformationTask) {
@@ -54,10 +59,14 @@ extension SupplementalInformationViewController {
 
 // MARK: - UITableViewDataSource
 extension SupplementalInformationViewController {
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return form.fields.count
     }
-    
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldCell.reuseIdentifier, for: indexPath)
         if let textFieldCell = cell as? TextFieldCell {
@@ -71,6 +80,24 @@ extension SupplementalInformationViewController {
         }
         return cell
     }
+
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let field = form.fields[section]
+        return field.attributes.description
+    }
+
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        if let error = formError {
+            let field = form.fields[section]
+            if let fieldError = error[fieldName: field.name] {
+                return fieldError.errorDescription
+            } else {
+                return nil
+            }
+        } else {
+            return nil
+        }
+    }
 }
 
 // MARK: - Actions
@@ -83,15 +110,11 @@ extension SupplementalInformationViewController {
     @objc private func doneButtonPressed(_ sender: UIBarButtonItem) {
         tableView.resignFirstResponder()
         do {
-            try form.validateValues()
+            try form.validateFields()
             supplementInformationTask.submit(form)
             self.delegate?.supplementalInformationViewController(self, didSupplementInformationForCredential: supplementInformationTask.credential)
-        } catch let fieldSpecificationsError as Form.FieldsError {
-            // TODO: Handle Error
-            print(fieldSpecificationsError.errors)
         } catch {
-            // TODO: Handle Error
-            print(error)
+            formError = error as? Form.ValidationError
         }
     }
 }
@@ -101,7 +124,7 @@ extension SupplementalInformationViewController: TextFieldCellDelegate {
     func textFieldCell(_ cell: TextFieldCell, willChangeToText text: String) {
         if let indexPath = tableView.indexPath(for: cell) {
             form.fields[indexPath.item].text = text
-            navigationItem.rightBarButtonItem?.isEnabled = form.fields[indexPath.item].isValueValid
+            navigationItem.rightBarButtonItem?.isEnabled = form.fields[indexPath.item].isValid
         }
     }
 }

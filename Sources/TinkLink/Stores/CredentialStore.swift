@@ -13,10 +13,11 @@ final class CredentialStore {
     private let market: Market
     private let locale: Locale
     private var service: CredentialService
-    private var createCredentialHandler: [Identifier<Provider>: (Cancellable & Retriable)] = [:]
-    private var credentialStatusPollingHandler: [Identifier<Credential>: (Cancellable & Retriable)] = [:]
-    private var addSupplementalInformationHandler: [Identifier<Credential>: (Cancellable & Retriable)] = [:]
-    private var cancelSupplementInformationHandler: [Identifier<Credential>: (Cancellable & Retriable)] = [:]
+    private var createCredentialHandler: [Identifier<Provider>: Handleable] = [:]
+    private var credentialStatusPollingHandler: [Identifier<Credential>: Handleable] = [:]
+    private var addSupplementalInformationHandler: [Identifier<Credential>: Handleable] = [:]
+    private var cancelSupplementInformationHandler: [Identifier<Credential>: Handleable] = [:]
+    private var fetchCredentialsHandler: Handleable?
     
     private init() {
         service = TinkLink.shared.client.credentialService
@@ -25,7 +26,7 @@ final class CredentialStore {
         authenticationManager = AuthenticationManager.shared
     }
     
-    func addCredential(for provider: Provider, fields: [String: String], completion: @escaping(Result<Credential, Error>) -> Void) -> (Cancellable & Retriable) {
+    func addCredential(for provider: Provider, fields: [String: String], completion: @escaping(Result<Credential, Error>) -> Void) -> Handleable {
         var multiHandler = MultiHandler()
         let market = Market(code: provider.marketCode)
         let authHandler = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
@@ -72,6 +73,27 @@ final class CredentialStore {
             }
         }
     }
+
+    func performFetchIfNeeded() {
+        if fetchCredentialsHandler == nil {
+            performFetch()
+        }
+    }
+
+    func performFetch() {
+        fetchCredentialsHandler = service.credentials { [weak self] result in
+            DispatchQueue.main.async {
+                self?.fetchCredentialsHandler = nil
+                do {
+                    let credentials = try result.get()
+                    self?.credentials = Dictionary(grouping: credentials, by: { $0.id })
+                        .compactMapValues { $0.first }
+                } catch {
+                    NotificationCenter.default.post(name: .credentialStoreErrorOccured, object: self, userInfo: [CredentialStoreErrorOccuredNotificationErrorKey: error])
+                }
+            }
+        }
+    }
     
     // TODO: Create polling handler for handle all the pollings
     func pollingStatus(for credential: Credential) {
@@ -97,15 +119,20 @@ final class CredentialStore {
                         } else {
                             fatalError("No such credential with " + credential.id.rawValue)
                         }
-                    } catch let error {
-                        print(error)
+                    } catch {
+                        NotificationCenter.default.post(name: .credentialStoreErrorOccured, object: self, userInfo: [CredentialStoreErrorOccuredNotificationErrorKey: error])
                     }
                 }
             }
         })
     }
+
 }
 
 extension Notification.Name {
     static let credentialStoreChanged = Notification.Name("TinkLinkCredentialStoreChangedNotificationName")
+    static let credentialStoreErrorOccured = Notification.Name("TinkLinkCredentialStoreErrorOccuredNotificationName")
 }
+
+/// User info key for credentialStoreErrorOccured notification.
+let CredentialStoreErrorOccuredNotificationErrorKey = "error"
