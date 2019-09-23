@@ -16,6 +16,7 @@
 		201D5523230AEAA500641102 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D5522230AEAA500641102 /* UserService.swift */; };
 		203BE969232784440033F879 /* AddCredentialTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203BE968232784440033F879 /* AddCredentialTask.swift */; };
 		2049259A232A3AF000D4461D /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20492599232A3AF000D4461D /* Form.swift */; };
+		206B8DCF23350A8300693ED5 /* FormTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206B8DCD2335001000693ED5 /* FormTests.swift */; };
 		209D69282326878800B4DBB8 /* SupplementInformationTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209D69272326878800B4DBB8 /* SupplementInformationTask.swift */; };
 		20D8125F2330DAD7000B3A30 /* Service+Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8125E2330DAD7000B3A30 /* Service+Metadata.swift */; };
 		20E19DB22306E59900BF053A /* BoringSSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85462303FD85006213BB /* BoringSSL.framework */; };
@@ -81,6 +82,7 @@
 		201D5522230AEAA500641102 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		203BE968232784440033F879 /* AddCredentialTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCredentialTask.swift; sourceTree = "<group>"; };
 		20492599232A3AF000D4461D /* Form.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
+		206B8DCD2335001000693ED5 /* FormTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTests.swift; sourceTree = "<group>"; };
 		209D69272326878800B4DBB8 /* SupplementInformationTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementInformationTask.swift; sourceTree = "<group>"; };
 		20D8125E2330DAD7000B3A30 /* Service+Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Service+Metadata.swift"; sourceTree = "<group>"; };
 		20E6DCD023336AE700476B8F /* MultiCanceller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiCanceller.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 			children = (
 				20ED858923040974006213BB /* ProviderGRPCTests.swift */,
 				20ED8587230408E6006213BB /* ClientTests.swift */,
+				206B8DCD2335001000693ED5 /* FormTests.swift */,
 				20ED85302303FA48006213BB /* Info.plist */,
 			);
 			name = TinkLinkTests;
@@ -514,6 +517,7 @@
 			files = (
 				20ED859023041679006213BB /* ProviderGRPCTests.swift in Sources */,
 				20ED8588230408E6006213BB /* ClientTests.swift in Sources */,
+				206B8DCF23350A8300693ED5 /* FormTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
