@@ -29,6 +29,7 @@ public class AddCredentialTask {
 
     private let credentialStore = CredentialStore.shared
     private var credentialStoreObserver: Any?
+    private var credentialStatusPollingTask: CredentialStatusPollingTask?
 
     private(set) var credential: Credential?
 
@@ -54,7 +55,8 @@ public class AddCredentialTask {
 
         handleUpdate(for: credential)
 
-        credentialStore.pollingStatus(for: credential)
+        credentialStatusPollingTask = CredentialStatusPollingTask(credential: credential)
+        credentialStatusPollingTask?.pollingStatus()
 
         credentialStoreObserver = NotificationCenter.default.addObserver(forName: .credentialStoreChanged, object: credentialStore, queue: .main) { [weak self] _ in
             guard let self = self else { return }
@@ -84,7 +86,8 @@ public class AddCredentialTask {
             let supplementInformationTask = SupplementInformationTask(credential: credential) { [weak self] result in
                 do {
                     try result.get()
-                    self?.credentialStore.pollingStatus(for: credential)
+                    self?.credentialStatusPollingTask = CredentialStatusPollingTask(credential: credential)
+                    self?.credentialStatusPollingTask?.pollingStatus()
                 } catch {
                     self?.completion(.failure(error))
                 }

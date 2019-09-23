@@ -4,7 +4,7 @@ import SwiftGRPC
 final class CredentialStore {
     static let shared = CredentialStore()
     
-    private(set) var credentials: [Identifier<Credential>: Credential] = [:] {
+    var credentials: [Identifier<Credential>: Credential] = [:] {
         didSet {
             NotificationCenter.default.post(name: .credentialStoreChanged, object: self)
         }
