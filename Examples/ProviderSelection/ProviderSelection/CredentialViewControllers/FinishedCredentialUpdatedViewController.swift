@@ -10,7 +10,7 @@ final class FinishedCredentialUpdatedViewController: UITableViewController {
     var credential: Credential
     var accounts: [Account] = []
     var numberFormatter: NumberFormatter = NumberFormatter()
-    
+
     init(credential: Credential) {
         self.credential = credential
         super.init(style: .grouped)
