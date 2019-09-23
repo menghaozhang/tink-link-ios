@@ -12,8 +12,6 @@ final class FinishedCredentialUpdatedViewController: UITableViewController {
     init(credential: Credential) {
         self.credential = credential
         super.init(style: .grouped)
-
-        // FIXME: Accounts need to be fetched using a customer backend
     }
     
     required init?(coder aDecoder: NSCoder) {
