@@ -137,7 +137,9 @@ extension AddCredentialViewController {
 
         switch result {
         case .failure(let error):
-            showUpdating(status: error.localizedDescription)
+            hideUpdatingView(animated: true) {
+                self.showAlert(for: error)
+            }
         case .success(let credential):
             showCredentialUpdated(for: credential)
         }
@@ -193,6 +195,15 @@ extension AddCredentialViewController {
             let okAction = UIAlertAction(title: "OK", style: .default)
             alertController.addAction(okAction)
         }
+
+        present(alertController, animated: true)
+    }
+
+    private func showAlert(for error: Error) {
+        let alertController = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okAction)
 
         present(alertController, animated: true)
     }
