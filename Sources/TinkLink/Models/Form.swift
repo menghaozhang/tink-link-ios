@@ -149,6 +149,9 @@ public struct Form {
             }
         }
 
+        /// Is `true` if `text` passes the validation rules for this field.
+        ///
+        /// To check why `text` wasn't valid if `false`, call `validate()` and check the thrown error for validation failure reason.
         public var isValid: Bool {
             do {
                 try validate()
