@@ -8,7 +8,20 @@ public struct Form {
     }
 
     public subscript(fieldName fieldName: String) -> Form.Field? {
-        return fields.first(where: { $0.name == fieldName })
+        get {
+            return fields.first(where: { $0.name == fieldName })
+        }
+        set {
+            if let index = fields.firstIndex(where: { $0.name == fieldName }) {
+                if let field = newValue {
+                    fields[index] = field
+                } else {
+                    fields.remove(at: index)
+                }
+            } else if let field = newValue {
+                fields.append(field)
+            }
+        }
     }
 
     public var areFieldsValid: Bool {
