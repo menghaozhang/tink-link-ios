@@ -29,6 +29,28 @@ class FormTests: XCTestCase {
             XCTFail()
         }
 
+        field.text = "1212121212"
+
+        do {
+            try field.validate()
+        } catch Form.Field.ValidationError.minLengthLimit(let fieldName, let minLength) {
+            XCTAssertEqual(fieldName, "username")
+            XCTAssertEqual(minLength, 12)
+        } catch {
+            XCTFail()
+        }
+
+        field.text = "121212121212"
+
+        do {
+            try field.validate()
+        } catch Form.Field.ValidationError.validationFailed(let fieldName, let reason) {
+            XCTAssertEqual(fieldName, "username")
+            XCTAssertEqual(reason, "Please enter a valid social security number")
+        } catch {
+            XCTFail()
+        }
+
         field.text = "201212121212"
 
         try field.validate()
