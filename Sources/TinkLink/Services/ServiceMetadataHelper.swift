@@ -2,8 +2,8 @@ import Foundation
 import SwiftGRPC
 
 extension ProcessInfo {
-    var tinkClientKey: String? {
-        return environment["TINK_CLIENT_KEY"]
+    var tinkClientID: String? {
+        return environment["TINK_CLIENT_ID"]
     }
 
     var tinkDeviceID: String? {
@@ -12,10 +12,6 @@ extension ProcessInfo {
 
     var tinkSessionID: String? {
         return environment["TINK_SESSION_ID"]
-    }
-
-    var tinkOAuthClientID: String? {
-        return environment["TINK_OAUTH_CLIENT_ID"]
     }
 
     var tinkBearerToken: String? {
@@ -45,11 +41,11 @@ extension ProcessInfo {
 }
 
 extension Metadata {
-    enum HeaderKeys: String {
+    enum HeaderKey: String {
         case clientKey = "X-Tink-Client-Key"
-        case deviceId = "X-Tink-Device-ID"
+        case deviceID = "X-Tink-Device-ID"
         case authorization = "Authorization"
-        case clientId = "X-Tink-OAuth-Client-ID"
+        case oauthClientID = "X-Tink-OAuth-Client-ID"
 
         var key: String {
             return rawValue.lowercased()
@@ -59,23 +55,23 @@ extension Metadata {
     func addAccessToken(_ token: String? = nil) throws {
         let info = ProcessInfo.processInfo
         if let bearerToken = info.tinkBearerToken {
-            try add(key: HeaderKeys.authorization.key, value: "Bearer \(bearerToken)")
+            try add(key: HeaderKey.authorization.key, value: "Bearer \(bearerToken)")
         } else if let accessToken = token {
-            try add(key: HeaderKeys.authorization.key, value: "Bearer \(accessToken)")
+            try add(key: HeaderKey.authorization.key, value: "Bearer \(accessToken)")
         }
     }
 
     var hasAuthorization: Bool {
-        self[Metadata.HeaderKeys.authorization.key] != nil
+        self[Metadata.HeaderKey.authorization.key] != nil
     }
     
     func addTinkMetadata() throws {
         let info = ProcessInfo.processInfo
         if let deviceID = info.tinkDeviceID {
-            try add(key: HeaderKeys.deviceId.key, value: deviceID)
+            try add(key: HeaderKey.deviceID.key, value: deviceID)
         }
         if let sessionID = info.tinkSessionID {
-            try add(key: HeaderKeys.authorization.key, value: "Session \(sessionID)")
+            try add(key: HeaderKey.authorization.key, value: "Session \(sessionID)")
         }
     }
 }

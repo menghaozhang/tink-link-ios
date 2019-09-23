@@ -26,8 +26,7 @@ Key | Type | Value
 ### Environment Variables
 Key | Value
 --- | -----
-`TINK_CLIENT_KEY` | 
-`TINK_OAUTH_CLIENT_ID`| 
+`TINK_CLIENT_ID` | 
 `TINK_CERTIFICATE`| 
 `TINK_BEARER_TOKEN` | *For testing*
 `TINK_SESSION_ID` | *For testing*
