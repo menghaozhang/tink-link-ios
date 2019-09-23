@@ -17,6 +17,7 @@ final class CredentialStore {
     private var credentialStatusPollingCanceller: [Identifier<Credential>: Cancellable] = [:]
     private var addSupplementalInformationCanceller: [Identifier<Credential>: Cancellable] = [:]
     private var cancelSupplementInformationCanceller: [Identifier<Credential>: Cancellable] = [:]
+    private var fetchCredentialsCanceller: Cancellable?
     
     private init() {
         service = TinkLink.shared.client.credentialService
@@ -72,6 +73,27 @@ final class CredentialStore {
             }
         }
     }
+
+    func performFetchIfNeeded() {
+        if fetchCredentialsCanceller == nil {
+            performFetch()
+        }
+    }
+
+    func performFetch() {
+        fetchCredentialsCanceller = service.credentials { [weak self] result in
+            DispatchQueue.main.async {
+                self?.fetchCredentialsCanceller = nil
+                do {
+                    let credentials = try result.get()
+                    self?.credentials = Dictionary(grouping: credentials, by: { $0.id })
+                        .compactMapValues { $0.first }
+                } catch {
+                    NotificationCenter.default.post(name: .credentialStoreErrorOccured, object: self, userInfo: [CredentialStoreErrorOccuredNotificationErrorKey: error])
+                }
+            }
+        }
+    }
     
     // TODO: Create polling handler for handle all the pollings
     func pollingStatus(for credential: Credential) {
@@ -97,15 +119,20 @@ final class CredentialStore {
                         } else {
                             fatalError("No such credential with " + credential.id.rawValue)
                         }
-                    } catch let error {
-                        print(error)
+                    } catch {
+                        NotificationCenter.default.post(name: .credentialStoreErrorOccured, object: self, userInfo: [CredentialStoreErrorOccuredNotificationErrorKey: error])
                     }
                 }
             }
         })
     }
+
 }
 
 extension Notification.Name {
     static let credentialStoreChanged = Notification.Name("TinkLinkCredentialStoreChangedNotificationName")
+    static let credentialStoreErrorOccured = Notification.Name("TinkLinkCredentialStoreErrorOccuredNotificationName")
 }
+
+/// User info key for credentialStoreErrorOccured notification.
+let CredentialStoreErrorOccuredNotificationErrorKey = "error"
