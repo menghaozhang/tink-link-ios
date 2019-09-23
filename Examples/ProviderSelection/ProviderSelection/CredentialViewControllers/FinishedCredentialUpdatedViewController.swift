@@ -36,7 +36,7 @@ final class FinishedCredentialUpdatedViewController: UIViewController {
 
         NSLayoutConstraint.activate([
             stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             ])
     }
 
