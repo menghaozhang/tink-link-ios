@@ -22,9 +22,9 @@ final class FinishedCredentialUpdatedViewController: UIViewController {
         let detailLabel = UILabel()
         detailLabel.text = credential.statusPayload
         detailLabel.textAlignment = .center
-        detailLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
+        detailLabel.font = UIFont.preferredFont(forTextStyle: .body)
         detailLabel.numberOfLines = 0
-        detailLabel.preferredMaxLayoutWidth = 240
+        detailLabel.preferredMaxLayoutWidth = 200
 
         let stackView = UIStackView(arrangedSubviews: [checkmarkView, detailLabel])
         stackView.axis = .vertical
