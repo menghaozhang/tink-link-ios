@@ -7,9 +7,28 @@ class CredentialStatusPollingTask {
     private var callHandler: (Cancellable & Retriable)?
     private var retryInterval: TimeInterval = 1
     private(set) var credential: Credential
+    let pollingStrategy: PollingBackoffStrategy
     
-    init(credential: Credential) {
+    enum PollingBackoffStrategy {
+        case none
+        case linear
+        case exponential
+        
+        func nextInteral(for retryinterval: TimeInterval) -> TimeInterval {
+            switch self {
+            case .none:
+                return retryinterval
+            case .linear:
+                return retryinterval + 1
+            case .exponential:
+                return retryinterval * 2
+            }
+        }
+    }
+    
+    init(credential: Credential, pollingStrategy: PollingBackoffStrategy = .linear) {
         self.credential = credential
+        self.pollingStrategy = pollingStrategy
     }
     
     func pollingStatus() {
@@ -42,9 +61,9 @@ class CredentialStatusPollingTask {
     }
     
     private func retry() {
-        retryInterval *= 2
         DispatchQueue.main.asyncAfter(deadline: .now() + retryInterval) { [weak self] in
             self?.callHandler?.retry()
         }
+        retryInterval = pollingStrategy.nextInteral(for: retryInterval)
     }
 }
