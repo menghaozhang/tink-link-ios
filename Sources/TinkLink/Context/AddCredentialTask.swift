@@ -53,7 +53,7 @@ public class AddCredentialTask {
     func startObserving(_ credential: Credential) {
         self.credential = credential
 
-        handleUpdate(for: credential)
+        handleUpdate(for: .success(credential))
 
         credentialStatusPollingTask = CredentialStatusPollingTask(credential: credential, updateHandler: handleUpdate)
         credentialStatusPollingTask?.pollStatus()
@@ -63,7 +63,7 @@ public class AddCredentialTask {
         callCanceller?.cancel()
     }
 
-    private func handleUpdate(for result: Result<Credential, Error>) {
+    private func handleUpdate(for result: Result<Credential, Swift.Error>) {
         do {
             let credential = try result.get()
             switch credential.status {
@@ -112,10 +112,9 @@ public class AddCredentialTask {
             case .unknown:
                 assertionFailure("Unknown credential status!")
             }
-            credentialUpdateHandler(.success(credential))
         } catch {
-            credentialUpdateHandler(.failure(error))
+            completion(.failure(error))
         }
-        
+        credentialUpdateHandler(result)
     }
 }
