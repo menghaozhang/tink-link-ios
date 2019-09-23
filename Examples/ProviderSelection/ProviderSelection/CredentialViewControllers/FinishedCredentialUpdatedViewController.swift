@@ -16,7 +16,11 @@ final class FinishedCredentialUpdatedViewController: UIViewController {
 
     override func loadView() {
         self.view = UIView()
-        view.backgroundColor = .white
+        if #available(iOS 13.0, *) {
+            view.backgroundColor = .systemBackground
+        } else {
+            view.backgroundColor = .white
+        }
 
         let checkmarkView = CheckmarkView()
 
