@@ -3,11 +3,11 @@ import Foundation
 
 class CredentialStatusPollingTask {
     private var service = TinkLink.shared.client.credentialService
-    private let credentialStore = CredentialStore.shared
     private var callHandler: (Cancellable & Retriable)?
     private var retryInterval: TimeInterval = 1
     private(set) var credential: Credential
-    let pollingStrategy: PollingBackoffStrategy
+    private var updateHandler: (Credential) -> Void
+    let backoffStrategy: PollingBackoffStrategy
     
     enum PollingBackoffStrategy {
         case none
@@ -26,12 +26,13 @@ class CredentialStatusPollingTask {
         }
     }
     
-    init(credential: Credential, pollingStrategy: PollingBackoffStrategy = .linear) {
+    init(credential: Credential, backoffStrategy: PollingBackoffStrategy = .linear, updateHandler: @escaping (Credential) -> Void) {
         self.credential = credential
-        self.pollingStrategy = pollingStrategy
+        self.backoffStrategy = backoffStrategy
+        self.updateHandler = updateHandler
     }
     
-    func pollingStatus() {
+    func pollStatus() {
         self.callHandler = self.service.credentials { [weak self] result in
             guard let self = self else { return }
             DispatchQueue.main.async {
@@ -39,15 +40,15 @@ class CredentialStatusPollingTask {
                     let credentials = try result.get()
                     if let updatedCredential = credentials.first(where: { $0.id == self.credential.id}) {
                         if updatedCredential.status == .updating {
-                            self.credentialStore.credentials[self.credential.id] = updatedCredential
+                            self.updateHandler(updatedCredential)
                             self.retry()
                         } else if updatedCredential.status == .awaitingSupplementalInformation {
-                            self.credentialStore.credentials[self.credential.id] = updatedCredential
+                            self.updateHandler(updatedCredential)
                             self.callHandler = nil
                         } else if updatedCredential.status == self.credential.status {
                             self.retry()
                         } else {
-                            self.credentialStore.credentials[self.credential.id] = updatedCredential
+                            self.updateHandler(updatedCredential)
                             self.callHandler = nil
                         }
                     } else {
@@ -64,6 +65,6 @@ class CredentialStatusPollingTask {
         DispatchQueue.main.asyncAfter(deadline: .now() + retryInterval) { [weak self] in
             self?.callHandler?.retry()
         }
-        retryInterval = pollingStrategy.nextInteral(for: retryInterval)
+        retryInterval = backoffStrategy.nextInteral(for: retryInterval)
     }
 }
