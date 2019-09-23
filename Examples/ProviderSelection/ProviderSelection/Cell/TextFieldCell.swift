@@ -45,7 +45,7 @@ class TextFieldCell: UITableViewCell, UITextFieldDelegate {
             textField.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             textField.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20),
             textField.rightAnchor.constraint(equalTo: contentView.rightAnchor),
-            textField.heightAnchor.constraint(equalToConstant: 40)
+            textField.heightAnchor.constraint(greaterThanOrEqualToConstant: 44)
             ])
     }
     
