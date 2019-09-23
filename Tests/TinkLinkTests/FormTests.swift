@@ -15,7 +15,7 @@ class FormTests: XCTestCase {
             name: "username",
             initialValue: "",
             pattern: "(19|20)[0-9]{10}",
-            patternError: "Please enter a valid social security number",
+            patternError: "Please enter a valid social security number.",
             helpText: ""
         )
 
@@ -46,7 +46,7 @@ class FormTests: XCTestCase {
             try field.validate()
         } catch Form.Field.ValidationError.validationFailed(let fieldName, let reason) {
             XCTAssertEqual(fieldName, "username")
-            XCTAssertEqual(reason, "Please enter a valid social security number")
+            XCTAssertEqual(reason, "Please enter a valid social security number.")
         } catch {
             XCTFail()
         }
