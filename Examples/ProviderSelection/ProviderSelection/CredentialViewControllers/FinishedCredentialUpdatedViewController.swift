@@ -30,9 +30,6 @@ final class FinishedCredentialUpdatedViewController: UITableViewController {
         
         navigationItem.title = "Accounts"
         navigationItem.largeTitleDisplayMode = .never
-        let activityIndicator = UIActivityIndicatorView(style: .gray)
-        activityIndicator.startAnimating()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
         
         tableView.register(ValueTableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.allowsSelection = false
