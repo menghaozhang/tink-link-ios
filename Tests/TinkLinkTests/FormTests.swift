@@ -33,4 +33,76 @@ class FormTests: XCTestCase {
 
         try field.validate()
     }
+
+    func testUsernameAndPasswordFieldValidation() throws {
+        let usernameFieldSpecification = Provider.FieldSpecification(
+            fieldDescription: "Username",
+            hint: "",
+            maxLength: nil,
+            minLength: nil,
+            isMasked: false,
+            isNumeric: false,
+            isImmutable: false,
+            isOptional: false,
+            name: "username",
+            initialValue: "",
+            pattern: "",
+            patternError: "",
+            helpText: ""
+        )
+        let passwordFieldSpecification = Provider.FieldSpecification(
+            fieldDescription: "Password",
+            hint: "",
+            maxLength: nil,
+            minLength: nil,
+            isMasked: true,
+            isNumeric: false,
+            isImmutable: false,
+            isOptional: false,
+            name: "password",
+            initialValue: "",
+            pattern: "",
+            patternError: "",
+            helpText: ""
+        )
+
+        var form = Form(fieldSpecifications: [usernameFieldSpecification, passwordFieldSpecification])
+
+        do {
+            try form.validateFields()
+        } catch let error as Form.ValidationError {
+            XCTAssertEqual(error.errors.count, 2)
+            if case .requiredFieldEmptyValue(let fieldName) = error[fieldName: "username"] {
+                XCTAssertEqual(fieldName, "username")
+            } else {
+                XCTFail()
+            }
+            if case .requiredFieldEmptyValue(let fieldName) = error[fieldName: "password"] {
+                XCTAssertEqual(fieldName, "password")
+            } else {
+                XCTFail()
+            }
+        } catch {
+            XCTFail()
+        }
+
+        form.fields[name: "username"]!.text = "12345678"
+
+        do {
+            try form.validateFields()
+        } catch let error as Form.ValidationError {
+            XCTAssertEqual(error.errors.count, 1)
+            if case .requiredFieldEmptyValue(let fieldName) = error[fieldName: "password"] {
+                XCTAssertEqual(fieldName, "password")
+            } else {
+                XCTFail()
+            }
+        } catch {
+            XCTFail()
+        }
+
+        form.fields[name: "password"]!.text = "abcd"
+
+        try form.validateFields()
+    }
 }
