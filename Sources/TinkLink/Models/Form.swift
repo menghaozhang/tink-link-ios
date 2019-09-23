@@ -1,18 +1,50 @@
 import Foundation
 
 public struct Form {
-    public var fields: [Field]
+    public struct Fields: MutableCollection {
+
+        var fields: [Form.Field]
+
+        // MARK: Collection Conformance
+        public var startIndex: Int { fields.startIndex }
+        public var endIndex: Int { fields.endIndex }
+        public subscript(position: Int) -> Form.Field {
+            get { fields[position] }
+            set { fields[position] = newValue }
+        }
+        public func index(after i: Int) -> Int { fields.index(after: i) }
+
+        // MARK: Dictionary Lookup
+        public subscript(name fieldName: String) -> Form.Field? {
+            get {
+                return fields.first(where: { $0.name == fieldName })
+            }
+            set {
+                if let index = fields.firstIndex(where: { $0.name == fieldName }) {
+                    if let field = newValue {
+                        fields[index] = field
+                    } else {
+                        fields.remove(at: index)
+                    }
+                } else if let field = newValue {
+                    fields.append(field)
+                }
+            }
+        }
+    }
+
+    public var fields: Fields
     
     internal init(fieldSpecifications: [Provider.FieldSpecification]) {
-        fields = fieldSpecifications.map({ Field(fieldSpecification: $0) })
+        fields = Fields(fields: fieldSpecifications.map({ Field(fieldSpecification: $0) }))
     }
-    
-    public var areValuesValid: Bool {
-        return fields.areValuesValid
+
+    public var areFieldsValid: Bool {
+        return fields.areFieldsValid
     }
-    
-    public func validateValues() throws {
-        try fields.validateValues()
+
+    public func validateFields() throws {
+        try fields.validateFields()
     }
     
     internal func makeFields() -> [String: String] {
@@ -22,7 +54,7 @@ public struct Form {
         }
         return fieldValues
     }
-    
+
     public struct Field {
         public var text: String
         public let name: String
@@ -43,7 +75,8 @@ public struct Form {
                 regexError: fieldSpecification.patternError
             )
             attributes = Attributes(
-                placeholder: fieldSpecification.fieldDescription,
+                description: fieldSpecification.fieldDescription,
+                placeholder: fieldSpecification.hint,
                 isSecureTextEntry: fieldSpecification.isMasked,
                 inputType: fieldSpecification.isNumeric ? .numeric : .default,
                 isEnabled: !fieldSpecification.isImmutable || fieldSpecification.initialValue.isEmpty
@@ -55,6 +88,19 @@ public struct Form {
             public let minLength: Int?
             internal let regex: String
             internal let regexError: String
+
+            public func validate(_ value: String, fieldName name: String) throws {
+                if let maxLength = maxLength, maxLength > 0 && maxLength < value.count {
+                    throw ValidationError.maxLengthLimit(fieldName: name, maxLength: maxLength)
+                } else if let minLength = minLength, minLength > 0 && minLength > value.count {
+                    throw ValidationError.minLengthLimit(fieldName: name, minLength: minLength)
+                } else if !regex.isEmpty, let regex = try? NSRegularExpression(pattern: regex, options: []) {
+                    let range = regex.rangeOfFirstMatch(in: value, options: [], range: NSRange(location: 0, length: value.count))
+                    if range.location == NSNotFound {
+                        throw ValidationError.validationFailed(fieldName: name, reason: regexError)
+                    }
+                }
+            }
         }
         
         public struct Attributes {
@@ -62,48 +108,72 @@ public struct Form {
                 case `default`
                 case numeric
             }
-            
+
+            public let description: String
             public let placeholder: String
             public let isSecureTextEntry: Bool
             public let inputType: InputType
             public let isEnabled: Bool
         }
         
-        public enum ValidationError: Error {
-            case invalidField(String)
-            case validationFailed(fieldName: String, patternError: String)
+        public enum ValidationError: Error, LocalizedError {
+            case validationFailed(fieldName: String, reason: String)
             case maxLengthLimit(fieldName: String, maxLength: Int)
             case minLengthLimit(fieldName: String, minLength: Int)
             case requiredFieldEmptyValue(fieldName: String)
+
+            var fieldName: String {
+                switch self {
+                case .validationFailed(let fieldName, _):
+                    return fieldName
+                case .maxLengthLimit(let fieldName, _):
+                    return fieldName
+                case .minLengthLimit(let fieldName, _):
+                    return fieldName
+                case .requiredFieldEmptyValue(let fieldName):
+                    return fieldName
+                }
+            }
+
+            public var errorDescription: String? {
+                switch self {
+                case .validationFailed(_, let reason):
+                    return reason
+                case .maxLengthLimit(_, let maxLength):
+                    return "Field can't be longer than \(maxLength)"
+                case .minLengthLimit(_, let minLength):
+                    return "Field can't be shorter than \(minLength)"
+                case .requiredFieldEmptyValue:
+                    return "Required field"
+                }
+            }
         }
-        
-        public var isValueValid: Bool {
+
+        public var isValid: Bool {
             do {
-                try validate(value: text)
+                try validate()
                 return true
             } catch {
                 return false
             }
         }
-        
-        public func validate(value: String) throws {
+
+        public func validate() throws {
+            let value = text
             if value.isEmpty, !isOptional {
                 throw ValidationError.requiredFieldEmptyValue(fieldName: name)
-            } else if let maxLength = validationRules.maxLength, maxLength > 0 && maxLength < value.count {
-                throw ValidationError.maxLengthLimit(fieldName: name, maxLength: maxLength)
-            } else if let minLength = validationRules.minLength, minLength > 0 && minLength > value.count {
-                throw ValidationError.minLengthLimit(fieldName: name, minLength: minLength)
-            } else if !validationRules.regex.isEmpty, let regex = try? NSRegularExpression(pattern: validationRules.regex, options: []) {
-                let range = regex.rangeOfFirstMatch(in: value, options: [], range: NSRange(location: 0, length: value.count))
-                if range.location == NSNotFound {
-                    throw ValidationError.validationFailed(fieldName: name, patternError: validationRules.regexError)
-                }
+            } else {
+                try validationRules.validate(value, fieldName: name)
             }
         }
     }
     
-    public struct FieldsError: Error {
+    public struct ValidationError: Error {
         public var errors: [Form.Field.ValidationError]
+
+        public subscript(fieldName fieldName: String) -> Form.Field.ValidationError? {
+            errors.first(where: { $0.fieldName == fieldName })
+        }
     }
 }
 
@@ -117,12 +187,12 @@ extension Form {
     }
 }
 
-extension Array where Element == Form.Field {
-    func validateValues() throws {
-        var fieldsValidationError = Form.FieldsError(errors: [])
-        for field in self {
+extension Form.Fields {
+    func validateFields() throws {
+        var fieldsValidationError = Form.ValidationError(errors: [])
+        for field in fields {
             do {
-                try field.validate(value: field.text)
+                try field.validate()
             } catch let error as Form.Field.ValidationError {
                 fieldsValidationError.errors.append(error)
             } catch {
@@ -132,9 +202,9 @@ extension Array where Element == Form.Field {
         guard fieldsValidationError.errors.isEmpty else { throw fieldsValidationError }
     }
     
-    var areValuesValid: Bool {
+    var areFieldsValid: Bool {
         do {
-            try validateValues()
+            try validateFields()
             return true
         } catch {
             return false
