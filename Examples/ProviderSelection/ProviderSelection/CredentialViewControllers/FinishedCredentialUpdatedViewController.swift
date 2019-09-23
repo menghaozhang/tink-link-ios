@@ -1,39 +1,41 @@
 import UIKit
 import TinkLink
 
-
-final class FinishedCredentialUpdatedViewController: UITableViewController {
-    var credential: Credential
+final class FinishedCredentialUpdatedViewController: UIViewController {
+    let credential: Credential
 
     init(credential: Credential) {
         self.credential = credential
-        super.init(style: .grouped)
+        super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func loadView() {
+        self.view = UIView()
+        view.backgroundColor = .white
 
-        navigationItem.title = "Credential Added"
-        navigationItem.largeTitleDisplayMode = .never
-        
-        tableView.register(ValueTableViewCell.self, forCellReuseIdentifier: "Cell")
-        tableView.allowsSelection = false
-    }
-    
-    // MARK: - UITableViewDataSource
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? ValueTableViewCell else {
-            fatalError()
-        }
-        cell.textLabel?.text = credential.statusPayload
-        return cell
+        let checkmarkView = CheckmarkView()
+
+        let detailLabel = UILabel()
+        detailLabel.text = credential.statusPayload
+        detailLabel.textAlignment = .center
+        detailLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
+        detailLabel.numberOfLines = 0
+        detailLabel.preferredMaxLayoutWidth = 240
+
+        let stackView = UIStackView(arrangedSubviews: [checkmarkView, detailLabel])
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        stackView.spacing = 24
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(stackView)
+
+        NSLayoutConstraint.activate([
+            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            ])
     }
 }
