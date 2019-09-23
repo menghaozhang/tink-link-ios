@@ -1,10 +1,6 @@
 import UIKit
 import TinkLink
 
-struct Account {
-    let name: String
-    let balance: CurrencyDenominatedAmount
-}
 
 final class FinishedCredentialUpdatedViewController: UITableViewController {
     var credential: Credential
