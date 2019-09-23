@@ -13,11 +13,11 @@ final class CredentialStore {
     private let market: Market
     private let locale: Locale
     private var service: CredentialService
-    private var createCredentialHandler: [Identifier<Provider>: Handleable] = [:]
-    private var credentialStatusPollingHandler: [Identifier<Credential>: Handleable] = [:]
-    private var addSupplementalInformationHandler: [Identifier<Credential>: Handleable] = [:]
-    private var cancelSupplementInformationHandler: [Identifier<Credential>: Handleable] = [:]
-    private var fetchCredentialsHandler: Handleable?
+    private var createCredentialRetryCancellable: [Identifier<Provider>: RetryCancellable] = [:]
+    private var credentialStatusPollingRetryCancellable: [Identifier<Credential>: RetryCancellable] = [:]
+    private var addSupplementalInformationRetryCancellable: [Identifier<Credential>: RetryCancellable] = [:]
+    private var cancelSupplementInformationRetryCancellable: [Identifier<Credential>: RetryCancellable] = [:]
+    private var fetchCredentialsRetryCancellable: RetryCancellable?
     
     private init() {
         service = TinkLink.shared.client.credentialService
@@ -26,11 +26,11 @@ final class CredentialStore {
         authenticationManager = AuthenticationManager.shared
     }
     
-    func addCredential(for provider: Provider, fields: [String: String], completion: @escaping(Result<Credential, Error>) -> Void) -> Handleable {
+    func addCredential(for provider: Provider, fields: [String: String], completion: @escaping(Result<Credential, Error>) -> Void) -> RetryCancellable {
         var multiHandler = MultiHandler()
         let market = Market(code: provider.marketCode)
         let authHandler = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
-            guard let self = self, self.createCredentialHandler[provider.name] == nil else { return }
+            guard let self = self, self.createCredentialRetryCancellable[provider.name] == nil else { return }
             let handler = self.service.createCredential(providerName: provider.name, fields: fields, completion: { (result) in
                 DispatchQueue.main.async {
                     do {
@@ -40,10 +40,10 @@ final class CredentialStore {
                     } catch let error {
                         completion(.failure(error))
                     }
-                    self.createCredentialHandler[provider.name] = nil
+                    self.createCredentialRetryCancellable[provider.name] = nil
                 }
             })
-            self.createCredentialHandler[provider.name] = handler
+            self.createCredentialRetryCancellable[provider.name] = handler
             multiHandler.add(handler)
         }
         if let handler = authHandler {
@@ -55,9 +55,9 @@ final class CredentialStore {
     /// - Precondition: Service should be configured with access token before this method is called.
     func addSupplementalInformation(for credential: Credential, supplementalInformationFields: [String: String], completion: @escaping (Result<Void, Error>) -> Void) {
         precondition(service.metadata.hasAuthorization, "Service doesn't have authentication metadata set!")
-        addSupplementalInformationHandler[credential.id] = self.service.supplementInformation(credentialID: credential.id, fields: supplementalInformationFields) { [weak self] result in
+        addSupplementalInformationRetryCancellable[credential.id] = self.service.supplementInformation(credentialID: credential.id, fields: supplementalInformationFields) { [weak self] result in
             DispatchQueue.main.async {
-                self?.addSupplementalInformationHandler[credential.id] = nil
+                self?.addSupplementalInformationRetryCancellable[credential.id] = nil
                 completion(result)
             }
         }
@@ -66,24 +66,24 @@ final class CredentialStore {
     /// - Precondition: Service should be configured with access token before this method is called.
     func cancelSupplementInformation(for credential: Credential, completion: @escaping (Result<Void, Error>) -> Void) {
         precondition(service.metadata.hasAuthorization, "Service doesn't have authentication metadata set!")
-        cancelSupplementInformationHandler[credential.id] = self.service.cancelSupplementInformation(credentialID: credential.id) { [weak self] result in
+        cancelSupplementInformationRetryCancellable[credential.id] = self.service.cancelSupplementInformation(credentialID: credential.id) { [weak self] result in
             DispatchQueue.main.async {
-                self?.cancelSupplementInformationHandler[credential.id] = nil
+                self?.cancelSupplementInformationRetryCancellable[credential.id] = nil
                 completion(result)
             }
         }
     }
 
     func performFetchIfNeeded() {
-        if fetchCredentialsHandler == nil {
+        if fetchCredentialsRetryCancellable == nil {
             performFetch()
         }
     }
 
     func performFetch() {
-        fetchCredentialsHandler = service.credentials { [weak self] result in
+        fetchCredentialsRetryCancellable = service.credentials { [weak self] result in
             DispatchQueue.main.async {
-                self?.fetchCredentialsHandler = nil
+                self?.fetchCredentialsRetryCancellable = nil
                 do {
                     let credentials = try result.get()
                     self?.credentials = Dictionary(grouping: credentials, by: { $0.id })

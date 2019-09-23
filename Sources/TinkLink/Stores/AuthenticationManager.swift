@@ -1,12 +1,12 @@
 import Foundation
 import SwiftGRPC
 
-typealias Handleable = (Cancellable & Retriable)
+typealias RetryCancellable = (Cancellable & Retriable)
 
 final class AuthenticationManager {
     static let shared = AuthenticationManager()
     
-    private var handleable: Handleable?
+    private var retryCancellable: RetryCancellable?
     private var service: UserService
     private var completionHandlers: [(Result<Void, Error>) -> Void] = []
     
@@ -14,14 +14,14 @@ final class AuthenticationManager {
         service = TinkLink.shared.client.userService
     }
     
-    func authenticateIfNeeded<Service: TokenConfigurableService>(service otherService: Service, for market: Market, locale: Locale, completion: @escaping (Result<Void, Error>) -> Void) -> Handleable? {
+    func authenticateIfNeeded<Service: TokenConfigurableService>(service otherService: Service, for market: Market, locale: Locale, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable? {
         if let accessToken = accessToken {
             otherService.configure(accessToken)
             self.accessToken = accessToken
             completion(.success(()))
         } else {
-            if handleable == nil {
-                handleable = service.createAnonymous(market: market, locale: locale) { [weak self] result in
+            if retryCancellable == nil {
+                retryCancellable = service.createAnonymous(market: market, locale: locale) { [weak self] result in
                     guard let self = self else { return }
                     do {
                         let accessToken = try result.get()
@@ -47,14 +47,14 @@ final class AuthenticationManager {
                         self.completionHandlers.forEach{ $0(.failure(error)) }
                         self.completionHandlers.removeAll()
                     }
-                    self.handleable = nil
+                    self.retryCancellable = nil
                 }
             } else {
                 // In case of multiple requests at the same time
                 completionHandlers.append(completion)
             }
         }
-        return handleable
+        return retryCancellable
     }
     
     private var accessToken: AccessToken?

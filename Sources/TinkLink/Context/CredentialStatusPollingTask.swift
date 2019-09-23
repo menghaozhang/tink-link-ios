@@ -3,7 +3,7 @@ import Foundation
 
 class CredentialStatusPollingTask {
     private var service = TinkLink.shared.client.credentialService
-    private var callHandler: Handleable?
+    private var callRetryCancellable: RetryCancellable?
     private var retryInterval: TimeInterval = 1
     private(set) var credential: Credential
     private var updateHandler: (Credential) -> Void
@@ -33,7 +33,7 @@ class CredentialStatusPollingTask {
     }
     
     func pollStatus() {
-        self.callHandler = self.service.credentials { [weak self] result in
+        self.callRetryCancellable = self.service.credentials { [weak self] result in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 do {
@@ -44,12 +44,12 @@ class CredentialStatusPollingTask {
                             self.retry()
                         } else if updatedCredential.status == .awaitingSupplementalInformation {
                             self.updateHandler(updatedCredential)
-                            self.callHandler = nil
+                            self.callRetryCancellable = nil
                         } else if updatedCredential.status == self.credential.status {
                             self.retry()
                         } else {
                             self.updateHandler(updatedCredential)
-                            self.callHandler = nil
+                            self.callRetryCancellable = nil
                         }
                     } else {
                         fatalError("No such credential with " + self.credential.id.rawValue)
@@ -63,7 +63,7 @@ class CredentialStatusPollingTask {
     
     private func retry() {
         DispatchQueue.main.asyncAfter(deadline: .now() + retryInterval) { [weak self] in
-            self?.callHandler?.retry()
+            self?.callRetryCancellable?.retry()
         }
         retryInterval = backoffStrategy.nextInteral(for: retryInterval)
     }
