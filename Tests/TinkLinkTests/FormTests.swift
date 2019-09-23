@@ -127,4 +127,58 @@ class FormTests: XCTestCase {
 
         try form.validateFields()
     }
+
+    func testServiceCodeFieldValidation() throws {
+        let fieldSpecification = Provider.FieldSpecification(
+            fieldDescription: "Service code",
+            hint: "NNNN",
+            maxLength: 4,
+            minLength: 4,
+            isMasked: true,
+            isNumeric: true,
+            isImmutable: false,
+            isOptional: false,
+            name: "password",
+            initialValue: "",
+            pattern: "([0-9]{4})",
+            patternError: "Please enter four digits.",
+            helpText: ""
+        )
+
+        var field = Form.Field(fieldSpecification: fieldSpecification)
+
+        do {
+            try field.validate()
+        } catch Form.Field.ValidationError.requiredFieldEmptyValue(let fieldName) {
+            XCTAssertEqual(fieldName, "password")
+        } catch {
+            XCTFail()
+        }
+
+        field.text = "12345"
+
+        do {
+            try field.validate()
+        } catch Form.Field.ValidationError.maxLengthLimit(let fieldName, let maxLength) {
+            XCTAssertEqual(fieldName, "password")
+            XCTAssertEqual(maxLength, 4)
+        } catch {
+            XCTFail()
+        }
+
+        field.text = "ABCD"
+
+        do {
+            try field.validate()
+        } catch Form.Field.ValidationError.validationFailed(let fieldName, let reason) {
+            XCTAssertEqual(fieldName, "password")
+            XCTAssertEqual(reason, "Please enter four digits.")
+        } catch {
+            XCTFail()
+        }
+
+        field.text = "1234"
+
+        try field.validate()
+    }
 }
