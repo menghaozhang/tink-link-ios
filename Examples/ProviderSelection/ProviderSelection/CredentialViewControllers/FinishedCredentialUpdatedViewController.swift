@@ -7,6 +7,7 @@ final class FinishedCredentialUpdatedViewController: UIViewController {
     init(credential: Credential) {
         self.credential = credential
         super.init(nibName: nil, bundle: nil)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(done))
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -37,5 +38,9 @@ final class FinishedCredentialUpdatedViewController: UIViewController {
             stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             ])
+    }
+
+    @objc private func done(_ sender: Any) {
+        navigationController?.popToRootViewController(animated: true)
     }
 }
