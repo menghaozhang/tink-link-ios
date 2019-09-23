@@ -9,7 +9,6 @@ struct Account {
 final class FinishedCredentialUpdatedViewController: UITableViewController {
     var credential: Credential
     var accounts: [Account] = []
-    var numberFormatter: NumberFormatter = NumberFormatter()
 
     init(credential: Credential) {
         self.credential = credential
@@ -25,9 +24,6 @@ final class FinishedCredentialUpdatedViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        numberFormatter.maximumFractionDigits = 2
-        numberFormatter.minimumFractionDigits = 0
-        
         navigationItem.title = "Accounts"
         navigationItem.largeTitleDisplayMode = .never
         
@@ -45,7 +41,6 @@ final class FinishedCredentialUpdatedViewController: UITableViewController {
             fatalError()
         }
         cell.textLabel?.text = accounts[indexPath.item].name
-        cell.detailTextLabel?.text = numberFormatter.string(from: NSNumber(value: accounts[indexPath.item].balance.value.doubleValue))
         return cell
     }
 }
