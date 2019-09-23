@@ -55,7 +55,7 @@ class CredentialStatusPollingTask {
                         fatalError("No such credential with " + self.credential.id.rawValue)
                     }
                 } catch let error {
-                    print(error)
+                    NotificationCenter.default.post(name: .credentialStoreErrorOccured, object: self, userInfo: [CredentialStoreErrorOccuredNotificationErrorKey: error])
                 }
             }
         }
@@ -68,3 +68,10 @@ class CredentialStatusPollingTask {
         retryInterval = backoffStrategy.nextInteral(for: retryInterval)
     }
 }
+
+extension Notification.Name {
+    static let credentialStoreErrorOccured = Notification.Name("TinkLinkCredentialStoreErrorOccuredNotificationName")
+}
+
+/// User info key for credentialStoreErrorOccured notification.
+let CredentialStoreErrorOccuredNotificationErrorKey = "error"

@@ -94,45 +94,8 @@ final class CredentialStore {
             }
         }
     }
-    
-    // TODO: Create polling handler for handle all the pollings
-    func pollingStatus(for credential: Credential) {
-        guard credentialStatusPollingHandler[credential.id] == nil else { return }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-            self.credentialStatusPollingHandler[credential.id] = self.service.credentials { [weak self, credential] result in
-                guard let self = self else { return }
-                DispatchQueue.main.async {
-                    self.credentialStatusPollingHandler[credential.id] = nil
-                    do {
-                        let credentials = try result.get()
-                        if let updatedCredential = credentials.first(where: { $0.id == credential.id}) {
-                            if updatedCredential.status == .updating {
-                                self.credentials[credential.id] = updatedCredential
-                                self.pollingStatus(for: updatedCredential)
-                            } else if updatedCredential.status == .awaitingSupplementalInformation {
-                                self.credentials[credential.id] = updatedCredential
-                            } else if updatedCredential.status == credential.status {
-                                self.pollingStatus(for: updatedCredential)
-                            } else {
-                                self.credentials[credential.id] = updatedCredential
-                            }
-                        } else {
-                            fatalError("No such credential with " + credential.id.rawValue)
-                        }
-                    } catch {
-                        NotificationCenter.default.post(name: .credentialStoreErrorOccured, object: self, userInfo: [CredentialStoreErrorOccuredNotificationErrorKey: error])
-                    }
-                }
-            }
-        })
-    }
-
 }
 
 extension Notification.Name {
     static let credentialStoreChanged = Notification.Name("TinkLinkCredentialStoreChangedNotificationName")
-    static let credentialStoreErrorOccured = Notification.Name("TinkLinkCredentialStoreErrorOccuredNotificationName")
 }
-
-/// User info key for credentialStoreErrorOccured notification.
-let CredentialStoreErrorOccuredNotificationErrorKey = "error"
