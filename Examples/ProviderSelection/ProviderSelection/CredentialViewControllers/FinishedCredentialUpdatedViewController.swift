@@ -8,7 +8,6 @@ struct Account {
 
 final class FinishedCredentialUpdatedViewController: UITableViewController {
     var credential: Credential
-    var accounts: [Account] = []
 
     init(credential: Credential) {
         self.credential = credential
@@ -24,7 +23,7 @@ final class FinishedCredentialUpdatedViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = "Accounts"
+        navigationItem.title = "Credential Added"
         navigationItem.largeTitleDisplayMode = .never
         
         tableView.register(ValueTableViewCell.self, forCellReuseIdentifier: "Cell")
@@ -33,14 +32,14 @@ final class FinishedCredentialUpdatedViewController: UITableViewController {
     
     // MARK: - UITableViewDataSource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return accounts.count
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? ValueTableViewCell else {
             fatalError()
         }
-        cell.textLabel?.text = accounts[indexPath.item].name
+        cell.textLabel?.text = credential.statusPayload
         return cell
     }
 }
