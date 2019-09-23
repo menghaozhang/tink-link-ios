@@ -18,5 +18,7 @@ opt_in_rules:
   - toggle_bool
 excluded:
   - Sources/TinkLink/GRPC
+  - .build
+  - Carthage
   - Examples/*/Pods
  
