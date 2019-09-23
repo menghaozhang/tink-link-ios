@@ -92,14 +92,14 @@ class FormTests: XCTestCase {
 
         do {
             try form.validateFields()
-        } catch let error as Form.ValidationError {
-            XCTAssertEqual(error.errors.count, 2)
-            if case .requiredFieldEmptyValue(let fieldName) = error[fieldName: "username"] {
+        } catch let formValidationError as Form.ValidationError {
+            XCTAssertEqual(formValidationError.errors.count, 2)
+            if case .requiredFieldEmptyValue(let fieldName) = formValidationError[fieldName: "username"] {
                 XCTAssertEqual(fieldName, "username")
             } else {
                 XCTFail()
             }
-            if case .requiredFieldEmptyValue(let fieldName) = error[fieldName: "password"] {
+            if case .requiredFieldEmptyValue(let fieldName) = formValidationError[fieldName: "password"] {
                 XCTAssertEqual(fieldName, "password")
             } else {
                 XCTFail()
