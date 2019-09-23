@@ -83,14 +83,11 @@ public class CredentialContext {
     ///   - result: Represents either a successfuly added credential or an error if adding the credential failed.
     /// - Returns: The add credential task.
     public func addCredential(for provider: Provider, form: Form, progressHandler: @escaping (_ status: AddCredentialTask.Status) -> Void,  completion: @escaping (_ result: Result<Credential, Error>) -> Void) -> AddCredentialTask {
-        let task = AddCredentialTask(progressHandler: { [weak self] (status, credential) in
-            progressHandler(status)
-            self?.credentialStore.credentials[credential.id] = credential
-        }, completion: { [weak self] result in
-            if let credential = try? result.get() {
-                self?.credentialStore.credentials[credential.id] = credential
-            }
-            completion(result)
+        let task = AddCredentialTask(
+            progressHandler: progressHandler,
+            completion: completion,
+            credentialUpdateHandler: { [weak self] credential in
+               self?.credentialStore.credentials[credential.id] = credential
         })
         credentialStore.addCredential(for: provider, fields: form.makeFields()) { [weak task] result in
             do {

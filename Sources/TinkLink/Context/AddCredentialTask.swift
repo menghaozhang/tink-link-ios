@@ -37,15 +37,17 @@ public class AddCredentialTask {
     }
     let completionPredicate: CompletionPredicate
 
-    let progressHandler: (Status, Credential) -> Void
+    let progressHandler: (Status) -> Void
     let completion: (Result<Credential, Swift.Error>) -> Void
+    let credentialUpdateHandler: (Credential) -> Void
 
     var callCanceller: Cancellable?
 
-    init(completionPredicate: CompletionPredicate = .updated, progressHandler: @escaping (Status, Credential) -> Void, completion: @escaping (Result<Credential, Swift.Error>) -> Void) {
+    init(completionPredicate: CompletionPredicate = .updated, progressHandler: @escaping (Status) -> Void, completion: @escaping (Result<Credential, Swift.Error>) -> Void, credentialUpdateHandler: @escaping (Credential) -> Void) {
         self.completionPredicate = completionPredicate
         self.progressHandler = progressHandler
         self.completion = completion
+        self.credentialUpdateHandler = credentialUpdateHandler
     }
 
     func startObserving(_ credential: Credential) {
@@ -64,9 +66,11 @@ public class AddCredentialTask {
     private func handleUpdate(for credential: Credential) {
         switch credential.status {
         case .created:
-            progressHandler(.created, credential)
+            progressHandler(.created)
+            credentialUpdateHandler(credential)
         case .authenticating:
-            progressHandler(.authenticating, credential)
+            progressHandler(.authenticating)
+            credentialUpdateHandler(credential)
         case .awaitingSupplementalInformation:
             let supplementInformationTask = SupplementInformationTask(credential: credential) { [weak self] result in
                 guard let self = self else { return }
@@ -78,23 +82,27 @@ public class AddCredentialTask {
                     self.completion(.failure(error))
                 }
             }
-            progressHandler(.awaitingSupplementalInformation(supplementInformationTask), credential)
+            progressHandler(.awaitingSupplementalInformation(supplementInformationTask))
+            credentialUpdateHandler(credential)
         case .awaitingThirdPartyAppAuthentication, .awaitingMobileBankIDAuthentication:
             guard let thirdPartyAppAuthentication = credential.thirdPartyAppAuthentication else {
                 assertionFailure("Missing third pary app authentication deeplink URL!")
                 return
             }
-            progressHandler(.awaitingThirdPartyAppAuthentication(thirdPartyAppAuthentication), credential)
+            progressHandler(.awaitingThirdPartyAppAuthentication(thirdPartyAppAuthentication))
+            credentialUpdateHandler(credential)
         case .updating:
             if completionPredicate == .updating {
                 completion(.success(credential))
             } else {
-                progressHandler(.updating(status: credential.statusPayload), credential)
+                progressHandler(.updating(status: credential.statusPayload))
             }
+            credentialUpdateHandler(credential)
         case .updated:
             if completionPredicate == .updated {
                 completion(.success(credential))
             }
+            credentialUpdateHandler(credential)
         case .permanentError:
             completion(.failure(AddCredentialTask.Error.permanentFailure))
         case .temporaryError:
