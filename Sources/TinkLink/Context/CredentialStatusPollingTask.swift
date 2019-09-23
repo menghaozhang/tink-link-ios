@@ -6,7 +6,7 @@ class CredentialStatusPollingTask {
     private var callRetryCancellable: RetryCancellable?
     private var retryInterval: TimeInterval = 1
     private(set) var credential: Credential
-    private var updateHandler: (Credential) -> Void
+    private var updateHandler: (Result<Credential, Error>) -> Void
     let backoffStrategy: PollingBackoffStrategy
     
     enum PollingBackoffStrategy {
@@ -26,7 +26,7 @@ class CredentialStatusPollingTask {
         }
     }
     
-    init(credential: Credential, backoffStrategy: PollingBackoffStrategy = .linear, updateHandler: @escaping (Credential) -> Void) {
+    init(credential: Credential, backoffStrategy: PollingBackoffStrategy = .linear, updateHandler: @escaping (Result<Credential, Error>) -> Void) {
         self.credential = credential
         self.backoffStrategy = backoffStrategy
         self.updateHandler = updateHandler
@@ -40,22 +40,23 @@ class CredentialStatusPollingTask {
                     let credentials = try result.get()
                     if let updatedCredential = credentials.first(where: { $0.id == self.credential.id}) {
                         if updatedCredential.status == .updating {
-                            self.updateHandler(updatedCredential)
+                            self.updateHandler(.success(updatedCredential))
                             self.retry()
                         } else if updatedCredential.status == .awaitingSupplementalInformation {
-                            self.updateHandler(updatedCredential)
+                            self.updateHandler(.success(updatedCredential))
                             self.callRetryCancellable = nil
+                            // TODO: Should not keep polling while receiving status error 
                         } else if updatedCredential.status == self.credential.status {
                             self.retry()
                         } else {
-                            self.updateHandler(updatedCredential)
+                            self.updateHandler(.success(updatedCredential))
                             self.callRetryCancellable = nil
                         }
                     } else {
                         fatalError("No such credential with " + self.credential.id.rawValue)
                     }
                 } catch let error {
-                    NotificationCenter.default.post(name: .credentialStoreErrorOccured, object: self, userInfo: [CredentialStoreErrorOccuredNotificationErrorKey: error])
+                    self.updateHandler(.failure(error))
                 }
             }
         }
@@ -68,10 +69,3 @@ class CredentialStatusPollingTask {
         retryInterval = backoffStrategy.nextInteral(for: retryInterval)
     }
 }
-
-extension Notification.Name {
-    static let credentialStoreErrorOccured = Notification.Name("TinkLinkCredentialStoreErrorOccuredNotificationName")
-}
-
-/// User info key for credentialStoreErrorOccured notification.
-let CredentialStoreErrorOccuredNotificationErrorKey = "error"

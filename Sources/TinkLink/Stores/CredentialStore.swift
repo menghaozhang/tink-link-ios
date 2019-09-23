@@ -98,4 +98,8 @@ final class CredentialStore {
 
 extension Notification.Name {
     static let credentialStoreChanged = Notification.Name("TinkLinkCredentialStoreChangedNotificationName")
+    static let credentialStoreErrorOccured = Notification.Name("TinkLinkCredentialStoreErrorOccuredNotificationName")
 }
+
+/// User info key for credentialStoreErrorOccured notification.
+let CredentialStoreErrorOccuredNotificationErrorKey = "error"

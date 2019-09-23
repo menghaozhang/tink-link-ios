@@ -86,15 +86,21 @@ public class CredentialContext {
         let task = AddCredentialTask(
             progressHandler: progressHandler,
             completion: completion,
-            credentialUpdateHandler: { [weak self] credential in
-               self?.credentialStore.credentials[credential.id] = credential
+            credentialUpdateHandler: { [weak self] result in
+                do {
+                    let credential = try result.get()
+                    self?.credentialStore.credentials[credential.id] = credential
+                } catch {
+                    self?.delegate?.credentialContext(self, didReceiveError: error)
+                }
         })
         credentialStore.addCredential(for: provider, fields: form.makeFields()) { [weak task] result in
+            guard let self = self else { return }
             do {
                 let credential = try result.get()
                 task?.startObserving(credential)
             } catch {
-                completion(.failure(error))
+                self.delegate?.credentialContext(self, didReceiveError: error)
             }
         }
         return task
