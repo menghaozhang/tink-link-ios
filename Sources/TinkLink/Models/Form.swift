@@ -15,7 +15,7 @@ public struct Form {
         public func index(after i: Int) -> Int { fields.index(after: i) }
 
         // MARK: Dictionary Lookup
-        public subscript(fieldName fieldName: String) -> Form.Field? {
+        public subscript(name fieldName: String) -> Form.Field? {
             get {
                 return fields.first(where: { $0.name == fieldName })
             }
