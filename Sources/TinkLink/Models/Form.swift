@@ -1,27 +1,42 @@
 import Foundation
 
 public struct Form {
-    public var fields: [Field]
-    
-    internal init(fieldSpecifications: [Provider.FieldSpecification]) {
-        fields = fieldSpecifications.map({ Field(fieldSpecification: $0) })
-    }
+    public struct Fields: MutableCollection {
 
-    public subscript(fieldName fieldName: String) -> Form.Field? {
-        get {
-            return fields.first(where: { $0.name == fieldName })
+        var fields: [Form.Field]
+
+        // MARK: Collection Conformance
+        public var startIndex: Int { fields.startIndex }
+        public var endIndex: Int { fields.endIndex }
+        public subscript(position: Int) -> Form.Field {
+            get { fields[position] }
+            set { fields[position] = newValue }
         }
-        set {
-            if let index = fields.firstIndex(where: { $0.name == fieldName }) {
-                if let field = newValue {
-                    fields[index] = field
-                } else {
-                    fields.remove(at: index)
+        public func index(after i: Int) -> Int { fields.index(after: i) }
+
+        // MARK: Dictionary Lookup
+        public subscript(fieldName fieldName: String) -> Form.Field? {
+            get {
+                return fields.first(where: { $0.name == fieldName })
+            }
+            set {
+                if let index = fields.firstIndex(where: { $0.name == fieldName }) {
+                    if let field = newValue {
+                        fields[index] = field
+                    } else {
+                        fields.remove(at: index)
+                    }
+                } else if let field = newValue {
+                    fields.append(field)
                 }
-            } else if let field = newValue {
-                fields.append(field)
             }
         }
+    }
+
+    public var fields: Fields
+    
+    internal init(fieldSpecifications: [Provider.FieldSpecification]) {
+        fields = Fields(fields: fieldSpecifications.map({ Field(fieldSpecification: $0) }))
     }
 
     public var areFieldsValid: Bool {
@@ -172,10 +187,10 @@ extension Form {
     }
 }
 
-extension Array where Element == Form.Field {
+extension Form.Fields {
     func validateFields() throws {
         var fieldsValidationError = Form.ValidationError(errors: [])
-        for field in self {
+        for field in fields {
             do {
                 try field.validate()
             } catch let error as Form.Field.ValidationError {
