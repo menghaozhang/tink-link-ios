@@ -23,7 +23,7 @@ bootstrap:
 ifeq ($(strip $(shell command -v brew 2> /dev/null)),)
 	$(error "`brew` is not available, please install homebrew")
 endif
-	brew install swiftlint swiftformat 2> /dev/null
+	brew install swiftlint swiftformat > /dev/null
 
 lint:
 ifeq ($(strip $(shell command -v swiftlint 2> /dev/null)),)
