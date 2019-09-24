@@ -29,6 +29,6 @@ Key | Value
 
 ### Swift
 ```swift
-let configuration = TinkLink.Configuration(environment: <#Environment#>, clientId: <#String#>, redirectUrl: <#URL#>)
+let configuration = TinkLink.Configuration(environment: <#Environment#>, clientId: <#String#>)
 TinkLink.configure(with: configuration)
 ```
