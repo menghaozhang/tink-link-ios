@@ -3,15 +3,15 @@ import Foundation
 public class TinkLink {
     public struct Configuration {
         var environment: Environment
-        var clientId: String
+        var clientID: String
         var timeoutIntervalForRequest: TimeInterval?
         var certificateURL: URL?
         var market: Market
         var locale: Locale
 
-        public init(environment: Environment, clientId: String, timeoutIntervalForRequest: TimeInterval? = nil, certificateURL: URL? = nil, market: Market? = nil, locale: Locale? = nil) {
+        public init(environment: Environment, clientID: String, timeoutIntervalForRequest: TimeInterval? = nil, certificateURL: URL? = nil, market: Market? = nil, locale: Locale? = nil) {
             self.environment = environment
-            self.clientId = clientId
+            self.clientID = clientID
             self.timeoutIntervalForRequest = timeoutIntervalForRequest
             self.certificateURL = certificateURL
             if let market = market {
@@ -72,7 +72,7 @@ public class TinkLink {
     
     // Setup via configration object
     public static func configure(with configuration: TinkLink.Configuration) {
-        shared._client = Client(environment: configuration.environment , clientID: configuration.clientId, certificateURL: configuration.certificateURL, market: configuration.market, locale: configuration.locale)
+        shared._client = Client(environment: configuration.environment , clientID: configuration.clientID, certificateURL: configuration.certificateURL, market: configuration.market, locale: configuration.locale)
     }
     
     // TODO: Some configurations can be changed after setup, for example timeoutIntervalForRequest and Qos, the changes should reflect to the stores and services
@@ -101,7 +101,7 @@ extension TinkLink.Configuration: Decodable {
     
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        clientId = try values.decode(String.self, forKey: .clientID)
+        clientID = try values.decode(String.self, forKey: .clientID)
         timeoutIntervalForRequest = try? values.decode(Double.self, forKey: .timeoutInterval)
         if let environmentString = try? values.decode(String.self, forKey: .environment),
             let environment = Environment(rawValue: environmentString) {
@@ -139,7 +139,7 @@ extension Client {
     convenience init(configurationUrl: URL) throws {
         let data = try Data(contentsOf: configurationUrl)
         let configuration = try PropertyListDecoder().decode(TinkLink.Configuration.self, from: data)
-        self.init(environment: configuration.environment, clientID: configuration.clientId, certificateURL: configuration.certificateURL, market: configuration.market, locale: configuration.locale)
+        self.init(environment: configuration.environment, clientID: configuration.clientID, certificateURL: configuration.certificateURL, market: configuration.market, locale: configuration.locale)
     }
 
     convenience init?(processInfo: ProcessInfo) {
