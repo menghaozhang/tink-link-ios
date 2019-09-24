@@ -1,5 +1,6 @@
 import Foundation
 
+/// A Form is used to create, manage and validate fields for creating credentials or supplementing information for a credential.
 public struct Form {
     /// A collection of fields.
     ///
