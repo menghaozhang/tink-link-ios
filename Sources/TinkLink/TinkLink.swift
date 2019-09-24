@@ -4,15 +4,13 @@ public class TinkLink {
     public struct Configuration {
         var environment: Environment
         var clientId: String
-        var redirectUrl: URL?
         var timeoutIntervalForRequest: TimeInterval?
         var certificateURL: URL?
         var market: Market
         var locale: Locale
-        public init (environment: Environment, clientId: String, redirectUrl: URL? = nil, timeoutIntervalForRequest: TimeInterval? = nil, certificateURL: URL? = nil, market: Market, locale: Locale? = nil) {
+        public init (environment: Environment, clientId: String, timeoutIntervalForRequest: TimeInterval? = nil, certificateURL: URL? = nil, market: Market, locale: Locale? = nil) {
             self.environment = environment
             self.clientId = clientId
-            self.redirectUrl = redirectUrl
             self.timeoutIntervalForRequest = timeoutIntervalForRequest
             self.certificateURL = certificateURL
             self.market = market
@@ -90,7 +88,6 @@ extension TinkLink.Configuration: Decodable {
     enum CodingKeys: String, CodingKey {
         case environment = "TINK_ENVIRONMENT"
         case clientID = "TINK_CLIENT_ID"
-        case redirectUrl = "TINK_REDIRECT_URL"
         case timeoutInterval = "TINK_TIMEOUT_INTERVAL"
         case certificateFileName = "TINK_CERTIFICATE_FILE_NAME"
         case market = "TINK_MARKET_CODE"
@@ -106,12 +103,6 @@ extension TinkLink.Configuration: Decodable {
             self.environment = environment
         } else {
             self.environment = .production
-        }
-        if let redirectUrlString = try values.decodeIfPresent(String.self, forKey: .redirectUrl) {
-            guard let redirectUrl = URL(string: redirectUrlString) else {
-                fatalError("Invalid redirect URL")
-            }
-            self.redirectUrl = redirectUrl
         }
         if let certificateFileName = try values.decodeIfPresent(String.self, forKey: .certificateFileName) {
             guard let certificateURL = Bundle.main.url(forResource: certificateFileName, withExtension: "pem") else {
