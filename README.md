@@ -1,5 +1,10 @@
 # Tink Link iOS
 
+## Prerequisites
+1. Create your developer account at [Tink Console](https://console.tink.com/).
+2. Follow the getting started guide to retrieve your Client ID.
+3. Register the Redirect URI for your app (e.g. `myapp://callback`) in the list of allowed redirect URIs.
+
 ## Installation
 
 ### [CocoaPods](https://cocoapods.org)
