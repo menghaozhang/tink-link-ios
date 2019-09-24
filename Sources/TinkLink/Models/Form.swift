@@ -245,10 +245,20 @@ public struct Form {
 }
 
 extension Form {
+    /// Creates a form for the given provider.
+    ///
+    /// This creates a form to use for creating a credential for a specific provider.
+    ///
+    /// - Parameter provider: The provider to create a form for.
     public init(provider: Provider) {
         self.init(fieldSpecifications: provider.fields)
     }
-    
+
+    /// Creates a form for the given credential.
+    ///
+    /// This creates a form to use for supplementing information for a credential.
+    ///
+    /// - Parameter provider: The credential to create a form for.
     public init(credential: Credential) {
         self.init(fieldSpecifications: credential.supplementalInformationFields)
     }
