@@ -111,8 +111,11 @@ extension TinkLink.Configuration: Decodable {
             self.certificateURL = certificateURL
         }
         
-        let marketCode = try values.decode(String.self, forKey: .market)
-        market = Market(code: marketCode)
+        if let marketCode = try values.decodeIfPresent(String.self, forKey: .market) {
+            market = Market(code: marketCode)
+        } else {
+            market = TinkLink.defaultMarket
+        }
         
         if let localeIdentifier = try values.decodeIfPresent(String.self, forKey: .locale) {
             let availableLocale = TinkLink.availableLocales.first{ $0.identifier == localeIdentifier }
