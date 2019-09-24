@@ -101,10 +101,12 @@ public struct Form {
                 isEnabled: !fieldSpecification.isImmutable || fieldSpecification.initialValue.isEmpty
             )
         }
-        
+
         public struct ValidationRules {
             public let maxLength: Int?
+
             public let minLength: Int?
+
             internal let regex: String
             internal let regexError: String
 
