@@ -18,6 +18,13 @@ public struct Form {
         public func index(after i: Int) -> Int { fields.index(after: i) }
 
         // MARK: Dictionary Lookup
+
+        /// Accesses the field associated with the given field for reading and writing.
+        ///
+        /// This name based subscript returns the first field with the same name, or `nil` if the field is not found.
+        ///
+        /// - Parameter name: The name of the field to find in the list.
+        /// - Returns: The field associciated with `name` if it exists; otherwise, `nil`.
         public subscript(name fieldName: String) -> Form.Field? {
             get {
                 return fields.first(where: { $0.name == fieldName })
