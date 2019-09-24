@@ -1,6 +1,9 @@
 import Foundation
 
 public struct Form {
+    /// A collection of fields.
+    ///
+    /// Represents a list of fields and provides access to the fields. Each field in can be accessed either by index or by field name.
     public struct Fields: MutableCollection {
 
         var fields: [Form.Field]
