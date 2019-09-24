@@ -9,13 +9,13 @@ public class TinkLink {
         var certificateURL: URL?
         var market: Market
         var locale: Locale
-        public init (environment: Environment, clientId: String, redirectUrl: URL, timeoutIntervalForRequest: TimeInterval? = nil, certificateURL: URL? = nil, market: Market, locale: Locale? = nil) {
+        public init (environment: Environment, clientId: String, redirectUrl: URL, timeoutIntervalForRequest: TimeInterval? = nil, certificateURL: URL? = nil, market: Market? = nil, locale: Locale? = nil) {
             self.environment = environment
             self.clientId = clientId
             self.redirectUrl = redirectUrl
             self.timeoutIntervalForRequest = timeoutIntervalForRequest
             self.certificateURL = certificateURL
-            self.market = market
+            self.market = market ?? .defaultMarket
             if let locale = locale {
                 if TinkLink.availableLocales.contains(locale) {
                     self.locale = locale

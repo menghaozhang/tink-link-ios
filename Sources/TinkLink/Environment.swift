@@ -1,8 +1,9 @@
 import Foundation
 
-public enum Environment: String, RawRepresentable {
+enum Environment {
     case production
     case staging
+    case custom(URL)
 
     var url: URL {
         switch self {
@@ -10,6 +11,8 @@ public enum Environment: String, RawRepresentable {
             return URL(string: "main-grpc.production.oxford.tink.se:443")!
         case .staging:
             return URL(string: "main-grpc.staging.oxford.tink.se:443")!
+        case .custom(let url):
+            return url
         }
     }
 }
