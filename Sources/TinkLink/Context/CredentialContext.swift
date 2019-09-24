@@ -95,11 +95,11 @@ public class CredentialContext {
                     self.delegate?.credentialContext(self, didReceiveError: error)
                 }
         })
-        credentialStore.addCredential(for: provider, fields: form.makeFields()) { [weak self, task] result in
+        credentialStore.addCredential(for: provider, fields: form.makeFields()) { [weak self, weak task] result in
             guard let self = self else { return }
             do {
                 let credential = try result.get()
-                task.startObserving(credential)
+                task?.startObserving(credential)
             } catch {
                 completion(.failure(error))
                 self.delegate?.credentialContext(self, didReceiveError: error)

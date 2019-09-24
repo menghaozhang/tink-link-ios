@@ -2,7 +2,7 @@ class MultiHandler: Cancellable, Retriable {
     private var handlers: [Cancellable & Retriable] = []
 
     private(set) var isCancelled: Bool = false
-    private(set) var isRetried: Bool = false
+    private(set) var hasRetried: Bool = false
 
     func add(_ handler: Cancellable & Retriable) {
         handlers.append(handler)
@@ -16,7 +16,7 @@ class MultiHandler: Cancellable, Retriable {
     }
     
     func retry() {
-        isRetried = true
+        hasRetried = true
         for handler in handlers {
             handler.retry()
         }
