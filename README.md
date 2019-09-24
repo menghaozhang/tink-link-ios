@@ -19,17 +19,12 @@ Key | Type | Value
 --- | ---- | -----
 `TINK_ENVIRONMENT` | String | `production` or `staging` 
 `TINK_CLIENT_ID` | String |
-`TINK_REDIRECT_URL` | String |
-`TINK_TIMEOUT_INTERVAL` | String | *Optional*
-`TINK_CERTIFICATE_FILE_NAME` | String | *Optional*
 
 ### Environment Variables
 Key | Value
 --- | -----
 `TINK_CLIENT_ID` | 
-`TINK_CERTIFICATE`| 
 `TINK_BEARER_TOKEN` | *For testing*
-`TINK_SESSION_ID` | *For testing*
 
 ### Swift
 ```swift
