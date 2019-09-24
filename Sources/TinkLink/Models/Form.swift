@@ -130,7 +130,7 @@ public struct Form {
                 }
             }
         }
-        
+
         public struct Attributes {
             public enum InputType {
                 case `default`
