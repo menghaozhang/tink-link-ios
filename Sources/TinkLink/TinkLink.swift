@@ -8,6 +8,7 @@ public class TinkLink {
         var certificateURL: URL?
         var market: Market
         var locale: Locale
+
         public init (environment: Environment, clientId: String, timeoutIntervalForRequest: TimeInterval? = nil, certificateURL: URL? = nil, market: Market, locale: Locale? = nil) {
             self.environment = environment
             self.clientId = clientId
