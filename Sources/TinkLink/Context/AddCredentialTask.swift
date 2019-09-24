@@ -27,8 +27,7 @@ public class AddCredentialTask {
         case permanentFailure
     }
 
-    private let credentialStore = CredentialStore.shared
-    private var credentialStoreObserver: Any?
+    private var credentialStatusPollingTask: CredentialStatusPollingTask?
 
     private(set) var credential: Credential?
 
@@ -40,84 +39,82 @@ public class AddCredentialTask {
 
     let progressHandler: (Status) -> Void
     let completion: (Result<Credential, Swift.Error>) -> Void
+    let credentialUpdateHandler: (Result<Credential, Swift.Error>) -> Void
 
     var callCanceller: Cancellable?
 
-    init(completionPredicate: CompletionPredicate = .updated, progressHandler: @escaping (Status) -> Void, completion: @escaping (Result<Credential, Swift.Error>) -> Void) {
+    init(completionPredicate: CompletionPredicate = .updated, progressHandler: @escaping (Status) -> Void, completion: @escaping (Result<Credential, Swift.Error>) -> Void, credentialUpdateHandler: @escaping (Result<Credential, Swift.Error>) -> Void) {
         self.completionPredicate = completionPredicate
         self.progressHandler = progressHandler
         self.completion = completion
+        self.credentialUpdateHandler = credentialUpdateHandler
     }
 
     func startObserving(_ credential: Credential) {
         self.credential = credential
 
-        handleUpdate(for: credential)
+        handleUpdate(for: .success(credential))
 
-        credentialStore.pollingStatus(for: credential)
-
-        credentialStoreObserver = NotificationCenter.default.addObserver(forName: .credentialStoreChanged, object: credentialStore, queue: .main) { [weak self] _ in
-            guard let self = self else { return }
-            let latestCredential = self.credential ?? credential
-            if let updatedCredential = self.credentialStore.credentials[credential.id] {
-                if latestCredential.status != updatedCredential.status {
-                    self.handleUpdate(for: updatedCredential)
-                } else if let latestUpdatedStatusAt = latestCredential.statusUpdated, let updatedCredentialStatusUpdated = updatedCredential.statusUpdated, updatedCredentialStatusUpdated > latestUpdatedStatusAt {
-                    self.handleUpdate(for: updatedCredential)
-                }
-                self.credential = updatedCredential
-            }
-        }
+        credentialStatusPollingTask = CredentialStatusPollingTask(credential: credential, updateHandler: handleUpdate)
+        credentialStatusPollingTask?.pollStatus()
     }
 
     public func cancel() {
         callCanceller?.cancel()
     }
 
-    private func handleUpdate(for credential: Credential) {
-        switch credential.status {
-        case .created:
-            progressHandler(.created)
-        case .authenticating:
-            progressHandler(.authenticating)
-        case .awaitingSupplementalInformation:
-            let supplementInformationTask = SupplementInformationTask(credential: credential) { [weak self] result in
-                do {
-                    try result.get()
-                    self?.credentialStore.pollingStatus(for: credential)
-                } catch {
-                    self?.completion(.failure(error))
+    private func handleUpdate(for result: Result<Credential, Swift.Error>) {
+        do {
+            let credential = try result.get()
+            switch credential.status {
+            case .created:
+                progressHandler(.created)
+            case .authenticating:
+                progressHandler(.authenticating)
+            case .awaitingSupplementalInformation:
+                let supplementInformationTask = SupplementInformationTask(credential: credential) { [weak self] result in
+                    guard let self = self else { return }
+                    do {
+                        try result.get()
+                        self.credentialStatusPollingTask = CredentialStatusPollingTask(credential: credential, updateHandler: self.handleUpdate)
+                        self.credentialStatusPollingTask?.pollStatus()
+                    } catch {
+                        self.completion(.failure(error))
+                    }
                 }
+                progressHandler(.awaitingSupplementalInformation(supplementInformationTask))
+            case .awaitingThirdPartyAppAuthentication, .awaitingMobileBankIDAuthentication:
+                guard let thirdPartyAppAuthentication = credential.thirdPartyAppAuthentication else {
+                    assertionFailure("Missing third pary app authentication deeplink URL!")
+                    return
+                }
+                progressHandler(.awaitingThirdPartyAppAuthentication(thirdPartyAppAuthentication))
+            case .updating:
+                if completionPredicate == .updating {
+                    completion(.success(credential))
+                } else {
+                    progressHandler(.updating(status: credential.statusPayload))
+                }
+            case .updated:
+                if completionPredicate == .updated {
+                    completion(.success(credential))
+                }
+            case .permanentError:
+                completion(.failure(AddCredentialTask.Error.permanentFailure))
+            case .temporaryError:
+                completion(.failure(AddCredentialTask.Error.temporaryFailure))
+            case .authenticationError:
+                completion(.failure(AddCredentialTask.Error.authenticationFailed))
+            case .disabled:
+                fatalError("Credential shouldn't be disabled during creation.")
+            case .sessionExpired:
+                fatalError("Credential's session shouldn't expire during creation.")
+            case .unknown:
+                assertionFailure("Unknown credential status!")
             }
-            progressHandler(.awaitingSupplementalInformation(supplementInformationTask))
-        case .awaitingThirdPartyAppAuthentication, .awaitingMobileBankIDAuthentication:
-            guard let thirdPartyAppAuthentication = credential.thirdPartyAppAuthentication else {
-                assertionFailure("Missing third pary app authentication deeplink URL!")
-                return
-            }
-            progressHandler(.awaitingThirdPartyAppAuthentication(thirdPartyAppAuthentication))
-        case .updating:
-            if completionPredicate == .updating {
-                completion(.success(credential))
-            } else {
-                progressHandler(.updating(status: credential.statusPayload))
-            }
-        case .updated:
-            if completionPredicate == .updated {
-                completion(.success(credential))
-            }
-        case .permanentError:
-            completion(.failure(AddCredentialTask.Error.permanentFailure))
-        case .temporaryError:
-            completion(.failure(AddCredentialTask.Error.temporaryFailure))
-        case .authenticationError:
-            completion(.failure(AddCredentialTask.Error.authenticationFailed))
-        case .disabled:
-            fatalError("Credential shouldn't be disabled during creation.")
-        case .sessionExpired:
-            fatalError("Credential's session shouldn't expire during creation.")
-        case .unknown:
-            assertionFailure("Unknown credential status!")
+        } catch {
+            completion(.failure(error))
         }
+        credentialUpdateHandler(result)
     }
 }

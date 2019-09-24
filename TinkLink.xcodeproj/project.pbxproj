@@ -23,7 +23,7 @@
 		20E19DB32306E59900BF053A /* CgRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85472303FD85006213BB /* CgRPC.framework */; };
 		20E19DB42306E59900BF053A /* SwiftGRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85492303FD85006213BB /* SwiftGRPC.framework */; };
 		20E19DB52306E59900BF053A /* SwiftProtobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85482303FD85006213BB /* SwiftProtobuf.framework */; };
-		20E6DCD123336AE700476B8F /* MultiCanceller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E6DCD023336AE700476B8F /* MultiCanceller.swift */; };
+		20E6DCD123336AE700476B8F /* MultiHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E6DCD023336AE700476B8F /* MultiHandler.swift */; };
 		20ED852A2303FA48006213BB /* TinkLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85202303FA48006213BB /* TinkLink.framework */; };
 		20ED85412303FAEC006213BB /* rpc.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED853D2303FAEC006213BB /* rpc.pb.swift */; };
 		20ED85422303FAEC006213BB /* models.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED853E2303FAEC006213BB /* models.pb.swift */; };
@@ -40,7 +40,7 @@
 		20ED8588230408E6006213BB /* ClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED8587230408E6006213BB /* ClientTests.swift */; };
 		20ED858E2304151B006213BB /* CredentialService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED858D2304151B006213BB /* CredentialService.swift */; };
 		20ED859023041679006213BB /* ProviderGRPCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED858923040974006213BB /* ProviderGRPCTests.swift */; };
-		20ED8592230429DE006213BB /* StartCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED8591230429DE006213BB /* StartCall.swift */; };
+		20ED8592230429DE006213BB /* CallHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED8591230429DE006213BB /* CallHandler.swift */; };
 		20ED859623045896006213BB /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED859523045896006213BB /* Credential.swift */; };
 		20EE138123053B2700C92D65 /* Credential+GRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EE138023053B2700C92D65 /* Credential+GRPC.swift */; };
 		8F0CE77D2332151700FB84B0 /* CallCanceller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0CE77A2332151700FB84B0 /* CallCanceller.swift */; };
@@ -49,6 +49,7 @@
 		8F3672462305685600B92936 /* GrpcExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3672452305685600B92936 /* GrpcExtensions.swift */; };
 		8F36724F230598BC00B92936 /* ExactNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F36724E230598BC00B92936 /* ExactNumber.swift */; };
 		8F3672512305A2A700B92936 /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3672502305A2A700B92936 /* Identifier.swift */; };
+		8F613A002334CB2D00BFB04D /* CredentialStatusPollingTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6139FF2334CB2C00BFB04D /* CredentialStatusPollingTask.swift */; };
 		8F84A776232B8B6500EA878F /* TokenConfigurableService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F84A775232B8B6500EA878F /* TokenConfigurableService.swift */; };
 		8F84A778232F816B00EA878F /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F84A777232F816B00EA878F /* AuthenticationManager.swift */; };
 		8F84A77C2330D39600EA878F /* Locale+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F84A77B2330D39600EA878F /* Locale+Extensions.swift */; };
@@ -85,7 +86,7 @@
 		206B8DCD2335001000693ED5 /* FormTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTests.swift; sourceTree = "<group>"; };
 		209D69272326878800B4DBB8 /* SupplementInformationTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementInformationTask.swift; sourceTree = "<group>"; };
 		20D8125E2330DAD7000B3A30 /* Service+Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Service+Metadata.swift"; sourceTree = "<group>"; };
-		20E6DCD023336AE700476B8F /* MultiCanceller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiCanceller.swift; sourceTree = "<group>"; };
+		20E6DCD023336AE700476B8F /* MultiHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiHandler.swift; sourceTree = "<group>"; };
 		20ED85202303FA48006213BB /* TinkLink.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinkLink.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		20ED85242303FA48006213BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20ED85292303FA48006213BB /* TinkLinkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinkLinkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,7 +106,7 @@
 		20ED8587230408E6006213BB /* ClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientTests.swift; sourceTree = "<group>"; };
 		20ED858923040974006213BB /* ProviderGRPCTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProviderGRPCTests.swift; sourceTree = "<group>"; };
 		20ED858D2304151B006213BB /* CredentialService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CredentialService.swift; sourceTree = "<group>"; };
-		20ED8591230429DE006213BB /* StartCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartCall.swift; sourceTree = "<group>"; };
+		20ED8591230429DE006213BB /* CallHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallHandler.swift; sourceTree = "<group>"; };
 		20ED859523045896006213BB /* Credential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
 		20EE138023053B2700C92D65 /* Credential+GRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Credential+GRPC.swift"; sourceTree = "<group>"; };
 		8F0CE77A2332151700FB84B0 /* CallCanceller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallCanceller.swift; sourceTree = "<group>"; };
@@ -114,6 +115,7 @@
 		8F3672452305685600B92936 /* GrpcExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrpcExtensions.swift; sourceTree = "<group>"; };
 		8F36724E230598BC00B92936 /* ExactNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExactNumber.swift; sourceTree = "<group>"; };
 		8F3672502305A2A700B92936 /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
+		8F6139FF2334CB2C00BFB04D /* CredentialStatusPollingTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialStatusPollingTask.swift; sourceTree = "<group>"; };
 		8F84A775232B8B6500EA878F /* TokenConfigurableService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenConfigurableService.swift; sourceTree = "<group>"; };
 		8F84A777232F816B00EA878F /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		8F84A77B2330D39600EA878F /* Locale+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+Extensions.swift"; sourceTree = "<group>"; };
@@ -248,13 +250,13 @@
 			children = (
 				8F0CE77A2332151700FB84B0 /* CallCanceller.swift */,
 				8F0CE77B2332151700FB84B0 /* Cancellable.swift */,
-				20E6DCD023336AE700476B8F /* MultiCanceller.swift */,
+				20E6DCD023336AE700476B8F /* MultiHandler.swift */,
 				8F0CE77C2332151700FB84B0 /* Client.swift */,
 				200A3FA1230C3E7800BEF935 /* ServiceMetadataHelper.swift */,
 				20ED85702304004C006213BB /* ProviderService.swift */,
 				8F84A775232B8B6500EA878F /* TokenConfigurableService.swift */,
 				20ED858D2304151B006213BB /* CredentialService.swift */,
-				20ED8591230429DE006213BB /* StartCall.swift */,
+				20ED8591230429DE006213BB /* CallHandler.swift */,
 				201D5502230A8BEA00641102 /* StreamingService.swift */,
 				201D5522230AEAA500641102 /* UserService.swift */,
 				200A3F98230C31E900BEF935 /* AuthenticationService.swift */,
@@ -298,6 +300,7 @@
 				8FA35591231EADAB0054115D /* CredentialContext.swift */,
 				203BE968232784440033F879 /* AddCredentialTask.swift */,
 				209D69272326878800B4DBB8 /* SupplementInformationTask.swift */,
+				8F6139FF2334CB2C00BFB04D /* CredentialStatusPollingTask.swift */,
 			);
 			path = Context;
 			sourceTree = "<group>";
@@ -468,7 +471,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F0CE77E2332151700FB84B0 /* Cancellable.swift in Sources */,
-				20ED8592230429DE006213BB /* StartCall.swift in Sources */,
+				20ED8592230429DE006213BB /* CallHandler.swift in Sources */,
 				8F84A778232F816B00EA878F /* AuthenticationManager.swift in Sources */,
 				8F84A776232B8B6500EA878F /* TokenConfigurableService.swift in Sources */,
 				20EE138123053B2700C92D65 /* Credential+GRPC.swift in Sources */,
@@ -479,11 +482,12 @@
 				20ED85442303FAEC006213BB /* services.pb.swift in Sources */,
 				8F0CE77F2332151700FB84B0 /* Client.swift in Sources */,
 				20ED85832304081D006213BB /* Provider+GRPC.swift in Sources */,
+				8F613A002334CB2D00BFB04D /* CredentialStatusPollingTask.swift in Sources */,
 				200A3FA2230C3E7800BEF935 /* ServiceMetadataHelper.swift in Sources */,
 				200FD63F23154B660077181A /* Market.swift in Sources */,
 				20ED856F2304003A006213BB /* Environment.swift in Sources */,
 				8F0CE77D2332151700FB84B0 /* CallCanceller.swift in Sources */,
-				20E6DCD123336AE700476B8F /* MultiCanceller.swift in Sources */,
+				20E6DCD123336AE700476B8F /* MultiHandler.swift in Sources */,
 				8FA35592231EADAB0054115D /* CredentialContext.swift in Sources */,
 				8FA35597231EB2F10054115D /* ProviderMarketContext.swift in Sources */,
 				8FA35590231EA3820054115D /* ProviderContext.swift in Sources */,
