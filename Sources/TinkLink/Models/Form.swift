@@ -155,11 +155,19 @@ public struct Form {
             /// A Boolean value indicating whether the field can be edited.
             public let isEditable: Bool
         }
-        
+
+        /// Describes a field validation error.
         public enum ValidationError: Error, LocalizedError {
+            /// Field's `text` was invalid. See `reason` for explanation why.
             case validationFailed(fieldName: String, reason: String)
+
+            /// Field's `text` was too long.
             case maxLengthLimit(fieldName: String, maxLength: Int)
+
+            /// Field's `text` was too short.
             case minLengthLimit(fieldName: String, minLength: Int)
+
+            /// Missing `text` for required field.
             case requiredFieldEmptyValue(fieldName: String)
 
             var fieldName: String {
@@ -219,9 +227,17 @@ public struct Form {
         }
     }
     
+    /// Describes a form validation error.
     public struct ValidationError: Error {
+        /// Describes one or more field validation errors.
         public var errors: [Form.Field.ValidationError]
 
+        /// Accesses the validation error associated with the given field.
+        ///
+        /// This name based subscript returns the first error with the same name, or `nil` if an error is not found.
+        ///
+        /// - Parameter fieldName: The name of the field to find an error for.
+        /// - Returns: The validation error associciated with `fieldName` if it exists; otherwise, `nil`.
         public subscript(fieldName fieldName: String) -> Form.Field.ValidationError? {
             errors.first(where: { $0.fieldName == fieldName })
         }
