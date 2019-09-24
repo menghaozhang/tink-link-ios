@@ -168,9 +168,11 @@ public struct Form {
             }
         }
 
-        /// Is `true` if `text` passes the validation rules for this field.
+        /// Returns a Boolean value indicating whether the field is valid.
         ///
         /// To check why `text` wasn't valid if `false`, call `validate()` and check the thrown error for validation failure reason.
+        ///
+        /// - Returns: `true` if the field pass the validation rules; otherwise, `false`.
         public var isValid: Bool {
             do {
                 try validate()
