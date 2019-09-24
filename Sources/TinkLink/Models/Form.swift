@@ -102,9 +102,16 @@ public struct Form {
             )
         }
 
+        /// Validation rules for a field.
+        ///
+        /// Represents the rules for validating a form field.
         public struct ValidationRules {
+            /// Maximum length of value.
+            ///
+            /// Use this to e.g. limit user input to only accept input until `maxLength` is reached.
             public let maxLength: Int?
 
+            /// Minimum length of value.
             public let minLength: Int?
 
             internal let regex: String
