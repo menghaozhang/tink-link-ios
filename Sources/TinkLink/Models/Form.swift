@@ -182,6 +182,12 @@ public struct Form {
             }
         }
 
+        /// Validate field.
+        ///
+        /// Use this method to validate the current `text` value of the field or to catch the value if invalid.
+        ///
+        /// - Returns: `true` if all fields in the form have valid text; otherwise, `false`.
+        /// - Throws: A `Form.Field.ValidationError` if the field's `text` is invalid.
         public func validate() throws {
             let value = text
             if value.isEmpty, !isOptional {
