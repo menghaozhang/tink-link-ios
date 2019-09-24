@@ -75,7 +75,7 @@ extension SupplementalInformationViewController {
             textFieldCell.delegate = self
             textFieldCell.textField.placeholder = field.attributes.placeholder
             textFieldCell.textField.isSecureTextEntry = field.attributes.isSecureTextEntry
-            textFieldCell.textField.isEnabled = field.attributes.isEnabled
+            textFieldCell.textField.isEnabled = field.attributes.isEditable
             textFieldCell.textField.text = field.text
         }
         return cell

@@ -43,6 +43,7 @@ public struct Form {
         }
     }
 
+    /// The fields associated with this form.
     public var fields: Fields
     
     internal init(fieldSpecifications: [Provider.FieldSpecification]) {
@@ -98,7 +99,7 @@ public struct Form {
                 placeholder: fieldSpecification.hint,
                 isSecureTextEntry: fieldSpecification.isMasked,
                 inputType: fieldSpecification.isNumeric ? .numeric : .default,
-                isEnabled: !fieldSpecification.isImmutable || fieldSpecification.initialValue.isEmpty
+                isEditable: !fieldSpecification.isImmutable || fieldSpecification.initialValue.isEmpty
             )
         }
 
@@ -152,7 +153,7 @@ public struct Form {
             public let inputType: InputType
 
             /// A Boolean value indicating whether the field can be edited.
-            public let isEnabled: Bool
+            public let isEditable: Bool
         }
         
         public enum ValidationError: Error, LocalizedError {
