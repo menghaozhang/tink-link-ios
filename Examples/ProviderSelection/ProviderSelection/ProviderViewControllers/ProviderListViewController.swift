@@ -43,7 +43,6 @@ extension ProviderListViewController {
         definesPresentationContext = true
         
         title = "Choose Bank"
-        view.backgroundColor = .white
         providerContext.delegate = self
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
