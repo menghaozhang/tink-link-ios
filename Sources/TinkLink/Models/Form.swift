@@ -49,10 +49,19 @@ public struct Form {
         fields = Fields(fields: fieldSpecifications.map({ Field(fieldSpecification: $0) }))
     }
 
+    /// Returns a Boolean value indicating whether every field in the form are valid.
+    ///
+    /// - Returns: `true` if all fields in the form have valid text; otherwise, `false`.
     public var areFieldsValid: Bool {
         return fields.areFieldsValid
     }
 
+    /// Validate all fields.
+    ///
+    /// Use this method to validate all fields in the form or catch the value if one or more field are invalid.
+    ///
+    /// - Returns: `true` if all fields in the form have valid text; otherwise, `false`.
+    /// - Throws: A `Form.ValidationError` if one or more fields are invalid.
     public func validateFields() throws {
         try fields.validateFields()
     }
