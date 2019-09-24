@@ -4,12 +4,12 @@ public class TinkLink {
     public struct Configuration {
         var environment: Environment
         var clientId: String
-        var redirectUrl: URL
+        var redirectUrl: URL?
         var timeoutIntervalForRequest: TimeInterval?
         var certificateURL: URL?
         var market: Market
         var locale: Locale
-        public init (environment: Environment, clientId: String, redirectUrl: URL, timeoutIntervalForRequest: TimeInterval? = nil, certificateURL: URL? = nil, market: Market, locale: Locale? = nil) {
+        public init (environment: Environment, clientId: String, redirectUrl: URL? = nil, timeoutIntervalForRequest: TimeInterval? = nil, certificateURL: URL? = nil, market: Market, locale: Locale? = nil) {
             self.environment = environment
             self.clientId = clientId
             self.redirectUrl = redirectUrl
@@ -107,12 +107,12 @@ extension TinkLink.Configuration: Decodable {
         } else {
             self.environment = .production
         }
-        let redirectUrlString = try values.decode(String.self, forKey: .redirectUrl)
-        guard let redirectUrl = URL(string: redirectUrlString) else {
-            fatalError("Invalid redirect URL")
+        if let redirectUrlString = try values.decodeIfPresent(String.self, forKey: .redirectUrl) {
+            guard let redirectUrl = URL(string: redirectUrlString) else {
+                fatalError("Invalid redirect URL")
+            }
+            self.redirectUrl = redirectUrl
         }
-        self.redirectUrl = redirectUrl
-
         if let certificateFileName = try values.decodeIfPresent(String.self, forKey: .certificateFileName) {
             guard let certificateURL = Bundle.main.url(forResource: certificateFileName, withExtension: "pem") else {
                 fatalError("Cannot find certificate file")
