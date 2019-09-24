@@ -54,8 +54,10 @@ public class AddCredentialTask {
         self.credential = credential
 
         handleUpdate(for: .success(credential))
+        credentialStatusPollingTask = CredentialStatusPollingTask(credential: credential) { [weak self] result in
+            self?.handleUpdate(for: result)
+        }
 
-        credentialStatusPollingTask = CredentialStatusPollingTask(credential: credential, updateHandler: handleUpdate)
         credentialStatusPollingTask?.pollStatus()
     }
 
