@@ -131,16 +131,27 @@ public struct Form {
             }
         }
 
+        /// Attributes to apply to a UI element that will represent a field.
         public struct Attributes {
             public enum InputType {
                 case `default`
+                /// A input type suitable for e.g. PIN entry.
                 case numeric
             }
 
+            /// A string to display next to the field to explain what the field is for.
             public let description: String
+
+            /// A string to display when there is no other text in the text field.
             public let placeholder: String
+
+            /// Identifies whether the text object should disable text copying and in some cases hide the text being entered.
             public let isSecureTextEntry: Bool
+
+            /// The input type associated with the field.
             public let inputType: InputType
+
+            /// A Boolean value indicating whether the field can be edited.
             public let isEnabled: Bool
         }
         
