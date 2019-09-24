@@ -31,7 +31,8 @@ final class AuthenticationManager {
                         self.completionHandlers.forEach{ $0(.success(())) }
                         self.completionHandlers.removeAll()
                     } catch let error as RPCError {
-                        if let callResult = error.callResult {
+                        switch error {
+                        case .callError(let callResult):
                             switch callResult.statusCode {
                             case .unauthenticated:
                                 // TODO: Auto retry? Maybe should use some auto retry handler for this same as the credential status polling
@@ -41,6 +42,10 @@ final class AuthenticationManager {
                                 self.completionHandlers.forEach{ $0(.failure(error)) }
                                 self.completionHandlers.removeAll()
                             }
+                        default:
+                            completion(.failure(error))
+                            self.completionHandlers.forEach{ $0(.failure(error)) }
+                            self.completionHandlers.removeAll()
                         }
                     } catch {
                         completion(.failure(error))
