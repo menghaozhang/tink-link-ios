@@ -1,6 +1,6 @@
 import Foundation
 
-extension TinkLink {
+extension Locale {
     /// Available locales for Tink link
     public static var availableLocales: [Locale] {
         // Thread with current supported locales https://tink.slack.com/archives/CG84WBWLS/p1568020310012900
@@ -19,16 +19,16 @@ extension TinkLink {
     }
     
     public static func availableLocaleWith(languageCode: String) -> Locale? {
-        return availableLocales.first { $0.languageCode == languageCode }
+        availableLocales.first { $0.languageCode == languageCode }
     }
     
     public static func availableLocaleWith(regionCode: String) -> Locale? {
-        return availableLocales.first { $0.regionCode == regionCode }
+        availableLocales.first { $0.regionCode == regionCode }
     }
     
     /// Fallback locales if no other locale is available
     static var fallBackLocale: Locale {
-        return Locale(identifier: "en_US")
+        Locale(identifier: "en_US")
     }
     
     /// Default available locale that will be used based on the current locale
@@ -40,5 +40,15 @@ extension TinkLink {
         } else {
             return fallBackLocale
         }
+    }
+}
+
+extension TinkLink {
+    public static var availableLocales: [Locale] {
+        Locale.availableLocales
+    }
+    
+    public static var defaultLocale: Locale {
+        Locale.defaultLocale
     }
 }
