@@ -22,7 +22,7 @@ extension Provider {
     }
 }
 
-extension Provider.`Type` {
+extension ProviderType {
     init(grpcType: GRPCProvider.TypeEnum) {
         switch grpcType {
         case .unknown:

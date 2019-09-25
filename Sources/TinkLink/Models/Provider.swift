@@ -9,18 +9,8 @@ public struct Provider {
     /// The display name of the provider.
     public var displayName: String
 
-    public enum `Type` {
-        case unknown
-        case bank
-        case creditCard
-        case broker
-        case other
-        case test
-        case fraud
-    }
-
     /// Indicates what kind of financial institution the provider represents.
-    public var type: `Type`
+    public var type: ProviderType
 
     public enum Status {
         case unknown
@@ -125,3 +115,14 @@ public struct Provider {
     public var financialInstitutionID: String
     public var financialInstitutionName: String
 }
+
+public enum ProviderType {
+    case unknown
+    case bank
+    case creditCard
+    case broker
+    case other
+    case test
+    case fraud
+}
+
