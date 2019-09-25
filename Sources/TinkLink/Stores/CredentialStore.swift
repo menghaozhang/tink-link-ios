@@ -2,7 +2,11 @@ import Foundation
 import SwiftGRPC
 
 final class CredentialStore {
-    var credentials: [Identifier<Credential>: Credential] = [:] {
+    var credentials: [Identifier<Credential>: Credential] {
+        let credentials = tinkQueue.sync(flags: .barrier) { return _credentials }
+        return credentials
+    }
+    private var _credentials: [Identifier<Credential>: Credential] = [:] {
         didSet {
             NotificationCenter.default.post(name: .credentialStoreChanged, object: self)
         }
@@ -16,6 +20,7 @@ final class CredentialStore {
     private var addSupplementalInformationRetryCancellable: [Identifier<Credential>: RetryCancellable] = [:]
     private var cancelSupplementInformationRetryCancellable: [Identifier<Credential>: RetryCancellable] = [:]
     private var fetchCredentialsRetryCancellable: RetryCancellable?
+    private let tinkQueue = DispatchQueue(label: "tink_credential_store")
     
     init(tinkLink: TinkLink) {
         service = tinkLink.client.credentialService
@@ -27,19 +32,20 @@ final class CredentialStore {
     func addCredential(for provider: Provider, fields: [String: String], completion: @escaping(Result<Credential, Error>) -> Void) -> RetryCancellable {
         var multiHandler = MultiHandler()
         let market = Market(code: provider.marketCode)
+        
         let authHandler = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
             guard let self = self, self.createCredentialRetryCancellable[provider.name] == nil else { return }
             let handler = self.service.createCredential(providerName: provider.name, fields: fields, completion: { (result) in
-                DispatchQueue.main.async {
+                self.tinkQueue.async {
                     do {
                         let credential = try result.get()
+                        self._credentials[credential.id] = credential
                         completion(.success(credential))
-                        self.credentials[credential.id] = credential
                     } catch let error {
                         completion(.failure(error))
                     }
-                    self.createCredentialRetryCancellable[provider.name] = nil
                 }
+                self.createCredentialRetryCancellable[provider.name] = nil
             })
             self.createCredentialRetryCancellable[provider.name] = handler
             multiHandler.add(handler)
@@ -54,10 +60,8 @@ final class CredentialStore {
     func addSupplementalInformation(for credential: Credential, supplementalInformationFields: [String: String], completion: @escaping (Result<Void, Error>) -> Void) {
         precondition(service.metadata.hasAuthorization, "Service doesn't have authentication metadata set!")
         addSupplementalInformationRetryCancellable[credential.id] = self.service.supplementInformation(credentialID: credential.id, fields: supplementalInformationFields) { [weak self] result in
-            DispatchQueue.main.async {
-                self?.addSupplementalInformationRetryCancellable[credential.id] = nil
-                completion(result)
-            }
+            self?.addSupplementalInformationRetryCancellable[credential.id] = nil
+            completion(result)
         }
     }
     
@@ -65,10 +69,8 @@ final class CredentialStore {
     func cancelSupplementInformation(for credential: Credential, completion: @escaping (Result<Void, Error>) -> Void) {
         precondition(service.metadata.hasAuthorization, "Service doesn't have authentication metadata set!")
         cancelSupplementInformationRetryCancellable[credential.id] = self.service.cancelSupplementInformation(credentialID: credential.id) { [weak self] result in
-            DispatchQueue.main.async {
-                self?.cancelSupplementInformationRetryCancellable[credential.id] = nil
-                completion(result)
-            }
+            self?.cancelSupplementInformationRetryCancellable[credential.id] = nil
+            completion(result)
         }
     }
 
@@ -80,16 +82,17 @@ final class CredentialStore {
 
     func performFetch() {
         fetchCredentialsRetryCancellable = service.credentials { [weak self] result in
-            DispatchQueue.main.async {
-                self?.fetchCredentialsRetryCancellable = nil
+            guard let self = self else { return }
+            self.tinkQueue.async {
                 do {
                     let credentials = try result.get()
-                    self?.credentials = Dictionary(grouping: credentials, by: { $0.id })
+                    self._credentials = Dictionary(grouping: credentials, by: { $0.id })
                         .compactMapValues { $0.first }
                 } catch {
                     NotificationCenter.default.post(name: .credentialStoreErrorOccured, object: self, userInfo: [CredentialStoreErrorOccuredNotificationErrorKey: error])
                 }
             }
+            self.fetchCredentialsRetryCancellable = nil
         }
     }
 }

@@ -14,11 +14,16 @@ final class ProviderStore {
     private var service: ProviderService
     private var marketFetchHandler: RetryCancellable?
     private var providerFetchHandlers: [ProviderContext.Attributes: RetryCancellable] = [:]
-
-    private(set) var providerMarketGroups: [Market: Result<[Provider], Error>] = [:] {
+    private let tinkQueue = DispatchQueue(label: "tink_provider_store")
+    private var _providerMarketGroups: [Market: Result<[Provider], Error>] = [:] {
         didSet {
             NotificationCenter.default.post(name: .providerStoreMarketGroupsChanged, object: self)
         }
+    }
+    var providerMarketGroups: [Market: Result<[Provider], Error>] {
+        dispatchPrecondition(condition: .notOnQueue(tinkQueue))
+        let providerMarketGroups = tinkQueue.sync(flags: .barrier) { return _providerMarketGroups }
+        return providerMarketGroups
     }
     
     private(set) var markets: Result<[Market], Error>? {
@@ -46,10 +51,10 @@ final class ProviderStore {
                 let RetryCancellable = self.unauthenticatedPerformFetchProviders(attributes: attributes)
                 multiHandler.add(RetryCancellable)
             } catch {
-                DispatchQueue.main.async {
-                    self.providerMarketGroups[attributes.market] = .failure(error)
-                    self.providerFetchHandlers[attributes] = nil
+                self.tinkQueue.async {
+                    self._providerMarketGroups[attributes.market] = .failure(error)
                 }
+                self.providerFetchHandlers[attributes] = nil
             }
         }
         if let canceller = authCanceller {
@@ -67,16 +72,16 @@ final class ProviderStore {
         precondition(service.metadata.hasAuthorization, "Service doesn't have authentication metadata set!")
         return service.providers(market: attributes.market, capabilities: attributes.capabilities, includeTestProviders: attributes.includeTestProviders) { [weak self, attributes] result in
             guard let self = self else { return }
-            DispatchQueue.main.async {
+            self.tinkQueue.async {
                 do {
                     let fetchedProviders = try result.get()
                     let filteredProviders = fetchedProviders.filter { attributes.accessTypes.contains($0.accessType) }
-                    self.providerMarketGroups[attributes.market] = .success(filteredProviders)
+                    self._providerMarketGroups[attributes.market] = .success(filteredProviders)
                 } catch {
-                    self.providerMarketGroups[attributes.market] = .failure(error)
+                    self._providerMarketGroups[attributes.market] = .failure(error)
                 }
-                self.providerFetchHandlers[attributes] = nil
             }
+            self.providerFetchHandlers[attributes] = nil
         }
     }
     
@@ -88,14 +93,12 @@ final class ProviderStore {
     private func performFetchMarkets() -> RetryCancellable {
         var multiHandler = MultiHandler()
         let authHandler = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
-            guard let self = self, self.marketFetchHandler == nil else {
-                return
-            }
+            guard let self = self, self.marketFetchHandler == nil else { return }
             let retryCancellable = self.service.providerMarkets { result in
-                DispatchQueue.main.async {
+                self.tinkQueue.async {
                     self.markets = result
-                    self.marketFetchHandler = nil
                 }
+                self.marketFetchHandler = nil
             }
             multiHandler.add(retryCancellable)
         }
