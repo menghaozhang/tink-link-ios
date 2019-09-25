@@ -70,12 +70,12 @@ extension SupplementalInformationViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldCell.reuseIdentifier, for: indexPath)
         if let textFieldCell = cell as? TextFieldCell {
-            let field = form.fields[indexPath.item]
+            let field = form.fields[indexPath.section]
             
             textFieldCell.delegate = self
             textFieldCell.textField.placeholder = field.attributes.placeholder
             textFieldCell.textField.isSecureTextEntry = field.attributes.isSecureTextEntry
-            textFieldCell.textField.isEnabled = field.attributes.isEnabled
+            textFieldCell.textField.isEnabled = field.attributes.isEditable
             textFieldCell.textField.text = field.text
         }
         return cell
@@ -123,8 +123,8 @@ extension SupplementalInformationViewController {
 extension SupplementalInformationViewController: TextFieldCellDelegate {
     func textFieldCell(_ cell: TextFieldCell, willChangeToText text: String) {
         if let indexPath = tableView.indexPath(for: cell) {
-            form.fields[indexPath.item].text = text
-            navigationItem.rightBarButtonItem?.isEnabled = form.fields[indexPath.item].isValid
+            form.fields[indexPath.section].text = text
+            navigationItem.rightBarButtonItem?.isEnabled = form.fields[indexPath.section].isValid
         }
     }
 }

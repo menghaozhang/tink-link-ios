@@ -1,6 +1,10 @@
 import Foundation
 
+/// A Form is used to create, manage and validate fields for creating credentials or supplementing information for a credential.
 public struct Form {
+    /// A collection of fields.
+    ///
+    /// Represents a list of fields and provides access to the fields. Each field in can be accessed either by index or by field name.
     public struct Fields: MutableCollection {
 
         var fields: [Form.Field]
@@ -15,6 +19,13 @@ public struct Form {
         public func index(after i: Int) -> Int { fields.index(after: i) }
 
         // MARK: Dictionary Lookup
+
+        /// Accesses the field associated with the given field for reading and writing.
+        ///
+        /// This name based subscript returns the first field with the same name, or `nil` if the field is not found.
+        ///
+        /// - Parameter name: The name of the field to find in the list.
+        /// - Returns: The field associciated with `name` if it exists; otherwise, `nil`.
         public subscript(name fieldName: String) -> Form.Field? {
             get {
                 return fields.first(where: { $0.name == fieldName })
@@ -33,16 +44,26 @@ public struct Form {
         }
     }
 
+    /// The fields associated with this form.
     public var fields: Fields
     
     internal init(fieldSpecifications: [Provider.FieldSpecification]) {
         fields = Fields(fields: fieldSpecifications.map({ Field(fieldSpecification: $0) }))
     }
 
+    /// Returns a Boolean value indicating whether every field in the form are valid.
+    ///
+    /// - Returns: `true` if all fields in the form have valid text; otherwise, `false`.
     public var areFieldsValid: Bool {
         return fields.areFieldsValid
     }
 
+    /// Validate all fields.
+    ///
+    /// Use this method to validate all fields in the form or catch the value if one or more field are invalid.
+    ///
+    /// - Returns: `true` if all fields in the form have valid text; otherwise, `false`.
+    /// - Throws: A `Form.ValidationError` if one or more fields are invalid.
     public func validateFields() throws {
         try fields.validateFields()
     }
@@ -79,13 +100,22 @@ public struct Form {
                 placeholder: fieldSpecification.hint,
                 isSecureTextEntry: fieldSpecification.isMasked,
                 inputType: fieldSpecification.isNumeric ? .numeric : .default,
-                isEnabled: !fieldSpecification.isImmutable || fieldSpecification.initialValue.isEmpty
+                isEditable: !fieldSpecification.isImmutable || fieldSpecification.initialValue.isEmpty
             )
         }
-        
+
+        /// Validation rules for a field.
+        ///
+        /// Represents the rules for validating a form field.
         public struct ValidationRules {
+            /// Maximum length of value.
+            ///
+            /// Use this to e.g. limit user input to only accept input until `maxLength` is reached.
             public let maxLength: Int?
+
+            /// Minimum length of value.
             public let minLength: Int?
+
             internal let regex: String
             internal let regexError: String
 
@@ -102,24 +132,43 @@ public struct Form {
                 }
             }
         }
-        
+
+        /// Attributes to apply to a UI element that will represent a field.
         public struct Attributes {
             public enum InputType {
                 case `default`
+                /// A input type suitable for e.g. PIN entry.
                 case numeric
             }
 
+            /// A string to display next to the field to explain what the field is for.
             public let description: String
+
+            /// A string to display when there is no other text in the text field.
             public let placeholder: String
+
+            /// Identifies whether the text object should disable text copying and in some cases hide the text being entered.
             public let isSecureTextEntry: Bool
+
+            /// The input type associated with the field.
             public let inputType: InputType
-            public let isEnabled: Bool
+
+            /// A Boolean value indicating whether the field can be edited.
+            public let isEditable: Bool
         }
-        
+
+        /// Describes a field validation error.
         public enum ValidationError: Error, LocalizedError {
+            /// Field's `text` was invalid. See `reason` for explanation why.
             case validationFailed(fieldName: String, reason: String)
+
+            /// Field's `text` was too long.
             case maxLengthLimit(fieldName: String, maxLength: Int)
+
+            /// Field's `text` was too short.
             case minLengthLimit(fieldName: String, minLength: Int)
+
+            /// Missing `text` for required field.
             case requiredFieldEmptyValue(fieldName: String)
 
             var fieldName: String {
@@ -149,6 +198,11 @@ public struct Form {
             }
         }
 
+        /// Returns a Boolean value indicating whether the field is valid.
+        ///
+        /// To check why `text` wasn't valid if `false`, call `validate()` and check the thrown error for validation failure reason.
+        ///
+        /// - Returns: `true` if the field pass the validation rules; otherwise, `false`.
         public var isValid: Bool {
             do {
                 try validate()
@@ -158,6 +212,12 @@ public struct Form {
             }
         }
 
+        /// Validate field.
+        ///
+        /// Use this method to validate the current `text` value of the field or to catch the value if invalid.
+        ///
+        /// - Returns: `true` if all fields in the form have valid text; otherwise, `false`.
+        /// - Throws: A `Form.Field.ValidationError` if the field's `text` is invalid.
         public func validate() throws {
             let value = text
             if value.isEmpty, !isOptional {
@@ -168,9 +228,17 @@ public struct Form {
         }
     }
     
+    /// Describes a form validation error.
     public struct ValidationError: Error {
+        /// Describes one or more field validation errors.
         public var errors: [Form.Field.ValidationError]
 
+        /// Accesses the validation error associated with the given field.
+        ///
+        /// This name based subscript returns the first error with the same name, or `nil` if an error is not found.
+        ///
+        /// - Parameter fieldName: The name of the field to find an error for.
+        /// - Returns: The validation error associciated with `fieldName` if it exists; otherwise, `nil`.
         public subscript(fieldName fieldName: String) -> Form.Field.ValidationError? {
             errors.first(where: { $0.fieldName == fieldName })
         }
@@ -178,10 +246,20 @@ public struct Form {
 }
 
 extension Form {
+    /// Creates a form for the given provider.
+    ///
+    /// This creates a form to use for creating a credential for a specific provider.
+    ///
+    /// - Parameter provider: The provider to create a form for.
     public init(provider: Provider) {
         self.init(fieldSpecifications: provider.fields)
     }
-    
+
+    /// Creates a form for the given credential.
+    ///
+    /// This creates a form to use for supplementing information for a credential.
+    ///
+    /// - Parameter credential: The credential to create a form for.
     public init(credential: Credential) {
         self.init(fieldSpecifications: credential.supplementalInformationFields)
     }

@@ -14,7 +14,7 @@ final class AddCredentialViewController: UITableViewController {
     }
     private var task: AddCredentialTask?
     private var statusViewController: AddCredentialStatusViewController?
-    private lazy var doneBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addCredential))
+    private lazy var addBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addCredential))
     private var didFirstFieldBecomeFirstResponder = false
 
     init(provider: Provider) {
@@ -41,7 +41,7 @@ extension AddCredentialViewController {
         
         navigationItem.title = "Enter Credentials"
         navigationItem.largeTitleDisplayMode = .never
-        navigationItem.rightBarButtonItem = doneBarButtonItem
+        navigationItem.rightBarButtonItem = addBarButtonItem
         navigationItem.rightBarButtonItem?.isEnabled = false
     }
 
@@ -72,7 +72,7 @@ extension AddCredentialViewController {
             textFieldCell.delegate = self
             textFieldCell.textField.placeholder = field.attributes.placeholder
             textFieldCell.textField.isSecureTextEntry = field.attributes.isSecureTextEntry
-            textFieldCell.textField.isEnabled = field.attributes.isEnabled
+            textFieldCell.textField.isEnabled = field.attributes.isEditable
             textFieldCell.textField.text = field.text
         }
         return cell
@@ -122,32 +122,36 @@ extension AddCredentialViewController {
     }
     
     private func onUpdate(for status: AddCredentialTask.Status) {
-        switch status {
-        case .authenticating, .created:
-            break
-        case .awaitingSupplementalInformation(let supplementInformationTask):
-            self.showSupplementalInformation(for: supplementInformationTask)
-        case .awaitingThirdPartyAppAuthentication(let thirdPartyAppAuthentication):
-            if let deepLinkURL = thirdPartyAppAuthentication.deepLinkURL, UIApplication.shared.canOpenURL(deepLinkURL) {
-                UIApplication.shared.open(deepLinkURL)
-            } else {
-                showDownloadPrompt(for: thirdPartyAppAuthentication)
+        DispatchQueue.main.async {
+            switch status {
+            case .authenticating, .created:
+                break
+            case .awaitingSupplementalInformation(let supplementInformationTask):
+                self.showSupplementalInformation(for: supplementInformationTask)
+            case .awaitingThirdPartyAppAuthentication(let thirdPartyAppAuthentication):
+                if let deepLinkURL = thirdPartyAppAuthentication.deepLinkURL, UIApplication.shared.canOpenURL(deepLinkURL) {
+                    UIApplication.shared.open(deepLinkURL)
+                } else {
+                    self.showDownloadPrompt(for: thirdPartyAppAuthentication)
+                }
+            case .updating(let status):
+                self.showUpdating(status: status)
             }
-        case .updating(let status):
-            self.showUpdating(status: status)
         }
     }
     
     private func onCompletion(result: Result<Credential, Error>) {
-        navigationItem.rightBarButtonItem = doneBarButtonItem
+        DispatchQueue.main.async {
+            self.navigationItem.rightBarButtonItem = self.addBarButtonItem
 
-        switch result {
-        case .failure(let error):
-            hideUpdatingView(animated: true) {
-                self.showAlert(for: error)
+            switch result {
+            case .failure(let error):
+                self.hideUpdatingView(animated: true) {
+                    self.showAlert(for: error)
+                }
+            case .success(let credential):
+                self.showCredentialUpdated(for: credential)
             }
-        case .success(let credential):
-            showCredentialUpdated(for: credential)
         }
     }
 }
@@ -164,10 +168,14 @@ extension AddCredentialViewController {
     
     private func showUpdating(status: String) {
         if statusViewController == nil {
+            navigationItem.setRightBarButton(addBarButtonItem, animated: true)
             let statusViewController = AddCredentialStatusViewController()
             statusViewController.modalTransitionStyle = .crossDissolve
             statusViewController.modalPresentationStyle = .overFullScreen
             present(statusViewController, animated: true)
+            UIView.animate(withDuration: 0.3) {
+                self.view.tintAdjustmentMode = .dimmed
+            }
             self.statusViewController = statusViewController
         }
         statusViewController?.status = status
@@ -175,6 +183,9 @@ extension AddCredentialViewController {
     
     private func hideUpdatingView(animated: Bool = false, completion: (() -> Void)? = nil) {
         guard statusViewController != nil else { return }
+        UIView.animate(withDuration: 0.3) {
+            self.view.tintAdjustmentMode = .automatic
+        }
         dismiss(animated: animated, completion: completion)
         statusViewController = nil
     }
@@ -232,6 +243,9 @@ extension AddCredentialViewController: SupplementalInformationViewControllerDele
 
     func supplementalInformationViewController(_ viewController: SupplementalInformationViewController, didSupplementInformationForCredential credential: Credential) {
         dismiss(animated: true)
-        // TODO: Maybe show loading
+
+        let activityIndicator = UIActivityIndicatorView(style: .gray)
+        activityIndicator.startAnimating()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
     }
 }

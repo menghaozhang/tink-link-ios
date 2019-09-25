@@ -1,5 +1,6 @@
 public class SupplementInformationTask {
     private let credentialService = TinkLink.shared.client.credentialService
+    private var callRetryCancellable: RetryCancellable?
     public private(set) var credential: Credential
 
     private let completionHandler: (Result<Void, Error>) -> Void
@@ -10,10 +11,16 @@ public class SupplementInformationTask {
     }
 
     public func submit(_ form: Form) {
-        credentialService.supplementInformation(credentialID: credential.id, fields: form.makeFields(), completion: completionHandler)
+        callRetryCancellable = credentialService.supplementInformation(credentialID: credential.id, fields: form.makeFields(), completion: { [weak self] result in
+            self?.completionHandler(result)
+            self?.callRetryCancellable = nil
+        })
     }
     
     public func cancel() {
-        credentialService.cancelSupplementInformation(credentialID: credential.id, completion: completionHandler)
+        callRetryCancellable = credentialService.cancelSupplementInformation(credentialID: credential.id, completion: { [weak self] result in
+            self?.completionHandler(result)
+            self?.callRetryCancellable = nil
+        })
     }
 }
