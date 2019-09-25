@@ -69,9 +69,9 @@ extension ProviderListViewController {
         let providerGroup = providerGroups[indexPath.item]
         switch providerGroup {
         case .financialInsititutions(let financialInsititutionGroups):
-            showFinancialInstitution(for: financialInsititutionGroups)
+            showFinancialInstitution(for: financialInsititutionGroups, title: providerGroup.groupedDisplayName)
         case .accessTypes(let accessTypeGroups):
-            showAccessTypePicker(for: accessTypeGroups)
+            showAccessTypePicker(for: accessTypeGroups, title: providerGroup.groupedDisplayName)
         case .credentialTypes(let providers):
             showCredentialTypePicker(for: providers)
         case .provider(let provider):
@@ -82,14 +82,16 @@ extension ProviderListViewController {
 
 // MARK: - Navigation
 extension ProviderListViewController {
-    func showFinancialInstitution(for groups: [FinancialInsititutionGroup]) {
+    func showFinancialInstitution(for groups: [FinancialInsititutionGroup], title: String?) {
         let viewController = FinancialInstitutionPickerViewController(style: .plain)
+        viewController.title = title
         viewController.financialInsititutionGroups = groups
         show(viewController, sender: nil)
     }
     
-    func showAccessTypePicker(for groups: [ProviderAccessTypeGroup]) {
+    func showAccessTypePicker(for groups: [ProviderAccessTypeGroup], title: String?) {
         let viewController = AccessTypePickerViewController(style: .plain)
+        viewController.title = title
         viewController.providerAccessTypeGroups = groups
         show(viewController, sender: nil)
     }

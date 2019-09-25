@@ -12,7 +12,7 @@ extension AccessTypePickerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Choose Access Type"
+        navigationItem.prompt = "Choose Access Type"
         navigationItem.largeTitleDisplayMode = .never
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
@@ -33,7 +33,6 @@ extension AccessTypePickerViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         let providersWithSameAccessType = providerAccessTypeGroups[indexPath.row]
         switch providersWithSameAccessType {
         case .credentialTypes(let providers):

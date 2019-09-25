@@ -17,11 +17,17 @@ final class AddCredentialViewController: UITableViewController {
     private lazy var addBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addCredential))
     private var didFirstFieldBecomeFirstResponder = false
 
+    private lazy var helpLabel = UILabel()
+
     init(provider: Provider) {
         self.provider = provider
         form = Form(provider: provider)
         
-        super.init(style: .grouped)
+        if #available(iOS 13.0, *) {
+            super.init(style: .insetGrouped)
+        } else {
+            super.init(style: .grouped)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -38,11 +44,15 @@ extension AddCredentialViewController {
         
         tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
         tableView.allowsSelection = false
-        
-        navigationItem.title = "Enter Credentials"
+
+        navigationItem.prompt = "Enter Credentials"
+        navigationItem.title = provider.displayName
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.rightBarButtonItem = addBarButtonItem
         navigationItem.rightBarButtonItem?.isEnabled = false
+
+        setupHelpFootnote()
+        layoutHelpFootnote()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -52,6 +62,47 @@ extension AddCredentialViewController {
             cell.textField.becomeFirstResponder()
             didFirstFieldBecomeFirstResponder = true
         }
+    }
+
+    override func viewLayoutMarginsDidChange() {
+        super.viewLayoutMarginsDidChange()
+
+        layoutHelpFootnote()
+    }
+}
+
+// MARK: - Help Footnote
+extension AddCredentialViewController {
+    private func setupHelpFootnote() {
+        helpLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
+        helpLabel.numberOfLines = 0
+        helpLabel.text = provider.helpText
+        if #available(iOS 13.0, *) {
+            helpLabel.textColor = .secondaryLabel
+        } else {
+            helpLabel.textColor = .gray
+        }
+
+        let helpStackView = UIStackView(arrangedSubviews: [helpLabel])
+        helpStackView.isLayoutMarginsRelativeArrangement = true
+
+        tableView.tableFooterView = helpStackView
+    }
+
+    private func layoutHelpFootnote() {
+        let footerLayoutMargins = UIEdgeInsets(top: 0, left: view.layoutMargins.left, bottom: 0, right: view.layoutMargins.right)
+
+        let helpLabelSize = helpLabel.sizeThatFits(CGSize(width: view.bounds.inset(by: footerLayoutMargins).width, height: .infinity))
+
+        tableView.tableFooterView?.layoutMargins = footerLayoutMargins
+
+        tableView.tableFooterView?.frame = CGRect(
+            origin: .zero,
+            size: CGSize(
+                width: view.bounds.width,
+                height: helpLabelSize.height
+            )
+        )
     }
 }
 
@@ -91,8 +142,6 @@ extension AddCredentialViewController {
             } else {
                 return nil
             }
-        } else if section == form.fields.count - 1 {
-            return provider.helpText
         } else {
             return nil
         }
@@ -232,6 +281,14 @@ extension AddCredentialViewController: TextFieldCellDelegate {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         form.fields[indexPath.section].text = text
         navigationItem.rightBarButtonItem?.isEnabled = form.fields[indexPath.section].isValid
+    }
+
+    func textFieldCellDidEndEditing(_ cell: TextFieldCell) {
+        do {
+            try form.validateFields()
+        } catch {
+            formError = error as? Form.ValidationError
+        }
     }
 }
 

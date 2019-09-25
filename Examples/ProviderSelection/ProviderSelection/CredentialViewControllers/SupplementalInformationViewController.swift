@@ -25,7 +25,11 @@ final class SupplementalInformationViewController: UITableViewController {
         self.supplementInformationTask = supplementInformationTask
         self.form = Form(credential: supplementInformationTask.credential)
         
-        super.init(style: .grouped)
+        if #available(iOS 13.0, *) {
+            super.init(style: .insetGrouped)
+        } else {
+            super.init(style: .grouped)
+        }
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -125,6 +129,14 @@ extension SupplementalInformationViewController: TextFieldCellDelegate {
         if let indexPath = tableView.indexPath(for: cell) {
             form.fields[indexPath.section].text = text
             navigationItem.rightBarButtonItem?.isEnabled = form.fields[indexPath.section].isValid
+        }
+    }
+
+    func textFieldCellDidEndEditing(_ cell: TextFieldCell) {
+        do {
+            try form.validateFields()
+        } catch {
+            formError = error as? Form.ValidationError
         }
     }
 }

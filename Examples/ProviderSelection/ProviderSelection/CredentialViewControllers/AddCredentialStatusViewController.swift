@@ -32,16 +32,16 @@ final class AddCredentialStatusViewController: UIViewController {
         view.addSubview(visualEffectView)
 
         let stackView = UIStackView(arrangedSubviews: [activityIndicator, statusLabelView])
-        stackView.axis = .horizontal
+        stackView.axis = .vertical
         stackView.isLayoutMarginsRelativeArrangement = true
-        stackView.layoutMargins = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+        stackView.layoutMargins = UIEdgeInsets(top: 32, left: 24, bottom: 24, right: 24)
         stackView.spacing = 16
         stackView.translatesAutoresizingMaskIntoConstraints = false
         visualEffectView.contentView.addSubview(stackView)
 
-        statusLabelView.font = UIFont.preferredFont(forTextStyle: .footnote)
+        statusLabelView.font = UIFont.preferredFont(forTextStyle: .headline)
         statusLabelView.numberOfLines = 0
-        statusLabelView.preferredMaxLayoutWidth = 200
+        statusLabelView.preferredMaxLayoutWidth = 220
 
         activityIndicator.startAnimating()
         activityIndicator.setContentHuggingPriority(.defaultLow, for: .vertical)
@@ -50,7 +50,7 @@ final class AddCredentialStatusViewController: UIViewController {
             visualEffectView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             visualEffectView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
 
-            statusLabelView.widthAnchor.constraint(equalToConstant: 200),
+            statusLabelView.widthAnchor.constraint(equalToConstant: 240),
 
             stackView.topAnchor.constraint(equalTo: visualEffectView.contentView.topAnchor),
             stackView.leadingAnchor.constraint(equalTo: visualEffectView.contentView.leadingAnchor),

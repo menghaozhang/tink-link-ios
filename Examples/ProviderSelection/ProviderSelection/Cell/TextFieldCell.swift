@@ -2,6 +2,7 @@ import UIKit
 
 protocol TextFieldCellDelegate: AnyObject {
     func textFieldCell(_ cell: TextFieldCell, willChangeToText text: String)
+    func textFieldCellDidEndEditing(_ cell: TextFieldCell)
 }
 
 class TextFieldCell: UITableViewCell, UITextFieldDelegate {
@@ -53,5 +54,9 @@ class TextFieldCell: UITableViewCell, UITextFieldDelegate {
         let text = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) ?? ""
         delegate?.textFieldCell(self, willChangeToText: text)
         return true
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        delegate?.textFieldCellDidEndEditing(self)
     }
 }

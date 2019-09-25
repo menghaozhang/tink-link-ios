@@ -12,7 +12,8 @@ extension CredentialTypePickerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Choose Credential Type"
+        navigationItem.prompt = "Choose Credential Type"
+        navigationItem.title = providers.first?.displayName
         navigationItem.largeTitleDisplayMode = .never
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
