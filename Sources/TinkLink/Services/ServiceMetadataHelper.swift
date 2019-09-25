@@ -23,7 +23,7 @@ extension ProcessInfo {
     }
 
     var tinkEnvironment: Environment? {
-        return environment["TINK_ENVIRONMENT"].flatMap(Environment.init(rawValue:))
+        return environment["TINK_CUSTOM_ENDPOINT"].flatMap(URL.init(string: )).flatMap { Environment.custom($0) }
     }
     
     var tinkMarket: Market? {

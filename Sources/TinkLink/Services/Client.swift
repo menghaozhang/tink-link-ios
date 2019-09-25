@@ -43,3 +43,22 @@ final class Client {
     private(set) lazy var streamingService = StreamingService(channel: channel, metadata: metadata)
     private(set) lazy var userService = UserService(channel: channel, metadata: metadata)
 }
+
+extension Client {
+    convenience init(configurationUrl: URL) throws {
+        let data = try Data(contentsOf: configurationUrl)
+        let configuration = try PropertyListDecoder().decode(TinkLink.Configuration.self, from: data)
+        self.init(environment: configuration.environment, clientID: configuration.clientID, certificateURL: configuration.certificateURL, market: configuration.market, locale: configuration.locale)
+    }
+
+    convenience init?(processInfo: ProcessInfo) {
+        guard let clientID = processInfo.tinkClientID else { return nil }
+        self.init(
+            environment: processInfo.tinkEnvironment ?? .staging,
+            clientID: clientID,
+            certificate: processInfo.tinkCertificate,
+            market: processInfo.tinkMarket ?? TinkLink.defaultMarket,
+            locale: processInfo.tinkLocale ?? TinkLink.defaultLocale
+        )
+    }
+}

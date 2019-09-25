@@ -22,6 +22,10 @@ public struct Market: Hashable, RawRepresentable, ExpressibleByStringLiteral {
     public var localizedString: String? {
         return Locale.current.localizedString(forRegionCode: code)
     }
+    
+    public static var defaultMarket: Market {
+        return Market(code: "SE")
+    }
 }
 
 extension Market: Comparable {
@@ -43,6 +47,6 @@ extension Array where Element == Market {
 
 extension TinkLink {
     public static var defaultMarket: Market {
-        return Market(code: "SE")
+        return .defaultMarket
     }
 }

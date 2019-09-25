@@ -45,12 +45,13 @@ public class CredentialContext {
         }
     }
 
-    private let credentialStore = CredentialStore.shared
+    private let credentialStore: CredentialStore
     private var credentialStoreChangeObserver: Any?
     private var credentialStoreErrorObserver: Any?
     
-    public init() {
-
+    /// An initializer that provides TinkLink to config the add credential service
+    public init(tinkLink: TinkLink = .shared) {
+        credentialStore = CredentialStore(tinkLink: tinkLink)
     }
 
     private func addStoreObservers() {

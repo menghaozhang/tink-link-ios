@@ -1,24 +1,22 @@
 import Foundation
 
 public class TinkLink {
+    /// Configuration used to set up the TinkLink
     public struct Configuration {
         var clientID: String
         var environment: Environment
-        var timeoutIntervalForRequest: TimeInterval?
+        // keep this internal in case need to set up the URL
         var certificateURL: URL?
         var market: Market
         var locale: Locale
-
-        public init(clientID: String, environment: Environment = .production, timeoutIntervalForRequest: TimeInterval? = nil, certificateURL: URL? = nil, market: Market? = nil, locale: Locale? = nil) {
-            self.environment = environment
+        /// - Parameters:
+        ///   - clientId: The client id for your app.
+        ///   - market: Optional, default market(SE) will be used if nothing is provided.
+        ///   - locale: Optional, default locale(sv_SE) will be used if nothing is provided.
+        public init(clientID: String, market: Market? = nil, locale: Locale? = nil) {
+            self.environment = .production
             self.clientID = clientID
-            self.timeoutIntervalForRequest = timeoutIntervalForRequest
-            self.certificateURL = certificateURL
-            if let market = market {
-                self.market = market
-            } else {
-                self.market = TinkLink.defaultMarket
-            }
+            self.market = market ?? .defaultMarket
             if let locale = locale {
                 if TinkLink.availableLocales.contains(locale) {
                     self.locale = locale
@@ -31,6 +29,7 @@ public class TinkLink {
         }
     }
     
+    public init() {}
     public static let shared: TinkLink = TinkLink()
     
     private var _client: Client?
@@ -60,8 +59,6 @@ public class TinkLink {
             _client = newValue
         }
     }
-
-    private(set) public static var timeoutIntervalForRequest: TimeInterval = 15
     
     // Setup via configration files
     public static func configure(tinklinkUrl: URL) throws {
@@ -74,26 +71,24 @@ public class TinkLink {
     public static func configure(with configuration: TinkLink.Configuration) {
         shared._client = Client(environment: configuration.environment , clientID: configuration.clientID, certificateURL: configuration.certificateURL, market: configuration.market, locale: configuration.locale)
     }
-    
     // TODO: Some configurations can be changed after setup, for example timeoutIntervalForRequest and Qos, the changes should reflect to the stores and services
-    public static func configure(timeoutInterval: TimeInterval) {
-        TinkLink.timeoutIntervalForRequest = timeoutInterval
+    
+    // Used to setup additional TinkLink object
+    public func configure(tinklinkUrl: URL) throws {
+        let data = try Data(contentsOf: tinklinkUrl)
+        let configuration = try PropertyListDecoder().decode(TinkLink.Configuration.self, from: data)
+        configure(with: configuration)
     }
     
-    private init() {
-
-    }
-    
-    var timeoutIntervalForRequest: TimeInterval {
-        return TinkLink.timeoutIntervalForRequest
+    public func configure(with configuration: TinkLink.Configuration) {
+        _client = Client(environment: configuration.environment , clientID: configuration.clientID, certificateURL: configuration.certificateURL, market: configuration.market, locale: configuration.locale)
     }
 }
 
 extension TinkLink.Configuration: Decodable {
     enum CodingKeys: String, CodingKey {
+        case environmentEndpoint = "TINK_CUSTOM_END_POINT"
         case clientID = "TINK_CLIENT_ID"
-        case environment = "TINK_ENVIRONMENT"
-        case timeoutInterval = "TINK_TIMEOUT_INTERVAL"
         case certificateFileName = "TINK_CERTIFICATE_FILE_NAME"
         case market = "TINK_MARKET_CODE"
         case locale = "TINK_LOCALE_IDENTIFIER"
@@ -102,10 +97,8 @@ extension TinkLink.Configuration: Decodable {
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         clientID = try values.decode(String.self, forKey: .clientID)
-        timeoutIntervalForRequest = try? values.decode(Double.self, forKey: .timeoutInterval)
-        if let environmentString = try? values.decode(String.self, forKey: .environment),
-            let environment = Environment(rawValue: environmentString) {
-            self.environment = environment
+        if let environmentEndpoint = try? values.decode(String.self, forKey: .environmentEndpoint), let url = URL(string: environmentEndpoint) {
+            self.environment = .custom(url)
         } else {
             self.environment = .production
         }
@@ -132,24 +125,5 @@ extension TinkLink.Configuration: Decodable {
         } else {
             locale = TinkLink.defaultLocale
         }
-    }
-}
-
-extension Client {
-    convenience init(configurationUrl: URL) throws {
-        let data = try Data(contentsOf: configurationUrl)
-        let configuration = try PropertyListDecoder().decode(TinkLink.Configuration.self, from: data)
-        self.init(environment: configuration.environment, clientID: configuration.clientID, certificateURL: configuration.certificateURL, market: configuration.market, locale: configuration.locale)
-    }
-
-    convenience init?(processInfo: ProcessInfo) {
-        guard let clientID = processInfo.tinkClientID else { return nil }
-        self.init(
-            environment: processInfo.tinkEnvironment ?? .staging,
-            clientID: clientID,
-            certificate: processInfo.tinkCertificate,
-            market: processInfo.tinkMarket ?? TinkLink.defaultMarket,
-            locale: processInfo.tinkLocale ?? TinkLink.defaultLocale
-        )
     }
 }
