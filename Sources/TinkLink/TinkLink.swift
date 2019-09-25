@@ -2,14 +2,14 @@ import Foundation
 
 public class TinkLink {
     public struct Configuration {
-        var environment: Environment
         var clientID: String
+        var environment: Environment
         var timeoutIntervalForRequest: TimeInterval?
         var certificateURL: URL?
         var market: Market
         var locale: Locale
 
-        public init(environment: Environment = .production, clientID: String, timeoutIntervalForRequest: TimeInterval? = nil, certificateURL: URL? = nil, market: Market? = nil, locale: Locale? = nil) {
+        public init(clientID: String, environment: Environment = .production, timeoutIntervalForRequest: TimeInterval? = nil, certificateURL: URL? = nil, market: Market? = nil, locale: Locale? = nil) {
             self.environment = environment
             self.clientID = clientID
             self.timeoutIntervalForRequest = timeoutIntervalForRequest
@@ -91,8 +91,8 @@ public class TinkLink {
 
 extension TinkLink.Configuration: Decodable {
     enum CodingKeys: String, CodingKey {
-        case environment = "TINK_ENVIRONMENT"
         case clientID = "TINK_CLIENT_ID"
+        case environment = "TINK_ENVIRONMENT"
         case timeoutInterval = "TINK_TIMEOUT_INTERVAL"
         case certificateFileName = "TINK_CERTIFICATE_FILE_NAME"
         case market = "TINK_MARKET_CODE"
