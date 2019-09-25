@@ -52,6 +52,7 @@ extension AddCredentialViewController {
         navigationItem.rightBarButtonItem?.isEnabled = false
 
         setupHelpFootnote()
+        layoutHelpFootnote()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -63,6 +64,15 @@ extension AddCredentialViewController {
         }
     }
 
+    override func viewLayoutMarginsDidChange() {
+        super.viewLayoutMarginsDidChange()
+
+        layoutHelpFootnote()
+    }
+}
+
+// MARK: - Help Footnote
+extension AddCredentialViewController {
     private func setupHelpFootnote() {
         helpLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
         helpLabel.numberOfLines = 0
@@ -73,27 +83,13 @@ extension AddCredentialViewController {
             helpLabel.textColor = .gray
         }
 
-        let footerLayoutMargins = UIEdgeInsets(top: 0, left: view.layoutMargins.left, bottom: 0, right: view.layoutMargins.right)
-        let helpLabelSize = helpLabel.sizeThatFits(CGSize(width: view.bounds.inset(by: footerLayoutMargins).width, height: .infinity))
-        helpLabel.frame = CGRect(origin: .zero, size: helpLabelSize)
-
         let helpStackView = UIStackView(arrangedSubviews: [helpLabel])
-        helpStackView.layoutMargins = view.layoutMargins
         helpStackView.isLayoutMarginsRelativeArrangement = true
-        helpStackView.frame = CGRect(
-            origin: .zero,
-            size: CGSize(
-                width: view.bounds.width,
-                height: helpLabelSize.height
-            )
-        )
 
         tableView.tableFooterView = helpStackView
     }
 
-    override func viewLayoutMarginsDidChange() {
-        super.viewLayoutMarginsDidChange()
-
+    private func layoutHelpFootnote() {
         let footerLayoutMargins = UIEdgeInsets(top: 0, left: view.layoutMargins.left, bottom: 0, right: view.layoutMargins.right)
 
         let helpLabelSize = helpLabel.sizeThatFits(CGSize(width: view.bounds.inset(by: footerLayoutMargins).width, height: .infinity))
