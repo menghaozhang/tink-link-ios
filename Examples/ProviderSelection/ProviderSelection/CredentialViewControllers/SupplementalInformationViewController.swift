@@ -127,4 +127,12 @@ extension SupplementalInformationViewController: TextFieldCellDelegate {
             navigationItem.rightBarButtonItem?.isEnabled = form.fields[indexPath.item].isValid
         }
     }
+
+    func textFieldCellDidEndEditing(_ cell: TextFieldCell) {
+        do {
+            try form.validateFields()
+        } catch {
+            formError = error as? Form.ValidationError
+        }
+    }
 }

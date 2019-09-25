@@ -277,6 +277,14 @@ extension AddCredentialViewController: TextFieldCellDelegate {
         form.fields[indexPath.section].text = text
         navigationItem.rightBarButtonItem?.isEnabled = form.fields[indexPath.section].isValid
     }
+
+    func textFieldCellDidEndEditing(_ cell: TextFieldCell) {
+        do {
+            try form.validateFields()
+        } catch {
+            formError = error as? Form.ValidationError
+        }
+    }
 }
 
 // MARK: - SupplementalInformationViewControllerDelegate
