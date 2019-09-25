@@ -17,6 +17,8 @@ final class AddCredentialViewController: UITableViewController {
     private lazy var addBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addCredential))
     private var didFirstFieldBecomeFirstResponder = false
 
+    private lazy var helpLabel = UILabel()
+
     init(provider: Provider) {
         self.provider = provider
         form = Form(provider: provider)
@@ -43,6 +45,8 @@ extension AddCredentialViewController {
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.rightBarButtonItem = addBarButtonItem
         navigationItem.rightBarButtonItem?.isEnabled = false
+
+        setupHelpFootnote()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -52,6 +56,52 @@ extension AddCredentialViewController {
             cell.textField.becomeFirstResponder()
             didFirstFieldBecomeFirstResponder = true
         }
+    }
+
+    private func setupHelpFootnote() {
+        helpLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
+        helpLabel.numberOfLines = 0
+        helpLabel.text = provider.helpText
+        if #available(iOS 13.0, *) {
+            helpLabel.textColor = .secondaryLabel
+        } else {
+            helpLabel.textColor = .gray
+        }
+
+        let footerLayoutMargins = UIEdgeInsets(top: 0, left: view.layoutMargins.left, bottom: 0, right: view.layoutMargins.right)
+        let helpLabelSize = helpLabel.sizeThatFits(CGSize(width: view.bounds.inset(by: footerLayoutMargins).width, height: .infinity))
+        helpLabel.frame = CGRect(origin: .zero, size: helpLabelSize)
+
+        let helpStackView = UIStackView(arrangedSubviews: [helpLabel])
+        helpStackView.layoutMargins = view.layoutMargins
+        helpStackView.isLayoutMarginsRelativeArrangement = true
+        helpStackView.frame = CGRect(
+            origin: .zero,
+            size: CGSize(
+                width: view.bounds.width,
+                height: helpLabelSize.height
+            )
+        )
+
+        tableView.tableFooterView = helpStackView
+    }
+
+    override func viewLayoutMarginsDidChange() {
+        super.viewLayoutMarginsDidChange()
+
+        let footerLayoutMargins = UIEdgeInsets(top: 0, left: view.layoutMargins.left, bottom: 0, right: view.layoutMargins.right)
+
+        let helpLabelSize = helpLabel.sizeThatFits(CGSize(width: view.bounds.inset(by: footerLayoutMargins).width, height: .infinity))
+
+        tableView.tableFooterView?.layoutMargins = footerLayoutMargins
+
+        tableView.tableFooterView?.frame = CGRect(
+            origin: .zero,
+            size: CGSize(
+                width: view.bounds.width,
+                height: helpLabelSize.height
+            )
+        )
     }
 }
 
@@ -91,8 +141,6 @@ extension AddCredentialViewController {
             } else {
                 return nil
             }
-        } else if section == form.fields.count - 1 {
-            return provider.helpText
         } else {
             return nil
         }
