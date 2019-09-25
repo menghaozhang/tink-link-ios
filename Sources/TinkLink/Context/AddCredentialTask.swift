@@ -31,11 +31,11 @@ public class AddCredentialTask {
 
     private(set) var credential: Credential?
 
-    enum CompletionPredicate {
+    public enum CompletionPredicate {
         case updating
         case updated
     }
-    let completionPredicate: CompletionPredicate
+    public let completionPredicate: CompletionPredicate
 
     let progressHandler: (Status) -> Void
     let completion: (Result<Credential, Swift.Error>) -> Void
