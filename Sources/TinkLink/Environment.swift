@@ -1,7 +1,9 @@
 import Foundation
 
 enum Environment {
+    /// Default environment is production
     case production
+    /// Use set tinkEnvironment environment for set staging environment, only for internal usage
     case staging
     case custom(URL)
 
