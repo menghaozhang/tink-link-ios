@@ -1,6 +1,6 @@
 import Foundation
 
-extension Locale {
+extension TinkLink {
     /// Available locales for Tink link
     public static var availableLocales: [Locale] {
         // Thread with current supported locales https://tink.slack.com/archives/CG84WBWLS/p1568020310012900
@@ -43,12 +43,8 @@ extension Locale {
     }
 }
 
-extension TinkLink {
-    public static var availableLocales: [Locale] {
-        Locale.availableLocales
-    }
-    
-    public static var defaultLocale: Locale {
-        Locale.defaultLocale
+extension Locale {
+    public static var defaultTinkLocale: Locale {
+        TinkLink.defaultLocale
     }
 }
