@@ -5,6 +5,7 @@ public class TinkLink {
     public struct Configuration {
         var clientID: String
         var environment: Environment
+        // keep this internal in case need to set up the URL
         var certificateURL: URL?
         var market: Market
         var locale: Locale
