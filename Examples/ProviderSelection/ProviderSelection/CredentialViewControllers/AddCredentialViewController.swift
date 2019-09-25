@@ -45,7 +45,8 @@ extension AddCredentialViewController {
         tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
         tableView.allowsSelection = false
 
-        navigationItem.title = "Enter Credentials"
+        navigationItem.prompt = "Enter Credentials"
+        navigationItem.title = provider.displayName
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.rightBarButtonItem = addBarButtonItem
         navigationItem.rightBarButtonItem?.isEnabled = false
