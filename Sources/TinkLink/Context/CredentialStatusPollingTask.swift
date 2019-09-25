@@ -33,9 +33,9 @@ class CredentialStatusPollingTask {
     }
     
     func pollStatus() {
-        self.callRetryCancellable = self.service.credentials { [weak self] result in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
+        DispatchQueue.main.asyncAfter(deadline: .now() + retryInterval) {
+            self.callRetryCancellable = self.service.credentials { [weak self] result in
+                guard let self = self else { return }
                 do {
                     let credentials = try result.get()
                     if let updatedCredential = credentials.first(where: { $0.id == self.credential.id}) {
