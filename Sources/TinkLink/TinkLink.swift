@@ -9,8 +9,8 @@ public class TinkLink {
         var certificateURL: URL?
         var market: Market
         var locale: Locale
-        public init (environment: Environment, clientId: String, redirectUrl: URL, timeoutIntervalForRequest: TimeInterval? = nil, certificateURL: URL? = nil, market: Market? = nil, locale: Locale? = nil) {
-            self.environment = environment
+        public init(clientId: String, redirectUrl: URL, timeoutIntervalForRequest: TimeInterval? = nil, certificateURL: URL? = nil, market: Market? = nil, locale: Locale? = nil) {
+            self.environment = .production
             self.clientId = clientId
             self.redirectUrl = redirectUrl
             self.timeoutIntervalForRequest = timeoutIntervalForRequest
@@ -88,7 +88,7 @@ public class TinkLink {
 
 extension TinkLink.Configuration: Decodable {
     enum CodingKeys: String, CodingKey {
-        case environment = "TINK_ENVIRONMENT"
+        case environmentEndpoint = "TINK_CUSTOM_END_POINT"
         case clientID = "TINK_CLIENT_ID"
         case redirectUrl = "TINK_REDIRECT_URL"
         case timeoutInterval = "TINK_TIMEOUT_INTERVAL"
@@ -101,9 +101,8 @@ extension TinkLink.Configuration: Decodable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         clientId = try values.decode(String.self, forKey: .clientID)
         timeoutIntervalForRequest = try? values.decode(Double.self, forKey: .timeoutInterval)
-        if let environmentString = try? values.decode(String.self, forKey: .environment),
-            let environment = Environment(rawValue: environmentString) {
-            self.environment = environment
+        if let environmentEndpoint = try? values.decode(String.self, forKey: .environmentEndpoint), let url = URL(string: environmentEndpoint) {
+            self.environment = .custom(url)
         } else {
             self.environment = .production
         }
