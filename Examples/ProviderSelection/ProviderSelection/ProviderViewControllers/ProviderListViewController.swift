@@ -3,7 +3,6 @@ import TinkLink
 
 /// Example of how to use the provider grouped by names
 final class ProviderListViewController: UITableViewController {
-    private var market: Market
     var providerContext: ProviderContext {
         didSet {
             tableView.reloadData()
@@ -17,9 +16,11 @@ final class ProviderListViewController: UITableViewController {
         }
     }
     
-    init(market: Market, style: UITableView.Style) {
-        self.market = market
+    init(tinkLink: TinkLink, style: UITableView.Style) {
         let attributes = ProviderContext.Attributes(capabilities: .all, includeTestProviders: true, accessTypes: Provider.AccessType.all)
+        // Use additional tinklink, need to hold the reference self
+        providerContext = ProviderContext(tinkLink: tinkLink, attributes: attributes)
+        // Use default tinklink
         providerContext = ProviderContext(attributes: attributes)
         providerGroups = providerContext.providerGroups
         super.init(style: style)
