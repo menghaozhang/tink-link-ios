@@ -9,7 +9,7 @@ public class TinkLink {
         var market: Market
         var locale: Locale
 
-        public init(environment: Environment, clientID: String, timeoutIntervalForRequest: TimeInterval? = nil, certificateURL: URL? = nil, market: Market? = nil, locale: Locale? = nil) {
+        public init(environment: Environment = .production, clientID: String, timeoutIntervalForRequest: TimeInterval? = nil, certificateURL: URL? = nil, market: Market? = nil, locale: Locale? = nil) {
             self.environment = environment
             self.clientID = clientID
             self.timeoutIntervalForRequest = timeoutIntervalForRequest
