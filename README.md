@@ -22,18 +22,16 @@ github "tink-ab/tink-link-ios"
 ### Info.plist
 Key | Type | Value
 --- | ---- | -----
-`TINK_ENVIRONMENT` | String | `production` or `staging` 
 `TINK_CLIENT_ID` | String |
 
 ### Environment Variables
 Key | Value
 --- | -----
 `TINK_CLIENT_ID` | 
-`TINK_ENVIRONMENT` | 
 `TINK_BEARER_TOKEN` | *For testing*
 
 ### Swift
 ```swift
-let configuration = TinkLink.Configuration(environment: <#Environment#>, clientID: <#String#>)
+let configuration = TinkLink.Configuration(clientID: <#String#>)
 TinkLink.configure(with: configuration)
 ```
