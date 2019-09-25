@@ -169,6 +169,9 @@ extension AddCredentialViewController {
             statusViewController.modalTransitionStyle = .crossDissolve
             statusViewController.modalPresentationStyle = .overFullScreen
             present(statusViewController, animated: true)
+            UIView.animate(withDuration: 0.3) {
+                self.view.tintAdjustmentMode = .dimmed
+            }
             self.statusViewController = statusViewController
         }
         statusViewController?.status = status
@@ -176,6 +179,9 @@ extension AddCredentialViewController {
     
     private func hideUpdatingView(animated: Bool = false, completion: (() -> Void)? = nil) {
         guard statusViewController != nil else { return }
+        UIView.animate(withDuration: 0.3) {
+            self.view.tintAdjustmentMode = .automatic
+        }
         dismiss(animated: animated, completion: completion)
         statusViewController = nil
     }
