@@ -48,7 +48,7 @@ extension Client {
     convenience init(configurationUrl: URL) throws {
         let data = try Data(contentsOf: configurationUrl)
         let configuration = try PropertyListDecoder().decode(TinkLink.Configuration.self, from: data)
-        self.init(environment: configuration.environment, clientID: configuration.clientId, certificateURL: configuration.certificateURL, market: configuration.market, locale: configuration.locale)
+        self.init(environment: configuration.environment, clientID: configuration.clientID, certificateURL: configuration.certificateURL, market: configuration.market, locale: configuration.locale)
     }
 
     convenience init?(processInfo: ProcessInfo) {

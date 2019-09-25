@@ -10,13 +10,11 @@ public class TinkLink {
         var locale: Locale
         /// - Parameters:
         ///   - clientId: The client id for your app.
-        ///   - certificateURL: Optional, certificate used to communicate with backend
-        ///   - market: Optional, default market(SE) will be used if nothing is providered.
-        ///   - locale: Optional, default locale(sv_SE) will be used if nothing is providered.
-        public init(clientID: String, certificateURL: URL? = nil, market: Market? = nil, locale: Locale? = nil) {
+        ///   - market: Optional, default market(SE) will be used if nothing is provided.
+        ///   - locale: Optional, default locale(sv_SE) will be used if nothing is provided.
+        public init(clientID: String, market: Market? = nil, locale: Locale? = nil) {
             self.environment = .production
             self.clientID = clientID
-            self.certificateURL = certificateURL
             self.market = market ?? .defaultMarket
             if let locale = locale {
                 if TinkLink.availableLocales.contains(locale) {

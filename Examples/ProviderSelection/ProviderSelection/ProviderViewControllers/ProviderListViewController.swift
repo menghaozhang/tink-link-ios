@@ -16,7 +16,7 @@ final class ProviderListViewController: UITableViewController {
         }
     }
     
-    init(tinkLink: TinkLink, style: UITableView.Style) {
+    init(tinkLink: TinkLink = .shared, style: UITableView.Style) {
         let attributes = ProviderContext.Attributes(capabilities: .all, includeTestProviders: true, accessTypes: Provider.AccessType.all)
         // Use additional tinklink, need to hold the reference self
         providerContext = ProviderContext(tinkLink: tinkLink, attributes: attributes)
