@@ -122,32 +122,36 @@ extension AddCredentialViewController {
     }
     
     private func onUpdate(for status: AddCredentialTask.Status) {
-        switch status {
-        case .authenticating, .created:
-            break
-        case .awaitingSupplementalInformation(let supplementInformationTask):
-            self.showSupplementalInformation(for: supplementInformationTask)
-        case .awaitingThirdPartyAppAuthentication(let thirdPartyAppAuthentication):
-            if let deepLinkURL = thirdPartyAppAuthentication.deepLinkURL, UIApplication.shared.canOpenURL(deepLinkURL) {
-                UIApplication.shared.open(deepLinkURL)
-            } else {
-                showDownloadPrompt(for: thirdPartyAppAuthentication)
+        DispatchQueue.main.async {
+            switch status {
+            case .authenticating, .created:
+                break
+            case .awaitingSupplementalInformation(let supplementInformationTask):
+                self.showSupplementalInformation(for: supplementInformationTask)
+            case .awaitingThirdPartyAppAuthentication(let thirdPartyAppAuthentication):
+                if let deepLinkURL = thirdPartyAppAuthentication.deepLinkURL, UIApplication.shared.canOpenURL(deepLinkURL) {
+                    UIApplication.shared.open(deepLinkURL)
+                } else {
+                    self.showDownloadPrompt(for: thirdPartyAppAuthentication)
+                }
+            case .updating(let status):
+                self.showUpdating(status: status)
             }
-        case .updating(let status):
-            self.showUpdating(status: status)
         }
     }
     
     private func onCompletion(result: Result<Credential, Error>) {
-        navigationItem.rightBarButtonItem = addBarButtonItem
+        DispatchQueue.main.async {
+            self.navigationItem.rightBarButtonItem = self.addBarButtonItem
 
-        switch result {
-        case .failure(let error):
-            hideUpdatingView(animated: true) {
-                self.showAlert(for: error)
+            switch result {
+            case .failure(let error):
+                self.hideUpdatingView(animated: true) {
+                    self.showAlert(for: error)
+                }
+            case .success(let credential):
+                self.showCredentialUpdated(for: credential)
             }
-        case .success(let credential):
-            showCredentialUpdated(for: credential)
         }
     }
 }
