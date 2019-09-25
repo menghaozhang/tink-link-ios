@@ -1,6 +1,7 @@
 import Foundation
 
 public class TinkLink {
+    /// Configuration used to set up the TinkLink
     public struct Configuration {
         var environment: Environment
         var clientId: String
@@ -8,7 +9,13 @@ public class TinkLink {
         var certificateURL: URL?
         var market: Market
         var locale: Locale
-        public init(clientId: String, redirectUrl: URL, timeoutIntervalForRequest: TimeInterval? = nil, certificateURL: URL? = nil, market: Market? = nil, locale: Locale? = nil) {
+        /// - Parameters:
+        ///   - clientId: The client id that providede by Tink.
+        ///   - redirectUrl: Needed when using Tink Link to redirect to your app.
+        ///   - certificateURL: Optional, certificate used to communicate with backend
+        ///   - market: Optional, default market(SE) will be used if nothing is providered.
+        ///   - locale: Optional, default locale(sv_SE) will be used if nothing is providered.
+        public init(clientId: String, redirectUrl: URL, certificateURL: URL? = nil, market: Market? = nil, locale: Locale? = nil) {
             self.environment = .production
             self.clientId = clientId
             self.redirectUrl = redirectUrl
@@ -26,6 +33,7 @@ public class TinkLink {
         }
     }
     
+    public init() {}
     public static let shared: TinkLink = TinkLink()
     
     private var _client: Client?
@@ -67,13 +75,17 @@ public class TinkLink {
     public static func configure(with configuration: TinkLink.Configuration) {
         shared._client = Client(environment: configuration.environment , clientID: configuration.clientId, certificateURL: configuration.certificateURL, market: configuration.market, locale: configuration.locale)
     }
-    
     // TODO: Some configurations can be changed after setup, for example timeoutIntervalForRequest and Qos, the changes should reflect to the stores and services
     
-    private init() {
-
+    // Used to setup additional TinkLink object
+    public func configure(tinklinkUrl: URL) throws {
+        let data = try Data(contentsOf: tinklinkUrl)
+        let configuration = try PropertyListDecoder().decode(TinkLink.Configuration.self, from: data)
+        configure(with: configuration)
     }
     
+    public func configure(with configuration: TinkLink.Configuration) {
+        _client = Client(environment: configuration.environment , clientID: configuration.clientId, certificateURL: configuration.certificateURL, market: configuration.market, locale: configuration.locale)
     }
 }
 

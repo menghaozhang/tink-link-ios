@@ -12,7 +12,12 @@ extension ProviderMarketContextDelegate {
 
 /// An object that accesses available markets.
 class ProviderMarketContext {
-    init() {
+    convenience init() {
+        self.init(tinkLink: TinkLink.shared)
+    }
+    
+    init(tinkLink: TinkLink) {
+        providerStore = ProviderStore(tinkLink: tinkLink)
         _markets = try? providerStore.markets?.get().sortedWithCurrentRegionFirst()
         NotificationCenter.default.addObserver(forName: .providerStoreMarketsChanged, object: providerStore, queue: .main) { [weak self] _ in
             guard let self = self else { return }
@@ -26,7 +31,7 @@ class ProviderMarketContext {
 
     weak var delegate: ProviderMarketContextDelegate?
 
-    private let providerStore = ProviderStore.shared
+    private let providerStore: ProviderStore
     private var providerStoreObserver: Any?
 
     private var _markets: [Market]? {
