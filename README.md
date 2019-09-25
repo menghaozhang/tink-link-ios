@@ -1,5 +1,10 @@
 # Tink Link iOS
 
+## Prerequisites
+1. Create your developer account at [Tink Console](https://console.tink.com/).
+2. Follow the getting started guide to retrieve your Client ID.
+3. Register the Redirect URI for your app (e.g. `myapp://callback`) in the list of allowed redirect URIs.
+
 ## Installation
 
 ### [CocoaPods](https://cocoapods.org)
@@ -17,22 +22,16 @@ github "tink-ab/tink-link-ios"
 ### Info.plist
 Key | Type | Value
 --- | ---- | -----
-`TINK_ENVIRONMENT` | String | `production` or `staging` 
 `TINK_CLIENT_ID` | String |
-`TINK_REDIRECT_URL` | String |
-`TINK_TIMEOUT_INTERVAL` | String | *Optional*
-`TINK_CERTIFICATE_FILE_NAME` | String | *Optional*
 
 ### Environment Variables
 Key | Value
 --- | -----
 `TINK_CLIENT_ID` | 
-`TINK_CERTIFICATE`| 
 `TINK_BEARER_TOKEN` | *For testing*
-`TINK_SESSION_ID` | *For testing*
 
 ### Swift
 ```swift
-let configuration = TinkLink.Configuration(environment: <#Environment#>, clientId: <#String#>, redirectUrl: <#URL#>)
+let configuration = TinkLink.Configuration(clientID: <#String#>)
 TinkLink.configure(with: configuration)
 ```

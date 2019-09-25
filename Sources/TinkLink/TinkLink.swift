@@ -2,20 +2,23 @@ import Foundation
 
 public class TinkLink {
     public struct Configuration {
+        var clientID: String
         var environment: Environment
-        var clientId: String
-        var redirectUrl: URL
         var timeoutIntervalForRequest: TimeInterval?
         var certificateURL: URL?
         var market: Market
         var locale: Locale
-        public init (environment: Environment, clientId: String, redirectUrl: URL, timeoutIntervalForRequest: TimeInterval? = nil, certificateURL: URL? = nil, market: Market, locale: Locale? = nil) {
+
+        public init(clientID: String, environment: Environment = .production, timeoutIntervalForRequest: TimeInterval? = nil, certificateURL: URL? = nil, market: Market? = nil, locale: Locale? = nil) {
             self.environment = environment
-            self.clientId = clientId
-            self.redirectUrl = redirectUrl
+            self.clientID = clientID
             self.timeoutIntervalForRequest = timeoutIntervalForRequest
             self.certificateURL = certificateURL
-            self.market = market
+            if let market = market {
+                self.market = market
+            } else {
+                self.market = TinkLink.defaultMarket
+            }
             if let locale = locale {
                 if TinkLink.availableLocales.contains(locale) {
                     self.locale = locale
@@ -69,7 +72,7 @@ public class TinkLink {
     
     // Setup via configration object
     public static func configure(with configuration: TinkLink.Configuration) {
-        shared._client = Client(environment: configuration.environment , clientID: configuration.clientId, certificateURL: configuration.certificateURL, market: configuration.market, locale: configuration.locale)
+        shared._client = Client(environment: configuration.environment , clientID: configuration.clientID, certificateURL: configuration.certificateURL, market: configuration.market, locale: configuration.locale)
     }
     
     // TODO: Some configurations can be changed after setup, for example timeoutIntervalForRequest and Qos, the changes should reflect to the stores and services
@@ -88,9 +91,8 @@ public class TinkLink {
 
 extension TinkLink.Configuration: Decodable {
     enum CodingKeys: String, CodingKey {
-        case environment = "TINK_ENVIRONMENT"
         case clientID = "TINK_CLIENT_ID"
-        case redirectUrl = "TINK_REDIRECT_URL"
+        case environment = "TINK_ENVIRONMENT"
         case timeoutInterval = "TINK_TIMEOUT_INTERVAL"
         case certificateFileName = "TINK_CERTIFICATE_FILE_NAME"
         case market = "TINK_MARKET_CODE"
@@ -99,7 +101,7 @@ extension TinkLink.Configuration: Decodable {
     
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        clientId = try values.decode(String.self, forKey: .clientID)
+        clientID = try values.decode(String.self, forKey: .clientID)
         timeoutIntervalForRequest = try? values.decode(Double.self, forKey: .timeoutInterval)
         if let environmentString = try? values.decode(String.self, forKey: .environment),
             let environment = Environment(rawValue: environmentString) {
@@ -107,12 +109,6 @@ extension TinkLink.Configuration: Decodable {
         } else {
             self.environment = .production
         }
-        let redirectUrlString = try values.decode(String.self, forKey: .redirectUrl)
-        guard let redirectUrl = URL(string: redirectUrlString) else {
-            fatalError("Invalid redirect URL")
-        }
-        self.redirectUrl = redirectUrl
-
         if let certificateFileName = try values.decodeIfPresent(String.self, forKey: .certificateFileName) {
             guard let certificateURL = Bundle.main.url(forResource: certificateFileName, withExtension: "pem") else {
                 fatalError("Cannot find certificate file")
@@ -120,8 +116,11 @@ extension TinkLink.Configuration: Decodable {
             self.certificateURL = certificateURL
         }
         
-        let marketCode = try values.decode(String.self, forKey: .market)
-        market = Market(code: marketCode)
+        if let marketCode = try values.decodeIfPresent(String.self, forKey: .market) {
+            market = Market(code: marketCode)
+        } else {
+            market = TinkLink.defaultMarket
+        }
         
         if let localeIdentifier = try values.decodeIfPresent(String.self, forKey: .locale) {
             let availableLocale = TinkLink.availableLocales.first{ $0.identifier == localeIdentifier }
@@ -140,7 +139,7 @@ extension Client {
     convenience init(configurationUrl: URL) throws {
         let data = try Data(contentsOf: configurationUrl)
         let configuration = try PropertyListDecoder().decode(TinkLink.Configuration.self, from: data)
-        self.init(environment: configuration.environment, clientID: configuration.clientId, certificateURL: configuration.certificateURL, market: configuration.market, locale: configuration.locale)
+        self.init(environment: configuration.environment, clientID: configuration.clientID, certificateURL: configuration.certificateURL, market: configuration.market, locale: configuration.locale)
     }
 
     convenience init?(processInfo: ProcessInfo) {
