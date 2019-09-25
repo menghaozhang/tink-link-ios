@@ -73,6 +73,10 @@ final class CredentialStore {
             completion(result)
         }
     }
+    
+    func update(credential: Credential) {
+        _credentials[credential.id] = credential
+    }
 
     func performFetchIfNeeded() {
         if fetchCredentialsRetryCancellable == nil {
@@ -80,7 +84,7 @@ final class CredentialStore {
         }
     }
 
-    func performFetch() {
+    private func performFetch() {
         fetchCredentialsRetryCancellable = service.credentials { [weak self] result in
             guard let self = self else { return }
             self.tinkQueue.async {

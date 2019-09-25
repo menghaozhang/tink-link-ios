@@ -91,7 +91,7 @@ public class CredentialContext {
                 guard let self = self else { return }
                 do {
                     let credential = try result.get()
-                    self.credentialStore.credentials[credential.id] = credential
+                    self.credentialStore.update(credential: credential)
                 } catch {
                     self.delegate?.credentialContext(self, didReceiveError: error)
                 }
