@@ -63,16 +63,11 @@ public class ProviderContext {
     /// A convenience initializer that uses the default TinkLink configuration to accesses providers including all capabilities and access types but no test providers.
     public convenience init() {
         let attributes = Attributes(capabilities: .all, includeTestProviders: false, accessTypes: Provider.AccessType.all)
-        self.init(tinkLink: TinkLink.shared, attributes: attributes)
-    }
-    
-    /// A convenience initializer that accesses providers including all capabilities and access types but no test providers.
-    public convenience init(attributes: Attributes) {
-        self.init(tinkLink: TinkLink.shared, attributes: attributes)
+        self.init(attributes: attributes)
     }
     
     /// An initializer that provides TinkLink to config the service and attributes of accesses providers, which includs all capabilities and access types but no test providers.
-    public init(tinkLink: TinkLink, attributes: Attributes) {
+    public init(tinkLink: TinkLink = .shared, attributes: Attributes) {
         providerStore = ProviderStore(tinkLink: tinkLink)
         self.attributes = attributes
         _providers = try? providerStore.providerMarketGroups[attributes.market]?.get()

@@ -49,11 +49,8 @@ public class CredentialContext {
     private var credentialStoreChangeObserver: Any?
     private var credentialStoreErrorObserver: Any?
     
-    public init() {
-        credentialStore = CredentialStore(tinkLink: TinkLink.shared)
-    }
-    
-    public init(tinkLink: TinkLink) {
+    /// An initializer that provides TinkLink to config the add credential service
+    public init(tinkLink: TinkLink = .shared) {
         credentialStore = CredentialStore(tinkLink: tinkLink)
     }
 
