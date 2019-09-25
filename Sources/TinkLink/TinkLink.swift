@@ -10,7 +10,7 @@ public class TinkLink {
         var market: Market
         var locale: Locale
         /// - Parameters:
-        ///   - clientId: The client id that providede by Tink.
+        ///   - clientId: The client id for your app.
         ///   - redirectUrl: Needed when using Tink Link to redirect to your app.
         ///   - certificateURL: Optional, certificate used to communicate with backend
         ///   - market: Optional, default market(SE) will be used if nothing is providered.
