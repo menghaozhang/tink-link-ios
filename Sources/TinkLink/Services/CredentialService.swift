@@ -17,7 +17,7 @@ final class CredentialService: TokenConfigurableService {
         return CallHandler(for: request, method: service.listCredentials, responseMap: { $0.credentials.map(Credential.init(grpcCredential:)) }, completion: completion)
     }
 
-    func createCredential(providerName: Identifier<Provider>, type: Credential.`Type` = .unknown, fields: [String: String] = [:], completion: @escaping (Result<Credential, Error>) -> Void) -> RetryCancellable {
+    func createCredential(providerName: Identifier<Provider>, type: CredentialType = .unknown, fields: [String: String] = [:], completion: @escaping (Result<Credential, Error>) -> Void) -> RetryCancellable {
         var request = GRPCCreateCredentialRequest()
         request.providerName = providerName.rawValue
         request.type = type.grpcCredentialType
