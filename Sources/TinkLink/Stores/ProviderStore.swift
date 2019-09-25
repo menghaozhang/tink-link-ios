@@ -2,12 +2,10 @@ import Foundation
 import SwiftGRPC
 
 final class ProviderStore {
-    static let shared: ProviderStore = ProviderStore()
-
-    private init() {
-        service = TinkLink.shared.client.providerService
-        market = TinkLink.shared.client.market
-        locale = TinkLink.shared.client.locale
+    init(tinkLink: TinkLink) {
+        service = tinkLink.client.providerService
+        market = tinkLink.client.market
+        locale = tinkLink.client.locale
         authenticationManager = AuthenticationManager.shared
     }
     private let authenticationManager: AuthenticationManager

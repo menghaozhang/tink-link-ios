@@ -2,8 +2,6 @@ import Foundation
 import SwiftGRPC
 
 final class CredentialStore {
-    static let shared = CredentialStore()
-    
     var credentials: [Identifier<Credential>: Credential] = [:] {
         didSet {
             NotificationCenter.default.post(name: .credentialStoreChanged, object: self)
@@ -19,10 +17,10 @@ final class CredentialStore {
     private var cancelSupplementInformationRetryCancellable: [Identifier<Credential>: RetryCancellable] = [:]
     private var fetchCredentialsRetryCancellable: RetryCancellable?
     
-    private init() {
-        service = TinkLink.shared.client.credentialService
-        market = TinkLink.shared.client.market
-        locale = TinkLink.shared.client.locale
+    init(tinkLink: TinkLink) {
+        service = tinkLink.client.credentialService
+        market = tinkLink.client.market
+        locale = tinkLink.client.locale
         authenticationManager = AuthenticationManager.shared
     }
     
