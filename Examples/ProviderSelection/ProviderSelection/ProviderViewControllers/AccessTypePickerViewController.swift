@@ -12,7 +12,7 @@ extension AccessTypePickerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Choose Access Type"
+        navigationItem.prompt = "Choose Access Type"
         navigationItem.largeTitleDisplayMode = .never
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")

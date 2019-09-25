@@ -12,7 +12,7 @@ extension FinancialInstitutionPickerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Choose Financial Institution"
+        navigationItem.prompt = "Choose Financial Institution"
         navigationItem.largeTitleDisplayMode = .never
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
@@ -36,9 +36,9 @@ extension FinancialInstitutionPickerViewController {
         let providersWithSameFinancialInstitution = financialInsititutionGroups[indexPath.row]
         switch providersWithSameFinancialInstitution {
         case .accessTypes(let accessTypeGroups):
-            showAccessTypePicker(for: accessTypeGroups)
+            showAccessTypePicker(for: accessTypeGroups, title: providersWithSameFinancialInstitution.financialInsititutionName)
         case .credentialTypes(let providers):
-            showCredentialTypePicker(for: providers)
+            showCredentialTypePicker(for: providers, title: providersWithSameFinancialInstitution.financialInsititutionName)
         case .provider(let provider):
             showAddCredential(for: provider)
         }
@@ -47,14 +47,16 @@ extension FinancialInstitutionPickerViewController {
 
 // MARK: - Navigation
 extension FinancialInstitutionPickerViewController {
-    func showAccessTypePicker(for groups: [ProviderAccessTypeGroup]) {
+    func showAccessTypePicker(for groups: [ProviderAccessTypeGroup], title: String?) {
         let viewController = AccessTypePickerViewController(style: .plain)
+        viewController.title = title
         viewController.providerAccessTypeGroups = groups
         show(viewController, sender: nil)
     }
     
-    func showCredentialTypePicker(for providers: [Provider]) {
+    func showCredentialTypePicker(for providers: [Provider], title: String?) {
         let viewController = CredentialTypePickerViewController(style: .plain)
+        viewController.title = title
         viewController.providers = providers
         show(viewController, sender: nil)
     }
