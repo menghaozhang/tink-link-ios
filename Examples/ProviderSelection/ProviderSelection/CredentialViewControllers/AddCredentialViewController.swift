@@ -164,6 +164,7 @@ extension AddCredentialViewController {
     
     private func showUpdating(status: String) {
         if statusViewController == nil {
+            navigationItem.setRightBarButton(doneBarButtonItem, animated: true)
             let statusViewController = AddCredentialStatusViewController()
             statusViewController.modalTransitionStyle = .crossDissolve
             statusViewController.modalPresentationStyle = .overFullScreen
