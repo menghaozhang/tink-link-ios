@@ -14,7 +14,7 @@ final class AddCredentialViewController: UITableViewController {
     }
     private var task: AddCredentialTask?
     private var statusViewController: AddCredentialStatusViewController?
-    private lazy var doneBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addCredential))
+    private lazy var addBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addCredential))
     private var didFirstFieldBecomeFirstResponder = false
 
     init(provider: Provider) {
@@ -41,7 +41,7 @@ extension AddCredentialViewController {
         
         navigationItem.title = "Enter Credentials"
         navigationItem.largeTitleDisplayMode = .never
-        navigationItem.rightBarButtonItem = doneBarButtonItem
+        navigationItem.rightBarButtonItem = addBarButtonItem
         navigationItem.rightBarButtonItem?.isEnabled = false
     }
 
@@ -139,7 +139,7 @@ extension AddCredentialViewController {
     }
     
     private func onCompletion(result: Result<Credential, Error>) {
-        navigationItem.rightBarButtonItem = doneBarButtonItem
+        navigationItem.rightBarButtonItem = addBarButtonItem
 
         switch result {
         case .failure(let error):
@@ -164,10 +164,14 @@ extension AddCredentialViewController {
     
     private func showUpdating(status: String) {
         if statusViewController == nil {
+            navigationItem.setRightBarButton(addBarButtonItem, animated: true)
             let statusViewController = AddCredentialStatusViewController()
             statusViewController.modalTransitionStyle = .crossDissolve
             statusViewController.modalPresentationStyle = .overFullScreen
             present(statusViewController, animated: true)
+            UIView.animate(withDuration: 0.3) {
+                self.view.tintAdjustmentMode = .dimmed
+            }
             self.statusViewController = statusViewController
         }
         statusViewController?.status = status
@@ -175,6 +179,9 @@ extension AddCredentialViewController {
     
     private func hideUpdatingView(animated: Bool = false, completion: (() -> Void)? = nil) {
         guard statusViewController != nil else { return }
+        UIView.animate(withDuration: 0.3) {
+            self.view.tintAdjustmentMode = .automatic
+        }
         dismiss(animated: animated, completion: completion)
         statusViewController = nil
     }
@@ -232,6 +239,9 @@ extension AddCredentialViewController: SupplementalInformationViewControllerDele
 
     func supplementalInformationViewController(_ viewController: SupplementalInformationViewController, didSupplementInformationForCredential credential: Credential) {
         dismiss(animated: true)
-        // TODO: Maybe show loading
+
+        let activityIndicator = UIActivityIndicatorView(style: .gray)
+        activityIndicator.startAnimating()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
     }
 }
