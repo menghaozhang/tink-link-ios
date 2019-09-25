@@ -259,7 +259,7 @@ extension Form {
     ///
     /// This creates a form to use for supplementing information for a credential.
     ///
-    /// - Parameter provider: The credential to create a form for.
+    /// - Parameter credential: The credential to create a form for.
     public init(credential: Credential) {
         self.init(fieldSpecifications: credential.supplementalInformationFields)
     }
