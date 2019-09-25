@@ -60,7 +60,7 @@ public class ProviderContext {
         }
     }
     
-    /// A convenience initializer that uses default TinkLink config accesses providers including all capabilities and access types but no test providers.
+    /// A convenience initializer that uses the default TinkLink configuration to accesses providers including all capabilities and access types but no test providers.
     public convenience init() {
         let attributes = Attributes(capabilities: .all, includeTestProviders: false, accessTypes: Provider.AccessType.all)
         self.init(tinkLink: TinkLink.shared, attributes: attributes)
