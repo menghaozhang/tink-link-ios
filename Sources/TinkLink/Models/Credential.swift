@@ -8,34 +8,8 @@ public struct Credential {
     /// The provider (financial institution) that the credentials is connected to.
     public var providerName: Identifier<Provider>
 
-    public enum `Type`: CustomStringConvertible {
-        case unknown
-        case password
-        case mobileBankID
-        case keyfob
-        case fraud
-        case thirdPartyAuthentication
-
-        public var description: String {
-            switch self {
-            case .unknown:
-                return "Unknown"
-            case .password:
-                return "Password"
-            case .mobileBankID:
-                return "Mobile BankID"
-            case .keyfob:
-                return "Key Fob"
-            case .fraud:
-                return "Fraud"
-            case .thirdPartyAuthentication:
-                return "Third Party Authentication"
-            }
-        }
-    }
-
     /// Indicates how Tink authenticates the user to the financial institution.
-    public var type: `Type`
+    public var type: CredentialType
 
     public enum Status {
         case unknown
@@ -87,3 +61,30 @@ public struct Credential {
     /// Indicates when the session of credentials with access type `Provider.AccessType.openBanking` will expire. After this date automatic refreshes will not be possible without new authentication from the user.
     public var sessionExpiryDate: Date?
 }
+
+public enum CredentialType: CustomStringConvertible {
+    case unknown
+    case password
+    case mobileBankID
+    case keyfob
+    case fraud
+    case thirdPartyAuthentication
+
+    public var description: String {
+        switch self {
+        case .unknown:
+            return "Unknown"
+        case .password:
+            return "Password"
+        case .mobileBankID:
+            return "Mobile BankID"
+        case .keyfob:
+            return "Key Fob"
+        case .fraud:
+            return "Fraud"
+        case .thirdPartyAuthentication:
+            return "Third Party Authentication"
+        }
+    }
+}
+

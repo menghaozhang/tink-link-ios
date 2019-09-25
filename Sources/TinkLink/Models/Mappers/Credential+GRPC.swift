@@ -16,7 +16,7 @@ extension Credential {
     }
 }
 
-extension Credential.`Type` {
+extension CredentialType {
     init(grpcCredentialType: GRPCCredential.TypeEnum) {
         switch grpcCredentialType {
         case .unknown:
