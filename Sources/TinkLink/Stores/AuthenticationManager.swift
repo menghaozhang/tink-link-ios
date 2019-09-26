@@ -10,8 +10,8 @@ final class AuthenticationManager {
     private var service: UserService
     private var completionHandlers: [(Result<Void, Error>) -> Void] = []
     
-    private init() {
-        service = TinkLink.shared.client.userService
+    private init(tinkLink: TinkLink = .shared) {
+        service = tinkLink.client.userService
     }
     
     func authenticateIfNeeded<Service: TokenConfigurableService>(service otherService: Service, for market: Market, locale: Locale, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable? {

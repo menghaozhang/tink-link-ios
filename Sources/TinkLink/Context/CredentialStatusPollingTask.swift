@@ -2,7 +2,7 @@ import SwiftGRPC
 import Foundation
 
 class CredentialStatusPollingTask {
-    private var service = TinkLink.shared.client.credentialService
+    private var service: CredentialService
     private var callRetryCancellable: RetryCancellable?
     private var retryInterval: TimeInterval = 1
     private(set) var credential: Credential
@@ -26,7 +26,8 @@ class CredentialStatusPollingTask {
         }
     }
     
-    init(credential: Credential, backoffStrategy: PollingBackoffStrategy = .linear, updateHandler: @escaping (Result<Credential, Error>) -> Void) {
+    init(tinkLink: TinkLink = .shared, credential: Credential, backoffStrategy: PollingBackoffStrategy = .linear, updateHandler: @escaping (Result<Credential, Error>) -> Void) {
+        self.service = tinkLink.client.credentialService
         self.credential = credential
         self.backoffStrategy = backoffStrategy
         self.updateHandler = updateHandler
