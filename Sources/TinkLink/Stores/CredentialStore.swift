@@ -23,7 +23,7 @@ final class CredentialStore {
     private var addSupplementalInformationRetryCancellable: [Identifier<Credential>: RetryCancellable] = [:]
     private var cancelSupplementInformationRetryCancellable: [Identifier<Credential>: RetryCancellable] = [:]
     private var fetchCredentialsRetryCancellable: RetryCancellable?
-    private let tinkQueue = DispatchQueue(label: "tink_credential_store")
+    private let tinkQueue = DispatchQueue(label: "com.tink.TinkLink.CredentialStore")
     
     init(tinkLink: TinkLink) {
         service = tinkLink.client.credentialService
