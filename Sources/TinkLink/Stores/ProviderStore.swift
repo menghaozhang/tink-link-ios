@@ -17,7 +17,9 @@ final class ProviderStore {
     private let tinkQueue = DispatchQueue(label: "tink_provider_store")
     private var _providerMarketGroups: [Market: Result<[Provider], Error>] = [:] {
         didSet {
-            NotificationCenter.default.post(name: .providerStoreMarketGroupsChanged, object: self)
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: .providerStoreMarketGroupsChanged, object: self)
+            }
         }
     }
     var providerMarketGroups: [Market: Result<[Provider], Error>] {
