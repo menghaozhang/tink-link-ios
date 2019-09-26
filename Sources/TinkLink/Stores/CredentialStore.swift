@@ -3,6 +3,7 @@ import SwiftGRPC
 
 final class CredentialStore {
     var credentials: [Identifier<Credential>: Credential] {
+        dispatchPrecondition(condition: .notOnQueue(tinkQueue))
         let credentials = tinkQueue.sync(flags: .barrier) { return _credentials }
         return credentials
     }
