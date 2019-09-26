@@ -54,7 +54,7 @@ final class ProviderStore {
                 multiHandler.add(RetryCancellable)
             } catch {
                 self.tinkQueue.async {
-                    self._providerMarketGroups[attributes.market] = .failure(error)
+                    self._providerMarketGroups[self.market] = .failure(error)
                 }
                 self.providerFetchHandlers[attributes] = nil
             }
@@ -72,15 +72,15 @@ final class ProviderStore {
     /// - Precondition: Service should be configured with access token before this method is called.
     private func unauthenticatedPerformFetchProviders(attributes: ProviderContext.Attributes) -> RetryCancellable {
         precondition(service.metadata.hasAuthorization, "Service doesn't have authentication metadata set!")
-        return service.providers(market: attributes.market, capabilities: attributes.capabilities, includeTestProviders: attributes.includeTestProviders) { [weak self, attributes] result in
+        return service.providers(market: market, capabilities: attributes.capabilities, includeTestProviders: attributes.includeTestProviders) { [weak self, attributes] result in
             guard let self = self else { return }
             self.tinkQueue.async {
                 do {
                     let fetchedProviders = try result.get()
                     let filteredProviders = fetchedProviders.filter { attributes.accessTypes.contains($0.accessType) }
-                    self._providerMarketGroups[attributes.market] = .success(filteredProviders)
+                    self._providerMarketGroups[self.market] = .success(filteredProviders)
                 } catch {
-                    self._providerMarketGroups[attributes.market] = .failure(error)
+                    self._providerMarketGroups[self.market] = .failure(error)
                 }
             }
             self.providerFetchHandlers[attributes] = nil
