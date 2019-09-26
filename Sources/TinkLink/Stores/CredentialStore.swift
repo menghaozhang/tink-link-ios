@@ -23,7 +23,7 @@ final class CredentialStore {
     private var addSupplementalInformationRetryCancellable: [Identifier<Credential>: RetryCancellable] = [:]
     private var cancelSupplementInformationRetryCancellable: [Identifier<Credential>: RetryCancellable] = [:]
     private var fetchCredentialsRetryCancellable: RetryCancellable?
-    private let tinkQueue = DispatchQueue(label: "com.tink.TinkLink.CredentialStore")
+    private let tinkQueue = DispatchQueue(label: "com.tink.TinkLink.CredentialStore", attributes: .concurrent)
     
     init(tinkLink: TinkLink) {
         service = tinkLink.client.credentialService
@@ -39,7 +39,7 @@ final class CredentialStore {
         let authHandler = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
             guard let self = self, self.createCredentialRetryCancellable[provider.name] == nil else { return }
             let handler = self.service.createCredential(providerName: provider.name, fields: fields, completion: { (result) in
-                self.tinkQueue.async {
+                self.tinkQueue.async(qos: .default, flags: .barrier) {
                     do {
                         let credential = try result.get()
                         self._credentials[credential.id] = credential
@@ -90,7 +90,7 @@ final class CredentialStore {
     private func performFetch() {
         fetchCredentialsRetryCancellable = service.credentials { [weak self] result in
             guard let self = self else { return }
-            self.tinkQueue.async {
+            self.tinkQueue.async(qos: .default, flags: .barrier) {
                 do {
                     let credentials = try result.get()
                     self._credentials = Dictionary(grouping: credentials, by: { $0.id })

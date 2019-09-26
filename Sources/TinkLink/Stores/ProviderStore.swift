@@ -14,7 +14,7 @@ final class ProviderStore {
     private var service: ProviderService
     private var marketFetchHandler: RetryCancellable?
     private var providerFetchHandlers: [ProviderContext.Attributes: RetryCancellable] = [:]
-    private let tinkQueue = DispatchQueue(label: "com.tink.TinkLink.ProviderStore")
+    private let tinkQueue = DispatchQueue(label: "com.tink.TinkLink.ProviderStore", attributes: .concurrent)
     private var _providerMarketGroups: [Market: Result<[Provider], Error>] = [:] {
         didSet {
             DispatchQueue.main.async {
@@ -53,7 +53,7 @@ final class ProviderStore {
                 let RetryCancellable = self.unauthenticatedPerformFetchProviders(attributes: attributes)
                 multiHandler.add(RetryCancellable)
             } catch {
-                self.tinkQueue.async {
+                self.tinkQueue.async(qos: .default, flags: .barrier) {
                     self._providerMarketGroups[self.market] = .failure(error)
                 }
                 self.providerFetchHandlers[attributes] = nil
@@ -74,7 +74,7 @@ final class ProviderStore {
         precondition(service.metadata.hasAuthorization, "Service doesn't have authentication metadata set!")
         return service.providers(market: market, capabilities: attributes.capabilities, includeTestProviders: attributes.includeTestProviders) { [weak self, attributes] result in
             guard let self = self else { return }
-            self.tinkQueue.async {
+            self.tinkQueue.async(qos: .default, flags: .barrier) {
                 do {
                     let fetchedProviders = try result.get()
                     let filteredProviders = fetchedProviders.filter { attributes.accessTypes.contains($0.accessType) }
@@ -97,7 +97,7 @@ final class ProviderStore {
         let authHandler = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
             guard let self = self, self.marketFetchHandler == nil else { return }
             let retryCancellable = self.service.providerMarkets { result in
-                self.tinkQueue.async {
+                self.tinkQueue.async(qos: .default, flags: .barrier) {
                     self.markets = result
                 }
                 self.marketFetchHandler = nil
