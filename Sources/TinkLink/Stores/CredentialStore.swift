@@ -4,7 +4,7 @@ import SwiftGRPC
 final class CredentialStore {
     var credentials: [Identifier<Credential>: Credential] {
         dispatchPrecondition(condition: .notOnQueue(tinkQueue))
-        let credentials = tinkQueue.sync(flags: .barrier) { return _credentials }
+        let credentials = tinkQueue.sync { return _credentials }
         return credentials
     }
     private var _credentials: [Identifier<Credential>: Credential] = [:] {

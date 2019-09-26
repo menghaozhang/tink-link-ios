@@ -1,5 +1,8 @@
 import Foundation
 
+/// A task that manages progress of adding a credential.
+///
+/// Use `CredentialContext` to create a task.
 public class AddCredentialTask {
     /// Indicates the state of a credential being added.
     ///
@@ -31,11 +34,20 @@ public class AddCredentialTask {
 
     private(set) var credential: Credential?
 
-    enum CompletionPredicate {
+    /// Cases to evaluate when credential status changes.
+    ///
+    /// Use with `CredentialContext.addCredential(for:form:completionPredicate:progressHandler:completion:)` to set when add credential task should call completion handler if successful.
+    public enum CompletionPredicate {
+        /// A predicate that indicates the credential's status is `updating`.
         case updating
+        /// A predicate that indicates the credential's status is `updated`.
         case updated
     }
-    let completionPredicate: CompletionPredicate
+
+    /// Predicate for when credential task is completed.
+    ///
+    /// Task will execute it's completion handler if the credential's status changes to match this predicate.
+    public let completionPredicate: CompletionPredicate
 
     let progressHandler: (Status) -> Void
     let completion: (Result<Credential, Swift.Error>) -> Void
@@ -61,6 +73,7 @@ public class AddCredentialTask {
         credentialStatusPollingTask?.pollStatus()
     }
 
+    /// Cancel the task.
     public func cancel() {
         callCanceller?.cancel()
     }

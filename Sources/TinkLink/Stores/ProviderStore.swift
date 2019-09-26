@@ -24,7 +24,7 @@ final class ProviderStore {
     }
     var providerMarketGroups: [Market: Result<[Provider], Error>] {
         dispatchPrecondition(condition: .notOnQueue(tinkQueue))
-        let providerMarketGroups = tinkQueue.sync(flags: .barrier) { return _providerMarketGroups }
+        let providerMarketGroups = tinkQueue.sync { return _providerMarketGroups }
         return providerMarketGroups
     }
     
