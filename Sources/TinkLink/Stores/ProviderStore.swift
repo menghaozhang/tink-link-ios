@@ -14,7 +14,7 @@ final class ProviderStore {
     private var service: ProviderService
     private var marketFetchHandler: RetryCancellable?
     private var providerFetchHandlers: [ProviderContext.Attributes: RetryCancellable] = [:]
-    private let tinkQueue = DispatchQueue(label: "tink_provider_store")
+    private let tinkQueue = DispatchQueue(label: "com.tink.TinkLink.ProviderStore")
     private var _providerMarketGroups: [Market: Result<[Provider], Error>] = [:] {
         didSet {
             DispatchQueue.main.async {
