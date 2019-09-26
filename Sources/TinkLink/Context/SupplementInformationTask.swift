@@ -1,11 +1,12 @@
 public class SupplementInformationTask {
-    private let credentialService = TinkLink.shared.client.credentialService
+    private let credentialService: CredentialService
     private var callRetryCancellable: RetryCancellable?
     public private(set) var credential: Credential
 
     private let completionHandler: (Result<Void, Error>) -> Void
 
-    init(credential: Credential, completionHandler: @escaping (Result<Void, Error>) -> Void) {
+    init(tinkLink: TinkLink = .shared, credential: Credential, completionHandler: @escaping (Result<Void, Error>) -> Void) {
+        self.credentialService = tinkLink.client.credentialService
         self.credential = credential
         self.completionHandler = completionHandler
     }

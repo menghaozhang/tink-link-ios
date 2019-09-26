@@ -45,12 +45,14 @@ public class CredentialContext {
         }
     }
 
+    private let tinkLink: TinkLink
     private let credentialStore: CredentialStore
     private var credentialStoreChangeObserver: Any?
     private var credentialStoreErrorObserver: Any?
     
     /// An initializer that provides TinkLink to config the add credential service
     public init(tinkLink: TinkLink = .shared) {
+        self.tinkLink = tinkLink
         credentialStore = CredentialStore(tinkLink: tinkLink)
     }
 
@@ -86,6 +88,7 @@ public class CredentialContext {
     /// - Returns: The add credential task.
     public func addCredential(for provider: Provider, form: Form, completionPredicate: AddCredentialTask.CompletionPredicate = .updated, progressHandler: @escaping (_ status: AddCredentialTask.Status) -> Void,  completion: @escaping (_ result: Result<Credential, Error>) -> Void) -> AddCredentialTask {
         let task = AddCredentialTask(
+            tinklink: tinkLink,
             completionPredicate: completionPredicate,
             progressHandler: progressHandler,
             completion: completion,
@@ -93,7 +96,7 @@ public class CredentialContext {
                 guard let self = self else { return }
                 do {
                     let credential = try result.get()
-                    self.credentialStore.credentials[credential.id] = credential
+                    self.credentialStore.update(credential: credential)
                 } catch {
                     self.delegate?.credentialContext(self, didReceiveError: error)
                 }

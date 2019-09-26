@@ -17,13 +17,11 @@ public class ProviderContext {
         public let capabilities: Provider.Capabilities
         public let includeTestProviders: Bool
         public let accessTypes: Set<Provider.AccessType>
-        public let market: Market
         
         public init(capabilities: Provider.Capabilities, includeTestProviders: Bool, accessTypes: Set<Provider.AccessType>) {
             self.capabilities = capabilities
             self.includeTestProviders = includeTestProviders
             self.accessTypes = accessTypes
-            self.market = TinkLink.shared.client.market
         }
     }
     
@@ -37,6 +35,7 @@ public class ProviderContext {
         }
     }
 
+    private let market: Market
     private let providerStore: ProviderStore
     private var providerStoreObserver: Any?
 
@@ -70,14 +69,15 @@ public class ProviderContext {
     public init(tinkLink: TinkLink = .shared, attributes: Attributes) {
         providerStore = ProviderStore(tinkLink: tinkLink)
         self.attributes = attributes
-        _providers = try? providerStore.providerMarketGroups[attributes.market]?.get()
+        self.market = tinkLink.client.market
+        _providers = try? providerStore.providerMarketGroups[market]?.get()
         _providerGroups = _providers.map{ makeGroups($0) }
         providerStoreObserver = NotificationCenter.default.addObserver(forName: .providerStoreMarketGroupsChanged, object: providerStore, queue: .main) { [weak self] _ in
             guard let self = self else {
                 return
             }
             do {
-                self._providers = try self.providerStore.providerMarketGroups[attributes.market]?.get()
+                self._providers = try self.providerStore.providerMarketGroups[self.market]?.get()
             } catch {
                 self.delegate?.providerContext(self, didReceiveError: error)
             }
