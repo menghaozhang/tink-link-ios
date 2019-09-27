@@ -13,6 +13,10 @@ public class TinkLink {
        return CredentialStore(tinkLink: self)
     }()
     
+    lazy var authenticationManager = {
+       return AuthenticationManager(tinkLink: self)
+    }()
+    
     private var _client: Client?
     private(set) var client: Client {
         get {
