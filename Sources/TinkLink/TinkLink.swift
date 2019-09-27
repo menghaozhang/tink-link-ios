@@ -32,7 +32,7 @@ public class TinkLink {
                     _client = client
                     return _client!
                 } catch {
-                    fatalError("Cannot find client")
+                    fatalError(error.localizedDescription)
                 }
             }
         }
