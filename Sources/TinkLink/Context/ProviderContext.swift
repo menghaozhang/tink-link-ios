@@ -51,6 +51,9 @@ public class ProviderContext {
     
     private var _providerGroups: [ProviderGroup]?
 
+    /// The object that acts as the delegate of the provider context.
+    ///
+    /// The delegate must adopt the `ProviderContextDelegate` protocol. The delegate is not retained.
     public weak var delegate: ProviderContextDelegate? {
         didSet {
             if delegate != nil, _providers == nil {
@@ -104,6 +107,9 @@ public class ProviderContext {
 }
 
 extension ProviderContext {
+    /// Providers matching the context's current attributes.
+    ///
+    /// - Note: The providers could be empty at first or change if the context's attributes are changed. Use the delegate to get notified when providers change.
     public var providers: [Provider] {
         guard let providers = _providers else {
             performFetch()
@@ -112,6 +118,9 @@ extension ProviderContext {
         return providers
     }
     
+    /// Grouped providers matching the context's current attributes.
+    ///
+    /// - Note: The providerGroups could be empty at first or change if the context's attributes are changed. Use the delegate to get notified when providerGroups change.
     public var providerGroups: [ProviderGroup] {
         guard let providerGroups = _providerGroups else {
             performFetch()
