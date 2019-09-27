@@ -34,6 +34,9 @@ public class CredentialContext {
         return credentials
     }
 
+    /// The object that acts as the delegate of the credential context.
+    ///
+    /// The delegate must adopt the `CredentialContextDelegate` protocol. The delegate is not retained.
     public weak var delegate: CredentialContextDelegate? {
         didSet {
             if delegate != nil {

@@ -51,6 +51,9 @@ public class ProviderContext {
     
     private var _providerGroups: [ProviderGroup]?
 
+    /// The object that acts as the delegate of the provider context.
+    ///
+    /// The delegate must adopt the `ProviderContextDelegate` protocol. The delegate is not retained.
     public weak var delegate: ProviderContextDelegate? {
         didSet {
             if delegate != nil, _providers == nil {
