@@ -14,18 +14,22 @@ public class TinkLink {
                 do {
                     _client = try Client(configurationUrl: fallbackUrl)
                 } catch {
-                    if let client = Client(processInfo: .processInfo) {
+                    do {
+                        let client = try Client(processInfo: .processInfo)
                         _client = client
-                    } else {
-                        fatalError("Cannot find client")
+                    } catch {
+                        fatalError(error.localizedDescription)
                     }
                 }
                 return _client!
-            } else if let client = Client(processInfo: .processInfo) {
-                _client = client
-                return _client!
             } else {
-                fatalError("Cannot find client")
+                do {
+                    let client = try Client(processInfo: .processInfo)
+                    _client = client
+                    return _client!
+                } catch {
+                    fatalError("Cannot find client")
+                }
             }
         }
         set {
