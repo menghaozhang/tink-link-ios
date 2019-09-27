@@ -11,7 +11,7 @@ final class ProviderStore {
     private let authenticationManager: AuthenticationManager
     private let market: Market
     private let locale: Locale
-    private var service: ProviderService
+    private let service: ProviderService
     private var providerFetchHandlers: [ProviderContext.Attributes: RetryCancellable] = [:]
     private let tinkQueue = DispatchQueue(label: "com.tink.TinkLink.ProviderStore", attributes: .concurrent)
     private var _providerMarketGroups: [Market: Result<[Provider], Error>] = [:] {
