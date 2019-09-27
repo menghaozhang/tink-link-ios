@@ -34,7 +34,7 @@ public class CredentialContext {
         return credentials
     }
 
-    weak var delegate: CredentialContextDelegate? {
+    public weak var delegate: CredentialContextDelegate? {
         didSet {
             if delegate != nil {
                 addStoreObservers()
