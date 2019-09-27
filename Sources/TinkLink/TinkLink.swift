@@ -42,13 +42,25 @@ public class TinkLink {
         self.init(configuration: configuration)
     }
 
-    // Setup via configration files
+    /// Configure shared instance with URL to configration property list file.
+    ///
+    /// Here's how you could configure TinkLink using a property list:
+    ///
+    ///     let url = Bundle.main.url(forResource: "TinkLinkConfiguration", withExtension: "plist")!
+    ///     TinkLink.configure(configurationPlistURL: url)
+    ///
     public static func configure(configurationPlistURL url: URL) throws {
         let data = try Data(contentsOf: url)
         shared.configuration = try PropertyListDecoder().decode(TinkLink.Configuration.self, from: data)
     }
 
-    // Setup via configration object
+    /// Configure shared instance with configration description.
+    ///
+    /// Here's how you could configure TinkLink with a `TinkLink.Configuration`.
+    ///
+    ///     let configuration = Configuration(clientID: "<#clientID#>", market: "SE", locale: "en_US")
+    ///     TinkLink.configure(with: configuration)
+    ///
     public static func configure(with configuration: TinkLink.Configuration) {
         shared.configuration = configuration
     }
