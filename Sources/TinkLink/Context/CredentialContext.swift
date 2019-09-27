@@ -22,7 +22,7 @@ public class CredentialContext {
         }
     }
 
-    var credentials: [Credential] {
+    public var credentials: [Credential] {
         guard let credentials = _credentials else {
             let storedCredentials = credentialStore.credentials
                 .values
