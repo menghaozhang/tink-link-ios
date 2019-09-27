@@ -38,10 +38,3 @@ public struct ExactNumber {
         return Double(unscaledValue) * pow(10, Double(-scale))
     }
 }
-
-extension ExactNumber {
-    init(value: GRPCExactNumber) {
-        self.scale = value.scale
-        self.unscaledValue = value.unscaledValue
-    }
-}
