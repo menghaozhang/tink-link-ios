@@ -5,8 +5,12 @@ public class TinkLink {
 
     /// The current configuration.
     public private(set) var configuration: Configuration!
+    private var configurationError: Error?
 
-    private(set) lazy var client = Client(configuration: configuration)
+    private(set) lazy var client: Client = {
+        if let error = configurationError { fatalError(error.localizedDescription) }
+        return Client(configuration: configuration)
+    }()
 
     lazy var providerStore = ProviderStore(tinkLink: self)
     lazy var credentialStore = CredentialStore(tinkLink: self)
@@ -21,14 +25,14 @@ public class TinkLink {
                 do {
                     self.configuration = try Configuration(processInfo: .processInfo)
                 } catch {
-                    fatalError(error.localizedDescription)
+                    self.configurationError = error
                 }
             }
         } else {
             do {
                 self.configuration = try Configuration(processInfo: .processInfo)
             } catch {
-                fatalError(error.localizedDescription)
+                self.configurationError = error
             }
         }
     }
@@ -63,6 +67,7 @@ public class TinkLink {
     ///     TinkLink.configure(with: configuration)
     ///
     public static func configure(with configuration: TinkLink.Configuration) {
+        shared.configurationError = nil
         shared.configuration = configuration
     }
 }
