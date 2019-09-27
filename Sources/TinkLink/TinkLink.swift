@@ -30,9 +30,6 @@ public class TinkLink {
                     }
                 }
                 return _client!
-            } else if let client = Client(processInfo: .processInfo) {
-                _client = client
-                return client
             } else {
                 do {
                     let client = try Client(processInfo: .processInfo)
