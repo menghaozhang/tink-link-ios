@@ -54,7 +54,7 @@ extension Client {
     convenience init?(processInfo: ProcessInfo) {
         guard let clientID = processInfo.tinkClientID else { return nil }
         self.init(
-            environment: processInfo.tinkEnvironment ?? .staging,
+            environment: processInfo.tinkEnvironment ?? .production,
             clientID: clientID,
             certificate: processInfo.tinkCertificate,
             market: processInfo.tinkMarket ?? TinkLink.defaultMarket,
