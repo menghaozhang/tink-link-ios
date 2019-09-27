@@ -3,7 +3,8 @@ import Foundation
 public class TinkLink {
     public static let shared: TinkLink = TinkLink()
 
-    private var configuration: Configuration!
+    /// The current configuration.
+    public private(set) var configuration: Configuration!
 
     private(set) lazy var client = Client(configuration: configuration)
 
