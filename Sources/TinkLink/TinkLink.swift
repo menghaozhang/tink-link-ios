@@ -44,7 +44,6 @@ public class TinkLink {
     public static func configure(with configuration: TinkLink.Configuration) {
         shared._client = Client(environment: configuration.environment , clientID: configuration.clientID, certificateURL: configuration.certificateURL, market: configuration.market, locale: configuration.locale)
     }
-    // TODO: Some configurations can be changed after setup, for example timeoutIntervalForRequest and Qos, the changes should reflect to the stores and services
     
     // Used to setup additional TinkLink object
     public func configure(tinklinkUrl: URL) throws {
