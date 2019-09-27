@@ -22,6 +22,9 @@ public class CredentialContext {
         }
     }
 
+    /// The user's credentials.
+    ///
+    /// - Note: The credentials could be empty at first or change as credentials are added or updated. Use the delegate to get notified when credentials change.
     public var credentials: [Credential] {
         guard let credentials = _credentials else {
             let storedCredentials = credentialStore.credentials
