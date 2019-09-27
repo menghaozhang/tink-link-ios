@@ -12,7 +12,6 @@ final class ProviderStore {
     private let market: Market
     private let locale: Locale
     private var service: ProviderService
-    private var marketFetchHandler: RetryCancellable?
     private var providerFetchHandlers: [ProviderContext.Attributes: RetryCancellable] = [:]
     private let tinkQueue = DispatchQueue(label: "com.tink.TinkLink.ProviderStore", attributes: .concurrent)
     private var _providerMarketGroups: [Market: Result<[Provider], Error>] = [:] {
@@ -26,12 +25,6 @@ final class ProviderStore {
         dispatchPrecondition(condition: .notOnQueue(tinkQueue))
         let providerMarketGroups = tinkQueue.sync { return _providerMarketGroups }
         return providerMarketGroups
-    }
-    
-    private(set) var markets: Result<[Market], Error>? {
-        didSet {
-            NotificationCenter.default.post(name: .providerStoreMarketsChanged, object: self)
-        }
     }
 
     func cancelFetchingProviders(for attributes: ProviderContext.Attributes) {
@@ -86,32 +79,8 @@ final class ProviderStore {
             self.providerFetchHandlers[attributes] = nil
         }
     }
-    
-    func performFetchMarketsIfNeeded() {
-        if marketFetchHandler != nil { return }
-        self.marketFetchHandler = performFetchMarkets()
-    }
-
-    private func performFetchMarkets() -> RetryCancellable {
-        var multiHandler = MultiHandler()
-        let authHandler = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
-            guard let self = self, self.marketFetchHandler == nil else { return }
-            let retryCancellable = self.service.providerMarkets { result in
-                self.tinkQueue.async(qos: .default, flags: .barrier) {
-                    self.markets = result
-                }
-                self.marketFetchHandler = nil
-            }
-            multiHandler.add(retryCancellable)
-        }
-        if let handler = authHandler {
-            multiHandler.add(handler)
-        }
-        return multiHandler
-    }
 }
 
 extension Notification.Name {
     static let providerStoreMarketGroupsChanged = Notification.Name("TinkLinkProviderStoreMarketGroupsChangedNotificationName")
-    static let providerStoreMarketsChanged = Notification.Name("TinkLinkProviderStoreMarketsChangedNotificationName")
 }
