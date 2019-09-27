@@ -44,8 +44,12 @@ final class Client {
     private(set) lazy var userService = UserService(channel: channel, metadata: metadata)
 }
 
-enum ClientError: Error {
+enum ClientError: Error, LocalizedError {
     case clientIDNotFound
+
+    var errorDescription: String? {
+        return "`TINK_CLIENT_ID` was not found in environment variable or Info.plist."
+    }
 }
 
 extension Client {
