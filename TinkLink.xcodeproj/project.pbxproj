@@ -205,6 +205,7 @@
 				20D8125D2330DAC7000B3A30 /* Extensions */,
 				8F36724723057E0700B92936 /* Models */,
 				8FA35595231EB14C0054115D /* Context */,
+				20FAE67B233DFBA4003C73BA /* Tasks */,
 				8FA35588231E6FFE0054115D /* Stores */,
 				20ED857223040053006213BB /* Services */,
 				20ED853C2303FAEC006213BB /* GRPC */,
@@ -267,6 +268,16 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		20FAE67B233DFBA4003C73BA /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				203BE968232784440033F879 /* AddCredentialTask.swift */,
+				209D69272326878800B4DBB8 /* SupplementInformationTask.swift */,
+				8F6139FF2334CB2C00BFB04D /* CredentialStatusPollingTask.swift */,
+			);
+			path = Tasks;
+			sourceTree = "<group>";
+		};
 		8F36724723057E0700B92936 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,9 +312,6 @@
 				8FA3558F231EA3820054115D /* ProviderContext.swift */,
 				8FA35596231EB2F10054115D /* ProviderMarketContext.swift */,
 				8FA35591231EADAB0054115D /* CredentialContext.swift */,
-				203BE968232784440033F879 /* AddCredentialTask.swift */,
-				209D69272326878800B4DBB8 /* SupplementInformationTask.swift */,
-				8F6139FF2334CB2C00BFB04D /* CredentialStatusPollingTask.swift */,
 			);
 			path = Context;
 			sourceTree = "<group>";
