@@ -82,6 +82,11 @@ extension TinkLink.Configuration {
         }
     }
 
+    init(plistURL: URL) throws {
+        let data = try Data(contentsOf: plistURL)
+        self = try PropertyListDecoder().decode(TinkLink.Configuration.self, from: data)
+    }
+
     init(processInfo: ProcessInfo) throws {
         guard let clientID = processInfo.tinkClientID else { throw Error.clientIDNotFound }
         self.environment = processInfo.tinkEnvironment ?? .production
