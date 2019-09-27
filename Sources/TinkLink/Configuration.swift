@@ -72,3 +72,23 @@ extension TinkLink.Configuration: Decodable {
         }
     }
 }
+
+extension TinkLink.Configuration {
+    enum Error: Swift.Error, LocalizedError {
+        case clientIDNotFound
+
+        var errorDescription: String? {
+            return "`TINK_CLIENT_ID` was not found in environment variable or Info.plist."
+        }
+    }
+
+    init(processInfo: ProcessInfo) throws {
+        guard let clientID = processInfo.tinkClientID else { throw Error.clientIDNotFound }
+        self.environment = processInfo.tinkEnvironment ?? .production
+        self.clientID = clientID
+        // FIXME: self.certificate = processInfo.tinkCertificate
+        self.certificateURL = nil
+        self.market = processInfo.tinkMarket ?? TinkLink.defaultMarket
+        self.locale = processInfo.tinkLocale ?? TinkLink.defaultLocale
+    }
+}
