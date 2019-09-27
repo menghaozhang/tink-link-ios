@@ -42,3 +42,15 @@ final class Client {
     private(set) lazy var authenticationService = AuthenticationService(channel: channel, metadata: metadata)
     private(set) lazy var userService = UserService(channel: channel, metadata: metadata)
 }
+
+extension Client {
+    convenience init(configuration: TinkLink.Configuration) {
+        self.init(
+            environment: configuration.environment ,
+            clientID: configuration.clientID,
+            certificateURL: configuration.certificateURL,
+            market: configuration.market,
+            locale: configuration.locale
+        )
+    }
+}
