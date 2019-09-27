@@ -70,7 +70,7 @@ public class ProviderContext {
     
     /// An initializer that provides TinkLink to config the service and attributes of accesses providers, which includs all capabilities and access types but no test providers.
     public init(tinkLink: TinkLink = .shared, attributes: Attributes) {
-        providerStore = ProviderStore(tinkLink: tinkLink)
+        providerStore = tinkLink.providerStore
         self.attributes = attributes
         self.market = tinkLink.client.market
         _providers = try? providerStore.providerMarketGroups[market]?.get()

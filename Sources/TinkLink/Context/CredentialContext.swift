@@ -59,7 +59,7 @@ public class CredentialContext {
     /// An initializer that provides TinkLink to config the add credential service
     public init(tinkLink: TinkLink = .shared) {
         self.tinkLink = tinkLink
-        credentialStore = CredentialStore(tinkLink: tinkLink)
+        credentialStore = tinkLink.credentialStore
     }
 
     private func addStoreObservers() {

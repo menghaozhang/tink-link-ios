@@ -29,7 +29,7 @@ final class CredentialStore {
         service = tinkLink.client.credentialService
         market = tinkLink.client.market
         locale = tinkLink.client.locale
-        authenticationManager = AuthenticationManager.shared
+        authenticationManager = tinkLink.authenticationManager
     }
     
     func addCredential(for provider: Provider, fields: [String: String], completion: @escaping(Result<Credential, Error>) -> Void) -> RetryCancellable {

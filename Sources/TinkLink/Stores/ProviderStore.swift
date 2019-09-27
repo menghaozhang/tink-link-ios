@@ -6,7 +6,7 @@ final class ProviderStore {
         service = tinkLink.client.providerService
         market = tinkLink.client.market
         locale = tinkLink.client.locale
-        authenticationManager = AuthenticationManager.shared
+        authenticationManager = tinkLink.authenticationManager
     }
     private let authenticationManager: AuthenticationManager
     private let market: Market

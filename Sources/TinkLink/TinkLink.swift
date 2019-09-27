@@ -5,6 +5,10 @@ public class TinkLink {
     public init() {}
     public static let shared: TinkLink = TinkLink()
     
+    lazy var providerStore = ProviderStore(tinkLink: self)
+    lazy var credentialStore = CredentialStore(tinkLink: self)
+    lazy var authenticationManager = AuthenticationManager(tinkLink: self)
+    
     private var _client: Client?
     private(set) var client: Client {
         get {
