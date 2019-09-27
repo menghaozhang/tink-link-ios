@@ -5,6 +5,14 @@ public class TinkLink {
     public init() {}
     public static let shared: TinkLink = TinkLink()
     
+    lazy var providerStore = {
+       return ProviderStore(tinkLink: self)
+    }()
+    
+    lazy var credentialStore = {
+       return CredentialStore(tinkLink: self)
+    }()
+    
     private var _client: Client?
     private(set) var client: Client {
         get {
@@ -22,6 +30,9 @@ public class TinkLink {
                     }
                 }
                 return _client!
+            } else if let client = Client(processInfo: .processInfo) {
+                _client = client
+                return client
             } else {
                 do {
                     let client = try Client(processInfo: .processInfo)
