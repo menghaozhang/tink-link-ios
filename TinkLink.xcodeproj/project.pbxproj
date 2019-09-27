@@ -12,7 +12,6 @@
 		200FD63B23154AA90077181A /* AuthenticationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200FD63A23154AA90077181A /* AuthenticationToken.swift */; };
 		200FD63D23154AFC0077181A /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200FD63C23154AFC0077181A /* AccessToken.swift */; };
 		200FD63F23154B660077181A /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200FD63E23154B660077181A /* Market.swift */; };
-		201D5503230A8BEA00641102 /* StreamingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D5502230A8BEA00641102 /* StreamingService.swift */; };
 		201D5523230AEAA500641102 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D5522230AEAA500641102 /* UserService.swift */; };
 		203BE969232784440033F879 /* AddCredentialTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203BE968232784440033F879 /* AddCredentialTask.swift */; };
 		2049259A232A3AF000D4461D /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20492599232A3AF000D4461D /* Form.swift */; };
@@ -82,7 +81,6 @@
 		200FD63A23154AA90077181A /* AuthenticationToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationToken.swift; sourceTree = "<group>"; };
 		200FD63C23154AFC0077181A /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 		200FD63E23154B660077181A /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
-		201D5502230A8BEA00641102 /* StreamingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamingService.swift; sourceTree = "<group>"; };
 		201D5522230AEAA500641102 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		203BE968232784440033F879 /* AddCredentialTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCredentialTask.swift; sourceTree = "<group>"; };
 		20492599232A3AF000D4461D /* Form.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
@@ -268,7 +266,6 @@
 				8F84A775232B8B6500EA878F /* TokenConfigurableService.swift */,
 				20ED858D2304151B006213BB /* CredentialService.swift */,
 				20ED8591230429DE006213BB /* CallHandler.swift */,
-				201D5502230A8BEA00641102 /* StreamingService.swift */,
 				201D5522230AEAA500641102 /* UserService.swift */,
 				200A3F98230C31E900BEF935 /* AuthenticationService.swift */,
 			);
@@ -523,7 +520,6 @@
 				209D69282326878800B4DBB8 /* SupplementInformationTask.swift in Sources */,
 				20ED857A230407B3006213BB /* Provider.swift in Sources */,
 				203BE969232784440033F879 /* AddCredentialTask.swift in Sources */,
-				201D5503230A8BEA00641102 /* StreamingService.swift in Sources */,
 				20ED85422303FAEC006213BB /* models.pb.swift in Sources */,
 				8F36724F230598BC00B92936 /* ExactNumber.swift in Sources */,
 				8FA5F822230AE66100226C02 /* CurrencyDenominatedAmount.swift in Sources */,
