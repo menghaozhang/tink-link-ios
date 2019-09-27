@@ -5,10 +5,3 @@ public struct CurrencyDenominatedAmount {
     /// The ISO 4217 currency code of the amount.
     public var currencyCode: String
 }
-
-extension CurrencyDenominatedAmount {
-    init(grpcCurrencyDenominatedAmount: GRPCCurrencyDenominatedAmount) {
-        currencyCode = grpcCurrencyDenominatedAmount.currencyCode
-        value = ExactNumber(value: grpcCurrencyDenominatedAmount.value)
-    }
-}

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		200A3F99230C31E900BEF935 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200A3F98230C31E900BEF935 /* AuthenticationService.swift */; };
-		200A3FA2230C3E7800BEF935 /* ServiceMetadataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200A3FA1230C3E7800BEF935 /* ServiceMetadataHelper.swift */; };
+		200A3FA2230C3E7800BEF935 /* Metadata+Tink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200A3FA1230C3E7800BEF935 /* Metadata+Tink.swift */; };
 		200FD63B23154AA90077181A /* AuthenticationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200FD63A23154AA90077181A /* AuthenticationToken.swift */; };
 		200FD63D23154AFC0077181A /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200FD63C23154AFC0077181A /* AccessToken.swift */; };
 		200FD63F23154B660077181A /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200FD63E23154B660077181A /* Market.swift */; };
@@ -43,10 +43,14 @@
 		20ED8592230429DE006213BB /* CallHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED8591230429DE006213BB /* CallHandler.swift */; };
 		20ED859623045896006213BB /* Credential.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED859523045896006213BB /* Credential.swift */; };
 		20EE138123053B2700C92D65 /* Credential+GRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EE138023053B2700C92D65 /* Credential+GRPC.swift */; };
+		20FAE67A233DFB4E003C73BA /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FAE679233DFB4E003C73BA /* Configuration.swift */; };
+		20FAE67D233DFBE9003C73BA /* ProcessInfo+TinkEnvironmentVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FAE67C233DFBE9003C73BA /* ProcessInfo+TinkEnvironmentVariables.swift */; };
+		20FAE680233DFD71003C73BA /* ExactNumber+GRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FAE67F233DFD71003C73BA /* ExactNumber+GRPC.swift */; };
+		20FAE682233DFD8D003C73BA /* CurrencyDenominatedAmount+GRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FAE681233DFD8D003C73BA /* CurrencyDenominatedAmount+GRPC.swift */; };
 		8F0CE77D2332151700FB84B0 /* CallCanceller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0CE77A2332151700FB84B0 /* CallCanceller.swift */; };
 		8F0CE77E2332151700FB84B0 /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0CE77B2332151700FB84B0 /* Cancellable.swift */; };
 		8F0CE77F2332151700FB84B0 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0CE77C2332151700FB84B0 /* Client.swift */; };
-		8F3672462305685600B92936 /* GrpcExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3672452305685600B92936 /* GrpcExtensions.swift */; };
+		8F3672462305685600B92936 /* GRPCExactNumber+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3672452305685600B92936 /* GRPCExactNumber+Extensions.swift */; };
 		8F36724F230598BC00B92936 /* ExactNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F36724E230598BC00B92936 /* ExactNumber.swift */; };
 		8F3672512305A2A700B92936 /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3672502305A2A700B92936 /* Identifier.swift */; };
 		8F613A002334CB2D00BFB04D /* CredentialStatusPollingTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6139FF2334CB2C00BFB04D /* CredentialStatusPollingTask.swift */; };
@@ -75,7 +79,7 @@
 
 /* Begin PBXFileReference section */
 		200A3F98230C31E900BEF935 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
-		200A3FA1230C3E7800BEF935 /* ServiceMetadataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceMetadataHelper.swift; sourceTree = "<group>"; };
+		200A3FA1230C3E7800BEF935 /* Metadata+Tink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Metadata+Tink.swift"; sourceTree = "<group>"; };
 		200FD63A23154AA90077181A /* AuthenticationToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationToken.swift; sourceTree = "<group>"; };
 		200FD63C23154AFC0077181A /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 		200FD63E23154B660077181A /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
@@ -109,10 +113,14 @@
 		20ED8591230429DE006213BB /* CallHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallHandler.swift; sourceTree = "<group>"; };
 		20ED859523045896006213BB /* Credential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Credential.swift; sourceTree = "<group>"; };
 		20EE138023053B2700C92D65 /* Credential+GRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Credential+GRPC.swift"; sourceTree = "<group>"; };
+		20FAE679233DFB4E003C73BA /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		20FAE67C233DFBE9003C73BA /* ProcessInfo+TinkEnvironmentVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProcessInfo+TinkEnvironmentVariables.swift"; sourceTree = "<group>"; };
+		20FAE67F233DFD71003C73BA /* ExactNumber+GRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExactNumber+GRPC.swift"; sourceTree = "<group>"; };
+		20FAE681233DFD8D003C73BA /* CurrencyDenominatedAmount+GRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyDenominatedAmount+GRPC.swift"; sourceTree = "<group>"; };
 		8F0CE77A2332151700FB84B0 /* CallCanceller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallCanceller.swift; sourceTree = "<group>"; };
 		8F0CE77B2332151700FB84B0 /* Cancellable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
 		8F0CE77C2332151700FB84B0 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
-		8F3672452305685600B92936 /* GrpcExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrpcExtensions.swift; sourceTree = "<group>"; };
+		8F3672452305685600B92936 /* GRPCExactNumber+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GRPCExactNumber+Extensions.swift"; sourceTree = "<group>"; };
 		8F36724E230598BC00B92936 /* ExactNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExactNumber.swift; sourceTree = "<group>"; };
 		8F3672502305A2A700B92936 /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
 		8F6139FF2334CB2C00BFB04D /* CredentialStatusPollingTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialStatusPollingTask.swift; sourceTree = "<group>"; };
@@ -161,8 +169,8 @@
 			children = (
 				20ED85822304081D006213BB /* Provider+GRPC.swift */,
 				20EE138023053B2700C92D65 /* Credential+GRPC.swift */,
-				8F3672452305685600B92936 /* GrpcExtensions.swift */,
-				8F84A77B2330D39600EA878F /* Locale+Extensions.swift */,
+				20FAE67F233DFD71003C73BA /* ExactNumber+GRPC.swift */,
+				20FAE681233DFD8D003C73BA /* CurrencyDenominatedAmount+GRPC.swift */,
 			);
 			path = Mappers;
 			sourceTree = "<group>";
@@ -171,6 +179,10 @@
 			isa = PBXGroup;
 			children = (
 				20D8125E2330DAD7000B3A30 /* Service+Metadata.swift */,
+				200A3FA1230C3E7800BEF935 /* Metadata+Tink.swift */,
+				20FAE67C233DFBE9003C73BA /* ProcessInfo+TinkEnvironmentVariables.swift */,
+				8F84A77B2330D39600EA878F /* Locale+Extensions.swift */,
+				8F3672452305685600B92936 /* GRPCExactNumber+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -198,10 +210,12 @@
 			isa = PBXGroup;
 			children = (
 				8FA35585231E673B0054115D /* TinkLink.swift */,
+				20FAE679233DFB4E003C73BA /* Configuration.swift */,
 				20ED856E23040039006213BB /* Environment.swift */,
 				20D8125D2330DAC7000B3A30 /* Extensions */,
 				8F36724723057E0700B92936 /* Models */,
 				8FA35595231EB14C0054115D /* Context */,
+				20FAE67B233DFBA4003C73BA /* Tasks */,
 				8FA35588231E6FFE0054115D /* Stores */,
 				20ED857223040053006213BB /* Services */,
 				20ED853C2303FAEC006213BB /* GRPC */,
@@ -252,7 +266,6 @@
 				8F0CE77B2332151700FB84B0 /* Cancellable.swift */,
 				20E6DCD023336AE700476B8F /* MultiHandler.swift */,
 				8F0CE77C2332151700FB84B0 /* Client.swift */,
-				200A3FA1230C3E7800BEF935 /* ServiceMetadataHelper.swift */,
 				20ED85702304004C006213BB /* ProviderService.swift */,
 				8F84A775232B8B6500EA878F /* TokenConfigurableService.swift */,
 				20ED858D2304151B006213BB /* CredentialService.swift */,
@@ -262,6 +275,16 @@
 				200A3F98230C31E900BEF935 /* AuthenticationService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		20FAE67B233DFBA4003C73BA /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				203BE968232784440033F879 /* AddCredentialTask.swift */,
+				209D69272326878800B4DBB8 /* SupplementInformationTask.swift */,
+				8F6139FF2334CB2C00BFB04D /* CredentialStatusPollingTask.swift */,
+			);
+			path = Tasks;
 			sourceTree = "<group>";
 		};
 		8F36724723057E0700B92936 /* Models */ = {
@@ -298,9 +321,6 @@
 				8FA3558F231EA3820054115D /* ProviderContext.swift */,
 				8FA35596231EB2F10054115D /* ProviderMarketContext.swift */,
 				8FA35591231EADAB0054115D /* CredentialContext.swift */,
-				203BE968232784440033F879 /* AddCredentialTask.swift */,
-				209D69272326878800B4DBB8 /* SupplementInformationTask.swift */,
-				8F6139FF2334CB2C00BFB04D /* CredentialStatusPollingTask.swift */,
 			);
 			path = Context;
 			sourceTree = "<group>";
@@ -479,15 +499,19 @@
 				8FA3558E231EA1840054115D /* ProviderGroup.swift in Sources */,
 				20D8125F2330DAD7000B3A30 /* Service+Metadata.swift in Sources */,
 				20ED85432303FAEC006213BB /* services.grpc.swift in Sources */,
+				20FAE67A233DFB4E003C73BA /* Configuration.swift in Sources */,
 				20ED85442303FAEC006213BB /* services.pb.swift in Sources */,
+				20FAE67D233DFBE9003C73BA /* ProcessInfo+TinkEnvironmentVariables.swift in Sources */,
 				8F0CE77F2332151700FB84B0 /* Client.swift in Sources */,
+				20FAE680233DFD71003C73BA /* ExactNumber+GRPC.swift in Sources */,
 				20ED85832304081D006213BB /* Provider+GRPC.swift in Sources */,
 				8F613A002334CB2D00BFB04D /* CredentialStatusPollingTask.swift in Sources */,
-				200A3FA2230C3E7800BEF935 /* ServiceMetadataHelper.swift in Sources */,
+				200A3FA2230C3E7800BEF935 /* Metadata+Tink.swift in Sources */,
 				200FD63F23154B660077181A /* Market.swift in Sources */,
 				20ED856F2304003A006213BB /* Environment.swift in Sources */,
 				8F0CE77D2332151700FB84B0 /* CallCanceller.swift in Sources */,
 				20E6DCD123336AE700476B8F /* MultiHandler.swift in Sources */,
+				20FAE682233DFD8D003C73BA /* CurrencyDenominatedAmount+GRPC.swift in Sources */,
 				8FA35592231EADAB0054115D /* CredentialContext.swift in Sources */,
 				8FA35597231EB2F10054115D /* ProviderMarketContext.swift in Sources */,
 				8FA35590231EA3820054115D /* ProviderContext.swift in Sources */,
@@ -507,7 +531,7 @@
 				20ED85422303FAEC006213BB /* models.pb.swift in Sources */,
 				8F36724F230598BC00B92936 /* ExactNumber.swift in Sources */,
 				8FA5F822230AE66100226C02 /* CurrencyDenominatedAmount.swift in Sources */,
-				8F3672462305685600B92936 /* GrpcExtensions.swift in Sources */,
+				8F3672462305685600B92936 /* GRPCExactNumber+Extensions.swift in Sources */,
 				8FA3558C231E839E0054115D /* CredentialStore.swift in Sources */,
 				8F3672512305A2A700B92936 /* Identifier.swift in Sources */,
 				200A3F99230C31E900BEF935 /* AuthenticationService.swift in Sources */,
