@@ -44,6 +44,14 @@ final class Client {
     private(set) lazy var userService = UserService(channel: channel, metadata: metadata)
 }
 
+enum ClientError: Error, LocalizedError {
+    case clientIDNotFound
+
+    var errorDescription: String? {
+        return "`TINK_CLIENT_ID` was not found in environment variable or Info.plist."
+    }
+}
+
 extension Client {
     convenience init(configurationUrl: URL) throws {
         let data = try Data(contentsOf: configurationUrl)
@@ -51,8 +59,8 @@ extension Client {
         self.init(environment: configuration.environment, clientID: configuration.clientID, certificateURL: configuration.certificateURL, market: configuration.market, locale: configuration.locale)
     }
 
-    convenience init?(processInfo: ProcessInfo) {
-        guard let clientID = processInfo.tinkClientID else { return nil }
+    convenience init(processInfo: ProcessInfo) throws {
+        guard let clientID = processInfo.tinkClientID else { throw ClientError.clientIDNotFound }
         self.init(
             environment: processInfo.tinkEnvironment ?? .production,
             clientID: clientID,
