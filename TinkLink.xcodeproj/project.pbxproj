@@ -166,7 +166,6 @@
 				20ED85822304081D006213BB /* Provider+GRPC.swift */,
 				20EE138023053B2700C92D65 /* Credential+GRPC.swift */,
 				8F3672452305685600B92936 /* GrpcExtensions.swift */,
-				8F84A77B2330D39600EA878F /* Locale+Extensions.swift */,
 			);
 			path = Mappers;
 			sourceTree = "<group>";
@@ -177,6 +176,7 @@
 				20D8125E2330DAD7000B3A30 /* Service+Metadata.swift */,
 				200A3FA1230C3E7800BEF935 /* Metadata+Tink.swift */,
 				20FAE67C233DFBE9003C73BA /* ProcessInfo+TinkEnvironmentVariables.swift */,
+				8F84A77B2330D39600EA878F /* Locale+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
