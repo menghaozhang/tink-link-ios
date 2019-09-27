@@ -63,7 +63,6 @@
 		8FA3558E231EA1840054115D /* ProviderGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA3558D231EA1840054115D /* ProviderGroup.swift */; };
 		8FA35590231EA3820054115D /* ProviderContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA3558F231EA3820054115D /* ProviderContext.swift */; };
 		8FA35592231EADAB0054115D /* CredentialContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA35591231EADAB0054115D /* CredentialContext.swift */; };
-		8FA35597231EB2F10054115D /* ProviderMarketContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA35596231EB2F10054115D /* ProviderMarketContext.swift */; };
 		8FA5F822230AE66100226C02 /* CurrencyDenominatedAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F821230AE66100226C02 /* CurrencyDenominatedAmount.swift */; };
 /* End PBXBuildFile section */
 
@@ -133,7 +132,6 @@
 		8FA3558D231EA1840054115D /* ProviderGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderGroup.swift; sourceTree = "<group>"; };
 		8FA3558F231EA3820054115D /* ProviderContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderContext.swift; sourceTree = "<group>"; };
 		8FA35591231EADAB0054115D /* CredentialContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialContext.swift; sourceTree = "<group>"; };
-		8FA35596231EB2F10054115D /* ProviderMarketContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderMarketContext.swift; sourceTree = "<group>"; };
 		8FA5F821230AE66100226C02 /* CurrencyDenominatedAmount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDenominatedAmount.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -319,7 +317,6 @@
 			isa = PBXGroup;
 			children = (
 				8FA3558F231EA3820054115D /* ProviderContext.swift */,
-				8FA35596231EB2F10054115D /* ProviderMarketContext.swift */,
 				8FA35591231EADAB0054115D /* CredentialContext.swift */,
 			);
 			path = Context;
@@ -513,7 +510,6 @@
 				20E6DCD123336AE700476B8F /* MultiHandler.swift in Sources */,
 				20FAE682233DFD8D003C73BA /* CurrencyDenominatedAmount+GRPC.swift in Sources */,
 				8FA35592231EADAB0054115D /* CredentialContext.swift in Sources */,
-				8FA35597231EB2F10054115D /* ProviderMarketContext.swift in Sources */,
 				8FA35590231EA3820054115D /* ProviderContext.swift in Sources */,
 				20ED859623045896006213BB /* Credential.swift in Sources */,
 				200FD63B23154AA90077181A /* AuthenticationToken.swift in Sources */,
