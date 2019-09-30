@@ -4,13 +4,11 @@ import SwiftGRPC
 typealias RetryCancellable = (Cancellable & Retriable)
 
 final class AuthenticationManager {
-    static let shared = AuthenticationManager()
-    
     private var retryCancellable: RetryCancellable?
     private var service: UserService
     private var completionHandlers: [(Result<Void, Error>) -> Void] = []
     
-    private init(tinkLink: TinkLink = .shared) {
+    init(tinkLink: TinkLink = .shared) {
         service = tinkLink.client.userService
     }
     

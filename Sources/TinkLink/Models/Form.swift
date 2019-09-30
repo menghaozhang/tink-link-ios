@@ -79,17 +79,14 @@ public struct Form {
     public struct Field {
         public var text: String
         public let name: String
-        public let isOptional: Bool
-        public let helpText: String
         public let validationRules: ValidationRules
         public let attributes: Attributes
         
         internal init(fieldSpecification: Provider.FieldSpecification) {
             text = fieldSpecification.initialValue
             name = fieldSpecification.name
-            isOptional = fieldSpecification.isOptional
-            helpText = fieldSpecification.helpText
             validationRules = ValidationRules(
+                isOptional: fieldSpecification.isOptional,
                 maxLength: fieldSpecification.maxLength,
                 minLength: fieldSpecification.minLength,
                 regex: fieldSpecification.pattern,
@@ -98,6 +95,7 @@ public struct Form {
             attributes = Attributes(
                 description: fieldSpecification.fieldDescription,
                 placeholder: fieldSpecification.hint,
+                helpText: fieldSpecification.helpText,
                 isSecureTextEntry: fieldSpecification.isMasked,
                 inputType: fieldSpecification.isNumeric ? .numeric : .default,
                 isEditable: !fieldSpecification.isImmutable || fieldSpecification.initialValue.isEmpty
@@ -108,6 +106,9 @@ public struct Form {
         ///
         /// Represents the rules for validating a form field.
         public struct ValidationRules {
+            /// If `true` the field is not required to have text for the field to be valid.
+            public let isOptional: Bool
+
             /// Maximum length of value.
             ///
             /// Use this to e.g. limit user input to only accept input until `maxLength` is reached.
@@ -120,14 +121,16 @@ public struct Form {
             internal let regexError: String
 
             internal func validate(_ value: String, fieldName name: String) throws {
-                if let maxLength = maxLength, maxLength > 0 && maxLength < value.count {
+                if value.isEmpty, !isOptional {
+                    throw ValidationError.requiredFieldEmptyValue(fieldName: name)
+                } else if let maxLength = maxLength, maxLength > 0 && maxLength < value.count {
                     throw ValidationError.maxLengthLimit(fieldName: name, maxLength: maxLength)
                 } else if let minLength = minLength, minLength > 0 && minLength > value.count {
                     throw ValidationError.minLengthLimit(fieldName: name, minLength: minLength)
                 } else if !regex.isEmpty, let regex = try? NSRegularExpression(pattern: regex, options: []) {
                     let range = regex.rangeOfFirstMatch(in: value, options: [], range: NSRange(location: 0, length: value.count))
                     if range.location == NSNotFound {
-                        throw ValidationError.validationFailed(fieldName: name, reason: regexError)
+                        throw ValidationError.invalid(fieldName: name, reason: regexError)
                     }
                 }
             }
@@ -147,6 +150,9 @@ public struct Form {
             /// A string to display when there is no other text in the text field.
             public let placeholder: String
 
+            /// A string to display next to the field with information about what the user should enter in the text field.
+            public let helpText: String
+
             /// Identifies whether the text object should disable text copying and in some cases hide the text being entered.
             public let isSecureTextEntry: Bool
 
@@ -160,7 +166,7 @@ public struct Form {
         /// Describes a field validation error.
         public enum ValidationError: Error, LocalizedError {
             /// Field's `text` was invalid. See `reason` for explanation why.
-            case validationFailed(fieldName: String, reason: String)
+            case invalid(fieldName: String, reason: String)
 
             /// Field's `text` was too long.
             case maxLengthLimit(fieldName: String, maxLength: Int)
@@ -173,7 +179,7 @@ public struct Form {
 
             var fieldName: String {
                 switch self {
-                case .validationFailed(let fieldName, _):
+                case .invalid(let fieldName, _):
                     return fieldName
                 case .maxLengthLimit(let fieldName, _):
                     return fieldName
@@ -187,7 +193,7 @@ public struct Form {
             /// An error message describing what is the reason for the validation failure.
             public var errorDescription: String? {
                 switch self {
-                case .validationFailed(_, let reason):
+                case .invalid(_, let reason):
                     return reason
                 case .maxLengthLimit(_, let maxLength):
                     return "Field can't be longer than \(maxLength)"
@@ -220,11 +226,7 @@ public struct Form {
         /// - Throws: A `Form.Field.ValidationError` if the field's `text` is invalid.
         public func validate() throws {
             let value = text
-            if value.isEmpty, !isOptional {
-                throw ValidationError.requiredFieldEmptyValue(fieldName: name)
-            } else {
-                try validationRules.validate(value, fieldName: name)
-            }
+            try validationRules.validate(value, fieldName: name)
         }
     }
     

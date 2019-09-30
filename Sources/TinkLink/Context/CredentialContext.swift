@@ -22,7 +22,10 @@ public class CredentialContext {
         }
     }
 
-    var credentials: [Credential] {
+    /// The user's credentials.
+    ///
+    /// - Note: The credentials could be empty at first or change as credentials are added or updated. Use the delegate to get notified when credentials change.
+    public var credentials: [Credential] {
         guard let credentials = _credentials else {
             let storedCredentials = credentialStore.credentials
                 .values
@@ -34,7 +37,10 @@ public class CredentialContext {
         return credentials
     }
 
-    weak var delegate: CredentialContextDelegate? {
+    /// The object that acts as the delegate of the credential context.
+    ///
+    /// The delegate must adopt the `CredentialContextDelegate` protocol. The delegate is not retained.
+    public weak var delegate: CredentialContextDelegate? {
         didSet {
             if delegate != nil {
                 addStoreObservers()
@@ -53,7 +59,7 @@ public class CredentialContext {
     /// An initializer that provides TinkLink to config the add credential service
     public init(tinkLink: TinkLink = .shared) {
         self.tinkLink = tinkLink
-        credentialStore = CredentialStore(tinkLink: tinkLink)
+        credentialStore = tinkLink.credentialStore
     }
 
     private func addStoreObservers() {
