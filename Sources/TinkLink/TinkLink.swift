@@ -1,66 +1,82 @@
 import Foundation
 
 public class TinkLink {
-    
-    public init() {}
-    public static let shared: TinkLink = TinkLink()
-    
+    static var _shared: TinkLink?
+
+    public static var shared: TinkLink {
+        guard let shared = _shared else {
+            do {
+                let link = try TinkLink()
+                _shared = link
+                return link
+            } catch {
+                fatalError(error.localizedDescription)
+            }
+        }
+        return shared
+    }
+
+    /// The current configuration.
+    public let configuration: Configuration
+
+    private(set) lazy var client = Client(configuration: configuration)
+
     lazy var providerStore = ProviderStore(tinkLink: self)
     lazy var credentialStore = CredentialStore(tinkLink: self)
     lazy var authenticationManager = AuthenticationManager(tinkLink: self)
-    
-    private var _client: Client?
-    private(set) var client: Client {
-        get {
-            if let client = _client {
-                return client
-            } else if let fallbackUrl = Bundle.main.url(forResource: "Info", withExtension: "plist") {
+
+    private init() {
+        if let fallbackUrl = Bundle.main.url(forResource: "Info", withExtension: "plist") {
+            do {
+                let data = try Data(contentsOf: fallbackUrl)
+                self.configuration = try PropertyListDecoder().decode(TinkLink.Configuration.self, from: data)
+            } catch {
                 do {
-                    _client = try Client(configurationUrl: fallbackUrl)
+                    self.configuration = try Configuration(processInfo: .processInfo)
                 } catch {
-                    do {
-                        let client = try Client(processInfo: .processInfo)
-                        _client = client
-                    } catch {
-                        fatalError(error.localizedDescription)
-                    }
-                }
-                return _client!
-            } else {
-                do {
-                    let client = try Client(processInfo: .processInfo)
-                    _client = client
-                    return _client!
-                } catch {
-                    fatalError("Cannot find client")
+                    fatalError(error.localizedDescription)
                 }
             }
-        }
-        set {
-            _client = newValue
+        } else {
+            do {
+                self.configuration = try Configuration(processInfo: .processInfo)
+            } catch {
+                fatalError(error.localizedDescription)
+            }
         }
     }
-    
-    // Setup via configration files
-    public static func configure(tinklinkUrl: URL) throws {
-        let data = try Data(contentsOf: tinklinkUrl)
+
+    public init(configuration: Configuration) {
+        self.configuration = configuration
+    }
+
+    public convenience init(configurationPlistURL url: URL) throws {
+        let data = try Data(contentsOf: url)
         let configuration = try PropertyListDecoder().decode(TinkLink.Configuration.self, from: data)
-        configure(with: configuration)
+        self.init(configuration: configuration)
     }
-    
-    // Setup via configration object
+
+    /// Configure shared instance with URL to configration property list file.
+    ///
+    /// Here's how you could configure TinkLink using a property list:
+    ///
+    ///     let url = Bundle.main.url(forResource: "TinkLinkConfiguration", withExtension: "plist")!
+    ///     TinkLink.configure(configurationPlistURL: url)
+    ///
+    public static func configure(configurationPlistURL url: URL) throws {
+        precondition(_shared == nil, "Shared TinkLink instance is already configured.")
+        _shared = try TinkLink(configurationPlistURL: url)
+    }
+
+    /// Configure shared instance with configration description.
+    ///
+    /// Here's how you could configure TinkLink with a `TinkLink.Configuration`.
+    ///
+    ///     let configuration = Configuration(clientID: "<#clientID#>", market: "SE", locale: "en_US")
+    ///     TinkLink.configure(with: configuration)
+    ///
     public static func configure(with configuration: TinkLink.Configuration) {
-        shared._client = Client(environment: configuration.environment , clientID: configuration.clientID, certificateURL: configuration.certificateURL, market: configuration.market, locale: configuration.locale)
-    }
-    
-    // Used to setup additional TinkLink object
-    public func configure(tinklinkUrl: URL) throws {
-        let data = try Data(contentsOf: tinklinkUrl)
-        let configuration = try PropertyListDecoder().decode(TinkLink.Configuration.self, from: data)
-        configure(with: configuration)
-    }
-    
-    public func configure(with configuration: TinkLink.Configuration) {
-        _client = Client(environment: configuration.environment , clientID: configuration.clientID, certificateURL: configuration.certificateURL, market: configuration.market, locale: configuration.locale)
+        precondition(_shared == nil, "Shared TinkLink instance is already configured.")
+        _shared = TinkLink(configuration: configuration)
     }
 }

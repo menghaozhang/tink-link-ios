@@ -30,7 +30,7 @@ extension TinkLink {
     }
 }
 
-extension TinkLink.Configuration: Decodable {
+extension TinkLink.Configuration: Codable {
     enum CodingKeys: String, CodingKey {
         case environmentEndpoint = "TINK_CUSTOM_END_POINT"
         case clientID = "TINK_CLIENT_ID"
@@ -70,5 +70,46 @@ extension TinkLink.Configuration: Decodable {
         } else {
             locale = TinkLink.defaultLocale
         }
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(clientID, forKey: .clientID)
+        switch environment {
+        case .production, .staging:
+            break
+        case .custom(let url):
+            try container.encode(url.absoluteString, forKey: .environmentEndpoint)
+        }
+        if let fileName = certificateURL?.path.components(separatedBy: "/").last {
+            try container.encode(fileName, forKey: .certificateFileName)
+        }
+        try container.encode(market.rawValue, forKey: .market)
+        try container.encode(locale.identifier, forKey: .locale)
+    }
+}
+
+extension TinkLink.Configuration {
+    enum Error: Swift.Error, LocalizedError {
+        case clientIDNotFound
+
+        var errorDescription: String? {
+            return "`TINK_CLIENT_ID` was not found in environment variable or Info.plist. Please configure a Tink Link client before using it."
+        }
+    }
+
+    init(plistURL: URL) throws {
+        let data = try Data(contentsOf: plistURL)
+        self = try PropertyListDecoder().decode(TinkLink.Configuration.self, from: data)
+    }
+
+    init(processInfo: ProcessInfo) throws {
+        guard let clientID = processInfo.tinkClientID else { throw Error.clientIDNotFound }
+        self.environment = processInfo.tinkEnvironment ?? .production
+        self.clientID = clientID
+        // FIXME: self.certificate = processInfo.tinkCertificate
+        self.certificateURL = nil
+        self.market = processInfo.tinkMarket ?? TinkLink.defaultMarket
+        self.locale = processInfo.tinkLocale ?? TinkLink.defaultLocale
     }
 }
