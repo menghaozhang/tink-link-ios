@@ -79,7 +79,6 @@ public struct Form {
     public struct Field {
         public var text: String
         public let name: String
-        public let isOptional: Bool
         public let helpText: String
         public let validationRules: ValidationRules
         public let attributes: Attributes
@@ -87,9 +86,9 @@ public struct Form {
         internal init(fieldSpecification: Provider.FieldSpecification) {
             text = fieldSpecification.initialValue
             name = fieldSpecification.name
-            isOptional = fieldSpecification.isOptional
             helpText = fieldSpecification.helpText
             validationRules = ValidationRules(
+                isOptional: fieldSpecification.isOptional,
                 maxLength: fieldSpecification.maxLength,
                 minLength: fieldSpecification.minLength,
                 regex: fieldSpecification.pattern,
@@ -108,6 +107,8 @@ public struct Form {
         ///
         /// Represents the rules for validating a form field.
         public struct ValidationRules {
+            public let isOptional: Bool
+
             /// Maximum length of value.
             ///
             /// Use this to e.g. limit user input to only accept input until `maxLength` is reached.
@@ -120,7 +121,9 @@ public struct Form {
             internal let regexError: String
 
             public func validate(_ value: String, fieldName name: String) throws {
-                if let maxLength = maxLength, maxLength > 0 && maxLength < value.count {
+                if value.isEmpty, !isOptional {
+                    throw ValidationError.requiredFieldEmptyValue(fieldName: name)
+                } else if let maxLength = maxLength, maxLength > 0 && maxLength < value.count {
                     throw ValidationError.maxLengthLimit(fieldName: name, maxLength: maxLength)
                 } else if let minLength = minLength, minLength > 0 && minLength > value.count {
                     throw ValidationError.minLengthLimit(fieldName: name, minLength: minLength)
@@ -220,11 +223,7 @@ public struct Form {
         /// - Throws: A `Form.Field.ValidationError` if the field's `text` is invalid.
         public func validate() throws {
             let value = text
-            if value.isEmpty, !isOptional {
-                throw ValidationError.requiredFieldEmptyValue(fieldName: name)
-            } else {
-                try validationRules.validate(value, fieldName: name)
-            }
+            try validationRules.validate(value, fieldName: name)
         }
     }
     
