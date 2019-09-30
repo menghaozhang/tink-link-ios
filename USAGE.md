@@ -6,10 +6,10 @@
 ### Initiate creating credential
 - Creates a form for the given provider.
 ```swift
-	let form = Form(provider: <#Provider#>)
-	form.fields[0].text = <#String#>
-	form.fields[1].text = <#String#>
-	...
+let form = Form(provider: <#Provider#>)
+form.fields[0].text = <#String#>
+form.fields[1].text = <#String#>
+...
 ```
 
 - Validate before submit request to add credential
@@ -24,7 +24,7 @@ form.validateFields()
 ### Supplemental information
 - Creates a form for the given credential.
 ```swift
-let form = Form(provider: <#Credential#>)
+let form = Form(credential: <#Credential#>)
 form.fields[0].text = <#String#>
 form.fields[1].text = <#String#>
 ...
