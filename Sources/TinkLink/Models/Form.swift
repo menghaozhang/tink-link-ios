@@ -129,7 +129,7 @@ public struct Form {
                 } else if !regex.isEmpty, let regex = try? NSRegularExpression(pattern: regex, options: []) {
                     let range = regex.rangeOfFirstMatch(in: value, options: [], range: NSRange(location: 0, length: value.count))
                     if range.location == NSNotFound {
-                        throw ValidationError.validationFailed(fieldName: name, reason: regexError)
+                        throw ValidationError.invalid(fieldName: name, reason: regexError)
                     }
                 }
             }
@@ -164,7 +164,7 @@ public struct Form {
         /// Describes a field validation error.
         public enum ValidationError: Error, LocalizedError {
             /// Field's `text` was invalid. See `reason` for explanation why.
-            case validationFailed(fieldName: String, reason: String)
+            case invalid(fieldName: String, reason: String)
 
             /// Field's `text` was too long.
             case maxLengthLimit(fieldName: String, maxLength: Int)
@@ -177,7 +177,7 @@ public struct Form {
 
             var fieldName: String {
                 switch self {
-                case .validationFailed(let fieldName, _):
+                case .invalid(let fieldName, _):
                     return fieldName
                 case .maxLengthLimit(let fieldName, _):
                     return fieldName
@@ -190,7 +190,7 @@ public struct Form {
 
             public var errorDescription: String? {
                 switch self {
-                case .validationFailed(_, let reason):
+                case .invalid(_, let reason):
                     return reason
                 case .maxLengthLimit(_, let maxLength):
                     return "Field can't be longer than \(maxLength)"
