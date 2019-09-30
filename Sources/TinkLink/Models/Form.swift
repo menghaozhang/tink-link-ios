@@ -119,7 +119,7 @@ public struct Form {
             internal let regex: String
             internal let regexError: String
 
-            public func validate(_ value: String, fieldName name: String) throws {
+            internal func validate(_ value: String, fieldName name: String) throws {
                 if let maxLength = maxLength, maxLength > 0 && maxLength < value.count {
                     throw ValidationError.maxLengthLimit(fieldName: name, maxLength: maxLength)
                 } else if let minLength = minLength, minLength > 0 && minLength > value.count {
@@ -184,6 +184,7 @@ public struct Form {
                 }
             }
 
+            /// A error message describing what is the reason for the validation failure.
             public var errorDescription: String? {
                 switch self {
                 case .validationFailed(_, let reason):
@@ -216,7 +217,6 @@ public struct Form {
         ///
         /// Use this method to validate the current `text` value of the field or to catch the value if invalid.
         ///
-        /// - Returns: `true` if all fields in the form have valid text; otherwise, `false`.
         /// - Throws: A `Form.Field.ValidationError` if the field's `text` is invalid.
         public func validate() throws {
             let value = text
@@ -266,6 +266,10 @@ extension Form {
 }
 
 extension Form.Fields {
+    /// Validate fields.
+    ///
+    /// Use this method ot validate all fields in the form or to catch the values if invalid
+    /// - Throws: A `Form.ValidationError` if the any fields' `text` is invalid.
     func validateFields() throws {
         var fieldsValidationError = Form.ValidationError(errors: [])
         for field in fields {
@@ -280,6 +284,11 @@ extension Form.Fields {
         guard fieldsValidationError.errors.isEmpty else { throw fieldsValidationError }
     }
     
+    /// A Boolean value indicating whether all fields have valid values.
+    ///
+    /// If which field and what validation rule has failed are needed, use `validateFields()` instead.
+    ///
+    /// - Returns: `true` if all fields in the form have valid text; otherwise, `false`.
     var areFieldsValid: Bool {
         do {
             try validateFields()
