@@ -38,7 +38,7 @@ public class TinkLink {
     }
 
     public init(configuration: Configuration) {
-        self.client = Client(environment: configuration.environment , clientID: configuration.clientID, certificateURL: configuration.certificateURL, market: configuration.market, locale: configuration.locale)
+        self.configuration = configuration
     }
 
     public convenience init(configurationPlistURL url: URL) throws {
