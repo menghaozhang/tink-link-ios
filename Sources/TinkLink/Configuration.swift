@@ -30,7 +30,7 @@ extension TinkLink {
     }
 }
 
-extension TinkLink.Configuration: Decodable {
+extension TinkLink.Configuration: Codable {
     enum CodingKeys: String, CodingKey {
         case environmentEndpoint = "TINK_CUSTOM_END_POINT"
         case clientID = "TINK_CLIENT_ID"
@@ -70,6 +70,22 @@ extension TinkLink.Configuration: Decodable {
         } else {
             locale = TinkLink.defaultLocale
         }
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(clientID, forKey: .clientID)
+        switch environment {
+        case .production, .staging:
+            break
+        case .custom(let url):
+            try container.encode(url.absoluteString, forKey: .environmentEndpoint)
+        }
+        if let fileName = certificateURL?.path.components(separatedBy: "/").last {
+            try container.encode(fileName, forKey: .certificateFileName)
+        }
+        try container.encode(market.rawValue, forKey: .market)
+        try container.encode(locale.identifier, forKey: .locale)
     }
 }
 
