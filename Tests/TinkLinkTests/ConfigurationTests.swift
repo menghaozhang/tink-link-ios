@@ -18,6 +18,6 @@ class ConfigurationTests: XCTestCase {
     func testPropertyListConfiguration() throws {
         let url = Bundle(for: ConfigurationTests.self).url(forResource: "Configuration", withExtension: "plist")!
         let configuration = try TinkLink.Configuration(plistURL: url)
-        XCTAssertEqual(configuration.clientID, "abc")
+        XCTAssertEqual(configuration.clientID, "def")
     }
 }
