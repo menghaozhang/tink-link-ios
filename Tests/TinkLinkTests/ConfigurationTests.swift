@@ -27,4 +27,11 @@ class ConfigurationTests: XCTestCase {
         XCTAssertEqual(TinkLink.shared.configuration.market.rawValue, "SE")
         XCTAssertEqual(TinkLink.shared.client.market.rawValue, "SE")
     }
+
+    func testConfigureSharedTinkLinkWithPropertyList() throws {
+        let url = Bundle(for: ConfigurationTests.self).url(forResource: "Configuration", withExtension: "plist")!
+        try TinkLink.configure(configurationPlistURL: url)
+        XCTAssertEqual(TinkLink.shared.configuration.market.rawValue, "NO")
+        XCTAssertEqual(TinkLink.shared.client.market.rawValue, "NO")
+    }
 }
