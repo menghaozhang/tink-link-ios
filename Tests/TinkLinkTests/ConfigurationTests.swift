@@ -20,4 +20,11 @@ class ConfigurationTests: XCTestCase {
         let configuration = try TinkLink.Configuration(plistURL: url)
         XCTAssertEqual(configuration.clientID, "def")
     }
+
+    func testConfigureSharedTinkLinkWithConfiguration() {
+        let configuration = TinkLink.Configuration(clientID: "abc", market: "SE")
+        TinkLink.configure(with: configuration)
+        XCTAssertEqual(TinkLink.shared.configuration.market.rawValue, "SE")
+        XCTAssertEqual(TinkLink.shared.client.market.rawValue, "SE")
+    }
 }
