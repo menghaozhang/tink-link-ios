@@ -59,6 +59,7 @@ public class TinkLink {
     ///     TinkLink.configure(configurationPlistURL: url)
     ///
     public static func configure(configurationPlistURL url: URL) throws {
+        shared.configurationError = nil
         let data = try Data(contentsOf: url)
         shared.configuration = try PropertyListDecoder().decode(TinkLink.Configuration.self, from: data)
     }
