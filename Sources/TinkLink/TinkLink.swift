@@ -1,7 +1,11 @@
 import Foundation
 
 public class TinkLink {
-    public static let shared: TinkLink = TinkLink()
+    public private(set) static var shared: TinkLink = TinkLink()
+
+    static func reset() {
+        shared = TinkLink()
+    }
 
     /// The current configuration.
     public private(set) var configuration: Configuration!
