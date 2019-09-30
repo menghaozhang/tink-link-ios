@@ -16,7 +16,10 @@ class ConfigurationTests: XCTestCase {
     }
 
     func testPropertyListConfiguration() throws {
-        let url = Bundle(for: ConfigurationTests.self).url(forResource: "Configuration", withExtension: "plist")!
+        let tempConfiguration = TinkLink.Configuration(clientID: "def", market: "NO", locale: nil)
+        let url = FileManager.default.temporaryDirectory.appendingPathComponent("Configuration").appendingPathExtension("plist")
+        let data = try PropertyListEncoder().encode(tempConfiguration)
+        try data.write(to: url)
         let configuration = try TinkLink.Configuration(plistURL: url)
         XCTAssertEqual(configuration.clientID, "def")
     }
