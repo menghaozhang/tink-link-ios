@@ -106,6 +106,7 @@ public struct Form {
         ///
         /// Represents the rules for validating a form field.
         public struct ValidationRules {
+            /// If `true` the field is not required to have text for the field to be valid.
             public let isOptional: Bool
 
             /// Maximum length of value.
