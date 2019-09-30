@@ -269,7 +269,7 @@ extension Form.Fields {
     /// Validate fields.
     ///
     /// Use this method to validate all fields in the form or to catch the values if invalid.
-    /// - Throws: A `Form.ValidationError` if the any fields' `text` is invalid.
+    /// - Throws: A `Form.ValidationError` if any of the fields' `text` value is invalid.
     func validateFields() throws {
         var fieldsValidationError = Form.ValidationError(errors: [])
         for field in fields {
