@@ -79,14 +79,12 @@ public struct Form {
     public struct Field {
         public var text: String
         public let name: String
-        public let helpText: String
         public let validationRules: ValidationRules
         public let attributes: Attributes
         
         internal init(fieldSpecification: Provider.FieldSpecification) {
             text = fieldSpecification.initialValue
             name = fieldSpecification.name
-            helpText = fieldSpecification.helpText
             validationRules = ValidationRules(
                 isOptional: fieldSpecification.isOptional,
                 maxLength: fieldSpecification.maxLength,
@@ -97,6 +95,7 @@ public struct Form {
             attributes = Attributes(
                 description: fieldSpecification.fieldDescription,
                 placeholder: fieldSpecification.hint,
+                helpText: fieldSpecification.helpText,
                 isSecureTextEntry: fieldSpecification.isMasked,
                 inputType: fieldSpecification.isNumeric ? .numeric : .default,
                 isEditable: !fieldSpecification.isImmutable || fieldSpecification.initialValue.isEmpty
@@ -149,6 +148,8 @@ public struct Form {
 
             /// A string to display when there is no other text in the text field.
             public let placeholder: String
+
+            public let helpText: String
 
             /// Identifies whether the text object should disable text copying and in some cases hide the text being entered.
             public let isSecureTextEntry: Bool
