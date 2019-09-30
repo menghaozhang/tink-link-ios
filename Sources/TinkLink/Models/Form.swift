@@ -184,7 +184,7 @@ public struct Form {
                 }
             }
 
-            /// A error message describing what is the reason for the validation failure.
+            /// An error message describing what is the reason for the validation failure.
             public var errorDescription: String? {
                 switch self {
                 case .validationFailed(_, let reason):
