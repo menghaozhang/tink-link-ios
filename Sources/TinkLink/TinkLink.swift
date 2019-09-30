@@ -16,10 +16,6 @@ public class TinkLink {
         return shared
     }
 
-    static func reset() {
-        _shared = TinkLink()
-    }
-
     /// The current configuration.
     public let configuration: Configuration
 

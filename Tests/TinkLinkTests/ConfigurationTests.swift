@@ -25,7 +25,6 @@ class ConfigurationTests: XCTestCase {
     }
 
     func testConfigureSharedTinkLinkWithConfiguration() {
-        TinkLink.reset()
         let configuration = TinkLink.Configuration(clientID: "abc", market: "SE")
         TinkLink.configure(with: configuration)
         XCTAssertEqual(TinkLink.shared.configuration.market.rawValue, "SE")
@@ -33,7 +32,6 @@ class ConfigurationTests: XCTestCase {
     }
 
     func testConfigureSharedTinkLinkWithPropertyList() throws {
-        TinkLink.reset()
         let configuration = TinkLink.Configuration(clientID: "def", market: "NO", locale: nil)
         let url = FileManager.default.temporaryDirectory.appendingPathComponent("Configuration").appendingPathExtension("plist")
         let data = try PropertyListEncoder().encode(configuration)
