@@ -44,7 +44,7 @@ class FormTests: XCTestCase {
 
         do {
             try field.validate()
-        } catch Form.Field.ValidationError.validationFailed(let fieldName, let reason) {
+        } catch Form.Field.ValidationError.invalid(let fieldName, let reason) {
             XCTAssertEqual(fieldName, "username")
             XCTAssertEqual(reason, "Please enter a valid social security number.")
         } catch {
@@ -170,7 +170,7 @@ class FormTests: XCTestCase {
 
         do {
             try field.validate()
-        } catch Form.Field.ValidationError.validationFailed(let fieldName, let reason) {
+        } catch Form.Field.ValidationError.invalid(let fieldName, let reason) {
             XCTAssertEqual(fieldName, "password")
             XCTAssertEqual(reason, "Please enter four digits.")
         } catch {
