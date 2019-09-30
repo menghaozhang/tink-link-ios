@@ -1,7 +1,7 @@
 import Foundation
 
 public class TinkLink {
-    private static var _shared: TinkLink?
+    static var _shared: TinkLink?
 
     public static var shared: TinkLink {
         guard let shared = _shared else {
@@ -64,6 +64,7 @@ public class TinkLink {
     ///     TinkLink.configure(configurationPlistURL: url)
     ///
     public static func configure(configurationPlistURL url: URL) throws {
+        precondition(_shared == nil, "Shared TinkLink instance is already configured.")
         _shared = try TinkLink(configurationPlistURL: url)
     }
 
@@ -75,6 +76,7 @@ public class TinkLink {
     ///     TinkLink.configure(with: configuration)
     ///
     public static func configure(with configuration: TinkLink.Configuration) {
+        precondition(_shared == nil, "Shared TinkLink instance is already configured.")
         _shared = TinkLink(configuration: configuration)
     }
 }
