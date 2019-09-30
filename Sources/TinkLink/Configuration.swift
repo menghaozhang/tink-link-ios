@@ -94,7 +94,7 @@ extension TinkLink.Configuration {
         case clientIDNotFound
 
         var errorDescription: String? {
-            return "`TINK_CLIENT_ID` was not found in environment variable or Info.plist."
+            return "`TINK_CLIENT_ID` was not found in environment variable or Info.plist. Please configure a Tink Link client before using it."
         }
     }
 
