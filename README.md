@@ -40,6 +40,4 @@ TinkLink.configure(with: configuration)
 ### List Provider
 
 ### Add Credential
-- Create credential
-- Supplemental information
-- 
+- [Create credential](https://github.com/tink-ab/tink-link-ios/blob/master/USAGE.md#add-credential)
