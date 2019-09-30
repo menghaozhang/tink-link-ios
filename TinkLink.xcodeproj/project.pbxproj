@@ -18,6 +18,7 @@
 		206B8DCF23350A8300693ED5 /* FormTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206B8DCD2335001000693ED5 /* FormTests.swift */; };
 		209D69282326878800B4DBB8 /* SupplementInformationTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209D69272326878800B4DBB8 /* SupplementInformationTask.swift */; };
 		20C300E92341D44F0004E284 /* ConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C300E72341D43B0004E284 /* ConfigurationTests.swift */; };
+		20C300EB2341D55E0004E284 /* Configuration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20C300EA2341D55E0004E284 /* Configuration.plist */; };
 		20D8125F2330DAD7000B3A30 /* Service+Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8125E2330DAD7000B3A30 /* Service+Metadata.swift */; };
 		20E19DB22306E59900BF053A /* BoringSSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85462303FD85006213BB /* BoringSSL.framework */; };
 		20E19DB32306E59900BF053A /* CgRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85472303FD85006213BB /* CgRPC.framework */; };
@@ -88,6 +89,7 @@
 		206B8DCD2335001000693ED5 /* FormTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTests.swift; sourceTree = "<group>"; };
 		209D69272326878800B4DBB8 /* SupplementInformationTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementInformationTask.swift; sourceTree = "<group>"; };
 		20C300E72341D43B0004E284 /* ConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationTests.swift; sourceTree = "<group>"; };
+		20C300EA2341D55E0004E284 /* Configuration.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Configuration.plist; sourceTree = "<group>"; };
 		20D8125E2330DAD7000B3A30 /* Service+Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Service+Metadata.swift"; sourceTree = "<group>"; };
 		20E6DCD023336AE700476B8F /* MultiHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiHandler.swift; sourceTree = "<group>"; };
 		20ED85202303FA48006213BB /* TinkLink.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinkLink.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -229,6 +231,7 @@
 				20ED858923040974006213BB /* ProviderGRPCTests.swift */,
 				20ED8587230408E6006213BB /* ClientTests.swift */,
 				20C300E72341D43B0004E284 /* ConfigurationTests.swift */,
+				20C300EA2341D55E0004E284 /* Configuration.plist */,
 				206B8DCD2335001000693ED5 /* FormTests.swift */,
 				20ED85302303FA48006213BB /* Info.plist */,
 			);
@@ -422,6 +425,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20C300EB2341D55E0004E284 /* Configuration.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

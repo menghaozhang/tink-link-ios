@@ -14,4 +14,10 @@ class ConfigurationTests: XCTestCase {
         XCTAssertEqual(link.configuration.market.rawValue, "SE")
         XCTAssertEqual(link.client.market.rawValue, "SE")
     }
+
+    func testPropertyListConfiguration() throws {
+        let url = Bundle(for: ConfigurationTests.self).url(forResource: "Configuration", withExtension: "plist")!
+        let configuration = try TinkLink.Configuration(plistURL: url)
+        XCTAssertEqual(configuration.clientID, "abc")
+    }
 }
