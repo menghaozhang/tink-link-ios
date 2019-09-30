@@ -1,10 +1,23 @@
 import Foundation
 
 public class TinkLink {
-    public private(set) static var shared: TinkLink = TinkLink()
+    private static var _shared: TinkLink?
+
+    public static var shared: TinkLink {
+        guard let shared = _shared else {
+            do {
+                let link = try TinkLink()
+                _shared = link
+                return link
+            } catch {
+                fatalError(error.localizedDescription)
+            }
+        }
+        return shared
+    }
 
     static func reset() {
-        shared = TinkLink()
+        _shared = TinkLink()
     }
 
     /// The current configuration.
@@ -55,8 +68,7 @@ public class TinkLink {
     ///     TinkLink.configure(configurationPlistURL: url)
     ///
     public static func configure(configurationPlistURL url: URL) throws {
-        let data = try Data(contentsOf: url)
-        shared.configuration = try PropertyListDecoder().decode(TinkLink.Configuration.self, from: data)
+        _shared = try TinkLink(configurationPlistURL: url)
     }
 
     /// Configure shared instance with configration description.
@@ -67,6 +79,6 @@ public class TinkLink {
     ///     TinkLink.configure(with: configuration)
     ///
     public static func configure(with configuration: TinkLink.Configuration) {
-        shared.configuration = configuration
+        _shared = TinkLink(configuration: configuration)
     }
 }
