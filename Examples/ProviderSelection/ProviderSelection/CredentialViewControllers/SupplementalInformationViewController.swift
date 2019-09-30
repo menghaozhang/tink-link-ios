@@ -92,12 +92,8 @@ extension SupplementalInformationViewController {
 
     override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         let field = form.fields[section]
-        if let error = formError {
-            if let fieldError = error[fieldName: field.name] {
-                return fieldError.errorDescription
-            } else {
-                return field.attributes.helpText
-            }
+        if let error = formError, let fieldError = error[fieldName: field.name] {
+            return fieldError.errorDescription
         } else {
             return field.attributes.helpText
         }
