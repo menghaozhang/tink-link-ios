@@ -149,6 +149,7 @@ public struct Form {
             /// A string to display when there is no other text in the text field.
             public let placeholder: String
 
+            /// A string to display next to the field with information about what the user should enter in the text field.
             public let helpText: String
 
             /// Identifies whether the text object should disable text copying and in some cases hide the text being entered.
