@@ -2,6 +2,7 @@
 
 ## List provider/provider group
 - Fetch provider list from Tink
+
 ## Add credential
 ### Initiate creating credential
 - Creates a form for the given provider.
@@ -37,6 +38,7 @@ form.fields[name: "password"]?.text = <#String#>
 	```
 
 - Add Credential with form fields
+
 ### Supplemental information
 - Creates a form for the given credential.
 ```swift
@@ -50,8 +52,10 @@ form.fields[name: "password"]?.text = <#String#>
 ```
 
 - Validate before submit request to update credential(Same as validate for the provider form)
-- Submit update supplement information 
+- Submit update supplement information
+
 ### Third party app authentication
 - BankID
 - Other
+
 ### Updated
