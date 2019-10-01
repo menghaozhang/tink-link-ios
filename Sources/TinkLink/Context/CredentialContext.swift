@@ -1,8 +1,22 @@
 import Foundation
 
+/// A protocol that allows a delegate to respond to credential changes or errors.
 public protocol CredentialContextDelegate: AnyObject {
+    /// Notifies the delegate that the credentials are about to be changed.
+    ///
+    /// - Note: This method is optional.
+    /// - Parameter context: The credential context that will change.
     func credentialContextWillChangeCredentials(_ context: CredentialContext)
+
+    /// Called when an error occured while fetching credentials or adding a credential.
+    ///
+    /// - Parameter context: The credential context that encountered the error.
+    /// - Parameter error: A description of the error.
     func credentialContext(_ context: CredentialContext, didReceiveError error: Error)
+
+    /// Notifies the delegate that the credentials has changed.
+    ///
+    /// - Parameter context: The credential context that changed.
     func credentialContextDidChangeCredentials(_ context: CredentialContext)
 }
 
