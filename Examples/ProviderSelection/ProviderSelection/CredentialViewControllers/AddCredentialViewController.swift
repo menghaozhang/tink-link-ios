@@ -276,7 +276,7 @@ extension AddCredentialViewController: TextFieldCellDelegate {
     func textFieldCell(_ cell: TextFieldCell, willChangeToText text: String) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         form.fields[indexPath.section].text = text
-        navigationItem.rightBarButtonItem?.isEnabled = form.fields[indexPath.section].isValid
+        navigationItem.rightBarButtonItem?.isEnabled = form.areFieldsValid
     }
 
     func textFieldCellDidEndEditing(_ cell: TextFieldCell) {

@@ -35,3 +35,9 @@ Key | Value
 let configuration = TinkLink.Configuration(clientID: <#String#>)
 TinkLink.configure(with: configuration)
 ```
+
+## [Usage](https://github.com/tink-ab/tink-link-ios/blob/master/USAGE.md)
+### List Provider
+
+### Add Credential
+- [Create credential](https://github.com/tink-ab/tink-link-ios/blob/master/USAGE.md#add-credential)
