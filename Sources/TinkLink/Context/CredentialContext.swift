@@ -84,6 +84,7 @@ public class CredentialContext {
     /// Adds a credential for the user.
     ///
     /// You need to handle status changes in `progressHandler` to successfuly add a credential for some providers.
+    ///
     ///     credentialContext.addCredential(for: provider, form: form, progressHandler: { status in
     ///         switch status {
     ///         case .awaitingSupplementalInformation(let supplementInformationTask):
