@@ -153,7 +153,7 @@ public struct Form {
             /// A string to display next to the field with information about what the user should enter in the text field.
             public let helpText: String
 
-            /// Identifies whether the text object should disable text copying and in some cases hide the text being entered.
+            /// Identifies whether the text object should hide the text being entered.
             public let isSecureTextEntry: Bool
 
             /// The input type associated with the field.
