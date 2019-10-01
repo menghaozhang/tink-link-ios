@@ -39,7 +39,9 @@ public class CredentialContext {
 
     /// The object that acts as the delegate of the credential context.
     ///
-    /// The delegate must adopt the `CredentialContextDelegate` protocol. The delegate is not retained.
+    /// If you set a delegate for the credential context, it will register to receive updates when credentials are added. The context notifies the delegate when `credentials` will or did change or if an error occured.
+    ///
+    /// - Note: The delegate must adopt the `CredentialContextDelegate` protocol. The delegate is not retained.
     public weak var delegate: CredentialContextDelegate? {
         didSet {
             if delegate != nil {
