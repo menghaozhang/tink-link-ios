@@ -57,8 +57,10 @@ public class CredentialContext {
     private let credentialStore: CredentialStore
     private var credentialStoreChangeObserver: Any?
     private var credentialStoreErrorObserver: Any?
-    
-    /// An initializer that provides TinkLink to config the add credential service
+
+    /// Creates a new CredentialContext for the given TinkLink instance.
+    ///
+    /// - Parameter tinkLink: TinkLink instance, defaults to `shared` if not provided.
     public init(tinkLink: TinkLink = .shared) {
         self.tinkLink = tinkLink
         credentialStore = tinkLink.credentialStore
