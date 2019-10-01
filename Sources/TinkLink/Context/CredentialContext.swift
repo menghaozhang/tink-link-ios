@@ -10,7 +10,7 @@ extension CredentialContextDelegate {
     public func credentialContextWillChangeCredentials(_ context: CredentialContext) { }
 }
 
-/// An object that accesses the user's credentials and supports the flow for adding credentials.
+/// An object that you use to access the user's credentials and supports the flow for adding credentials.
 public class CredentialContext {
 
     private var _credentials: [Credential]? {
