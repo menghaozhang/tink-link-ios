@@ -83,6 +83,21 @@ public class CredentialContext {
     
     /// Adds a credential for the user.
     ///
+    /// You need to handle status changes in `progressHandler` to successfuly add a credential for some providers.
+    ///
+    ///     credentialContext.addCredential(for: provider, form: form, progressHandler: { status in
+    ///         switch status {
+    ///         case .awaitingSupplementalInformation(let supplementInformationTask):
+    ///             <#Present form for supplemental information task#>
+    ///         case .awaitingThirdPartyAppAuthentication(let thirdPartyAppAuthentication):
+    ///             <#Open third party app deep link URL#>
+    ///         default:
+    ///             break
+    ///         }
+    ///     }, completion: { result in
+    ///         <#Handle result#>
+    ///     }
+    ///
     /// - Parameters:
     ///   - provider: The provider (financial institution) that the credentials is connected to.
     ///   - form: This is a form with fields from the Provider to which the credentials belongs to.
