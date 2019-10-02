@@ -46,7 +46,8 @@ form.fields[name: "password"]?.text = <#String#>
 ```
 
 ### Form validation
-Validate before submit request to add credential
+Validate before you submit a request to add credential.
+
 Use `areFieldsValid` to return a boolean value that indicate if all form fields are valid. 
     
 For example, you can use `areFieldsValid` to enable a submit button when text fields change.
@@ -56,7 +57,7 @@ For example, you can use `areFieldsValid` to enable a submit button when text fi
 }
 ```
 
-Use validateFields() to validate fields which can throw errors that contain more info about which fields are not valid and why
+Use validateFields() to validate all fields. If not valid, it will throw an error that contains more information about which fields are not valid and why
 
 ```swift
 do {
