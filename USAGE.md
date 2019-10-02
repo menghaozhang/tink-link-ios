@@ -46,25 +46,25 @@ form.fields[name: "password"]?.text = <#String#>
 ```
 
 - Validate before submit request to add credential
-	- Use `areFieldsValid` to return a boolean value that indicate if all form fields are valid. 
-	- For example, you can use `areFieldsValid` to enable a submit button when text fields change.
-	```swift
-	@objc func textFieldDidChange(_ notification: Notification) {
-	    submitButton.isEnabled = form.areFieldsValid
-	}
-	```
+    - Use `areFieldsValid` to return a boolean value that indicate if all form fields are valid. 
+    - For example, you can use `areFieldsValid` to enable a submit button when text fields change.
+    ```swift
+    @objc func textFieldDidChange(_ notification: Notification) {
+        submitButton.isEnabled = form.areFieldsValid
+    }
+    ```
 
-	- Use validateFields() to validate fields which can throw errors that contain more info about which fields are not valid and why
+    - Use validateFields() to validate fields which can throw errors that contain more info about which fields are not valid and why
 
-	```swift
-	do {
-    	try form.validateFields()
-	} catch let error as Form.Fields.ValidationError {
-    	if let usernameFieldError = error[fieldName: "username"] {
-        	usernameValidationErrorLabel.text = usernameFieldError.errorDescription
-	    }
-	}
-	```
+    ```swift
+    do {
+        try form.validateFields()
+    } catch let error as Form.Fields.ValidationError {
+        if let usernameFieldError = error[fieldName: "username"] {
+            usernameValidationErrorLabel.text = usernameFieldError.errorDescription
+        }
+    }
+    ```
 
 - Add Credential with form fields
 
