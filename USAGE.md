@@ -39,11 +39,6 @@ class ProviderListViewController: UITableViewController, ProviderContextDelegate
 Creates a form for the given provider.
 ```swift
 let form = Form(provider: <#Provider#>)
-form.fields[0].text = <#String#>
-form.fields[1].text = <#String#>
-```
-or
-```swift
 form.fields[name: "username"]?.text = <#String#>
 form.fields[name: "password"]?.text = <#String#>
 ...
