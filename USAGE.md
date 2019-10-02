@@ -1,7 +1,34 @@
 # Usage example
 
-## List provider/provider group
-- Fetch provider list from Tink
+## List providers
+Here's how you list providers.
+```swift
+class ProviderListViewController: UITableViewController, ProviderContextDelegate {
+    let providerContext = ProviderContext()
+    var providers: [Provider]
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        providerContext.delegate = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+    }
+    
+    func providerContextDidChangeProviders(_ context: ProviderContext) {
+        tableView.reloadData()
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return providers.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let provider = providers[indexPath.row]
+        cell.textLabel?.text = provider.displayName
+        return cell
+    }
+}
+```
 
 ## Add credential
 ### Initiate creating credential
