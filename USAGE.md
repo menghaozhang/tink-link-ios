@@ -69,6 +69,8 @@ do {
 ```
 
 ### Add Credential with form fields
+To add a credential for the current user, call `addCredential` with the provider you want to add a credential for and a form with valid fields for that provider.
+Then handle status changes in the `progressHandler`  closure and the `result` from the completion handler. 
 ```swift
 credentialContext.addCredential(for: provider, form: form, progressHandler: { status in
     switch status {
