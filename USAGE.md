@@ -105,8 +105,28 @@ do {
 
 After submitting the form new status updates will sent to the `progressHandler` in the `addCredential` call.  
 
-### Third party app authentication
-- BankID
-- Other
+### Handling third party app authentication
+When progressHandler get a `awaitingThirdPartyAppAuthentication` status you need to try to open the url provided by `ThirdPartyAppAuthentication`. Check if the system can open the url or ask the user to download the app like this:  
+```swift
+if let deepLinkURL = thirdPartyAppAuthentication.deepLinkURL, UIApplication.shared.canOpenURL(deepLinkURL) {
+    UIApplication.shared.open(deepLinkURL)
+} else {
+    let alertController = UIAlertController(title: thirdPartyAppAuthentication.downloadTitle, message: thirdPartyAppAuthentication.downloadMessage, preferredStyle: .alert)
+
+    if let appStoreURL = thirdPartyAppAuthentication.appStoreURL, UIApplication.shared.canOpenURL(appStoreURL) {
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let downloadAction = UIAlertAction(title: "Download", style: .default, handler: { _ in
+            UIApplication.shared.open(appStoreURL)
+        })
+        alertController.addAction(cancelAction)
+        alertController.addAction(downloadAction)
+    } else {
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okAction)
+    }
+
+    present(alertController, animated: true)
+}
+```
 
 ### Updated
