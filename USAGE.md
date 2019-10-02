@@ -46,7 +46,7 @@ form.fields[name: "password"]?.text = <#String#>
 ```
 
 ### Form validation
-Validate before you submit a request to add credential.
+Validate before you submit a request to add credential or supplement information.
 
 Use `areFieldsValid` to return a boolean value that indicate if all form fields are valid. 
     
@@ -97,7 +97,6 @@ form.fields[name: "password"]?.text = <#String#>
 ...
 ```
 
-- Validate before submit request to update credential(Same as validate for the provider form)
 - Submit update supplement information
 
 ### Third party app authentication
