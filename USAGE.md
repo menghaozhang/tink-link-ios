@@ -56,7 +56,7 @@ For example, you can use `areFieldsValid` to enable a submit button when text fi
 }
 ```
 
-Use validateFields() to validate all fields. If not valid, it will throw an error that contains more information about which fields are not valid and why
+Use validateFields() to validate all fields. If not valid, it will throw an error that contains more information about which fields are not valid and why.
 
 ```swift
 do {
