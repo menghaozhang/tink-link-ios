@@ -10,11 +10,15 @@ class ProviderListViewController: UITableViewController, ProviderContextDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         providerContext.delegate = self
+        providers = providerContext.providers
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
     
     func providerContextDidChangeProviders(_ context: ProviderContext) {
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.providers = context.providers
+            self.tableView.reloadData()
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
