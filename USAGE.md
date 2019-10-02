@@ -93,7 +93,17 @@ form.fields[0].text = <#String#>
 form.fields[1].text = <#String#>
 ```
 
-- Submit update supplement information
+Submit update supplement information after validating like this:
+```swift
+do {
+    try form.validateFields()
+    supplementInformationTask.submit(form)
+} catch {
+    <#Handle error#>
+}
+```
+
+After submitting the form new status updates will sent to the `progressHandler` in the `addCredential` call.  
 
 ### Third party app authentication
 - BankID
