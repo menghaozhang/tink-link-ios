@@ -133,5 +133,3 @@ if let appStoreURL = thirdPartyAppAuthentication.appStoreURL, UIApplication.shar
 
 present(alertController, animated: true)
 ```
-
-### Updated
