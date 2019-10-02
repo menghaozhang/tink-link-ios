@@ -247,9 +247,7 @@ extension AddCredentialViewController {
         if let appStoreURL = thirdPartyAppAuthentication.appStoreURL, UIApplication.shared.canOpenURL(appStoreURL) {
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
             let downloadAction = UIAlertAction(title: "Download", style: .default, handler: { _ in
-                if let appStoreURL = thirdPartyAppAuthentication.appStoreURL, UIApplication.shared.canOpenURL(appStoreURL) {
-                    UIApplication.shared.open(appStoreURL)
-                }
+                UIApplication.shared.open(appStoreURL)
             })
             alertController.addAction(cancelAction)
             alertController.addAction(downloadAction)
