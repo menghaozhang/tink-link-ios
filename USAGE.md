@@ -67,6 +67,20 @@ form.fields[name: "password"]?.text = <#String#>
     ```
 
 - Add Credential with form fields
+```swift
+credentialContext.addCredential(for: provider, form: form, progressHandler: { status in
+    switch status {
+    case .awaitingSupplementalInformation(let supplementInformationTask):
+        <#Present form for supplemental information task#>
+    case .awaitingThirdPartyAppAuthentication(let thirdPartyAppAuthentication):
+        <#Open third party app deep link URL#>
+    default:
+        break
+    }
+}, completion: { result in
+    <#Handle result#>
+}
+```
 
 ### Supplemental information
 - Creates a form for the given credential.
