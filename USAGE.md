@@ -111,22 +111,27 @@ When progressHandler get a `awaitingThirdPartyAppAuthentication` status you need
 if let deepLinkURL = thirdPartyAppAuthentication.deepLinkURL, UIApplication.shared.canOpenURL(deepLinkURL) {
     UIApplication.shared.open(deepLinkURL)
 } else {
-    let alertController = UIAlertController(title: thirdPartyAppAuthentication.downloadTitle, message: thirdPartyAppAuthentication.downloadMessage, preferredStyle: .alert)
-
-    if let appStoreURL = thirdPartyAppAuthentication.appStoreURL, UIApplication.shared.canOpenURL(appStoreURL) {
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        let downloadAction = UIAlertAction(title: "Download", style: .default, handler: { _ in
-            UIApplication.shared.open(appStoreURL)
-        })
-        alertController.addAction(cancelAction)
-        alertController.addAction(downloadAction)
-    } else {
-        let okAction = UIAlertAction(title: "OK", style: .default)
-        alertController.addAction(okAction)
-    }
-
-    present(alertController, animated: true)
+    <#Ask user to download app#>
 }
+```
+
+Here's how you can ask the user to download the third party app via an alert:
+```swift
+let alertController = UIAlertController(title: thirdPartyAppAuthentication.downloadTitle, message: thirdPartyAppAuthentication.downloadMessage, preferredStyle: .alert)
+
+if let appStoreURL = thirdPartyAppAuthentication.appStoreURL, UIApplication.shared.canOpenURL(appStoreURL) {
+    let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+    let downloadAction = UIAlertAction(title: "Download", style: .default, handler: { _ in
+        UIApplication.shared.open(appStoreURL)
+    })
+    alertController.addAction(cancelAction)
+    alertController.addAction(downloadAction)
+} else {
+    let okAction = UIAlertAction(title: "OK", style: .default)
+    alertController.addAction(okAction)
+}
+
+present(alertController, animated: true)
 ```
 
 ### Updated
