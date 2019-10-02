@@ -37,7 +37,9 @@ class ProviderListViewController: UITableViewController, ProviderContextDelegate
 let form = Form(provider: <#Provider#>)
 form.fields[0].text = <#String#>
 form.fields[1].text = <#String#>
-/// or
+```
+or
+```swift
 form.fields[name: "username"]?.text = <#String#>
 form.fields[name: "password"]?.text = <#String#>
 ...
