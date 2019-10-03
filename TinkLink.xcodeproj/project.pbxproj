@@ -16,6 +16,8 @@
 		2027F01F2345E4850025473A /* AuthorizationCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2027F01E2345E4850025473A /* AuthorizationCode.swift */; };
 		2027F0242345E5FD0025473A /* AuthorizationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2027F0232345E5FD0025473A /* AuthorizationResponse.swift */; };
 		2027F0262345E62C0025473A /* URLSessionDataTask+Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2027F0252345E62C0025473A /* URLSessionDataTask+Cancellable.swift */; };
+		2027F02C2346421F0025473A /* SecTrust+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2027F02B2346421F0025473A /* SecTrust+Swift.swift */; };
+		2027F02E2346423C0025473A /* SecCertificate+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2027F02D2346423C0025473A /* SecCertificate+Swift.swift */; };
 		203BE969232784440033F879 /* AddCredentialTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203BE968232784440033F879 /* AddCredentialTask.swift */; };
 		2049259A232A3AF000D4461D /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20492599232A3AF000D4461D /* Form.swift */; };
 		206B8DCF23350A8300693ED5 /* FormTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206B8DCD2335001000693ED5 /* FormTests.swift */; };
@@ -89,6 +91,8 @@
 		2027F01E2345E4850025473A /* AuthorizationCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationCode.swift; sourceTree = "<group>"; };
 		2027F0232345E5FD0025473A /* AuthorizationResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationResponse.swift; sourceTree = "<group>"; };
 		2027F0252345E62C0025473A /* URLSessionDataTask+Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSessionDataTask+Cancellable.swift"; sourceTree = "<group>"; };
+		2027F02B2346421F0025473A /* SecTrust+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecTrust+Swift.swift"; sourceTree = "<group>"; };
+		2027F02D2346423C0025473A /* SecCertificate+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecCertificate+Swift.swift"; sourceTree = "<group>"; };
 		203BE968232784440033F879 /* AddCredentialTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCredentialTask.swift; sourceTree = "<group>"; };
 		20492599232A3AF000D4461D /* Form.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
 		206B8DCD2335001000693ED5 /* FormTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTests.swift; sourceTree = "<group>"; };
@@ -188,6 +192,8 @@
 				8F84A77B2330D39600EA878F /* Locale+Extensions.swift */,
 				8F3672452305685600B92936 /* GRPCExactNumber+Extensions.swift */,
 				2027F0252345E62C0025473A /* URLSessionDataTask+Cancellable.swift */,
+				2027F02B2346421F0025473A /* SecTrust+Swift.swift */,
+				2027F02D2346423C0025473A /* SecCertificate+Swift.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -530,6 +536,7 @@
 				20ED858E2304151B006213BB /* CredentialService.swift in Sources */,
 				8F84A77C2330D39600EA878F /* Locale+Extensions.swift in Sources */,
 				201D5523230AEAA500641102 /* UserService.swift in Sources */,
+				2027F02C2346421F0025473A /* SecTrust+Swift.swift in Sources */,
 				20ED85412303FAEC006213BB /* rpc.pb.swift in Sources */,
 				209D69282326878800B4DBB8 /* SupplementInformationTask.swift in Sources */,
 				2027F0262345E62C0025473A /* URLSessionDataTask+Cancellable.swift in Sources */,
@@ -539,6 +546,7 @@
 				8F36724F230598BC00B92936 /* ExactNumber.swift in Sources */,
 				8FA5F822230AE66100226C02 /* CurrencyDenominatedAmount.swift in Sources */,
 				8F3672462305685600B92936 /* GRPCExactNumber+Extensions.swift in Sources */,
+				2027F02E2346423C0025473A /* SecCertificate+Swift.swift in Sources */,
 				8FA3558C231E839E0054115D /* CredentialStore.swift in Sources */,
 				8F3672512305A2A700B92936 /* Identifier.swift in Sources */,
 				200A3F99230C31E900BEF935 /* AuthenticationService.swift in Sources */,
