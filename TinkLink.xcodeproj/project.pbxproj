@@ -14,6 +14,7 @@
 		200FD63F23154B660077181A /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200FD63E23154B660077181A /* Market.swift */; };
 		201D5523230AEAA500641102 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D5522230AEAA500641102 /* UserService.swift */; };
 		2027F01F2345E4850025473A /* AuthorizationCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2027F01E2345E4850025473A /* AuthorizationCode.swift */; };
+		2027F0242345E5FD0025473A /* AuthorizationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2027F0232345E5FD0025473A /* AuthorizationResponse.swift */; };
 		203BE969232784440033F879 /* AddCredentialTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203BE968232784440033F879 /* AddCredentialTask.swift */; };
 		2049259A232A3AF000D4461D /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20492599232A3AF000D4461D /* Form.swift */; };
 		206B8DCF23350A8300693ED5 /* FormTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206B8DCD2335001000693ED5 /* FormTests.swift */; };
@@ -85,6 +86,7 @@
 		200FD63E23154B660077181A /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		201D5522230AEAA500641102 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		2027F01E2345E4850025473A /* AuthorizationCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationCode.swift; sourceTree = "<group>"; };
+		2027F0232345E5FD0025473A /* AuthorizationResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationResponse.swift; sourceTree = "<group>"; };
 		203BE968232784440033F879 /* AddCredentialTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCredentialTask.swift; sourceTree = "<group>"; };
 		20492599232A3AF000D4461D /* Form.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
 		206B8DCD2335001000693ED5 /* FormTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTests.swift; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				200FD63E23154B660077181A /* Market.swift */,
 				200FD63A23154AA90077181A /* AuthenticationToken.swift */,
 				2027F01E2345E4850025473A /* AuthorizationCode.swift */,
+				2027F0232345E5FD0025473A /* AuthorizationResponse.swift */,
 				200FD63C23154AFC0077181A /* AccessToken.swift */,
 				8F36724E230598BC00B92936 /* ExactNumber.swift */,
 				8FA5F821230AE66100226C02 /* CurrencyDenominatedAmount.swift */,
@@ -518,6 +521,7 @@
 				2027F01F2345E4850025473A /* AuthorizationCode.swift in Sources */,
 				200FD63B23154AA90077181A /* AuthenticationToken.swift in Sources */,
 				8FA3558A231E703C0054115D /* ProviderStore.swift in Sources */,
+				2027F0242345E5FD0025473A /* AuthorizationResponse.swift in Sources */,
 				8FA35586231E673B0054115D /* TinkLink.swift in Sources */,
 				20ED85712304004C006213BB /* ProviderService.swift in Sources */,
 				20ED858E2304151B006213BB /* CredentialService.swift in Sources */,
