@@ -6,10 +6,19 @@ final class AuthenticationService: TokenConfigurableService {
     let metadata: Metadata
     var authorizeHost: String
 
-    init(channel: Channel, metadata: Metadata, authorizeHost: String) {
+    private var session: URLSession
+    private var sessionDelegate: URLSessionDelegate?
+
+    init(channel: Channel, metadata: Metadata, authorizeHost: String, certificates: [Data]) {
         self.channel = channel
         self.metadata = metadata
         self.authorizeHost = authorizeHost
+        if certificates.isEmpty {
+            session = .shared
+        } else {
+            sessionDelegate = CertificatePinningDelegate(certificates: TinkLink.certificates)
+            session = URLSession(configuration: .ephemeral, delegate: sessionDelegate, delegateQueue: nil)
+        }
     }
 
     internal lazy var service = AuthenticationServiceServiceClient(channel: channel, metadata: metadata)
@@ -78,7 +87,7 @@ extension AuthenticationService {
             return nil
         }
 
-        let task = URLSession.shared.dataTask(with: urlRequest) { (data, _, error) in
+        let task = session.dataTask(with: urlRequest) { (data, _, error) in
             if let data = data {
                 do {
                     let authorizationResponse = try JSONDecoder().decode(AuthorizationResponse.self, from: data)
