@@ -9,6 +9,7 @@ extension TinkLink {
         var certificateURL: URL?
         var market: Market
         var locale: Locale
+
         /// - Parameters:
         ///   - clientId: The client id for your app.
         ///   - market: Optional, default market(SE) will be used if nothing is provided.
