@@ -70,7 +70,7 @@ extension AuthenticationService {
         urlComponents.host = authorizeHost
         urlComponents.path = "/api/v1/oauth/authorize"
 
-        var urlRequest = URLRequest(url: urlComponents.url!, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData)
+        var urlRequest = URLRequest(url: urlComponents.url!)
         urlRequest.httpMethod = "POST"
         urlRequest.setValue(authorization, forHTTPHeaderField: "Authorization")
         urlRequest.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
