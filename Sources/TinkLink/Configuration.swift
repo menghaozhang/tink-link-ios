@@ -9,12 +9,14 @@ extension TinkLink {
         var certificateURL: URL?
         var market: Market
         var locale: Locale
+        var authorizeHost: String
 
         /// - Parameters:
         ///   - clientId: The client id for your app.
         ///   - market: Optional, default market(SE) will be used if nothing is provided.
         ///   - locale: Optional, default locale(sv_SE) will be used if nothing is provided.
-        public init(clientID: String, market: Market? = nil, locale: Locale? = nil) {
+        ///   - authorizeHost: Optional, defaults to `api.tink.com` if nothing is provided.
+        public init(clientID: String, market: Market? = nil, locale: Locale? = nil, authorizeHost: String? = nil) {
             self.environment = .production
             self.clientID = clientID
             self.market = market ?? .defaultMarket
@@ -27,6 +29,7 @@ extension TinkLink {
             } else {
                 self.locale = TinkLink.defaultLocale
             }
+            self.authorizeHost = authorizeHost ?? TinkLink.defaultAuthorizeHost
         }
     }
 }
@@ -38,6 +41,7 @@ extension TinkLink.Configuration: Codable {
         case certificateFileName = "TINK_CERTIFICATE_FILE_NAME"
         case market = "TINK_MARKET_CODE"
         case locale = "TINK_LOCALE_IDENTIFIER"
+        case authorizeHost = "TINK_AUTHORIZE_HOST"
     }
 
     public init(from decoder: Decoder) throws {
@@ -71,6 +75,7 @@ extension TinkLink.Configuration: Codable {
         } else {
             locale = TinkLink.defaultLocale
         }
+        self.authorizeHost = try values.decodeIfPresent(String.self, forKey: .authorizeHost) ?? TinkLink.defaultAuthorizeHost
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -87,6 +92,7 @@ extension TinkLink.Configuration: Codable {
         }
         try container.encode(market.rawValue, forKey: .market)
         try container.encode(locale.identifier, forKey: .locale)
+        try container.encode(authorizeHost, forKey: .authorizeHost)
     }
 }
 
@@ -112,5 +118,6 @@ extension TinkLink.Configuration {
         self.certificateURL = nil
         self.market = processInfo.tinkMarket ?? TinkLink.defaultMarket
         self.locale = processInfo.tinkLocale ?? TinkLink.defaultLocale
+        self.authorizeHost = processInfo.tinkAuthorizeHost ?? TinkLink.defaultAuthorizeHost
     }
 }

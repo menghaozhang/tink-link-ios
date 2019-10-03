@@ -6,16 +6,18 @@ final class Client {
     private var metadata = Metadata()
     var market: Market
     var locale: Locale
+    var authorizeHost: String
 
-    convenience init(environment: Environment, clientID: String, userAgent: String? = nil, certificateURL: URL? = nil, market: Market, locale: Locale) {
+    convenience init(environment: Environment, clientID: String, userAgent: String? = nil, certificateURL: URL? = nil, market: Market, locale: Locale, authorizeHost: String) {
         let certificateContents = certificateURL.flatMap { try? String(contentsOf: $0, encoding: .utf8) }
-        self.init(environment: environment, clientID: clientID, userAgent: userAgent, certificate: certificateContents, market: market, locale: locale)
+        self.init(environment: environment, clientID: clientID, userAgent: userAgent, certificate: certificateContents, market: market, locale: locale, authorizeHost: authorizeHost)
     }
 
-    init(environment: Environment, clientID: String, userAgent: String? = nil, certificate: String? = nil, market: Market, locale: Locale) {
+    init(environment: Environment, clientID: String, userAgent: String? = nil, certificate: String? = nil, market: Market, locale: Locale, authorizeHost: String) {
         var arguments: [Channel.Argument] = []
         self.market = market
         self.locale = locale
+        self.authorizeHost = authorizeHost
 
         arguments.append(.maxReceiveMessageLength(20 * 1024 * 1024))
 
@@ -39,7 +41,7 @@ final class Client {
     
     private(set) lazy var providerService = ProviderService(channel: channel, metadata: metadata)
     private(set) lazy var credentialService = CredentialService(channel: channel, metadata: metadata)
-    private(set) lazy var authenticationService = AuthenticationService(channel: channel, metadata: metadata)
+    private(set) lazy var authenticationService = AuthenticationService(channel: channel, metadata: metadata, authorizeHost: authorizeHost)
     private(set) lazy var userService = UserService(channel: channel, metadata: metadata)
 }
 
@@ -50,7 +52,8 @@ extension Client {
             clientID: configuration.clientID,
             certificateURL: configuration.certificateURL,
             market: configuration.market,
-            locale: configuration.locale
+            locale: configuration.locale,
+            authorizeHost: configuration.authorizeHost
         )
     }
 }

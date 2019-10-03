@@ -4,10 +4,12 @@ import SwiftGRPC
 final class AuthenticationService: TokenConfigurableService {
     let channel: Channel
     let metadata: Metadata
+    var authorizeHost: String
 
-    init(channel: Channel, metadata: Metadata) {
+    init(channel: Channel, metadata: Metadata, authorizeHost: String) {
         self.channel = channel
         self.metadata = metadata
+        self.authorizeHost = authorizeHost
     }
 
     internal lazy var service = AuthenticationServiceServiceClient(channel: channel, metadata: metadata)
@@ -56,7 +58,7 @@ extension AuthenticationService {
 
         var urlComponents = URLComponents()
         urlComponents.scheme = "https"
-        urlComponents.host = "api.tink.com"
+        urlComponents.host = authorizeHost
         urlComponents.path = "/api/v1/oauth/authorize"
 
         var urlRequest = URLRequest(url: urlComponents.url!, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData)
