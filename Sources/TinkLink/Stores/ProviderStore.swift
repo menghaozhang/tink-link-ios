@@ -37,7 +37,7 @@ final class ProviderStore {
     }
 
     private func performFetchProviders(for attributes: ProviderContext.Attributes) -> RetryCancellable {
-        var multiHandler = MultiHandler()
+        let multiHandler = MultiHandler()
     
         let authCanceller = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self, attributes] authenticationResult in
             guard let self = self, !multiHandler.isCancelled else { return }
