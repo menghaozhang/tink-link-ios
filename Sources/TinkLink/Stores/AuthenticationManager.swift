@@ -1,8 +1,6 @@
 import Foundation
 import SwiftGRPC
 
-typealias RetryCancellable = (Cancellable & Retriable)
-
 final class AuthenticationManager {
     private var retryCancellable: RetryCancellable?
     private var service: UserService

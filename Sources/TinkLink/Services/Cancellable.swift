@@ -5,3 +5,5 @@ public protocol Cancellable {
 protocol Retriable {
     func retry()
 }
+
+typealias RetryCancellable = (Cancellable & Retriable)
