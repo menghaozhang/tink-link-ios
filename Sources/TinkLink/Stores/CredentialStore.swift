@@ -33,7 +33,7 @@ final class CredentialStore {
     }
     
     func addCredential(for provider: Provider, fields: [String: String], completion: @escaping(Result<Credential, Error>) -> Void) -> RetryCancellable {
-        var multiHandler = MultiHandler()
+        let multiHandler = MultiHandler()
         let market = Market(code: provider.marketCode)
         
         let authHandler = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
