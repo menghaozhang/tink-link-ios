@@ -44,3 +44,55 @@ final class AuthenticationService: TokenConfigurableService {
         return CallHandler(for: request, method: service.describeOAuth2Client, responseMap: { _ in return }, completion: completion)
     }
 }
+
+extension AuthenticationService {
+    func authorize(redirectURI: URL, scope: String, completion: @escaping (Result<AuthorizationResponse, Error>) -> Void) -> Cancellable? {
+        guard let clientID = metadata[Metadata.HeaderKey.oauthClientID.key] else {
+            preconditionFailure("No client id")
+        }
+        guard let authorization = metadata[Metadata.HeaderKey.authorization.key] else {
+            preconditionFailure("Not authorized")
+        }
+
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "api.tink.com"
+        urlComponents.path = "/api/v1/oauth/authorize"
+
+        var urlRequest = URLRequest(url: urlComponents.url!, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData)
+        urlRequest.httpMethod = "POST"
+        urlRequest.setValue(authorization, forHTTPHeaderField: "Authorization")
+        urlRequest.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+
+        do {
+            let body = [
+                "clientId": clientID,
+                "redirectUri": redirectURI.absoluteString,
+                "scope": scope,
+            ]
+            urlRequest.httpBody = try JSONEncoder().encode(body)
+        } catch {
+            completion(.failure(error))
+            return nil
+        }
+
+        let task = URLSession.shared.dataTask(with: urlRequest) { (data, _, error) in
+            if let data = data {
+                do {
+                    let authorizationResponse = try JSONDecoder().decode(AuthorizationResponse.self, from: data)
+                    completion(.success(authorizationResponse))
+                } catch {
+                    completion(.failure(error))
+                }
+            } else if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.failure(URLError(.unknown)))
+            }
+        }
+
+        task.resume()
+
+        return task
+    }
+}
