@@ -5,7 +5,6 @@ extension TinkLink {
     public struct Configuration {
         var clientID: String
         var environment: Environment
-        // keep this internal in case need to set up the URL
         var certificateURL: URL?
         var market: Market
         var locale: Locale
@@ -113,7 +112,6 @@ extension TinkLink.Configuration {
         guard let clientID = processInfo.tinkClientID else { throw Error.clientIDNotFound }
         self.environment = processInfo.tinkEnvironment ?? .production
         self.clientID = clientID
-        // FIXME: self.certificate = processInfo.tinkCertificate
         self.certificateURL = nil
         self.market = processInfo.tinkMarket ?? TinkLink.defaultMarket
         self.locale = processInfo.tinkLocale ?? TinkLink.defaultLocale
