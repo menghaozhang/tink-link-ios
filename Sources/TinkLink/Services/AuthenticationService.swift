@@ -4,15 +4,15 @@ import SwiftGRPC
 final class AuthenticationService: TokenConfigurableService {
     let channel: Channel
     let metadata: Metadata
-    var authorizeHost: String
+    let restURL: URL
 
     private var session: URLSession
     private var sessionDelegate: URLSessionDelegate?
 
-    init(channel: Channel, metadata: Metadata, authorizeHost: String, certificates: [Data]) {
+    init(channel: Channel, metadata: Metadata, restURL: URL, certificates: [Data]) {
         self.channel = channel
         self.metadata = metadata
-        self.authorizeHost = authorizeHost
+        self.restURL = restURL
         if certificates.isEmpty {
             session = .shared
         } else {
@@ -65,9 +65,9 @@ extension AuthenticationService {
             preconditionFailure("Not authorized")
         }
 
-        var urlComponents = URLComponents()
-        urlComponents.scheme = "https"
-        urlComponents.host = authorizeHost
+        guard var urlComponents = URLComponents(url: restURL, resolvingAgainstBaseURL: false) else {
+            preconditionFailure("Invalid restURL")
+        }
         urlComponents.path = "/api/v1/oauth/authorize"
 
         var urlRequest = URLRequest(url: urlComponents.url!)

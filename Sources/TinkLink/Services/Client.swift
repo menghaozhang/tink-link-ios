@@ -6,7 +6,7 @@ final class Client {
     private var metadata = Metadata()
     var market: Market
     var locale: Locale
-    var authorizeHost: String
+    var restURL: URL
 
     convenience init(environment: Environment, clientID: String, userAgent: String? = nil, certificateURL: URL? = nil, market: Market, locale: Locale) {
         let certificateContents = certificateURL.flatMap { try? String(contentsOf: $0, encoding: .utf8) }
@@ -17,7 +17,7 @@ final class Client {
         var arguments: [Channel.Argument] = []
         self.market = market
         self.locale = locale
-        self.authorizeHost = environment.restURL.host!
+        self.restURL = environment.restURL
 
         arguments.append(.maxReceiveMessageLength(20 * 1024 * 1024))
 
@@ -41,7 +41,7 @@ final class Client {
     
     private(set) lazy var providerService = ProviderService(channel: channel, metadata: metadata)
     private(set) lazy var credentialService = CredentialService(channel: channel, metadata: metadata)
-    private(set) lazy var authenticationService = AuthenticationService(channel: channel, metadata: metadata, authorizeHost: authorizeHost, certificates: [])
+    private(set) lazy var authenticationService = AuthenticationService(channel: channel, metadata: metadata, restURL: restURL, certificates: [])
     private(set) lazy var userService = UserService(channel: channel, metadata: metadata)
 }
 
