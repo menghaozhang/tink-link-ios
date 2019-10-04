@@ -93,7 +93,8 @@ extension AuthenticationService {
                     let authorizationResponse = try JSONDecoder().decode(AuthorizationResponse.self, from: data)
                     completion(.success(authorizationResponse))
                 } catch {
-                    completion(.failure(error))
+                    let authorizationError = try? JSONDecoder().decode(AuthorizationError.self, from: data)
+                    completion(.failure(authorizationError ?? error))
                 }
             } else if let error = error {
                 completion(.failure(error))
