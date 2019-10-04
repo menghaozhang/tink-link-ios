@@ -94,10 +94,12 @@ extension TinkLink.Configuration: Codable {
             try container.encode(grpcUrl.absoluteString, forKey: .environmentGrpcEndpoint)
             try container.encode(restUrl.absoluteString, forKey: .environmentRestEndpoint)
         }
-        if let fileName = grpcCertificateURL?.lastPathComponent {
+        if let url = grpcCertificateURL {
+            let fileName = url.lastPathComponent.replacingOccurrences(of: ".\(url.pathExtension)", with: "")
             try container.encode(fileName, forKey: .grpcCertificateFileName)
         }
-        if let fileName = restCertificateURL?.lastPathComponent {
+        if let url = restCertificateURL {
+            let fileName = url.lastPathComponent.replacingOccurrences(of: ".\(url.pathExtension)", with: "")
             try container.encode(fileName, forKey: .restCertificateFileName)
         }
         try container.encode(market.rawValue, forKey: .market)
