@@ -43,9 +43,22 @@ final class FinishedCredentialUpdatedViewController: UIViewController {
             stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
             ])
+
+        authorize()
     }
 
     @objc private func done(_ sender: Any) {
         navigationController?.popToRootViewController(animated: true)
+    }
+
+    private func authorize() {
+        TinkLink.shared.authorize(scope: "accounts:read,investments:read,user:read,transactions:read") { (result) in
+            do {
+                let code = try result.get()
+                print(code)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
     }
 }
