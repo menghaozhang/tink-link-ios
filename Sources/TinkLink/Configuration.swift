@@ -5,7 +5,8 @@ extension TinkLink {
     public struct Configuration {
         var clientID: String
         var environment: Environment
-        var certificateURL: URL?
+        var grpcCertificateURL: URL?
+        var restCertificateURL: URL?
         var market: Market
         var locale: Locale
 
@@ -35,7 +36,8 @@ extension TinkLink.Configuration: Codable {
         case environmentGrpcEndpoint = "TINK_CUSTOM_GRPC_ENDPOINT"
         case environmentRestEndpoint = "TINK_CUSTOM_REST_ENDPOINT"
         case clientID = "TINK_CLIENT_ID"
-        case certificateFileName = "TINK_CERTIFICATE_FILE_NAME"
+        case grpcCertificateFileName = "TINK_GRPC_CERTIFICATE_FILE_NAME"
+        case restCertificateFileName = "TINK_REST_CERTIFICATE_FILE_NAME"
         case market = "TINK_MARKET_CODE"
         case locale = "TINK_LOCALE_IDENTIFIER"
     }
@@ -51,11 +53,17 @@ extension TinkLink.Configuration: Codable {
         } else {
             self.environment = .production
         }
-        if let certificateFileName = try values.decodeIfPresent(String.self, forKey: .certificateFileName) {
+        if let certificateFileName = try values.decodeIfPresent(String.self, forKey: .grpcCertificateFileName) {
             guard let certificateURL = Bundle.main.url(forResource: certificateFileName, withExtension: "pem") else {
                 fatalError("Cannot find certificate file")
             }
-            self.certificateURL = certificateURL
+            self.grpcCertificateURL = certificateURL
+        }
+        if let certificateFileName = try values.decodeIfPresent(String.self, forKey: .restCertificateFileName) {
+            guard let certificateURL = Bundle.main.url(forResource: certificateFileName, withExtension: "cer") else {
+                fatalError("Cannot find certificate file")
+            }
+            self.restCertificateURL = certificateURL
         }
 
         if let marketCode = try values.decodeIfPresent(String.self, forKey: .market) {
@@ -86,8 +94,11 @@ extension TinkLink.Configuration: Codable {
             try container.encode(grpcUrl.absoluteString, forKey: .environmentGrpcEndpoint)
             try container.encode(restUrl.absoluteString, forKey: .environmentRestEndpoint)
         }
-        if let fileName = certificateURL?.path.components(separatedBy: "/").last {
-            try container.encode(fileName, forKey: .certificateFileName)
+        if let fileName = grpcCertificateURL?.path.components(separatedBy: "/").last {
+            try container.encode(fileName, forKey: .grpcCertificateFileName)
+        }
+        if let fileName = restCertificateURL?.path.components(separatedBy: "/").last {
+            try container.encode(fileName, forKey: .restCertificateFileName)
         }
         try container.encode(market.rawValue, forKey: .market)
         try container.encode(locale.identifier, forKey: .locale)
@@ -112,7 +123,8 @@ extension TinkLink.Configuration {
         guard let clientID = processInfo.tinkClientID else { throw Error.clientIDNotFound }
         self.environment = processInfo.tinkEnvironment ?? .production
         self.clientID = clientID
-        self.certificateURL = nil
+        self.grpcCertificateURL = nil // FIXME: processInfo.tinkGrpcCertificate
+        self.restCertificateURL = nil // FIXME: processInfo.tinkRestCertificate
         self.market = processInfo.tinkMarket ?? TinkLink.defaultMarket
         self.locale = processInfo.tinkLocale ?? TinkLink.defaultLocale
     }

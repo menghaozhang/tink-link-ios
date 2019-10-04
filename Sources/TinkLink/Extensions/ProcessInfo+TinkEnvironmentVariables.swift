@@ -17,8 +17,12 @@ extension ProcessInfo {
         return environment["TINK_BEARER_TOKEN"]
     }
 
-    var tinkCertificate: String? {
-        return environment["TINK_CERTIFICATE"]
+    var tinkGrpcCertificate: String? {
+        return environment["TINK_GRPC_CERTIFICATE"]
+    }
+
+    var tinkRestCertificate: String? {
+        return environment["TINK_REST_CERTIFICATE"]
     }
 
     var tinkEnvironment: Environment? {
