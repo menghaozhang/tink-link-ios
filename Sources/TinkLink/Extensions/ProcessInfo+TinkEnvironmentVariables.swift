@@ -44,4 +44,8 @@ extension ProcessInfo {
         }
         return nil
     }
+
+    var tinkRedirectURI: URL? {
+        return environment["TINK_REDIRECT_URI"].flatMap(URL.init(string:))
+    }
 }

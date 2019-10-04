@@ -9,6 +9,7 @@ extension TinkLink {
         var restCertificateURL: URL?
         var market: Market
         var locale: Locale
+        var redirectURI: URL?
 
         /// - Parameters:
         ///   - clientId: The client id for your app.
@@ -40,6 +41,7 @@ extension TinkLink.Configuration: Codable {
         case restCertificateFileName = "TINK_REST_CERTIFICATE_FILE_NAME"
         case market = "TINK_MARKET_CODE"
         case locale = "TINK_LOCALE_IDENTIFIER"
+        case redirectURI = "TINK_REDIRECT_URI"
     }
 
     public init(from decoder: Decoder) throws {
@@ -82,6 +84,8 @@ extension TinkLink.Configuration: Codable {
         } else {
             locale = TinkLink.defaultLocale
         }
+
+        redirectURI = try values.decodeIfPresent(URL.self, forKey: .redirectURI)
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -104,6 +108,7 @@ extension TinkLink.Configuration: Codable {
         }
         try container.encode(market.rawValue, forKey: .market)
         try container.encode(locale.identifier, forKey: .locale)
+        try container.encodeIfPresent(redirectURI, forKey: .redirectURI)
     }
 }
 
@@ -129,5 +134,6 @@ extension TinkLink.Configuration {
         self.restCertificateURL = nil // FIXME: processInfo.tinkRestCertificate
         self.market = processInfo.tinkMarket ?? TinkLink.defaultMarket
         self.locale = processInfo.tinkLocale ?? TinkLink.defaultLocale
+        self.redirectURI = processInfo.tinkRedirectURI
     }
 }
