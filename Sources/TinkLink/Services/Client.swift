@@ -8,16 +8,16 @@ final class Client {
     var locale: Locale
     var authorizeHost: String
 
-    convenience init(environment: Environment, clientID: String, userAgent: String? = nil, certificateURL: URL? = nil, market: Market, locale: Locale, authorizeHost: String) {
+    convenience init(environment: Environment, clientID: String, userAgent: String? = nil, certificateURL: URL? = nil, market: Market, locale: Locale) {
         let certificateContents = certificateURL.flatMap { try? String(contentsOf: $0, encoding: .utf8) }
-        self.init(environment: environment, clientID: clientID, userAgent: userAgent, certificate: certificateContents, market: market, locale: locale, authorizeHost: authorizeHost)
+        self.init(environment: environment, clientID: clientID, userAgent: userAgent, certificate: certificateContents, market: market, locale: locale)
     }
 
-    init(environment: Environment, clientID: String, userAgent: String? = nil, certificate: String? = nil, market: Market, locale: Locale, authorizeHost: String) {
+    init(environment: Environment, clientID: String, userAgent: String? = nil, certificate: String? = nil, market: Market, locale: Locale) {
         var arguments: [Channel.Argument] = []
         self.market = market
         self.locale = locale
-        self.authorizeHost = authorizeHost
+        self.authorizeHost = environment.restURL.host!
 
         arguments.append(.maxReceiveMessageLength(20 * 1024 * 1024))
 
@@ -26,9 +26,9 @@ final class Client {
         }
 
         if let certificateContents = certificate {
-            self.channel = Channel(address: environment.url.absoluteString, certificates: certificateContents, clientCertificates: nil, clientKey: clientID, arguments: arguments)
+            self.channel = Channel(address: environment.grpcURL.absoluteString, certificates: certificateContents, clientCertificates: nil, clientKey: clientID, arguments: arguments)
         } else {
-            self.channel = Channel(address: environment.url.absoluteString, secure: true, arguments: arguments)
+            self.channel = Channel(address: environment.grpcURL.absoluteString, secure: true, arguments: arguments)
         }
 
         do {
@@ -52,8 +52,7 @@ extension Client {
             clientID: configuration.clientID,
             certificateURL: configuration.certificateURL,
             market: configuration.market,
-            locale: configuration.locale,
-            authorizeHost: configuration.authorizeHost
+            locale: configuration.locale
         )
     }
 }

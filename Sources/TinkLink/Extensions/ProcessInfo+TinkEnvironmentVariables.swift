@@ -22,7 +22,10 @@ extension ProcessInfo {
     }
 
     var tinkEnvironment: Environment? {
-        return environment["TINK_CUSTOM_ENDPOINT"].flatMap(URL.init(string: )).flatMap { Environment.custom($0) }
+        guard let grpcEndpoint = environment["TINK_CUSTOM_GRPC_ENDPOINT"].flatMap(URL.init(string: )),
+            let restEndpoint = environment["TINK_CUSTOM_REST_ENDPOINT"].flatMap(URL.init(string: ))
+            else { return nil }
+        return Environment.custom(grpcURL: grpcEndpoint, restURL: restEndpoint)
     }
 
     var tinkMarket: Market? {

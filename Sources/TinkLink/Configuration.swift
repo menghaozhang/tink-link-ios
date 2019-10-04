@@ -9,14 +9,12 @@ extension TinkLink {
         var certificateURL: URL?
         var market: Market
         var locale: Locale
-        var authorizeHost: String
 
         /// - Parameters:
         ///   - clientId: The client id for your app.
         ///   - market: Optional, default market(SE) will be used if nothing is provided.
         ///   - locale: Optional, default locale(sv_SE) will be used if nothing is provided.
-        ///   - authorizeHost: Optional, defaults to `api.tink.com` if nothing is provided.
-        public init(clientID: String, market: Market? = nil, locale: Locale? = nil, authorizeHost: String? = nil) {
+        public init(clientID: String, market: Market? = nil, locale: Locale? = nil) {
             self.environment = .production
             self.clientID = clientID
             self.market = market ?? .defaultMarket
@@ -29,26 +27,28 @@ extension TinkLink {
             } else {
                 self.locale = TinkLink.defaultLocale
             }
-            self.authorizeHost = authorizeHost ?? TinkLink.defaultAuthorizeHost
         }
     }
 }
 
 extension TinkLink.Configuration: Codable {
     enum CodingKeys: String, CodingKey {
-        case environmentEndpoint = "TINK_CUSTOM_ENDPOINT"
+        case environmentGrpcEndpoint = "TINK_CUSTOM_GRPC_ENDPOINT"
+        case environmentRestEndpoint = "TINK_CUSTOM_REST_ENDPOINT"
         case clientID = "TINK_CLIENT_ID"
         case certificateFileName = "TINK_CERTIFICATE_FILE_NAME"
         case market = "TINK_MARKET_CODE"
         case locale = "TINK_LOCALE_IDENTIFIER"
-        case authorizeHost = "TINK_AUTHORIZE_HOST"
     }
 
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         clientID = try values.decode(String.self, forKey: .clientID)
-        if let environmentEndpoint = try? values.decode(String.self, forKey: .environmentEndpoint), let url = URL(string: environmentEndpoint) {
-            self.environment = .custom(url)
+        if let environmentGrpcEndpoint = try? values.decode(String.self, forKey: .environmentGrpcEndpoint),
+            let grpcURL = URL(string: environmentGrpcEndpoint),
+            let environmentRestEndpoint = try? values.decode(String.self, forKey: .environmentRestEndpoint),
+            let restURL = URL(string: environmentRestEndpoint) {
+            self.environment = .custom(grpcURL: grpcURL, restURL: restURL)
         } else {
             self.environment = .production
         }
@@ -75,7 +75,6 @@ extension TinkLink.Configuration: Codable {
         } else {
             locale = TinkLink.defaultLocale
         }
-        self.authorizeHost = try values.decodeIfPresent(String.self, forKey: .authorizeHost) ?? TinkLink.defaultAuthorizeHost
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -84,15 +83,15 @@ extension TinkLink.Configuration: Codable {
         switch environment {
         case .production, .staging:
             break
-        case .custom(let url):
-            try container.encode(url.absoluteString, forKey: .environmentEndpoint)
+        case .custom(let grpcUrl, let restUrl):
+            try container.encode(grpcUrl.absoluteString, forKey: .environmentGrpcEndpoint)
+            try container.encode(restUrl.absoluteString, forKey: .environmentRestEndpoint)
         }
         if let fileName = certificateURL?.path.components(separatedBy: "/").last {
             try container.encode(fileName, forKey: .certificateFileName)
         }
         try container.encode(market.rawValue, forKey: .market)
         try container.encode(locale.identifier, forKey: .locale)
-        try container.encode(authorizeHost, forKey: .authorizeHost)
     }
 }
 
@@ -118,6 +117,5 @@ extension TinkLink.Configuration {
         self.certificateURL = nil
         self.market = processInfo.tinkMarket ?? TinkLink.defaultMarket
         self.locale = processInfo.tinkLocale ?? TinkLink.defaultLocale
-        self.authorizeHost = processInfo.tinkAuthorizeHost ?? TinkLink.defaultAuthorizeHost
     }
 }

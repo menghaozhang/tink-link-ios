@@ -41,8 +41,6 @@ extension TinkLink {
             return fallBackLocale
         }
     }
-
-    static let defaultAuthorizeHost = "api.tink.com"
 }
 
 extension Locale {
