@@ -44,8 +44,4 @@ extension ProcessInfo {
         }
         return nil
     }
-
-    var tinkAuthorizeHost: String? {
-        return environment["TINK_AUTHORIZE_HOST"]
-    }
 }
