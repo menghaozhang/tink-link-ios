@@ -1,3 +1,5 @@
+VERSION = 0.1.0
+
 all:
 
 generate:
@@ -24,19 +26,38 @@ bootstrap:
 ifeq ($(strip $(shell command -v brew 2> /dev/null)),)
 	$(error "`brew` is not available, please install homebrew")
 endif
-	brew install swiftlint swiftformat > /dev/null
+ifeq ($(strip $(shell command -v gem 2> /dev/null)),)
+	$(error "`gem` is not available, please install ruby")
+endif
+ifeq ($(strip $(shell command -v swiftlint 2> /dev/null)),)
+	brew install swiftlint
+endif
+ifeq ($(strip $(shell command -v swiftformat 2> /dev/null)),)
+	brew install swiftformat
+endif
+ifeq ($(strip $(shell command -v bundle 2> /dev/null)),)
+	gem install bundler
+endif
+	bundle install > /dev/null
 
 lint:
-ifeq ($(strip $(shell command -v swiftlint 2> /dev/null)),)
-	$(error "`swiftlint` is not available, please run `make bootstrap` first")
-endif
 	swiftlint 2> /dev/null
 
 format:
-ifeq ($(strip $(shell command -v swiftformat 2> /dev/null)),)
-	$(error "`swiftformat` is not available, please run `make bootstrap` first")
-endif
 	swiftformat . 2> /dev/null
+
+docs:
+	bundle exec jazzy \
+		--clean \
+		--author Tink \
+		--author_url https://tink.com \
+		--github_url https://github.com/tink-ab/tink-link-ios \
+		--github-file-prefix https://github.com/tink-ab/tink-link-ios/tree/v$(VERSION) \
+		--module-version $(VERSION) \
+		--build-tool-arguments -scheme,TinkLink \
+		--module TinkLink \
+		--root-url https://tink-link-ios-docs.s3.amazonaws.com/$(VERSION)/ \
+		--output docs
 
 release: format lint
 
@@ -63,3 +84,5 @@ build-alpha:
 	# Copy input output files
 	cp input.xcfilelist build/
 	cp output.xcfilelist build/
+
+.PHONY: all docs
