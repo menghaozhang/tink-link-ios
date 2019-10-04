@@ -81,8 +81,10 @@ public class TinkLink {
     }
 
     public func authorize(scope: String, completion: @escaping (Result<AuthorizationCode, Error>) -> Void) -> Cancellable? {
-        let dummyRedirectURI = URL(string: "tinklink://auth")!
-        return client.authenticationService.authorize(redirectURI: dummyRedirectURI, scope: scope) { (result) in
+        guard let redirectURI = configuration.redirectURI else {
+            preconditionFailure("No Redirect URI set")
+        }
+        return client.authenticationService.authorize(redirectURI: redirectURI, scope: scope) { (result) in
             completion(result.map({ $0.code }))
         }
     }
