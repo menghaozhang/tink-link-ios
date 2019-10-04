@@ -16,7 +16,7 @@ final class AuthenticationService: TokenConfigurableService {
         if certificates.isEmpty {
             session = .shared
         } else {
-            sessionDelegate = CertificatePinningDelegate(certificates: TinkLink.certificates)
+            sessionDelegate = CertificatePinningDelegate(certificates: certificates)
             session = URLSession(configuration: .ephemeral, delegate: sessionDelegate, delegateQueue: nil)
         }
     }
