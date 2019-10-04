@@ -79,4 +79,11 @@ public class TinkLink {
         precondition(_shared == nil, "Shared TinkLink instance is already configured.")
         _shared = TinkLink(configuration: configuration)
     }
+
+    public func authorize(scope: String, completion: @escaping (Result<AuthorizationCode, Error>) -> Void) -> Cancellable? {
+        let dummyRedirectURI = URL(string: "tinklink://auth")!
+        return client.authenticationService.authorize(redirectURI: dummyRedirectURI, scope: scope) { (result) in
+            completion(result.map({ $0.code }))
+        }
+    }
 }
