@@ -48,7 +48,7 @@ final class Client {
 extension Client {
     convenience init(configuration: TinkLink.Configuration) {
         self.init(
-            environment: configuration.environment ,
+            environment: configuration.environment,
             clientID: configuration.clientID,
             certificateURL: configuration.certificateURL,
             market: configuration.market,
