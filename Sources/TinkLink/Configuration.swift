@@ -55,13 +55,13 @@ extension TinkLink.Configuration: Codable {
         }
         if let certificateFileName = try values.decodeIfPresent(String.self, forKey: .grpcCertificateFileName) {
             guard let certificateURL = Bundle.main.url(forResource: certificateFileName, withExtension: "pem") else {
-                fatalError("Cannot find certificate file")
+                fatalError("Cannot find gRPC certificate file")
             }
             self.grpcCertificateURL = certificateURL
         }
         if let certificateFileName = try values.decodeIfPresent(String.self, forKey: .restCertificateFileName) {
             guard let certificateURL = Bundle.main.url(forResource: certificateFileName, withExtension: "cer") else {
-                fatalError("Cannot find certificate file")
+                fatalError("Cannot find REST certificate file")
             }
             self.restCertificateURL = certificateURL
         }
