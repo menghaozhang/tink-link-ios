@@ -36,7 +36,7 @@ extension TinkLink {
 
 extension TinkLink.Configuration: Codable {
     enum CodingKeys: String, CodingKey {
-        case environmentEndpoint = "TINK_CUSTOM_END_POINT"
+        case environmentEndpoint = "TINK_CUSTOM_ENDPOINT"
         case clientID = "TINK_CLIENT_ID"
         case certificateFileName = "TINK_CERTIFICATE_FILE_NAME"
         case market = "TINK_MARKET_CODE"
