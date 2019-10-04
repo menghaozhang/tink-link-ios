@@ -80,6 +80,7 @@ public class TinkLink {
         _shared = TinkLink(configuration: configuration)
     }
 
+    @discardableResult
     public func authorize(scope: String, completion: @escaping (Result<AuthorizationCode, Error>) -> Void) -> Cancellable? {
         guard let redirectURI = configuration.redirectURI else {
             preconditionFailure("No Redirect URI set")
