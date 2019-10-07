@@ -4,7 +4,7 @@ import SwiftGRPC
 
 class ClientTests: XCTestCase {
     func testUnauthenticatedClient() {
-        let client = Client(environment: .staging, clientID: "not_work_client", grpcCertificate: nil, restCertificate: nil, market: TinkLink.defaultMarket, locale: TinkLink.defaultLocale)
+        let client = Client(environment: .production, clientID: "not_work_client", grpcCertificate: nil, restCertificate: nil, market: TinkLink.defaultMarket, locale: TinkLink.defaultLocale)
 
         let requestExpectation = expectation(description: "Providers Request")
 
