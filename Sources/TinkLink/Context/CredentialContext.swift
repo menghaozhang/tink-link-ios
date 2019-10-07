@@ -8,7 +8,7 @@ public protocol CredentialContextDelegate: AnyObject {
     /// - Parameter context: The credential context that will change.
     func credentialContextWillChangeCredentials(_ context: CredentialContext)
 
-    /// Called when an error occured while fetching credentials or adding a credential.
+    /// Notifies the delegate that an error occured while fetching credentials or adding a credential.
     ///
     /// - Parameter context: The credential context that encountered the error.
     /// - Parameter error: A description of the error.

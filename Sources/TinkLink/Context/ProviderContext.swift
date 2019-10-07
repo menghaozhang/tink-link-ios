@@ -8,7 +8,7 @@ public protocol ProviderContextDelegate: AnyObject {
     /// - Parameter context: The provider context that will change.
     func providerContextWillChangeProviders(_ context: ProviderContext)
 
-    /// Called when an error occured while fetching providers.
+    /// Notifies the delegate that an error occured while fetching providers.
     ///
     /// - Parameter context: The provider context that encountered the error.
     /// - Parameter error: A description of the error.
