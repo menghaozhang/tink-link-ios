@@ -12,6 +12,7 @@ public struct Provider {
     /// Indicates what kind of financial institution the provider represents.
     public var type: ProviderType
 
+    /// Indicates the current status of a provider.
     public enum Status {
         case unknown
         case enabled
