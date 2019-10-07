@@ -106,6 +106,7 @@ public struct Credential {
         public var deepLinkURL: URL?
     }
 
+    /// Information about the third party authentication flow.
     public var thirdPartyAppAuthentication: ThirdPartyAppAuthentication?
 
     /// Indicates when the session of credentials with access type `Provider.AccessType.openBanking` will expire. After this date automatic refreshes will not be possible without new authentication from the user.
