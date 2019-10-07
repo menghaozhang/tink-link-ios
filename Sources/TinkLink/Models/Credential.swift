@@ -11,20 +11,38 @@ public struct Credential {
     /// Indicates how Tink authenticates the user to the financial institution.
     public var type: CredentialType
 
+    /// The status indicates the state of a credential.
     public enum Status {
         case unknown
+        /// The credential was just created.
         case created
+        /// The credential is in the process of authenticating.
         case authenticating
+        /// The credential is done authenticating and is updating accounts and transactions.
         case updating
+        /// The credential has finished authenticating and updating accounts and transactions.
         case updated
+        /// There was a temporary error, see `statusPayload` for text describing the error.
         case temporaryError
+        /// There was an authentication error, see `statusPayload` for text describing the error.
         case authenticationError
+        /// There was a permanent error, see `statusPayload` for text describing the error.
         case permanentError
-        /// Will be deprecated and replaced with `awaitingThirdPartyAppAuthentication`
+        /// The credential is awaiting authentication with Mobile BankID.
+        /// - Note: Will be deprecated and replaced with `awaitingThirdPartyAppAuthentication`
         case awaitingMobileBankIDAuthentication
+        /// The credential is awaiting supplemental information.
+        ///
+        /// Create a Form with this credential to let the user supplement the required information.
         case awaitingSupplementalInformation
+        /// The credential has been disabled.
         case disabled
+        /// The credential is awaiting authentication with a third party app.
+        ///
+        /// Check `thirdPartyAppAuthentication` to get a deeplink url to the third party app to authenticate with.
+        /// - Note: If the app can't open the deeplink, ask user to to download or upgrade the app from the AppStore.
         case awaitingThirdPartyAppAuthentication
+        /// The credential's session has expired, check `sessionExpiryDate` to see when it expired.
         case sessionExpired
     }
 
