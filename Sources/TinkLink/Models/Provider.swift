@@ -89,6 +89,7 @@ public struct Provider {
     /// Indicates what this provider is capable of, in terms of financial data it can aggregate and if it can execute payments.
     public var capabilities: Capabilities
 
+    /// What Tink uses to access data.
     public enum AccessType: CustomStringConvertible, Hashable {
         case unknown
         case openBanking
