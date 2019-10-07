@@ -11,16 +11,16 @@ final class Client {
 
     convenience init(environment: Environment, clientID: String, userAgent: String? = nil, grpcCertificateURL: URL? = nil, restCertificateURL: URL? = nil, market: Market, locale: Locale) {
         let grpcCertificateContents = grpcCertificateURL.flatMap { try? String(contentsOf: $0, encoding: .utf8) }
-        let restCertificateContents = restCertificateURL.flatMap { try? String(contentsOf: $0, encoding: .utf8) }
+        let restCertificateContents = restCertificateURL.flatMap { try? Data(contentsOf: $0) }
         self.init(environment: environment, clientID: clientID, userAgent: userAgent, grpcCertificate: grpcCertificateContents, restCertificate: restCertificateContents, market: market, locale: locale)
     }
 
-    init(environment: Environment, clientID: String, userAgent: String? = nil, grpcCertificate: String? = nil, restCertificate: String? = nil, market: Market, locale: Locale) {
+    init(environment: Environment, clientID: String, userAgent: String? = nil, grpcCertificate: String? = nil, restCertificate: Data? = nil, market: Market, locale: Locale) {
         var arguments: [Channel.Argument] = []
         self.market = market
         self.locale = locale
         self.restURL = environment.restURL
-        self.restCertificate = restCertificate?.data(using: .utf8)
+        self.restCertificate = restCertificate
 
         arguments.append(.maxReceiveMessageLength(20 * 1024 * 1024))
 
