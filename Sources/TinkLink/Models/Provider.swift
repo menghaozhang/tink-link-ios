@@ -128,6 +128,8 @@ public enum ProviderType {
     case creditCard
     case broker
     case other
+
+    /// Indicates a test provider.
     case test
     case fraud
 }
