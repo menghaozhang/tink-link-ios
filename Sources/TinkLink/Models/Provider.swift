@@ -28,6 +28,7 @@ public struct Provider {
     /// When creating a new credential connected to the provider this will be the credential's type.
     public var credentialType: CredentialType
 
+    /// Short description of how to authenticate when creating a new credential for connected to the provider.
     public var helpText: String
 
     /// Indicates if the provider is popular. This is normally set to true for the biggest financial institutions on a market.
