@@ -13,8 +13,12 @@ extension TinkLink {
 
         /// - Parameters:
         ///   - clientId: The client id for your app.
+        ///   - environment: The environment to use, defaults to production.
+        ///   - grpcCertificateURL: URL to a certificate file to use with gRPC API.
+        ///   - restCertificateURL: URL to a certificate file to use with REST API.
         ///   - market: Optional, default market(SE) will be used if nothing is provided.
         ///   - locale: Optional, default locale(sv_SE) will be used if nothing is provided.
+        ///   - redirectURI: The URI you've setup in Console.
         public init(
             clientID: String,
             environment: Environment = .production,
