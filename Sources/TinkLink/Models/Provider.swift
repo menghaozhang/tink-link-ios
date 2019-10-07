@@ -112,7 +112,10 @@ public struct Provider {
     /// - Note: Each provider is unique per market.
     public var marketCode: String
 
+    /// A unique identifier to group providers belonging the same financial institution.
     public var financialInstitutionID: String
+
+    /// The name of the financial institution.
     public var financialInstitutionName: String
 }
 
