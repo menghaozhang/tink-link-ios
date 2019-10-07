@@ -64,13 +64,29 @@ public struct Credential {
     /// A key-value structure to handle if status of credentials are `Credential.Status.awaitingSupplementalInformation`.
     internal var supplementalInformationFields: [Provider.FieldSpecification]
 
+    /// Information about the third party authentication app.
+    ///
+    /// The ThirdPartyAppAuthentication contains specific deeplink urls and configuration for the third party app.
     public struct ThirdPartyAppAuthentication {
+        /// Title of the app to be downloaded.
         public var downloadTitle: String
+
+        /// Detailed message about app to be downloaded.
         public var downloadMessage: String
+
+        /// Title of the app to be upgraded.
         public var upgradeTitle: String
+
+        /// Detailed message about app to be upgraded
         public var upgradeMessage: String
+
+        /// URL to AppStore where the app can be downloaded on iOS.
         public var appStoreURL: URL?
+
+        /// Base scheme of the app on iOS.
         public var scheme: String?
+
+        /// URL that the app should open on iOS. Can be of another scheme than app scheme.
         public var deepLinkURL: URL?
     }
 
