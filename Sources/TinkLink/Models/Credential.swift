@@ -50,8 +50,10 @@ public struct Credential {
 
         /// The credential is awaiting authentication with a third party app.
         ///
-        /// Check `thirdPartyAppAuthentication` to get a deeplink url to the third party app to authenticate with.
-        /// - Note: If the app can't open the deeplink, ask user to to download or upgrade the app from the AppStore.
+        /// If a provider is using third party services in their authentication flow, the client should expect the `awaitingThirdPartyAppAuthentication` status on the credential. In order for the aggregation of data to be successful, the system expects the third party authentication flow to be successful as well.
+        ///
+        /// To handle this status, check `thirdPartyAppAuthentication` to get a deeplink url to the third party app and open it so the user can authenticate.
+        /// If the app can't open the deeplink, ask the user to to download or upgrade the app from the AppStore.
         case awaitingThirdPartyAppAuthentication
 
         /// The credential's session has expired, check `sessionExpiryDate` to see when it expired.
