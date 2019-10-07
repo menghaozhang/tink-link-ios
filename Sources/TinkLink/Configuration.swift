@@ -92,7 +92,7 @@ extension TinkLink.Configuration: Codable {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(clientID, forKey: .clientID)
         switch environment {
-        case .production, .staging:
+        case .production:
             break
         case .custom(let grpcUrl, let restUrl):
             try container.encode(grpcUrl.absoluteString, forKey: .environmentGrpcEndpoint)
