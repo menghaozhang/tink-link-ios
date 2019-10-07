@@ -1,3 +1,5 @@
+import Foundation
+
 struct AuthorizationResponse: Decodable {
     let code: AuthorizationCode
 }
