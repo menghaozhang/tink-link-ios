@@ -40,7 +40,7 @@ A `Form` is used to determine what a user needs to input in order to proceed. Fo
 
 Here's how to create a form for a provider with a username and password field and how to update the fields.
 ```swift
-let form = Form(provider: <#Provider#>)
+var form = Form(provider: <#Provider#>)
 form.fields[name: "username"]?.text = <#String#>
 form.fields[name: "password"]?.text = <#String#>
 ...
