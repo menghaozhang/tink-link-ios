@@ -116,10 +116,20 @@ public struct Credential {
 /// Indicates how Tink authenticates the user to a financial institution.
 public enum CredentialType: CustomStringConvertible {
     case unknown
+
+    /// The user will authenticate the credential with a password.
     case password
+
+    /// The user will authenticate the credential with Mobile BankID.
     case mobileBankID
+
+    /// The user will authenticate the credential with a Key Fob.
     case keyfob
+
+    /// Fraud
     case fraud
+
+    /// The user will authenticate the credential with a third party app.
     case thirdPartyAuthentication
 
     public var description: String {
