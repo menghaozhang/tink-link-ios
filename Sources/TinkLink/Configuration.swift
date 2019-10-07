@@ -5,8 +5,8 @@ extension TinkLink {
     public struct Configuration {
         public var clientID: String
         public var environment: Environment
-        public var grpcCertificateURL: URL?
-        public var restCertificateURL: URL?
+        public var grpcCertificate: Data?
+        public var restCertificate: Data?
         public var market: Market
         public var locale: Locale
         public var redirectURI: URL?
@@ -30,8 +30,8 @@ extension TinkLink {
         ) {
             self.clientID = clientID
             self.environment = .production
-            self.grpcCertificateURL = grpcCertificateURL
-            self.restCertificateURL = restCertificateURL
+            self.grpcCertificate = grpcCertificateURL.flatMap { try? Data(contentsOf: $0) }
+            self.restCertificate = restCertificateURL.flatMap { try? Data(contentsOf: $0) }
             self.market = market ?? .defaultMarket
             if let locale = locale {
                 if TinkLink.availableLocales.contains(locale) {
@@ -54,6 +54,8 @@ extension TinkLink.Configuration: Codable {
         case clientID = "TINK_CLIENT_ID"
         case grpcCertificateFileName = "TINK_GRPC_CERTIFICATE_FILE_NAME"
         case restCertificateFileName = "TINK_REST_CERTIFICATE_FILE_NAME"
+        case grpcCertificate = "TINK_GRPC_CERTIFICATE"
+        case restCertificate = "TINK_REST_CERTIFICATE"
         case market = "TINK_MARKET_CODE"
         case locale = "TINK_LOCALE_IDENTIFIER"
         case redirectURI = "TINK_REDIRECT_URI"
@@ -74,13 +76,17 @@ extension TinkLink.Configuration: Codable {
             guard let certificateURL = Bundle.main.url(forResource: certificateFileName, withExtension: "pem") else {
                 fatalError("Cannot find gRPC certificate file")
             }
-            self.grpcCertificateURL = certificateURL
+            self.grpcCertificate = try? Data(contentsOf: certificateURL)
+        } else if let certificateData = try values.decodeIfPresent(Data.self, forKey: .grpcCertificate) {
+            self.grpcCertificate = certificateData
         }
         if let certificateFileName = try values.decodeIfPresent(String.self, forKey: .restCertificateFileName) {
             guard let certificateURL = Bundle.main.url(forResource: certificateFileName, withExtension: "cer") else {
                 fatalError("Cannot find REST certificate file")
             }
-            self.restCertificateURL = certificateURL
+            self.restCertificate = try? Data(contentsOf: certificateURL)
+        } else if let certificateData = try values.decodeIfPresent(Data.self, forKey: .restCertificate) {
+            self.restCertificate = certificateData
         }
 
         if let marketCode = try values.decodeIfPresent(String.self, forKey: .market) {
@@ -113,13 +119,11 @@ extension TinkLink.Configuration: Codable {
             try container.encode(grpcUrl.absoluteString, forKey: .environmentGrpcEndpoint)
             try container.encode(restUrl.absoluteString, forKey: .environmentRestEndpoint)
         }
-        if let url = grpcCertificateURL {
-            let fileName = url.lastPathComponent.replacingOccurrences(of: ".\(url.pathExtension)", with: "")
-            try container.encode(fileName, forKey: .grpcCertificateFileName)
+        if let data = grpcCertificate {
+            try container.encode(data, forKey: .grpcCertificate)
         }
-        if let url = restCertificateURL {
-            let fileName = url.lastPathComponent.replacingOccurrences(of: ".\(url.pathExtension)", with: "")
-            try container.encode(fileName, forKey: .restCertificateFileName)
+        if let data = restCertificate {
+            try container.encode(data, forKey: .restCertificate)
         }
         try container.encode(market.rawValue, forKey: .market)
         try container.encode(locale.identifier, forKey: .locale)
@@ -145,8 +149,8 @@ extension TinkLink.Configuration {
         guard let clientID = processInfo.tinkClientID else { throw Error.clientIDNotFound }
         self.environment = processInfo.tinkEnvironment ?? .production
         self.clientID = clientID
-        self.grpcCertificateURL = nil // FIXME: processInfo.tinkGrpcCertificate
-        self.restCertificateURL = nil // FIXME: processInfo.tinkRestCertificate
+        self.grpcCertificate = processInfo.tinkGrpcCertificate.flatMap { Data(base64Encoded: $0) }
+        self.restCertificate = processInfo.tinkRestCertificate.flatMap { Data(base64Encoded: $0) }
         self.market = processInfo.tinkMarket ?? TinkLink.defaultMarket
         self.locale = processInfo.tinkLocale ?? TinkLink.defaultLocale
         self.redirectURI = processInfo.tinkRedirectURI

@@ -9,13 +9,7 @@ final class Client {
     var restURL: URL
     var restCertificate: Data?
 
-    convenience init(environment: Environment, clientID: String, userAgent: String? = nil, grpcCertificateURL: URL? = nil, restCertificateURL: URL? = nil, market: Market, locale: Locale) {
-        let grpcCertificateContents = grpcCertificateURL.flatMap { try? String(contentsOf: $0, encoding: .utf8) }
-        let restCertificateContents = restCertificateURL.flatMap { try? Data(contentsOf: $0) }
-        self.init(environment: environment, clientID: clientID, userAgent: userAgent, grpcCertificate: grpcCertificateContents, restCertificate: restCertificateContents, market: market, locale: locale)
-    }
-
-    init(environment: Environment, clientID: String, userAgent: String? = nil, grpcCertificate: String? = nil, restCertificate: Data? = nil, market: Market, locale: Locale) {
+    init(environment: Environment, clientID: String, userAgent: String? = nil, grpcCertificate: Data? = nil, restCertificate: Data? = nil, market: Market, locale: Locale) {
         var arguments: [Channel.Argument] = []
         self.market = market
         self.locale = locale
@@ -28,7 +22,7 @@ final class Client {
             arguments.append(.primaryUserAgent(userAgent))
         }
 
-        if let certificateContents = grpcCertificate {
+        if let certificateContents = grpcCertificate?.base64EncodedString() {
             self.channel = Channel(address: environment.grpcURL.absoluteString, certificates: certificateContents, clientCertificates: nil, clientKey: clientID, arguments: arguments)
         } else {
             self.channel = Channel(address: environment.grpcURL.absoluteString, secure: true, arguments: arguments)
@@ -53,8 +47,8 @@ extension Client {
         self.init(
             environment: configuration.environment,
             clientID: configuration.clientID,
-            grpcCertificateURL: configuration.grpcCertificateURL,
-            restCertificateURL: configuration.restCertificateURL,
+            grpcCertificate: configuration.grpcCertificate,
+            restCertificate: configuration.restCertificate,
             market: configuration.market,
             locale: configuration.locale
         )
