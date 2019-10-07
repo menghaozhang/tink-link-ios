@@ -1,8 +1,22 @@
 import Foundation
 
+/// A protocol that allows a delegate to respond to credential changes or errors.
 public protocol CredentialContextDelegate: AnyObject {
+    /// Notifies the delegate that the credentials are about to be changed.
+    ///
+    /// - Note: This method is optional.
+    /// - Parameter context: The credential context that will change.
     func credentialContextWillChangeCredentials(_ context: CredentialContext)
+
+    /// Notifies the delegate that an error occured while fetching credentials or adding a credential.
+    ///
+    /// - Parameter context: The credential context that encountered the error.
+    /// - Parameter error: A description of the error.
     func credentialContext(_ context: CredentialContext, didReceiveError error: Error)
+
+    /// Notifies the delegate that the credentials has changed.
+    ///
+    /// - Parameter context: The credential context that changed.
     func credentialContextDidChangeCredentials(_ context: CredentialContext)
 }
 
@@ -10,7 +24,7 @@ extension CredentialContextDelegate {
     public func credentialContextWillChangeCredentials(_ context: CredentialContext) { }
 }
 
-/// An object that accesses the user's credentials and supports the flow for adding credentials.
+/// An object that you use to access the user's credentials and supports the flow for adding credentials.
 public class CredentialContext {
 
     private var _credentials: [Credential]? {
@@ -39,7 +53,9 @@ public class CredentialContext {
 
     /// The object that acts as the delegate of the credential context.
     ///
-    /// The delegate must adopt the `CredentialContextDelegate` protocol. The delegate is not retained.
+    /// If you set a delegate for the credential context, it will register to receive updates when credentials are added. The context notifies the delegate when `credentials` will or did change or if an error occured.
+    ///
+    /// - Note: The delegate must adopt the `CredentialContextDelegate` protocol. The delegate is not retained.
     public weak var delegate: CredentialContextDelegate? {
         didSet {
             if delegate != nil {
@@ -55,8 +71,10 @@ public class CredentialContext {
     private let credentialStore: CredentialStore
     private var credentialStoreChangeObserver: Any?
     private var credentialStoreErrorObserver: Any?
-    
-    /// An initializer that provides TinkLink to config the add credential service
+
+    /// Creates a new CredentialContext for the given TinkLink instance.
+    ///
+    /// - Parameter tinkLink: TinkLink instance, defaults to `shared` if not provided.
     public init(tinkLink: TinkLink = .shared) {
         self.tinkLink = tinkLink
         credentialStore = tinkLink.credentialStore

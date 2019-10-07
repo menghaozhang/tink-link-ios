@@ -1,8 +1,22 @@
 import Foundation
 
+/// A protocol that allows a delegate to respond to provider changes or fetching errors.
 public protocol ProviderContextDelegate: AnyObject {
+    /// Notifies the delegate that the providers are about to be changed.
+    ///
+    /// - Note: This method is optional.
+    /// - Parameter context: The provider context that will change.
     func providerContextWillChangeProviders(_ context: ProviderContext)
+
+    /// Notifies the delegate that an error occured while fetching providers.
+    ///
+    /// - Parameter context: The provider context that encountered the error.
+    /// - Parameter error: A description of the error.
     func providerContext(_ context: ProviderContext, didReceiveError error: Error)
+
+    /// Notifies the delegate that the providers has changed.
+    ///
+    /// - Parameter context: The provider context that changed.
     func providerContextDidChangeProviders(_ context: ProviderContext)
 }
 
