@@ -3,21 +3,31 @@ import Foundation
 extension TinkLink {
     /// Configuration used to set up the TinkLink
     public struct Configuration {
-        var clientID: String
-        var environment: Environment
-        var grpcCertificateURL: URL?
-        var restCertificateURL: URL?
-        var market: Market
-        var locale: Locale
-        var redirectURI: URL?
+        public var clientID: String
+        public var environment: Environment
+        public var grpcCertificateURL: URL?
+        public var restCertificateURL: URL?
+        public var market: Market
+        public var locale: Locale
+        public var redirectURI: URL?
 
         /// - Parameters:
         ///   - clientId: The client id for your app.
         ///   - market: Optional, default market(SE) will be used if nothing is provided.
         ///   - locale: Optional, default locale(sv_SE) will be used if nothing is provided.
-        public init(clientID: String, market: Market? = nil, locale: Locale? = nil) {
-            self.environment = .production
+        public init(
+            clientID: String,
+            environment: Environment = .production,
+            grpcCertificateURL: URL? = nil,
+            restCertificateURL: URL? = nil,
+            market: Market? = nil,
+            locale: Locale? = nil,
+            redirectURI: URL? = nil
+        ) {
             self.clientID = clientID
+            self.environment = .production
+            self.grpcCertificateURL = grpcCertificateURL
+            self.restCertificateURL = restCertificateURL
             self.market = market ?? .defaultMarket
             if let locale = locale {
                 if TinkLink.availableLocales.contains(locale) {
@@ -28,6 +38,7 @@ extension TinkLink {
             } else {
                 self.locale = TinkLink.defaultLocale
             }
+            self.redirectURI = redirectURI
         }
     }
 }
