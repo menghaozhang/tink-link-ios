@@ -113,6 +113,7 @@ public struct Credential {
     public var sessionExpiryDate: Date?
 }
 
+/// Indicates how Tink authenticates the user to a financial institution.
 public enum CredentialType: CustomStringConvertible {
     case unknown
     case password
