@@ -119,6 +119,7 @@ public struct Provider {
     public var financialInstitutionName: String
 }
 
+/// Indicates what type of financial institution the provider represents.
 public enum ProviderType {
     case unknown
     case bank
