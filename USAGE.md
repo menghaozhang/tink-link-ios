@@ -36,7 +36,9 @@ class ProviderListViewController: UITableViewController, ProviderContextDelegate
 
 ## Add credential
 ### Creating and updating a form
-Creates a form for the given provider.
+A `Form` is used to determine what a user needs to input in order to proceed. For example it could be a username and a password field.
+
+Here's how to create a form for a provider with a username and password field and how to update the fields.
 ```swift
 let form = Form(provider: <#Provider#>)
 form.fields[name: "username"]?.text = <#String#>
