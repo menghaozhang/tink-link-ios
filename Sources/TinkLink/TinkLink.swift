@@ -5,13 +5,9 @@ public class TinkLink {
 
     public static var shared: TinkLink {
         guard let shared = _shared else {
-            do {
-                let link = try TinkLink()
-                _shared = link
-                return link
-            } catch {
-                fatalError(error.localizedDescription)
-            }
+            let link = TinkLink()
+            _shared = link
+            return link
         }
         return shared
     }
