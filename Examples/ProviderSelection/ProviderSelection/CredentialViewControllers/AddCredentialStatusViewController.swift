@@ -42,6 +42,7 @@ final class AddCredentialStatusViewController: UIViewController {
         statusLabelView.font = UIFont.preferredFont(forTextStyle: .headline)
         statusLabelView.numberOfLines = 0
         statusLabelView.preferredMaxLayoutWidth = 220
+        statusLabelView.textAlignment = .center
 
         activityIndicator.startAnimating()
         activityIndicator.setContentHuggingPriority(.defaultLow, for: .vertical)
