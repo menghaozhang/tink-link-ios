@@ -47,9 +47,7 @@ form.fields[name: "password"]?.text = <#String#>
 ### Form validation
 Validate before you submit a request to add credential or supplement information.
 
-Use `areFieldsValid` to return a boolean value that indicate if all form fields are valid. 
-    
-For example, you can use `areFieldsValid` to enable a submit button when text fields change.
+Use `areFieldsValid` to check if all form fields are valid. For example, you can use this to enable a submit button when text fields change.
 ```swift
 @objc func textFieldDidChange(_ notification: Notification) {
     submitButton.isEnabled = form.areFieldsValid
