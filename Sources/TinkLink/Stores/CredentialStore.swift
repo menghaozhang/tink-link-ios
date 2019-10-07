@@ -2,12 +2,12 @@ import Foundation
 import SwiftGRPC
 
 final class CredentialStore {
-    var credentials: [Identifier<Credential>: Credential] {
+    var credentials: [Credential.Identifier: Credential] {
         dispatchPrecondition(condition: .notOnQueue(tinkQueue))
         let credentials = tinkQueue.sync { return _credentials }
         return credentials
     }
-    private var _credentials: [Identifier<Credential>: Credential] = [:] {
+    private var _credentials: [Credential.Identifier: Credential] = [:] {
         didSet {
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: .credentialStoreChanged, object: self)
@@ -18,10 +18,10 @@ final class CredentialStore {
     private let market: Market
     private let locale: Locale
     private var service: CredentialService
-    private var createCredentialRetryCancellable: [Identifier<Provider>: RetryCancellable] = [:]
-    private var credentialStatusPollingRetryCancellable: [Identifier<Credential>: RetryCancellable] = [:]
-    private var addSupplementalInformationRetryCancellable: [Identifier<Credential>: RetryCancellable] = [:]
-    private var cancelSupplementInformationRetryCancellable: [Identifier<Credential>: RetryCancellable] = [:]
+    private var createCredentialRetryCancellable: [Provider.Identifier: RetryCancellable] = [:]
+    private var credentialStatusPollingRetryCancellable: [Credential.Identifier: RetryCancellable] = [:]
+    private var addSupplementalInformationRetryCancellable: [Credential.Identifier: RetryCancellable] = [:]
+    private var cancelSupplementInformationRetryCancellable: [Credential.Identifier: RetryCancellable] = [:]
     private var fetchCredentialsRetryCancellable: RetryCancellable?
     private let tinkQueue = DispatchQueue(label: "com.tink.TinkLink.CredentialStore", attributes: .concurrent)
     
