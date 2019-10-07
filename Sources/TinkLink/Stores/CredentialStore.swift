@@ -37,8 +37,8 @@ final class CredentialStore {
         let market = Market(code: provider.marketCode)
         
         let authHandler = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
-            guard let self = self, self.createCredentialRetryCancellable[provider.name] == nil else { return }
-            let handler = self.service.createCredential(providerName: provider.name, fields: fields, completion: { (result) in
+            guard let self = self, self.createCredentialRetryCancellable[provider.id] == nil else { return }
+            let handler = self.service.createCredential(providerID: provider.id, fields: fields, completion: { (result) in
                 self.tinkQueue.async(qos: .default, flags: .barrier) {
                     do {
                         let credential = try result.get()
@@ -48,9 +48,9 @@ final class CredentialStore {
                         completion(.failure(error))
                     }
                 }
-                self.createCredentialRetryCancellable[provider.name] = nil
+                self.createCredentialRetryCancellable[provider.id] = nil
             })
-            self.createCredentialRetryCancellable[provider.name] = handler
+            self.createCredentialRetryCancellable[provider.id] = handler
             multiHandler.add(handler)
         }
         if let handler = authHandler {

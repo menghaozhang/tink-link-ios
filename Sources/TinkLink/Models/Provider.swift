@@ -20,7 +20,7 @@ public struct Provider {
 
     /// The unique identifier of the provider.
     /// - Note: This is used when creating new credentials.
-    public var name: ID
+    public var id: ID
 
     /// The display name of the provider.
     public var displayName: String

@@ -22,7 +22,7 @@ public struct Credential {
     public var id: ID
 
     /// The provider (financial institution) that the credentials is connected to.
-    public var providerName: Provider.ID
+    public var providerID: Provider.ID
 
     /// Indicates how Tink authenticates the user to the financial institution.
     public var type: CredentialType
