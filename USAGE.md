@@ -1,7 +1,7 @@
 # Usage example
 
 ## List providers
-Here's how you list providers.
+Here's an example how you list providers.
 ```swift
 class ProviderListViewController: UITableViewController, ProviderContextDelegate {
     let providerContext = ProviderContext()
