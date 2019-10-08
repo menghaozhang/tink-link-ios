@@ -1,7 +1,10 @@
-# Usage example
+# Usage Examples
 
-## List providers
-Here's an example how you list providers.
+## How to list and select providers 
+
+### Listing and responding to changes
+
+Here's how you can list all providers with a `UITableViewController` subclass.
 ```swift
 class ProviderListViewController: UITableViewController, ProviderContextDelegate {
     let providerContext = ProviderContext()
@@ -34,6 +37,26 @@ class ProviderListViewController: UITableViewController, ProviderContextDelegate
 }
 ```
 
+### Provider groups
+Use the `providerGroups` property on `ProviderContext` to get providers grouped by financial institution, access type and credential type. 
+
+Handle selection of a provider group by switching on the group to decide which screen should be shown next.
+```swift
+override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let providerGroup = providerGroups[indexPath.row]
+    switch providerGroup {
+    case .financialInsititutions(let financialInsititutionGroups):
+        showFinancialInstitution(for: financialInsititutionGroups)
+    case .accessTypes(let accessTypeGroups):
+        showAccessTypePicker(for: accessTypeGroups)
+    case .credentialTypes(let providers):
+        showCredentialTypePicker(for: providers)
+    case .provider(let provider):
+        showAddCredentialFlow(for: provider)
+    }
+}
+```
+
 ## Add credential
 ### Creating and updating a form
 A `Form` is used to determine what a user needs to input in order to proceed. For example it could be a username and a password field.
@@ -44,6 +67,18 @@ var form = Form(provider: <#Provider#>)
 form.fields[name: "username"]?.text = <#String#>
 form.fields[name: "password"]?.text = <#String#>
 ...
+```
+
+### Configuring UITextFields from form fields
+```swift
+for field in form.fields {
+    let textField = UITextField()
+    textField.placeholder = field.attributes.placeholder
+    textField.isSecureTextEntry = field.attributes.isSecureTextEntry
+    textField.isEnabled = field.attributes.isEditable
+    textField.text = field.text
+    <#Add to view#>
+}
 ```
 
 ### Form validation
