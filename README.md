@@ -24,11 +24,15 @@ TinkLink can be configured either by adding keys and values in your app's Info.p
 Key | Type | Value
 --- | ---- | -----
 `TINK_CLIENT_ID` | String |
+`TINK_MARKET_CODE` | String | *Optional*
+`TINK_LOCALE_IDENTIFIER` | String | *Optional*
 
 ### Environment Variables
 Key | Value
 --- | -----
 `TINK_CLIENT_ID` | 
+`TINK_MARKET_CODE` | *Optional*
+`TINK_LOCALE_IDENTIFIER` | *Optional*
 
 ### Swift
 ```swift
