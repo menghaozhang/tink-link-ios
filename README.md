@@ -1,9 +1,8 @@
 # Tink Link iOS
 
 ## Prerequisites
-1. Create your developer account at [Tink Console](https://console.tink.com/).
-2. Follow the [getting started guide](https://docs.tink.com/resources/getting-started/set-up-your-account) to retrieve your Client ID.
-3. Register the Redirect URI for your app (e.g. `myapp://callback`) in the list of allowed redirect URIs.
+1. Follow the [getting started guide](https://docs.tink.com/resources/getting-started/set-up-your-account) to create your developer account and retrieve your Client ID.
+2. Register the Redirect URI for your app (e.g. `myapp://callback`) in the list of allowed redirect URIs.
 
 ## Installation
 
