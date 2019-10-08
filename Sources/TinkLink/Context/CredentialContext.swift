@@ -123,7 +123,7 @@ public class CredentialContext {
     ///   - progressHandler: The block to execute with progress information about the credential's status.
     ///   - status: Indicates the state of a credential being added.
     ///   - completion: The block to execute when the credential has been added successfuly or if it failed.
-    ///   - result: Represents either a successfuly added credential or an error if adding the credential failed.
+    ///   - result: Represents either a successfully added credential or an error if adding the credential failed.
     /// - Returns: The add credential task.
     public func addCredential(for provider: Provider, form: Form, completionPredicate: AddCredentialTask.CompletionPredicate = .updated, progressHandler: @escaping (_ status: AddCredentialTask.Status) -> Void,  completion: @escaping (_ result: Result<Credential, Error>) -> Void) -> AddCredentialTask {
         let task = AddCredentialTask(
