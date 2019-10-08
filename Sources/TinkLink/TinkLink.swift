@@ -80,8 +80,15 @@ public class TinkLink {
         _shared = TinkLink(configuration: configuration)
     }
 
+    /// Get authorization code for requested scopes.
+    ///
+    /// Once you have received the authorization code, pass it to your backend service to exchange it for an access token. This must be done using the client secret, which you received with your client id.
+    ///
+    /// - Parameter scope: The requested OAuth scopes The scope parameter can receive multiple scopes separated by a comma.
+    /// - Parameter completion: The block to execute when the authorization is complete.
+    /// - Parameter result: Represents either a code if authorization was successful or an error if it failed.
     @discardableResult
-    public func authorize(scope: String, completion: @escaping (Result<AuthorizationCode, Error>) -> Void) -> Cancellable? {
+    public func authorize(scope: String, completion: @escaping (_ result: Result<AuthorizationCode, Error>) -> Void) -> Cancellable? {
         guard let redirectURI = configuration.redirectURI else {
             preconditionFailure("No Redirect URI set")
         }
