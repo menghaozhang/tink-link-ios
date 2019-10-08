@@ -82,8 +82,10 @@ public class ProviderContext {
         let attributes = Attributes(capabilities: .all, includeTestProviders: false, accessTypes: Provider.AccessType.all)
         self.init(tinkLink: tinkLink, attributes: attributes)
     }
-    
-    /// An initializer that provides TinkLink to config the service and attributes of accesses providers, which includs all capabilities and access types but no test providers.
+
+    /// Creates a context to access providers that matches the provided attributes.
+    /// - Parameter tinkLink: TinkLink instance, will use the shared instance if nothing is provided.
+    /// - Parameter attributes: Attributes describing which providers the context should access.
     public init(tinkLink: TinkLink = .shared, attributes: Attributes) {
         providerStore = tinkLink.providerStore
         self.attributes = attributes
