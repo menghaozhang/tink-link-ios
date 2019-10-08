@@ -1,7 +1,10 @@
 # Usage Examples
 
-## List providers
-Here's an example how you list providers.
+## How to list and select providers 
+
+### Listing and responding to changes
+
+Here's how you can list all providers with a `UITableViewController` subclass.
 ```swift
 class ProviderListViewController: UITableViewController, ProviderContextDelegate {
     let providerContext = ProviderContext()
