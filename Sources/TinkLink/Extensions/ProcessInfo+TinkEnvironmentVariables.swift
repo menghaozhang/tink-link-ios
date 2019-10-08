@@ -26,11 +26,11 @@ extension ProcessInfo {
     }
 
     var tinkMarket: Market? {
-        return environment["TINK_MARKET"].flatMap(Market.init(code: ))
+        return environment["TINK_MARKET_CODE"].flatMap(Market.init(code: ))
     }
 
     var tinkLocale: Locale? {
-        if let locale = environment["TINK_LOCALE"].flatMap(Locale.init(identifier: )) {
+        if let locale = environment["TINK_LOCALE_IDENTIFIER"].flatMap(Locale.init(identifier: )) {
             if TinkLink.availableLocales.contains(locale) {
                 return locale
             }
