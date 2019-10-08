@@ -3,7 +3,7 @@ import SwiftGRPC
 
 extension Provider {
     init(grpcProvider: GRPCProvider) {
-        self.name = .init(grpcProvider.name)
+        self.id = .init(grpcProvider.name)
         self.displayName = grpcProvider.displayName
         self.type = .init(grpcType: grpcProvider.type)
         self.status = Status(grpcStatus: grpcProvider.status)

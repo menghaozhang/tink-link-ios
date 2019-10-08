@@ -43,7 +43,7 @@ public class CredentialContext {
         guard let credentials = _credentials else {
             let storedCredentials = credentialStore.credentials
                 .values
-                .sorted(by: { $0.id.rawValue < $1.id.rawValue })
+                .sorted(by: { $0.id.value < $1.id.value })
             _credentials = storedCredentials
             performFetch()
             return storedCredentials
@@ -85,7 +85,7 @@ public class CredentialContext {
             guard let self = self else { return }
             self._credentials = self.credentialStore.credentials
                 .values
-                .sorted(by: { $0.id.rawValue < $1.id.rawValue })
+                .sorted(by: { $0.id.value < $1.id.value })
         }
 
         credentialStoreErrorObserver = NotificationCenter.default.addObserver(forName: .credentialStoreErrorOccured, object: credentialStore, queue: .main) { [weak self] notification in

@@ -2,11 +2,23 @@ import Foundation
 
 /// The credentials model represents users connected providers from where financial data is accessed.
 public struct Credential {
+    public struct ID: Hashable, ExpressibleByStringLiteral {
+        public init(stringLiteral value: String) {
+            self.value = value
+        }
+
+        public init(_ value: String) {
+            self.value = value
+        }
+
+        public let value: String
+    }
+
     /// The unique identifier of the credentials.
-    public var id: Identifier<Credential>
+    public var id: ID
 
     /// The provider (financial institution) that the credentials is connected to.
-    public var providerName: Identifier<Provider>
+    public var providerID: Provider.ID
 
     /// Indicates how Tink authenticates the user to the financial institution.
     public var type: CredentialType

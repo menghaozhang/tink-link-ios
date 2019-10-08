@@ -2,12 +2,12 @@ import Foundation
 import SwiftGRPC
 
 final class CredentialStore {
-    var credentials: [Identifier<Credential>: Credential] {
+    var credentials: [Credential.ID: Credential] {
         dispatchPrecondition(condition: .notOnQueue(tinkQueue))
         let credentials = tinkQueue.sync { return _credentials }
         return credentials
     }
-    private var _credentials: [Identifier<Credential>: Credential] = [:] {
+    private var _credentials: [Credential.ID: Credential] = [:] {
         didSet {
             DispatchQueue.main.async {
                 NotificationCenter.default.post(name: .credentialStoreChanged, object: self)
@@ -18,10 +18,10 @@ final class CredentialStore {
     private let market: Market
     private let locale: Locale
     private var service: CredentialService
-    private var createCredentialRetryCancellable: [Identifier<Provider>: RetryCancellable] = [:]
-    private var credentialStatusPollingRetryCancellable: [Identifier<Credential>: RetryCancellable] = [:]
-    private var addSupplementalInformationRetryCancellable: [Identifier<Credential>: RetryCancellable] = [:]
-    private var cancelSupplementInformationRetryCancellable: [Identifier<Credential>: RetryCancellable] = [:]
+    private var createCredentialRetryCancellable: [Provider.ID: RetryCancellable] = [:]
+    private var credentialStatusPollingRetryCancellable: [Credential.ID: RetryCancellable] = [:]
+    private var addSupplementalInformationRetryCancellable: [Credential.ID: RetryCancellable] = [:]
+    private var cancelSupplementInformationRetryCancellable: [Credential.ID: RetryCancellable] = [:]
     private var fetchCredentialsRetryCancellable: RetryCancellable?
     private let tinkQueue = DispatchQueue(label: "com.tink.TinkLink.CredentialStore", attributes: .concurrent)
     
@@ -37,8 +37,8 @@ final class CredentialStore {
         let market = Market(code: provider.marketCode)
         
         let authHandler = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
-            guard let self = self, self.createCredentialRetryCancellable[provider.name] == nil else { return }
-            let handler = self.service.createCredential(providerName: provider.name, fields: fields, completion: { (result) in
+            guard let self = self, self.createCredentialRetryCancellable[provider.id] == nil else { return }
+            let handler = self.service.createCredential(providerID: provider.id, fields: fields, completion: { (result) in
                 self.tinkQueue.async(qos: .default, flags: .barrier) {
                     do {
                         let credential = try result.get()
@@ -48,9 +48,9 @@ final class CredentialStore {
                         completion(.failure(error))
                     }
                 }
-                self.createCredentialRetryCancellable[provider.name] = nil
+                self.createCredentialRetryCancellable[provider.id] = nil
             })
-            self.createCredentialRetryCancellable[provider.name] = handler
+            self.createCredentialRetryCancellable[provider.id] = handler
             multiHandler.add(handler)
         }
         if let handler = authHandler {
