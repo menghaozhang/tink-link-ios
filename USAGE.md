@@ -37,6 +37,26 @@ class ProviderListViewController: UITableViewController, ProviderContextDelegate
 }
 ```
 
+### Provider groups
+Use the `providerGroups` property on `ProviderContext` to get providers grouped by financial institution, access type and credential type. 
+
+Handle selection of a provider group by switching on the group to decide which screen should be shown next.
+```swift
+override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let providerGroup = providerGroups[indexPath.row]
+    switch providerGroup {
+    case .financialInsititutions(let financialInsititutionGroups):
+        showFinancialInstitution(for: financialInsititutionGroups)
+    case .accessTypes(let accessTypeGroups):
+        showAccessTypePicker(for: accessTypeGroups)
+    case .credentialTypes(let providers):
+        showCredentialTypePicker(for: providers)
+    case .provider(let provider):
+        showAddCredentialFlow(for: provider)
+    }
+}
+```
+
 ## Add credential
 ### Creating and updating a form
 A `Form` is used to determine what a user needs to input in order to proceed. For example it could be a username and a password field.
