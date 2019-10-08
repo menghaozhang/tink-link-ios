@@ -69,6 +69,18 @@ form.fields[name: "password"]?.text = <#String#>
 ...
 ```
 
+### Configuring UITextFields from form fields.
+```swift
+for field in form.fields {
+    let textField = UITextField()
+    textField.placeholder = field.attributes.placeholder
+    textField.isSecureTextEntry = field.attributes.isSecureTextEntry
+    textField.isEnabled = field.attributes.isEditable
+    textField.text = field.text
+    <#Add to view#>
+}
+```
+
 ### Form validation
 Validate before you submit a request to add credential or supplement information.
 
