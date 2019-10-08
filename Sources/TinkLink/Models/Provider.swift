@@ -2,13 +2,9 @@ import Foundation
 
 /// The provider model represents financial institutions to where Tink can connect. It specifies how Tink accesses the financial institution, metadata about the financialinstitution, and what financial information that can be accessed.
 public struct Provider {
-    public struct ID: Hashable, RawRepresentable, ExpressibleByStringLiteral {
+    public struct ID: Hashable, ExpressibleByStringLiteral {
         public init(stringLiteral value: String) {
-            rawValue = value
-        }
-
-        public init?(rawValue: String) {
-            self.rawValue = rawValue
+            self.rawValue = value
         }
 
         public init(_ value: String) {

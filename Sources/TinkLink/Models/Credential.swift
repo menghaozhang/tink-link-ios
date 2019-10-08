@@ -2,13 +2,9 @@ import Foundation
 
 /// The credentials model represents users connected providers from where financial data is accessed.
 public struct Credential {
-    public struct ID: Hashable, RawRepresentable, ExpressibleByStringLiteral {
+    public struct ID: Hashable, ExpressibleByStringLiteral {
         public init(stringLiteral value: String) {
-            rawValue = value
-        }
-
-        public init?(rawValue: String) {
-            self.rawValue = rawValue
+            self.rawValue = value
         }
 
         public init(_ value: String) {
