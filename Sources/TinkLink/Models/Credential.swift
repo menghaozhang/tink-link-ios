@@ -42,7 +42,8 @@ public struct Credential {
 
         /// The credential is awaiting supplemental information.
         ///
-        /// If the authentication flow requires multiple steps with input from the user, as for example a SMS OTP authentication flow, the client should expect the `awaitingSupplementalInformation` status on the credential.
+        /// If the authentication flow requires multiple steps with input from the user, as for example a SMS OTP authentication flow, 
+        /// the client should expect the `awaitingSupplementalInformation` status on the credential.
         ///
         /// Create a `Form` with this credential to let the user supplement the required information.
         case awaitingSupplementalInformation
