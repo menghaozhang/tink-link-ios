@@ -27,7 +27,6 @@ Key | Type | Value
 Key | Value
 --- | -----
 `TINK_CLIENT_ID` | 
-`TINK_BEARER_TOKEN` | *For testing*
 
 ### Swift
 ```swift
