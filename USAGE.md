@@ -69,7 +69,7 @@ form.fields[name: "password"]?.text = <#String#>
 ...
 ```
 
-### Configuring UITextFields from form fields.
+### Configuring UITextFields from form fields
 ```swift
 for field in form.fields {
     let textField = UITextField()
