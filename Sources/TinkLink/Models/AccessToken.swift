@@ -1,11 +1,11 @@
-public struct AccessToken: Hashable, RawRepresentable {
-    public let rawValue: String
+struct AccessToken: Hashable, RawRepresentable {
+    let rawValue: String
 
-    public init?(rawValue: String) {
+    init?(rawValue: String) {
         self.rawValue = rawValue
     }
 
-    public init(_ value: String) {
+    init(_ value: String) {
         self.rawValue = value
     }
 }
