@@ -26,7 +26,7 @@ extension ProcessInfo {
     }
 
     var tinkMarket: Market? {
-        return environment["TINK_MARKET"].flatMap(Market.init(code: ))
+        return environment["TINK_MARKET_CODE"].flatMap(Market.init(code: ))
     }
 
     var tinkLocale: Locale? {
