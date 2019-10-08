@@ -38,7 +38,7 @@ public class ProviderContext {
             self.accessTypes = accessTypes
         }
 
-        public init(capabilities: Provider.Capabilities, includeTestProviders: Bool, accessTypes: Set<Provider.AccessType>) {
+        init(capabilities: Provider.Capabilities, includeTestProviders: Bool, accessTypes: Set<Provider.AccessType>) {
             self.capabilities = capabilities
             self.types = includeTestProviders ? ProviderType.all : ProviderType.excludingTest
             self.accessTypes = accessTypes
