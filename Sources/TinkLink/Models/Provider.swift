@@ -4,14 +4,14 @@ import Foundation
 public struct Provider {
     public struct ID: Hashable, ExpressibleByStringLiteral {
         public init(stringLiteral value: String) {
-            self.rawValue = value
+            self.value = value
         }
 
         public init(_ value: String) {
-            self.rawValue = value
+            self.value = value
         }
 
-        public let rawValue: String
+        public let value: String
     }
 
     /// The unique identifier of the provider.
