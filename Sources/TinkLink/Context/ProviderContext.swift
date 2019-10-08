@@ -29,12 +29,18 @@ public class ProviderContext {
     /// Attributes representing which providers a context should access.
     public struct Attributes: Hashable {
         public let capabilities: Provider.Capabilities
-        public let includeTestProviders: Bool
+        public let types: Set<ProviderType>
         public let accessTypes: Set<Provider.AccessType>
-        
+
+        public init(capabilities: Provider.Capabilities, types: Set<ProviderType>, accessTypes: Set<Provider.AccessType>) {
+            self.capabilities = capabilities
+            self.types = types
+            self.accessTypes = accessTypes
+        }
+
         public init(capabilities: Provider.Capabilities, includeTestProviders: Bool, accessTypes: Set<Provider.AccessType>) {
             self.capabilities = capabilities
-            self.includeTestProviders = includeTestProviders
+            self.types = includeTestProviders ? ProviderType.all : ProviderType.excludingTest
             self.accessTypes = accessTypes
         }
     }
