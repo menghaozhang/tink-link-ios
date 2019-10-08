@@ -1,4 +1,4 @@
-# Usage example
+# Usage Examples
 
 ## List providers
 Here's an example how you list providers.
