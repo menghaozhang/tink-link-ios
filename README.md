@@ -41,5 +41,5 @@ TinkLink.configure(with: configuration)
 ```
 
 ## Examples
-1. [Usage Examples](https://github.com/tink-ab/tink-link-ios/blob/master/USAGE.md)
-2. [Provider Selection](https://github.com/tink-ab/tink-link-ios/blob/master/Examples/ProviderSelection)
+- [Usage Examples](https://github.com/tink-ab/tink-link-ios/blob/master/USAGE.md) This document outlines how to use the different classes and types provided with TinkLink
+- [Provider Selection](https://github.com/tink-ab/tink-link-ios/blob/master/Examples/ProviderSelection) This example shows how to build a complete aggregation flow using Tink Link.
