@@ -2,9 +2,21 @@ import Foundation
 
 /// The provider model represents financial institutions to where Tink can connect. It specifies how Tink accesses the financial institution, metadata about the financialinstitution, and what financial information that can be accessed.
 public struct Provider {
+    public struct ID: Hashable, ExpressibleByStringLiteral {
+        public init(stringLiteral value: String) {
+            self.value = value
+        }
+
+        public init(_ value: String) {
+            self.value = value
+        }
+
+        public let value: String
+    }
+
     /// The unique identifier of the provider.
     /// - Note: This is used when creating new credentials.
-    public var name: Identifier<Provider>
+    public var id: ID
 
     /// The display name of the provider.
     public var displayName: String
@@ -12,6 +24,7 @@ public struct Provider {
     /// Indicates what kind of financial institution the provider represents.
     public var type: ProviderType
 
+    /// Indicates the current status of a provider.
     public enum Status {
         case unknown
         case enabled
@@ -24,8 +37,10 @@ public struct Provider {
     /// - Note: It is only possible to perform credentials create or refresh actions on providers which are enabled.
     public var status: Status
 
+    /// When creating a new credential connected to the provider this will be the credential's type.
     public var credentialType: CredentialType
 
+    /// Short description of how to authenticate when creating a new credential for connected to the provider.
     public var helpText: String
 
     /// Indicates if the provider is popular. This is normally set to true for the biggest financial institutions on a market.
@@ -86,6 +101,7 @@ public struct Provider {
     /// Indicates what this provider is capable of, in terms of financial data it can aggregate and if it can execute payments.
     public var capabilities: Capabilities
 
+    /// What Tink uses to access data.
     public enum AccessType: CustomStringConvertible, Hashable {
         case unknown
         case openBanking
@@ -112,16 +128,22 @@ public struct Provider {
     /// - Note: Each provider is unique per market.
     public var marketCode: String
 
+    /// A unique identifier to group providers belonging the same financial institution.
     public var financialInstitutionID: String
+
+    /// The name of the financial institution.
     public var financialInstitutionName: String
 }
 
+/// Indicates what type of financial institution the provider represents.
 public enum ProviderType {
     case unknown
     case bank
     case creditCard
     case broker
     case other
+
+    /// Indicates a test provider.
     case test
     case fraud
 }

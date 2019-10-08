@@ -34,17 +34,6 @@ extension Market: Comparable {
     }
 }
 
-extension Array where Element == Market {
-    public func sortedWithCurrentRegionFirst() -> [Market] {
-        var sortedMarkets = sorted()
-        if let currentRegionCode = Locale.current.regionCode, let index = sortedMarkets.firstIndex(of: Market(code: currentRegionCode)) {
-            let currentMarket = sortedMarkets.remove(at: index)
-            sortedMarkets.insert(currentMarket, at: 0)
-        }
-        return sortedMarkets
-    }
-}
-
 extension TinkLink {
     public static var defaultMarket: Market {
         return .defaultMarket

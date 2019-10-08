@@ -1,9 +1,8 @@
 # Tink Link iOS
 
 ## Prerequisites
-1. Create your developer account at [Tink Console](https://console.tink.com/).
-2. Follow the getting started guide to retrieve your Client ID.
-3. Register the Redirect URI for your app (e.g. `myapp://callback`) in the list of allowed redirect URIs.
+1. Follow the [getting started guide](https://docs.tink.com/resources/getting-started/set-up-your-account) to create your developer account and retrieve your Client ID.
+2. Register the Redirect URI for your app (e.g. `myapp://callback`) in the list of allowed redirect URIs.
 
 ## Installation
 
@@ -18,17 +17,22 @@ github "tink-ab/tink-link-ios"
 ```
 
 ## Configuration
+You need to configure TinkLink with a client id before using.
+TinkLink can be configured either by adding keys and values in your app's Info.plist, environment variables or in code.
 
 ### Info.plist
 Key | Type | Value
 --- | ---- | -----
 `TINK_CLIENT_ID` | String |
+`TINK_MARKET_CODE` | String | *Optional*
+`TINK_LOCALE_IDENTIFIER` | String | *Optional*
 
 ### Environment Variables
 Key | Value
 --- | -----
 `TINK_CLIENT_ID` | 
-`TINK_BEARER_TOKEN` | *For testing*
+`TINK_MARKET_CODE` | *Optional*
+`TINK_LOCALE_IDENTIFIER` | *Optional*
 
 ### Swift
 ```swift
@@ -36,8 +40,6 @@ let configuration = TinkLink.Configuration(clientID: <#String#>)
 TinkLink.configure(with: configuration)
 ```
 
-## [Usage](https://github.com/tink-ab/tink-link-ios/blob/master/USAGE.md)
-### List Provider
-
-### Add Credential
-- [Create credential](https://github.com/tink-ab/tink-link-ios/blob/master/USAGE.md#add-credential)
+## Examples
+- [Usage Examples](https://github.com/tink-ab/tink-link-ios/blob/master/USAGE.md) This document outlines how to use the different classes and types provided with TinkLink
+- [Provider Selection](https://github.com/tink-ab/tink-link-ios/blob/master/Examples/ProviderSelection) This example shows how to build a complete aggregation flow using Tink Link.

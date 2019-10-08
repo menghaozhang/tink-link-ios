@@ -16,12 +16,9 @@ final class ProviderListViewController: UITableViewController {
         }
     }
     
-    init(tinkLink: TinkLink = .shared, style: UITableView.Style) {
+    override init(style: UITableView.Style) {
         let attributes = ProviderContext.Attributes(capabilities: .all, includeTestProviders: true, accessTypes: Provider.AccessType.all)
-        // Use additional tinklink, need to hold the reference self
-        providerContext = ProviderContext(tinkLink: tinkLink, attributes: attributes)
-        // Alternativ is to use default tinklink
-        // providerContext = ProviderContext(attributes: attributes)
+        providerContext = ProviderContext(attributes: attributes)
         providerGroups = providerContext.providerGroups
         super.init(style: style)
     }
@@ -59,14 +56,14 @@ extension ProviderListViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let group = providerGroups[indexPath.item]
+        let group = providerGroups[indexPath.row]
         cell.textLabel?.text = group.groupedDisplayName
         cell.accessoryType = .disclosureIndicator
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let providerGroup = providerGroups[indexPath.item]
+        let providerGroup = providerGroups[indexPath.row]
         switch providerGroup {
         case .financialInsititutions(let financialInsititutionGroups):
             showFinancialInstitution(for: financialInsititutionGroups, title: providerGroup.groupedDisplayName)

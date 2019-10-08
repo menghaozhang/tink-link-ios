@@ -54,7 +54,7 @@ class CredentialStatusPollingTask {
                             self.callRetryCancellable = nil
                         }
                     } else {
-                        fatalError("No such credential with " + self.credential.id.rawValue)
+                        fatalError("No such credential with " + self.credential.id.value)
                     }
                 } catch let error {
                     self.updateHandler(.failure(error))

@@ -1,8 +1,22 @@
 import Foundation
 
+/// A protocol that allows a delegate to respond to credential changes or errors.
 public protocol CredentialContextDelegate: AnyObject {
+    /// Notifies the delegate that the credentials are about to be changed.
+    ///
+    /// - Note: This method is optional.
+    /// - Parameter context: The credential context that will change.
     func credentialContextWillChangeCredentials(_ context: CredentialContext)
+
+    /// Notifies the delegate that an error occured while fetching credentials or adding a credential.
+    ///
+    /// - Parameter context: The credential context that encountered the error.
+    /// - Parameter error: A description of the error.
     func credentialContext(_ context: CredentialContext, didReceiveError error: Error)
+
+    /// Notifies the delegate that the credentials has changed.
+    ///
+    /// - Parameter context: The credential context that changed.
     func credentialContextDidChangeCredentials(_ context: CredentialContext)
 }
 
@@ -10,7 +24,7 @@ extension CredentialContextDelegate {
     public func credentialContextWillChangeCredentials(_ context: CredentialContext) { }
 }
 
-/// An object that accesses the user's credentials and supports the flow for adding credentials.
+/// An object that you use to access the user's credentials and supports the flow for adding credentials.
 public class CredentialContext {
 
     private var _credentials: [Credential]? {
@@ -29,7 +43,7 @@ public class CredentialContext {
         guard let credentials = _credentials else {
             let storedCredentials = credentialStore.credentials
                 .values
-                .sorted(by: { $0.id.rawValue < $1.id.rawValue })
+                .sorted(by: { $0.id.value < $1.id.value })
             _credentials = storedCredentials
             performFetch()
             return storedCredentials
@@ -39,7 +53,9 @@ public class CredentialContext {
 
     /// The object that acts as the delegate of the credential context.
     ///
-    /// The delegate must adopt the `CredentialContextDelegate` protocol. The delegate is not retained.
+    /// If you set a delegate for the credential context, it will register to receive updates when credentials are added. The context notifies the delegate when `credentials` will or did change or if an error occured.
+    ///
+    /// - Note: The delegate must adopt the `CredentialContextDelegate` protocol. The delegate is not retained.
     public weak var delegate: CredentialContextDelegate? {
         didSet {
             if delegate != nil {
@@ -55,8 +71,10 @@ public class CredentialContext {
     private let credentialStore: CredentialStore
     private var credentialStoreChangeObserver: Any?
     private var credentialStoreErrorObserver: Any?
-    
-    /// An initializer that provides TinkLink to config the add credential service
+
+    /// Creates a new CredentialContext for the given TinkLink instance.
+    ///
+    /// - Parameter tinkLink: TinkLink instance, defaults to `shared` if not provided.
     public init(tinkLink: TinkLink = .shared) {
         self.tinkLink = tinkLink
         credentialStore = tinkLink.credentialStore
@@ -67,7 +85,7 @@ public class CredentialContext {
             guard let self = self else { return }
             self._credentials = self.credentialStore.credentials
                 .values
-                .sorted(by: { $0.id.rawValue < $1.id.rawValue })
+                .sorted(by: { $0.id.value < $1.id.value })
         }
 
         credentialStoreErrorObserver = NotificationCenter.default.addObserver(forName: .credentialStoreErrorOccured, object: credentialStore, queue: .main) { [weak self] notification in
@@ -105,7 +123,7 @@ public class CredentialContext {
     ///   - progressHandler: The block to execute with progress information about the credential's status.
     ///   - status: Indicates the state of a credential being added.
     ///   - completion: The block to execute when the credential has been added successfuly or if it failed.
-    ///   - result: Represents either a successfuly added credential or an error if adding the credential failed.
+    ///   - result: Represents either a successfully added credential or an error if adding the credential failed.
     /// - Returns: The add credential task.
     public func addCredential(for provider: Provider, form: Form, completionPredicate: AddCredentialTask.CompletionPredicate = .updated, progressHandler: @escaping (_ status: AddCredentialTask.Status) -> Void,  completion: @escaping (_ result: Result<Credential, Error>) -> Void) -> AddCredentialTask {
         let task = AddCredentialTask(
