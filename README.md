@@ -17,6 +17,8 @@ github "tink-ab/tink-link-ios"
 ```
 
 ## Configuration
+You need to configure TinkLink with a client id before using.
+TinkLink can be configured either by adding keys and values in your app's Info.plist, environment variables or in code.
 
 ### Info.plist
 Key | Type | Value
