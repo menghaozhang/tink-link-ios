@@ -137,6 +137,6 @@ extension ProviderContext {
             return providerGroups
         }
         
-        return providerGroups.filter({ $0.groupedDisplayName?.localizedCaseInsensitiveContains(query) ?? false })
+        return providerGroups.filter({ $0.displayName?.localizedCaseInsensitiveContains(query) ?? false })
     }
 }
