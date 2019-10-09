@@ -91,7 +91,7 @@ public class ProviderContext {
         self.attributes = attributes
         self.market = tinkLink.client.market
         _providers = try? providerStore.providerMarketGroups[market]?.get()
-        _providerGroups = _providers.map{ ProviderGroup.makeGroups(providers: $0) }
+        _providerGroups = _providers.map(ProviderGroup.makeGroups)
         providerStoreObserver = NotificationCenter.default.addObserver(forName: .providerStoreMarketGroupsChanged, object: providerStore, queue: .main) { [weak self] _ in
             guard let self = self else {
                 return
