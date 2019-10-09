@@ -76,17 +76,17 @@ public enum ProviderGroup {
         } else {
             let providersGroupedByFinancialInstitutionIDs = Dictionary(grouping: providers, by: { $0.financialInstitutionID })
             if providersGroupedByFinancialInstitutionIDs.count == 1 {
-                let providerGroupedByAccessTypes = Dictionary(grouping: providers, by: { $0.accessType })
-                let accessTypes = providerGroupedByAccessTypes.map { $0.key }
+                let providersGroupedByAccessTypes = Dictionary(grouping: providers, by: { $0.accessType })
+                let accessTypes = providersGroupedByAccessTypes.map { $0.key }
                 if accessTypes.count == 1 {
                     self = .credentialTypes(providers)
                 } else {
-                    var providerGroupedByAccessType = [ProviderAccessTypeGroup]()
+                    var providersGroupedByAccessType = [ProviderAccessTypeGroup]()
                     accessTypes.forEach { accessType in
                         let providersWithSameAccessType = providers.filter({ $0.accessType == accessType })
-                        providerGroupedByAccessType.append(ProviderAccessTypeGroup(providers: providersWithSameAccessType))
+                        providersGroupedByAccessType.append(ProviderAccessTypeGroup(providers: providersWithSameAccessType))
                     }
-                    self = .accessTypes(providerGroupedByAccessType)
+                    self = .accessTypes(providersGroupedByAccessType)
                 }
             } else {
                 let providersGroupedByFinancialInstitution = providersGroupedByFinancialInstitutionIDs.map { (_, providers) in FinancialInsititutionGroup(providers: providers) }
