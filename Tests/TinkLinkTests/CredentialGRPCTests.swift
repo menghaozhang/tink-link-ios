@@ -59,8 +59,6 @@ class CredentialGRPCTests: XCTestCase {
     }
 
     func testAwaitingThirdPartyAppAuthenticationCredentialMapping() {
-        let updatedAt = Calendar.current.date(from: DateComponents(year: 2019, month: 10, day: 8, hour: 15, minute: 24))!
-
         var grpcCredential = GRPCCredential()
         grpcCredential.id = "6e68cc6287704273984567b3300c5822"
         grpcCredential.providerName = "handelsbanken-bankid"
