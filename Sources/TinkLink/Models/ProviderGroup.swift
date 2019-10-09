@@ -36,7 +36,7 @@ public enum FinancialInsititutionGroup {
             self = .provider(provider)
         } else {
             let providersGroupedByAccessTypes = Dictionary(grouping: providers, by: { $0.accessType })
-            if providersGroupedByAccessTypes.count == 1 {
+            if providersGroupedByAccessTypes.count == 1, let providers = providersGroupedByAccessTypes.values.first {
                 self = .credentialTypes(providers)
             } else {
                 let providersGroupedByAccessType = providersGroupedByAccessTypes.values.map(ProviderAccessTypeGroup.init(providers:))
@@ -73,9 +73,9 @@ public enum ProviderGroup {
             self = .provider(provider)
         } else {
             let providersGroupedByFinancialInstitutionIDs = Dictionary(grouping: providers, by: { $0.financialInstitutionID })
-            if providersGroupedByFinancialInstitutionIDs.count == 1 {
+            if providersGroupedByFinancialInstitutionIDs.count == 1, let providers = providersGroupedByFinancialInstitutionIDs.values.first {
                 let providersGroupedByAccessTypes = Dictionary(grouping: providers, by: { $0.accessType })
-                if providersGroupedByAccessTypes.count == 1 {
+                if providersGroupedByAccessTypes.count == 1, let providers = providersGroupedByAccessTypes.values.first {
                     self = .credentialTypes(providers)
                 } else {
                     let providersGroupedByAccessType = providersGroupedByAccessTypes.values.map(ProviderAccessTypeGroup.init(providers:))
