@@ -37,10 +37,7 @@ public enum FinancialInsititutionGroup {
             if providersGroupedByAccessTypes.count == 1 {
                 self = .credentialTypes(providers)
             } else {
-                var providersGroupedByAccessType = [ProviderAccessTypeGroup]()
-                providersGroupedByAccessTypes.forEach { (accessType, providers) in
-                    providersGroupedByAccessType.append(ProviderAccessTypeGroup(providers: providers))
-                }
+                let providersGroupedByAccessType = providersGroupedByAccessTypes.values.map(ProviderAccessTypeGroup.init(providers:))
                 self = .accessTypes(providersGroupedByAccessType)
             }
         }
