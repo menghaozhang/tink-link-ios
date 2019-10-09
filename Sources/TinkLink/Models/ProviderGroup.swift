@@ -99,6 +99,18 @@ public enum ProviderGroup {
             }
         }
     }
+
+    public static func makeGroups(providers: [Provider]) -> [ProviderGroup] {
+        if providers.isEmpty { return [] }
+        let providerGroupedByGroupedName = Dictionary(grouping: providers, by: { $0.groupDisplayName })
+        let groupedNames = providerGroupedByGroupedName.map { $0.key }
+        var providerGroups = [ProviderGroup]()
+        groupedNames.forEach { groupName in
+            let providersWithSameGroupedName = providers.filter({ $0.groupDisplayName == groupName })
+            providerGroups.append(ProviderGroup(providers: providersWithSameGroupedName))
+        }
+        return providerGroups.sorted(by: { $0.groupedDisplayName ?? "" < $1.groupedDisplayName ?? "" })
+    }
     
     public var providers: [Provider] {
         switch self {

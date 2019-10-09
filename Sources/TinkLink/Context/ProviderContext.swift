@@ -58,7 +58,7 @@ public class ProviderContext {
             delegate?.providerContextWillChangeProviders(self)
         }
         didSet {
-            _providerGroups = _providers.map(makeGroups)
+            _providerGroups = _providers.map(ProviderGroup.makeGroups)
             delegate?.providerContextDidChangeProviders(self)
         }
     }
@@ -91,7 +91,7 @@ public class ProviderContext {
         self.attributes = attributes
         self.market = tinkLink.client.market
         _providers = try? providerStore.providerMarketGroups[market]?.get()
-        _providerGroups = _providers.map{ makeGroups($0) }
+        _providerGroups = _providers.map{ ProviderGroup.makeGroups(providers: $0) }
         providerStoreObserver = NotificationCenter.default.addObserver(forName: .providerStoreMarketGroupsChanged, object: providerStore, queue: .main) { [weak self] _ in
             guard let self = self else {
                 return
@@ -106,18 +106,6 @@ public class ProviderContext {
     
     private func performFetch() {
         providerStore.performFetchProvidersIfNeeded(for: attributes)
-    }
-    
-    private func makeGroups(_ providers: [Provider]) -> [ProviderGroup] {
-        if providers.isEmpty { return [] }
-        let providerGroupedByGroupedName = Dictionary(grouping: providers, by: { $0.groupDisplayName })
-        let groupedNames = providerGroupedByGroupedName.map { $0.key }
-        var providerGroups = [ProviderGroup]()
-        groupedNames.forEach { groupName in
-            let providersWithSameGroupedName = providers.filter({ $0.groupDisplayName == groupName })
-            providerGroups.append(ProviderGroup(providers: providersWithSameGroupedName))
-        }
-        return providerGroups.sorted(by: { $0.groupedDisplayName ?? "" < $1.groupedDisplayName ?? "" })
     }
 }
 
