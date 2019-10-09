@@ -19,8 +19,8 @@ public enum ProviderAccessTypeGroup {
         }
     }
     
-    public var accessType: String? {
-        return providers.first?.accessType.description
+    public var accessType: Provider.AccessType {
+        return providers[0].accessType
     }
 }
 
@@ -59,8 +59,8 @@ public enum FinancialInsititutionGroup {
         }
     }
     
-    public var financialInsititutionName: String? {
-        return providers.first?.financialInstitutionName
+    public var financialInsititutionName: String {
+        return providers[0].financialInstitutionName
     }
 }
 
@@ -126,7 +126,7 @@ public enum ProviderGroup {
         }
     }
     
-    public var displayName: String? {
-        return providers.first?.groupDisplayName
+    public var displayName: String {
+        return providers[0].groupDisplayName
     }
 }
