@@ -75,8 +75,7 @@ public enum ProviderGroup {
             self = .provider(provider)
         } else {
             let providersGroupedByFinancialInstitutionIDs = Dictionary(grouping: providers, by: { $0.financialInstitutionID })
-            let financialInstitutionIDs = providersGroupedByFinancialInstitutionIDs.map { $0.key }
-            if financialInstitutionIDs.count == 1 {
+            if providersGroupedByFinancialInstitutionIDs.count == 1 {
                 let providerGroupedByAccessTypes = Dictionary(grouping: providers, by: { $0.accessType })
                 let accessTypes = providerGroupedByAccessTypes.map { $0.key }
                 if accessTypes.count == 1 {
@@ -91,9 +90,8 @@ public enum ProviderGroup {
                 }
             } else {
                 var providerGroupedByFinancialInstitution = [FinancialInsititutionGroup]()
-                financialInstitutionIDs.forEach { financialInstitution in
-                    let providersWithSameFinancialInstitutions = providers.filter({ $0.financialInstitutionID == financialInstitution })
-                    providerGroupedByFinancialInstitution.append(FinancialInsititutionGroup(providers: providersWithSameFinancialInstitutions))
+                providersGroupedByFinancialInstitutionIDs.forEach { (financialInstitutionID, providers) in
+                    providerGroupedByFinancialInstitution.append(FinancialInsititutionGroup(providers: providers))
                 }
                 self = .financialInsititutions(providerGroupedByFinancialInstitution)
             }
