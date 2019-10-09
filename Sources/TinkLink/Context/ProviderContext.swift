@@ -109,9 +109,7 @@ public class ProviderContext {
     }
     
     private func makeGroups(_ providers: [Provider]) -> [ProviderGroup] {
-        guard let providers = _providers, !providers.isEmpty else {
-            return []
-        }
+        if providers.isEmpty { return [] }
         let providerGroupedByGroupedName = Dictionary(grouping: providers, by: { $0.groupDisplayName })
         let groupedNames = providerGroupedByGroupedName.map { $0.key }
         var providerGroups = [ProviderGroup]()
