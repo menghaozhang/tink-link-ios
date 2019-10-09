@@ -40,5 +40,19 @@ class ProviderGroupTests: XCTestCase {
             financialInstitutionID: "dde2463acf40501389de4fca5a3693a4",
             financialInstitutionName: "Nordea"
         )
+
+        let providers = [nordeaBankID, nordeaPassword]
+
+        let groups = ProviderGroup.makeGroups(providers: providers)
+
+        XCTAssertEqual(groups.count, 1)
+        for group in groups {
+            switch group {
+            case .credentialTypes(let providers):
+                XCTAssertEqual(providers.count, 2)
+            default:
+                XCTFail("Expected credential types group.")
+            }
+        }
     }
 }
