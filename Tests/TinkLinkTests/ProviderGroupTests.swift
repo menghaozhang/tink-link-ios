@@ -23,7 +23,7 @@ class ProviderGroupTests: XCTestCase {
         )
 
         let nordeaPassword = Provider(
-            id: "nordea-bankid",
+            id: "nordea-password",
             displayName: "Nordea",
             type: .bank,
             status: .enabled,
