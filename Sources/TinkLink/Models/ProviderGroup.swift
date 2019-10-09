@@ -109,6 +109,7 @@ public enum ProviderGroup {
             let providersWithSameGroupedName = providers.filter({ $0.groupDisplayName == groupName })
             providerGroups.append(ProviderGroup(providers: providersWithSameGroupedName))
         }
+        // TODO: This is probably slow since it has creates a providers array for each displayName check.
         return providerGroups.sorted(by: { $0.displayName ?? "" < $1.displayName ?? "" })
     }
     
