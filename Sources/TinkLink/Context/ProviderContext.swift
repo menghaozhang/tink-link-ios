@@ -37,12 +37,6 @@ public class ProviderContext {
             self.types = types
             self.accessTypes = accessTypes
         }
-
-        init(capabilities: Provider.Capabilities, includeTestProviders: Bool, accessTypes: Set<Provider.AccessType>) {
-            self.capabilities = capabilities
-            self.types = includeTestProviders ? ProviderType.all : ProviderType.excludingTest
-            self.accessTypes = accessTypes
-        }
     }
     
     /// Attributes representing which providers a context should access.
@@ -85,7 +79,7 @@ public class ProviderContext {
     /// A convenience initializer that creates a context to access providers including all capabilities and access types but no test providers.
     /// - Parameter tinkLink: TinkLink instance, will use the shared instance if nothing is provided.
     public convenience init(tinkLink: TinkLink = .shared) {
-        let attributes = Attributes(capabilities: .all, includeTestProviders: false, accessTypes: Provider.AccessType.all)
+        let attributes = Attributes(capabilities: .all, types: ProviderType.excludingTest, accessTypes: Provider.AccessType.all)
         self.init(tinkLink: tinkLink, attributes: attributes)
     }
 
