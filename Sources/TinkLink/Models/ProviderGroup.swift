@@ -3,6 +3,7 @@ public enum ProviderAccessTypeGroup {
     case credentialTypes([Provider])
     
     init(providers: [Provider]) {
+        precondition(!providers.isEmpty)
         if providers.count == 1, let provider = providers.first {
             self = .provider(provider)
         } else {
@@ -19,8 +20,8 @@ public enum ProviderAccessTypeGroup {
         }
     }
     
-    public var accessType: String? {
-        return providers.first?.accessType.description
+    public var accessType: Provider.AccessType {
+        return providers[0].accessType
     }
 }
 
@@ -30,20 +31,16 @@ public enum FinancialInsititutionGroup {
     case accessTypes([ProviderAccessTypeGroup])
     
     init(providers: [Provider]) {
+        precondition(!providers.isEmpty)
         if providers.count == 1, let provider = providers.first {
             self = .provider(provider)
         } else {
-            let providerGroupedByAccessTypes = Dictionary(grouping: providers, by: { $0.accessType })
-            let accessTypes = providerGroupedByAccessTypes.map { $0.key }
-            if accessTypes.count == 1 {
+            let providersGroupedByAccessTypes = Dictionary(grouping: providers, by: { $0.accessType })
+            if providersGroupedByAccessTypes.count == 1, let providers = providersGroupedByAccessTypes.values.first {
                 self = .credentialTypes(providers)
             } else {
-                var providerGroupedByAccessType = [ProviderAccessTypeGroup]()
-                accessTypes.forEach { accessType in
-                    let providersWithSameAccessType = providers.filter({ $0.accessType == accessType })
-                    providerGroupedByAccessType.append(ProviderAccessTypeGroup(providers: providersWithSameAccessType))
-                }
-                self = .accessTypes(providerGroupedByAccessType)
+                let providersGroupedByAccessType = providersGroupedByAccessTypes.values.map(ProviderAccessTypeGroup.init(providers:))
+                self = .accessTypes(providersGroupedByAccessType)
             }
         }
     }
@@ -59,8 +56,8 @@ public enum FinancialInsititutionGroup {
         }
     }
     
-    public var financialInsititutionName: String? {
-        return providers.first?.financialInstitutionName
+    public var financialInsititutionName: String {
+        return providers[0].financialInstitutionName
     }
 }
 
@@ -71,33 +68,30 @@ public enum ProviderGroup {
     case financialInsititutions([FinancialInsititutionGroup])
     
     init(providers: [Provider]) {
+        precondition(!providers.isEmpty)
         if providers.count == 1, let provider = providers.first {
             self = .provider(provider)
         } else {
-            let providerGroupedByFinancialInstitutions = Dictionary(grouping: providers, by: { $0.financialInstitutionID })
-            let financialInstitutions = providerGroupedByFinancialInstitutions.map { $0.key }
-            if financialInstitutions.count == 1 {
-                let providerGroupedByAccessTypes = Dictionary(grouping: providers, by: { $0.accessType })
-                let accessTypes = providerGroupedByAccessTypes.map { $0.key }
-                if accessTypes.count == 1 {
+            let providersGroupedByFinancialInstitutionIDs = Dictionary(grouping: providers, by: { $0.financialInstitutionID })
+            if providersGroupedByFinancialInstitutionIDs.count == 1, let providers = providersGroupedByFinancialInstitutionIDs.values.first {
+                let providersGroupedByAccessTypes = Dictionary(grouping: providers, by: { $0.accessType })
+                if providersGroupedByAccessTypes.count == 1, let providers = providersGroupedByAccessTypes.values.first {
                     self = .credentialTypes(providers)
                 } else {
-                    var providerGroupedByAccessType = [ProviderAccessTypeGroup]()
-                    accessTypes.forEach { accessType in
-                        let providersWithSameAccessType = providers.filter({ $0.accessType == accessType })
-                        providerGroupedByAccessType.append(ProviderAccessTypeGroup(providers: providersWithSameAccessType))
-                    }
-                    self = .accessTypes(providerGroupedByAccessType)
+                    let providersGroupedByAccessType = providersGroupedByAccessTypes.values.map(ProviderAccessTypeGroup.init(providers:))
+                    self = .accessTypes(providersGroupedByAccessType)
                 }
             } else {
-                var providerGroupedByFinancialInstitution = [FinancialInsititutionGroup]()
-                financialInstitutions.forEach { financialInstitution in
-                    let providersWithSameFinancialInstitutions = providers.filter({ $0.financialInstitutionID == financialInstitution })
-                    providerGroupedByFinancialInstitution.append(FinancialInsititutionGroup(providers: providersWithSameFinancialInstitutions))
-                }
-                self = .financialInsititutions(providerGroupedByFinancialInstitution)
+                let providersGroupedByFinancialInstitution = providersGroupedByFinancialInstitutionIDs.values.map(FinancialInsititutionGroup.init(providers:))
+                self = .financialInsititutions(providersGroupedByFinancialInstitution)
             }
         }
+    }
+
+    public static func makeGroups(providers: [Provider]) -> [ProviderGroup] {
+        return Dictionary(grouping: providers, by: { $0.groupDisplayName })
+            .sorted(by: { $0.key < $1.key })
+            .map { ProviderGroup(providers: $0.value) }
     }
     
     public var providers: [Provider] {
@@ -113,7 +107,7 @@ public enum ProviderGroup {
         }
     }
     
-    public var groupedDisplayName: String? {
-        return providers.first?.groupDisplayName
+    public var displayName: String {
+        return providers[0].groupDisplayName
     }
 }
