@@ -3,6 +3,7 @@ public enum ProviderAccessTypeGroup {
     case credentialTypes([Provider])
     
     init(providers: [Provider]) {
+        precondition(!providers.isEmpty)
         if providers.count == 1, let provider = providers.first {
             self = .provider(provider)
         } else {
@@ -30,6 +31,7 @@ public enum FinancialInsititutionGroup {
     case accessTypes([ProviderAccessTypeGroup])
     
     init(providers: [Provider]) {
+        precondition(!providers.isEmpty)
         if providers.count == 1, let provider = providers.first {
             self = .provider(provider)
         } else {
@@ -66,6 +68,7 @@ public enum ProviderGroup {
     case financialInsititutions([FinancialInsititutionGroup])
     
     init(providers: [Provider]) {
+        precondition(!providers.isEmpty)
         if providers.count == 1, let provider = providers.first {
             self = .provider(provider)
         } else {
