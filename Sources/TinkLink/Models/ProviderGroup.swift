@@ -80,11 +80,11 @@ public enum ProviderGroup {
                 if providersGroupedByAccessTypes.count == 1 {
                     self = .credentialTypes(providers)
                 } else {
-                    let providersGroupedByAccessType = providersGroupedByAccessTypes.map { (_, providers) in ProviderAccessTypeGroup(providers: providers) }
+                    let providersGroupedByAccessType = providersGroupedByAccessTypes.values.map(ProviderAccessTypeGroup.init(providers:))
                     self = .accessTypes(providersGroupedByAccessType)
                 }
             } else {
-                let providersGroupedByFinancialInstitution = providersGroupedByFinancialInstitutionIDs.map { (_, providers) in FinancialInsititutionGroup(providers: providers) }
+                let providersGroupedByFinancialInstitution = providersGroupedByFinancialInstitutionIDs.values.map(FinancialInsititutionGroup.init(providers:))
                 self = .financialInsititutions(providersGroupedByFinancialInstitution)
             }
         }
