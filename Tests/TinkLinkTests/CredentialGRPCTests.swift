@@ -67,7 +67,7 @@ class CredentialGRPCTests: XCTestCase {
         grpcCredential.type = .mobileBankid
         grpcCredential.status = .awaitingThirdPartyAppAuthentication
         grpcCredential.statusPayload = "Analyzed 1,200 out of 1,200 transactions"
-        grpcCredential.updated = .init(date: updatedAt)
+        grpcCredential.clearUpdated()
         grpcCredential.fields = ["username": "180012121234"]
         grpcCredential.supplementalInformationFields = []
 
@@ -93,7 +93,7 @@ class CredentialGRPCTests: XCTestCase {
         XCTAssertEqual(credential.type, .mobileBankID)
         XCTAssertEqual(credential.status, .awaitingThirdPartyAppAuthentication)
         XCTAssertEqual(credential.statusPayload, grpcCredential.statusPayload)
-        XCTAssertEqual(credential.updated, updatedAt)
+        XCTAssertNil(credential.updated)
         XCTAssertEqual(credential.fields, grpcCredential.fields)
         XCTAssertTrue(credential.supplementalInformationFields.isEmpty)
         XCTAssertNotNil(credential.thirdPartyAppAuthentication)
