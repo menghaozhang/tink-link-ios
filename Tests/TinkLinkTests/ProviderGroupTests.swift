@@ -2,7 +2,7 @@ import XCTest
 @testable import TinkLink
 
 class ProviderGroupTests: XCTestCase {
-    func testGroup() {
+    func testCredentialTypesGrouping() {
         let nordeaBankID = Provider(
             id: "nordea-bankid",
             displayName: "Nordea",
