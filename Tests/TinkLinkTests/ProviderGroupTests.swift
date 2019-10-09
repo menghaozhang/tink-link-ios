@@ -40,6 +40,25 @@ class ProviderGroupTests: XCTestCase {
         financialInstitutionName: "Nordea"
     )
 
+    let nordeaOpenBanking = Provider(
+        id: "se-nordea-ob",
+        displayName: "Nordea Open Banking",
+        type: .bank,
+        status: .enabled,
+        credentialType: .mobileBankID,
+        helpText: "",
+        isPopular: true,
+        fields: [],
+        groupDisplayName: "Nordea",
+        image: nil,
+        displayDescription: "Mobile BankID",
+        capabilities: .init(rawValue: 1266),
+        accessType: .openBanking,
+        marketCode: "SE",
+        financialInstitutionID: "dde2463acf40501389de4fca5a3693a4",
+        financialInstitutionName: "Nordea"
+    )
+
     let sparbankernaBankID = Provider(
         id: "savingsbank-bankid",
         displayName: "Sparbankerna",
@@ -117,7 +136,6 @@ class ProviderGroupTests: XCTestCase {
     )
 
     func testCredentialTypesGrouping() {
-
         let providers = [nordeaBankID, nordeaPassword]
 
         let groups = ProviderGroup.makeGroups(providers: providers)
@@ -132,6 +150,41 @@ class ProviderGroupTests: XCTestCase {
             }
         }
     }
+
+    func testAccessTypeGrouping() {
+        let providers = [nordeaOpenBanking, nordeaBankID, nordeaPassword]
+
+        let groups = ProviderGroup.makeGroups(providers: providers)
+
+        XCTAssertEqual(groups.count, 1)
+        if let nordeaGroup = groups.first {
+            switch nordeaGroup {
+            case .accessTypes(let accessTypeGroups):
+                XCTAssertEqual(accessTypeGroups.count, 2)
+                if let openBankingAccessTypeGroup = accessTypeGroups.first(where: { $0.accessType == .openBanking }) {
+                    switch openBankingAccessTypeGroup {
+                    case .provider(let provider):
+                        XCTAssertEqual(provider.id, nordeaOpenBanking.id)
+                    default:
+                        XCTFail("Expected provider group.")
+                    }
+                }
+                if let otherAccessTypeGroup = accessTypeGroups.first(where: { $0.accessType == .other }) {
+                    switch otherAccessTypeGroup {
+                    case .credentialTypes(let providers):
+                        XCTAssertEqual(providers.count, 2)
+                    default:
+                        XCTFail("Expected credential types group.")
+                    }
+                }
+            default:
+                XCTFail("Expected credential types group.")
+            }
+        } else {
+            XCTFail()
+        }
+    }
+
 
     func testGroupDisplayNameGrouping() {
         let providers = [
