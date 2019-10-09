@@ -89,10 +89,7 @@ public enum ProviderGroup {
                     self = .accessTypes(providerGroupedByAccessType)
                 }
             } else {
-                var providersGroupedByFinancialInstitution = [FinancialInsititutionGroup]()
-                providersGroupedByFinancialInstitutionIDs.forEach { (financialInstitutionID, providers) in
-                    providersGroupedByFinancialInstitution.append(FinancialInsititutionGroup(providers: providers))
-                }
+                let providersGroupedByFinancialInstitution = providersGroupedByFinancialInstitutionIDs.map { (_, providers) in FinancialInsititutionGroup(providers: providers) }
                 self = .financialInsititutions(providersGroupedByFinancialInstitution)
             }
         }
