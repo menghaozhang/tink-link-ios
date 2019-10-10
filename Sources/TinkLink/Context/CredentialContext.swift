@@ -141,6 +141,7 @@ public class CredentialContext {
                 }
         })
 
+        // TODO: Replace with URI's from Configuration after #124 is merged.
         let appURI = URL(string: "http://my-customer-app.com/authentication")!
         let callbackURI = URL(string: "http://my-customer-app.com/callback")!
 
