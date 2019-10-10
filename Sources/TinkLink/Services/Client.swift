@@ -38,7 +38,7 @@ final class Client {
     
     private(set) lazy var providerService = ProviderService(channel: channel, metadata: metadata)
     private(set) lazy var credentialService = CredentialService(channel: channel, metadata: metadata)
-    private(set) lazy var authenticationService = AuthenticationService(channel: channel, metadata: metadata, restURL: restURL, certificates: restCertificate != nil ? [restCertificate!] : [])
+    private(set) lazy var authenticationService = AuthenticationService(channel: channel, metadata: metadata, restURL: restURL, certificates: restCertificate.map({ [$0] }) ?? [])
     private(set) lazy var userService = UserService(channel: channel, metadata: metadata)
 }
 
