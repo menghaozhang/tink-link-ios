@@ -82,7 +82,7 @@ public class TinkLink {
     ///
     /// - Parameter scope: A comma separated list of OAuth scopes to be requested.
     /// - Parameter completion: The block to execute when the authorization is complete.
-    /// - Parameter result: Represents either a code if authorization was successful or an error if it failed.
+    /// - Parameter result: Represents either an authorization code if authorization was successful or an error if authorization failed.
     @discardableResult
     public func authorize(scope: String, completion: @escaping (_ result: Result<AuthorizationCode, Error>) -> Void) -> Cancellable? {
         guard let redirectURI = configuration.redirectURI else {
