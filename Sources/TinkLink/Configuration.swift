@@ -9,7 +9,7 @@ extension TinkLink {
         public var restCertificate: Data?
         public var market: Market
         public var locale: Locale
-        public var redirectURI: URL?
+        public var redirectURI: URL
 
         /// - Parameters:
         ///   - clientId: The client id for your app.
@@ -26,7 +26,7 @@ extension TinkLink {
             restCertificateURL: URL? = nil,
             market: Market? = nil,
             locale: Locale? = nil,
-            redirectURI: URL? = nil
+            redirectURI: URL
         ) {
             self.clientID = clientID
             self.environment = .production
@@ -106,7 +106,7 @@ extension TinkLink.Configuration: Codable {
             locale = TinkLink.defaultLocale
         }
 
-        redirectURI = try values.decodeIfPresent(URL.self, forKey: .redirectURI)
+        redirectURI = try values.decode(URL.self, forKey: .redirectURI)
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -127,16 +127,22 @@ extension TinkLink.Configuration: Codable {
         }
         try container.encode(market.rawValue, forKey: .market)
         try container.encode(locale.identifier, forKey: .locale)
-        try container.encodeIfPresent(redirectURI, forKey: .redirectURI)
+        try container.encode(redirectURI, forKey: .redirectURI)
     }
 }
 
 extension TinkLink.Configuration {
     enum Error: Swift.Error, LocalizedError {
         case clientIDNotFound
+        case redirectURINotFound
 
         var errorDescription: String? {
-            return "`TINK_CLIENT_ID` was not found in environment variable or Info.plist. Please configure a Tink Link client before using it."
+            switch self {
+            case .clientIDNotFound:
+                return "`TINK_CLIENT_ID` was not found in environment variable or Info.plist. Please configure a Tink Link client before using it."
+            case .redirectURINotFound:
+                return "`TINK_REDIRECT_URI` was not found in environment variable or Info.plist. Please configure a Tink Link client before using it."
+            }
         }
     }
 
@@ -147,12 +153,13 @@ extension TinkLink.Configuration {
 
     init(processInfo: ProcessInfo) throws {
         guard let clientID = processInfo.tinkClientID else { throw Error.clientIDNotFound }
+        guard let redirectURI = processInfo.tinkRedirectURI else { throw Error.clientIDNotFound }
         self.environment = processInfo.tinkEnvironment ?? .production
         self.clientID = clientID
         self.grpcCertificate = processInfo.tinkGrpcCertificate.flatMap { Data(base64Encoded: $0) }
         self.restCertificate = processInfo.tinkRestCertificate.flatMap { Data(base64Encoded: $0) }
         self.market = processInfo.tinkMarket ?? TinkLink.defaultMarket
         self.locale = processInfo.tinkLocale ?? TinkLink.defaultLocale
-        self.redirectURI = processInfo.tinkRedirectURI
+        self.redirectURI = redirectURI
     }
 }
