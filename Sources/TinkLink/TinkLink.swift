@@ -78,7 +78,7 @@ public class TinkLink {
 
     /// Creates an authorization code with the requested scopes for the current user
     ///
-    /// Once you have received the authorization code, pass it to your backend service to exchange it for an access token. This must be done using the client secret, which you received with your client id.
+    /// Once you have received the authorization code, you can exchange it for an access token on your backend and use the access token to access the user's data. Exchanging the authorization code for an access token requires the use of the client secret associated with your client identifier.
     ///
     /// - Parameter scope: The requested OAuth scopes The scope parameter can receive multiple scopes separated by a comma.
     /// - Parameter completion: The block to execute when the authorization is complete.
