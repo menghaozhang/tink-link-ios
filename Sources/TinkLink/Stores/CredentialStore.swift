@@ -32,7 +32,7 @@ final class CredentialStore {
         authenticationManager = tinkLink.authenticationManager
     }
     
-    func addCredential(for provider: Provider, fields: [String: String], appURI: URL?, completion: @escaping(Result<Credential, Error>) -> Void) -> RetryCancellable {
+    func addCredential(for provider: Provider, fields: [String: String], appURI: URL, completion: @escaping(Result<Credential, Error>) -> Void) -> RetryCancellable {
         let multiHandler = MultiHandler()
         let market = Market(code: provider.marketCode)
         
