@@ -7,6 +7,7 @@ option go_package = "proto";
 option swift_prefix = "GRPC";
 
 import "models.proto";
+import "insight_models.proto";
 import "google/protobuf/wrappers.proto";
 import "google/protobuf/timestamp.proto";
 
@@ -158,19 +159,23 @@ message CreateCredentialRequest {
     string provider_name = 1;
     Credential.Type type = 2;
     map<string, string> fields = 3;
+    string callback_uri = 4;
+    string app_uri = 5;
 }
 
 message CreateCredentialResponse {
     Credential credential = 1;
 }
 
-message UpdateCredentialResponse {
-    Credential credential = 1;
-}
-
 message UpdateCredentialRequest {
     string credential_id = 1;
     map<string, string> fields = 2;
+    string callback_uri = 3;
+    string app_uri = 4;
+}
+
+message UpdateCredentialResponse {
+    Credential credential = 1;
 }
 
 message RefreshCredentialsRequest {
@@ -549,6 +554,10 @@ message ProviderMarketListRequest {
 
 message ProviderSuggestRequest {
 
+}
+
+message PolicyListRequest {
+    Policy policy = 1;
 }
 
 message QueryStatisticsRequest {
@@ -1102,12 +1111,11 @@ message PingResponse {
 }
 
 message SelectInsightActionRequest {
+    reserved 3, 4, 5;
     string insight_id = 1;
     string user_id = 2;
-    InsightAction.Group action_group = 3;
-    InsightAction.Method action_method = 4;
-    string label = 5;
 }
+
 message SelectInsightActionResponse {
 }
 
