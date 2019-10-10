@@ -147,7 +147,7 @@ public enum ProviderType {
     case test
     case fraud
 
-    static var excludingTest: Set<ProviderType> = [.unknown, .bank, .creditCard, .broker, .other, .fraud]
-    static var all: Set<ProviderType> = [.unknown, .bank, .creditCard, .broker, .other, .test, .fraud]
+    public static var excludingTest: Set<ProviderType> = [.unknown, .bank, .creditCard, .broker, .other, .fraud]
+    public static var all: Set<ProviderType> = [.unknown, .bank, .creditCard, .broker, .other, .test, .fraud]
 }
 
