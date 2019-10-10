@@ -86,7 +86,7 @@ public class TinkLink {
     @discardableResult
     public func authorize(scope: String, completion: @escaping (_ result: Result<AuthorizationCode, Error>) -> Void) -> Cancellable? {
         guard let redirectURI = configuration.redirectURI else {
-            preconditionFailure("No Redirect URI set")
+            preconditionFailure("No redirect URI set")
         }
         return client.authenticationService.authorize(redirectURI: redirectURI, scope: scope) { (result) in
             completion(result.map({ $0.code }))
