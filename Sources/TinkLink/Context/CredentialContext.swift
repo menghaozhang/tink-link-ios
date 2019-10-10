@@ -141,8 +141,7 @@ public class CredentialContext {
                 }
         })
 
-        // TODO: Replace with URI's from Configuration after #124 is merged.
-        let appURI = URL(string: "http://my-customer-app.com/authentication")!
+        let appURI = tinkLink.configuration.redirectURI
 
         credentialStore.addCredential(for: provider, fields: form.makeFields(), appURI: appURI) { [weak self, weak task] result in
             guard let self = self else { return }
