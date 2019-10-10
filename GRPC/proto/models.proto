@@ -923,6 +923,64 @@ message Providers {
     repeated Provider provider = 1;
 }
 
+message Policy {
+    WhitelistRules whitelist_rules = 1;
+    BlacklistRules blacklist_rules = 2;
+    repeated CanaryRule canary_rules = 3;
+    GraylistPolicy graylist_policy = 4;
+}
+
+message WhitelistRules {
+    repeated FinancialInstitutionRule financial_institution_rules = 1;
+    repeated MarketRule market_rules = 2;
+    repeated AccessTypeRule access_type_rules = 3;
+    AllProvidersRule all_providers_rule = 4;
+    TestProvidersRule test_providers_rule = 5;
+}
+
+message BlacklistRules {
+    repeated FinancialInstitutionRule financial_institution_rules = 1;
+    repeated MarketRule market_rules = 2;
+    repeated AccessTypeRule access_type_rules = 3;
+    AllProvidersRule all_providers_rule = 4;
+    TestProvidersRule test_providers_rule = 5;
+}
+
+message CanaryRule {
+    string financial_institution_id = 1;
+    double percentage = 2;
+}
+
+enum GraylistPolicy {
+    ALL_PROVIDERS = 0;
+    NON_TPP_PROVIDERS = 1;
+    TECHNICALLY_AVAILABLE_PROVIDERS = 2;
+    TINK_APP_PROVIDERS = 3;
+    TINK_STANDARD_POLICY = 4;
+}
+
+message FinancialInstitutionRule {
+    string financial_institution_id = 1;
+    bool is_open_banking = 2;
+}
+
+message MarketRule {
+    string market = 1;
+    AccessTypeRule access_type_rule = 2;
+}
+
+message AccessTypeRule {
+    bool is_open_banking = 1;
+}
+
+message AllProvidersRule {
+    bool enable_all_providers = 1;
+}
+
+message TestProvidersRule {
+    bool enable_test_providers = 1;
+}
+
 message Periods {
     map<string, Period> period = 1;
 }
@@ -937,64 +995,6 @@ message SignableOperations {
 
 message BudgetSummaries {
     repeated Budget.Summary budget_summaries = 1;
-}
-
-message Insights {
-    repeated Insight insights = 1;
-}
-
-// End of objects only used in streaming.
-
-message InsightsCategories {
-    string title = 1;
-    string body = 2;
-    repeated AmountByCategoryCode amount_by_category_code = 3;
-
-    message AmountByCategoryCode {
-        string category_code = 1;
-        CurrencyDenominatedAmount amount = 2;
-    }
-}
-
-message InsightsMortgage {
-    string title = 1;
-    string body = 2;
-    repeated HistogramBucket distribution = 3;
-    double interest_rate = 4;
-
-    message HistogramBucket {
-        double lower_endpoint = 1;
-        double upper_endpoint = 2;
-        double frequency = 3;
-    }
-}
-
-message InsightsSavings {
-    string title = 1;
-    string body = 2;
-    CurrencyDenominatedAmount amount = 3;
-}
-
-message InsightsDailySpend {
-    string title = 1;
-    string body = 2;
-    repeated AmountByWeekday amount_by_weekday = 3;
-
-    message AmountByWeekday {
-        string weekday = 1;
-        CurrencyDenominatedAmount amount = 2;
-    }
-}
-
-message InsightsLeftToSpend {
-    string title = 1;
-    string body = 2;
-    repeated LeftToSpendByPeriod left_to_spend_by_period = 3;
-
-    message LeftToSpendByPeriod {
-        string period = 1;
-        double percentage = 2;
-    }
 }
 
 enum AuthenticationMethod {
@@ -1024,93 +1024,6 @@ message Market {
 
 message ProviderMarket {
     string code = 1;
-}
-
-message Insight {
-    string id = 1;
-    string type = 2;
-    ExactNumber score = 3;
-    string title = 4;
-    string description = 5;
-    google.protobuf.Timestamp created_time = 6;
-    google.protobuf.Timestamp expiration_time = 7;
-    repeated InsightDataSet data_sets = 8;
-    repeated InsightAction actions = 9;
-}
-
-message ArchivedInsight {
-    string id = 1;
-    string type = 2;
-    ExactNumber score = 3;
-    string title = 4;
-    string description = 5;
-    google.protobuf.Timestamp created_time = 6;
-    google.protobuf.Timestamp archived_time = 7;
-    repeated InsightDataSet data_sets = 8;
-    InsightAction action = 9;
-}
-
-message InsightDataSet {
-    string name = 1;
-    repeated DataSeries data_series = 2;
-
-    message DataSeries {
-        string name = 1;
-        string type = 2;
-        repeated DataPoint data_points = 3;
-
-        message DataPoint {
-            double x = 1;
-            double y = 2;
-        }
-    }
-}
-
-message InsightAction {
-    string label = 1;
-    string target = 2;
-    Type type = 3;
-    Method method = 4;
-    Group group = 5;
-
-    enum Type {
-        TYPE_UNKNOWN = 0;
-        TYPE_PRIMARY = 1;
-        TYPE_SECONDARY = 2;
-    }
-
-    enum Method {
-        METHOD_UNKNOWN = 0;
-        METHOD_ACKNOWLEDGE = 1;
-        METHOD_CREATE = 2;
-        METHOD_ADD = 3;
-        METHOD_GO_TO = 4;
-        METHOD_EDIT = 5;
-        METHOD_NOT_NOW = 6;
-        METHOD_DISMISS = 7;
-    }
-
-    enum Group {
-        GROUP_UNKNOWN = 0;
-        GROUP_EDUCATING = 1;
-        GROUP_ENCOURAGING = 2;
-        GROUP_FUN_FACT = 3;
-        GROUP_PRODUCT_SUGGEST = 4;
-        GROUP_PROMOTION = 5;
-        GROUP_REMINDER = 6;
-        GROUP_SOURCE_DATA = 7;
-        GROUP_SUGGESTION = 8;
-        GROUP_SUMMARY = 9;
-        GROUP_WARNING = 10;
-        GROUP_BUDGET = 11;
-        GROUP_ACCOUNT = 12;
-        GROUP_CATEGORIZATION = 13;
-        GROUP_CREDENTIALS = 14;
-        GROUP_INVOICE = 15;
-        GROUP_FRAUD = 16;
-        GROUP_LEFT_TO_SPEND = 17;
-        GROUP_TRANSFER = 18;
-    }
 }
 
 enum SortType {
@@ -1211,3 +1124,63 @@ message OAuth2ScopeDescription {
     string title = 1;
     string description = 2;
 }
+
+
+//
+// "Insights" part of a legacy model, not used for Insight and only used for onboarding flow.
+//
+
+message InsightsCategories {
+    string title = 1;
+    string body = 2;
+    repeated AmountByCategoryCode amount_by_category_code = 3;
+
+    message AmountByCategoryCode {
+        string category_code = 1;
+        CurrencyDenominatedAmount amount = 2;
+    }
+}
+
+message InsightsMortgage {
+    string title = 1;
+    string body = 2;
+    repeated HistogramBucket distribution = 3;
+    double interest_rate = 4;
+
+    message HistogramBucket {
+        double lower_endpoint = 1;
+        double upper_endpoint = 2;
+        double frequency = 3;
+    }
+}
+
+message InsightsSavings {
+    string title = 1;
+    string body = 2;
+    CurrencyDenominatedAmount amount = 3;
+}
+
+message InsightsDailySpend {
+    string title = 1;
+    string body = 2;
+    repeated AmountByWeekday amount_by_weekday = 3;
+
+    message AmountByWeekday {
+        string weekday = 1;
+        CurrencyDenominatedAmount amount = 2;
+    }
+}
+
+message InsightsLeftToSpend {
+    string title = 1;
+    string body = 2;
+    repeated LeftToSpendByPeriod left_to_spend_by_period = 3;
+
+    message LeftToSpendByPeriod {
+        string period = 1;
+        double percentage = 2;
+    }
+}
+//
+// End of OnBoarding insights
+//

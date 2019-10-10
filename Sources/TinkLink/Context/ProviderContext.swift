@@ -29,12 +29,12 @@ public class ProviderContext {
     /// Attributes representing which providers a context should access.
     public struct Attributes: Hashable {
         public let capabilities: Provider.Capabilities
-        public let includeTestProviders: Bool
+        public let types: Set<ProviderType>
         public let accessTypes: Set<Provider.AccessType>
-        
-        public init(capabilities: Provider.Capabilities, includeTestProviders: Bool, accessTypes: Set<Provider.AccessType>) {
+
+        public init(capabilities: Provider.Capabilities, types: Set<ProviderType>, accessTypes: Set<Provider.AccessType>) {
             self.capabilities = capabilities
-            self.includeTestProviders = includeTestProviders
+            self.types = types
             self.accessTypes = accessTypes
         }
     }
@@ -58,7 +58,7 @@ public class ProviderContext {
             delegate?.providerContextWillChangeProviders(self)
         }
         didSet {
-            _providerGroups = _providers.map(makeGroups)
+            _providerGroups = _providers.map(ProviderGroup.makeGroups)
             delegate?.providerContextDidChangeProviders(self)
         }
     }
@@ -79,7 +79,7 @@ public class ProviderContext {
     /// A convenience initializer that creates a context to access providers including all capabilities and access types but no test providers.
     /// - Parameter tinkLink: TinkLink instance, will use the shared instance if nothing is provided.
     public convenience init(tinkLink: TinkLink = .shared) {
-        let attributes = Attributes(capabilities: .all, includeTestProviders: false, accessTypes: Provider.AccessType.all)
+        let attributes = Attributes(capabilities: .all, types: ProviderType.excludingTest, accessTypes: Provider.AccessType.all)
         self.init(tinkLink: tinkLink, attributes: attributes)
     }
 
@@ -91,7 +91,7 @@ public class ProviderContext {
         self.attributes = attributes
         self.market = tinkLink.client.market
         _providers = try? providerStore.providerMarketGroups[market]?.get()
-        _providerGroups = _providers.map{ makeGroups($0) }
+        _providerGroups = _providers.map(ProviderGroup.makeGroups)
         providerStoreObserver = NotificationCenter.default.addObserver(forName: .providerStoreMarketGroupsChanged, object: providerStore, queue: .main) { [weak self] _ in
             guard let self = self else {
                 return
@@ -106,20 +106,6 @@ public class ProviderContext {
     
     private func performFetch() {
         providerStore.performFetchProvidersIfNeeded(for: attributes)
-    }
-    
-    private func makeGroups(_ providers: [Provider]) -> [ProviderGroup] {
-        guard let providers = _providers, !providers.isEmpty else {
-            return []
-        }
-        let providerGroupedByGroupedName = Dictionary(grouping: providers, by: { $0.groupDisplayName })
-        let groupedNames = providerGroupedByGroupedName.map { $0.key }
-        var providerGroups = [ProviderGroup]()
-        groupedNames.forEach { groupName in
-            let providersWithSameGroupedName = providers.filter({ $0.groupDisplayName == groupName })
-            providerGroups.append(ProviderGroup(providers: providersWithSameGroupedName))
-        }
-        return providerGroups.sorted(by: { $0.groupedDisplayName ?? "" < $1.groupedDisplayName ?? "" })
     }
 }
 
@@ -151,6 +137,6 @@ extension ProviderContext {
             return providerGroups
         }
         
-        return providerGroups.filter({ $0.groupedDisplayName?.localizedCaseInsensitiveContains(query) ?? false })
+        return providerGroups.filter({ $0.displayName.localizedCaseInsensitiveContains(query) ?? false })
     }
 }

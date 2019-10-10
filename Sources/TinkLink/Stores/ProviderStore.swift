@@ -65,12 +65,12 @@ final class ProviderStore {
     /// - Precondition: Service should be configured with access token before this method is called.
     private func unauthenticatedPerformFetchProviders(attributes: ProviderContext.Attributes) -> RetryCancellable {
         precondition(service.metadata.hasAuthorization, "Service doesn't have authentication metadata set!")
-        return service.providers(market: market, capabilities: attributes.capabilities, includeTestProviders: attributes.includeTestProviders) { [weak self, attributes] result in
+        return service.providers(market: market, capabilities: attributes.capabilities, includeTestProviders: attributes.types.contains(.test)) { [weak self, attributes] result in
             guard let self = self else { return }
             self.tinkQueue.async(qos: .default, flags: .barrier) {
                 do {
                     let fetchedProviders = try result.get()
-                    let filteredProviders = fetchedProviders.filter { attributes.accessTypes.contains($0.accessType) }
+                    let filteredProviders = fetchedProviders.filter { attributes.accessTypes.contains($0.accessType) && attributes.types.contains($0.type) }
                     self._providerMarketGroups[self.market] = .success(filteredProviders)
                 } catch {
                     self._providerMarketGroups[self.market] = .failure(error)

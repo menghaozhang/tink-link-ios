@@ -17,7 +17,7 @@ final class ProviderListViewController: UITableViewController {
     }
     
     override init(style: UITableView.Style) {
-        let attributes = ProviderContext.Attributes(capabilities: .all, includeTestProviders: true, accessTypes: Provider.AccessType.all)
+        let attributes = ProviderContext.Attributes(capabilities: .all, types: ProviderType.all, accessTypes: Provider.AccessType.all)
         providerContext = ProviderContext(attributes: attributes)
         providerGroups = providerContext.providerGroups
         super.init(style: style)
@@ -57,7 +57,7 @@ extension ProviderListViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let group = providerGroups[indexPath.row]
-        cell.textLabel?.text = group.groupedDisplayName
+        cell.textLabel?.text = group.displayName
         cell.accessoryType = .disclosureIndicator
         return cell
     }
@@ -66,9 +66,9 @@ extension ProviderListViewController {
         let providerGroup = providerGroups[indexPath.row]
         switch providerGroup {
         case .financialInsititutions(let financialInsititutionGroups):
-            showFinancialInstitution(for: financialInsititutionGroups, title: providerGroup.groupedDisplayName)
+            showFinancialInstitution(for: financialInsititutionGroups, title: providerGroup.displayName)
         case .accessTypes(let accessTypeGroups):
-            showAccessTypePicker(for: accessTypeGroups, title: providerGroup.groupedDisplayName)
+            showAccessTypePicker(for: accessTypeGroups, title: providerGroup.displayName)
         case .credentialTypes(let providers):
             showCredentialTypePicker(for: providers)
         case .provider(let provider):

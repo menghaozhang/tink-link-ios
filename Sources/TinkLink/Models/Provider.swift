@@ -146,5 +146,8 @@ public enum ProviderType {
     /// Indicates a test provider.
     case test
     case fraud
+
+    public static var excludingTest: Set<ProviderType> = [.unknown, .bank, .creditCard, .broker, .other, .fraud]
+    public static var all: Set<ProviderType> = [.unknown, .bank, .creditCard, .broker, .other, .test, .fraud]
 }
 

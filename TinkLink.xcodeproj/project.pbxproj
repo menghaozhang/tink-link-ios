@@ -22,12 +22,16 @@
 		2049259A232A3AF000D4461D /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20492599232A3AF000D4461D /* Form.swift */; };
 		206B8DCF23350A8300693ED5 /* FormTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206B8DCD2335001000693ED5 /* FormTests.swift */; };
 		209D69282326878800B4DBB8 /* SupplementInformationTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209D69272326878800B4DBB8 /* SupplementInformationTask.swift */; };
+		20A5AF57234DC22F00063701 /* ProviderGroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A5AF55234DC21200063701 /* ProviderGroupTests.swift */; };
 		20C300E92341D44F0004E284 /* ConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C300E72341D43B0004E284 /* ConfigurationTests.swift */; };
+		20D129E2234E1737005C2D34 /* CredentialGRPCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D129E0234E1732005C2D34 /* CredentialGRPCTests.swift */; };
 		20D8125F2330DAD7000B3A30 /* Service+Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8125E2330DAD7000B3A30 /* Service+Metadata.swift */; };
 		20E19DB22306E59900BF053A /* BoringSSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85462303FD85006213BB /* BoringSSL.framework */; };
 		20E19DB32306E59900BF053A /* CgRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85472303FD85006213BB /* CgRPC.framework */; };
 		20E19DB42306E59900BF053A /* SwiftGRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85492303FD85006213BB /* SwiftGRPC.framework */; };
 		20E19DB52306E59900BF053A /* SwiftProtobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85482303FD85006213BB /* SwiftProtobuf.framework */; };
+		20E6886D234F0B7800B4E04F /* insight_models.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E6886C234F0B7800B4E04F /* insight_models.pb.swift */; };
+		20E68871234F0B7F00B4E04F /* date.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E68870234F0B7F00B4E04F /* date.pb.swift */; };
 		20E6DCD123336AE700476B8F /* MultiHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E6DCD023336AE700476B8F /* MultiHandler.swift */; };
 		20ED852A2303FA48006213BB /* TinkLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85202303FA48006213BB /* TinkLink.framework */; };
 		20ED85412303FAEC006213BB /* rpc.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED853D2303FAEC006213BB /* rpc.pb.swift */; };
@@ -50,13 +54,9 @@
 		20EE138123053B2700C92D65 /* Credential+GRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EE138023053B2700C92D65 /* Credential+GRPC.swift */; };
 		20FAE67A233DFB4E003C73BA /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FAE679233DFB4E003C73BA /* Configuration.swift */; };
 		20FAE67D233DFBE9003C73BA /* ProcessInfo+TinkEnvironmentVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FAE67C233DFBE9003C73BA /* ProcessInfo+TinkEnvironmentVariables.swift */; };
-		20FAE680233DFD71003C73BA /* ExactNumber+GRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FAE67F233DFD71003C73BA /* ExactNumber+GRPC.swift */; };
-		20FAE682233DFD8D003C73BA /* CurrencyDenominatedAmount+GRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FAE681233DFD8D003C73BA /* CurrencyDenominatedAmount+GRPC.swift */; };
 		8F0CE77D2332151700FB84B0 /* CallCanceller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0CE77A2332151700FB84B0 /* CallCanceller.swift */; };
 		8F0CE77E2332151700FB84B0 /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0CE77B2332151700FB84B0 /* Cancellable.swift */; };
 		8F0CE77F2332151700FB84B0 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0CE77C2332151700FB84B0 /* Client.swift */; };
-		8F3672462305685600B92936 /* GRPCExactNumber+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3672452305685600B92936 /* GRPCExactNumber+Extensions.swift */; };
-		8F36724F230598BC00B92936 /* ExactNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F36724E230598BC00B92936 /* ExactNumber.swift */; };
 		8F613A002334CB2D00BFB04D /* CredentialStatusPollingTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6139FF2334CB2C00BFB04D /* CredentialStatusPollingTask.swift */; };
 		8F84A776232B8B6500EA878F /* TokenConfigurableService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F84A775232B8B6500EA878F /* TokenConfigurableService.swift */; };
 		8F84A778232F816B00EA878F /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F84A777232F816B00EA878F /* AuthenticationManager.swift */; };
@@ -67,7 +67,6 @@
 		8FA3558E231EA1840054115D /* ProviderGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA3558D231EA1840054115D /* ProviderGroup.swift */; };
 		8FA35590231EA3820054115D /* ProviderContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA3558F231EA3820054115D /* ProviderContext.swift */; };
 		8FA35592231EADAB0054115D /* CredentialContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA35591231EADAB0054115D /* CredentialContext.swift */; };
-		8FA5F822230AE66100226C02 /* CurrencyDenominatedAmount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F821230AE66100226C02 /* CurrencyDenominatedAmount.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,8 +95,12 @@
 		20492599232A3AF000D4461D /* Form.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
 		206B8DCD2335001000693ED5 /* FormTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTests.swift; sourceTree = "<group>"; };
 		209D69272326878800B4DBB8 /* SupplementInformationTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementInformationTask.swift; sourceTree = "<group>"; };
+		20A5AF55234DC21200063701 /* ProviderGroupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderGroupTests.swift; sourceTree = "<group>"; };
 		20C300E72341D43B0004E284 /* ConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationTests.swift; sourceTree = "<group>"; };
+		20D129E0234E1732005C2D34 /* CredentialGRPCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialGRPCTests.swift; sourceTree = "<group>"; };
 		20D8125E2330DAD7000B3A30 /* Service+Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Service+Metadata.swift"; sourceTree = "<group>"; };
+		20E6886C234F0B7800B4E04F /* insight_models.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = insight_models.pb.swift; sourceTree = "<group>"; };
+		20E68870234F0B7F00B4E04F /* date.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = date.pb.swift; sourceTree = "<group>"; };
 		20E6DCD023336AE700476B8F /* MultiHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiHandler.swift; sourceTree = "<group>"; };
 		20ED85202303FA48006213BB /* TinkLink.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinkLink.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		20ED85242303FA48006213BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -123,13 +126,9 @@
 		20EE138023053B2700C92D65 /* Credential+GRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Credential+GRPC.swift"; sourceTree = "<group>"; };
 		20FAE679233DFB4E003C73BA /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		20FAE67C233DFBE9003C73BA /* ProcessInfo+TinkEnvironmentVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProcessInfo+TinkEnvironmentVariables.swift"; sourceTree = "<group>"; };
-		20FAE67F233DFD71003C73BA /* ExactNumber+GRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExactNumber+GRPC.swift"; sourceTree = "<group>"; };
-		20FAE681233DFD8D003C73BA /* CurrencyDenominatedAmount+GRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrencyDenominatedAmount+GRPC.swift"; sourceTree = "<group>"; };
 		8F0CE77A2332151700FB84B0 /* CallCanceller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallCanceller.swift; sourceTree = "<group>"; };
 		8F0CE77B2332151700FB84B0 /* Cancellable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
 		8F0CE77C2332151700FB84B0 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
-		8F3672452305685600B92936 /* GRPCExactNumber+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GRPCExactNumber+Extensions.swift"; sourceTree = "<group>"; };
-		8F36724E230598BC00B92936 /* ExactNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExactNumber.swift; sourceTree = "<group>"; };
 		8F6139FF2334CB2C00BFB04D /* CredentialStatusPollingTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialStatusPollingTask.swift; sourceTree = "<group>"; };
 		8F84A775232B8B6500EA878F /* TokenConfigurableService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenConfigurableService.swift; sourceTree = "<group>"; };
 		8F84A777232F816B00EA878F /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
@@ -140,7 +139,6 @@
 		8FA3558D231EA1840054115D /* ProviderGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderGroup.swift; sourceTree = "<group>"; };
 		8FA3558F231EA3820054115D /* ProviderContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderContext.swift; sourceTree = "<group>"; };
 		8FA35591231EADAB0054115D /* CredentialContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialContext.swift; sourceTree = "<group>"; };
-		8FA5F821230AE66100226C02 /* CurrencyDenominatedAmount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDenominatedAmount.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,8 +173,6 @@
 			children = (
 				20ED85822304081D006213BB /* Provider+GRPC.swift */,
 				20EE138023053B2700C92D65 /* Credential+GRPC.swift */,
-				20FAE67F233DFD71003C73BA /* ExactNumber+GRPC.swift */,
-				20FAE681233DFD8D003C73BA /* CurrencyDenominatedAmount+GRPC.swift */,
 			);
 			path = Mappers;
 			sourceTree = "<group>";
@@ -188,12 +184,27 @@
 				200A3FA1230C3E7800BEF935 /* Metadata+Tink.swift */,
 				20FAE67C233DFBE9003C73BA /* ProcessInfo+TinkEnvironmentVariables.swift */,
 				8F84A77B2330D39600EA878F /* Locale+Extensions.swift */,
-				8F3672452305685600B92936 /* GRPCExactNumber+Extensions.swift */,
 				2027F0252345E62C0025473A /* URLSessionDataTask+Cancellable.swift */,
 				2027F02B2346421F0025473A /* SecTrust+Swift.swift */,
 				2027F02D2346423C0025473A /* SecCertificate+Swift.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		20E6886E234F0B7F00B4E04F /* google */ = {
+			isa = PBXGroup;
+			children = (
+				20E6886F234F0B7F00B4E04F /* type */,
+			);
+			path = google;
+			sourceTree = "<group>";
+		};
+		20E6886F234F0B7F00B4E04F /* type */ = {
+			isa = PBXGroup;
+			children = (
+				20E68870234F0B7F00B4E04F /* date.pb.swift */,
+			);
+			path = type;
 			sourceTree = "<group>";
 		};
 		20ED85162303FA48006213BB = {
@@ -240,7 +251,9 @@
 				20ED858923040974006213BB /* ProviderGRPCTests.swift */,
 				20ED8587230408E6006213BB /* ClientTests.swift */,
 				20C300E72341D43B0004E284 /* ConfigurationTests.swift */,
+				20D129E0234E1732005C2D34 /* CredentialGRPCTests.swift */,
 				206B8DCD2335001000693ED5 /* FormTests.swift */,
+				20A5AF55234DC21200063701 /* ProviderGroupTests.swift */,
 				20ED85302303FA48006213BB /* Info.plist */,
 			);
 			name = TinkLinkTests;
@@ -250,6 +263,8 @@
 		20ED853C2303FAEC006213BB /* GRPC */ = {
 			isa = PBXGroup;
 			children = (
+				20E6886E234F0B7F00B4E04F /* google */,
+				20E6886C234F0B7800B4E04F /* insight_models.pb.swift */,
 				20ED853D2303FAEC006213BB /* rpc.pb.swift */,
 				20ED853E2303FAEC006213BB /* models.pb.swift */,
 				20ED853F2303FAEC006213BB /* services.grpc.swift */,
@@ -305,8 +320,6 @@
 				2027F01E2345E4850025473A /* AuthorizationCode.swift */,
 				2027F0232345E5FD0025473A /* AuthorizationResponse.swift */,
 				200FD63C23154AFC0077181A /* AccessToken.swift */,
-				8F36724E230598BC00B92936 /* ExactNumber.swift */,
-				8FA5F821230AE66100226C02 /* CurrencyDenominatedAmount.swift */,
 				20ED8579230407B3006213BB /* Provider.swift */,
 				8FA3558D231EA1840054115D /* ProviderGroup.swift */,
 				20ED859523045896006213BB /* Credential.swift */,
@@ -506,6 +519,7 @@
 				20EE138123053B2700C92D65 /* Credential+GRPC.swift in Sources */,
 				2049259A232A3AF000D4461D /* Form.swift in Sources */,
 				8FA3558E231EA1840054115D /* ProviderGroup.swift in Sources */,
+				20E6886D234F0B7800B4E04F /* insight_models.pb.swift in Sources */,
 				20D8125F2330DAD7000B3A30 /* Service+Metadata.swift in Sources */,
 				20ED85432303FAEC006213BB /* services.grpc.swift in Sources */,
 				2027F02A234637920025473A /* CertificatePinningDelegate.swift in Sources */,
@@ -513,15 +527,14 @@
 				20ED85442303FAEC006213BB /* services.pb.swift in Sources */,
 				20FAE67D233DFBE9003C73BA /* ProcessInfo+TinkEnvironmentVariables.swift in Sources */,
 				8F0CE77F2332151700FB84B0 /* Client.swift in Sources */,
-				20FAE680233DFD71003C73BA /* ExactNumber+GRPC.swift in Sources */,
 				20ED85832304081D006213BB /* Provider+GRPC.swift in Sources */,
 				8F613A002334CB2D00BFB04D /* CredentialStatusPollingTask.swift in Sources */,
 				200A3FA2230C3E7800BEF935 /* Metadata+Tink.swift in Sources */,
 				200FD63F23154B660077181A /* Market.swift in Sources */,
 				20ED856F2304003A006213BB /* Environment.swift in Sources */,
+				20E68871234F0B7F00B4E04F /* date.pb.swift in Sources */,
 				8F0CE77D2332151700FB84B0 /* CallCanceller.swift in Sources */,
 				20E6DCD123336AE700476B8F /* MultiHandler.swift in Sources */,
-				20FAE682233DFD8D003C73BA /* CurrencyDenominatedAmount+GRPC.swift in Sources */,
 				8FA35592231EADAB0054115D /* CredentialContext.swift in Sources */,
 				8FA35590231EA3820054115D /* ProviderContext.swift in Sources */,
 				20ED859623045896006213BB /* Credential.swift in Sources */,
@@ -540,9 +553,6 @@
 				20ED857A230407B3006213BB /* Provider.swift in Sources */,
 				203BE969232784440033F879 /* AddCredentialTask.swift in Sources */,
 				20ED85422303FAEC006213BB /* models.pb.swift in Sources */,
-				8F36724F230598BC00B92936 /* ExactNumber.swift in Sources */,
-				8FA5F822230AE66100226C02 /* CurrencyDenominatedAmount.swift in Sources */,
-				8F3672462305685600B92936 /* GRPCExactNumber+Extensions.swift in Sources */,
 				2027F02E2346423C0025473A /* SecCertificate+Swift.swift in Sources */,
 				8FA3558C231E839E0054115D /* CredentialStore.swift in Sources */,
 				200A3F99230C31E900BEF935 /* AuthenticationService.swift in Sources */,
@@ -555,9 +565,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				20ED859023041679006213BB /* ProviderGRPCTests.swift in Sources */,
+				20D129E2234E1737005C2D34 /* CredentialGRPCTests.swift in Sources */,
 				20ED8588230408E6006213BB /* ClientTests.swift in Sources */,
 				20C300E92341D44F0004E284 /* ConfigurationTests.swift in Sources */,
 				206B8DCF23350A8300693ED5 /* FormTests.swift in Sources */,
+				20A5AF57234DC22F00063701 /* ProviderGroupTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -699,7 +711,6 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -728,7 +739,6 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
