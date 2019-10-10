@@ -1,3 +1,4 @@
+import Foundation
 import SwiftGRPC
 
 final class CredentialService: TokenConfigurableService {
