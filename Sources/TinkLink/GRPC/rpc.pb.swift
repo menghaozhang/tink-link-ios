@@ -669,33 +669,16 @@ struct GRPCCreateCredentialRequest {
 
   var fields: Dictionary<String,String> = [:]
 
+  var callbackUri: String = String()
+
+  var appUri: String = String()
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
 }
 
 struct GRPCCreateCredentialResponse {
-  // SwiftProtobuf.Message conformance is added in an extension below. See the
-  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
-  // methods supported on all messages.
-
-  var credential: GRPCCredential {
-    get {return _storage._credential ?? GRPCCredential()}
-    set {_uniqueStorage()._credential = newValue}
-  }
-  /// Returns true if `credential` has been explicitly set.
-  var hasCredential: Bool {return _storage._credential != nil}
-  /// Clears the value of `credential`. Subsequent reads from it will return its default value.
-  mutating func clearCredential() {_uniqueStorage()._credential = nil}
-
-  var unknownFields = SwiftProtobuf.UnknownStorage()
-
-  init() {}
-
-  fileprivate var _storage = _StorageClass.defaultInstance
-}
-
-struct GRPCUpdateCredentialResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -725,9 +708,34 @@ struct GRPCUpdateCredentialRequest {
 
   var fields: Dictionary<String,String> = [:]
 
+  var callbackUri: String = String()
+
+  var appUri: String = String()
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
+}
+
+struct GRPCUpdateCredentialResponse {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var credential: GRPCCredential {
+    get {return _storage._credential ?? GRPCCredential()}
+    set {_uniqueStorage()._credential = newValue}
+  }
+  /// Returns true if `credential` has been explicitly set.
+  var hasCredential: Bool {return _storage._credential != nil}
+  /// Clears the value of `credential`. Subsequent reads from it will return its default value.
+  mutating func clearCredential() {_uniqueStorage()._credential = nil}
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+
+  fileprivate var _storage = _StorageClass.defaultInstance
 }
 
 struct GRPCRefreshCredentialsRequest {
@@ -2279,6 +2287,27 @@ struct GRPCProviderSuggestRequest {
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
+}
+
+struct GRPCPolicyListRequest {
+  // SwiftProtobuf.Message conformance is added in an extension below. See the
+  // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
+  // methods supported on all messages.
+
+  var policy: GRPCPolicy {
+    get {return _storage._policy ?? GRPCPolicy()}
+    set {_uniqueStorage()._policy = newValue}
+  }
+  /// Returns true if `policy` has been explicitly set.
+  var hasPolicy: Bool {return _storage._policy != nil}
+  /// Clears the value of `policy`. Subsequent reads from it will return its default value.
+  mutating func clearPolicy() {_uniqueStorage()._policy = nil}
+
+  var unknownFields = SwiftProtobuf.UnknownStorage()
+
+  init() {}
+
+  fileprivate var _storage = _StorageClass.defaultInstance
 }
 
 struct GRPCQueryStatisticsRequest {
@@ -4266,12 +4295,6 @@ struct GRPCSelectInsightActionRequest {
   var insightID: String = String()
 
   var userID: String = String()
-
-  var actionGroup: GRPCInsightAction.Group = .unknown
-
-  var actionMethod: GRPCInsightAction.Method = .unknown
-
-  var label: String = String()
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -6272,6 +6295,8 @@ extension GRPCCreateCredentialRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     1: .standard(proto: "provider_name"),
     2: .same(proto: "type"),
     3: .same(proto: "fields"),
+    4: .standard(proto: "callback_uri"),
+    5: .standard(proto: "app_uri"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -6280,6 +6305,8 @@ extension GRPCCreateCredentialRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
       case 1: try decoder.decodeSingularStringField(value: &self.providerName)
       case 2: try decoder.decodeSingularEnumField(value: &self.type)
       case 3: try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMap<SwiftProtobuf.ProtobufString,SwiftProtobuf.ProtobufString>.self, value: &self.fields)
+      case 4: try decoder.decodeSingularStringField(value: &self.callbackUri)
+      case 5: try decoder.decodeSingularStringField(value: &self.appUri)
       default: break
       }
     }
@@ -6295,6 +6322,12 @@ extension GRPCCreateCredentialRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     if !self.fields.isEmpty {
       try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMap<SwiftProtobuf.ProtobufString,SwiftProtobuf.ProtobufString>.self, value: self.fields, fieldNumber: 3)
     }
+    if !self.callbackUri.isEmpty {
+      try visitor.visitSingularStringField(value: self.callbackUri, fieldNumber: 4)
+    }
+    if !self.appUri.isEmpty {
+      try visitor.visitSingularStringField(value: self.appUri, fieldNumber: 5)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
@@ -6302,6 +6335,8 @@ extension GRPCCreateCredentialRequest: SwiftProtobuf.Message, SwiftProtobuf._Mes
     if lhs.providerName != rhs.providerName {return false}
     if lhs.type != rhs.type {return false}
     if lhs.fields != rhs.fields {return false}
+    if lhs.callbackUri != rhs.callbackUri {return false}
+    if lhs.appUri != rhs.appUri {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -6368,6 +6403,53 @@ extension GRPCCreateCredentialResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
   }
 }
 
+extension GRPCUpdateCredentialRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "UpdateCredentialRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .standard(proto: "credential_id"),
+    2: .same(proto: "fields"),
+    3: .standard(proto: "callback_uri"),
+    4: .standard(proto: "app_uri"),
+  ]
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularStringField(value: &self.credentialID)
+      case 2: try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMap<SwiftProtobuf.ProtobufString,SwiftProtobuf.ProtobufString>.self, value: &self.fields)
+      case 3: try decoder.decodeSingularStringField(value: &self.callbackUri)
+      case 4: try decoder.decodeSingularStringField(value: &self.appUri)
+      default: break
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.credentialID.isEmpty {
+      try visitor.visitSingularStringField(value: self.credentialID, fieldNumber: 1)
+    }
+    if !self.fields.isEmpty {
+      try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMap<SwiftProtobuf.ProtobufString,SwiftProtobuf.ProtobufString>.self, value: self.fields, fieldNumber: 2)
+    }
+    if !self.callbackUri.isEmpty {
+      try visitor.visitSingularStringField(value: self.callbackUri, fieldNumber: 3)
+    }
+    if !self.appUri.isEmpty {
+      try visitor.visitSingularStringField(value: self.appUri, fieldNumber: 4)
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: GRPCUpdateCredentialRequest, rhs: GRPCUpdateCredentialRequest) -> Bool {
+    if lhs.credentialID != rhs.credentialID {return false}
+    if lhs.fields != rhs.fields {return false}
+    if lhs.callbackUri != rhs.callbackUri {return false}
+    if lhs.appUri != rhs.appUri {return false}
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
 extension GRPCUpdateCredentialResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
   static let protoMessageName: String = "UpdateCredentialResponse"
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
@@ -6424,41 +6506,6 @@ extension GRPCUpdateCredentialResponse: SwiftProtobuf.Message, SwiftProtobuf._Me
       }
       if !storagesAreEqual {return false}
     }
-    if lhs.unknownFields != rhs.unknownFields {return false}
-    return true
-  }
-}
-
-extension GRPCUpdateCredentialRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = "UpdateCredentialRequest"
-  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
-    1: .standard(proto: "credential_id"),
-    2: .same(proto: "fields"),
-  ]
-
-  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let fieldNumber = try decoder.nextFieldNumber() {
-      switch fieldNumber {
-      case 1: try decoder.decodeSingularStringField(value: &self.credentialID)
-      case 2: try decoder.decodeMapField(fieldType: SwiftProtobuf._ProtobufMap<SwiftProtobuf.ProtobufString,SwiftProtobuf.ProtobufString>.self, value: &self.fields)
-      default: break
-      }
-    }
-  }
-
-  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
-    if !self.credentialID.isEmpty {
-      try visitor.visitSingularStringField(value: self.credentialID, fieldNumber: 1)
-    }
-    if !self.fields.isEmpty {
-      try visitor.visitMapField(fieldType: SwiftProtobuf._ProtobufMap<SwiftProtobuf.ProtobufString,SwiftProtobuf.ProtobufString>.self, value: self.fields, fieldNumber: 2)
-    }
-    try unknownFields.traverse(visitor: &visitor)
-  }
-
-  static func ==(lhs: GRPCUpdateCredentialRequest, rhs: GRPCUpdateCredentialRequest) -> Bool {
-    if lhs.credentialID != rhs.credentialID {return false}
-    if lhs.fields != rhs.fields {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -9743,6 +9790,67 @@ extension GRPCProviderSuggestRequest: SwiftProtobuf.Message, SwiftProtobuf._Mess
   }
 
   static func ==(lhs: GRPCProviderSuggestRequest, rhs: GRPCProviderSuggestRequest) -> Bool {
+    if lhs.unknownFields != rhs.unknownFields {return false}
+    return true
+  }
+}
+
+extension GRPCPolicyListRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = "PolicyListRequest"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "policy"),
+  ]
+
+  fileprivate class _StorageClass {
+    var _policy: GRPCPolicy? = nil
+
+    static let defaultInstance = _StorageClass()
+
+    private init() {}
+
+    init(copying source: _StorageClass) {
+      _policy = source._policy
+    }
+  }
+
+  fileprivate mutating func _uniqueStorage() -> _StorageClass {
+    if !isKnownUniquelyReferenced(&_storage) {
+      _storage = _StorageClass(copying: _storage)
+    }
+    return _storage
+  }
+
+  mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
+    _ = _uniqueStorage()
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      while let fieldNumber = try decoder.nextFieldNumber() {
+        switch fieldNumber {
+        case 1: try decoder.decodeSingularMessageField(value: &_storage._policy)
+        default: break
+        }
+      }
+    }
+  }
+
+  func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    try withExtendedLifetime(_storage) { (_storage: _StorageClass) in
+      if let v = _storage._policy {
+        try visitor.visitSingularMessageField(value: v, fieldNumber: 1)
+      }
+    }
+    try unknownFields.traverse(visitor: &visitor)
+  }
+
+  static func ==(lhs: GRPCPolicyListRequest, rhs: GRPCPolicyListRequest) -> Bool {
+    if lhs._storage !== rhs._storage {
+      let storagesAreEqual: Bool = withExtendedLifetime((lhs._storage, rhs._storage)) { (_args: (_StorageClass, _StorageClass)) in
+        let _storage = _args.0
+        let rhs_storage = _args.1
+        if _storage._policy != rhs_storage._policy {return false}
+        return true
+      }
+      if !storagesAreEqual {return false}
+    }
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
@@ -14435,9 +14543,6 @@ extension GRPCSelectInsightActionRequest: SwiftProtobuf.Message, SwiftProtobuf._
   static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
     1: .standard(proto: "insight_id"),
     2: .standard(proto: "user_id"),
-    3: .standard(proto: "action_group"),
-    4: .standard(proto: "action_method"),
-    5: .same(proto: "label"),
   ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -14445,9 +14550,6 @@ extension GRPCSelectInsightActionRequest: SwiftProtobuf.Message, SwiftProtobuf._
       switch fieldNumber {
       case 1: try decoder.decodeSingularStringField(value: &self.insightID)
       case 2: try decoder.decodeSingularStringField(value: &self.userID)
-      case 3: try decoder.decodeSingularEnumField(value: &self.actionGroup)
-      case 4: try decoder.decodeSingularEnumField(value: &self.actionMethod)
-      case 5: try decoder.decodeSingularStringField(value: &self.label)
       default: break
       }
     }
@@ -14460,24 +14562,12 @@ extension GRPCSelectInsightActionRequest: SwiftProtobuf.Message, SwiftProtobuf._
     if !self.userID.isEmpty {
       try visitor.visitSingularStringField(value: self.userID, fieldNumber: 2)
     }
-    if self.actionGroup != .unknown {
-      try visitor.visitSingularEnumField(value: self.actionGroup, fieldNumber: 3)
-    }
-    if self.actionMethod != .unknown {
-      try visitor.visitSingularEnumField(value: self.actionMethod, fieldNumber: 4)
-    }
-    if !self.label.isEmpty {
-      try visitor.visitSingularStringField(value: self.label, fieldNumber: 5)
-    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
   static func ==(lhs: GRPCSelectInsightActionRequest, rhs: GRPCSelectInsightActionRequest) -> Bool {
     if lhs.insightID != rhs.insightID {return false}
     if lhs.userID != rhs.userID {return false}
-    if lhs.actionGroup != rhs.actionGroup {return false}
-    if lhs.actionMethod != rhs.actionMethod {return false}
-    if lhs.label != rhs.label {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
