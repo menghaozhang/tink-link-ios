@@ -5,7 +5,7 @@ generate:
 	./GRPC/vendor/protoc \
 		--proto_path=./GRPC/proto \
 		--proto_path=./GRPC/third-party \
-		./GRPC/proto/*.proto \
+		./GRPC/proto/*.proto ./GRPC/third-party/google/type/*.proto \
 		--swift_out=./Sources/TinkLink/GRPC/ \
 		--swiftgrpc_out=./Sources/TinkLink/GRPC/ \
 		--swift_opt=Visibility=Internal \
