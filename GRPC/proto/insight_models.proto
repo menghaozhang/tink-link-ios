@@ -1,0 +1,195 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "se.tink.grpc.v1.models";
+option java_outer_classname = "InsightProtos";
+option go_package = "proto";
+option swift_prefix = "GRPC";
+
+import "models.proto";
+import "google/protobuf/timestamp.proto";
+import "google/type/date.proto";
+
+message Insights {
+    repeated Insight insights = 1;
+}
+
+message Insight {
+    string id = 1;
+    string type = 2;
+    string title = 3;
+    string description = 4;
+    google.protobuf.Timestamp created_time = 5;
+    InsightData data = 6;
+    repeated InsightAction actions = 7;
+}
+
+message ArchivedInsight {
+    string id = 1;
+    string type = 2;
+    string title = 3;
+    string description = 4;
+    google.protobuf.Timestamp created_time = 5;
+    google.protobuf.Timestamp archived_time = 6;
+    InsightData data = 7;
+}
+
+message InsightData {
+    oneof data {
+        Data.AccountBalanceLow account_balance_low = 1;
+        Data.BudgetSuccess budget_success = 2;
+        Data.BudgetOverspent budget_overspent = 3;
+        Data.BudgetSummaryAchieved budget_summary_achieved = 4;
+        Data.BudgetSummaryOverspent budget_summary_overspent = 5;
+        Data.BudgetClosePositive budget_close_positive = 6;
+        Data.BudgetCloseNegative budget_close_negative = 7;
+        Data.LargeExpense large_expense = 8;
+        Data.DoubleCharge double_charge = 9;
+        Data.SingleUncategorizedExpense single_uncategorized_expense = 10;
+        Data.WeeklyUncategorizedTransactions weekly_uncategorized_transactions = 11;
+        Data.WeeklyExpensesByCategory weekly_expenses_by_category = 12;
+        Data.WeeklyExpensesByDay weekly_expenses_by_day = 13;
+    }
+
+    message Data {
+        message AccountBalanceLow {
+            string account_id = 1;
+            CurrencyDenominatedAmount balance = 2; 
+        }
+
+        message BudgetSuccess {
+            string budget_id = 1;
+            Budget.Period budget_period = 2;
+        }
+
+        message BudgetOverspent {
+            string budget_id = 1;
+            Budget.Period budget_period = 2;
+        }
+
+        message BudgetSummaryAchieved {
+            repeated BudgetSummary achieved_budgets = 1;
+            repeated BudgetSummary overspent_budgets = 2;
+            CurrencyDenominatedAmount saved_amount = 3; 
+        }
+
+        message BudgetSummaryOverspent {
+            repeated BudgetSummary achieved_budgets = 1;
+            repeated BudgetSummary overspent_budgets = 2;
+            CurrencyDenominatedAmount overspent_amount = 3; 
+        }
+
+        message BudgetClosePositive {
+            string budget_id = 1;
+            Budget.Period budget_period = 2;
+            google.protobuf.Timestamp current_time = 3;
+        }
+
+        message BudgetCloseNegative {
+            string budget_id = 1;
+            Budget.Period budget_period = 2;
+            google.protobuf.Timestamp current_time = 3;
+        }
+
+        message BudgetSummary {
+            string budget_id = 1;
+            Budget.Period budget_period = 2;
+        }
+        
+        message LargeExpense {
+            string transaction_id = 1;
+            CurrencyDenominatedAmount amount = 2;
+        }
+
+        message DoubleCharge {
+            repeated string transaction_ids = 1;
+        }
+
+        message SingleUncategorizedExpense {
+            string transaction_id = 1;
+        }
+
+        message WeeklyUncategorizedTransactions {
+            repeated string transaction_ids = 1;
+            int32 week = 2;
+        }
+
+        message WeeklyExpensesByCategory {
+            YearWeek week = 1;
+            repeated CategorySpending spending_by_category = 2;
+
+            message CategorySpending {
+                string category_id = 1;
+                CurrencyDenominatedAmount amount = 2;
+            }
+        }
+
+        message WeeklyExpensesByDay {
+            YearWeek week = 1;
+            repeated ExpenseStatisticsByDay expense_statistics_by_day = 2;
+
+            message ExpenseStatisticsByDay {
+                google.type.Date date = 1;
+                ExpenseStatistics expense_statistics = 2;
+            }
+
+            message ExpenseStatistics {
+                CurrencyDenominatedAmount total_amount = 1;
+                CurrencyDenominatedAmount average_amount = 2;
+            }
+        }
+    }
+}
+
+message InsightAction {
+    string label = 1;
+    
+    oneof data {
+        Data.Acknowledge acknowledge = 2;
+        Data.Dismiss dismiss = 3;
+        Data.ViewBudget view_budget = 4;
+        Data.CreateTransfer create_transfer = 5;
+        Data.ViewTransaction view_transaction = 6;
+        Data.CategorizeSingleExpense categorize_single_expense = 7;
+        Data.ViewTransactions view_transactions = 8;
+        Data.CategorizeTransactions categorize_transactions = 9;
+    }
+
+    message Data {
+        message Acknowledge {}
+
+        message Dismiss {}
+
+        message ViewBudget {
+            string budget_id = 1;
+            google.protobuf.Timestamp budget_period_start_time = 2;
+        }
+
+        message ViewTransaction {
+            string transaction_id = 1;
+        }
+
+        message CreateTransfer {
+            string source_account_uri = 1;
+            string destination_account_uri = 2;
+            CurrencyDenominatedAmount amount = 3;
+        }
+
+        message CategorizeSingleExpense {
+            string transaction_id = 1;
+        }
+
+        message ViewTransactions {
+            repeated string transaction_ids = 1;
+        }
+
+        message CategorizeTransactions {
+            repeated string transaction_ids = 1;
+        }
+    }
+}
+
+message YearWeek {
+    int32 year = 1;
+    int32 week = 2;
+}

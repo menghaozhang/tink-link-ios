@@ -32,13 +32,13 @@ final class CredentialStore {
         authenticationManager = tinkLink.authenticationManager
     }
     
-    func addCredential(for provider: Provider, fields: [String: String], completion: @escaping(Result<Credential, Error>) -> Void) -> RetryCancellable {
+    func addCredential(for provider: Provider, fields: [String: String], appURI: URL, callbackURI: URL, completion: @escaping(Result<Credential, Error>) -> Void) -> RetryCancellable {
         let multiHandler = MultiHandler()
         let market = Market(code: provider.marketCode)
         
         let authHandler = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
             guard let self = self, self.createCredentialRetryCancellable[provider.id] == nil else { return }
-            let handler = self.service.createCredential(providerID: provider.id, fields: fields, completion: { (result) in
+            let handler = self.service.createCredential(providerID: provider.id, fields: fields, appURI: appURI, callbackURI: callbackURI, completion: { (result) in
                 self.tinkQueue.async(qos: .default, flags: .barrier) {
                     do {
                         let credential = try result.get()

@@ -24,6 +24,8 @@
 		20E19DB32306E59900BF053A /* CgRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85472303FD85006213BB /* CgRPC.framework */; };
 		20E19DB42306E59900BF053A /* SwiftGRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85492303FD85006213BB /* SwiftGRPC.framework */; };
 		20E19DB52306E59900BF053A /* SwiftProtobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85482303FD85006213BB /* SwiftProtobuf.framework */; };
+		20E6886D234F0B7800B4E04F /* insight_models.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E6886C234F0B7800B4E04F /* insight_models.pb.swift */; };
+		20E68871234F0B7F00B4E04F /* date.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E68870234F0B7F00B4E04F /* date.pb.swift */; };
 		20E6DCD123336AE700476B8F /* MultiHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E6DCD023336AE700476B8F /* MultiHandler.swift */; };
 		20ED852A2303FA48006213BB /* TinkLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85202303FA48006213BB /* TinkLink.framework */; };
 		20ED85412303FAEC006213BB /* rpc.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED853D2303FAEC006213BB /* rpc.pb.swift */; };
@@ -85,6 +87,8 @@
 		20C300E72341D43B0004E284 /* ConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationTests.swift; sourceTree = "<group>"; };
 		20D129E0234E1732005C2D34 /* CredentialGRPCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialGRPCTests.swift; sourceTree = "<group>"; };
 		20D8125E2330DAD7000B3A30 /* Service+Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Service+Metadata.swift"; sourceTree = "<group>"; };
+		20E6886C234F0B7800B4E04F /* insight_models.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = insight_models.pb.swift; sourceTree = "<group>"; };
+		20E68870234F0B7F00B4E04F /* date.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = date.pb.swift; sourceTree = "<group>"; };
 		20E6DCD023336AE700476B8F /* MultiHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiHandler.swift; sourceTree = "<group>"; };
 		20ED85202303FA48006213BB /* TinkLink.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinkLink.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		20ED85242303FA48006213BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -172,6 +176,22 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		20E6886E234F0B7F00B4E04F /* google */ = {
+			isa = PBXGroup;
+			children = (
+				20E6886F234F0B7F00B4E04F /* type */,
+			);
+			path = google;
+			sourceTree = "<group>";
+		};
+		20E6886F234F0B7F00B4E04F /* type */ = {
+			isa = PBXGroup;
+			children = (
+				20E68870234F0B7F00B4E04F /* date.pb.swift */,
+			);
+			path = type;
+			sourceTree = "<group>";
+		};
 		20ED85162303FA48006213BB = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +248,8 @@
 		20ED853C2303FAEC006213BB /* GRPC */ = {
 			isa = PBXGroup;
 			children = (
+				20E6886E234F0B7F00B4E04F /* google */,
+				20E6886C234F0B7800B4E04F /* insight_models.pb.swift */,
 				20ED853D2303FAEC006213BB /* rpc.pb.swift */,
 				20ED853E2303FAEC006213BB /* models.pb.swift */,
 				20ED853F2303FAEC006213BB /* services.grpc.swift */,
@@ -479,6 +501,7 @@
 				20EE138123053B2700C92D65 /* Credential+GRPC.swift in Sources */,
 				2049259A232A3AF000D4461D /* Form.swift in Sources */,
 				8FA3558E231EA1840054115D /* ProviderGroup.swift in Sources */,
+				20E6886D234F0B7800B4E04F /* insight_models.pb.swift in Sources */,
 				20D8125F2330DAD7000B3A30 /* Service+Metadata.swift in Sources */,
 				20ED85432303FAEC006213BB /* services.grpc.swift in Sources */,
 				20FAE67A233DFB4E003C73BA /* Configuration.swift in Sources */,
@@ -490,6 +513,7 @@
 				200A3FA2230C3E7800BEF935 /* Metadata+Tink.swift in Sources */,
 				200FD63F23154B660077181A /* Market.swift in Sources */,
 				20ED856F2304003A006213BB /* Environment.swift in Sources */,
+				20E68871234F0B7F00B4E04F /* date.pb.swift in Sources */,
 				8F0CE77D2332151700FB84B0 /* CallCanceller.swift in Sources */,
 				20E6DCD123336AE700476B8F /* MultiHandler.swift in Sources */,
 				8FA35592231EADAB0054115D /* CredentialContext.swift in Sources */,

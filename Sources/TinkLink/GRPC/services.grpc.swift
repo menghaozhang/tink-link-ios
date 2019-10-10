@@ -2017,6 +2017,12 @@ fileprivate final class ProviderServiceSuggestCallBase: ClientCallUnaryBase<GRPC
   override class var method: String { return "/ProviderService/Suggest" }
 }
 
+internal protocol ProviderServiceListProvidersForPolicyCall: ClientCallUnary {}
+
+fileprivate final class ProviderServiceListProvidersForPolicyCallBase: ClientCallUnaryBase<GRPCPolicyListRequest, GRPCListProvidersResponse>, ProviderServiceListProvidersForPolicyCall {
+  override class var method: String { return "/ProviderService/ListProvidersForPolicy" }
+}
+
 
 /// Instantiate ProviderServiceServiceClient, then call methods of this protocol to make API calls.
 internal protocol ProviderServiceService: ServiceClient {
@@ -2035,6 +2041,10 @@ internal protocol ProviderServiceService: ServiceClient {
   /// Asynchronous. Unary.
   @discardableResult
   func suggest(_ request: GRPCProviderSuggestRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListProvidersResponse?, CallResult) -> Void) throws -> ProviderServiceSuggestCall
+
+  /// Asynchronous. Unary.
+  @discardableResult
+  func listProvidersForPolicy(_ request: GRPCPolicyListRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListProvidersResponse?, CallResult) -> Void) throws -> ProviderServiceListProvidersForPolicyCall
 
 }
 
@@ -2061,6 +2071,12 @@ internal extension ProviderServiceService {
   @discardableResult
   func suggest(_ request: GRPCProviderSuggestRequest, completion: @escaping (GRPCListProvidersResponse?, CallResult) -> Void) throws -> ProviderServiceSuggestCall {
     return try self.suggest(request, metadata: self.metadata, completion: completion)
+  }
+
+  /// Asynchronous. Unary.
+  @discardableResult
+  func listProvidersForPolicy(_ request: GRPCPolicyListRequest, completion: @escaping (GRPCListProvidersResponse?, CallResult) -> Void) throws -> ProviderServiceListProvidersForPolicyCall {
+    return try self.listProvidersForPolicy(request, metadata: self.metadata, completion: completion)
   }
 
 }
@@ -2091,6 +2107,13 @@ internal final class ProviderServiceServiceClient: ServiceClientBase, ProviderSe
   @discardableResult
   internal func suggest(_ request: GRPCProviderSuggestRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListProvidersResponse?, CallResult) -> Void) throws -> ProviderServiceSuggestCall {
     return try ProviderServiceSuggestCallBase(channel)
+      .start(request: request, metadata: customMetadata, completion: completion)
+  }
+
+  /// Asynchronous. Unary.
+  @discardableResult
+  internal func listProvidersForPolicy(_ request: GRPCPolicyListRequest, metadata customMetadata: Metadata, completion: @escaping (GRPCListProvidersResponse?, CallResult) -> Void) throws -> ProviderServiceListProvidersForPolicyCall {
+    return try ProviderServiceListProvidersForPolicyCallBase(channel)
       .start(request: request, metadata: customMetadata, completion: completion)
   }
 
