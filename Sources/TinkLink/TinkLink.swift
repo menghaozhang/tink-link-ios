@@ -76,7 +76,7 @@ public class TinkLink {
         _shared = TinkLink(configuration: configuration)
     }
 
-    /// Get authorization code for requested scopes.
+    /// Creates an authorization code with the requested scopes for the current user
     ///
     /// Once you have received the authorization code, pass it to your backend service to exchange it for an access token. This must be done using the client secret, which you received with your client id.
     ///
