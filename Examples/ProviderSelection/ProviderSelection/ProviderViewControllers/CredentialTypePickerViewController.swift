@@ -1,13 +1,13 @@
-import UIKit
 import TinkLink
+import UIKit
 
 /// Example of how to use the provider grouped by credential type
 final class CredentialTypePickerViewController: UITableViewController {
-    
     var providers: [Provider] = []
 }
 
 // MARK: - View Lifecycle
+
 extension CredentialTypePickerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,18 +21,19 @@ extension CredentialTypePickerViewController {
 }
 
 // MARK: - UITableViewDataSource
+
 extension CredentialTypePickerViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return providers.count
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = providers[indexPath.row].displayDescription
         cell.accessoryType = .disclosureIndicator
         return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let provider = providers[indexPath.row]
         showAddCredential(for: provider)
@@ -40,6 +41,7 @@ extension CredentialTypePickerViewController {
 }
 
 // MARK: - Navigation
+
 extension CredentialTypePickerViewController {
     func showAddCredential(for provider: Provider) {
         let addCredentialViewController = AddCredentialViewController(provider: provider)

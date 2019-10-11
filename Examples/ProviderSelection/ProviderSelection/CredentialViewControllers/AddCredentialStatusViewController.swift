@@ -57,7 +57,7 @@ final class AddCredentialStatusViewController: UIViewController {
             stackView.leadingAnchor.constraint(equalTo: visualEffectView.contentView.leadingAnchor),
             stackView.trailingAnchor.constraint(equalTo: visualEffectView.contentView.trailingAnchor),
             stackView.bottomAnchor.constraint(equalTo: visualEffectView.contentView.bottomAnchor)
-            ])
+        ])
     }
 
     override func viewDidLayoutSubviews() {
