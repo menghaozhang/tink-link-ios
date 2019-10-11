@@ -35,6 +35,6 @@ format:
 ifeq ($(strip $(shell command -v swiftformat 2> /dev/null)),)
 	$(error "`swiftformat` is not available, please run `make bootstrap` first")
 endif
-	swiftformat . 2> /dev/null
+	swiftformat ./Sources/ 2> /dev/null
 
 release: format lint
