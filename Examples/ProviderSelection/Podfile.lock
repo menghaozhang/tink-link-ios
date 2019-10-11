@@ -22,6 +22,7 @@ PODS:
     - gRPC-Core (~> 1.19.0)
     - SwiftProtobuf (~> 1.5.0)
   - SwiftProtobuf (1.5.0)
+  - SwiftyMarkdown (0.6.0)
   - TinkLink (0.0.1):
     - SwiftGRPC
     - SwiftProtobuf
@@ -30,6 +31,7 @@ PODS:
     - SwiftProtobuf
 
 DEPENDENCIES:
+  - SwiftyMarkdown (~> 0.6)
   - TinkLink (from `../../`)
   - TinkLink/Tests (from `../../`)
 
@@ -40,6 +42,7 @@ SPEC REPOS:
     - nanopb
     - SwiftGRPC
     - SwiftProtobuf
+    - SwiftyMarkdown
 
 EXTERNAL SOURCES:
   TinkLink:
@@ -51,8 +54,9 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   SwiftGRPC: 43d3e8db88f97e7386bd44f159ecdfad02ce3362
   SwiftProtobuf: 241400280f912735c1e1b9fe675fdd2c6c4d42e2
+  SwiftyMarkdown: 698fe6b283dddac69747f4e08ed0d067c18e0356
   TinkLink: 695dacb3cc498c5f31776e39971c0199a9b4ed78
 
-PODFILE CHECKSUM: df801803dd8ae59dd273132e3c3cee4729495a94
+PODFILE CHECKSUM: 140b0501fe9695667ad0bcf1eebf6b7c19e51420
 
 COCOAPODS: 1.7.5

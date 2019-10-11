@@ -1,4 +1,5 @@
 import TinkLink
+import SwiftyMarkdown
 import UIKit
 
 /// Example of how to use the provider field specification to add credential
@@ -18,7 +19,7 @@ final class AddCredentialViewController: UITableViewController {
     private lazy var addBarButtonItem = UIBarButtonItem(title: "Add", style: .done, target: self, action: #selector(addCredential))
     private var didFirstFieldBecomeFirstResponder = false
 
-    private lazy var helpLabel = UILabel()
+    private lazy var helpLabel = UITextView()
 
     init(provider: Provider) {
         self.provider = provider
@@ -77,9 +78,12 @@ extension AddCredentialViewController {
 
 extension AddCredentialViewController {
     private func setupHelpFootnote() {
-        helpLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
-        helpLabel.numberOfLines = 0
-        helpLabel.text = provider.helpText
+        let markdown = SwiftyMarkdown(string: provider.helpText)
+        markdown.body.fontName = UIFont.preferredFont(forTextStyle: .footnote).fontName
+        helpLabel.attributedText = markdown.attributedString()
+        helpLabel.backgroundColor = .clear
+        helpLabel.isScrollEnabled = false
+        helpLabel.isEditable = false
         if #available(iOS 13.0, *) {
             helpLabel.textColor = .secondaryLabel
         } else {
