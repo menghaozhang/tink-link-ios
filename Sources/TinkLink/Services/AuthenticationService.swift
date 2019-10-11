@@ -14,10 +14,10 @@ final class AuthenticationService: TokenConfigurableService {
         self.metadata = metadata
         self.restURL = restURL
         if certificates.isEmpty {
-            session = .shared
+            self.session = .shared
         } else {
-            sessionDelegate = CertificatePinningDelegate(certificates: certificates)
-            session = URLSession(configuration: .ephemeral, delegate: sessionDelegate, delegateQueue: nil)
+            self.sessionDelegate = CertificatePinningDelegate(certificates: certificates)
+            self.session = URLSession(configuration: .ephemeral, delegate: sessionDelegate, delegateQueue: nil)
         }
     }
 
@@ -29,7 +29,7 @@ final class AuthenticationService: TokenConfigurableService {
         request.scopes = scopes
         request.redirectUri = redirectURL.absoluteString
 
-        return CallHandler(for: request, method: service.describeOAuth2Client, responseMap: { _ in return }, completion: completion)
+        return CallHandler(for: request, method: service.describeOAuth2Client, responseMap: { _ in }, completion: completion)
     }
 }
 
@@ -64,7 +64,7 @@ extension AuthenticationService {
             return nil
         }
 
-        let task = session.dataTask(with: urlRequest) { (data, _, error) in
+        let task = session.dataTask(with: urlRequest) { data, _, error in
             if let data = data {
                 do {
                     let authorizationResponse = try JSONDecoder().decode(AuthorizationResponse.self, from: data)

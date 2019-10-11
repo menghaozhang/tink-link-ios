@@ -10,7 +10,7 @@ extension Provider {
         self.helpText = grpcProvider.helpText
         self.isPopular = grpcProvider.popular
         self.fields = grpcProvider.fields.map(FieldSpecification.init(grpcProviderFieldSpecification:))
-        self.groupDisplayName = !grpcProvider.groupDisplayName.isEmpty ?  grpcProvider.groupDisplayName : grpcProvider.displayName
+        self.groupDisplayName = !grpcProvider.groupDisplayName.isEmpty ? grpcProvider.groupDisplayName : grpcProvider.displayName
         self.image = grpcProvider.hasImages ? URL(string: grpcProvider.images.iconURL) : nil
         self.displayDescription = grpcProvider.displayDescription
         self.capabilities = .init(grpcCapabilities: grpcProvider.capabilities)
@@ -68,7 +68,7 @@ extension Provider.Status {
 
 extension Provider.Capabilities {
     init(grpcCapabilities: [GRPCProvider.Capability]) {
-        self = grpcCapabilities.reduce([], { (capability, grpcCapabilitiy) in
+        self = grpcCapabilities.reduce([]) { capability, grpcCapabilitiy in
             switch grpcCapabilitiy {
             case .unknown:
                 return capability
@@ -96,39 +96,39 @@ extension Provider.Capabilities {
                 assertionFailure("Unrecognized capability: \(value)")
                 return capability
             }
-        })
+        }
     }
 
     var grpcCapabilities: [GRPCProvider.Capability] {
         var result: [GRPCProvider.Capability] = []
-        if self.contains(.transfers) {
+        if contains(.transfers) {
             result.append(.transfers)
         }
-        if self.contains(.mortgageAggregation) {
+        if contains(.mortgageAggregation) {
             result.append(.mortgageAggregation)
         }
-        if self.contains(.checkingAccounts) {
+        if contains(.checkingAccounts) {
             result.append(.checkingAccounts)
         }
-        if self.contains(.savingsAccounts) {
+        if contains(.savingsAccounts) {
             result.append(.savingsAccounts)
         }
-        if self.contains(.creditCards) {
+        if contains(.creditCards) {
             result.append(.creditCards)
         }
-        if self.contains(.investments) {
+        if contains(.investments) {
             result.append(.investments)
         }
-        if self.contains(.loans) {
+        if contains(.loans) {
             result.append(.loans)
         }
-        if self.contains(.payments) {
+        if contains(.payments) {
             result.append(.payments)
         }
-        if self.contains(.mortgageLoan) {
+        if contains(.mortgageLoan) {
             result.append(.mortgageLoan)
         }
-        if self.contains(.identityData) {
+        if contains(.identityData) {
             result.append(.identityData)
         }
         return result

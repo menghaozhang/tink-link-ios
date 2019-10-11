@@ -34,7 +34,7 @@ final class CredentialService: TokenConfigurableService {
         var request = GRPCDeleteCredentialRequest()
         request.credentialID = credentialID.value
 
-        return CallHandler(for: request, method: service.deleteCredential, responseMap: { _ in return }, completion: completion)
+        return CallHandler(for: request, method: service.deleteCredential, responseMap: { _ in }, completion: completion)
     }
 
     func updateCredential(credentialID: Credential.ID, fields: [String: String] = [:], completion: @escaping (Result<Credential, Error>) -> Void) -> RetryCancellable {
@@ -49,7 +49,7 @@ final class CredentialService: TokenConfigurableService {
         var request = GRPCRefreshCredentialsRequest()
         request.credentialIds = credentialIDs.map { $0.value }
 
-        return CallHandler(for: request, method: service.refreshCredentials, responseMap: { _ in return }, completion: completion)
+        return CallHandler(for: request, method: service.refreshCredentials, responseMap: { _ in }, completion: completion)
     }
 
     func supplementInformation(credentialID: Credential.ID, fields: [String: String] = [:], completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable {
@@ -57,28 +57,28 @@ final class CredentialService: TokenConfigurableService {
         request.credentialID = credentialID.value
         request.supplementalInformationFields = fields
 
-        return CallHandler(for: request, method: service.supplementInformation, responseMap: { _ in return }, completion: completion)
+        return CallHandler(for: request, method: service.supplementInformation, responseMap: { _ in }, completion: completion)
     }
 
     func cancelSupplementInformation(credentialID: Credential.ID, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable {
         var request = GRPCCancelSupplementInformationRequest()
         request.credentialID = credentialID.value
 
-        return CallHandler(for: request, method: service.cancelSupplementInformation, responseMap: { _ in return }, completion: completion)
+        return CallHandler(for: request, method: service.cancelSupplementInformation, responseMap: { _ in }, completion: completion)
     }
 
     func enableCredential(credentialID: Credential.ID, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable {
         var request = GRPCEnableCredentialRequest()
         request.credentialID = credentialID.value
 
-        return CallHandler(for: request, method: service.enableCredential, responseMap: { _ in return }, completion: completion)
+        return CallHandler(for: request, method: service.enableCredential, responseMap: { _ in }, completion: completion)
     }
 
     func disableCredential(credentialID: Credential.ID, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable {
         var request = GRPCDisableCredentialRequest()
         request.credentialID = credentialID.value
 
-        return CallHandler(for: request, method: service.disableCredential, responseMap: { _ in return }, completion: completion)
+        return CallHandler(for: request, method: service.disableCredential, responseMap: { _ in }, completion: completion)
     }
 
     func thirdPartyCallback(state: String, parameters: [String: String], completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable {
@@ -86,13 +86,13 @@ final class CredentialService: TokenConfigurableService {
         request.state = state
         request.parameters = parameters
 
-        return CallHandler(for: request, method: service.thirdPartyCallback, responseMap: { _ in return }, completion: completion)
+        return CallHandler(for: request, method: service.thirdPartyCallback, responseMap: { _ in }, completion: completion)
     }
 
     func manualAuthentication(credentialID: Credential.ID, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable {
         var request = GRPCManualAuthenticationRequest()
         request.credentialIds = credentialID.value
 
-        return CallHandler(for: request, method: service.manualAuthentication, responseMap: { _ in return }, completion: completion)
+        return CallHandler(for: request, method: service.manualAuthentication, responseMap: { _ in }, completion: completion)
     }
 }

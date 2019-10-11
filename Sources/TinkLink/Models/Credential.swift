@@ -54,7 +54,7 @@ public struct Credential {
 
         /// The credential is awaiting supplemental information.
         ///
-        /// If the authentication flow requires multiple steps with input from the user, as for example a SMS OTP authentication flow, 
+        /// If the authentication flow requires multiple steps with input from the user, as for example a SMS OTP authentication flow,
         /// the client should expect the `awaitingSupplementalInformation` status on the credential.
         ///
         /// Create a `Form` with this credential to let the user supplement the required information.
@@ -65,9 +65,9 @@ public struct Credential {
 
         /// The credential is awaiting authentication with a third party app.
         ///
-        /// If a provider is using third party services in their authentication flow, the client 
-        /// should expect the `awaitingThirdPartyAppAuthentication` status on the credential. 
-        /// In order for the aggregation of data to be successful, the system expects the third 
+        /// If a provider is using third party services in their authentication flow, the client
+        /// should expect the `awaitingThirdPartyAppAuthentication` status on the credential.
+        /// In order for the aggregation of data to be successful, the system expects the third
         /// party authentication flow to be successful as well.
         ///
         /// To handle this status, check `thirdPartyAppAuthentication` to get a deeplink url to the third party app and open it so the user can authenticate.
@@ -165,4 +165,3 @@ public enum CredentialType: CustomStringConvertible {
         }
     }
 }
-

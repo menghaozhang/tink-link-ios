@@ -4,9 +4,10 @@ import SwiftGRPC
 final class CredentialStore {
     var credentials: [Credential.ID: Credential] {
         dispatchPrecondition(condition: .notOnQueue(tinkQueue))
-        let credentials = tinkQueue.sync { return _credentials }
+        let credentials = tinkQueue.sync { _credentials }
         return credentials
     }
+
     private var _credentials: [Credential.ID: Credential] = [:] {
         didSet {
             DispatchQueue.main.async {
@@ -14,6 +15,7 @@ final class CredentialStore {
             }
         }
     }
+
     private let authenticationManager: AuthenticationManager
     private let market: Market
     private let locale: Locale
@@ -24,27 +26,27 @@ final class CredentialStore {
     private var cancelSupplementInformationRetryCancellable: [Credential.ID: RetryCancellable] = [:]
     private var fetchCredentialsRetryCancellable: RetryCancellable?
     private let tinkQueue = DispatchQueue(label: "com.tink.TinkLink.CredentialStore", attributes: .concurrent)
-    
+
     init(tinkLink: TinkLink) {
-        service = tinkLink.client.credentialService
-        market = tinkLink.client.market
-        locale = tinkLink.client.locale
-        authenticationManager = tinkLink.authenticationManager
+        self.service = tinkLink.client.credentialService
+        self.market = tinkLink.client.market
+        self.locale = tinkLink.client.locale
+        self.authenticationManager = tinkLink.authenticationManager
     }
-    
-    func addCredential(for provider: Provider, fields: [String: String], appURI: URL, completion: @escaping(Result<Credential, Error>) -> Void) -> RetryCancellable {
+
+    func addCredential(for provider: Provider, fields: [String: String], appURI: URL, completion: @escaping (Result<Credential, Error>) -> Void) -> RetryCancellable {
         let multiHandler = MultiHandler()
         let market = Market(code: provider.marketCode)
-        
+
         let authHandler = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
             guard let self = self, self.createCredentialRetryCancellable[provider.id] == nil else { return }
-            let handler = self.service.createCredential(providerID: provider.id, fields: fields, appURI: appURI, completion: { (result) in
+            let handler = self.service.createCredential(providerID: provider.id, fields: fields, appURI: appURI, completion: { result in
                 self.tinkQueue.async(qos: .default, flags: .barrier) {
                     do {
                         let credential = try result.get()
                         self._credentials[credential.id] = credential
                         completion(.success(credential))
-                    } catch let error {
+                    } catch {
                         completion(.failure(error))
                     }
                 }
@@ -58,25 +60,25 @@ final class CredentialStore {
         }
         return multiHandler
     }
-    
+
     /// - Precondition: Service should be configured with access token before this method is called.
     func addSupplementalInformation(for credential: Credential, supplementalInformationFields: [String: String], completion: @escaping (Result<Void, Error>) -> Void) {
         precondition(service.metadata.hasAuthorization, "Service doesn't have authentication metadata set!")
-        addSupplementalInformationRetryCancellable[credential.id] = self.service.supplementInformation(credentialID: credential.id, fields: supplementalInformationFields) { [weak self] result in
+        addSupplementalInformationRetryCancellable[credential.id] = service.supplementInformation(credentialID: credential.id, fields: supplementalInformationFields) { [weak self] result in
             self?.addSupplementalInformationRetryCancellable[credential.id] = nil
             completion(result)
         }
     }
-    
+
     /// - Precondition: Service should be configured with access token before this method is called.
     func cancelSupplementInformation(for credential: Credential, completion: @escaping (Result<Void, Error>) -> Void) {
         precondition(service.metadata.hasAuthorization, "Service doesn't have authentication metadata set!")
-        cancelSupplementInformationRetryCancellable[credential.id] = self.service.cancelSupplementInformation(credentialID: credential.id) { [weak self] result in
+        cancelSupplementInformationRetryCancellable[credential.id] = service.cancelSupplementInformation(credentialID: credential.id) { [weak self] result in
             self?.cancelSupplementInformationRetryCancellable[credential.id] = nil
             completion(result)
         }
     }
-    
+
     func update(credential: Credential) {
         _credentials[credential.id] = credential
     }

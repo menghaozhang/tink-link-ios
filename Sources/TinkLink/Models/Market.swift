@@ -22,7 +22,7 @@ public struct Market: Hashable, RawRepresentable, ExpressibleByStringLiteral {
     public var localizedString: String? {
         return Locale.current.localizedString(forRegionCode: code)
     }
-    
+
     public static var defaultMarket: Market {
         return Market(code: "SE")
     }
