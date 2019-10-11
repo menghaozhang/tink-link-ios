@@ -12,6 +12,12 @@
 		200FD63D23154AFC0077181A /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200FD63C23154AFC0077181A /* AccessToken.swift */; };
 		200FD63F23154B660077181A /* Market.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200FD63E23154B660077181A /* Market.swift */; };
 		201D5523230AEAA500641102 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D5522230AEAA500641102 /* UserService.swift */; };
+		2027F01F2345E4850025473A /* AuthorizationCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2027F01E2345E4850025473A /* AuthorizationCode.swift */; };
+		2027F0242345E5FD0025473A /* AuthorizationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2027F0232345E5FD0025473A /* AuthorizationResponse.swift */; };
+		2027F0262345E62C0025473A /* URLSessionDataTask+Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2027F0252345E62C0025473A /* URLSessionDataTask+Cancellable.swift */; };
+		2027F02A234637920025473A /* CertificatePinningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2027F029234637920025473A /* CertificatePinningDelegate.swift */; };
+		2027F02C2346421F0025473A /* SecTrust+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2027F02B2346421F0025473A /* SecTrust+Swift.swift */; };
+		2027F02E2346423C0025473A /* SecCertificate+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2027F02D2346423C0025473A /* SecCertificate+Swift.swift */; };
 		203BE969232784440033F879 /* AddCredentialTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203BE968232784440033F879 /* AddCredentialTask.swift */; };
 		2049259A232A3AF000D4461D /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20492599232A3AF000D4461D /* Form.swift */; };
 		206B8DCF23350A8300693ED5 /* FormTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206B8DCD2335001000693ED5 /* FormTests.swift */; };
@@ -26,6 +32,7 @@
 		20E19DB52306E59900BF053A /* SwiftProtobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85482303FD85006213BB /* SwiftProtobuf.framework */; };
 		20E6886D234F0B7800B4E04F /* insight_models.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E6886C234F0B7800B4E04F /* insight_models.pb.swift */; };
 		20E68871234F0B7F00B4E04F /* date.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E68870234F0B7F00B4E04F /* date.pb.swift */; };
+		20E6887B234F570C00B4E04F /* AuthorizationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E6887A234F570C00B4E04F /* AuthorizationError.swift */; };
 		20E6DCD123336AE700476B8F /* MultiHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E6DCD023336AE700476B8F /* MultiHandler.swift */; };
 		20ED852A2303FA48006213BB /* TinkLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85202303FA48006213BB /* TinkLink.framework */; };
 		20ED85412303FAEC006213BB /* rpc.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED853D2303FAEC006213BB /* rpc.pb.swift */; };
@@ -79,6 +86,12 @@
 		200FD63C23154AFC0077181A /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 		200FD63E23154B660077181A /* Market.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Market.swift; sourceTree = "<group>"; };
 		201D5522230AEAA500641102 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		2027F01E2345E4850025473A /* AuthorizationCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationCode.swift; sourceTree = "<group>"; };
+		2027F0232345E5FD0025473A /* AuthorizationResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationResponse.swift; sourceTree = "<group>"; };
+		2027F0252345E62C0025473A /* URLSessionDataTask+Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSessionDataTask+Cancellable.swift"; sourceTree = "<group>"; };
+		2027F029234637920025473A /* CertificatePinningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CertificatePinningDelegate.swift; sourceTree = "<group>"; };
+		2027F02B2346421F0025473A /* SecTrust+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecTrust+Swift.swift"; sourceTree = "<group>"; };
+		2027F02D2346423C0025473A /* SecCertificate+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecCertificate+Swift.swift"; sourceTree = "<group>"; };
 		203BE968232784440033F879 /* AddCredentialTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCredentialTask.swift; sourceTree = "<group>"; };
 		20492599232A3AF000D4461D /* Form.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
 		206B8DCD2335001000693ED5 /* FormTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTests.swift; sourceTree = "<group>"; };
@@ -89,6 +102,7 @@
 		20D8125E2330DAD7000B3A30 /* Service+Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Service+Metadata.swift"; sourceTree = "<group>"; };
 		20E6886C234F0B7800B4E04F /* insight_models.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = insight_models.pb.swift; sourceTree = "<group>"; };
 		20E68870234F0B7F00B4E04F /* date.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = date.pb.swift; sourceTree = "<group>"; };
+		20E6887A234F570C00B4E04F /* AuthorizationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationError.swift; sourceTree = "<group>"; };
 		20E6DCD023336AE700476B8F /* MultiHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiHandler.swift; sourceTree = "<group>"; };
 		20ED85202303FA48006213BB /* TinkLink.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinkLink.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		20ED85242303FA48006213BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -172,6 +186,9 @@
 				200A3FA1230C3E7800BEF935 /* Metadata+Tink.swift */,
 				20FAE67C233DFBE9003C73BA /* ProcessInfo+TinkEnvironmentVariables.swift */,
 				8F84A77B2330D39600EA878F /* Locale+Extensions.swift */,
+				2027F0252345E62C0025473A /* URLSessionDataTask+Cancellable.swift */,
+				2027F02B2346421F0025473A /* SecTrust+Swift.swift */,
+				2027F02D2346423C0025473A /* SecCertificate+Swift.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -282,6 +299,7 @@
 				20ED8591230429DE006213BB /* CallHandler.swift */,
 				201D5522230AEAA500641102 /* UserService.swift */,
 				200A3F98230C31E900BEF935 /* AuthenticationService.swift */,
+				2027F029234637920025473A /* CertificatePinningDelegate.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -301,6 +319,9 @@
 			children = (
 				20B9DA2F230EE4EE00DE4999 /* Mappers */,
 				200FD63E23154B660077181A /* Market.swift */,
+				2027F01E2345E4850025473A /* AuthorizationCode.swift */,
+				2027F0232345E5FD0025473A /* AuthorizationResponse.swift */,
+				20E6887A234F570C00B4E04F /* AuthorizationError.swift */,
 				200FD63C23154AFC0077181A /* AccessToken.swift */,
 				20ED8579230407B3006213BB /* Provider.swift */,
 				8FA3558D231EA1840054115D /* ProviderGroup.swift */,
@@ -504,6 +525,7 @@
 				20E6886D234F0B7800B4E04F /* insight_models.pb.swift in Sources */,
 				20D8125F2330DAD7000B3A30 /* Service+Metadata.swift in Sources */,
 				20ED85432303FAEC006213BB /* services.grpc.swift in Sources */,
+				2027F02A234637920025473A /* CertificatePinningDelegate.swift in Sources */,
 				20FAE67A233DFB4E003C73BA /* Configuration.swift in Sources */,
 				20ED85442303FAEC006213BB /* services.pb.swift in Sources */,
 				20FAE67D233DFBE9003C73BA /* ProcessInfo+TinkEnvironmentVariables.swift in Sources */,
@@ -519,17 +541,23 @@
 				8FA35592231EADAB0054115D /* CredentialContext.swift in Sources */,
 				8FA35590231EA3820054115D /* ProviderContext.swift in Sources */,
 				20ED859623045896006213BB /* Credential.swift in Sources */,
+				2027F01F2345E4850025473A /* AuthorizationCode.swift in Sources */,
 				8FA3558A231E703C0054115D /* ProviderStore.swift in Sources */,
+				2027F0242345E5FD0025473A /* AuthorizationResponse.swift in Sources */,
 				8FA35586231E673B0054115D /* TinkLink.swift in Sources */,
 				20ED85712304004C006213BB /* ProviderService.swift in Sources */,
 				20ED858E2304151B006213BB /* CredentialService.swift in Sources */,
 				8F84A77C2330D39600EA878F /* Locale+Extensions.swift in Sources */,
 				201D5523230AEAA500641102 /* UserService.swift in Sources */,
+				2027F02C2346421F0025473A /* SecTrust+Swift.swift in Sources */,
 				20ED85412303FAEC006213BB /* rpc.pb.swift in Sources */,
 				209D69282326878800B4DBB8 /* SupplementInformationTask.swift in Sources */,
+				2027F0262345E62C0025473A /* URLSessionDataTask+Cancellable.swift in Sources */,
+				20E6887B234F570C00B4E04F /* AuthorizationError.swift in Sources */,
 				20ED857A230407B3006213BB /* Provider.swift in Sources */,
 				203BE969232784440033F879 /* AddCredentialTask.swift in Sources */,
 				20ED85422303FAEC006213BB /* models.pb.swift in Sources */,
+				2027F02E2346423C0025473A /* SecCertificate+Swift.swift in Sources */,
 				8FA3558C231E839E0054115D /* CredentialStore.swift in Sources */,
 				200A3F99230C31E900BEF935 /* AuthenticationService.swift in Sources */,
 				200FD63D23154AFC0077181A /* AccessToken.swift in Sources */,

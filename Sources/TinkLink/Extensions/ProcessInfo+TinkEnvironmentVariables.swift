@@ -17,12 +17,19 @@ extension ProcessInfo {
         return environment["TINK_BEARER_TOKEN"]
     }
 
-    var tinkCertificate: String? {
-        return environment["TINK_CERTIFICATE"]
+    var tinkGrpcCertificate: String? {
+        return environment["TINK_GRPC_CERTIFICATE"]
+    }
+
+    var tinkRestCertificate: String? {
+        return environment["TINK_REST_CERTIFICATE"]
     }
 
     var tinkEnvironment: Environment? {
-        return environment["TINK_CUSTOM_ENDPOINT"].flatMap(URL.init(string: )).flatMap { Environment.custom($0) }
+        guard let grpcEndpoint = environment["TINK_CUSTOM_GRPC_ENDPOINT"].flatMap(URL.init(string: )),
+            let restEndpoint = environment["TINK_CUSTOM_REST_ENDPOINT"].flatMap(URL.init(string: ))
+            else { return nil }
+        return Environment.custom(grpcURL: grpcEndpoint, restURL: restEndpoint)
     }
 
     var tinkMarket: Market? {
@@ -36,5 +43,9 @@ extension ProcessInfo {
             }
         }
         return nil
+    }
+
+    var tinkRedirectURI: URL? {
+        return environment["TINK_REDIRECT_URI"].flatMap(URL.init(string:))
     }
 }
