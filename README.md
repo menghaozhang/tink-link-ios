@@ -24,6 +24,7 @@ TinkLink can be configured either by adding keys and values in your app's Info.p
 Key | Type | Value
 --- | ---- | -----
 `TINK_CLIENT_ID` | String |
+`TINK_REDIRECT_URI` | String |
 `TINK_MARKET_CODE` | String | *Optional*
 `TINK_LOCALE_IDENTIFIER` | String | *Optional*
 
@@ -31,12 +32,13 @@ Key | Type | Value
 Key | Value
 --- | -----
 `TINK_CLIENT_ID` | 
+`TINK_REDIRECT_URI` | String |
 `TINK_MARKET_CODE` | *Optional*
 `TINK_LOCALE_IDENTIFIER` | *Optional*
 
 ### Swift
 ```swift
-let configuration = TinkLink.Configuration(clientID: <#String#>)
+let configuration = TinkLink.Configuration(clientID: <#String#>, redirectURI: <#URL#>)
 TinkLink.configure(with: configuration)
 ```
 
