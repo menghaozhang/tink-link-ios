@@ -34,8 +34,8 @@ extension AccessTypePickerViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let providersWithSameAccessType = providerAccessTypeGroups[indexPath.row]
-        switch providersWithSameAccessType {
+        let providerAccessTypeGroup = providerAccessTypeGroups[indexPath.row]
+        switch providerAccessTypeGroup {
         case .credentialTypes(let providers):
             showCredentialTypePicker(for: providers)
         case .provider(let provider):
