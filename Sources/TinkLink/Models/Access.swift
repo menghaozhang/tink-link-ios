@@ -17,21 +17,6 @@ extension TinkLink {
         public static let create = TinkLink.Access(rawValue: 1 << 7)
         public static let delete = TinkLink.Access(rawValue: 1 << 8)
         public static let webHooks = TinkLink.Access(rawValue: 1 << 9)
-    //
-    //    static var scopeDescriptions: [TinkLink.Access: String] = {
-    //        var descriptions = [TinkLink.Access:String]()
-    //        descriptions[.read] = "read"
-    //        descriptions[.write] = "write"
-    //        descriptions[.grant] = "grant"
-    //        descriptions[.revoke] = "revoke"
-    //        descriptions[.refresh] = "refresh"
-    //        descriptions[.categorize] = "categorize"
-    //        descriptions[.execute] = "execute"
-    //        descriptions[.create] = "create"
-    //        descriptions[.delete] = "delete"
-    //        descriptions[.webHooks] = "web_hooks"
-    //        return descriptions
-    //    }()
 
         var descriptions: [String] {
             var descriptionStrings = [String]()
