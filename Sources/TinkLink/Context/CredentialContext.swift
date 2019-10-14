@@ -71,12 +71,21 @@ public class CredentialContext {
     private var credentialStoreChangeObserver: Any?
     private var credentialStoreErrorObserver: Any?
 
+    private var service: CredentialService
+    private let authenticationManager: AuthenticationManager
+    private let locale: Locale
+
+    private var createCredentialRetryCancellable: [Provider.ID: RetryCancellable] = [:]
+
     /// Creates a new CredentialContext for the given TinkLink instance.
     ///
     /// - Parameter tinkLink: TinkLink instance, defaults to `shared` if not provided.
     public init(tinkLink: TinkLink = .shared) {
         self.tinkLink = tinkLink
         self.credentialStore = tinkLink.credentialStore
+        self.authenticationManager = tinkLink.authenticationManager
+        self.service = tinkLink.client.credentialService
+        self.locale = tinkLink.client.locale
     }
 
     private func addStoreObservers() {
@@ -143,7 +152,7 @@ public class CredentialContext {
 
         let appURI = tinkLink.configuration.redirectURI
 
-        credentialStore.addCredential(for: provider, fields: form.makeFields(), appURI: appURI) { [weak self, weak task] result in
+        _addCredential(for: provider, fields: form.makeFields(), appURI: appURI) { [weak self, weak task] result in
             guard let self = self else { return }
             do {
                 let credential = try result.get()
@@ -158,5 +167,30 @@ public class CredentialContext {
 
     private func performFetch() {
         credentialStore.performFetchIfNeeded()
+    }
+
+    private func _addCredential(for provider: Provider, fields: [String: String], appURI: URL, completion: @escaping (Result<Credential, Error>) -> Void) -> RetryCancellable {
+        let multiHandler = MultiHandler()
+        let market = Market(code: provider.marketCode)
+
+        let authHandler = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
+            guard let self = self, self.createCredentialRetryCancellable[provider.id] == nil else { return }
+            let handler = self.service.createCredential(providerID: provider.id, fields: fields, appURI: appURI, completion: { result in
+                do {
+                    let credential = try result.get()
+                    self.credentialStore.update(credential: credential)
+                    completion(.success(credential))
+                } catch {
+                    completion(.failure(error))
+                }
+                self.createCredentialRetryCancellable[provider.id] = nil
+            })
+            self.createCredentialRetryCancellable[provider.id] = handler
+            multiHandler.add(handler)
+        }
+        if let handler = authHandler {
+            multiHandler.add(handler)
+        }
+        return multiHandler
     }
 }
