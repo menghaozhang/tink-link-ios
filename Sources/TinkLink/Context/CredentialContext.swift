@@ -44,7 +44,7 @@ public class CredentialContext {
                 .values
                 .sorted(by: { $0.id.value < $1.id.value })
             _credentials = storedCredentials
-            performFetch()
+            performFetchIfNeeded()
             return storedCredentials
         }
         return credentials
@@ -59,7 +59,7 @@ public class CredentialContext {
         didSet {
             if delegate != nil {
                 addStoreObservers()
-                performFetch()
+                performFetchIfNeeded()
             } else {
                 removeStoreObservers()
             }
@@ -165,7 +165,7 @@ public class CredentialContext {
         return task
     }
 
-    private func performFetch() {
+    private func performFetchIfNeeded() {
         credentialStore.performFetchIfNeeded()
     }
 
