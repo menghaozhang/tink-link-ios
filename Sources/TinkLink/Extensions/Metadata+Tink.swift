@@ -12,7 +12,7 @@ extension Metadata {
             return rawValue.lowercased()
         }
     }
-    
+
     func addAccessToken(_ token: String? = nil) throws {
         let info = ProcessInfo.processInfo
         if let bearerToken = info.tinkBearerToken {
@@ -25,7 +25,7 @@ extension Metadata {
     var hasAuthorization: Bool {
         self[Metadata.HeaderKey.authorization.key] != nil
     }
-    
+
     func addTinkMetadata() throws {
         let info = ProcessInfo.processInfo
         if let deviceID = info.tinkDeviceID {

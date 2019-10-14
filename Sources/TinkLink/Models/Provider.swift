@@ -32,7 +32,7 @@ public struct Provider {
         case temporaryDisabled
         case obsolete
     }
-    
+
     /// Indicates the current status of the provider.
     /// - Note: It is only possible to perform credentials create or refresh actions on providers which are enabled.
     public var status: Status
@@ -84,16 +84,16 @@ public struct Provider {
             self.rawValue = rawValue
         }
 
-        public static let transfers            = Capabilities(rawValue: 1 << 1)
-        public static let mortgageAggregation  = Capabilities(rawValue: 1 << 2)
-        public static let checkingAccounts     = Capabilities(rawValue: 1 << 3)
-        public static let savingsAccounts      = Capabilities(rawValue: 1 << 4)
-        public static let creditCards          = Capabilities(rawValue: 1 << 5)
-        public static let investments          = Capabilities(rawValue: 1 << 6)
-        public static let loans                = Capabilities(rawValue: 1 << 7)
-        public static let payments             = Capabilities(rawValue: 1 << 8)
-        public static let mortgageLoan         = Capabilities(rawValue: 1 << 9)
-        public static let identityData         = Capabilities(rawValue: 1 << 10)
+        public static let transfers = Capabilities(rawValue: 1 << 1)
+        public static let mortgageAggregation = Capabilities(rawValue: 1 << 2)
+        public static let checkingAccounts = Capabilities(rawValue: 1 << 3)
+        public static let savingsAccounts = Capabilities(rawValue: 1 << 4)
+        public static let creditCards = Capabilities(rawValue: 1 << 5)
+        public static let investments = Capabilities(rawValue: 1 << 6)
+        public static let loans = Capabilities(rawValue: 1 << 7)
+        public static let payments = Capabilities(rawValue: 1 << 8)
+        public static let mortgageLoan = Capabilities(rawValue: 1 << 9)
+        public static let identityData = Capabilities(rawValue: 1 << 10)
 
         public static let all: Capabilities = [.transfers, .mortgageAggregation, .checkingAccounts, .savingsAccounts, .creditCards, .investments, .loans, .payments, .mortgageLoan, .identityData]
     }
@@ -117,7 +117,7 @@ public struct Provider {
                 return "Other"
             }
         }
-        
+
         public static let all: Set<AccessType> = [.openBanking, .other, .unknown]
     }
 
@@ -150,4 +150,3 @@ public enum ProviderType {
     public static var excludingTest: Set<ProviderType> = [.unknown, .bank, .creditCard, .broker, .other, .fraud]
     public static var all: Set<ProviderType> = [.unknown, .bank, .creditCard, .broker, .other, .test, .fraud]
 }
-

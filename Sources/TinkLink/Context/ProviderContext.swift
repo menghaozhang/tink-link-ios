@@ -21,7 +21,7 @@ public protocol ProviderContextDelegate: AnyObject {
 }
 
 extension ProviderContextDelegate {
-    public func providerContextWillChangeProviders(_ context: ProviderContext) { }
+    public func providerContextWillChangeProviders(_ context: ProviderContext) {}
 }
 
 /// An object that accesses providers for a specific market and supports the grouping of providers.
@@ -38,7 +38,7 @@ public class ProviderContext {
             self.accessTypes = accessTypes
         }
     }
-    
+
     /// Attributes representing which providers a context should access.
     ///
     /// Changing this property will update `providers` and `providerGroups` to only access providers matching the new attributes.
@@ -62,7 +62,7 @@ public class ProviderContext {
             delegate?.providerContextDidChangeProviders(self)
         }
     }
-    
+
     private var _providerGroups: [ProviderGroup]?
 
     /// The object that acts as the delegate of the provider context.
@@ -87,12 +87,12 @@ public class ProviderContext {
     /// - Parameter tinkLink: TinkLink instance, will use the shared instance if nothing is provided.
     /// - Parameter attributes: Attributes describing which providers the context should access.
     public init(tinkLink: TinkLink = .shared, attributes: Attributes) {
-        providerStore = tinkLink.providerStore
+        self.providerStore = tinkLink.providerStore
         self.attributes = attributes
         self.market = tinkLink.client.market
-        _providers = try? providerStore.providerMarketGroups[market]?.get()
-        _providerGroups = _providers.map(ProviderGroup.makeGroups)
-        providerStoreObserver = NotificationCenter.default.addObserver(forName: .providerStoreMarketGroupsChanged, object: providerStore, queue: .main) { [weak self] _ in
+        self._providers = try? providerStore.providerMarketGroups[market]?.get()
+        self._providerGroups = _providers.map(ProviderGroup.makeGroups)
+        self.providerStoreObserver = NotificationCenter.default.addObserver(forName: .providerStoreMarketGroupsChanged, object: providerStore, queue: .main) { [weak self] _ in
             guard let self = self else {
                 return
             }
@@ -103,7 +103,7 @@ public class ProviderContext {
             }
         }
     }
-    
+
     private func performFetch() {
         providerStore.performFetchProvidersIfNeeded(for: attributes)
     }
@@ -120,7 +120,7 @@ extension ProviderContext {
         }
         return providers
     }
-    
+
     /// Grouped providers matching the context's current attributes.
     ///
     /// - Note: The providerGroups could be empty at first or change if the context's attributes are changed. Use the delegate to get notified when providerGroups change.
@@ -131,12 +131,12 @@ extension ProviderContext {
         }
         return providerGroups
     }
-    
+
     public func search(_ query: String) -> [ProviderGroup] {
         if query.isEmpty {
             return providerGroups
         }
-        
-        return providerGroups.filter({ $0.displayName.localizedCaseInsensitiveContains(query) ?? false })
+
+        return providerGroups.filter { $0.displayName.localizedCaseInsensitiveContains(query) ?? false }
     }
 }

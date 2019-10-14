@@ -3,11 +3,12 @@ import SwiftGRPC
 
 final class ProviderStore {
     init(tinkLink: TinkLink) {
-        service = tinkLink.client.providerService
-        market = tinkLink.client.market
-        locale = tinkLink.client.locale
-        authenticationManager = tinkLink.authenticationManager
+        self.service = tinkLink.client.providerService
+        self.market = tinkLink.client.market
+        self.locale = tinkLink.client.locale
+        self.authenticationManager = tinkLink.authenticationManager
     }
+
     private let authenticationManager: AuthenticationManager
     private let market: Market
     private let locale: Locale
@@ -21,9 +22,10 @@ final class ProviderStore {
             }
         }
     }
+
     var providerMarketGroups: [Market: Result<[Provider], Error>] {
         dispatchPrecondition(condition: .notOnQueue(tinkQueue))
-        let providerMarketGroups = tinkQueue.sync { return _providerMarketGroups }
+        let providerMarketGroups = tinkQueue.sync { _providerMarketGroups }
         return providerMarketGroups
     }
 
@@ -38,7 +40,7 @@ final class ProviderStore {
 
     private func performFetchProviders(for attributes: ProviderContext.Attributes) -> RetryCancellable {
         let multiHandler = MultiHandler()
-    
+
         let authCanceller = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self, attributes] authenticationResult in
             guard let self = self, !multiHandler.isCancelled else { return }
             do {

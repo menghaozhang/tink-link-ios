@@ -1,5 +1,5 @@
-import UIKit
 import TinkLink
+import UIKit
 
 protocol SupplementalInformationViewControllerDelegate: AnyObject {
     func supplementalInformationViewControllerDidCancel(_ viewController: SupplementalInformationViewController)
@@ -8,23 +8,23 @@ protocol SupplementalInformationViewControllerDelegate: AnyObject {
 
 /// Example of how to use the credential field supplemental information to update credential
 final class SupplementalInformationViewController: UITableViewController {
-    
     let supplementInformationTask: SupplementInformationTask
-    
+
     weak var delegate: SupplementalInformationViewControllerDelegate?
-    
+
     private var form: Form
     private var formError: Form.ValidationError? {
         didSet {
             tableView.reloadData()
         }
     }
+
     private var didFirstFieldBecomeFirstResponder = false
 
     init(supplementInformationTask: SupplementInformationTask) {
         self.supplementInformationTask = supplementInformationTask
         self.form = Form(credential: supplementInformationTask.credential)
-        
+
         if #available(iOS 13.0, *) {
             super.init(style: .insetGrouped)
         } else {
@@ -38,12 +38,13 @@ final class SupplementalInformationViewController: UITableViewController {
 }
 
 // MARK: - View Lifecycle
+
 extension SupplementalInformationViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
-        
+
         navigationItem.title = "Enter Supplemental Information"
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonPressed(_:)))
@@ -53,7 +54,7 @@ extension SupplementalInformationViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         if !didFirstFieldBecomeFirstResponder, !form.fields.isEmpty, let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? TextFieldCell {
             cell.textField.becomeFirstResponder()
             didFirstFieldBecomeFirstResponder = true
@@ -62,6 +63,7 @@ extension SupplementalInformationViewController {
 }
 
 // MARK: - UITableViewDataSource
+
 extension SupplementalInformationViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return form.fields.count
@@ -75,7 +77,7 @@ extension SupplementalInformationViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: TextFieldCell.reuseIdentifier, for: indexPath)
         if let textFieldCell = cell as? TextFieldCell {
             let field = form.fields[indexPath.section]
-            
+
             textFieldCell.delegate = self
             textFieldCell.textField.placeholder = field.attributes.placeholder
             textFieldCell.textField.isSecureTextEntry = field.attributes.isSecureTextEntry
@@ -101,6 +103,7 @@ extension SupplementalInformationViewController {
 }
 
 // MARK: - Actions
+
 extension SupplementalInformationViewController {
     @objc private func cancelButtonPressed(_ sender: UIBarButtonItem) {
         supplementInformationTask.cancel()
@@ -112,7 +115,7 @@ extension SupplementalInformationViewController {
         do {
             try form.validateFields()
             supplementInformationTask.submit(form)
-            self.delegate?.supplementalInformationViewController(self, didSupplementInformationForCredential: supplementInformationTask.credential)
+            delegate?.supplementalInformationViewController(self, didSupplementInformationForCredential: supplementInformationTask.credential)
         } catch {
             formError = error as? Form.ValidationError
         }
@@ -120,6 +123,7 @@ extension SupplementalInformationViewController {
 }
 
 // MARK: - TextFieldCellDelegate
+
 extension SupplementalInformationViewController: TextFieldCellDelegate {
     func textFieldCell(_ cell: TextFieldCell, willChangeToText text: String) {
         if let indexPath = tableView.indexPath(for: cell) {
