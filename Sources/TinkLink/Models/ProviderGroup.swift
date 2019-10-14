@@ -56,8 +56,8 @@ public enum FinancialInsititutionGroup {
         }
     }
 
-    public var financialInsititutionName: String {
-        return providers[0].financialInstitutionName
+    public var financialInsititution: FinancialInstitution {
+        return providers[0].financialInstitution
     }
 }
 
@@ -72,7 +72,7 @@ public enum ProviderGroup {
         if providers.count == 1, let provider = providers.first {
             self = .provider(provider)
         } else {
-            let providersGroupedByFinancialInstitutionIDs = Dictionary(grouping: providers, by: { $0.financialInstitutionID })
+            let providersGroupedByFinancialInstitutionIDs = Dictionary(grouping: providers, by: { $0.financialInstitution.id })
             if providersGroupedByFinancialInstitutionIDs.count == 1, let providers = providersGroupedByFinancialInstitutionIDs.values.first {
                 let providersGroupedByAccessTypes = Dictionary(grouping: providers, by: { $0.accessType })
                 if providersGroupedByAccessTypes.count == 1, let providers = providersGroupedByAccessTypes.values.first {

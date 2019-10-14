@@ -28,7 +28,7 @@ extension FinancialInstitutionPickerViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = financialInsititutionGroups[indexPath.row].financialInsititutionName
+        cell.textLabel?.text = financialInsititutionGroups[indexPath.row].financialInsititution.name
         cell.accessoryType = .disclosureIndicator
         return cell
     }
@@ -37,9 +37,9 @@ extension FinancialInstitutionPickerViewController {
         let providersWithSameFinancialInstitution = financialInsititutionGroups[indexPath.row]
         switch providersWithSameFinancialInstitution {
         case .accessTypes(let accessTypeGroups):
-            showAccessTypePicker(for: accessTypeGroups, title: providersWithSameFinancialInstitution.financialInsititutionName)
+            showAccessTypePicker(for: accessTypeGroups, title: providersWithSameFinancialInstitution.financialInsititution.name)
         case .credentialTypes(let providers):
-            showCredentialTypePicker(for: providers, title: providersWithSameFinancialInstitution.financialInsititutionName)
+            showCredentialTypePicker(for: providers, title: providersWithSameFinancialInstitution.financialInsititution.name)
         case .provider(let provider):
             showAddCredential(for: provider)
         }
