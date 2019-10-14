@@ -112,7 +112,9 @@ extension ProviderListViewController {
 
 extension ProviderListViewController: ProviderContextDelegate {
     func providerContextDidChangeProviders(_ context: ProviderContext) {
-        providerGroups = context.providerGroups
+        DispatchQueue.main.async {
+            self.providerGroups = context.providerGroups
+        }
     }
 
     func providerContext(_ context: ProviderContext, didReceiveError error: Error) {
