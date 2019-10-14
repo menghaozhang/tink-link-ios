@@ -153,7 +153,7 @@ extension TinkLink.Configuration {
 
     init(processInfo: ProcessInfo) throws {
         guard let clientID = processInfo.tinkClientID else { throw Error.clientIDNotFound }
-        guard let redirectURI = processInfo.tinkRedirectURI else { throw Error.clientIDNotFound }
+        guard let redirectURI = processInfo.tinkRedirectURI else { throw Error.redirectURINotFound }
         self.environment = processInfo.tinkEnvironment ?? .production
         self.clientID = clientID
         self.grpcCertificate = processInfo.tinkGrpcCertificate.flatMap { Data(base64Encoded: $0) }
