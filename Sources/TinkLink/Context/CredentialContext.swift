@@ -76,7 +76,6 @@ public class CredentialContext {
     private let locale: Locale
 
     private var fetchCredentialsRetryCancellable: RetryCancellable?
-    private var createCredentialRetryCancellable: [Provider.ID: RetryCancellable] = [:]
 
     /// Creates a new CredentialContext for the given TinkLink instance.
     ///
@@ -185,7 +184,7 @@ public class CredentialContext {
         let market = Market(code: provider.marketCode)
 
         let authHandler = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self] _ in
-            guard let self = self, self.createCredentialRetryCancellable[provider.id] == nil else { return }
+            guard let self = self else { return }
             let handler = self.service.createCredential(providerID: provider.id, fields: fields, appURI: appURI, completion: { result in
                 do {
                     let credential = try result.get()
@@ -194,9 +193,7 @@ public class CredentialContext {
                 } catch {
                     completion(.failure(error))
                 }
-                self.createCredentialRetryCancellable[provider.id] = nil
             })
-            self.createCredentialRetryCancellable[provider.id] = handler
             multiHandler.add(handler)
         }
         if let handler = authHandler {
