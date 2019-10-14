@@ -207,6 +207,6 @@ public struct TinkLinkScope: CustomStringConvertible {
         precondition(!scopes.isEmpty, "Tinklink scope is empty.")
         self.scopes = scopes
 
-        description = scopes.map { $0.description }.joined(separator: ",")
+        description = scopes.map({ $0.description }).joined(separator: ",")
     }
 }
