@@ -147,7 +147,7 @@ public class CredentialContext {
 
         let appURI = tinkLink.configuration.redirectURI
 
-        task.callCanceller = _addCredential(for: provider, fields: form.makeFields(), appURI: appURI) { [weak self, weak task] result in
+        task.callCanceller = addCredentialAndAuthenticateIfNeeded(for: provider, fields: form.makeFields(), appURI: appURI) { [weak self, weak task] result in
             guard let self = self else { return }
             do {
                 let credential = try result.get()
@@ -179,7 +179,7 @@ public class CredentialContext {
         }
     }
 
-    private func _addCredential(for provider: Provider, fields: [String: String], appURI: URL, completion: @escaping (Result<Credential, Error>) -> Void) -> RetryCancellable {
+    private func addCredentialAndAuthenticateIfNeeded(for provider: Provider, fields: [String: String], appURI: URL, completion: @escaping (Result<Credential, Error>) -> Void) -> RetryCancellable {
         let multiHandler = MultiHandler()
         let market = Market(code: provider.marketCode)
 
