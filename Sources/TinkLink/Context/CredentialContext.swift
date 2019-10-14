@@ -148,7 +148,7 @@ public class CredentialContext {
 
         let appURI = tinkLink.configuration.redirectURI
 
-        _addCredential(for: provider, fields: form.makeFields(), appURI: appURI) { [weak self, weak task] result in
+        task.callCanceller = _addCredential(for: provider, fields: form.makeFields(), appURI: appURI) { [weak self, weak task] result in
             guard let self = self else { return }
             do {
                 let credential = try result.get()
