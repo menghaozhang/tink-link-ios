@@ -3,12 +3,7 @@ import UIKit
 
 /// Example of how to use the provider grouped by names
 final class ProviderListViewController: UITableViewController {
-    var providerContext: ProviderContext {
-        didSet {
-            tableView.reloadData()
-        }
-    }
-
+    let providerContext: ProviderContext
     private let searchController = UISearchController(searchResultsController: nil)
     private var providerGroups: [ProviderGroup] {
         didSet {
