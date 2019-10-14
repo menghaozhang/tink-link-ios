@@ -17,6 +17,7 @@ extension ScopeType {
     }
 }
 
+/// Access to all the user's account information, including balances.
 public struct AccountsScope: ScopeType {
     public static var name = "accounts:"
     public var scope: ScopeSet
@@ -73,6 +74,7 @@ public struct ContactsScope: ScopeType {
     }
 }
 
+/// Access to the information describing the user's different bank credentials connected to Tink.
 public struct CredentialsScope: ScopeType {
     public static var name = "credentials:"
     public var scope: ScopeSet
@@ -105,6 +107,7 @@ public struct FollowScope: ScopeType {
     }
 }
 
+/// Access to the user's personal information that can be used for identification purposes.
 public struct IdentityScope: ScopeType {
     public static var name = "identity:"
     public var scope: ScopeSet
@@ -121,6 +124,7 @@ public struct InsightsScope: ScopeType {
     }
 }
 
+/// Access to the user's portfolios and underlying financial instruments.
 public struct InvestmentsScope: ScopeType {
     public static var name = "investments:"
     public var scope: ScopeSet
@@ -153,6 +157,7 @@ public struct ProvidersScope: ScopeType {
     }
 }
 
+/// Access to all the user's statistics, which can include filters on statistic.type.
 public struct StatisticsScope: ScopeType {
     public static var name = "statistics:"
     public var scope: ScopeSet
@@ -168,7 +173,7 @@ public struct SuggestionsScope: ScopeType {
         self.scope = scope
     }
 }
-
+/// Access to all the user's transactional data.
 public struct TransactionsScope: ScopeType {
     public static var name = "transactions:"
     public var scope: ScopeSet
@@ -185,6 +190,7 @@ public struct TransferScope: ScopeType {
     }
 }
 
+/// Access to user profile data such as e-mail, date of birth, etc.
 public struct UserScope: ScopeType {
     public static var name = "user:"
     public var scope: ScopeSet
@@ -193,6 +199,7 @@ public struct UserScope: ScopeType {
     }
 }
 
+/// Access to Tink is divided into scopes. The available scopes for Tink's APIs can be found in Tink console
 public struct TinkLinkScope: CustomStringConvertible {
     public var scopes: [ScopeType]
     public var description: String

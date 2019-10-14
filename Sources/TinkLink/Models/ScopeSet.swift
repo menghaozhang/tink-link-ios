@@ -1,4 +1,5 @@
 import Foundation
+/// Access to user data is controlled by using OAuth2 security scopes or permissions. Each API customer is configured to have a set of scopes which control the maximum permitted data access.
 public struct ScopeSet: OptionSet, Hashable {
     public let rawValue: Int
     public init(rawValue: Int) {
