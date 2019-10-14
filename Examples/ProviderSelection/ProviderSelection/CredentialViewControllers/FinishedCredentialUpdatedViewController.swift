@@ -52,7 +52,13 @@ final class FinishedCredentialUpdatedViewController: UIViewController {
     }
 
     private func authorize() {
-        TinkLink.shared.authorize(scope: "accounts:read,investments:read,user:read,transactions:read") { (result) in
+        let scope = TinkLinkScope(scopes: [
+            AccountsScope(.read),
+            InvestmentsScope(.read),
+            UserScope(.read),
+            TransactionsScope(.read)
+        ])
+        TinkLink.shared.authorize(scope: scope) { (result) in
             do {
                 let code = try result.get()
                 print(code)
