@@ -151,6 +151,7 @@ public class CredentialContext {
             guard let self = self else { return }
             do {
                 let credential = try result.get()
+                self.credentialStore.update(credential: credential)
                 task?.startObserving(credential)
             } catch {
                 completion(.failure(error))
@@ -188,7 +189,6 @@ public class CredentialContext {
             let handler = self.service.createCredential(providerID: provider.id, fields: fields, appURI: appURI, completion: { result in
                 do {
                     let credential = try result.get()
-                    self.credentialStore.update(credential: credential)
                     completion(.success(credential))
                 } catch {
                     completion(.failure(error))
