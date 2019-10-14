@@ -12,7 +12,7 @@ class ConfigurationTests: XCTestCase {
 
     func testMarketConfiguration() {
         let redirectURI = URL(string: "http://my-customer-app.com/authentication")!
-        let configuration = TinkLink.Configuration(clientID: "abc", market: "SE", redirectURI: redirectURI)
+        let configuration = TinkLink.Configuration(clientID: "abc", redirectURI: redirectURI, market: "SE")
         let link = TinkLink(configuration: configuration)
         XCTAssertEqual(link.configuration.market.rawValue, "SE")
         XCTAssertEqual(link.client.market.rawValue, "SE")
@@ -20,7 +20,7 @@ class ConfigurationTests: XCTestCase {
 
     func testPropertyListConfiguration() throws {
         let redirectURI = URL(string: "http://my-customer-app.com/authentication")!
-        let tempConfiguration = TinkLink.Configuration(clientID: "def", market: "NO", locale: nil, redirectURI: redirectURI)
+        let tempConfiguration = TinkLink.Configuration(clientID: "def", redirectURI: redirectURI, market: "NO", locale: nil)
         let url = FileManager.default.temporaryDirectory.appendingPathComponent("Configuration").appendingPathExtension("plist")
         let data = try PropertyListEncoder().encode(tempConfiguration)
         try data.write(to: url)
@@ -31,7 +31,7 @@ class ConfigurationTests: XCTestCase {
     func testConfigureSharedTinkLinkWithConfiguration() {
         TinkLink._shared = nil
         let redirectURI = URL(string: "my-customer-app://authentication")!
-        let configuration = TinkLink.Configuration(clientID: "abc", market: "SE", redirectURI: redirectURI)
+        let configuration = TinkLink.Configuration(clientID: "abc", redirectURI: redirectURI, market: "SE")
         TinkLink.configure(with: configuration)
         XCTAssertEqual(TinkLink.shared.configuration.market.rawValue, "SE")
         XCTAssertEqual(TinkLink.shared.client.market.rawValue, "SE")
@@ -41,7 +41,7 @@ class ConfigurationTests: XCTestCase {
     func testConfigureSharedTinkLinkWithPropertyList() throws {
         TinkLink._shared = nil
         let redirectURI = URL(string: "my-customer-app-2://authentication")!
-        let configuration = TinkLink.Configuration(clientID: "def", market: "NO", locale: nil, redirectURI: redirectURI)
+        let configuration = TinkLink.Configuration(clientID: "def", redirectURI: redirectURI, market: "NO", locale: nil)
         let url = FileManager.default.temporaryDirectory.appendingPathComponent("Configuration").appendingPathExtension("plist")
         let data = try PropertyListEncoder().encode(configuration)
         try data.write(to: url)
