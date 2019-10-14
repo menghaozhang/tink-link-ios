@@ -53,10 +53,10 @@ final class FinishedCredentialUpdatedViewController: UIViewController {
 
     private func authorize() {
         let scope = TinkLink.Scope(scopes: [
-            TinkLink.Scope.Accounts(.read),
-            TinkLink.Scope.Investments(.read),
-            TinkLink.Scope.User(.read),
-            TinkLink.Scope.Transactions(.read)
+            TinkLink.Scope.Accounts.read,
+            TinkLink.Scope.Investments.read,
+            TinkLink.Scope.User.read,
+            TinkLink.Scope.Transactions.read
         ])
         TinkLink.shared.authorize(scope: scope) { (result) in
             do {
