@@ -17,7 +17,7 @@ final class ProviderListViewController: UITableViewController {
     }
 
     override init(style: UITableView.Style) {
-        let attributes = ProviderContext.Attributes(capabilities: .all, types: ProviderType.all, accessTypes: Provider.AccessType.all)
+        let attributes = ProviderContext.Attributes(capabilities: .all, kinds: Provider.Kind.all, accessTypes: Provider.AccessType.all)
         providerContext = ProviderContext(attributes: attributes)
         providerGroups = providerContext.providerGroups
         super.init(style: style)
