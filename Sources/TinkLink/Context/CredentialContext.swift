@@ -75,6 +75,7 @@ public class CredentialContext {
     private let authenticationManager: AuthenticationManager
     private let locale: Locale
 
+    private var fetchCredentialsRetryCancellable: RetryCancellable?
     private var createCredentialRetryCancellable: [Provider.ID: RetryCancellable] = [:]
 
     /// Creates a new CredentialContext for the given TinkLink instance.
@@ -94,11 +95,6 @@ public class CredentialContext {
             self._credentials = self.credentialStore.credentials
                 .values
                 .sorted(by: { $0.id.value < $1.id.value })
-        }
-
-        credentialStoreErrorObserver = NotificationCenter.default.addObserver(forName: .credentialStoreErrorOccured, object: credentialStore, queue: .main) { [weak self] notification in
-            guard let self = self, let error = notification.userInfo?[CredentialStoreErrorOccuredNotificationErrorKey] as? Error else { return }
-            self.delegate?.credentialContext(self, didReceiveError: error)
         }
     }
 
@@ -165,8 +161,23 @@ public class CredentialContext {
         return task
     }
 
-    private func performFetchIfNeeded() {
-        credentialStore.performFetchIfNeeded()
+    func performFetchIfNeeded() {
+        if fetchCredentialsRetryCancellable == nil {
+            performFetch()
+        }
+    }
+
+    private func performFetch() {
+        fetchCredentialsRetryCancellable = service.credentials { [weak self] result in
+            guard let self = self else { return }
+            do {
+                let credentials = try result.get()
+                self.credentialStore.store(credentials)
+            } catch {
+                self.delegate?.credentialContext(self, didReceiveError: error)
+            }
+            self.fetchCredentialsRetryCancellable = nil
+        }
     }
 
     private func _addCredential(for provider: Provider, fields: [String: String], appURI: URL, completion: @escaping (Result<Credential, Error>) -> Void) -> RetryCancellable {

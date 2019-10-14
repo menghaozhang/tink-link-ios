@@ -17,7 +17,6 @@ final class CredentialStore {
     }
 
     private var service: CredentialService
-    private var fetchCredentialsRetryCancellable: RetryCancellable?
     private let tinkQueue = DispatchQueue(label: "com.tink.TinkLink.CredentialStore", attributes: .concurrent)
 
     init(tinkLink: TinkLink) {
@@ -30,33 +29,14 @@ final class CredentialStore {
         }
     }
 
-    func performFetchIfNeeded() {
-        if fetchCredentialsRetryCancellable == nil {
-            performFetch()
-        }
-    }
-
-    private func performFetch() {
-        fetchCredentialsRetryCancellable = service.credentials { [weak self] result in
-            guard let self = self else { return }
-            self.tinkQueue.async(qos: .default, flags: .barrier) {
-                do {
-                    let credentials = try result.get()
-                    self._credentials = Dictionary(grouping: credentials, by: { $0.id })
-                        .compactMapValues { $0.first }
-                } catch {
-                    NotificationCenter.default.post(name: .credentialStoreErrorOccured, object: self, userInfo: [CredentialStoreErrorOccuredNotificationErrorKey: error])
-                }
-            }
-            self.fetchCredentialsRetryCancellable = nil
+    func store(_ credentials: [Credential]) {
+        tinkQueue.async(qos: .default, flags: .barrier) {
+            self._credentials = Dictionary(grouping: credentials, by: { $0.id })
+                .compactMapValues { $0.first }
         }
     }
 }
 
 extension Notification.Name {
     static let credentialStoreChanged = Notification.Name("TinkLinkCredentialStoreChangedNotificationName")
-    static let credentialStoreErrorOccured = Notification.Name("TinkLinkCredentialStoreErrorOccuredNotificationName")
 }
-
-/// User info key for credentialStoreErrorOccured notification.
-let CredentialStoreErrorOccuredNotificationErrorKey = "error"
