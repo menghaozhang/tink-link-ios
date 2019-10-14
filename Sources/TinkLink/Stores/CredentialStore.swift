@@ -21,7 +21,6 @@ final class CredentialStore {
     private let locale: Locale
     private var service: CredentialService
     private var createCredentialRetryCancellable: [Provider.ID: RetryCancellable] = [:]
-    private var credentialStatusPollingRetryCancellable: [Credential.ID: RetryCancellable] = [:]
     private var fetchCredentialsRetryCancellable: RetryCancellable?
     private let tinkQueue = DispatchQueue(label: "com.tink.TinkLink.CredentialStore", attributes: .concurrent)
 
