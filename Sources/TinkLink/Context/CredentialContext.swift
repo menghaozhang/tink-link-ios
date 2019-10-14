@@ -185,8 +185,13 @@ public class CredentialContext {
         let market = Market(code: provider.marketCode)
 
         let authHandler = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { result in
-            let handler = self.service.createCredential(providerID: provider.id, fields: fields, appURI: appURI, completion: completion)
-            multiHandler.add(handler)
+            do {
+                try result.get()
+                let handler = self.service.createCredential(providerID: provider.id, fields: fields, appURI: appURI, completion: completion)
+                multiHandler.add(handler)
+            } catch {
+                completion(.failure(error))
+            }
         }
         if let handler = authHandler {
             multiHandler.add(handler)
