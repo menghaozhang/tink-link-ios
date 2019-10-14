@@ -21,12 +21,11 @@ public protocol CredentialContextDelegate: AnyObject {
 }
 
 extension CredentialContextDelegate {
-    public func credentialContextWillChangeCredentials(_ context: CredentialContext) { }
+    public func credentialContextWillChangeCredentials(_ context: CredentialContext) {}
 }
 
 /// An object that you use to access the user's credentials and supports the flow for adding credentials.
 public class CredentialContext {
-
     private var _credentials: [Credential]? {
         willSet {
             delegate?.credentialContextWillChangeCredentials(self)
@@ -77,7 +76,7 @@ public class CredentialContext {
     /// - Parameter tinkLink: TinkLink instance, defaults to `shared` if not provided.
     public init(tinkLink: TinkLink = .shared) {
         self.tinkLink = tinkLink
-        credentialStore = tinkLink.credentialStore
+        self.credentialStore = tinkLink.credentialStore
     }
 
     private func addStoreObservers() {
@@ -98,7 +97,7 @@ public class CredentialContext {
         credentialStoreChangeObserver = nil
         credentialStoreErrorObserver = nil
     }
-    
+
     /// Adds a credential for the user.
     ///
     /// You need to handle status changes in `progressHandler` to successfuly add a credential for some providers.
@@ -125,7 +124,7 @@ public class CredentialContext {
     ///   - completion: The block to execute when the credential has been added successfuly or if it failed.
     ///   - result: Represents either a successfully added credential or an error if adding the credential failed.
     /// - Returns: The add credential task.
-    public func addCredential(for provider: Provider, form: Form, completionPredicate: AddCredentialTask.CompletionPredicate = .updated, progressHandler: @escaping (_ status: AddCredentialTask.Status) -> Void,  completion: @escaping (_ result: Result<Credential, Error>) -> Void) -> AddCredentialTask {
+    public func addCredential(for provider: Provider, form: Form, completionPredicate: AddCredentialTask.CompletionPredicate = .updated, progressHandler: @escaping (_ status: AddCredentialTask.Status) -> Void, completion: @escaping (_ result: Result<Credential, Error>) -> Void) -> AddCredentialTask {
         let task = AddCredentialTask(
             tinklink: tinkLink,
             completionPredicate: completionPredicate,
@@ -139,7 +138,8 @@ public class CredentialContext {
                 } catch {
                     self.delegate?.credentialContext(self, didReceiveError: error)
                 }
-        })
+            }
+        )
 
         let appURI = tinkLink.configuration.redirectURI
 

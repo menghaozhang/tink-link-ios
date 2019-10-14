@@ -1,5 +1,5 @@
-import UIKit
 import TinkLink
+import UIKit
 
 final class FinishedCredentialUpdatedViewController: UIViewController {
     let credential: Credential
@@ -16,7 +16,7 @@ final class FinishedCredentialUpdatedViewController: UIViewController {
     }
 
     override func loadView() {
-        self.view = UIView()
+        view = UIView()
         if #available(iOS 13.0, *) {
             view.backgroundColor = .systemBackground
         } else {
@@ -42,7 +42,7 @@ final class FinishedCredentialUpdatedViewController: UIViewController {
         NSLayoutConstraint.activate([
             stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-            ])
+        ])
 
         authorize()
     }

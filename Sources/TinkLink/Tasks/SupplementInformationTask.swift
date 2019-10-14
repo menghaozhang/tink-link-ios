@@ -17,7 +17,7 @@ public class SupplementInformationTask {
             self?.callRetryCancellable = nil
         })
     }
-    
+
     public func cancel() {
         callRetryCancellable = credentialService.cancelSupplementInformation(credentialID: credential.id, completion: { [weak self] result in
             self?.completionHandler(result)

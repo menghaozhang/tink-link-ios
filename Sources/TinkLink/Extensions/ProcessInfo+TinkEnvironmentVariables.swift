@@ -26,18 +26,18 @@ extension ProcessInfo {
     }
 
     var tinkEnvironment: Environment? {
-        guard let grpcEndpoint = environment["TINK_CUSTOM_GRPC_ENDPOINT"].flatMap(URL.init(string: )),
-            let restEndpoint = environment["TINK_CUSTOM_REST_ENDPOINT"].flatMap(URL.init(string: ))
-            else { return nil }
+        guard let grpcEndpoint = environment["TINK_CUSTOM_GRPC_ENDPOINT"].flatMap(URL.init(string:)),
+            let restEndpoint = environment["TINK_CUSTOM_REST_ENDPOINT"].flatMap(URL.init(string:))
+        else { return nil }
         return Environment.custom(grpcURL: grpcEndpoint, restURL: restEndpoint)
     }
 
     var tinkMarket: Market? {
-        return environment["TINK_MARKET_CODE"].flatMap(Market.init(code: ))
+        return environment["TINK_MARKET_CODE"].flatMap(Market.init(code:))
     }
 
     var tinkLocale: Locale? {
-        if let locale = environment["TINK_LOCALE_IDENTIFIER"].flatMap(Locale.init(identifier: )) {
+        if let locale = environment["TINK_LOCALE_IDENTIFIER"].flatMap(Locale.init(identifier:)) {
             if TinkLink.availableLocales.contains(locale) {
                 return locale
             }

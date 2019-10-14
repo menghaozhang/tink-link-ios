@@ -96,7 +96,7 @@ extension TinkLink.Configuration: Codable {
         }
 
         if let localeIdentifier = try values.decodeIfPresent(String.self, forKey: .locale) {
-            let availableLocale = TinkLink.availableLocales.first{ $0.identifier == localeIdentifier }
+            let availableLocale = TinkLink.availableLocales.first { $0.identifier == localeIdentifier }
             if let locale = availableLocale {
                 self.locale = locale
             } else {

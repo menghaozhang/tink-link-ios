@@ -6,16 +6,17 @@ public struct Form {
     ///
     /// Represents a list of fields and provides access to the fields. Each field in can be accessed either by index or by field name.
     public struct Fields: MutableCollection {
-
         var fields: [Form.Field]
 
         // MARK: Collection Conformance
+
         public var startIndex: Int { fields.startIndex }
         public var endIndex: Int { fields.endIndex }
         public subscript(position: Int) -> Form.Field {
             get { fields[position] }
             set { fields[position] = newValue }
         }
+
         public func index(after i: Int) -> Int { fields.index(after: i) }
 
         // MARK: Dictionary Lookup
@@ -46,9 +47,9 @@ public struct Form {
 
     /// The fields associated with this form.
     public var fields: Fields
-    
+
     internal init(fieldSpecifications: [Provider.FieldSpecification]) {
-        fields = Fields(fields: fieldSpecifications.map({ Field(fieldSpecification: $0) }))
+        self.fields = Fields(fields: fieldSpecifications.map { Field(fieldSpecification: $0) })
     }
 
     /// Returns a Boolean value indicating whether every field in the form are valid.
@@ -67,7 +68,7 @@ public struct Form {
     public func validateFields() throws {
         try fields.validateFields()
     }
-    
+
     internal func makeFields() -> [String: String] {
         var fieldValues: [String: String] = [:]
         for field in fields {
@@ -81,18 +82,18 @@ public struct Form {
         public let name: String
         public let validationRules: ValidationRules
         public let attributes: Attributes
-        
+
         internal init(fieldSpecification: Provider.FieldSpecification) {
-            text = fieldSpecification.initialValue
-            name = fieldSpecification.name
-            validationRules = ValidationRules(
+            self.text = fieldSpecification.initialValue
+            self.name = fieldSpecification.name
+            self.validationRules = ValidationRules(
                 isOptional: fieldSpecification.isOptional,
                 maxLength: fieldSpecification.maxLength,
                 minLength: fieldSpecification.minLength,
                 regex: fieldSpecification.pattern,
                 regexError: fieldSpecification.patternError
             )
-            attributes = Attributes(
+            self.attributes = Attributes(
                 description: fieldSpecification.fieldDescription,
                 placeholder: fieldSpecification.hint,
                 helpText: fieldSpecification.helpText,
@@ -229,7 +230,7 @@ public struct Form {
             try validationRules.validate(value, fieldName: name)
         }
     }
-    
+
     /// Describes a form validation error.
     public struct ValidationError: Error {
         /// Describes one or more field validation errors.
@@ -285,7 +286,7 @@ extension Form.Fields {
         }
         guard fieldsValidationError.errors.isEmpty else { throw fieldsValidationError }
     }
-    
+
     /// A Boolean value indicating whether all fields have valid values.
     ///
     /// If which field and what validation rule has failed are needed, use `validateFields()` instead.

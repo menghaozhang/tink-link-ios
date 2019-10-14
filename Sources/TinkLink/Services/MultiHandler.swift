@@ -14,7 +14,7 @@ class MultiHandler: Cancellable, Retriable {
             handler.cancel()
         }
     }
-    
+
     func retry() {
         hasRetried = true
         for handler in handlers {

@@ -4,7 +4,7 @@ class CallHandler<Request, Response, Model>: Cancellable, Retriable {
     typealias Method = (Request, @escaping (Response?, CallResult) -> Void) throws -> ClientCall
     typealias ResponseMap = (Response) -> Model
     typealias CallCompletionHandler<Model> = (Result<Model, Error>) -> Void
-    
+
     var request: Request
     var method: Method
     var responseMap: ResponseMap
@@ -16,7 +16,7 @@ class CallHandler<Request, Response, Model>: Cancellable, Retriable {
         self.completion = completion
         startCall()
     }
-    
+
     var call: ClientCall?
 
     deinit {
@@ -31,10 +31,10 @@ class CallHandler<Request, Response, Model>: Cancellable, Retriable {
     func cancel() {
         call?.cancel()
     }
-    
+
     private func startCall() {
         do {
-            call = try method(request) { [weak self] (response, result) in
+            call = try method(request) { [weak self] response, result in
                 guard let self = self else { return }
                 if let response = response {
                     self.completion(.success(self.responseMap(response)))

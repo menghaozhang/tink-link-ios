@@ -1,7 +1,7 @@
 public enum ProviderAccessTypeGroup {
     case provider(Provider)
     case credentialTypes([Provider])
-    
+
     init(providers: [Provider]) {
         precondition(!providers.isEmpty)
         if providers.count == 1, let provider = providers.first {
@@ -10,7 +10,7 @@ public enum ProviderAccessTypeGroup {
             self = .credentialTypes(providers)
         }
     }
-    
+
     public var providers: [Provider] {
         switch self {
         case .credentialTypes(let providers):
@@ -19,7 +19,7 @@ public enum ProviderAccessTypeGroup {
             return [provider]
         }
     }
-    
+
     public var accessType: Provider.AccessType {
         return providers[0].accessType
     }
@@ -29,7 +29,7 @@ public enum FinancialInsititutionGroup {
     case provider(Provider)
     case credentialTypes([Provider])
     case accessTypes([ProviderAccessTypeGroup])
-    
+
     init(providers: [Provider]) {
         precondition(!providers.isEmpty)
         if providers.count == 1, let provider = providers.first {
@@ -44,7 +44,7 @@ public enum FinancialInsititutionGroup {
             }
         }
     }
-    
+
     public var providers: [Provider] {
         switch self {
         case .accessTypes(let providerGroupByAccessTypes):
@@ -55,7 +55,7 @@ public enum FinancialInsititutionGroup {
             return [provider]
         }
     }
-    
+
     public var financialInsititutionName: String {
         return providers[0].financialInstitutionName
     }
@@ -66,7 +66,7 @@ public enum ProviderGroup {
     case credentialTypes([Provider])
     case accessTypes([ProviderAccessTypeGroup])
     case financialInsititutions([FinancialInsititutionGroup])
-    
+
     init(providers: [Provider]) {
         precondition(!providers.isEmpty)
         if providers.count == 1, let provider = providers.first {
@@ -93,11 +93,11 @@ public enum ProviderGroup {
             .sorted(by: { $0.key < $1.key })
             .map { ProviderGroup(providers: $0.value) }
     }
-    
+
     public var providers: [Provider] {
         switch self {
         case .financialInsititutions(let providerGroupedByFinancialInsititutions):
-            return providerGroupedByFinancialInsititutions.flatMap{ $0.providers }
+            return providerGroupedByFinancialInsititutions.flatMap { $0.providers }
         case .accessTypes(let providerGroupByAccessTypes):
             return providerGroupByAccessTypes.flatMap { $0.providers }
         case .credentialTypes(let providers):
@@ -106,7 +106,7 @@ public enum ProviderGroup {
             return [provider]
         }
     }
-    
+
     public var displayName: String {
         return providers[0].groupDisplayName
     }

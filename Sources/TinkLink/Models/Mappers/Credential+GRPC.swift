@@ -11,7 +11,7 @@ extension Credential {
         self.updated = grpcCredential.hasUpdated ? grpcCredential.updated.date : nil
         self.fields = grpcCredential.fields
         self.supplementalInformationFields = grpcCredential.supplementalInformationFields.map(Provider.FieldSpecification.init(grpcProviderFieldSpecification:))
-        self.thirdPartyAppAuthentication = grpcCredential.hasThirdPartyAppAuthentication ?  ThirdPartyAppAuthentication(grpcThirdPartyAppAuthentication: grpcCredential.thirdPartyAppAuthentication) : nil
+        self.thirdPartyAppAuthentication = grpcCredential.hasThirdPartyAppAuthentication ? ThirdPartyAppAuthentication(grpcThirdPartyAppAuthentication: grpcCredential.thirdPartyAppAuthentication) : nil
         self.sessionExpiryDate = grpcCredential.hasSessionExpiryDate ? grpcCredential.sessionExpiryDate.date : nil
     }
 }
