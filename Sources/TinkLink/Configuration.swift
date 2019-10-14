@@ -4,29 +4,29 @@ extension TinkLink {
     /// Configuration used to set up the TinkLink
     public struct Configuration {
         public var clientID: String
+        public var redirectURI: URL
         public var environment: Environment
         public var grpcCertificate: Data?
         public var restCertificate: Data?
         public var market: Market
         public var locale: Locale
-        public var redirectURI: URL
 
         /// - Parameters:
         ///   - clientId: The client id for your app.
+        ///   - redirectURI: The URI you've setup in Console.
         ///   - environment: The environment to use, defaults to production.
         ///   - grpcCertificateURL: URL to a certificate file to use with gRPC API.
         ///   - restCertificateURL: URL to a certificate file to use with REST API.
         ///   - market: Optional, default market(SE) will be used if nothing is provided.
         ///   - locale: Optional, default locale(sv_SE) will be used if nothing is provided.
-        ///   - redirectURI: The URI you've setup in Console.
         public init(
             clientID: String,
+            redirectURI: URL,
             environment: Environment = .production,
             grpcCertificateURL: URL? = nil,
             restCertificateURL: URL? = nil,
             market: Market? = nil,
-            locale: Locale? = nil,
-            redirectURI: URL
+            locale: Locale? = nil
         ) {
             self.clientID = clientID
             self.environment = .production
@@ -49,21 +49,22 @@ extension TinkLink {
 
 extension TinkLink.Configuration: Codable {
     enum CodingKeys: String, CodingKey {
+        case clientID = "TINK_CLIENT_ID"
+        case redirectURI = "TINK_REDIRECT_URI"
         case environmentGrpcEndpoint = "TINK_CUSTOM_GRPC_ENDPOINT"
         case environmentRestEndpoint = "TINK_CUSTOM_REST_ENDPOINT"
-        case clientID = "TINK_CLIENT_ID"
         case grpcCertificateFileName = "TINK_GRPC_CERTIFICATE_FILE_NAME"
         case restCertificateFileName = "TINK_REST_CERTIFICATE_FILE_NAME"
         case grpcCertificate = "TINK_GRPC_CERTIFICATE"
         case restCertificate = "TINK_REST_CERTIFICATE"
         case market = "TINK_MARKET_CODE"
         case locale = "TINK_LOCALE_IDENTIFIER"
-        case redirectURI = "TINK_REDIRECT_URI"
     }
 
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         clientID = try values.decode(String.self, forKey: .clientID)
+        redirectURI = try values.decode(URL.self, forKey: .redirectURI)
         if let environmentGrpcEndpoint = try? values.decode(String.self, forKey: .environmentGrpcEndpoint),
             let grpcURL = URL(string: environmentGrpcEndpoint),
             let environmentRestEndpoint = try? values.decode(String.self, forKey: .environmentRestEndpoint),
@@ -106,12 +107,12 @@ extension TinkLink.Configuration: Codable {
             locale = TinkLink.defaultLocale
         }
 
-        redirectURI = try values.decode(URL.self, forKey: .redirectURI)
     }
 
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(clientID, forKey: .clientID)
+        try container.encode(redirectURI, forKey: .redirectURI)
         switch environment {
         case .production:
             break
@@ -127,7 +128,6 @@ extension TinkLink.Configuration: Codable {
         }
         try container.encode(market.rawValue, forKey: .market)
         try container.encode(locale.identifier, forKey: .locale)
-        try container.encode(redirectURI, forKey: .redirectURI)
     }
 }
 
@@ -154,12 +154,12 @@ extension TinkLink.Configuration {
     init(processInfo: ProcessInfo) throws {
         guard let clientID = processInfo.tinkClientID else { throw Error.clientIDNotFound }
         guard let redirectURI = processInfo.tinkRedirectURI else { throw Error.clientIDNotFound }
-        self.environment = processInfo.tinkEnvironment ?? .production
         self.clientID = clientID
+        self.redirectURI = redirectURI
+        self.environment = processInfo.tinkEnvironment ?? .production
         self.grpcCertificate = processInfo.tinkGrpcCertificate.flatMap { Data(base64Encoded: $0) }
         self.restCertificate = processInfo.tinkRestCertificate.flatMap { Data(base64Encoded: $0) }
         self.market = processInfo.tinkMarket ?? TinkLink.defaultMarket
         self.locale = processInfo.tinkLocale ?? TinkLink.defaultLocale
-        self.redirectURI = redirectURI
     }
 }
