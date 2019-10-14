@@ -17,7 +17,6 @@ final class CredentialStore {
     }
 
     private let authenticationManager: AuthenticationManager
-    private let market: Market
     private let locale: Locale
     private var service: CredentialService
     private var createCredentialRetryCancellable: [Provider.ID: RetryCancellable] = [:]
@@ -26,7 +25,6 @@ final class CredentialStore {
 
     init(tinkLink: TinkLink) {
         self.service = tinkLink.client.credentialService
-        self.market = tinkLink.client.market
         self.locale = tinkLink.client.locale
         self.authenticationManager = tinkLink.authenticationManager
     }
