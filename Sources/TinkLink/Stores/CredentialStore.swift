@@ -16,11 +16,10 @@ final class CredentialStore {
         }
     }
 
-    private var service: CredentialService
     private let tinkQueue = DispatchQueue(label: "com.tink.TinkLink.CredentialStore", attributes: .concurrent)
 
-    init(tinkLink: TinkLink) {
-        self.service = tinkLink.client.credentialService
+    init() {
+
     }
 
     func update(credential: Credential) {
