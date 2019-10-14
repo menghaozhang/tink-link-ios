@@ -22,7 +22,23 @@ public struct Provider {
     public var displayName: String
 
     /// Indicates what kind of financial institution the provider represents.
-    public var type: ProviderType
+    public enum Kind {
+        case unknown
+        case bank
+        case creditCard
+        case broker
+        case other
+
+        /// Indicates a test provider.
+        case test
+        case fraud
+
+        public static var excludingTest: Set<Provider.Kind> = [.unknown, .bank, .creditCard, .broker, .other, .fraud]
+        public static var all: Set<Provider.Kind> = [.unknown, .bank, .creditCard, .broker, .other, .test, .fraud]
+    }
+
+    /// Indicates what kind of financial institution the provider represents.
+    public var kind: Provider.Kind
 
     /// Indicates the current status of a provider.
     public enum Status {
@@ -133,20 +149,4 @@ public struct Provider {
 
     /// The name of the financial institution.
     public var financialInstitutionName: String
-}
-
-/// Indicates what type of financial institution the provider represents.
-public enum ProviderType {
-    case unknown
-    case bank
-    case creditCard
-    case broker
-    case other
-
-    /// Indicates a test provider.
-    case test
-    case fraud
-
-    public static var excludingTest: Set<ProviderType> = [.unknown, .bank, .creditCard, .broker, .other, .fraud]
-    public static var all: Set<ProviderType> = [.unknown, .bank, .creditCard, .broker, .other, .test, .fraud]
 }
