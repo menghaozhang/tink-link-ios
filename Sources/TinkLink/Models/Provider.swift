@@ -53,8 +53,8 @@ public struct Provider {
     /// - Note: It is only possible to perform credentials create or refresh actions on providers which are enabled.
     public var status: Status
 
-    /// When creating a new credential connected to the provider this will be the credential's type.
-    public var credentialType: CredentialType
+    /// When creating a new credential connected to the provider this will be the credential's kind.
+    public var credentialKind: Credential.Kind
 
     /// Short description of how to authenticate when creating a new credential for connected to the provider.
     public var helpText: String
