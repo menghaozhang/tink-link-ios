@@ -24,7 +24,7 @@ final class AddCredentialViewController: UITableViewController {
     init(provider: Provider) {
         self.credentialContext = CredentialContext()
         self.provider = provider
-        form = Form(provider: provider)
+        self.form = Form(provider: provider)
 
         if #available(iOS 13.0, *) {
             super.init(style: .insetGrouped)
