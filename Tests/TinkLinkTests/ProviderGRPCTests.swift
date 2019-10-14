@@ -57,8 +57,8 @@ class ProviderGRPCTests: XCTestCase {
         XCTAssertEqual(provider.displayDescription, grpcProvider.displayDescription)
         XCTAssertEqual(provider.marketCode, grpcProvider.marketCode)
         XCTAssertEqual(provider.accessType, .other)
-        XCTAssertEqual(provider.financialInstitutionID, grpcProvider.financialInstitutionID)
-        XCTAssertEqual(provider.financialInstitutionName, grpcProvider.financialInstitutionName)
+        XCTAssertEqual(provider.financialInstitution.id.value, grpcProvider.financialInstitutionID)
+        XCTAssertEqual(provider.financialInstitution.name, grpcProvider.financialInstitutionName)
     }
 
     func testCapabilitiesMapping() {
