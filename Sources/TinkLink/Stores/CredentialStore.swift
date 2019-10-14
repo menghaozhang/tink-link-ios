@@ -22,8 +22,6 @@ final class CredentialStore {
     private var service: CredentialService
     private var createCredentialRetryCancellable: [Provider.ID: RetryCancellable] = [:]
     private var credentialStatusPollingRetryCancellable: [Credential.ID: RetryCancellable] = [:]
-    private var addSupplementalInformationRetryCancellable: [Credential.ID: RetryCancellable] = [:]
-    private var cancelSupplementInformationRetryCancellable: [Credential.ID: RetryCancellable] = [:]
     private var fetchCredentialsRetryCancellable: RetryCancellable?
     private let tinkQueue = DispatchQueue(label: "com.tink.TinkLink.CredentialStore", attributes: .concurrent)
 
@@ -59,24 +57,6 @@ final class CredentialStore {
             multiHandler.add(handler)
         }
         return multiHandler
-    }
-
-    /// - Precondition: Service should be configured with access token before this method is called.
-    func addSupplementalInformation(for credential: Credential, supplementalInformationFields: [String: String], completion: @escaping (Result<Void, Error>) -> Void) {
-        precondition(service.metadata.hasAuthorization, "Service doesn't have authentication metadata set!")
-        addSupplementalInformationRetryCancellable[credential.id] = service.supplementInformation(credentialID: credential.id, fields: supplementalInformationFields) { [weak self] result in
-            self?.addSupplementalInformationRetryCancellable[credential.id] = nil
-            completion(result)
-        }
-    }
-
-    /// - Precondition: Service should be configured with access token before this method is called.
-    func cancelSupplementInformation(for credential: Credential, completion: @escaping (Result<Void, Error>) -> Void) {
-        precondition(service.metadata.hasAuthorization, "Service doesn't have authentication metadata set!")
-        cancelSupplementInformationRetryCancellable[credential.id] = service.cancelSupplementInformation(credentialID: credential.id) { [weak self] result in
-            self?.cancelSupplementInformationRetryCancellable[credential.id] = nil
-            completion(result)
-        }
     }
 
     func update(credential: Credential) {
