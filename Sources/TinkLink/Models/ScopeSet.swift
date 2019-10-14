@@ -5,16 +5,16 @@ public struct ScopeSet: OptionSet, Hashable {
         self.rawValue = rawValue
     }
 
-    static let read = ScopeSet(rawValue: 1 << 0)
-    static let write = ScopeSet(rawValue: 1 << 1)
-    static let grant = ScopeSet(rawValue: 1 << 2)
-    static let revoke = ScopeSet(rawValue: 1 << 3)
-    static let refresh = ScopeSet(rawValue: 1 << 4)
-    static let categorize = ScopeSet(rawValue: 1 << 5)
-    static let execute = ScopeSet(rawValue: 1 << 6)
-    static let create = ScopeSet(rawValue: 1 << 7)
-    static let delete = ScopeSet(rawValue: 1 << 8)
-    static let webHooks = ScopeSet(rawValue: 1 << 9)
+    public static let read = ScopeSet(rawValue: 1 << 0)
+    public static let write = ScopeSet(rawValue: 1 << 1)
+    public static let grant = ScopeSet(rawValue: 1 << 2)
+    public static let revoke = ScopeSet(rawValue: 1 << 3)
+    public static let refresh = ScopeSet(rawValue: 1 << 4)
+    public static let categorize = ScopeSet(rawValue: 1 << 5)
+    public static let execute = ScopeSet(rawValue: 1 << 6)
+    public static let create = ScopeSet(rawValue: 1 << 7)
+    public static let delete = ScopeSet(rawValue: 1 << 8)
+    public static let webHooks = ScopeSet(rawValue: 1 << 9)
 
     static var scopeDescriptions: [ScopeSet: String] = {
         var descriptions = [ScopeSet:String]()
@@ -24,54 +24,10 @@ public struct ScopeSet: OptionSet, Hashable {
         descriptions[.revoke] = "revoke"
         descriptions[.refresh] = "refresh"
         descriptions[.categorize] = "categorize"
-        descriptions[.grant] = "grant"
-        descriptions[.grant] = "grant"
+        descriptions[.execute] = "execute"
+        descriptions[.create] = "create"
+        descriptions[.delete] = "delete"
+        descriptions[.webHooks] = "web_hooks"
         return descriptions
     }()
-}
-
-
-public protocol ScopeType: CustomStringConvertible {
-    static var name: String { get set }
-    var scope: ScopeSet { get set }
-}
-
-extension ScopeType {
-    public var description: String {
-        var scopes = [String]()
-        for (scopeKey, scopeString) in ScopeSet.scopeDescriptions {
-            if scope.contains(scopeKey) {
-                scopes.append(AccountsScope.name + scopeString)
-            }
-        }
-        return scopes.joined(separator: ",")
-    }
-}
-
-public struct AccountsScope: ScopeType {
-    public static var name = "accounts:"
-    public var scope: ScopeSet
-}
-
-public struct ActivitiesScope: ScopeType {
-    public static var name = "activities:"
-    public var scope: ScopeSet
-}
-
-public struct AuthorizationScope: ScopeType {
-    public static var name = "authorization:"
-    public var scope: ScopeSet
-}
-
-public struct TinkLinkScope: CustomStringConvertible {
-    public var scopes: [ScopeType]
-    public var description: String
-    public init(accountsScope: AccountsScope?, activitiesScope: ActivitiesScope?, authorizationScope: AuthorizationScope?) {
-        scopes = []
-        if let accountsScope = accountsScope {
-            scopes.append(accountsScope)
-        }
-
-        description = scopes.map { $0.description }.joined(separator: ",")
-    }
 }
