@@ -20,8 +20,45 @@ public struct Credential {
     /// The provider (financial institution) that the credentials is connected to.
     public var providerID: Provider.ID
 
+    /// Indicates how Tink authenticates the user to a financial institution.
+    public enum Kind: CustomStringConvertible {
+        case unknown
+
+        /// The user will authenticate the credential with a password.
+        case password
+
+        /// The user will authenticate the credential with Mobile BankID.
+        case mobileBankID
+
+        /// The user will authenticate the credential with a Key Fob.
+        case keyfob
+
+        /// Fraud
+        case fraud
+
+        /// The user will authenticate the credential with a third party app.
+        case thirdPartyAuthentication
+
+        public var description: String {
+            switch self {
+            case .unknown:
+                return "Unknown"
+            case .password:
+                return "Password"
+            case .mobileBankID:
+                return "Mobile BankID"
+            case .keyfob:
+                return "Key Fob"
+            case .fraud:
+                return "Fraud"
+            case .thirdPartyAuthentication:
+                return "Third Party Authentication"
+            }
+        }
+    }
+
     /// Indicates how Tink authenticates the user to the financial institution.
-    public var type: CredentialType
+    public var kind: Credential.Kind
 
     /// The status indicates the state of a credential.
     public enum Status {
@@ -127,41 +164,4 @@ public struct Credential {
 
     /// Indicates when the session of credentials with access type `Provider.AccessType.openBanking` will expire. After this date automatic refreshes will not be possible without new authentication from the user.
     public var sessionExpiryDate: Date?
-}
-
-/// Indicates how Tink authenticates the user to a financial institution.
-public enum CredentialType: CustomStringConvertible {
-    case unknown
-
-    /// The user will authenticate the credential with a password.
-    case password
-
-    /// The user will authenticate the credential with Mobile BankID.
-    case mobileBankID
-
-    /// The user will authenticate the credential with a Key Fob.
-    case keyfob
-
-    /// Fraud
-    case fraud
-
-    /// The user will authenticate the credential with a third party app.
-    case thirdPartyAuthentication
-
-    public var description: String {
-        switch self {
-        case .unknown:
-            return "Unknown"
-        case .password:
-            return "Password"
-        case .mobileBankID:
-            return "Mobile BankID"
-        case .keyfob:
-            return "Key Fob"
-        case .fraud:
-            return "Fraud"
-        case .thirdPartyAuthentication:
-            return "Third Party Authentication"
-        }
-    }
 }

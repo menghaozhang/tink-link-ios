@@ -4,7 +4,7 @@ extension Credential {
     init(grpcCredential: GRPCCredential) {
         self.id = .init(grpcCredential.id)
         self.providerID = .init(grpcCredential.providerName)
-        self.type = .init(grpcCredentialType: grpcCredential.type)
+        self.kind = .init(grpcCredentialType: grpcCredential.type)
         self.status = .init(grpcCredentialStatus: grpcCredential.status)
         self.statusPayload = grpcCredential.statusPayload
         self.statusUpdated = grpcCredential.hasStatusUpdated ? grpcCredential.statusUpdated.date : nil
@@ -16,7 +16,7 @@ extension Credential {
     }
 }
 
-extension CredentialType {
+extension Credential.Kind {
     init(grpcCredentialType: GRPCCredential.TypeEnum) {
         switch grpcCredentialType {
         case .unknown:

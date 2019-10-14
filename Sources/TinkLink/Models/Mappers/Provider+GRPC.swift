@@ -5,7 +5,7 @@ extension Provider {
     init(grpcProvider: GRPCProvider) {
         self.id = .init(grpcProvider.name)
         self.displayName = grpcProvider.displayName
-        self.type = .init(grpcType: grpcProvider.type)
+        self.kind = .init(grpcType: grpcProvider.type)
         self.status = Status(grpcStatus: grpcProvider.status)
         self.helpText = grpcProvider.helpText
         self.isPopular = grpcProvider.popular
@@ -18,11 +18,11 @@ extension Provider {
         self.accessType = .init(grpcAccessType: grpcProvider.accessType)
         self.financialInstitutionID = grpcProvider.financialInstitutionID
         self.financialInstitutionName = grpcProvider.financialInstitutionName
-        self.credentialType = .init(grpcCredentialType: grpcProvider.credentialType)
+        self.credentialKind = .init(grpcCredentialType: grpcProvider.credentialType)
     }
 }
 
-extension ProviderType {
+extension Provider.Kind {
     init(grpcType: GRPCProvider.TypeEnum) {
         switch grpcType {
         case .unknown:

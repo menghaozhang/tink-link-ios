@@ -19,7 +19,7 @@ class CredentialGRPCTests: XCTestCase {
 
         XCTAssertEqual(credential.id.value, grpcCredential.id)
         XCTAssertEqual(credential.providerID.value, grpcCredential.providerName)
-        XCTAssertEqual(credential.type, .mobileBankID)
+        XCTAssertEqual(credential.kind, .mobileBankID)
         XCTAssertEqual(credential.status, .created)
         XCTAssertEqual(credential.statusPayload, grpcCredential.statusPayload)
         XCTAssertNil(credential.updated)
@@ -48,7 +48,7 @@ class CredentialGRPCTests: XCTestCase {
 
         XCTAssertEqual(credential.id.value, grpcCredential.id)
         XCTAssertEqual(credential.providerID.value, grpcCredential.providerName)
-        XCTAssertEqual(credential.type, .mobileBankID)
+        XCTAssertEqual(credential.kind, .mobileBankID)
         XCTAssertEqual(credential.status, .updated)
         XCTAssertEqual(credential.statusPayload, grpcCredential.statusPayload)
         XCTAssertEqual(credential.updated, updatedAt)
@@ -88,7 +88,7 @@ class CredentialGRPCTests: XCTestCase {
 
         XCTAssertEqual(credential.id.value, grpcCredential.id)
         XCTAssertEqual(credential.providerID.value, grpcCredential.providerName)
-        XCTAssertEqual(credential.type, .mobileBankID)
+        XCTAssertEqual(credential.kind, .mobileBankID)
         XCTAssertEqual(credential.status, .awaitingThirdPartyAppAuthentication)
         XCTAssertEqual(credential.statusPayload, grpcCredential.statusPayload)
         XCTAssertNil(credential.updated)
