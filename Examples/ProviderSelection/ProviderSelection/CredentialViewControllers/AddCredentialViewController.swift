@@ -4,7 +4,7 @@ import UIKit
 
 /// Example of how to use the provider field specification to add credential
 final class AddCredentialViewController: UITableViewController {
-    var credentialContext: CredentialContext?
+    let credentialContext: CredentialContext
     let provider: Provider
 
     private var form: Form
@@ -22,6 +22,7 @@ final class AddCredentialViewController: UITableViewController {
     private lazy var helpLabel = UITextView()
 
     init(provider: Provider) {
+        self.credentialContext = CredentialContext()
         self.provider = provider
         form = Form(provider: provider)
 
@@ -42,8 +43,6 @@ final class AddCredentialViewController: UITableViewController {
 extension AddCredentialViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        credentialContext = CredentialContext()
 
         tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
         tableView.allowsSelection = false
