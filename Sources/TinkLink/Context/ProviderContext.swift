@@ -29,12 +29,12 @@ public class ProviderContext {
     /// Attributes representing which providers a context should access.
     public struct Attributes: Hashable {
         public let capabilities: Provider.Capabilities
-        public let types: Set<ProviderType>
+        public let kinds: Set<Provider.Kind>
         public let accessTypes: Set<Provider.AccessType>
 
-        public init(capabilities: Provider.Capabilities, types: Set<ProviderType>, accessTypes: Set<Provider.AccessType>) {
+        public init(capabilities: Provider.Capabilities, kinds: Set<Provider.Kind>, accessTypes: Set<Provider.AccessType>) {
             self.capabilities = capabilities
-            self.types = types
+            self.kinds = kinds
             self.accessTypes = accessTypes
         }
     }
@@ -79,7 +79,7 @@ public class ProviderContext {
     /// A convenience initializer that creates a context to access providers including all capabilities and access types but no test providers.
     /// - Parameter tinkLink: TinkLink instance, will use the shared instance if nothing is provided.
     public convenience init(tinkLink: TinkLink = .shared) {
-        let attributes = Attributes(capabilities: .all, types: ProviderType.excludingTest, accessTypes: Provider.AccessType.all)
+        let attributes = Attributes(capabilities: .all, kinds: Provider.Kind.excludingTest, accessTypes: Provider.AccessType.all)
         self.init(tinkLink: tinkLink, attributes: attributes)
     }
 

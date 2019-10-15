@@ -44,9 +44,9 @@ class ProviderGRPCTests: XCTestCase {
 
         XCTAssertEqual(provider.id.value, grpcProvider.name)
         XCTAssertEqual(provider.displayName, grpcProvider.displayName)
-        XCTAssertEqual(provider.type, .test)
+        XCTAssertEqual(provider.kind, .test)
         XCTAssertEqual(provider.status, .enabled)
-        XCTAssertEqual(provider.credentialType, .thirdPartyAuthentication)
+        XCTAssertEqual(provider.credentialKind, .thirdPartyAuthentication)
         XCTAssertFalse(provider.isPopular)
         XCTAssertEqual(provider.fields.count, 1)
         if let field = provider.fields.first {
@@ -57,8 +57,8 @@ class ProviderGRPCTests: XCTestCase {
         XCTAssertEqual(provider.displayDescription, grpcProvider.displayDescription)
         XCTAssertEqual(provider.marketCode, grpcProvider.marketCode)
         XCTAssertEqual(provider.accessType, .other)
-        XCTAssertEqual(provider.financialInstitutionID, grpcProvider.financialInstitutionID)
-        XCTAssertEqual(provider.financialInstitutionName, grpcProvider.financialInstitutionName)
+        XCTAssertEqual(provider.financialInstitution.id.value, grpcProvider.financialInstitutionID)
+        XCTAssertEqual(provider.financialInstitution.name, grpcProvider.financialInstitutionName)
     }
 
     func testCapabilitiesMapping() {

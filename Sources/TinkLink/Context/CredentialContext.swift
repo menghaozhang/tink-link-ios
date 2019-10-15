@@ -44,7 +44,7 @@ public class CredentialContext {
                 .values
                 .sorted(by: { $0.id.value < $1.id.value })
             _credentials = storedCredentials
-            performFetch()
+            performFetchIfNeeded()
             return storedCredentials
         }
         return credentials
@@ -59,7 +59,7 @@ public class CredentialContext {
         didSet {
             if delegate != nil {
                 addStoreObservers()
-                performFetch()
+                performFetchIfNeeded()
             } else {
                 removeStoreObservers()
             }
@@ -71,12 +71,21 @@ public class CredentialContext {
     private var credentialStoreChangeObserver: Any?
     private var credentialStoreErrorObserver: Any?
 
+    private var service: CredentialService
+    private let authenticationManager: AuthenticationManager
+    private let locale: Locale
+
+    private var fetchCredentialsRetryCancellable: RetryCancellable?
+
     /// Creates a new CredentialContext for the given TinkLink instance.
     ///
     /// - Parameter tinkLink: TinkLink instance, defaults to `shared` if not provided.
     public init(tinkLink: TinkLink = .shared) {
         self.tinkLink = tinkLink
         self.credentialStore = tinkLink.credentialStore
+        self.authenticationManager = tinkLink.authenticationManager
+        self.service = tinkLink.client.credentialService
+        self.locale = tinkLink.client.locale
     }
 
     private func addStoreObservers() {
@@ -85,11 +94,6 @@ public class CredentialContext {
             self._credentials = self.credentialStore.credentials
                 .values
                 .sorted(by: { $0.id.value < $1.id.value })
-        }
-
-        credentialStoreErrorObserver = NotificationCenter.default.addObserver(forName: .credentialStoreErrorOccured, object: credentialStore, queue: .main) { [weak self] notification in
-            guard let self = self, let error = notification.userInfo?[CredentialStoreErrorOccuredNotificationErrorKey] as? Error else { return }
-            self.delegate?.credentialContext(self, didReceiveError: error)
         }
     }
 
@@ -143,10 +147,11 @@ public class CredentialContext {
 
         let appURI = tinkLink.configuration.redirectURI
 
-        credentialStore.addCredential(for: provider, fields: form.makeFields(), appURI: appURI) { [weak self, weak task] result in
+        task.callCanceller = addCredentialAndAuthenticateIfNeeded(for: provider, fields: form.makeFields(), appURI: appURI) { [weak self, weak task] result in
             guard let self = self else { return }
             do {
                 let credential = try result.get()
+                self.credentialStore.update(credential: credential)
                 task?.startObserving(credential)
             } catch {
                 completion(.failure(error))
@@ -156,7 +161,41 @@ public class CredentialContext {
         return task
     }
 
+    func performFetchIfNeeded() {
+        if fetchCredentialsRetryCancellable == nil {
+            performFetch()
+        }
+    }
+
     private func performFetch() {
-        credentialStore.performFetchIfNeeded()
+        fetchCredentialsRetryCancellable = service.credentials { [weak self] result in
+            guard let self = self else { return }
+            do {
+                let credentials = try result.get()
+                self.credentialStore.store(credentials)
+            } catch {
+                self.delegate?.credentialContext(self, didReceiveError: error)
+            }
+            self.fetchCredentialsRetryCancellable = nil
+        }
+    }
+
+    private func addCredentialAndAuthenticateIfNeeded(for provider: Provider, fields: [String: String], appURI: URL, completion: @escaping (Result<Credential, Error>) -> Void) -> RetryCancellable {
+        let multiHandler = MultiHandler()
+        let market = Market(code: provider.marketCode)
+
+        let authHandler = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { result in
+            do {
+                try result.get()
+                let handler = self.service.createCredential(providerID: provider.id, fields: fields, appURI: appURI, completion: completion)
+                multiHandler.add(handler)
+            } catch {
+                completion(.failure(error))
+            }
+        }
+        if let handler = authHandler {
+            multiHandler.add(handler)
+        }
+        return multiHandler
     }
 }
