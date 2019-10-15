@@ -77,4 +77,8 @@ public class ThirdPartyAppAuthenticationTask {
             }
         }
     }
+
+    public func cancel() {
+        completionHandler(.failure(CocoaError(.userCancelled)))
+    }
 }
