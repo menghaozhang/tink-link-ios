@@ -24,6 +24,7 @@
 		209D69282326878800B4DBB8 /* SupplementInformationTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209D69272326878800B4DBB8 /* SupplementInformationTask.swift */; };
 		20A5AF57234DC22F00063701 /* ProviderGroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A5AF55234DC21200063701 /* ProviderGroupTests.swift */; };
 		20C300E92341D44F0004E284 /* ConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C300E72341D43B0004E284 /* ConfigurationTests.swift */; };
+		20C3A7782354584F0048EBA4 /* FinancialInstitution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C3A7772354584F0048EBA4 /* FinancialInstitution.swift */; };
 		20D129E2234E1737005C2D34 /* CredentialGRPCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D129E0234E1732005C2D34 /* CredentialGRPCTests.swift */; };
 		20D8125F2330DAD7000B3A30 /* Service+Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8125E2330DAD7000B3A30 /* Service+Metadata.swift */; };
 		20E19DB22306E59900BF053A /* BoringSSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85462303FD85006213BB /* BoringSSL.framework */; };
@@ -98,6 +99,7 @@
 		209D69272326878800B4DBB8 /* SupplementInformationTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementInformationTask.swift; sourceTree = "<group>"; };
 		20A5AF55234DC21200063701 /* ProviderGroupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderGroupTests.swift; sourceTree = "<group>"; };
 		20C300E72341D43B0004E284 /* ConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationTests.swift; sourceTree = "<group>"; };
+		20C3A7772354584F0048EBA4 /* FinancialInstitution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialInstitution.swift; sourceTree = "<group>"; };
 		20D129E0234E1732005C2D34 /* CredentialGRPCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialGRPCTests.swift; sourceTree = "<group>"; };
 		20D8125E2330DAD7000B3A30 /* Service+Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Service+Metadata.swift"; sourceTree = "<group>"; };
 		20E6886C234F0B7800B4E04F /* insight_models.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = insight_models.pb.swift; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 				20E6887A234F570C00B4E04F /* AuthorizationError.swift */,
 				200FD63C23154AFC0077181A /* AccessToken.swift */,
 				20ED8579230407B3006213BB /* Provider.swift */,
+				20C3A7772354584F0048EBA4 /* FinancialInstitution.swift */,
 				8FA3558D231EA1840054115D /* ProviderGroup.swift */,
 				20ED859523045896006213BB /* Credential.swift */,
 				20492599232A3AF000D4461D /* Form.swift */,
@@ -522,6 +525,7 @@
 				20EE138123053B2700C92D65 /* Credential+GRPC.swift in Sources */,
 				2049259A232A3AF000D4461D /* Form.swift in Sources */,
 				8FA3558E231EA1840054115D /* ProviderGroup.swift in Sources */,
+				20C3A7782354584F0048EBA4 /* FinancialInstitution.swift in Sources */,
 				20E6886D234F0B7800B4E04F /* insight_models.pb.swift in Sources */,
 				20D8125F2330DAD7000B3A30 /* Service+Metadata.swift in Sources */,
 				20ED85432303FAEC006213BB /* services.grpc.swift in Sources */,

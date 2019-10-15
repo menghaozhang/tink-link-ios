@@ -16,9 +16,11 @@ extension Provider {
         self.capabilities = .init(grpcCapabilities: grpcProvider.capabilities)
         self.marketCode = grpcProvider.marketCode
         self.accessType = .init(grpcAccessType: grpcProvider.accessType)
-        self.financialInstitutionID = grpcProvider.financialInstitutionID
-        self.financialInstitutionName = grpcProvider.financialInstitutionName
         self.credentialKind = .init(grpcCredentialType: grpcProvider.credentialType)
+        self.financialInstitution = FinancialInstitution(
+            id: .init(grpcProvider.financialInstitutionID),
+            name: grpcProvider.financialInstitutionName
+        )
     }
 }
 
