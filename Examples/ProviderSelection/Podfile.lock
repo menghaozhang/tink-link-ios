@@ -36,7 +36,7 @@ DEPENDENCIES:
   - TinkLink/Tests (from `../../`)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - BoringSSL-GRPC
     - gRPC-Core
     - nanopb
@@ -59,4 +59,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 140b0501fe9695667ad0bcf1eebf6b7c19e51420
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.8.3
