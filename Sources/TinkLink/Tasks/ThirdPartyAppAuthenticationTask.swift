@@ -45,7 +45,7 @@ public class ThirdPartyAppAuthenticationTask {
         self.completionHandler = completionHandler
     }
 
-    @available(iOS 10.0, *)
+    #if os(iOS)
     public func openThirdPartyApp(with application: UIApplication = .shared) {
         guard let url = thirdPartyAppAuthentication.deepLinkURL else {
             completionHandler(.failure(Error.deeplinkURLNotFound))
@@ -77,6 +77,7 @@ public class ThirdPartyAppAuthenticationTask {
             }
         }
     }
+    #endif
 
     public func cancel() {
         completionHandler(.failure(CocoaError(.userCancelled)))
