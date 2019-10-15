@@ -1,4 +1,6 @@
+#if os(iOS)
 import UIKit
+#endif
 
 public enum ThirdPartyAppAuthenticationError: Error, LocalizedError {
     case deeplinkURLNotFound
