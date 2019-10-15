@@ -15,8 +15,8 @@ public struct FinancialInstitution: Hashable {
     /// A unique identifier.
     ///
     /// Use this to group providers belonging the same financial institution.
-    public var id: ID
+    public let id: ID
 
     /// The name of the financial institution.
-    public var name: String
+    public let name: String
 }
