@@ -185,12 +185,8 @@ extension AddCredentialViewController {
                 break
             case .awaitingSupplementalInformation(let supplementInformationTask):
                 self.showSupplementalInformation(for: supplementInformationTask)
-            case .awaitingThirdPartyAppAuthentication(let thirdPartyAppAuthentication):
-                if let deepLinkURL = thirdPartyAppAuthentication.deepLinkURL, UIApplication.shared.canOpenURL(deepLinkURL) {
-                    UIApplication.shared.open(deepLinkURL)
-                } else {
-                    self.showDownloadPrompt(for: thirdPartyAppAuthentication)
-                }
+            case .awaitingThirdPartyAppAuthentication(let thirdPartyAppAuthenticationTask):
+                thirdPartyAppAuthenticationTask.open()
             case .updating(let status):
                 self.showUpdating(status: status)
             }
@@ -204,6 +200,8 @@ extension AddCredentialViewController {
             do {
                 let credential = try result.get()
                 self.showCredentialUpdated(for: credential)
+            } catch let error as ThirdPartyAppAuthenticationError {
+                self.showDownloadPrompt(for: error)
             } catch {
                 self.hideUpdatingView(animated: true) {
                     self.showAlert(for: error)
@@ -254,10 +252,10 @@ extension AddCredentialViewController {
         show(finishedCredentialUpdatedViewController, sender: nil)
     }
 
-    private func showDownloadPrompt(for thirdPartyAppAuthentication: Credential.ThirdPartyAppAuthentication) {
-        let alertController = UIAlertController(title: thirdPartyAppAuthentication.downloadTitle, message: thirdPartyAppAuthentication.downloadMessage, preferredStyle: .alert)
+    private func showDownloadPrompt(for thirdPartyAppAuthenticationError: ThirdPartyAppAuthenticationError) {
+        let alertController = UIAlertController(title: thirdPartyAppAuthenticationError.errorDescription, message: thirdPartyAppAuthenticationError.failureReason, preferredStyle: .alert)
 
-        if let appStoreURL = thirdPartyAppAuthentication.appStoreURL, UIApplication.shared.canOpenURL(appStoreURL) {
+        if let appStoreURL = thirdPartyAppAuthenticationError.appStoreURL, UIApplication.shared.canOpenURL(appStoreURL) {
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
             let downloadAction = UIAlertAction(title: "Download", style: .default, handler: { _ in
                 UIApplication.shared.open(appStoreURL)
