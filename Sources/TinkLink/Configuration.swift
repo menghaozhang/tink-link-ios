@@ -47,90 +47,6 @@ extension TinkLink {
     }
 }
 
-extension TinkLink.Configuration: Codable {
-    enum CodingKeys: String, CodingKey {
-        case clientID = "TINK_CLIENT_ID"
-        case redirectURI = "TINK_REDIRECT_URI"
-        case environmentGrpcEndpoint = "TINK_CUSTOM_GRPC_ENDPOINT"
-        case environmentRestEndpoint = "TINK_CUSTOM_REST_ENDPOINT"
-        case grpcCertificateFileName = "TINK_GRPC_CERTIFICATE_FILE_NAME"
-        case restCertificateFileName = "TINK_REST_CERTIFICATE_FILE_NAME"
-        case grpcCertificate = "TINK_GRPC_CERTIFICATE"
-        case restCertificate = "TINK_REST_CERTIFICATE"
-        case market = "TINK_MARKET_CODE"
-        case locale = "TINK_LOCALE_IDENTIFIER"
-    }
-
-    public init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        clientID = try values.decode(String.self, forKey: .clientID)
-        redirectURI = try values.decode(URL.self, forKey: .redirectURI)
-        if let environmentGrpcEndpoint = try? values.decode(String.self, forKey: .environmentGrpcEndpoint),
-            let grpcURL = URL(string: environmentGrpcEndpoint),
-            let environmentRestEndpoint = try? values.decode(String.self, forKey: .environmentRestEndpoint),
-            let restURL = URL(string: environmentRestEndpoint) {
-            self.environment = .custom(grpcURL: grpcURL, restURL: restURL)
-        } else {
-            self.environment = .production
-        }
-        if let certificateFileName = try values.decodeIfPresent(String.self, forKey: .grpcCertificateFileName) {
-            guard let certificateURL = Bundle.main.url(forResource: certificateFileName, withExtension: "pem") else {
-                fatalError("Cannot find gRPC certificate file")
-            }
-            self.grpcCertificate = try? Data(contentsOf: certificateURL)
-        } else if let certificateData = try values.decodeIfPresent(Data.self, forKey: .grpcCertificate) {
-            self.grpcCertificate = certificateData
-        }
-        if let certificateFileName = try values.decodeIfPresent(String.self, forKey: .restCertificateFileName) {
-            guard let certificateURL = Bundle.main.url(forResource: certificateFileName, withExtension: "cer") else {
-                fatalError("Cannot find REST certificate file")
-            }
-            self.restCertificate = try? Data(contentsOf: certificateURL)
-        } else if let certificateData = try values.decodeIfPresent(Data.self, forKey: .restCertificate) {
-            self.restCertificate = certificateData
-        }
-
-        if let marketCode = try values.decodeIfPresent(String.self, forKey: .market) {
-            market = Market(code: marketCode)
-        } else {
-            market = TinkLink.defaultMarket
-        }
-
-        if let localeIdentifier = try values.decodeIfPresent(String.self, forKey: .locale) {
-            let availableLocale = TinkLink.availableLocales.first { $0.identifier == localeIdentifier }
-            if let locale = availableLocale {
-                self.locale = locale
-            } else {
-                fatalError(localeIdentifier + " is not an available locale")
-            }
-        } else {
-            locale = TinkLink.defaultLocale
-        }
-
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(clientID, forKey: .clientID)
-        try container.encode(redirectURI, forKey: .redirectURI)
-        switch environment {
-        case .production:
-            break
-        case .custom(let grpcUrl, let restUrl):
-            try container.encode(grpcUrl.absoluteString, forKey: .environmentGrpcEndpoint)
-            try container.encode(restUrl.absoluteString, forKey: .environmentRestEndpoint)
-        }
-        if let data = grpcCertificate {
-            try container.encode(data, forKey: .grpcCertificate)
-        }
-        if let data = restCertificate {
-            try container.encode(data, forKey: .restCertificate)
-        }
-        try container.encode(market.rawValue, forKey: .market)
-        try container.encode(locale.identifier, forKey: .locale)
-    }
-}
-
 extension TinkLink.Configuration {
     enum Error: Swift.Error, LocalizedError {
         case clientIDNotFound
@@ -139,16 +55,11 @@ extension TinkLink.Configuration {
         var errorDescription: String? {
             switch self {
             case .clientIDNotFound:
-                return "`TINK_CLIENT_ID` was not found in environment variable or Info.plist. Please configure a Tink Link client before using it."
+                return "`TINK_CLIENT_ID` was not found in environment variable. Please configure a Tink Link client before using it."
             case .redirectURINotFound:
-                return "`TINK_REDIRECT_URI` was not found in environment variable or Info.plist. Please configure a Tink Link client before using it."
+                return "`TINK_REDIRECT_URI` was not found in environment variable. Please configure a Tink Link client before using it."
             }
         }
-    }
-
-    init(plistURL: URL) throws {
-        let data = try Data(contentsOf: plistURL)
-        self = try PropertyListDecoder().decode(TinkLink.Configuration.self, from: data)
     }
 
     init(processInfo: ProcessInfo) throws {
