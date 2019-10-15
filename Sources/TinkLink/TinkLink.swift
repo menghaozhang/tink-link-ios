@@ -93,6 +93,8 @@ public class TinkLink {
         }
     }
 
+    private var thirdPartyCallbackCanceller: Cancellable?
+
     @available(iOS 9.0, *)
     public func open(_ url: URL, completion: ((Result<Void, Error>) -> Void)? = nil) -> Bool {
         guard let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false),
@@ -106,7 +108,7 @@ public class TinkLink {
         let parameters = allParameters.filter { $0.key != stateParameterName }
         guard let state = allParameters[stateParameterName] else { return false }
 
-        client.credentialService.thirdPartyCallback(
+        thirdPartyCallbackCanceller = client.credentialService.thirdPartyCallback(
             state: state,
             parameters: parameters,
             completion: completion ?? { _ in }
