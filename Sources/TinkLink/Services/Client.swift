@@ -9,6 +9,8 @@ final class Client {
     var restURL: URL
     var restCertificate: Data?
 
+    private let clientKey = "e0e2c59be49f40a2ac3f21ae6893cbe7"
+
     init(environment: Environment, clientID: String, userAgent: String? = nil, grpcCertificate: Data? = nil, restCertificate: Data? = nil, market: Market, locale: Locale) {
         var arguments: [Channel.Argument] = []
         self.market = market
@@ -23,13 +25,14 @@ final class Client {
         }
 
         if let certificateContents = grpcCertificate?.base64EncodedString() {
-            self.channel = Channel(address: environment.grpcURL.absoluteString, certificates: certificateContents, clientCertificates: nil, clientKey: clientID, arguments: arguments)
+            self.channel = Channel(address: environment.grpcURL.absoluteString, certificates: certificateContents, clientCertificates: nil, clientKey: clientKey, arguments: arguments)
         } else {
             self.channel = Channel(address: environment.grpcURL.absoluteString, secure: true, arguments: arguments)
         }
 
         do {
             try metadata.add(key: Metadata.HeaderKey.oauthClientID.key, value: clientID)
+            try metadata.add(key: Metadata.HeaderKey.clientKey.key, value: clientKey)
             try metadata.addTinkMetadata()
         } catch {
             assertionFailure(error.localizedDescription)
