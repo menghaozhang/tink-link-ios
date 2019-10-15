@@ -45,7 +45,7 @@ public class ProviderContext {
     public var attributes: ProviderContext.Attributes {
         didSet {
             guard attributes != oldValue else { return }
-            performFetch()
+            performFetchIfNeeded()
         }
     }
 
@@ -71,7 +71,7 @@ public class ProviderContext {
     public weak var delegate: ProviderContextDelegate? {
         didSet {
             if delegate != nil, _providers == nil {
-                performFetch()
+                performFetchIfNeeded()
             }
         }
     }
@@ -104,7 +104,7 @@ public class ProviderContext {
         }
     }
 
-    private func performFetch() {
+    private func performFetchIfNeeded() {
         providerStore.performFetchProvidersIfNeeded(for: attributes)
     }
 }
@@ -115,7 +115,7 @@ extension ProviderContext {
     /// - Note: The providers could be empty at first or change if the context's attributes are changed. Use the delegate to get notified when providers change.
     public var providers: [Provider] {
         guard let providers = _providers else {
-            performFetch()
+            performFetchIfNeeded()
             return []
         }
         return providers
@@ -126,7 +126,7 @@ extension ProviderContext {
     /// - Note: The providerGroups could be empty at first or change if the context's attributes are changed. Use the delegate to get notified when providerGroups change.
     public var providerGroups: [ProviderGroup] {
         guard let providerGroups = _providerGroups else {
-            performFetch()
+            performFetchIfNeeded()
             return []
         }
         return providerGroups
