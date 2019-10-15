@@ -130,8 +130,8 @@ extension ProviderContext {
             guard let self = self, !multiHandler.isCancelled else { return }
             do {
                 try authenticationResult.get()
-                let RetryCancellable = self.unauthenticatedPerformFetchProviders(attributes: attributes)
-                multiHandler.add(RetryCancellable)
+                let fetchCanceller = self.unauthenticatedPerformFetchProviders(attributes: attributes)
+                multiHandler.add(fetchCanceller)
             } catch {
                 self.delegate?.providerContext(self, didReceiveError: error)
                 self.providerFetchHandlers[attributes] = nil
