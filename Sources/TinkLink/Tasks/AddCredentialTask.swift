@@ -106,6 +106,8 @@ public class AddCredentialTask {
                 let task = ThirdPartyAppAuthenticationTask(credential: credential) { (result) in
                     do {
                         try result.get()
+                        self.credentialStatusPollingTask = CredentialStatusPollingTask(credential: credential, updateHandler: self.handleUpdate)
+                        self.credentialStatusPollingTask?.pollStatus()
                     } catch {
                         self.completion(.failure(error))
                     }
