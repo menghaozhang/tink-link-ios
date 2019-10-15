@@ -67,8 +67,8 @@ extension ProviderListViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let providerGroup = providerGroups[indexPath.row]
         switch providerGroup {
-        case .financialInsititutions(let financialInsititutionGroups):
-            showFinancialInstitution(for: financialInsititutionGroups, title: providerGroup.displayName)
+        case .financialInstitutions(let financialInstitutionGroups):
+            showFinancialInstitution(for: financialInstitutionGroups, title: providerGroup.displayName)
         case .accessTypes(let accessTypeGroups):
             showAccessTypePicker(for: accessTypeGroups, title: providerGroup.displayName)
         case .credentialTypes(let providers):
@@ -82,10 +82,10 @@ extension ProviderListViewController {
 // MARK: - Navigation
 
 extension ProviderListViewController {
-    func showFinancialInstitution(for groups: [FinancialInsititutionGroup], title: String?) {
+    func showFinancialInstitution(for groups: [FinancialInstitutionGroup], title: String?) {
         let viewController = FinancialInstitutionPickerViewController(style: .plain)
         viewController.title = title
-        viewController.financialInsititutionGroups = groups
+        viewController.financialInstitutionGroups = groups
         show(viewController, sender: nil)
     }
 

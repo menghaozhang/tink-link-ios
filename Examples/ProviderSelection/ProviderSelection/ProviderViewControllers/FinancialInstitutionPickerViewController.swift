@@ -3,7 +3,7 @@ import UIKit
 
 /// Example of how to use the provider grouped by financialInstitution
 final class FinancialInstitutionPickerViewController: UITableViewController {
-    var financialInsititutionGroups: [FinancialInsititutionGroup] = []
+    var financialInstitutionGroups: [FinancialInstitutionGroup] = []
 }
 
 // MARK: - View Lifecycle
@@ -23,23 +23,23 @@ extension FinancialInstitutionPickerViewController {
 
 extension FinancialInstitutionPickerViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return financialInsititutionGroups.count
+        return financialInstitutionGroups.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = financialInsititutionGroups[indexPath.row].financialInsititution.name
+        cell.textLabel?.text = financialInstitutionGroups[indexPath.row].financialInstitution.name
         cell.accessoryType = .disclosureIndicator
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let providersWithSameFinancialInstitution = financialInsititutionGroups[indexPath.row]
+        let providersWithSameFinancialInstitution = financialInstitutionGroups[indexPath.row]
         switch providersWithSameFinancialInstitution {
         case .accessTypes(let accessTypeGroups):
-            showAccessTypePicker(for: accessTypeGroups, title: providersWithSameFinancialInstitution.financialInsititution.name)
+            showAccessTypePicker(for: accessTypeGroups, title: providersWithSameFinancialInstitution.financialInstitution.name)
         case .credentialTypes(let providers):
-            showCredentialTypePicker(for: providers, title: providersWithSameFinancialInstitution.financialInsititution.name)
+            showCredentialTypePicker(for: providers, title: providersWithSameFinancialInstitution.financialInstitution.name)
         case .provider(let provider):
             showAddCredential(for: provider)
         }

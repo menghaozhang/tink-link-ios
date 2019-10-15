@@ -25,7 +25,7 @@ public enum ProviderAccessTypeGroup {
     }
 }
 
-public enum FinancialInsititutionGroup {
+public enum FinancialInstitutionGroup {
     case provider(Provider)
     case credentialTypes([Provider])
     case accessTypes([ProviderAccessTypeGroup])
@@ -56,7 +56,7 @@ public enum FinancialInsititutionGroup {
         }
     }
 
-    public var financialInsititution: FinancialInstitution {
+    public var financialInstitution: FinancialInstitution {
         return providers[0].financialInstitution
     }
 }
@@ -65,7 +65,7 @@ public enum ProviderGroup {
     case provider(Provider)
     case credentialTypes([Provider])
     case accessTypes([ProviderAccessTypeGroup])
-    case financialInsititutions([FinancialInsititutionGroup])
+    case financialInstitutions([FinancialInstitutionGroup])
 
     init(providers: [Provider]) {
         precondition(!providers.isEmpty)
@@ -82,8 +82,8 @@ public enum ProviderGroup {
                     self = .accessTypes(providersGroupedByAccessType)
                 }
             } else {
-                let providersGroupedByFinancialInstitution = providersGroupedByFinancialInstitutionIDs.values.map(FinancialInsititutionGroup.init(providers:))
-                self = .financialInsititutions(providersGroupedByFinancialInstitution)
+                let providersGroupedByFinancialInstitution = providersGroupedByFinancialInstitutionIDs.values.map(FinancialInstitutionGroup.init(providers:))
+                self = .financialInstitutions(providersGroupedByFinancialInstitution)
             }
         }
     }
@@ -96,8 +96,8 @@ public enum ProviderGroup {
 
     public var providers: [Provider] {
         switch self {
-        case .financialInsititutions(let providerGroupedByFinancialInsititutions):
-            return providerGroupedByFinancialInsititutions.flatMap { $0.providers }
+        case .financialInstitutions(let providerGroupedByFinancialInstitutions):
+            return providerGroupedByFinancialInstitutions.flatMap { $0.providers }
         case .accessTypes(let providerGroupByAccessTypes):
             return providerGroupByAccessTypes.flatMap { $0.providers }
         case .credentialTypes(let providers):

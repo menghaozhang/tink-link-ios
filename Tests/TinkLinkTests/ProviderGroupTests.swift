@@ -232,7 +232,7 @@ class ProviderGroupTests: XCTestCase {
 
         let swedbankAndSparbankernaGroup = groups[1]
         switch swedbankAndSparbankernaGroup {
-        case .financialInsititutions(let financialInstitutions):
+        case .financialInstitutions(let financialInstitutions):
             XCTAssertEqual(financialInstitutions.count, 2)
             for financialInstitution in financialInstitutions {
                 switch financialInstitution {
