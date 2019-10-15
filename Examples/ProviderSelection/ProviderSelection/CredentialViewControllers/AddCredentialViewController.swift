@@ -202,7 +202,9 @@ extension AddCredentialViewController {
             let credential = try result.get()
             showCredentialUpdated(for: credential)
         } catch let error as ThirdPartyAppAuthenticationError {
-            showDownloadPrompt(for: error)
+            hideUpdatingView(animated: true) {
+                self.showDownloadPrompt(for: error)
+            }
         } catch {
             hideUpdatingView(animated: true) {
                 self.showAlert(for: error)
