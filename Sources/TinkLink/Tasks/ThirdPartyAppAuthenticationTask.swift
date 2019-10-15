@@ -1,8 +1,26 @@
 import UIKit
 
-public enum ThirdPartyAppAuthenticationError: Error {
+public enum ThirdPartyAppAuthenticationError: Error, LocalizedError {
     case deeplinkURLNotFound
     case downloadRequired(title: String, message: String, appStoreURL: URL?)
+
+    public var errorDescription: String? {
+        switch self {
+        case .deeplinkURLNotFound:
+            return nil
+        case .downloadRequired(let title, _, _):
+            return title
+        }
+    }
+
+    public var failureReason: String? {
+        switch self {
+        case .deeplinkURLNotFound:
+            return nil
+        case .downloadRequired(_, let message, _):
+            return message
+        }
+    }
 }
 
 public class ThirdPartyAppAuthenticationTask {
