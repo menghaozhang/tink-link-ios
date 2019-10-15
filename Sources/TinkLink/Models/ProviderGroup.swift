@@ -20,9 +20,16 @@ public enum ProviderAccessTypeGroup {
         }
     }
 
-    public var accessType: Provider.AccessType {
-        return providers[0].accessType
+    private var firstProvider: Provider {
+        switch self {
+        case .credentialTypes(let providers):
+            return providers[0]
+        case .provider(let provider):
+            return provider
+        }
     }
+
+    public var accessType: Provider.AccessType { firstProvider.accessType }
 }
 
 public enum FinancialInstitutionGroup {
@@ -56,9 +63,23 @@ public enum FinancialInstitutionGroup {
         }
     }
 
-    public var financialInstitution: FinancialInstitution {
-        return providers[0].financialInstitution
+    private var firstProvider: Provider {
+        switch self {
+        case .accessTypes(let accessTypeGroups):
+            switch accessTypeGroups[0] {
+            case .credentialTypes(let providers):
+                return providers[0]
+            case .provider(let provider):
+                return provider
+            }
+        case .credentialTypes(let providers):
+            return providers[0]
+        case .provider(let provider):
+            return provider
+        }
     }
+
+    public var financialInstitution: FinancialInstitution { firstProvider.financialInstitution }
 }
 
 public enum ProviderGroup {
@@ -107,7 +128,35 @@ public enum ProviderGroup {
         }
     }
 
-    public var displayName: String {
-        return providers[0].groupDisplayName
+    private var firstProvider: Provider {
+        switch self {
+        case .financialInstitutions(let financialInstitutionGroups):
+            switch financialInstitutionGroups[0] {
+            case .accessTypes(let providerAccessTypeGroups):
+                switch providerAccessTypeGroups[0] {
+                case .credentialTypes(let providers):
+                    return providers[0]
+                case .provider(let provider):
+                    return provider
+                }
+            case .credentialTypes(let providers):
+                return providers[0]
+            case .provider(let provider):
+                return provider
+            }
+        case .accessTypes(let providerAccessTypeGroups):
+            switch providerAccessTypeGroups[0] {
+            case .credentialTypes(let providers):
+                return providers[0]
+            case .provider(let provider):
+                return provider
+            }
+        case .credentialTypes(let providers):
+            return providers[0]
+        case .provider(let provider):
+            return provider
+        }
     }
+
+    public var displayName: String { firstProvider.groupDisplayName }
 }
