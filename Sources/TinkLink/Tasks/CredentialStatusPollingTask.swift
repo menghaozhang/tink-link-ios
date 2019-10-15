@@ -46,6 +46,12 @@ class CredentialStatusPollingTask {
                         } else if updatedCredential.status == .awaitingSupplementalInformation {
                             self.updateHandler(.success(updatedCredential))
                             self.callRetryCancellable = nil
+                        } else if updatedCredential.status == .awaitingThirdPartyAppAuthentication {
+                            self.updateHandler(.success(updatedCredential))
+                            self.callRetryCancellable = nil
+                        } else if updatedCredential.status == .awaitingMobileBankIDAuthentication {
+                            self.updateHandler(.success(updatedCredential))
+                            self.callRetryCancellable = nil
                             // TODO: Should not keep polling while receiving status error
                         } else if updatedCredential.status == self.credential.status {
                             self.retry()
