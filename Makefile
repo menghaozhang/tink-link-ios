@@ -44,10 +44,6 @@ release: format lint
 #which is then referenced from the SDK users Cartfile.
 #This should be run from the root folder of the TinkLink repository by running 'make build-alpha'.
 build-alpha:
-	#remove old Carthage files
-	echo 'Removing old build files...'
-	rm -rf Carthage/
-
 	#Pod and project from example project can interfere with Carthage so we remove those.
 	rm -rf Examples/ProviderSelection/Pods/
 	rm -rf Examples/ProviderSelection/ProviderSelection/ProviderSelection.xcworkspace
