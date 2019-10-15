@@ -2,44 +2,44 @@
 import UIKit
 #endif
 
-public enum ThirdPartyAppAuthenticationError: Error, LocalizedError {
-    case deeplinkURLNotFound
-    case downloadRequired(title: String, message: String, appStoreURL: URL?)
-
-    public var errorDescription: String? {
-        switch self {
-        case .deeplinkURLNotFound:
-            return nil
-        case .downloadRequired(let title, _, _):
-            return title
-        }
-    }
-
-    public var failureReason: String? {
-        switch self {
-        case .deeplinkURLNotFound:
-            return nil
-        case .downloadRequired(_, let message, _):
-            return message
-        }
-    }
-
-    public var appStoreURL: URL? {
-        switch self {
-        case .deeplinkURLNotFound:
-            return nil
-        case .downloadRequired(_, _, let url):
-            return url
-        }
-    }
-}
-
 public class ThirdPartyAppAuthenticationTask {
+    public enum Error: Swift.Error, LocalizedError {
+        case deeplinkURLNotFound
+        case downloadRequired(title: String, message: String, appStoreURL: URL?)
+
+        public var errorDescription: String? {
+            switch self {
+            case .deeplinkURLNotFound:
+                return nil
+            case .downloadRequired(let title, _, _):
+                return title
+            }
+        }
+
+        public var failureReason: String? {
+            switch self {
+            case .deeplinkURLNotFound:
+                return nil
+            case .downloadRequired(_, let message, _):
+                return message
+            }
+        }
+
+        public var appStoreURL: URL? {
+            switch self {
+            case .deeplinkURLNotFound:
+                return nil
+            case .downloadRequired(_, _, let url):
+                return url
+            }
+        }
+    }
+
     public private(set) var thirdPartyAppAuthentication: Credential.ThirdPartyAppAuthentication
 
-    private let completionHandler: (Result<Void, Error>) -> Void
+    private let completionHandler: (Result<Void, Swift.Error>) -> Void
 
-    init(thirdPartyAppAuthentication: Credential.ThirdPartyAppAuthentication, completionHandler: @escaping (Result<Void, Error>) -> Void) {
+    init(thirdPartyAppAuthentication: Credential.ThirdPartyAppAuthentication, completionHandler: @escaping (Result<Void, Swift.Error>) -> Void) {
         self.thirdPartyAppAuthentication = thirdPartyAppAuthentication
         self.completionHandler = completionHandler
     }
@@ -47,11 +47,11 @@ public class ThirdPartyAppAuthenticationTask {
     @available(iOS 10.0, *)
     public func openThirdPartyApp(with application: UIApplication = .shared) {
         guard let url = thirdPartyAppAuthentication.deepLinkURL else {
-            completionHandler(.failure(ThirdPartyAppAuthenticationError.deeplinkURLNotFound))
+            completionHandler(.failure(Error.deeplinkURLNotFound))
             return
         }
 
-        let downloadRequiredError = ThirdPartyAppAuthenticationError.downloadRequired(
+        let downloadRequiredError = Error.downloadRequired(
             title: thirdPartyAppAuthentication.downloadTitle,
             message: thirdPartyAppAuthentication.downloadMessage,
             appStoreURL: thirdPartyAppAuthentication.appStoreURL
