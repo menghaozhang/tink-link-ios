@@ -17,7 +17,7 @@ public class TinkLink {
 
     private(set) lazy var client = Client(configuration: configuration)
 
-    lazy var providerStore = ProviderStore(tinkLink: self)
+    lazy var providerStore = ProviderStore()
     lazy var credentialStore = CredentialStore()
     lazy var authenticationManager = AuthenticationManager(tinkLink: self)
 

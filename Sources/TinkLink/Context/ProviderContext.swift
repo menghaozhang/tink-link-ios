@@ -45,13 +45,18 @@ public class ProviderContext {
     public var attributes: ProviderContext.Attributes {
         didSet {
             guard attributes != oldValue else { return }
-            performFetch()
+            performFetchIfNeeded()
         }
     }
 
     private let market: Market
     private let providerStore: ProviderStore
     private var providerStoreObserver: Any?
+    private let authenticationManager: AuthenticationManager
+    private let locale: Locale
+    private let service: ProviderService
+
+    private var providerFetchHandlers: [ProviderContext.Attributes: RetryCancellable] = [:]
 
     private var _providers: [Provider]? {
         willSet {
@@ -71,7 +76,7 @@ public class ProviderContext {
     public weak var delegate: ProviderContextDelegate? {
         didSet {
             if delegate != nil, _providers == nil {
-                performFetch()
+                performFetchIfNeeded()
             }
         }
     }
@@ -90,22 +95,72 @@ public class ProviderContext {
         self.providerStore = tinkLink.providerStore
         self.attributes = attributes
         self.market = tinkLink.client.market
-        self._providers = try? providerStore.providerMarketGroups[market]?.get()
+        self.authenticationManager = tinkLink.authenticationManager
+        self.service = tinkLink.client.providerService
+        self.locale = tinkLink.client.locale
+        self._providers = providerStore[market]
         self._providerGroups = _providers.map(ProviderGroup.makeGroups)
-        self.providerStoreObserver = NotificationCenter.default.addObserver(forName: .providerStoreMarketGroupsChanged, object: providerStore, queue: .main) { [weak self] _ in
+        self.providerStoreObserver = NotificationCenter.default.addObserver(forName: .providerStoreChanged, object: providerStore, queue: .main) { [weak self] _ in
             guard let self = self else {
                 return
             }
-            do {
-                self._providers = try self.providerStore.providerMarketGroups[self.market]?.get()
-            } catch {
-                self.delegate?.providerContext(self, didReceiveError: error)
-            }
+            self._providers = self.providerStore[self.market]
         }
     }
 
-    private func performFetch() {
-        providerStore.performFetchProvidersIfNeeded(for: attributes)
+    private func performFetchIfNeeded() {
+        performFetchProvidersIfNeeded(for: attributes)
+    }
+}
+
+extension ProviderContext {
+    private func cancelFetchingProviders(for attributes: ProviderContext.Attributes) {
+        providerFetchHandlers[attributes]?.cancel()
+    }
+
+    private func performFetchProvidersIfNeeded(for attributes: ProviderContext.Attributes) {
+        if providerFetchHandlers[attributes] != nil { return }
+        providerFetchHandlers[attributes] = performFetchProviders(for: attributes)
+    }
+
+    private func performFetchProviders(for attributes: ProviderContext.Attributes) -> RetryCancellable {
+        let multiHandler = MultiHandler()
+
+        let authCanceller = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self, attributes] authenticationResult in
+            guard let self = self, !multiHandler.isCancelled else { return }
+            do {
+                try authenticationResult.get()
+                let fetchCanceller = self.unauthenticatedPerformFetchProviders(attributes: attributes)
+                multiHandler.add(fetchCanceller)
+            } catch {
+                self.delegate?.providerContext(self, didReceiveError: error)
+                self.providerFetchHandlers[attributes] = nil
+            }
+        }
+        if let canceller = authCanceller {
+            multiHandler.add(canceller)
+        }
+
+        return multiHandler
+    }
+
+    /// Requests providers for a market.
+    ///
+    /// - Parameter attributes: Attributes for providers to fetch
+    /// - Precondition: Service should be configured with access token before this method is called.
+    private func unauthenticatedPerformFetchProviders(attributes: ProviderContext.Attributes) -> RetryCancellable {
+        precondition(service.metadata.hasAuthorization, "Service doesn't have authentication metadata set!")
+        return service.providers(market: market, capabilities: attributes.capabilities, includeTestProviders: attributes.kinds.contains(.test)) { [weak self, attributes] result in
+            guard let self = self else { return }
+            do {
+                let fetchedProviders = try result.get()
+                let filteredProviders = fetchedProviders.filter { attributes.accessTypes.contains($0.accessType) && attributes.kinds.contains($0.kind) }
+                self.providerStore.store(filteredProviders)
+            } catch {
+                self.delegate?.providerContext(self, didReceiveError: error)
+            }
+            self.providerFetchHandlers[attributes] = nil
+        }
     }
 }
 
@@ -115,7 +170,7 @@ extension ProviderContext {
     /// - Note: The providers could be empty at first or change if the context's attributes are changed. Use the delegate to get notified when providers change.
     public var providers: [Provider] {
         guard let providers = _providers else {
-            performFetch()
+            performFetchIfNeeded()
             return []
         }
         return providers
@@ -126,7 +181,7 @@ extension ProviderContext {
     /// - Note: The providerGroups could be empty at first or change if the context's attributes are changed. Use the delegate to get notified when providerGroups change.
     public var providerGroups: [ProviderGroup] {
         guard let providerGroups = _providerGroups else {
-            performFetch()
+            performFetchIfNeeded()
             return []
         }
         return providerGroups
@@ -137,6 +192,6 @@ extension ProviderContext {
             return providerGroups
         }
 
-        return providerGroups.filter { $0.displayName.localizedCaseInsensitiveContains(query) ?? false }
+        return providerGroups.filter { $0.displayName.localizedCaseInsensitiveContains(query) }
     }
 }
