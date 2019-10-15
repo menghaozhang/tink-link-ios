@@ -3,13 +3,10 @@ import UIKit
 
 /// Example of how to use the provider grouped by names
 final class ProviderListViewController: UITableViewController {
-    var providerContext: ProviderContext {
-        didSet {
-            tableView.reloadData()
-        }
-    }
-
+    let providerContext: ProviderContext
+    
     private let searchController = UISearchController(searchResultsController: nil)
+
     private var providerGroups: [ProviderGroup] {
         didSet {
             tableView.reloadData()
@@ -37,8 +34,10 @@ extension ProviderListViewController {
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search"
         searchController.searchResultsUpdater = self
+
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
+
         definesPresentationContext = true
 
         title = "Choose Bank"
@@ -112,7 +111,9 @@ extension ProviderListViewController {
 
 extension ProviderListViewController: ProviderContextDelegate {
     func providerContextDidChangeProviders(_ context: ProviderContext) {
-        providerGroups = context.providerGroups
+        DispatchQueue.main.async {
+            self.providerGroups = context.providerGroups
+        }
     }
 
     func providerContext(_ context: ProviderContext, didReceiveError error: Error) {

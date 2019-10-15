@@ -34,12 +34,12 @@ extension FinancialInstitutionPickerViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let providersWithSameFinancialInstitution = financialInstitutionGroups[indexPath.row]
-        switch providersWithSameFinancialInstitution {
+        let financialInstitutionGroup = financialInstitutionGroups[indexPath.row]
+        switch financialInstitutionGroup {
         case .accessTypes(let accessTypeGroups):
-            showAccessTypePicker(for: accessTypeGroups, title: providersWithSameFinancialInstitution.financialInstitution.name)
+            showAccessTypePicker(for: accessTypeGroups, title: financialInstitutionGroup.financialInstitution.name)
         case .credentialTypes(let providers):
-            showCredentialTypePicker(for: providers, title: providersWithSameFinancialInstitution.financialInstitution.name)
+            showCredentialTypePicker(for: providers, title: financialInstitutionGroup.financialInstitution.name)
         case .provider(let provider):
             showAddCredential(for: provider)
         }
