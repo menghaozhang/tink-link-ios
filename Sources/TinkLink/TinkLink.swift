@@ -1,4 +1,7 @@
 import Foundation
+#if os(iOS)
+import UIKit
+#endif
 
 public class TinkLink {
     static var _shared: TinkLink?
@@ -88,5 +91,27 @@ public class TinkLink {
         return client.authenticationService.authorize(redirectURI: configuration.redirectURI, scope: scope) { result in
             completion(result.map { $0.code })
         }
+    }
+
+    @available(iOS 9.0, *)
+    public func open(_ url: URL, completion: ((Result<Void, Error>) -> Void)? = nil) -> Bool {
+        guard let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false),
+            urlComponents.scheme == configuration.redirectURI.scheme
+            else { return false }
+
+        let allParameters = Dictionary(grouping: urlComponents.queryItems ?? [], by: { $0.name })
+            .compactMapValues { $0.first?.value }
+
+        let stateParameterName = "state"
+        let parameters = allParameters.filter { $0.key != stateParameterName }
+        guard let state = allParameters[stateParameterName] else { return false }
+
+        client.credentialService.thirdPartyCallback(
+            state: state,
+            parameters: parameters,
+            completion: completion ?? { _ in }
+        )
+
+        return true
     }
 }
