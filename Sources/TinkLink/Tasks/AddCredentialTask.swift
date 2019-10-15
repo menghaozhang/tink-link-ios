@@ -103,7 +103,7 @@ public class AddCredentialTask {
                     assertionFailure("Missing third pary app authentication deeplink URL!")
                     return
                 }
-                let task = ThirdPartyAppAuthenticationTask(credential: credential) { (result) in
+                let task = ThirdPartyAppAuthenticationTask(thirdPartyAppAuthentication: thirdPartyAppAuthentication) { (result) in
                     do {
                         try result.get()
                         self.credentialStatusPollingTask = CredentialStatusPollingTask(credential: credential, updateHandler: self.handleUpdate)

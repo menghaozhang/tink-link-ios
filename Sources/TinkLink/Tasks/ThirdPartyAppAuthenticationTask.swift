@@ -33,24 +33,17 @@ public enum ThirdPartyAppAuthenticationError: Error, LocalizedError {
 }
 
 public class ThirdPartyAppAuthenticationTask {
-    private let credentialService: CredentialService
-    public private(set) var credential: Credential
+    public private(set) var thirdPartyAppAuthentication: Credential.ThirdPartyAppAuthentication
 
     private let completionHandler: (Result<Void, Error>) -> Void
 
-    init(tinkLink: TinkLink = .shared, credential: Credential, completionHandler: @escaping (Result<Void, Error>) -> Void) {
-        self.credentialService = tinkLink.client.credentialService
-        self.credential = credential
+    init(thirdPartyAppAuthentication: Credential.ThirdPartyAppAuthentication, completionHandler: @escaping (Result<Void, Error>) -> Void) {
+        self.thirdPartyAppAuthentication = thirdPartyAppAuthentication
         self.completionHandler = completionHandler
     }
 
     @available(iOS 10.0, *)
     public func open(with application: UIApplication = .shared) {
-        guard let thirdPartyAppAuthentication = credential.thirdPartyAppAuthentication else {
-            completionHandler(.failure(ThirdPartyAppAuthenticationError.deeplinkURLNotFound))
-            return
-        }
-
         guard let url = thirdPartyAppAuthentication.deepLinkURL else {
             completionHandler(.failure(ThirdPartyAppAuthenticationError.deeplinkURLNotFound))
             return
