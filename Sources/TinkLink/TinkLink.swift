@@ -29,7 +29,7 @@ public class TinkLink {
         }
     }
 
-    /// Init a Tinklink object with custom configration description.
+    /// Create a TinkLink instance with a custom configuration.
     public init(configuration: Configuration) {
         self.configuration = configuration
     }
