@@ -9,7 +9,7 @@
 1. To install TinkLink, we use Carthage. Add a file named `Cartfile` at the root of your Xcode project and add the following:
 
 ```
-binary "TinkLink.json" ~> 1.0
+binary "TinkLink.json" ~> 0.1.0
 github "grpc/grpc-swift" ~> 0.9.1
 ```
 
