@@ -45,7 +45,7 @@ public class ThirdPartyAppAuthenticationTask {
     }
 
     @available(iOS 10.0, *)
-    public func open(with application: UIApplication = .shared) {
+    public func openThirdPartyApp(with application: UIApplication = .shared) {
         guard let url = thirdPartyAppAuthentication.deepLinkURL else {
             completionHandler(.failure(ThirdPartyAppAuthenticationError.deeplinkURLNotFound))
             return

@@ -189,7 +189,7 @@ extension AddCredentialViewController {
         case .awaitingSupplementalInformation(let supplementInformationTask):
             showSupplementalInformation(for: supplementInformationTask)
         case .awaitingThirdPartyAppAuthentication(let thirdPartyAppAuthenticationTask):
-            thirdPartyAppAuthenticationTask.open()
+            thirdPartyAppAuthenticationTask.openThirdPartyApp()
         case .updating(let status):
             showUpdating(status: status)
         }
