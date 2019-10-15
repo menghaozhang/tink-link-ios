@@ -21,6 +21,15 @@ public enum ThirdPartyAppAuthenticationError: Error, LocalizedError {
             return message
         }
     }
+
+    public var appStoreURL: URL? {
+        switch self {
+        case .deeplinkURLNotFound:
+            return nil
+        case .downloadRequired(_, _, let url):
+            return url
+        }
+    }
 }
 
 public class ThirdPartyAppAuthenticationTask {
