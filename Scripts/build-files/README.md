@@ -1,21 +1,40 @@
-
 ## Installation
-For this release, we only support installing TinkLink through CocoaPods. Start by placing the `TinkLink` folder at the project root (where your xcodeproj file is). 
 
-If you are already using Cocoapods, simply add `pod 'TinkLink', :path => 'TinkLink/'`  to your Podfile and do a `pod install`. 
+1. To install TinkLink, we use Carthage. Add a file named `Cartfile` at the root of your Xcode project and add the following:
 
-If you are not using CocoaPods, add a file named `Podfile` to your root folder and add the following to it:
 ```
-#Specify your deployment target
-platform :ios, '11.0' 
-
-#Replace with the name of your app target
-target 'MyApp' do
-  use_frameworks!
-
-  # Pods
-  pod 'TinkLink', :path => 'TinkLink/'
-end
+binary "TinkLink.json" ~> 1.0
+github "grpc/grpc-swift" ~> 0.9.1
 ```
 
-Then run `pod install` while at the root. Open the .xcworkspace file and you should be good to go. 
+Also make sure `TinkLink.json` is present at the root. 
+ 
+1. Run `carthage update`
+1. Drag the built `.framework` binaries (TinkLink, SwiftProtobuf, BoringSSL, CgRPC and SwiftGRPC) from `Carthage/Build/<platform>` into your application’s Xcode project.
+1. On your application targets’ _Build Phases_ settings tab, click the _+_ icon and choose _New Run Script Phase_. Create a Run Script in which you specify your shell (ex: `/bin/sh`), add the following contents to the script area below the shell:
+
+    ```sh
+    /usr/local/bin/carthage copy-frameworks
+    ```
+
+- Add the paths to the frameworks under "Input Files":
+
+    ```
+    $(SRCROOT)/Carthage/Build/iOS/TinkLink.framework
+    $(SRCROOT)/Carthage/Build/iOS/SwiftProtobuf.framework
+    $(SRCROOT)/Carthage/Build/iOS/BoringSSL.framework
+    $(SRCROOT)/Carthage/Build/iOS/CgRPC.framework
+    $(SRCROOT)/Carthage/Build/iOS/SwiftGRPC.framework
+    ```
+
+- Also add the paths to the frameworks under "Output Files":
+
+    ```
+    $(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/TinkLink.framework
+    $(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftProtobuf.framework
+    $(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BoringSSL.framework
+    $(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CgRPC.framework
+    $(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftGRPC.framework
+    ```
+    
+    - You should now be able to use TinkLink within your project. 
