@@ -167,10 +167,14 @@ extension AddCredentialViewController {
                 for: provider,
                 form: form,
                 progressHandler: { [weak self] status in
-                    self?.onUpdate(for: status)
+                    DispatchQueue.main.async {
+                        self?.onUpdate(for: status)
+                    }
                 },
                 completion: { [weak self] result in
-                    self?.onCompletion(result: result)
+                    DispatchQueue.main.async {
+                        self?.onCompletion(result: result)
+                    }
                 }
             )
         } catch {
@@ -179,33 +183,29 @@ extension AddCredentialViewController {
     }
 
     private func onUpdate(for status: AddCredentialTask.Status) {
-        DispatchQueue.main.async {
-            switch status {
-            case .authenticating, .created:
-                break
-            case .awaitingSupplementalInformation(let supplementInformationTask):
-                self.showSupplementalInformation(for: supplementInformationTask)
-            case .awaitingThirdPartyAppAuthentication(let thirdPartyAppAuthenticationTask):
-                thirdPartyAppAuthenticationTask.open()
-            case .updating(let status):
-                self.showUpdating(status: status)
-            }
+        switch status {
+        case .authenticating, .created:
+            break
+        case .awaitingSupplementalInformation(let supplementInformationTask):
+            showSupplementalInformation(for: supplementInformationTask)
+        case .awaitingThirdPartyAppAuthentication(let thirdPartyAppAuthenticationTask):
+            thirdPartyAppAuthenticationTask.open()
+        case .updating(let status):
+            showUpdating(status: status)
         }
     }
 
     private func onCompletion(result: Result<Credential, Error>) {
-        DispatchQueue.main.async {
-            self.navigationItem.rightBarButtonItem = self.addBarButtonItem
+        navigationItem.rightBarButtonItem = self.addBarButtonItem
 
-            do {
-                let credential = try result.get()
-                self.showCredentialUpdated(for: credential)
-            } catch let error as ThirdPartyAppAuthenticationError {
-                self.showDownloadPrompt(for: error)
-            } catch {
-                self.hideUpdatingView(animated: true) {
-                    self.showAlert(for: error)
-                }
+        do {
+            let credential = try result.get()
+            showCredentialUpdated(for: credential)
+        } catch let error as ThirdPartyAppAuthenticationError {
+            showDownloadPrompt(for: error)
+        } catch {
+            hideUpdatingView(animated: true) {
+                self.showAlert(for: error)
             }
         }
     }
