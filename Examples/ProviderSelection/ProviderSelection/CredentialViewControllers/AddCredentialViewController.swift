@@ -201,13 +201,13 @@ extension AddCredentialViewController {
         DispatchQueue.main.async {
             self.navigationItem.rightBarButtonItem = self.addBarButtonItem
 
-            switch result {
-            case .failure(let error):
+            do {
+                let credential = try result.get()
+                self.showCredentialUpdated(for: credential)
+            } catch {
                 self.hideUpdatingView(animated: true) {
                     self.showAlert(for: error)
                 }
-            case .success(let credential):
-                self.showCredentialUpdated(for: credential)
             }
         }
     }
