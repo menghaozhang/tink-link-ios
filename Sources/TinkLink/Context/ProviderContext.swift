@@ -98,13 +98,13 @@ public class ProviderContext {
         self.authenticationManager = tinkLink.authenticationManager
         self.service = tinkLink.client.providerService
         self.locale = tinkLink.client.locale
-        self._providers = providerStore.providerMarketGroups[market]
+        self._providers = providerStore[market]
         self._providerGroups = _providers.map(ProviderGroup.makeGroups)
-        self.providerStoreObserver = NotificationCenter.default.addObserver(forName: .providerStoreMarketGroupsChanged, object: providerStore, queue: .main) { [weak self] _ in
+        self.providerStoreObserver = NotificationCenter.default.addObserver(forName: .providerStoreChanged, object: providerStore, queue: .main) { [weak self] _ in
             guard let self = self else {
                 return
             }
-            self._providers = self.providerStore.providerMarketGroups[self.market]
+            self._providers = self.providerStore[self.market]
         }
     }
 
@@ -155,7 +155,7 @@ extension ProviderContext {
             do {
                 let fetchedProviders = try result.get()
                 let filteredProviders = fetchedProviders.filter { attributes.accessTypes.contains($0.accessType) && attributes.kinds.contains($0.kind) }
-                self.providerStore.update(filteredProviders, for: self.market)
+                self.providerStore.store(filteredProviders)
             } catch {
                 self.delegate?.providerContext(self, didReceiveError: error)
             }

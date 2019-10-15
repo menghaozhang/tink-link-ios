@@ -7,27 +7,35 @@ final class ProviderStore {
     }
 
     private let tinkQueue = DispatchQueue(label: "com.tink.TinkLink.ProviderStore", attributes: .concurrent)
-    private var _providerMarketGroups: [Market: [Provider]] = [:] {
+    private var _providers: [Provider.ID: Provider] = [:] {
         didSet {
             DispatchQueue.main.async {
-                NotificationCenter.default.post(name: .providerStoreMarketGroupsChanged, object: self)
+                NotificationCenter.default.post(name: .providerStoreChanged, object: self)
             }
         }
     }
 
-    var providerMarketGroups: [Market: [Provider]] {
+    var providers: [Provider] {
         dispatchPrecondition(condition: .notOnQueue(tinkQueue))
-        let providerMarketGroups = tinkQueue.sync { _providerMarketGroups }
-        return providerMarketGroups
+        let providers = tinkQueue.sync { _providers }
+        return Array(providers.values)
     }
 
-    func update(_ providers: [Provider], for market: Market) {
+    subscript(market: Market) -> [Provider] {
+        dispatchPrecondition(condition: .notOnQueue(tinkQueue))
+        let providers = tinkQueue.sync { _providers.values.filter({ $0.marketCode == market.code }) }
+        return providers
+    }
+
+    func store(_ providers: [Provider]) {
         tinkQueue.async(qos: .default, flags: .barrier) {
-            self._providerMarketGroups[market] = providers
+            let newProviders = Dictionary(grouping: providers, by: { $0.id })
+                .compactMapValues { $0.first }
+            self._providers.merge(newProviders, uniquingKeysWith: { (_, new) in new })
         }
     }
 }
 
 extension Notification.Name {
-    static let providerStoreMarketGroupsChanged = Notification.Name("TinkLinkProviderStoreMarketGroupsChangedNotificationName")
+    static let providerStoreChanged = Notification.Name("TinkLinkProviderStoreChangedNotificationName")
 }
