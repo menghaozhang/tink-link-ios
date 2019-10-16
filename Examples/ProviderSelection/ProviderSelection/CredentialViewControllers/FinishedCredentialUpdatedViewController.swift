@@ -2,7 +2,9 @@ import TinkLink
 import UIKit
 
 final class FinishedCredentialUpdatedViewController: UIViewController {
-    let credential: Credential
+    private let credential: Credential
+    private var activityIndicator: UIActivityIndicatorView?
+    private var authenticationResultLabel: UILabel?
 
     init(credential: Credential) {
         self.credential = credential
@@ -32,7 +34,19 @@ final class FinishedCredentialUpdatedViewController: UIViewController {
         detailLabel.numberOfLines = 0
         detailLabel.preferredMaxLayoutWidth = 200
 
-        let stackView = UIStackView(arrangedSubviews: [checkmarkView, detailLabel])
+        let activityIndicator = UIActivityIndicatorView(style: .gray)
+        activityIndicator.startAnimating()
+        self.activityIndicator = activityIndicator
+
+        let authenticationResultLabel = UILabel()
+        authenticationResultLabel.text = ""
+        authenticationResultLabel.textAlignment = .center
+        authenticationResultLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
+        authenticationResultLabel.numberOfLines = 0
+        authenticationResultLabel.preferredMaxLayoutWidth = 200
+        self.authenticationResultLabel = authenticationResultLabel
+
+        let stackView = UIStackView(arrangedSubviews: [checkmarkView, detailLabel, activityIndicator, authenticationResultLabel])
         stackView.axis = .vertical
         stackView.alignment = .center
         stackView.spacing = 24
@@ -58,12 +72,21 @@ final class FinishedCredentialUpdatedViewController: UIViewController {
             TinkLink.Scope.User.read,
             TinkLink.Scope.Transactions.read
         ])
-        TinkLink.shared.authorize(scope: scope) { (result) in
+        TinkLink.shared.authorize(scope: scope) { [weak self] (result) in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.activityIndicator?.stopAnimating()
+                self.activityIndicator?.removeFromSuperview()
+            }
             do {
                 let code = try result.get()
-                print(code)
+                DispatchQueue.main.async {
+                    self.authenticationResultLabel?.text = "Authentication code: \n\(code.rawValue)"
+                }
             } catch {
-                print(error.localizedDescription)
+                DispatchQueue.main.async {
+                    self.authenticationResultLabel?.text = "Error: \n\(error.localizedDescription)"
+                }
             }
         }
     }
