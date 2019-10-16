@@ -29,20 +29,16 @@ extension TinkLink {
             locale: Locale? = nil
         ) {
             self.clientID = clientID
+            self.redirectURI = redirectURI
             self.environment = .production
             self.grpcCertificate = grpcCertificateURL.flatMap { try? Data(contentsOf: $0) }
             self.restCertificate = restCertificateURL.flatMap { try? Data(contentsOf: $0) }
             self.market = market ?? .defaultMarket
-            if let locale = locale {
-                if TinkLink.availableLocales.contains(locale) {
-                    self.locale = locale
-                } else {
-                    fatalError(locale.identifier + " is not an available locale")
-                }
+            if let locale = locale, TinkLink.availableLocales.contains(locale) {
+                self.locale = locale
             } else {
                 self.locale = TinkLink.defaultLocale
             }
-            self.redirectURI = redirectURI
         }
     }
 }
