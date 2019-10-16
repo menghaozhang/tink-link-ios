@@ -16,10 +16,10 @@ public struct Provider {
 
     /// The unique identifier of the provider.
     /// - Note: This is used when creating new credentials.
-    public var id: ID
+    public let id: ID
 
     /// The display name of the provider.
-    public var displayName: String
+    public let displayName: String
 
     /// Indicates what kind of financial institution the provider represents.
     public enum Kind {
@@ -38,7 +38,7 @@ public struct Provider {
     }
 
     /// Indicates what kind of financial institution the provider represents.
-    public var kind: Provider.Kind
+    public let kind: Provider.Kind
 
     /// Indicates the current status of a provider.
     public enum Status {
@@ -51,16 +51,16 @@ public struct Provider {
 
     /// Indicates the current status of the provider.
     /// - Note: It is only possible to perform credentials create or refresh actions on providers which are enabled.
-    public var status: Status
+    public let status: Status
 
     /// When creating a new credential connected to the provider this will be the credential's kind.
-    public var credentialKind: Credential.Kind
+    public let credentialKind: Credential.Kind
 
     /// Short description of how to authenticate when creating a new credential for connected to the provider.
-    public var helpText: String
+    public let helpText: String
 
     /// Indicates if the provider is popular. This is normally set to true for the biggest financial institutions on a market.
-    public var isPopular: Bool
+    public let isPopular: Bool
 
     internal struct FieldSpecification {
         // description
@@ -82,15 +82,15 @@ public struct Provider {
         internal let helpText: String
     }
 
-    internal var fields: [FieldSpecification]
+    internal let fields: [FieldSpecification]
 
     /// A display name for providers which are branches of a bigger group.
-    public var groupDisplayName: String
+    public let groupDisplayName: String
 
-    public var image: URL?
+    public let image: URL?
 
     /// Short displayable description of the authentication type used.
-    public var displayDescription: String
+    public let displayDescription: String
 
     /// Indicates what a provider is capable of.
     public struct Capabilities: OptionSet, Hashable {
@@ -115,7 +115,7 @@ public struct Provider {
     }
 
     /// Indicates what this provider is capable of, in terms of financial data it can aggregate and if it can execute payments.
-    public var capabilities: Capabilities
+    public let capabilities: Capabilities
 
     /// What Tink uses to access data.
     public enum AccessType: CustomStringConvertible, Hashable {
@@ -138,12 +138,12 @@ public struct Provider {
     }
 
     /// What Tink uses to access the data.
-    public var accessType: AccessType
+    public let accessType: AccessType
 
     /// The market of the provider.
     /// - Note: Each provider is unique per market.
-    public var marketCode: String
+    public let marketCode: String
 
     /// The financial institution.
-    public var financialInstitution: FinancialInstitution
+    public let financialInstitution: FinancialInstitution
 }

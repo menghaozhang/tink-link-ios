@@ -15,10 +15,10 @@ public struct Credential {
     }
 
     /// The unique identifier of the credentials.
-    public var id: ID
+    public let id: ID
 
     /// The provider (financial institution) that the credentials is connected to.
-    public var providerID: Provider.ID
+    public let providerID: Provider.ID
 
     /// Indicates how Tink authenticates the user to a financial institution.
     public enum Kind: CustomStringConvertible {
@@ -58,7 +58,7 @@ public struct Credential {
     }
 
     /// Indicates how Tink authenticates the user to the financial institution.
-    public var kind: Credential.Kind
+    public let kind: Credential.Kind
 
     /// The status indicates the state of a credential.
     public enum Status {
@@ -116,52 +116,52 @@ public struct Credential {
     }
 
     /// The status indicates the state of a credential. For some states there are actions which need to be performed on the credentials.
-    public var status: Status
+    public let status: Status
 
     /// A user-friendly message connected to the status. Could be an error message or text describing what is currently going on in the refresh process.
-    public var statusPayload: String
+    public let statusPayload: String
 
     /// A timestamp of when the credential's status was last modified.
-    public var statusUpdated: Date?
+    public let statusUpdated: Date?
 
     /// A timestamp of when the credentials was the last time in status `.updated`.
-    public var updated: Date?
+    public let updated: Date?
 
     /// This is a key-value map of Field name and value found on the Provider to which the credentials belongs to.
-    public var fields: [String: String]
+    public let fields: [String: String]
 
     /// A key-value structure to handle if status of credentials are `Credential.Status.awaitingSupplementalInformation`.
-    internal var supplementalInformationFields: [Provider.FieldSpecification]
+    internal let supplementalInformationFields: [Provider.FieldSpecification]
 
     /// Information about the third party authentication app.
     ///
     /// The ThirdPartyAppAuthentication contains specific deeplink urls and configuration for the third party app.
     public struct ThirdPartyAppAuthentication {
         /// Title of the app to be downloaded.
-        public var downloadTitle: String
+        public let downloadTitle: String
 
         /// Detailed message about app to be downloaded.
-        public var downloadMessage: String
+        public let downloadMessage: String
 
         /// Title of the app to be upgraded.
-        public var upgradeTitle: String
+        public let upgradeTitle: String
 
         /// Detailed message about app to be upgraded
-        public var upgradeMessage: String
+        public let upgradeMessage: String
 
         /// URL to AppStore where the app can be downloaded on iOS.
-        public var appStoreURL: URL?
+        public let appStoreURL: URL?
 
         /// Base scheme of the app on iOS.
-        public var scheme: String?
+        public let scheme: String?
 
         /// URL that the app should open on iOS. Can be of another scheme than app scheme.
-        public var deepLinkURL: URL?
+        public let deepLinkURL: URL?
     }
 
     /// Information about the third party authentication flow.
-    public var thirdPartyAppAuthentication: ThirdPartyAppAuthentication?
+    public let thirdPartyAppAuthentication: ThirdPartyAppAuthentication?
 
     /// Indicates when the session of credentials with access type `Provider.AccessType.openBanking` will expire. After this date automatic refreshes will not be possible without new authentication from the user.
-    public var sessionExpiryDate: Date?
+    public let sessionExpiryDate: Date?
 }
