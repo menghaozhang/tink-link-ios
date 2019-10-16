@@ -130,7 +130,7 @@ public class CredentialContext {
     /// - Returns: The add credential task.
     public func addCredential(for provider: Provider, form: Form, completionPredicate: AddCredentialTask.CompletionPredicate = .updated, progressHandler: @escaping (_ status: AddCredentialTask.Status) -> Void, completion: @escaping (_ result: Result<Credential, Error>) -> Void) -> AddCredentialTask {
         let task = AddCredentialTask(
-            tinklink: tinkLink,
+            tinkLink: tinkLink,
             completionPredicate: completionPredicate,
             progressHandler: progressHandler,
             completion: completion,
