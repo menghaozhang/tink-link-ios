@@ -166,10 +166,14 @@ extension AddCredentialViewController {
                 for: provider,
                 form: form,
                 progressHandler: { [weak self] status in
-                    self?.onUpdate(for: status)
+                    DispatchQueue.main.async {
+                        self?.onUpdate(for: status)
+                    }
                 },
                 completion: { [weak self] result in
-                    self?.onCompletion(result: result)
+                    DispatchQueue.main.async {
+                        self?.onCompletion(result: result)
+                    }
                 }
             )
         } catch {
@@ -178,35 +182,31 @@ extension AddCredentialViewController {
     }
 
     private func onUpdate(for status: AddCredentialTask.Status) {
-        DispatchQueue.main.async {
-            switch status {
-            case .authenticating, .created:
-                break
-            case .awaitingSupplementalInformation(let supplementInformationTask):
-                self.showSupplementalInformation(for: supplementInformationTask)
-            case .awaitingThirdPartyAppAuthentication(let thirdPartyAppAuthentication):
-                if let deepLinkURL = thirdPartyAppAuthentication.deepLinkURL, UIApplication.shared.canOpenURL(deepLinkURL) {
-                    UIApplication.shared.open(deepLinkURL)
-                } else {
-                    self.showDownloadPrompt(for: thirdPartyAppAuthentication)
-                }
-            case .updating(let status):
-                self.showUpdating(status: status)
-            }
+        switch status {
+        case .authenticating, .created:
+            break
+        case .awaitingSupplementalInformation(let supplementInformationTask):
+            showSupplementalInformation(for: supplementInformationTask)
+        case .awaitingThirdPartyAppAuthentication(let thirdPartyAppAuthenticationTask):
+            thirdPartyAppAuthenticationTask.openThirdPartyApp()
+        case .updating(let status):
+            showUpdating(status: status)
         }
     }
 
     private func onCompletion(result: Result<Credential, Error>) {
-        DispatchQueue.main.async {
-            self.navigationItem.rightBarButtonItem = self.addBarButtonItem
+        navigationItem.rightBarButtonItem = self.addBarButtonItem
 
-            switch result {
-            case .failure(let error):
-                self.hideUpdatingView(animated: true) {
-                    self.showAlert(for: error)
-                }
-            case .success(let credential):
-                self.showCredentialUpdated(for: credential)
+        do {
+            let credential = try result.get()
+            showCredentialUpdated(for: credential)
+        } catch let error as ThirdPartyAppAuthenticationTask.Error {
+            hideUpdatingView(animated: true) {
+                self.showDownloadPrompt(for: error)
+            }
+        } catch {
+            hideUpdatingView(animated: true) {
+                self.showAlert(for: error)
             }
         }
     }
@@ -253,10 +253,10 @@ extension AddCredentialViewController {
         show(finishedCredentialUpdatedViewController, sender: nil)
     }
 
-    private func showDownloadPrompt(for thirdPartyAppAuthentication: Credential.ThirdPartyAppAuthentication) {
-        let alertController = UIAlertController(title: thirdPartyAppAuthentication.downloadTitle, message: thirdPartyAppAuthentication.downloadMessage, preferredStyle: .alert)
+    private func showDownloadPrompt(for thirdPartyAppAuthenticationError: ThirdPartyAppAuthenticationTask.Error) {
+        let alertController = UIAlertController(title: thirdPartyAppAuthenticationError.errorDescription, message: thirdPartyAppAuthenticationError.failureReason, preferredStyle: .alert)
 
-        if let appStoreURL = thirdPartyAppAuthentication.appStoreURL, UIApplication.shared.canOpenURL(appStoreURL) {
+        if let appStoreURL = thirdPartyAppAuthenticationError.appStoreURL, UIApplication.shared.canOpenURL(appStoreURL) {
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
             let downloadAction = UIAlertAction(title: "Download", style: .default, handler: { _ in
                 UIApplication.shared.open(appStoreURL)

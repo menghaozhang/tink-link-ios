@@ -25,6 +25,7 @@
 		20A5AF57234DC22F00063701 /* ProviderGroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A5AF55234DC21200063701 /* ProviderGroupTests.swift */; };
 		20C300E92341D44F0004E284 /* ConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C300E72341D43B0004E284 /* ConfigurationTests.swift */; };
 		20C3A7782354584F0048EBA4 /* FinancialInstitution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C3A7772354584F0048EBA4 /* FinancialInstitution.swift */; };
+		20C3A77A2355B87A0048EBA4 /* ThirdPartyAppAuthenticationTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C3A7792355B87A0048EBA4 /* ThirdPartyAppAuthenticationTask.swift */; };
 		20D129E2234E1737005C2D34 /* CredentialGRPCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D129E0234E1732005C2D34 /* CredentialGRPCTests.swift */; };
 		20D8125F2330DAD7000B3A30 /* Service+Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8125E2330DAD7000B3A30 /* Service+Metadata.swift */; };
 		20E19DB22306E59900BF053A /* BoringSSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85462303FD85006213BB /* BoringSSL.framework */; };
@@ -101,6 +102,7 @@
 		20A5AF55234DC21200063701 /* ProviderGroupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderGroupTests.swift; sourceTree = "<group>"; };
 		20C300E72341D43B0004E284 /* ConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationTests.swift; sourceTree = "<group>"; };
 		20C3A7772354584F0048EBA4 /* FinancialInstitution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialInstitution.swift; sourceTree = "<group>"; };
+		20C3A7792355B87A0048EBA4 /* ThirdPartyAppAuthenticationTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartyAppAuthenticationTask.swift; sourceTree = "<group>"; };
 		20D129E0234E1732005C2D34 /* CredentialGRPCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialGRPCTests.swift; sourceTree = "<group>"; };
 		20D8125E2330DAD7000B3A30 /* Service+Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Service+Metadata.swift"; sourceTree = "<group>"; };
 		20E6886C234F0B7800B4E04F /* insight_models.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = insight_models.pb.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 				203BE968232784440033F879 /* AddCredentialTask.swift */,
 				209D69272326878800B4DBB8 /* SupplementInformationTask.swift */,
 				8F6139FF2334CB2C00BFB04D /* CredentialStatusPollingTask.swift */,
+				20C3A7792355B87A0048EBA4 /* ThirdPartyAppAuthenticationTask.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -542,6 +545,7 @@
 				8FA3558C231E839E0054115D /* CredentialStore.swift in Sources */,
 				200A3F99230C31E900BEF935 /* AuthenticationService.swift in Sources */,
 				200FD63D23154AFC0077181A /* AccessToken.swift in Sources */,
+				20C3A77A2355B87A0048EBA4 /* ThirdPartyAppAuthenticationTask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
