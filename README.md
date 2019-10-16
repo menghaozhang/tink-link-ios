@@ -9,13 +9,13 @@
 1. To install TinkLink, we use Carthage. Add a file named `Cartfile` at the root of your Xcode project and add the following:
 
 ```
-binary "TinkLink.json" ~> 1.0
+binary "TinkLink.json" ~> 0.1.0
 github "grpc/grpc-swift" ~> 0.9.1
 ```
 
 Also make sure `TinkLink.json` is present at the root. 
  
-1. Run `carthage update`
+1. Run `carthage bootstrap --platform iOS`
 1. Drag the built `.framework` binaries (TinkLink, SwiftProtobuf, BoringSSL, CgRPC and SwiftGRPC) from `Carthage/Build/<platform>` into your application’s Xcode project.
 1. On your application targets’ _Build Phases_ settings tab, click the _+_ icon and choose _New Run Script Phase_. Create a Run Script in which you specify your shell (ex: `/bin/sh`), add the following contents to the script area below the shell:
 
