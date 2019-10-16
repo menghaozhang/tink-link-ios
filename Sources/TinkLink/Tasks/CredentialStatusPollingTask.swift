@@ -7,7 +7,7 @@ class CredentialStatusPollingTask {
     private var retryInterval: TimeInterval = 1
     private(set) var credential: Credential
     private var updateHandler: (Result<Credential, Error>) -> Void
-    let backoffStrategy: PollingBackoffStrategy
+    private let backoffStrategy: PollingBackoffStrategy
 
     enum PollingBackoffStrategy {
         case none
