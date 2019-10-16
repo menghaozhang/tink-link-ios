@@ -55,7 +55,7 @@ public class AddCredentialTask {
 
     var callCanceller: Cancellable?
 
-    init(tinklink: TinkLink = .shared, completionPredicate: CompletionPredicate = .updated, progressHandler: @escaping (Status) -> Void, completion: @escaping (Result<Credential, Swift.Error>) -> Void, credentialUpdateHandler: @escaping (Result<Credential, Swift.Error>) -> Void) {
+    init(tinkLink: TinkLink = .shared, completionPredicate: CompletionPredicate = .updated, progressHandler: @escaping (Status) -> Void, completion: @escaping (Result<Credential, Swift.Error>) -> Void, credentialUpdateHandler: @escaping (Result<Credential, Swift.Error>) -> Void) {
         self.completionPredicate = completionPredicate
         self.progressHandler = progressHandler
         self.completion = completion
