@@ -26,7 +26,7 @@ extension TinkLink {
     }
 
     /// Fallback locales if no other locale is available
-    static var fallBackLocale: Locale {
+    static var fallbackLocale: Locale {
         Locale(identifier: "en_US")
     }
 
@@ -37,7 +37,7 @@ extension TinkLink {
         } else if let regionCode = Locale.current.regionCode, let locale = availableLocaleWith(regionCode: regionCode) {
             return locale
         } else {
-            return fallBackLocale
+            return fallbackLocale
         }
     }
 }
