@@ -14,7 +14,7 @@ class CredentialStatusPollingTask {
         case linear
         case exponential
 
-        func nextInteral(for retryinterval: TimeInterval) -> TimeInterval {
+        func nextInterval(for retryinterval: TimeInterval) -> TimeInterval {
             switch self {
             case .none:
                 return retryinterval
@@ -73,6 +73,6 @@ class CredentialStatusPollingTask {
         DispatchQueue.main.asyncAfter(deadline: .now() + retryInterval) { [weak self] in
             self?.callRetryCancellable?.retry()
         }
-        retryInterval = backoffStrategy.nextInteral(for: retryInterval)
+        retryInterval = backoffStrategy.nextInterval(for: retryInterval)
     }
 }
