@@ -3,7 +3,6 @@ import Foundation
 extension TinkLink {
     /// Available locales for Tink link
     public static var availableLocales: [Locale] {
-        // Thread with current supported locales https://tink.slack.com/archives/CG84WBWLS/p1568020310012900
         let locales = [
             Locale(identifier: "da_DK"),
             Locale(identifier: "de_DE"),
