@@ -39,14 +39,14 @@ final class FinishedCredentialUpdatedViewController: UIViewController {
         self.activityIndicator = activityIndicator
 
         let authenticationResultLabel = UILabel()
-        authenticationResultLabel.text = ""
+        authenticationResultLabel.text = "Authenticating..."
         authenticationResultLabel.textAlignment = .center
         authenticationResultLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
         authenticationResultLabel.numberOfLines = 0
         authenticationResultLabel.preferredMaxLayoutWidth = 200
         self.authenticationResultLabel = authenticationResultLabel
 
-        let stackView = UIStackView(arrangedSubviews: [checkmarkView, detailLabel, activityIndicator, authenticationResultLabel])
+        let stackView = UIStackView(arrangedSubviews: [checkmarkView, detailLabel, authenticationResultLabel, activityIndicator])
         stackView.axis = .vertical
         stackView.alignment = .center
         stackView.spacing = 24
@@ -77,14 +77,10 @@ final class FinishedCredentialUpdatedViewController: UIViewController {
             DispatchQueue.main.async {
                 self.activityIndicator?.stopAnimating()
                 self.activityIndicator?.removeFromSuperview()
-            }
-            do {
-                let code = try result.get()
-                DispatchQueue.main.async {
+                do {
+                    let code = try result.get()
                     self.authenticationResultLabel?.text = "Authentication code: \n\(code.rawValue)"
-                }
-            } catch {
-                DispatchQueue.main.async {
+                } catch {
                     self.authenticationResultLabel?.text = "Error: \n\(error.localizedDescription)"
                 }
             }
