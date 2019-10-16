@@ -49,6 +49,7 @@ public class AddCredentialTask {
     /// Task will execute it's completion handler if the credential's status changes to match this predicate.
     public let completionPredicate: CompletionPredicate
 
+    private let tinkLink: TinkLink
     let progressHandler: (Status) -> Void
     let completion: (Result<Credential, Swift.Error>) -> Void
     let credentialUpdateHandler: (Result<Credential, Swift.Error>) -> Void
@@ -56,6 +57,7 @@ public class AddCredentialTask {
     var callCanceller: Cancellable?
 
     init(tinkLink: TinkLink = .shared, completionPredicate: CompletionPredicate = .updated, progressHandler: @escaping (Status) -> Void, completion: @escaping (Result<Credential, Swift.Error>) -> Void, credentialUpdateHandler: @escaping (Result<Credential, Swift.Error>) -> Void) {
+        self.tinkLink = tinkLink
         self.completionPredicate = completionPredicate
         self.progressHandler = progressHandler
         self.completion = completion
@@ -66,7 +68,7 @@ public class AddCredentialTask {
         self.credential = credential
 
         handleUpdate(for: .success(credential))
-        credentialStatusPollingTask = CredentialStatusPollingTask(credential: credential) { [weak self] result in
+        credentialStatusPollingTask = CredentialStatusPollingTask(tinkLink: tinkLink, credential: credential) { [weak self] result in
             self?.handleUpdate(for: result)
         }
 
@@ -87,11 +89,11 @@ public class AddCredentialTask {
             case .authenticating:
                 progressHandler(.authenticating)
             case .awaitingSupplementalInformation:
-                let supplementInformationTask = SupplementInformationTask(credential: credential) { [weak self] result in
+                let supplementInformationTask = SupplementInformationTask(tinkLink: tinkLink, credential: credential) { [weak self] result in
                     guard let self = self else { return }
                     do {
                         try result.get()
-                        self.credentialStatusPollingTask = CredentialStatusPollingTask(credential: credential, updateHandler: self.handleUpdate)
+                        self.credentialStatusPollingTask = CredentialStatusPollingTask(tinkLink: self.tinkLink, credential: credential, updateHandler: self.handleUpdate)
                         self.credentialStatusPollingTask?.pollStatus()
                     } catch {
                         self.completion(.failure(error))
@@ -103,10 +105,11 @@ public class AddCredentialTask {
                     assertionFailure("Missing third pary app authentication deeplink URL!")
                     return
                 }
-                let task = ThirdPartyAppAuthenticationTask(thirdPartyAppAuthentication: thirdPartyAppAuthentication) { (result) in
+                let task = ThirdPartyAppAuthenticationTask(thirdPartyAppAuthentication: thirdPartyAppAuthentication) { [weak self] (result) in
+                    guard let self = self else { return }
                     do {
                         try result.get()
-                        self.credentialStatusPollingTask = CredentialStatusPollingTask(credential: credential, updateHandler: self.handleUpdate)
+                        self.credentialStatusPollingTask = CredentialStatusPollingTask(tinkLink: self.tinkLink, credential: credential, updateHandler: self.handleUpdate)
                         self.credentialStatusPollingTask?.pollStatus()
                     } catch {
                         self.completion(.failure(error))
