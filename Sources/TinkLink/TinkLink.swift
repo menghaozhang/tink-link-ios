@@ -101,12 +101,11 @@ public class TinkLink {
             urlComponents.scheme == configuration.redirectURI.scheme
             else { return false }
 
-        let allParameters = Dictionary(grouping: urlComponents.queryItems ?? [], by: { $0.name })
+        var parameters = Dictionary(grouping: urlComponents.queryItems ?? [], by: { $0.name })
             .compactMapValues { $0.first?.value }
 
         let stateParameterName = "state"
-        let parameters = allParameters.filter { $0.key != stateParameterName }
-        guard let state = allParameters[stateParameterName] else { return false }
+        guard let state = parameters.removeValue(forKey: stateParameterName) else { return false }
 
         thirdPartyCallbackCanceller = client.credentialService.thirdPartyCallback(
             state: state,
