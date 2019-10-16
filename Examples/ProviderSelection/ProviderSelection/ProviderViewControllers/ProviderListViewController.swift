@@ -3,7 +3,7 @@ import UIKit
 
 /// Example of how to use the provider grouped by names
 final class ProviderListViewController: UITableViewController {
-    let providerContext: ProviderContext
+    private let providerContext: ProviderContext
     
     private let searchController = UISearchController(searchResultsController: nil)
 
