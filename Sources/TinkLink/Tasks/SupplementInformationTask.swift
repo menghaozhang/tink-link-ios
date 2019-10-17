@@ -10,7 +10,7 @@ public class SupplementInformationTask {
     private var callRetryCancellable: RetryCancellable?
 
     /// The credential that's awaiting supplemental information.
-    public private(set) var credential: Credential
+    public let credential: Credential
 
     private let completionHandler: (Result<Void, Error>) -> Void
 
