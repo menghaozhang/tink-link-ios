@@ -1,0 +1,1 @@
+typealias RetryCancellable = (Cancellable & Retriable)

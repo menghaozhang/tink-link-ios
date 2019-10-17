@@ -1,0 +1,3 @@
+protocol Retriable {
+    func retry()
+}

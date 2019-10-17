@@ -57,6 +57,8 @@
 		20EE138123053B2700C92D65 /* Credential+GRPC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20EE138023053B2700C92D65 /* Credential+GRPC.swift */; };
 		20FAE67A233DFB4E003C73BA /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FAE679233DFB4E003C73BA /* Configuration.swift */; };
 		20FAE67D233DFBE9003C73BA /* ProcessInfo+TinkEnvironmentVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20FAE67C233DFBE9003C73BA /* ProcessInfo+TinkEnvironmentVariables.swift */; };
+		3373C0D723574CFE00555FC7 /* Retriable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3373C0D523574CFE00555FC7 /* Retriable.swift */; };
+		3373C0D823574CFE00555FC7 /* RetryCancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3373C0D623574CFE00555FC7 /* RetryCancellable.swift */; };
 		8F0CE77D2332151700FB84B0 /* CallCanceller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0CE77A2332151700FB84B0 /* CallCanceller.swift */; };
 		8F0CE77E2332151700FB84B0 /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0CE77B2332151700FB84B0 /* Cancellable.swift */; };
 		8F0CE77F2332151700FB84B0 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0CE77C2332151700FB84B0 /* Client.swift */; };
@@ -133,6 +135,8 @@
 		20EE138023053B2700C92D65 /* Credential+GRPC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Credential+GRPC.swift"; sourceTree = "<group>"; };
 		20FAE679233DFB4E003C73BA /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		20FAE67C233DFBE9003C73BA /* ProcessInfo+TinkEnvironmentVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProcessInfo+TinkEnvironmentVariables.swift"; sourceTree = "<group>"; };
+		3373C0D523574CFE00555FC7 /* Retriable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Retriable.swift; sourceTree = "<group>"; };
+		3373C0D623574CFE00555FC7 /* RetryCancellable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetryCancellable.swift; sourceTree = "<group>"; };
 		8F0CE77A2332151700FB84B0 /* CallCanceller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallCanceller.swift; sourceTree = "<group>"; };
 		8F0CE77B2332151700FB84B0 /* Cancellable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
 		8F0CE77C2332151700FB84B0 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
@@ -295,6 +299,8 @@
 		20ED857223040053006213BB /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				3373C0D523574CFE00555FC7 /* Retriable.swift */,
+				3373C0D623574CFE00555FC7 /* RetryCancellable.swift */,
 				8F0CE77A2332151700FB84B0 /* CallCanceller.swift */,
 				8F0CE77B2332151700FB84B0 /* Cancellable.swift */,
 				20E6DCD023336AE700476B8F /* MultiHandler.swift */,
@@ -518,6 +524,7 @@
 				8F613A002334CB2D00BFB04D /* CredentialStatusPollingTask.swift in Sources */,
 				200A3FA2230C3E7800BEF935 /* Metadata+Tink.swift in Sources */,
 				200FD63F23154B660077181A /* Market.swift in Sources */,
+				3373C0D823574CFE00555FC7 /* RetryCancellable.swift in Sources */,
 				20ED856F2304003A006213BB /* Environment.swift in Sources */,
 				20E68871234F0B7F00B4E04F /* date.pb.swift in Sources */,
 				8F0CE77D2332151700FB84B0 /* CallCanceller.swift in Sources */,
@@ -529,6 +536,7 @@
 				8FA3558A231E703C0054115D /* ProviderStore.swift in Sources */,
 				2027F0242345E5FD0025473A /* AuthorizationResponse.swift in Sources */,
 				8FA35586231E673B0054115D /* TinkLink.swift in Sources */,
+				3373C0D723574CFE00555FC7 /* Retriable.swift in Sources */,
 				20ED85712304004C006213BB /* ProviderService.swift in Sources */,
 				20ED858E2304151B006213BB /* CredentialService.swift in Sources */,
 				8F84A77C2330D39600EA878F /* Locale+Extensions.swift in Sources */,
