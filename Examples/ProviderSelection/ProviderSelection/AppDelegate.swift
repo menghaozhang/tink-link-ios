@@ -6,6 +6,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        if let configuration = try? TinkLink.Configuration(processInfo: .processInfo) {
+            TinkLink.configure(with: configuration)
+        }
         window = UIWindow(frame: UIScreen.main.bounds)
         let providerListViewController = ProviderListViewController(style: .plain)
         let navigationController = UINavigationController(rootViewController: providerListViewController)
