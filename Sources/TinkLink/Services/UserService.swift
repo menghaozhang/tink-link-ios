@@ -15,7 +15,6 @@ final class UserService {
     func createAnonymous(market: Market? = nil, locale: Locale, origin: String? = nil, completion: @escaping (Result<AccessToken, Error>) -> Void) -> RetryCancellable {
         var request = GRPCCreateAnonymousRequest()
         request.market = market?.code ?? ""
-        // TODO: Use the correct/acceptable locale PFMF-1298
         request.locale = locale.identifier
         request.origin = origin ?? ""
 
