@@ -3,12 +3,27 @@ import Foundation
 extension TinkLink {
     /// Configuration used to set up the TinkLink
     public struct Configuration {
+        /// The client id for your app.
         public var clientID: String
+
+        /// The URI you've setup in Console.
         public var redirectURI: URL
+
+        /// The environment to use.
         public var environment: Environment
+
+        /// Certificate to use with gRPC API.
         public var grpcCertificate: Data?
+
+        /// Certificate to use with REST API.
         public var restCertificate: Data?
+
+        /// The market to use.
+        ///
+        /// This is used by TinkLink to when creating an anonymous user and when fetching providers.
         public var market: Market
+
+        /// The locale to use.
         public var locale: Locale
 
         /// - Parameters:
