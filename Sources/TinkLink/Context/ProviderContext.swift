@@ -58,17 +58,17 @@ public class ProviderContext {
 
     private var providerFetchHandlers: [ProviderContext.Attributes: RetryCancellable] = [:]
 
-    private var _providers: [Provider]? {
+    private var _providers: [Provider] {
         willSet {
             delegate?.providerContextWillChangeProviders(self)
         }
         didSet {
-            _providerGroups = _providers.map(ProviderGroup.makeGroups)
+            _providerGroups = ProviderGroup.makeGroups(providers: _providers)
             delegate?.providerContextDidChangeProviders(self)
         }
     }
 
-    private var _providerGroups: [ProviderGroup]?
+    private var _providerGroups: [ProviderGroup]
 
     /// The object that acts as the delegate of the provider context.
     ///
@@ -99,7 +99,7 @@ public class ProviderContext {
         self.service = tinkLink.client.providerService
         self.locale = tinkLink.client.locale
         self._providers = providerStore[market]
-        self._providerGroups = _providers.map(ProviderGroup.makeGroups)
+        self._providerGroups = ProviderGroup.makeGroups(providers: _providers)
         self.providerStoreObserver = NotificationCenter.default.addObserver(forName: .providerStoreChanged, object: providerStore, queue: .main) { [weak self] _ in
             guard let self = self else {
                 return
@@ -169,22 +169,22 @@ extension ProviderContext {
     ///
     /// - Note: The providers could be empty at first or change if the context's attributes are changed. Use the delegate to get notified when providers change.
     public var providers: [Provider] {
-        guard let providers = _providers else {
+        if _providers.isEmpty {
             performFetchIfNeeded()
             return []
         }
-        return providers
+        return _providers
     }
 
     /// Grouped providers matching the context's current attributes.
     ///
     /// - Note: The providerGroups could be empty at first or change if the context's attributes are changed. Use the delegate to get notified when providerGroups change.
     public var providerGroups: [ProviderGroup] {
-        guard let providerGroups = _providerGroups else {
+        if _providerGroups.isEmpty {
             performFetchIfNeeded()
             return []
         }
-        return providerGroups
+        return _providerGroups
     }
 
     public func search(_ query: String) -> [ProviderGroup] {

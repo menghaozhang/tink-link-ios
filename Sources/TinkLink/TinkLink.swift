@@ -39,7 +39,7 @@ public class TinkLink {
     ///
     /// Here's how you could configure TinkLink with a `TinkLink.Configuration`.
     ///
-    ///     let configuration = Configuration(clientID: "<#clientID#>", market: "SE", locale: "en_US")
+    ///     let configuration = Configuration(clientID: "<#clientID#>", redirectURI: "<#URL#>", market: "SE", locale: "en_US")
     ///     TinkLink.configure(with: configuration)
     ///
     public static func configure(with configuration: TinkLink.Configuration) {
