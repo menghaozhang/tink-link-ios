@@ -186,3 +186,10 @@ if let appStoreURL = thirdPartyAppAuthentication.appStoreURL, UIApplication.shar
 
 present(alertController, animated: true)
 ```
+
+After the redirect to third party app, some banks will require additional interaction between the thrid party authentication app and you app, here is how you can handle the redirect with TinkLink:
+```swift
+func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+    return TinkLink.shared.open(url)
+}
+```
