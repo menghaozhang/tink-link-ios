@@ -18,7 +18,7 @@ extension TinkLink {
         ///   - grpcCertificateURL: URL to a certificate file to use with gRPC API.
         ///   - restCertificateURL: URL to a certificate file to use with REST API.
         ///   - market: Optional, default market(SE) will be used if nothing is provided.
-        ///   - locale: Optional, default locale(sv_SE) will be used if nothing is provided.
+        ///   - locale: Optional, a default locale based on the current locale will be used if nothing is provided.
         public init(
             clientID: String,
             redirectURI: URL,
