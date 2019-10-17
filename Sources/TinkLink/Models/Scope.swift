@@ -19,7 +19,7 @@ extension TinkLink {
 
 extension TinkLink.Scope {
     enum Access: String {
-        case read, write, grant, revoke, refresh, categorize, execute, create, delete, webHooks
+        case read, write, grant, revoke, refresh, categorize, execute, create, delete, webHooks = "web_hooks"
     }
 
     /// Access to all the user's account information, including balances.
