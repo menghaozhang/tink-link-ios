@@ -43,7 +43,7 @@ public class ThirdPartyAppAuthenticationTask {
         }
     }
 
-    /// Information about the third party application app.
+    /// Information about how to open or download the third party application app.
     public private(set) var thirdPartyAppAuthentication: Credential.ThirdPartyAppAuthentication
 
     private let completionHandler: (Result<Void, Swift.Error>) -> Void
