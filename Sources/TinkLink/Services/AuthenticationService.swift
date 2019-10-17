@@ -23,11 +23,11 @@ final class AuthenticationService: TokenConfigurableService {
 
     internal lazy var service = AuthenticationServiceServiceClient(channel: channel, metadata: metadata)
 
-    func describeOAuth2Client(clientID: String, scopes: [String], redirectURL: URL, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable {
+    func describeOAuth2Client(clientID: String, scopes: [String], redirectURI: URL, completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable {
         var request = GRPCDescribeOAuth2ClientRequest()
         request.clientID = clientID
         request.scopes = scopes
-        request.redirectUri = redirectURL.absoluteString
+        request.redirectUri = redirectURI.absoluteString
 
         return CallHandler(for: request, method: service.describeOAuth2Client, responseMap: { _ in }, completion: completion)
     }
