@@ -1,8 +1,10 @@
 /// A task that handles submitting supplemental information for a credential.
 ///
-/// This task is usually given when an AddCredentialTask's status changes to `awaitingSupplementalInformation`.
-/// Use this task to submit supplmental information for the credential.
-/// If the user dismiss supplementing information, by e.g. closing the form, you need to call `cancel()` to stop adding the credential.
+/// This task is provided when an `AddCredentialTask`'s status changes to `awaitingSupplementalInformation`.
+///
+/// When a credential's status is `awaitingSupplementalInformation` the user needs to provide additional information to finish adding the credential.
+
+/// - Note: If the user dismiss supplementing information, by e.g. closing the form, you need to call `cancel()` to stop adding the credential.
 public class SupplementInformationTask {
     private let credentialService: CredentialService
     private var callRetryCancellable: RetryCancellable?
