@@ -58,7 +58,7 @@ extension TinkLink.Configuration {
         }
     }
 
-    public init(processInfo: ProcessInfo) throws {
+    init(processInfo: ProcessInfo) throws {
         guard let clientID = processInfo.tinkClientID else { throw Error.clientIDNotFound }
         guard let redirectURI = processInfo.tinkRedirectURI else { throw Error.redirectURINotFound }
         self.clientID = clientID
