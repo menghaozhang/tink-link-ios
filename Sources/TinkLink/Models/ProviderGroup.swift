@@ -110,7 +110,7 @@ public enum ProviderGroup {
     }
 
     public static func makeGroups(providers: [Provider]) -> [ProviderGroup] {
-        return Dictionary(grouping: providers, by: { $0.groupDisplayName })
+        return Dictionary(grouping: providers, by: { $0.groupDisplayName.isEmpty ? $0.financialInstitution.id : $0.groupDisplayName })
             .sorted(by: { $0.key < $1.key })
             .map { ProviderGroup(providers: $0.value) }
     }
