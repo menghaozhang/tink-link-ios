@@ -49,7 +49,7 @@ Also make sure `TinkLink.json` is present at the root.
 ## Configuration
 
 You need to configure TinkLink with a client id and redirect URI before using.
-TinkLink can be configured either by adding keys and values in your app's Info.plist, environment variables or in code.
+TinkLink can be configured either by adding environment variables or in code.
 
 ### Environment Variables
 
