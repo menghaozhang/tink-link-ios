@@ -5,6 +5,10 @@ public final class CredentialService: TokenConfigurableService {
     let channel: Channel
     let metadata: Metadata
 
+    convenience init(tinkLink: TinkLink) {
+        self.init(channel: tinkLink.client.channel, metadata: tinkLink.client.metadata)
+    }
+
     init(channel: Channel, metadata: Metadata) {
         self.channel = channel
         self.metadata = metadata

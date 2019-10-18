@@ -84,13 +84,3 @@ public class TinkLink {
         return true
     }
 }
-
-extension TinkLink {
-    public var providerService: ProviderService {
-        client.providerService
-    }
-
-    public var credentialService: CredentialService {
-        client.credentialService
-    }
-}
