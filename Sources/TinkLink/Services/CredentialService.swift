@@ -1,7 +1,7 @@
 import Foundation
 import SwiftGRPC
 
-final class CredentialService: TokenConfigurableService {
+public final class CredentialService: TokenConfigurableService {
     let channel: Channel
     let metadata: Metadata
 
@@ -12,7 +12,7 @@ final class CredentialService: TokenConfigurableService {
 
     internal lazy var service = CredentialServiceServiceClient(channel: channel, metadata: metadata)
 
-    func credentials(completion: @escaping (Result<[Credential], Error>) -> Void) -> RetryCancellable {
+    public func credentials(completion: @escaping (Result<[Credential], Error>) -> Void) -> RetryCancellable {
         let request = GRPCListCredentialsRequest()
 
         return CallHandler(for: request, method: service.listCredentials, responseMap: { $0.credentials.map(Credential.init(grpcCredential:)) }, completion: completion)

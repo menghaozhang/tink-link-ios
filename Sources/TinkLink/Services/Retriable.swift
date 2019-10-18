@@ -1,3 +1,3 @@
-protocol Retriable {
+public protocol Retriable {
     func retry()
 }

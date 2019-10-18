@@ -1,1 +1,1 @@
-typealias RetryCancellable = (Cancellable & Retriable)
+public typealias RetryCancellable = (Cancellable & Retriable)
