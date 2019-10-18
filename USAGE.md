@@ -193,3 +193,27 @@ func application(_ application: UIApplication, open url: URL, options: [UIApplic
     return TinkLink.shared.open(url)
 }
 ```
+
+## Advanced usage of listing providers
+
+Instead of using `ProviderContext` for listing `ProviderGroup`, you can directly use the `ProviderService` for fetching providers and grouping them with custom logic. 
+Make sure to register an access token before using the service.
+
+```swift
+var authenticationCancellable: Cancellable?
+var providerCancellable: Cancellable?
+
+let userService = UserService(tinkLink: TinkLink.shared)
+authenticationCancellable = userService.createAnonymous(market: TinkLink.shared.configuration.market, locale: TinkLink.shared.configuration.locale) { [weak self] result in
+    guard let self = self else { return }
+    if let accessToken = try? result.get() {
+        let providerService = ProviderService(tinkLink: TinkLink.shared, accessToken: accessToken)
+        self.providerCancellable = providerService.providers(market: TinkLink.shared.configuration.market, capabilities: .all, includeTestProviders: true) { [weak self] result in
+            guard let self = self else { return }
+            if let providers = try? result.get() {
+                <#Your Code#>
+            }
+        }
+    }
+}
+```
