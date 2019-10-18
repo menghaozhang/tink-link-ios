@@ -4,7 +4,12 @@ public class ProviderService: TokenConfigurableService {
     let channel: Channel
     let metadata: Metadata
 
-    convenience init(tinkLink: TinkLink) {
+    public convenience init(tinkLink: TinkLink, accessToken: AccessToken) {
+        do {
+            try tinkLink.client.metadata.addAccessToken(accessToken.rawValue)
+        } catch {
+            assertionFailure(error.localizedDescription)
+        }
         self.init(channel: tinkLink.client.channel, metadata: tinkLink.client.metadata)
     }
 

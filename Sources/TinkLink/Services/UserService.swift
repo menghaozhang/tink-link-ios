@@ -1,11 +1,11 @@
 import Foundation
 import SwiftGRPC
 
-final class UserService {
+public final class UserService {
     let channel: Channel
     let metadata: Metadata
 
-    convenience init(tinkLink: TinkLink) {
+    public convenience init(tinkLink: TinkLink) {
         self.init(channel: tinkLink.client.channel, metadata: tinkLink.client.metadata)
     }
 
