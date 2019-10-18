@@ -9,7 +9,8 @@ import UIKit
 ///
 /// When a credential's status is `awaitingThirdPartyAppAuthentication` the user needs to authenticate in a third party app to finish adding the credential.
 ///
-/// - Note: If the app couldn't be opened you need to handle the `AddCredentialTask` completion result and check for a `ThirdPartyAppAuthenticationTask.Error`. This error can tell you if the user needs to download the app.
+/// - Note: If the app couldn't be opened you need to handle the `AddCredentialTask` completion result and check for a `ThirdPartyAppAuthenticationTask.Error`.
+/// This error can tell you if the user needs to download the app.
 public class ThirdPartyAppAuthenticationTask {
     public enum Error: Swift.Error, LocalizedError {
         case deeplinkURLNotFound
