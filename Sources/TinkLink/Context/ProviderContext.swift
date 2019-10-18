@@ -58,24 +58,21 @@ public class ProviderContext {
 
     private var providerFetchHandlers: [ProviderContext.Attributes: RetryCancellable] = [:]
 
-    private var _providers: [Provider] {
+    private var _providerGroups: [ProviderGroup] {
         willSet {
             delegate?.providerContextWillChangeProviders(self)
         }
         didSet {
-            _providerGroups = ProviderGroup.makeGroups(providers: _providers)
             delegate?.providerContextDidChangeProviders(self)
         }
     }
-
-    private var _providerGroups: [ProviderGroup]
 
     /// The object that acts as the delegate of the provider context.
     ///
     /// The delegate must adopt the `ProviderContextDelegate` protocol. The delegate is not retained.
     public weak var delegate: ProviderContextDelegate? {
         didSet {
-            if delegate != nil, _providers == nil {
+            if delegate != nil, _providerGroups.isEmpty {
                 performFetchIfNeeded()
             }
         }
@@ -98,13 +95,14 @@ public class ProviderContext {
         self.authenticationManager = tinkLink.authenticationManager
         self.service = tinkLink.client.providerService
         self.locale = tinkLink.client.locale
-        self._providers = providerStore[market]
-        self._providerGroups = ProviderGroup.makeGroups(providers: _providers)
+        let providers = providerStore[market].filter { attributes.accessTypes.contains($0.accessType) && attributes.kinds.contains($0.kind) }
+        self._providerGroups = ProviderGroup.makeGroups(providers: providers)
         self.providerStoreObserver = NotificationCenter.default.addObserver(forName: .providerStoreChanged, object: providerStore, queue: .main) { [weak self] _ in
             guard let self = self else {
                 return
             }
-            self._providers = self.providerStore[self.market]
+            let providers = self.providerStore[self.market].filter { attributes.accessTypes.contains($0.accessType) && attributes.kinds.contains($0.kind) }
+            self._providerGroups = ProviderGroup.makeGroups(providers: providers)
         }
     }
 
@@ -165,17 +163,6 @@ extension ProviderContext {
 }
 
 extension ProviderContext {
-    /// Providers matching the context's current attributes.
-    ///
-    /// - Note: The providers could be empty at first or change if the context's attributes are changed. Use the delegate to get notified when providers change.
-    public var providers: [Provider] {
-        if _providers.isEmpty {
-            performFetchIfNeeded()
-            return []
-        }
-        return _providers
-    }
-
     /// Grouped providers matching the context's current attributes.
     ///
     /// - Note: The providerGroups could be empty at first or change if the context's attributes are changed. Use the delegate to get notified when providerGroups change.
