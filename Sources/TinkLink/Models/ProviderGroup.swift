@@ -158,5 +158,11 @@ public enum ProviderGroup {
         }
     }
 
-    public var displayName: String { firstProvider.groupDisplayName }
+    public var displayName: String {
+        if firstProvider.groupDisplayName.isEmpty {
+            return firstProvider.financialInstitution.name
+        } else {
+            return firstProvider.groupDisplayName
+        }
+    }
 }
