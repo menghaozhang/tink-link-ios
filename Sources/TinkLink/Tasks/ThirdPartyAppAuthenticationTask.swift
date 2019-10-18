@@ -3,6 +3,14 @@ import Foundation
 import UIKit
 #endif
 
+/// A task that handles opening third party apps.
+///
+/// This task is provided when an `AddCredentialTask`'s status changes to `awaitingThirdPartyAppAuthentication`.
+///
+/// When a credential's status is `awaitingThirdPartyAppAuthentication` the user needs to authenticate in a third party app to finish adding the credential.
+///
+/// - Note: If the app couldn't be opened you need to handle the `AddCredentialTask` completion result and check for a `ThirdPartyAppAuthenticationTask.Error`.
+/// This error can tell you if the user needs to download the app.
 public class ThirdPartyAppAuthenticationTask {
     public enum Error: Swift.Error, LocalizedError {
         case deeplinkURLNotFound
@@ -36,6 +44,7 @@ public class ThirdPartyAppAuthenticationTask {
         }
     }
 
+    /// Information about how to open or download the third party application app.
     public private(set) var thirdPartyAppAuthentication: Credential.ThirdPartyAppAuthentication
 
     private let completionHandler: (Result<Void, Swift.Error>) -> Void
@@ -46,6 +55,9 @@ public class ThirdPartyAppAuthenticationTask {
     }
 
     #if os(iOS)
+    /// Tries to open the third party app.
+    ///
+    /// - Parameter application: The object that controls and coordinates your app. Defaults to the shared instance.
     public func openThirdPartyApp(with application: UIApplication = .shared) {
         guard let url = thirdPartyAppAuthentication.deepLinkURL else {
             completionHandler(.failure(Error.deeplinkURLNotFound))
@@ -79,6 +91,9 @@ public class ThirdPartyAppAuthenticationTask {
     }
     #endif
 
+    /// Tells the task to stop waiting for third party app authentication.
+    ///
+    /// Call this method if you have a UI that lets the user choose to open the third party app and the user cancels.
     public func cancel() {
         completionHandler(.failure(CocoaError(.userCancelled)))
     }
