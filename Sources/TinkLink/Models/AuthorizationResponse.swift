@@ -1,3 +1,3 @@
-struct AuthorizationResponse: Decodable {
-    let code: AuthorizationCode
+public struct AuthorizationResponse: Decodable {
+    public let code: AuthorizationCode
 }

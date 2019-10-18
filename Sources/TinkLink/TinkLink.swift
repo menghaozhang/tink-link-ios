@@ -56,7 +56,7 @@ public class TinkLink {
     /// - Parameter result: Represents either an authorization code if authorization was successful or an error if authorization failed.
     @discardableResult
     public func authorize(scope: TinkLink.Scope, completion: @escaping (_ result: Result<AuthorizationCode, Error>) -> Void) -> Cancellable? {
-        return client.authenticationService.authorize(redirectURI: configuration.redirectURI, scope: scope.description) { (result) in
+        return client.authenticationService.authorize(redirectURI: configuration.redirectURI, scope: scope) { (result) in
             completion(result.map({ $0.code }))
         }
     }
