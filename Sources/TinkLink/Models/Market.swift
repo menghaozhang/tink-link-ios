@@ -1,5 +1,8 @@
 import Foundation
 
+/// Represents a market by a two-letter country code.
+///
+/// ISO 3166-1 alpha-2
 public struct Market: Hashable, RawRepresentable, ExpressibleByStringLiteral {
     public let rawValue: String
 
@@ -15,10 +18,14 @@ public struct Market: Hashable, RawRepresentable, ExpressibleByStringLiteral {
         self.rawValue = value
     }
 
+    /// A two-letter country code.
     public var code: String {
         return rawValue
     }
 
+    /// Returns a localized string for a specified region code.
+    ///
+    /// For example, in the “en” locale, the result for "SE" is "Sweden".
     public var localizedString: String? {
         return Locale.current.localizedString(forRegionCode: code)
     }

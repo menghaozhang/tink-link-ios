@@ -1,5 +1,6 @@
 import Foundation
 
+/// Represents which endpoints TinkLink will use.
 public enum Environment {
     /// Default environment is production
     case production
