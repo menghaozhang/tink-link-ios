@@ -20,7 +20,7 @@ extension TinkLink {
 
         /// The market to use.
         ///
-        /// This is used by TinkLink to when creating an anonymous user and when fetching providers.
+        /// This is used by TinkLink when creating an anonymous user and when fetching providers.
         public var market: Market
 
         /// The locale to use.
