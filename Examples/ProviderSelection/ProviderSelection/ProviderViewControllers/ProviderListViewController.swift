@@ -81,7 +81,7 @@ extension ProviderListViewController {
 // MARK: - Navigation
 
 extension ProviderListViewController {
-    func showFinancialInstitution(for groups: [FinancialInstitutionGroup], title: String?) {
+    func showFinancialInstitution(for groups: [FinancialInstitution], title: String?) {
         let viewController = FinancialInstitutionPickerViewController(style: .plain)
         viewController.title = title
         viewController.financialInstitutionGroups = groups

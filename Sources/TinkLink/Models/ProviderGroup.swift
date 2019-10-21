@@ -32,7 +32,7 @@ public enum ProviderAccessTypeGroup {
     public var accessType: Provider.AccessType { firstProvider.accessType }
 }
 
-public enum FinancialInstitutionGroup {
+public enum FinancialInstitution {
     case provider(Provider)
     case credentialTypes([Provider])
     case accessTypes([ProviderAccessTypeGroup])
@@ -86,7 +86,7 @@ public enum ProviderGroup {
     case provider(Provider)
     case credentialTypes([Provider])
     case accessTypes([ProviderAccessTypeGroup])
-    case financialInstitutions([FinancialInstitutionGroup])
+    case financialInstitutions([FinancialInstitution])
 
     init(providers: [Provider]) {
         precondition(!providers.isEmpty)
@@ -103,7 +103,7 @@ public enum ProviderGroup {
                     self = .accessTypes(providersGroupedByAccessType)
                 }
             } else {
-                let providersGroupedByFinancialInstitution = providersGroupedByFinancialInstitution.values.map(FinancialInstitutionGroup.init(providers:))
+                let providersGroupedByFinancialInstitution = providersGroupedByFinancialInstitution.values.map(FinancialInstitution.init(providers:))
                 self = .financialInstitutions(providersGroupedByFinancialInstitution)
             }
         }

@@ -3,7 +3,7 @@ import UIKit
 
 /// Example of how to use the provider grouped by financialInstitution
 final class FinancialInstitutionPickerViewController: UITableViewController {
-    var financialInstitutionGroups: [FinancialInstitutionGroup] = []
+    var financialInstitutionGroups: [FinancialInstitution] = []
 }
 
 // MARK: - View Lifecycle
