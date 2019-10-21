@@ -8,20 +8,20 @@ public struct ProviderCredentialKindGroup {
 
 public enum ProviderAccessTypeGroup {
     case provider(Provider)
-    case credentialTypes([ProviderCredentialKindGroup])
+    case credentialKinds([ProviderCredentialKindGroup])
 
     init(providers: [Provider]) {
         precondition(!providers.isEmpty)
         if providers.count == 1, let provider = providers.first {
             self = .provider(provider)
         } else {
-            self = .credentialTypes(providers.map(ProviderCredentialKindGroup.init(provider:)))
+            self = .credentialKinds(providers.map(ProviderCredentialKindGroup.init(provider:)))
         }
     }
 
     public var providers: [Provider] {
         switch self {
-        case .credentialTypes(let groups):
+        case .credentialKinds(let groups):
             return groups.map { $0.provider }
         case .provider(let provider):
             return [provider]
@@ -30,7 +30,7 @@ public enum ProviderAccessTypeGroup {
 
     private var firstProvider: Provider {
         switch self {
-        case .credentialTypes(let groups):
+        case .credentialKinds(let groups):
             return groups[0].provider
         case .provider(let provider):
             return provider
@@ -42,7 +42,7 @@ public enum ProviderAccessTypeGroup {
 
 public enum FinancialInstitution {
     case provider(Provider)
-    case credentialTypes([ProviderCredentialKindGroup])
+    case credentialKinds([ProviderCredentialKindGroup])
     case accessTypes([ProviderAccessTypeGroup])
 
     init(providers: [Provider]) {
@@ -52,7 +52,7 @@ public enum FinancialInstitution {
         } else {
             let providersGroupedByAccessTypes = Dictionary(grouping: providers, by: { $0.accessType })
             if providersGroupedByAccessTypes.count == 1, let providers = providersGroupedByAccessTypes.values.first {
-                self = .credentialTypes(providers.map(ProviderCredentialKindGroup.init(provider:)))
+                self = .credentialKinds(providers.map(ProviderCredentialKindGroup.init(provider:)))
             } else {
                 let providersGroupedByAccessType = providersGroupedByAccessTypes.values.map(ProviderAccessTypeGroup.init(providers:))
                 self = .accessTypes(providersGroupedByAccessType)
@@ -64,7 +64,7 @@ public enum FinancialInstitution {
         switch self {
         case .accessTypes(let providerGroupByAccessTypes):
             return providerGroupByAccessTypes.flatMap { $0.providers }
-        case .credentialTypes(let groups):
+        case .credentialKinds(let groups):
             return groups.map { $0.provider }
         case .provider(let provider):
             return [provider]
@@ -75,12 +75,12 @@ public enum FinancialInstitution {
         switch self {
         case .accessTypes(let accessTypeGroups):
             switch accessTypeGroups[0] {
-            case .credentialTypes(let groups):
+            case .credentialKinds(let groups):
                 return groups[0].provider
             case .provider(let provider):
                 return provider
             }
-        case .credentialTypes(let providers):
+        case .credentialKinds(let providers):
             return providers[0].provider
         case .provider(let provider):
             return provider
@@ -92,7 +92,7 @@ public enum FinancialInstitution {
 
 public enum FinancialInstitutionGroup {
     case provider(Provider)
-    case credentialTypes([ProviderCredentialKindGroup])
+    case credentialKinds([ProviderCredentialKindGroup])
     case accessTypes([ProviderAccessTypeGroup])
     case financialInstitutions([FinancialInstitution])
 
@@ -105,7 +105,7 @@ public enum FinancialInstitutionGroup {
             if providersGroupedByFinancialInstitution.count == 1, let providers = providersGroupedByFinancialInstitution.values.first {
                 let providersGroupedByAccessTypes = Dictionary(grouping: providers, by: { $0.accessType })
                 if providersGroupedByAccessTypes.count == 1, let providers = providersGroupedByAccessTypes.values.first {
-                    self = .credentialTypes(providers.map(ProviderCredentialKindGroup.init(provider:)))
+                    self = .credentialKinds(providers.map(ProviderCredentialKindGroup.init(provider:)))
                 } else {
                     let providersGroupedByAccessType = providersGroupedByAccessTypes.values.map(ProviderAccessTypeGroup.init(providers:))
                     self = .accessTypes(providersGroupedByAccessType)
@@ -129,7 +129,7 @@ public enum FinancialInstitutionGroup {
             return providerGroupedByFinancialInstitutions.flatMap { $0.providers }
         case .accessTypes(let providerGroupByAccessTypes):
             return providerGroupByAccessTypes.flatMap { $0.providers }
-        case .credentialTypes(let groups):
+        case .credentialKinds(let groups):
             return groups.map { $0.provider }
         case .provider(let provider):
             return [provider]
@@ -142,24 +142,24 @@ public enum FinancialInstitutionGroup {
             switch financialInstitutionGroups[0] {
             case .accessTypes(let providerAccessTypeGroups):
                 switch providerAccessTypeGroups[0] {
-                case .credentialTypes(let groups):
+                case .credentialKinds(let groups):
                     return groups[0].provider
                 case .provider(let provider):
                     return provider
                 }
-            case .credentialTypes(let providers):
+            case .credentialKinds(let providers):
                 return providers[0].provider
             case .provider(let provider):
                 return provider
             }
         case .accessTypes(let providerAccessTypeGroups):
             switch providerAccessTypeGroups[0] {
-            case .credentialTypes(let groups):
+            case .credentialKinds(let groups):
                 return groups[0].provider
             case .provider(let provider):
                 return provider
             }
-        case .credentialTypes(let groups):
+        case .credentialKinds(let groups):
             return groups[0].provider
         case .provider(let provider):
             return provider

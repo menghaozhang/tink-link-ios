@@ -70,7 +70,7 @@ extension ProviderListViewController {
             showFinancialInstitution(for: financialInstitutionGroups, title: providerGroup.displayName)
         case .accessTypes(let accessTypeGroups):
             showAccessTypePicker(for: accessTypeGroups, title: providerGroup.displayName)
-        case .credentialTypes(let groups):
+        case .credentialKinds(let groups):
             showCredentialTypePicker(for: groups)
         case .provider(let provider):
             showAddCredential(for: provider)
