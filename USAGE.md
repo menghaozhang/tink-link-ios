@@ -40,7 +40,7 @@ class ProviderListViewController: UITableViewController, ProviderContextDelegate
 
 ### Provider groups
 
-Use the `providerGroups` property on `ProviderContext` to get providers grouped by financial institution, access type and credential type.
+Use the `providerGroups` property on `ProviderContext` to get providers grouped by financial institution, access type and credential kind.
 
 Handle selection of a provider group by switching on the group to decide which screen should be shown next.
 
@@ -52,8 +52,8 @@ override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: Inde
         showFinancialInstitution(for: financialInsititutionGroups)
     case .accessTypes(let accessTypeGroups):
         showAccessTypePicker(for: accessTypeGroups)
-    case .credentialTypes(let providers):
-        showCredentialTypePicker(for: providers)
+    case .credentialKinds(let providers):
+        showCredentialKindPicker(for: providers)
     case .provider(let provider):
         showAddCredentialFlow(for: provider)
     }
