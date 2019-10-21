@@ -17,7 +17,7 @@
 		8F576A2923228BE300A81E8E /* ValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F576A2823228BE300A81E8E /* ValueTableViewCell.swift */; };
 		8FA5F824230BD13800226C02 /* FinancialInstitutionPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F823230BD13800226C02 /* FinancialInstitutionPickerViewController.swift */; };
 		8FA5F826230BE85100226C02 /* AccessTypePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F825230BE85100226C02 /* AccessTypePickerViewController.swift */; };
-		8FA5F828230C069500226C02 /* CredentialTypePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F827230C069500226C02 /* CredentialTypePickerViewController.swift */; };
+		8FA5F828230C069500226C02 /* CredentialKindPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F827230C069500226C02 /* CredentialKindPickerViewController.swift */; };
 		8FA5F830230D36AB00226C02 /* AddCredentialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F82F230D36AB00226C02 /* AddCredentialViewController.swift */; };
 		8FA5F834230D84B900226C02 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F833230D84B900226C02 /* TextFieldCell.swift */; };
 		8FA5F836230E9DEF00226C02 /* SupplementalInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F835230E9DEF00226C02 /* SupplementalInformationViewController.swift */; };
@@ -38,7 +38,7 @@
 		8F576A2823228BE300A81E8E /* ValueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueTableViewCell.swift; sourceTree = "<group>"; };
 		8FA5F823230BD13800226C02 /* FinancialInstitutionPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialInstitutionPickerViewController.swift; sourceTree = "<group>"; };
 		8FA5F825230BE85100226C02 /* AccessTypePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTypePickerViewController.swift; sourceTree = "<group>"; };
-		8FA5F827230C069500226C02 /* CredentialTypePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialTypePickerViewController.swift; sourceTree = "<group>"; };
+		8FA5F827230C069500226C02 /* CredentialKindPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialKindPickerViewController.swift; sourceTree = "<group>"; };
 		8FA5F82F230D36AB00226C02 /* AddCredentialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCredentialViewController.swift; sourceTree = "<group>"; };
 		8FA5F833230D84B900226C02 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		8FA5F835230E9DEF00226C02 /* SupplementalInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementalInformationViewController.swift; sourceTree = "<group>"; };
@@ -113,7 +113,7 @@
 				201D5512230AC95D00641102 /* ProviderListViewController.swift */,
 				8FA5F823230BD13800226C02 /* FinancialInstitutionPickerViewController.swift */,
 				8FA5F825230BE85100226C02 /* AccessTypePickerViewController.swift */,
-				8FA5F827230C069500226C02 /* CredentialTypePickerViewController.swift */,
+				8FA5F827230C069500226C02 /* CredentialKindPickerViewController.swift */,
 			);
 			path = ProviderViewControllers;
 			sourceTree = "<group>";
@@ -254,7 +254,7 @@
 				8FA5F83E230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift in Sources */,
 				8FA5F826230BE85100226C02 /* AccessTypePickerViewController.swift in Sources */,
 				8FA5F824230BD13800226C02 /* FinancialInstitutionPickerViewController.swift in Sources */,
-				8FA5F828230C069500226C02 /* CredentialTypePickerViewController.swift in Sources */,
+				8FA5F828230C069500226C02 /* CredentialKindPickerViewController.swift in Sources */,
 				2023EB1F232268C400B219A3 /* AddCredentialStatusViewController.swift in Sources */,
 				8FA5F834230D84B900226C02 /* TextFieldCell.swift in Sources */,
 				8F576A2923228BE300A81E8E /* ValueTableViewCell.swift in Sources */,
