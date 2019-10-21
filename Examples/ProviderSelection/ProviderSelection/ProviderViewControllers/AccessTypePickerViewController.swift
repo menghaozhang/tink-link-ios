@@ -47,9 +47,9 @@ extension AccessTypePickerViewController {
 // MARK: - Navigation
 
 extension AccessTypePickerViewController {
-    func showCredentialTypePicker(for groups: [CredentialKindGroup]) {
+    func showCredentialTypePicker(for groups: [ProviderCredentialKindGroup]) {
         let viewController = CredentialTypePickerViewController(style: .plain)
-        viewController.credentialKindGroups = groups
+        viewController.providerCredentialKindGroups = groups
         show(viewController, sender: nil)
     }
 

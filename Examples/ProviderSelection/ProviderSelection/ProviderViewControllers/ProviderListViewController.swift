@@ -95,9 +95,9 @@ extension ProviderListViewController {
         show(viewController, sender: nil)
     }
 
-    func showCredentialTypePicker(for providers: [CredentialKindGroup]) {
+    func showCredentialTypePicker(for groups: [ProviderCredentialKindGroup]) {
         let viewController = CredentialTypePickerViewController(style: .plain)
-        viewController.credentialKindGroups = providers
+        viewController.providerCredentialKindGroups = groups
         show(viewController, sender: nil)
     }
 

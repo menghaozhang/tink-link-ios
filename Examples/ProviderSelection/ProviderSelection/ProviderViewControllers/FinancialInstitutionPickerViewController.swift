@@ -56,10 +56,10 @@ extension FinancialInstitutionPickerViewController {
         show(viewController, sender: nil)
     }
 
-    func showCredentialTypePicker(for providers: [CredentialKindGroup], title: String?) {
+    func showCredentialTypePicker(for groups: [ProviderCredentialKindGroup], title: String?) {
         let viewController = CredentialTypePickerViewController(style: .plain)
         viewController.title = title
-        viewController.credentialKindGroups = providers
+        viewController.providerCredentialKindGroups = groups
         show(viewController, sender: nil)
     }
 
