@@ -7,7 +7,7 @@ final class ProviderListViewController: UITableViewController {
     
     private let searchController = UISearchController(searchResultsController: nil)
 
-    private var providerGroups: [ProviderGroup] {
+    private var providerGroups: [FinancialInstitutionGroup] {
         didSet {
             tableView.reloadData()
         }

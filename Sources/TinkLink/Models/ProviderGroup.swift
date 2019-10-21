@@ -82,7 +82,7 @@ public enum FinancialInstitution {
     public var financialInstitution: Provider.FinancialInstitution { firstProvider.financialInstitution }
 }
 
-public enum ProviderGroup {
+public enum FinancialInstitutionGroup {
     case provider(Provider)
     case credentialTypes([Provider])
     case accessTypes([ProviderAccessTypeGroup])
@@ -109,10 +109,10 @@ public enum ProviderGroup {
         }
     }
 
-    public static func makeGroups(providers: [Provider]) -> [ProviderGroup] {
+    public static func makeGroups(providers: [Provider]) -> [FinancialInstitutionGroup] {
         return Dictionary(grouping: providers, by: { $0.groupDisplayName.isEmpty ? $0.financialInstitution.id.value : $0.groupDisplayName })
             .sorted(by: { $0.key < $1.key })
-            .map { ProviderGroup(providers: $0.value) }
+            .map { FinancialInstitutionGroup(providers: $0.value) }
     }
 
     public var providers: [Provider] {

@@ -58,7 +58,7 @@ public class ProviderContext {
 
     private var providerFetchHandlers: [ProviderContext.Attributes: RetryCancellable] = [:]
 
-    private var _providerGroups: [ProviderGroup] {
+    private var _providerGroups: [FinancialInstitutionGroup] {
         willSet {
             delegate?.providerContextWillChangeProviders(self)
         }
@@ -96,13 +96,13 @@ public class ProviderContext {
         self.service = tinkLink.client.providerService
         self.locale = tinkLink.client.locale
         let providers = providerStore[market].filter { attributes.accessTypes.contains($0.accessType) && attributes.kinds.contains($0.kind) }
-        self._providerGroups = ProviderGroup.makeGroups(providers: providers)
+        self._providerGroups = FinancialInstitutionGroup.makeGroups(providers: providers)
         self.providerStoreObserver = NotificationCenter.default.addObserver(forName: .providerStoreChanged, object: providerStore, queue: .main) { [weak self] _ in
             guard let self = self else {
                 return
             }
             let providers = self.providerStore[self.market].filter { attributes.accessTypes.contains($0.accessType) && attributes.kinds.contains($0.kind) }
-            self._providerGroups = ProviderGroup.makeGroups(providers: providers)
+            self._providerGroups = FinancialInstitutionGroup.makeGroups(providers: providers)
         }
     }
 
@@ -166,7 +166,7 @@ extension ProviderContext {
     /// Grouped providers matching the context's current attributes.
     ///
     /// - Note: The providerGroups could be empty at first or change if the context's attributes are changed. Use the delegate to get notified when providerGroups change.
-    public var providerGroups: [ProviderGroup] {
+    public var providerGroups: [FinancialInstitutionGroup] {
         if _providerGroups.isEmpty {
             performFetchIfNeeded()
             return []
@@ -174,7 +174,7 @@ extension ProviderContext {
         return _providerGroups
     }
 
-    public func search(_ query: String) -> [ProviderGroup] {
+    public func search(_ query: String) -> [FinancialInstitutionGroup] {
         if query.isEmpty {
             return providerGroups
         }
