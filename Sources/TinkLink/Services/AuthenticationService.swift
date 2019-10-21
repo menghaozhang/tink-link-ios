@@ -9,7 +9,12 @@ public final class AuthenticationService: TokenConfigurableService {
     private var session: URLSession
     private var sessionDelegate: URLSessionDelegate?
 
-    convenience init(tinkLink: TinkLink) {
+    convenience init(tinkLink: TinkLink, accessToken: AccessToken) {
+        do {
+            try tinkLink.client.metadata.addAccessToken(accessToken.rawValue)
+        } catch {
+            assertionFailure(error.localizedDescription)
+        }
         self.init(channel: tinkLink.client.channel, metadata: tinkLink.client.metadata, restURL: tinkLink.client.restURL, certificates: tinkLink.client.restCertificate.map { [$0] } ?? [])
     }
 
