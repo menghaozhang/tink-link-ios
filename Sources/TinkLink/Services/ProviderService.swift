@@ -4,7 +4,10 @@ public class ProviderService: TokenConfigurableService {
     let channel: Channel
     let metadata: Metadata
 
-    public convenience init(tinkLink: TinkLink, accessToken: AccessToken) {
+    /// Creates a service to get providers from Tink API.
+    /// - Parameter tinkLink: TinkLink instance, will use the shared instance if nothing is provided.
+    /// - Parameter accessToken: The access token that can be used to communicate with the TInk API
+    public convenience init(tinkLink: TinkLink = .shared, accessToken: AccessToken) {
         do {
             try tinkLink.client.metadata.addAccessToken(accessToken.rawValue)
         } catch {
