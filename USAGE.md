@@ -197,7 +197,7 @@ func application(_ application: UIApplication, open url: URL, options: [UIApplic
 ## Advanced usage 
 In some cases, you may want to have multiple `TinkLink` instances, you can create your custom `TinkLink` instance like this:
 
-```swifr
+```swift
 let configuration = TinkLink.Configuration(clientID: <#T##String#>, redirectURI: <#T##URL#>)
 let customTinkLink = TinkLink(configuration: configuration)
 ```
