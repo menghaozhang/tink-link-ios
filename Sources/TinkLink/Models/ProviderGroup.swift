@@ -79,7 +79,7 @@ public enum FinancialInstitutionGroup {
         }
     }
 
-    public var financialInstitution: FinancialInstitution { firstProvider.financialInstitution }
+    public var financialInstitution: Provider.FinancialInstitution { firstProvider.financialInstitution }
 }
 
 public enum ProviderGroup {
