@@ -9,7 +9,7 @@ public final class AuthenticationService: TokenConfigurableService {
     private var session: URLSession
     private var sessionDelegate: URLSessionDelegate?
 
-    /// Creates a service to get the `AuthorizationCode` from Tink API.
+    /// Creates a `AuthenticationService` to get the `AuthorizationCode` from Tink API.
     /// - Parameter tinkLink: TinkLink instance, will use the shared instance if nothing is provided.
     /// - Parameter accessToken: The access token that can be used to communicate with the TInk API
     public convenience init(tinkLink: TinkLink = .shared, accessToken: AccessToken) {

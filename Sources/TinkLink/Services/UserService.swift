@@ -5,7 +5,7 @@ public final class UserService {
     let channel: Channel
     let metadata: Metadata
 
-    /// Creates a service to get `AccessToken` from Tink API.
+    /// Creates a `UserService` to get `AccessToken` from Tink API.
     /// - Parameter tinkLink: TinkLink instance, will use the shared instance if nothing is provided.
     public convenience init(tinkLink: TinkLink = .shared) {
         self.init(channel: tinkLink.client.channel, metadata: tinkLink.client.metadata)
