@@ -3,9 +3,6 @@ import Foundation
 /// An object that you use to access the user's credentials and supports the flow for adding credentials.
 public class CredentialContext {
     private let tinkLink: TinkLink
-    private let credentialStore: CredentialStore
-    private var credentialStoreChangeObserver: Any?
-    private var credentialStoreErrorObserver: Any?
 
     private var service: CredentialService
     private let authenticationManager: AuthenticationManager
@@ -16,7 +13,6 @@ public class CredentialContext {
     /// - Parameter tinkLink: TinkLink instance, defaults to `shared` if not provided.
     public init(tinkLink: TinkLink = .shared) {
         self.tinkLink = tinkLink
-        self.credentialStore = tinkLink.credentialStore
         self.authenticationManager = tinkLink.authenticationManager
         self.service = tinkLink.client.credentialService
         self.locale = tinkLink.client.locale
@@ -54,15 +50,7 @@ public class CredentialContext {
             completionPredicate: completionPredicate,
             progressHandler: progressHandler,
             completion: completion,
-            credentialUpdateHandler: { [weak self] result in
-                guard let self = self else { return }
-                do {
-                    let credential = try result.get()
-                    self.credentialStore.update(credential: credential)
-                } catch {
-
-                }
-            }
+            credentialUpdateHandler: { _ in }
         )
 
         let appURI = tinkLink.configuration.redirectURI
@@ -71,7 +59,6 @@ public class CredentialContext {
             guard let self = self else { return }
             do {
                 let credential = try result.get()
-                self.credentialStore.update(credential: credential)
                 task?.startObserving(credential)
             } catch {
                 completion(.failure(error))
@@ -107,7 +94,6 @@ public class CredentialContext {
             do {
                 let credentials = try result.get()
                 let storedCredentials = credentials.sorted(by: { $0.id.value < $1.id.value })
-                self?.credentialStore.store(credentials)
                 completion(.success(storedCredentials))
             } catch {
                 completion(.failure(error))

@@ -16,8 +16,6 @@ public class ProviderContext {
     }
 
     private let market: Market
-    private let providerStore: ProviderStore
-    private var providerStoreObserver: Any?
     private let authenticationManager: AuthenticationManager
     private let locale: Locale
     private let service: ProviderService
@@ -26,7 +24,6 @@ public class ProviderContext {
     /// - Parameter tinkLink: TinkLink instance, will use the shared instance if nothing is provided.
     /// - Parameter attributes: Attributes describing which providers the context should access.
     public init(tinkLink: TinkLink = .shared) {
-        self.providerStore = tinkLink.providerStore
         self.market = tinkLink.client.market
         self.authenticationManager = tinkLink.authenticationManager
         self.service = tinkLink.client.providerService
@@ -44,7 +41,6 @@ public class ProviderContext {
                     do {
                         let fetchedProviders = try result.get()
                         let filteredProviders = fetchedProviders.filter { attributes.accessTypes.contains($0.accessType) && attributes.kinds.contains($0.kind) }
-                        self.providerStore.store(filteredProviders)
                         completion(.success(filteredProviders))
                     } catch {
                         completion(.failure(error))

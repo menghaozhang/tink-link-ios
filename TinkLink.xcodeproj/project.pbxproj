@@ -67,8 +67,6 @@
 		8F84A778232F816B00EA878F /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F84A777232F816B00EA878F /* AuthenticationManager.swift */; };
 		8F84A77C2330D39600EA878F /* Locale+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F84A77B2330D39600EA878F /* Locale+Extensions.swift */; };
 		8FA35586231E673B0054115D /* TinkLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA35585231E673B0054115D /* TinkLink.swift */; };
-		8FA3558A231E703C0054115D /* ProviderStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA35589231E703C0054115D /* ProviderStore.swift */; };
-		8FA3558C231E839E0054115D /* CredentialStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA3558B231E839E0054115D /* CredentialStore.swift */; };
 		8FA3558E231EA1840054115D /* ProviderGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA3558D231EA1840054115D /* ProviderGroup.swift */; };
 		8FA35590231EA3820054115D /* ProviderContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA3558F231EA3820054115D /* ProviderContext.swift */; };
 		8FA35592231EADAB0054115D /* CredentialContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA35591231EADAB0054115D /* CredentialContext.swift */; };
@@ -145,8 +143,6 @@
 		8F84A777232F816B00EA878F /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		8F84A77B2330D39600EA878F /* Locale+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+Extensions.swift"; sourceTree = "<group>"; };
 		8FA35585231E673B0054115D /* TinkLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinkLink.swift; sourceTree = "<group>"; };
-		8FA35589231E703C0054115D /* ProviderStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderStore.swift; sourceTree = "<group>"; };
-		8FA3558B231E839E0054115D /* CredentialStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialStore.swift; sourceTree = "<group>"; };
 		8FA3558D231EA1840054115D /* ProviderGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderGroup.swift; sourceTree = "<group>"; };
 		8FA3558F231EA3820054115D /* ProviderContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderContext.swift; sourceTree = "<group>"; };
 		8FA35591231EADAB0054115D /* CredentialContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialContext.swift; sourceTree = "<group>"; };
@@ -349,8 +345,6 @@
 		8FA35588231E6FFE0054115D /* Stores */ = {
 			isa = PBXGroup;
 			children = (
-				8FA35589231E703C0054115D /* ProviderStore.swift */,
-				8FA3558B231E839E0054115D /* CredentialStore.swift */,
 				8F84A777232F816B00EA878F /* AuthenticationManager.swift */,
 			);
 			path = Stores;
@@ -533,7 +527,6 @@
 				8FA35590231EA3820054115D /* ProviderContext.swift in Sources */,
 				20ED859623045896006213BB /* Credential.swift in Sources */,
 				2027F01F2345E4850025473A /* AuthorizationCode.swift in Sources */,
-				8FA3558A231E703C0054115D /* ProviderStore.swift in Sources */,
 				2027F0242345E5FD0025473A /* AuthorizationResponse.swift in Sources */,
 				8FA35586231E673B0054115D /* TinkLink.swift in Sources */,
 				3373C0D723574CFE00555FC7 /* Retriable.swift in Sources */,
@@ -550,7 +543,6 @@
 				203BE969232784440033F879 /* AddCredentialTask.swift in Sources */,
 				20ED85422303FAEC006213BB /* models.pb.swift in Sources */,
 				2027F02E2346423C0025473A /* SecCertificate+Swift.swift in Sources */,
-				8FA3558C231E839E0054115D /* CredentialStore.swift in Sources */,
 				200A3F99230C31E900BEF935 /* AuthenticationService.swift in Sources */,
 				200FD63D23154AFC0077181A /* AccessToken.swift in Sources */,
 				20C3A77A2355B87A0048EBA4 /* ThirdPartyAppAuthenticationTask.swift in Sources */,
