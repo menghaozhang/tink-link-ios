@@ -199,7 +199,7 @@ In some cases, you may want to have multiple `TinkLink` instances, you can creat
 
 ```swifr
 let configuration = TinkLink.Configuration(clientID: <#T##String#>, redirectURI: <#T##URL#>)
-let customTinkLink = TinkLink.init(configuration: configuration)
+let customTinkLink = TinkLink(configuration: configuration)
 ```
  
 ### Listing providers
@@ -212,11 +212,11 @@ var authenticationCancellable: Cancellable?
 var providerCancellable: Cancellable?
 
 let userService = UserService(tinkLink: customTinkLink)
-authenticationCancellable = userService.createAnonymous(market: TinkLink.shared.configuration.market, locale: TinkLink.shared.configuration.locale) { [weak self] result in
+authenticationCancellable = userService.createAnonymous(market: customTinkLink.configuration.market, locale: customTinkLink.configuration.locale) { [weak self] result in
     guard let self = self else { return }
     if let accessToken = try? result.get() {
-        let providerService = ProviderService(tinkLink: TinkLink.shared, accessToken: accessToken)
-        self.providerCancellable = providerService.providers(market: TinkLink.shared.configuration.market, capabilities: .all, includeTestProviders: true) { [weak self] result in
+        let providerService = ProviderService(tinkLink: customTinkLink, accessToken: accessToken)
+        self.providerCancellable = providerService.providers(market: customTinkLink.configuration.market, capabilities: .all, includeTestProviders: true) { [weak self] result in
             guard let self = self else { return }
             if let providers = try? result.get() {
                 <#Your Code#>
