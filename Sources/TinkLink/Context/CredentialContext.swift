@@ -1,71 +1,7 @@
 import Foundation
 
-/// A protocol that allows a delegate to respond to credential changes or errors.
-public protocol CredentialContextDelegate: AnyObject {
-    /// Notifies the delegate that the credentials are about to be changed.
-    ///
-    /// - Note: This method is optional.
-    /// - Parameter context: The credential context that will change.
-    func credentialContextWillChangeCredentials(_ context: CredentialContext)
-
-    /// Notifies the delegate that an error occured while fetching credentials or adding a credential.
-    ///
-    /// - Parameter context: The credential context that encountered the error.
-    /// - Parameter error: A description of the error.
-    func credentialContext(_ context: CredentialContext, didReceiveError error: Error)
-
-    /// Notifies the delegate that the credentials has changed.
-    ///
-    /// - Parameter context: The credential context that changed.
-    func credentialContextDidChangeCredentials(_ context: CredentialContext)
-}
-
-extension CredentialContextDelegate {
-    public func credentialContextWillChangeCredentials(_ context: CredentialContext) {}
-}
-
 /// An object that you use to access the user's credentials and supports the flow for adding credentials.
 public class CredentialContext {
-    private var _credentials: [Credential]? {
-        willSet {
-            delegate?.credentialContextWillChangeCredentials(self)
-        }
-        didSet {
-            delegate?.credentialContextDidChangeCredentials(self)
-        }
-    }
-
-    /// The user's credentials.
-    ///
-    /// - Note: The credentials could be empty at first or change as credentials are added or updated. Use the delegate to get notified when credentials change.
-    public var credentials: [Credential] {
-        guard let credentials = _credentials else {
-            let storedCredentials = credentialStore.credentials
-                .values
-                .sorted(by: { $0.id.value < $1.id.value })
-            _credentials = storedCredentials
-            performFetchIfNeeded()
-            return storedCredentials
-        }
-        return credentials
-    }
-
-    /// The object that acts as the delegate of the credential context.
-    ///
-    /// If you set a delegate for the credential context, it will register to receive updates when credentials are added. The context notifies the delegate when `credentials` will or did change or if an error occured.
-    ///
-    /// - Note: The delegate must adopt the `CredentialContextDelegate` protocol. The delegate is not retained.
-    public weak var delegate: CredentialContextDelegate? {
-        didSet {
-            if delegate != nil {
-                addStoreObservers()
-                performFetchIfNeeded()
-            } else {
-                removeStoreObservers()
-            }
-        }
-    }
-
     private let tinkLink: TinkLink
     private let credentialStore: CredentialStore
     private var credentialStoreChangeObserver: Any?
@@ -74,8 +10,6 @@ public class CredentialContext {
     private var service: CredentialService
     private let authenticationManager: AuthenticationManager
     private let locale: Locale
-
-    private var fetchCredentialsRetryCancellable: RetryCancellable?
 
     /// Creates a new CredentialContext for the given TinkLink instance.
     ///
@@ -86,20 +20,6 @@ public class CredentialContext {
         self.authenticationManager = tinkLink.authenticationManager
         self.service = tinkLink.client.credentialService
         self.locale = tinkLink.client.locale
-    }
-
-    private func addStoreObservers() {
-        credentialStoreChangeObserver = NotificationCenter.default.addObserver(forName: .credentialStoreChanged, object: credentialStore, queue: .main) { [weak self] _ in
-            guard let self = self else { return }
-            self._credentials = self.credentialStore.credentials
-                .values
-                .sorted(by: { $0.id.value < $1.id.value })
-        }
-    }
-
-    private func removeStoreObservers() {
-        credentialStoreChangeObserver = nil
-        credentialStoreErrorObserver = nil
     }
 
     /// Adds a credential for the user.
@@ -140,7 +60,7 @@ public class CredentialContext {
                     let credential = try result.get()
                     self.credentialStore.update(credential: credential)
                 } catch {
-                    self.delegate?.credentialContext(self, didReceiveError: error)
+
                 }
             }
         )
@@ -155,29 +75,9 @@ public class CredentialContext {
                 task?.startObserving(credential)
             } catch {
                 completion(.failure(error))
-                self.delegate?.credentialContext(self, didReceiveError: error)
             }
         }
         return task
-    }
-
-    func performFetchIfNeeded() {
-        if fetchCredentialsRetryCancellable == nil {
-            performFetch()
-        }
-    }
-
-    private func performFetch() {
-        fetchCredentialsRetryCancellable = service.credentials { [weak self] result in
-            guard let self = self else { return }
-            do {
-                let credentials = try result.get()
-                self.credentialStore.store(credentials)
-            } catch {
-                self.delegate?.credentialContext(self, didReceiveError: error)
-            }
-            self.fetchCredentialsRetryCancellable = nil
-        }
     }
 
     private func addCredentialAndAuthenticateIfNeeded(for provider: Provider, fields: [String: String], appURI: URL, completion: @escaping (Result<Credential, Error>) -> Void) -> RetryCancellable {
@@ -197,5 +97,21 @@ public class CredentialContext {
             multiHandler.add(handler)
         }
         return multiHandler
+    }
+
+    /// The user's credentials.
+    ///
+    /// - Note: The credentials could be empty at first or change as credentials are added or updated. Use the delegate to get notified when credentials change.
+    public func fetchCredentials(completion: @escaping (Result<[Credential], Error>) -> Void) -> RetryCancellable {
+        return service.credentials { [weak self] result in
+            do {
+                let credentials = try result.get()
+                let storedCredentials = credentials.sorted(by: { $0.id.value < $1.id.value })
+                self?.credentialStore.store(credentials)
+                completion(.success(storedCredentials))
+            } catch {
+                completion(.failure(error))
+            }
+        }
     }
 }
