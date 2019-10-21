@@ -3,7 +3,7 @@ import SwiftGRPC
 
 final class Client {
     let channel: Channel
-    private var metadata = Metadata()
+    var metadata = Metadata()
     var market: Market
     var locale: Locale
     var restURL: URL
