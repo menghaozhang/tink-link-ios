@@ -23,12 +23,10 @@ PODS:
     - SwiftProtobuf (~> 1.5.0)
   - SwiftProtobuf (1.5.0)
   - SwiftyMarkdown (0.6.0)
-  - TinkLink (0.0.1):
-    - SwiftGRPC
-    - SwiftProtobuf
-  - TinkLink/Tests (0.0.1):
-    - SwiftGRPC
-    - SwiftProtobuf
+  - TinkLink (0.1.0):
+    - SwiftGRPC (~> 0.9.1)
+  - TinkLink/Tests (0.1.0):
+    - SwiftGRPC (~> 0.9.1)
 
 DEPENDENCIES:
   - SwiftyMarkdown (~> 0.6)
@@ -55,7 +53,7 @@ SPEC CHECKSUMS:
   SwiftGRPC: 43d3e8db88f97e7386bd44f159ecdfad02ce3362
   SwiftProtobuf: 241400280f912735c1e1b9fe675fdd2c6c4d42e2
   SwiftyMarkdown: 698fe6b283dddac69747f4e08ed0d067c18e0356
-  TinkLink: 695dacb3cc498c5f31776e39971c0199a9b4ed78
+  TinkLink: 28b983ed474dc59e3fc69b1d7cbe281de29e673e
 
 PODFILE CHECKSUM: 140b0501fe9695667ad0bcf1eebf6b7c19e51420
 
