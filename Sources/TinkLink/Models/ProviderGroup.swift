@@ -80,8 +80,8 @@ public enum FinancialInstitution {
             case .provider(let provider):
                 return provider
             }
-        case .credentialKinds(let providers):
-            return providers[0].provider
+        case .credentialKinds(let groups):
+            return groups[0].provider
         case .provider(let provider):
             return provider
         }
@@ -147,8 +147,8 @@ public enum FinancialInstitutionGroup {
                 case .provider(let provider):
                     return provider
                 }
-            case .credentialKinds(let providers):
-                return providers[0].provider
+            case .credentialKinds(let groups):
+                return groups[0].provider
             case .provider(let provider):
                 return provider
             }
