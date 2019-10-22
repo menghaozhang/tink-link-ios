@@ -22,7 +22,7 @@ final class ProviderListViewController: UITableViewController {
     
     private let searchController = UISearchController(searchResultsController: nil)
 
-    private var providerGroups: [ProviderGroup] = [] {
+    private var financialInstitutionGroups: [FinancialInstitutionGroup] = [] {
         didSet {
             self.tableView.reloadData()
         }
@@ -39,12 +39,11 @@ final class ProviderListViewController: UITableViewController {
     }
 
     private func fetchProvider(with accessToken: AccessToken) {
-        let a = ProviderContext.Attributes(capabilities: .all, kinds: Provider.Kind.all, accessTypes: Provider.AccessType.all)
         providerContext = ProviderContext(accessToken: accessToken)
-        providerCancellable = providerContext?.fetchProviders(attributes: a, completion: { [weak self] result in
+        providerCancellable = providerContext?.fetchProviders(completion: { [weak self] result in
             if let providers = try? result.get() {
                 DispatchQueue.main.async {
-                    self?.providerGroups = ProviderGroup.makeGroups(providers: providers)
+                    self?.financialInstitutionGroups = FinancialInstitutionGroup.makeGroups(providers: providers)
                 }
             }
             self?.providerCancellable = nil
@@ -86,26 +85,26 @@ extension ProviderListViewController {
 
 extension ProviderListViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return providerGroups.count
+        return financialInstitutionGroups.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let group = providerGroups[indexPath.row]
+        let group = financialInstitutionGroups[indexPath.row]
         cell.textLabel?.text = group.displayName
         cell.accessoryType = .disclosureIndicator
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let providerGroup = providerGroups[indexPath.row]
+        let providerGroup = financialInstitutionGroups[indexPath.row]
         switch providerGroup {
         case .financialInstitutions(let financialInstitutionGroups):
             showFinancialInstitution(for: financialInstitutionGroups, title: providerGroup.displayName)
         case .accessTypes(let accessTypeGroups):
             showAccessTypePicker(for: accessTypeGroups, title: providerGroup.displayName)
-        case .credentialKinds(let providers):
-            showCredentialKindPicker(for: providers)
+        case .credentialKinds(let groups):
+            showCredentialKindPicker(for: groups)
         case .provider(let provider):
             showAddCredential(for: provider)
         }
@@ -115,7 +114,7 @@ extension ProviderListViewController {
 // MARK: - Navigation
 
 extension ProviderListViewController {
-    func showFinancialInstitution(for groups: [FinancialInstitutionGroup], title: String?) {
+    func showFinancialInstitution(for groups: [FinancialInstitution], title: String?) {
         guard let accessToken = accessToken else {
             preconditionFailure("accessToken should not be nil")
         }
@@ -135,12 +134,12 @@ extension ProviderListViewController {
         show(viewController, sender: nil)
     }
 
-    func showCredentialKindPicker(for providers: [Provider]) {
+    func showCredentialKindPicker(for groups: [ProviderCredentialKindGroup]) {
         guard let accessToken = accessToken else {
             preconditionFailure("accessToken should not be nil")
         }
         let viewController = CredentialKindPickerViewController(accessToken: accessToken, style: .plain)
-        viewController.providers = providers
+        viewController.providerCredentialKindGroups = groups
         show(viewController, sender: nil)
     }
 
@@ -158,7 +157,7 @@ extension ProviderListViewController {
 extension ProviderListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if let text = searchController.searchBar.text {
-            providerGroups = providerGroups.filter { $0.displayName.localizedCaseInsensitiveContains(text) }
+            financialInstitutionGroups = financialInstitutionGroups.filter { $0.displayName.localizedCaseInsensitiveContains(text) }
         }
     }
 }

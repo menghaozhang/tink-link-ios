@@ -131,7 +131,7 @@ class ProviderGroupTests: XCTestCase {
     func testCredentialTypesGrouping() {
         let providers = [nordeaBankID, nordeaPassword]
 
-        let groups = ProviderGroup.makeGroups(providers: providers)
+        let groups = FinancialInstitutionGroup.makeGroups(providers: providers)
 
         XCTAssertEqual(groups.count, 1)
         for group in groups {
@@ -147,7 +147,7 @@ class ProviderGroupTests: XCTestCase {
     func testAccessTypeGrouping() {
         let providers = [nordeaOpenBanking, nordeaBankID, nordeaPassword]
 
-        let groups = ProviderGroup.makeGroups(providers: providers)
+        let groups = FinancialInstitutionGroup.makeGroups(providers: providers)
 
         XCTAssertEqual(groups.count, 1)
         if let nordeaGroup = groups.first {
@@ -187,7 +187,7 @@ class ProviderGroupTests: XCTestCase {
             swedbankPassword
         ]
 
-        let groups = ProviderGroup.makeGroups(providers: providers)
+        let groups = FinancialInstitutionGroup.makeGroups(providers: providers)
 
         XCTAssertEqual(groups.count, 2)
 
@@ -218,7 +218,7 @@ class ProviderGroupTests: XCTestCase {
             swedbankPassword
         ]
 
-        let groups = ProviderGroup.makeGroups(providers: providers)
+        let groups = FinancialInstitutionGroup.makeGroups(providers: providers)
 
         XCTAssertEqual(groups.count, 2)
 
