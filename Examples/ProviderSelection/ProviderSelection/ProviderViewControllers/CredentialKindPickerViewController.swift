@@ -4,6 +4,17 @@ import UIKit
 /// Example of how to use the provider grouped by credential type
 final class CredentialKindPickerViewController: UITableViewController {
     var credentialKindGroups: [CredentialKindGroup] = []
+
+    private var accessToken: AccessToken
+
+    init(accessToken: AccessToken, style: UITableView.Style) {
+        self.accessToken = accessToken
+        super.init(style: style)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
 // MARK: - View Lifecycle
@@ -44,7 +55,7 @@ extension CredentialKindPickerViewController {
 
 extension CredentialKindPickerViewController {
     func showAddCredential(for provider: Provider) {
-        let addCredentialViewController = AddCredentialViewController(provider: provider)
+        let addCredentialViewController = AddCredentialViewController(provider: provider, accessToken: accessToken)
         show(addCredentialViewController, sender: nil)
     }
 }

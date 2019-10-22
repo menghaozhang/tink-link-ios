@@ -5,6 +5,12 @@ final class CredentialService: TokenConfigurableService {
     let channel: Channel
     let metadata: Metadata
 
+    convenience init(tinkLink: TinkLink = .shared, accessToken: AccessToken) {
+        let metadata = tinkLink.client.metadata.copy()
+        try? metadata.addAccessToken(accessToken.rawValue)
+        self.init(channel: tinkLink.client.channel, metadata: metadata)
+    }
+
     init(channel: Channel, metadata: Metadata) {
         self.channel = channel
         self.metadata = metadata

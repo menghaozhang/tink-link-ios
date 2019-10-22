@@ -14,8 +14,8 @@ public class SupplementInformationTask {
 
     private let completionHandler: (Result<Void, Error>) -> Void
 
-    init(tinkLink: TinkLink = .shared, credential: Credential, completionHandler: @escaping (Result<Void, Error>) -> Void) {
-        self.credentialService = tinkLink.client.credentialService
+    init(credentialService: CredentialService, credential: Credential, completionHandler: @escaping (Result<Void, Error>) -> Void) {
+        self.credentialService = credentialService
         self.credential = credential
         self.completionHandler = completionHandler
     }

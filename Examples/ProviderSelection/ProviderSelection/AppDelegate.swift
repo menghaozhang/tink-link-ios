@@ -4,6 +4,7 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
+    var tinkAccessToken: AccessToken?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let configuration = TinkLink.Configuration(clientID: <#T##String#>, redirectURI: <#URL#>, environment: .production, market: Market(code: "SE"))
@@ -20,6 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return TinkLink.shared.open(url)
+        return TinkLink.shared.open(url, accessToken: tinkAccessToken)
     }
 }

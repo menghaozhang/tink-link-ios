@@ -5,6 +5,10 @@ final class UserService {
     let channel: Channel
     let metadata: Metadata
 
+    convenience init(tinkLink: TinkLink = .shared) {
+        self.init(channel: tinkLink.client.channel, metadata: tinkLink.client.metadata)
+    }
+
     init(channel: Channel, metadata: Metadata) {
         self.channel = channel
         self.metadata = metadata

@@ -4,18 +4,17 @@ import Foundation
 public class CredentialContext {
     private let tinkLink: TinkLink
 
-    private var service: CredentialService
-    private let authenticationManager: AuthenticationManager
+    private var credentialService: CredentialService
     private let market: Market
     private let locale: Locale
 
     /// Creates a new CredentialContext for the given TinkLink instance.
     ///
     /// - Parameter tinkLink: TinkLink instance, defaults to `shared` if not provided.
-    public init(tinkLink: TinkLink = .shared) {
+    /// - Parameter accessToken: `AccessToken` that will be used for adding credentials with the Tink API.
+    public init(tinkLink: TinkLink = .shared, accessToken: AccessToken) {
         self.tinkLink = tinkLink
-        self.authenticationManager = tinkLink.authenticationManager
-        self.service = tinkLink.client.credentialService
+        self.credentialService = CredentialService(tinkLink: tinkLink, accessToken: accessToken)
         self.market = tinkLink.client.market
         self.locale = tinkLink.client.locale
     }
@@ -48,7 +47,7 @@ public class CredentialContext {
     /// - Returns: The add credential task.
     public func addCredential(for provider: Provider, form: Form, completionPredicate: AddCredentialTask.CompletionPredicate = .updated, progressHandler: @escaping (_ status: AddCredentialTask.Status) -> Void, completion: @escaping (_ result: Result<Credential, Error>) -> Void) -> AddCredentialTask {
         let task = AddCredentialTask(
-            tinkLink: tinkLink,
+            credentialService: credentialService,
             completionPredicate: completionPredicate,
             progressHandler: progressHandler,
             completion: completion,
@@ -69,43 +68,21 @@ public class CredentialContext {
     }
 
     private func addCredentialAndAuthenticateIfNeeded(for provider: Provider, fields: [String: String], appURI: URL, completion: @escaping (Result<Credential, Error>) -> Void) -> RetryCancellable {
-        let multiHandler = MultiHandler()
-        let market = Market(code: provider.marketCode)
 
-        let authHandler = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { result in
-            do {
-                try result.get()
-                let handler = self.service.createCredential(providerID: provider.id, fields: fields, appURI: appURI, completion: completion)
-                multiHandler.add(handler)
-            } catch {
-                completion(.failure(error))
-            }
-        }
-        if let handler = authHandler {
-            multiHandler.add(handler)
-        }
-        return multiHandler
+        return credentialService.createCredential(providerID: provider.id, fields: fields, appURI: appURI, completion: completion)
     }
 
     /// Gets the user's credentials.
     public func fetchCredentials(completion: @escaping (Result<[Credential], Error>) -> Void) -> RetryCancellable {
-        let multiHandler = MultiHandler()
-
-        let authHandler = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { result in
-            let handler = self.service.credentials { result in
-                do {
-                    let credentials = try result.get()
-                    let storedCredentials = credentials.sorted(by: { $0.id.value < $1.id.value })
-                    completion(.success(storedCredentials))
-                } catch {
-                    completion(.failure(error))
-                }
+        let handler = credentialService.credentials { result in
+            do {
+                let credentials = try result.get()
+                let storedCredentials = credentials.sorted(by: { $0.id.value < $1.id.value })
+                completion(.success(storedCredentials))
+            } catch {
+                completion(.failure(error))
             }
-            multiHandler.add(handler)
         }
-        if let handler = authHandler {
-            multiHandler.add(handler)
-        }
-        return multiHandler
+        return handler
     }
 }

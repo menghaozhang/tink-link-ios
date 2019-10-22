@@ -8,7 +8,9 @@ Here's how you can list all providers with a `UITableViewController` subclass.
 
 ```swift
 class ProviderListViewController: UITableViewController {
-    let providerContext = ProviderContext()
+    let userContext = UserContext()
+    var userCancellable: RetryCancellable?
+    var providerContext: ProviderContext?
     var providerCanceller: Cancellable?
     var providers: [Provider]
 
@@ -16,14 +18,20 @@ class ProviderListViewController: UITableViewController {
         super.viewDidLoad()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
-        providerCanceller = providerContext.fetchProviders { [unowned self] result in
-            DispatchQueue.main.async {
-                do {
-                    self.providers = try result.get()
-                    self.tableView.reloadData()
-                } catch {
-                    <#Error Handling#>
-                }
+        
+        userCancellable = userContext.authenticateIfNeeded(for: configuration.market, locale: configuration.locale) { [weak self] result in
+            if let accessToken = try? result.get() {
+                providerContext = ProviderContext(accessToken: accessToken)
+                self?.providerCanceller = providerContext?.fetchProviders(completion: { [weak self] result in
+                    DispatchQueue.main.async {
+                        if let providers = try result.get() {
+                            self?.providers = providers
+                            self.tableView.reloadData()
+                        } catch {
+                            <#Error Handling#>
+                        }
+                    }
+                })
             }
         }
     }
@@ -193,7 +201,7 @@ present(alertController, animated: true)
 After the redirect to the third party app, some providers requires additional information to be sent to Tink after the user authenticates with the third party app for the credential to be added successfully. This information is passed to your app via the redirect URI. Use the open method in your `UIApplicationDelegate` to let TinkLink send the information to Tink if needed.
 ```swift
 func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-    return TinkLink.shared.open(url)
+    return TinkLink.shared.open(url, accessToken: accessToken)
 }
 ```
 
@@ -203,28 +211,4 @@ In some cases, you may want to have multiple `TinkLink` instances, you can creat
 ```swift
 let configuration = TinkLink.Configuration(clientID: <#T##String#>, redirectURI: <#T##URL#>)
 let customTinkLink = TinkLink(configuration: configuration)
-```
- 
-### Listing providers
-
-Instead of using `ProviderContext` for listing `ProviderGroup`, you can directly use the `ProviderService` for fetching providers and grouping them with custom logic. 
-Make sure to register an access token before using the service.
-
-```swift
-var authenticationCancellable: Cancellable?
-var providerCancellable: Cancellable?
-
-let userService = UserService(tinkLink: customTinkLink)
-authenticationCancellable = userService.createAnonymous(market: customTinkLink.configuration.market, locale: customTinkLink.configuration.locale) { [weak self] result in
-    guard let self = self else { return }
-    if let accessToken = try? result.get() {
-        let providerService = ProviderService(tinkLink: customTinkLink, accessToken: accessToken)
-        self.providerCancellable = providerService.providers(market: customTinkLink.configuration.market, capabilities: .all, includeTestProviders: true) { [weak self] result in
-            guard let self = self else { return }
-            if let providers = try? result.get() {
-                <#Your Code#>
-            }
-        }
-    }
-}
 ```

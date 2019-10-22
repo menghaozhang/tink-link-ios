@@ -2,16 +2,14 @@ import XCTest
 @testable import TinkLink
 import SwiftGRPC
 
-class ClientTests: XCTestCase {
-    func testUnauthenticatedClient() {
-        let client = Client(environment: .production, clientID: "not_work_client", grpcCertificate: nil, restCertificate: nil, market: TinkLink.defaultMarket, locale: TinkLink.defaultLocale)
-
+class ServiceTests: XCTestCase {
+    func testInvalidClient() {
         let requestExpectation = expectation(description: "Providers Request")
 
-        let canceller = client.providerService.providers { (result) in
+        let canceller = UserService().createAnonymous(locale: TinkLink.defaultLocale) { result in
             do {
                 _ = try result.get()
-                XCTFail("Shouldn't receive providers when not authenticated.")
+                XCTFail("Shouldn't receive access token when clientId is not valid.")
             } catch let rpcError as RPCError {
                 switch rpcError {
                 case .invalidMessageReceived:
