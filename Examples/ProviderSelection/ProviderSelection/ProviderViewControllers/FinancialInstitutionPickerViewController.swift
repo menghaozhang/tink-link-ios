@@ -3,7 +3,7 @@ import UIKit
 
 /// Example of how to use the provider grouped by financialInstitution
 final class FinancialInstitutionPickerViewController: UITableViewController {
-    var financialInstitutionGroups: [FinancialInstitutionGroup] = []
+    var financialInstitutionGroups: [FinancialInstitution] = []
 }
 
 // MARK: - View Lifecycle
@@ -38,8 +38,8 @@ extension FinancialInstitutionPickerViewController {
         switch financialInstitutionGroup {
         case .accessTypes(let accessTypeGroups):
             showAccessTypePicker(for: accessTypeGroups, title: financialInstitutionGroup.financialInstitution.name)
-        case .credentialKinds(let providers):
-            showCredentialKindPicker(for: providers, title: financialInstitutionGroup.financialInstitution.name)
+        case .credentialKinds(let groups):
+            showCredentialKindPicker(for: groups, title: financialInstitutionGroup.financialInstitution.name)
         case .provider(let provider):
             showAddCredential(for: provider)
         }
@@ -56,10 +56,10 @@ extension FinancialInstitutionPickerViewController {
         show(viewController, sender: nil)
     }
 
-    func showCredentialKindPicker(for providers: [Provider], title: String?) {
+    func showCredentialKindPicker(for groups: [ProviderCredentialKindGroup], title: String?) {
         let viewController = CredentialKindPickerViewController(style: .plain)
         viewController.title = title
-        viewController.providers = providers
+        viewController.providerCredentialKindGroups = groups
         show(viewController, sender: nil)
     }
 
