@@ -29,6 +29,10 @@ public class ProviderContext {
         self.locale = tinkLink.client.locale
     }
 
+    /// Fetches providers matching the provided attributes.
+    ///
+    /// - Parameter attributes: Attributes for providers to fetch
+    /// - Parameter completion: A result representing either a list of providers or an error.
     public func fetchProviders(attributes: Attributes, completion: @escaping (Result<[Provider], Error>) -> Void) -> RetryCancellable {
         let multiHandler = MultiHandler()
 
