@@ -1,4 +1,4 @@
-public struct ProviderCredentialKindGroup {
+public struct CredentialKindGroup {
     public let provider: Provider
 
     public var credentialKind: Credential.Kind { provider.credentialKind }
@@ -6,16 +6,16 @@ public struct ProviderCredentialKindGroup {
     public var displayDescription: String { provider.displayDescription.isEmpty ? provider.credentialKind.description : provider.displayDescription }
 }
 
-public enum ProviderAccessTypeGroup {
+public enum AccessTypeGroup {
     case provider(Provider)
-    case credentialKinds([ProviderCredentialKindGroup])
+    case credentialKinds([CredentialKindGroup])
 
     init(providers: [Provider]) {
         precondition(!providers.isEmpty)
         if providers.count == 1, let provider = providers.first {
             self = .provider(provider)
         } else {
-            self = .credentialKinds(providers.map(ProviderCredentialKindGroup.init(provider:)))
+            self = .credentialKinds(providers.map(CredentialKindGroup.init(provider:)))
         }
     }
 
@@ -42,8 +42,8 @@ public enum ProviderAccessTypeGroup {
 
 public enum FinancialInstitution {
     case provider(Provider)
-    case credentialKinds([ProviderCredentialKindGroup])
-    case accessTypes([ProviderAccessTypeGroup])
+    case credentialKinds([CredentialKindGroup])
+    case accessTypes([AccessTypeGroup])
 
     init(providers: [Provider]) {
         precondition(!providers.isEmpty)
@@ -52,9 +52,9 @@ public enum FinancialInstitution {
         } else {
             let providersGroupedByAccessTypes = Dictionary(grouping: providers, by: { $0.accessType })
             if providersGroupedByAccessTypes.count == 1, let providers = providersGroupedByAccessTypes.values.first {
-                self = .credentialKinds(providers.map(ProviderCredentialKindGroup.init(provider:)))
+                self = .credentialKinds(providers.map(CredentialKindGroup.init(provider:)))
             } else {
-                let providersGroupedByAccessType = providersGroupedByAccessTypes.values.map(ProviderAccessTypeGroup.init(providers:))
+                let providersGroupedByAccessType = providersGroupedByAccessTypes.values.map(AccessTypeGroup.init(providers:))
                 self = .accessTypes(providersGroupedByAccessType)
             }
         }
@@ -92,8 +92,8 @@ public enum FinancialInstitution {
 
 public enum FinancialInstitutionGroup {
     case provider(Provider)
-    case credentialKinds([ProviderCredentialKindGroup])
-    case accessTypes([ProviderAccessTypeGroup])
+    case credentialKinds([CredentialKindGroup])
+    case accessTypes([AccessTypeGroup])
     case financialInstitutions([FinancialInstitution])
 
     init(providers: [Provider]) {
@@ -105,9 +105,9 @@ public enum FinancialInstitutionGroup {
             if providersGroupedByFinancialInstitution.count == 1, let providers = providersGroupedByFinancialInstitution.values.first {
                 let providersGroupedByAccessTypes = Dictionary(grouping: providers, by: { $0.accessType })
                 if providersGroupedByAccessTypes.count == 1, let providers = providersGroupedByAccessTypes.values.first {
-                    self = .credentialKinds(providers.map(ProviderCredentialKindGroup.init(provider:)))
+                    self = .credentialKinds(providers.map(CredentialKindGroup.init(provider:)))
                 } else {
-                    let providersGroupedByAccessType = providersGroupedByAccessTypes.values.map(ProviderAccessTypeGroup.init(providers:))
+                    let providersGroupedByAccessType = providersGroupedByAccessTypes.values.map(AccessTypeGroup.init(providers:))
                     self = .accessTypes(providersGroupedByAccessType)
                 }
             } else {

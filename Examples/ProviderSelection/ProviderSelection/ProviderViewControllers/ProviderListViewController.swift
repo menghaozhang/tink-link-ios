@@ -99,14 +99,14 @@ extension ProviderListViewController {
         show(viewController, sender: nil)
     }
 
-    func showAccessTypePicker(for groups: [ProviderAccessTypeGroup], title: String?) {
+    func showAccessTypePicker(for groups: [AccessTypeGroup], title: String?) {
         let viewController = AccessTypePickerViewController(style: .plain)
         viewController.title = title
         viewController.providerAccessTypeGroups = groups
         show(viewController, sender: nil)
     }
 
-    func showCredentialKindPicker(for groups: [ProviderCredentialKindGroup]) {
+    func showCredentialKindPicker(for groups: [CredentialKindGroup]) {
         let viewController = CredentialKindPickerViewController(style: .plain)
         viewController.providerCredentialKindGroups = groups
         show(viewController, sender: nil)

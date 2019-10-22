@@ -3,7 +3,7 @@ import UIKit
 
 /// Example of how to use the provider grouped by access type
 final class AccessTypePickerViewController: UITableViewController {
-    var providerAccessTypeGroups: [ProviderAccessTypeGroup] = []
+    var providerAccessTypeGroups: [AccessTypeGroup] = []
 }
 
 // MARK: - View Lifecycle
@@ -47,7 +47,7 @@ extension AccessTypePickerViewController {
 // MARK: - Navigation
 
 extension AccessTypePickerViewController {
-    func showCredentialKindPicker(for groups: [ProviderCredentialKindGroup]) {
+    func showCredentialKindPicker(for groups: [CredentialKindGroup]) {
         let viewController = CredentialKindPickerViewController(style: .plain)
         viewController.providerCredentialKindGroups = groups
         show(viewController, sender: nil)
