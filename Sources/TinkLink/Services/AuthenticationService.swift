@@ -1,25 +1,13 @@
 import Foundation
 import SwiftGRPC
 
-public final class AuthenticationService: TokenConfigurableService {
+final class AuthenticationService: TokenConfigurableService {
     let channel: Channel
     let metadata: Metadata
     let restURL: URL
 
     private var session: URLSession
     private var sessionDelegate: URLSessionDelegate?
-
-    /// Creates a `AuthenticationService` to get the `AuthorizationCode` from Tink API.
-    /// - Parameter tinkLink: TinkLink instance, will use the shared instance if nothing is provided.
-    /// - Parameter accessToken: The access token that can be used to communicate with the TInk API
-    public convenience init(tinkLink: TinkLink = .shared, accessToken: AccessToken) {
-        do {
-            try tinkLink.client.metadata.addAccessToken(accessToken.rawValue)
-        } catch {
-            assertionFailure(error.localizedDescription)
-        }
-        self.init(channel: tinkLink.client.channel, metadata: tinkLink.client.metadata, restURL: tinkLink.client.restURL, certificates: tinkLink.client.restCertificate.map { [$0] } ?? [])
-    }
 
     init(channel: Channel, metadata: Metadata, restURL: URL, certificates: [Data]) {
         self.channel = channel
@@ -46,7 +34,7 @@ public final class AuthenticationService: TokenConfigurableService {
 }
 
 extension AuthenticationService {
-    public func authorize(redirectURI: URL, scope: TinkLink.Scope, completion: @escaping (Result<AuthorizationResponse, Error>) -> Void) -> Cancellable? {
+    func authorize(redirectURI: URL, scope: TinkLink.Scope, completion: @escaping (Result<AuthorizationResponse, Error>) -> Void) -> Cancellable? {
         guard let clientID = metadata[Metadata.HeaderKey.oauthClientID.key] else {
             preconditionFailure("No client id")
         }

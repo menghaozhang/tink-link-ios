@@ -3,20 +3,19 @@ import UIKit
 
 /// Example of how to use the provider grouped by names
 final class ProviderListViewController: UITableViewController {
-    private let providerContext: ProviderContext
+    private let providerContext = ProviderContext()
     
     private let searchController = UISearchController(searchResultsController: nil)
 
-    private var providerGroups: [FinancialInstitutionGroup] {
+    private var providerGroups: [FinancialInstitutionGroup] = [] {
         didSet {
             tableView.reloadData()
         }
     }
 
+    private var providerCanceller: Cancellable?
+
     override init(style: UITableView.Style) {
-        let attributes = ProviderContext.Attributes(capabilities: .all, kinds: Provider.Kind.all, accessTypes: Provider.AccessType.all)
-        providerContext = ProviderContext(attributes: attributes)
-        providerGroups = providerContext.providerGroups
         super.init(style: style)
     }
 
@@ -41,7 +40,19 @@ extension ProviderListViewController {
         definesPresentationContext = true
 
         title = "Choose Bank"
-        providerContext.delegate = self
+
+        let attributes = ProviderContext.Attributes(capabilities: .all, kinds: Provider.Kind.all, accessTypes: Provider.AccessType.all)
+        providerCanceller = providerContext.fetchProviders(attributes: attributes) { [weak self] result in
+            DispatchQueue.main.async {
+                do {
+                    let providers = try result.get()
+                    self?.providerGroups = ProviderGroup.makeGroups(providers: providers)
+                } catch {
+                    // TODO: Handle Error
+                    print(error.localizedDescription)
+                }
+            }
+        }
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
@@ -107,27 +118,12 @@ extension ProviderListViewController {
     }
 }
 
-// MARK: - ProviderContextDelegate
-
-extension ProviderListViewController: ProviderContextDelegate {
-    func providerContextDidChangeProviders(_ context: ProviderContext) {
-        DispatchQueue.main.async {
-            self.providerGroups = context.providerGroups
-        }
-    }
-
-    func providerContext(_ context: ProviderContext, didReceiveError error: Error) {
-        // TODO: Handle Error
-        print(error)
-    }
-}
-
 // MARK: - UISearchResultsUpdating
 
 extension ProviderListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if let text = searchController.searchBar.text {
-            providerGroups = providerContext.search(text)
+            providerGroups = providerGroups.filter { $0.displayName.localizedCaseInsensitiveContains(text) }
         }
     }
 }

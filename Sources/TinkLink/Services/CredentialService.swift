@@ -1,21 +1,9 @@
 import Foundation
 import SwiftGRPC
 
-public final class CredentialService: TokenConfigurableService {
+final class CredentialService: TokenConfigurableService {
     let channel: Channel
     let metadata: Metadata
-
-    /// Creates a `CredentialService` to get credentials from Tink API.
-    /// - Parameter tinkLink: TinkLink instance, will use the shared instance if nothing is provided.
-    /// - Parameter accessToken: The access token that can be used to communicate with the TInk API
-    public convenience init(tinkLink: TinkLink = .shared, accessToken: AccessToken) {
-        do {
-            try tinkLink.client.metadata.addAccessToken(accessToken.rawValue)
-        } catch {
-            assertionFailure(error.localizedDescription)
-        }
-        self.init(channel: tinkLink.client.channel, metadata: tinkLink.client.metadata)
-    }
 
     init(channel: Channel, metadata: Metadata) {
         self.channel = channel
@@ -24,7 +12,7 @@ public final class CredentialService: TokenConfigurableService {
 
     internal lazy var service = CredentialServiceServiceClient(channel: channel, metadata: metadata)
 
-    public func credentials(completion: @escaping (Result<[Credential], Error>) -> Void) -> RetryCancellable {
+    func credentials(completion: @escaping (Result<[Credential], Error>) -> Void) -> RetryCancellable {
         let request = GRPCListCredentialsRequest()
 
         return CallHandler(for: request, method: service.listCredentials, responseMap: { $0.credentials.map(Credential.init(grpcCredential:)) }, completion: completion)
