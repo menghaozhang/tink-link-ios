@@ -92,23 +92,23 @@ extension ProviderListViewController {
 // MARK: - Navigation
 
 extension ProviderListViewController {
-    func showFinancialInstitution(for groups: [FinancialInstitution], title: String?) {
+    func showFinancialInstitution(for FinancialInstitutions: [FinancialInstitution], title: String?) {
         let viewController = FinancialInstitutionPickerViewController(style: .plain)
         viewController.title = title
-        viewController.financialInstitutionGroups = groups
+        viewController.financialInstitutionGroups = FinancialInstitutions
         show(viewController, sender: nil)
     }
 
-    func showAccessTypePicker(for groups: [AccessTypeGroup], title: String?) {
+    func showAccessTypePicker(for accessTypeGroups: [AccessTypeGroup], title: String?) {
         let viewController = AccessTypePickerViewController(style: .plain)
         viewController.title = title
-        viewController.accessTypeGroups = groups
+        viewController.accessTypeGroups = accessTypeGroups
         show(viewController, sender: nil)
     }
 
-    func showCredentialKindPicker(for groups: [CredentialKindGroup]) {
+    func showCredentialKindPicker(for credentialKindGroups: [CredentialKindGroup]) {
         let viewController = CredentialKindPickerViewController(style: .plain)
-        viewController.credentialKindGroups = groups
+        viewController.credentialKindGroups = credentialKindGroups
         show(viewController, sender: nil)
     }
 

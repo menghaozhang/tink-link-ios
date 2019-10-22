@@ -49,17 +49,17 @@ extension FinancialInstitutionPickerViewController {
 // MARK: - Navigation
 
 extension FinancialInstitutionPickerViewController {
-    func showAccessTypePicker(for groups: [AccessTypeGroup], title: String?) {
+    func showAccessTypePicker(for accessTypeGroups: [AccessTypeGroup], title: String?) {
         let viewController = AccessTypePickerViewController(style: .plain)
         viewController.title = title
-        viewController.accessTypeGroups = groups
+        viewController.accessTypeGroups = accessTypeGroups
         show(viewController, sender: nil)
     }
 
-    func showCredentialKindPicker(for groups: [CredentialKindGroup], title: String?) {
+    func showCredentialKindPicker(for credentialKindGroups: [CredentialKindGroup], title: String?) {
         let viewController = CredentialKindPickerViewController(style: .plain)
         viewController.title = title
-        viewController.credentialKindGroups = groups
+        viewController.credentialKindGroups = credentialKindGroups
         show(viewController, sender: nil)
     }
 
