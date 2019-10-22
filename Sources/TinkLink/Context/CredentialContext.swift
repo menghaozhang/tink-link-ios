@@ -6,6 +6,7 @@ public class CredentialContext {
 
     private var service: CredentialService
     private let authenticationManager: AuthenticationManager
+    private let market: Market
     private let locale: Locale
 
     /// Creates a new CredentialContext for the given TinkLink instance.
@@ -15,6 +16,7 @@ public class CredentialContext {
         self.tinkLink = tinkLink
         self.authenticationManager = tinkLink.authenticationManager
         self.service = tinkLink.client.credentialService
+        self.market = tinkLink.client.market
         self.locale = tinkLink.client.locale
     }
 
@@ -90,14 +92,23 @@ public class CredentialContext {
     ///
     /// - Note: The credentials could be empty at first or change as credentials are added or updated. Use the delegate to get notified when credentials change.
     public func fetchCredentials(completion: @escaping (Result<[Credential], Error>) -> Void) -> RetryCancellable {
-        return service.credentials { [weak self] result in
-            do {
-                let credentials = try result.get()
-                let storedCredentials = credentials.sorted(by: { $0.id.value < $1.id.value })
-                completion(.success(storedCredentials))
-            } catch {
-                completion(.failure(error))
+        let multiHandler = MultiHandler()
+
+        let authHandler = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { result in
+            let handler = self.service.credentials { result in
+                do {
+                    let credentials = try result.get()
+                    let storedCredentials = credentials.sorted(by: { $0.id.value < $1.id.value })
+                    completion(.success(storedCredentials))
+                } catch {
+                    completion(.failure(error))
+                }
             }
+            multiHandler.add(handler)
         }
+        if let handler = authHandler {
+            multiHandler.add(handler)
+        }
+        return multiHandler
     }
 }
