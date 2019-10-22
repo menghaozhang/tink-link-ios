@@ -1,5 +1,6 @@
 import Foundation
 
+/// An object that you use to authorize for a user with requested scopes.
 public final class AuthenticationContext {
     private var tinkLink: TinkLink
     private var authenticationService: AuthenticationService
@@ -15,7 +16,8 @@ public final class AuthenticationContext {
 
     /// Creates an authorization code with the requested scopes for the current user
     ///
-    /// Once you have received the authorization code, you can exchange it for an access token on your backend and use the access token to access the user's data. Exchanging the authorization code for an access token requires the use of the client secret associated with your client identifier.
+    /// Once you have received the authorization code, you can exchange it for an access token on your backend and use the access token to access the user's data.
+    /// Exchanging the authorization code for an access token requires the use of the client secret associated with your client identifier.
     ///
     /// - Parameter scope: A TinkLinkScope list of OAuth scopes to be requested.
     ///                    The Scope array should never be empty.
