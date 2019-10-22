@@ -7,21 +7,24 @@
 Here's how you can list all providers with a `UITableViewController` subclass.
 
 ```swift
-class ProviderListViewController: UITableViewController, ProviderContextDelegate {
+class ProviderListViewController: UITableViewController {
     let providerContext = ProviderContext()
+    var providerCanceller: Cancellable?
     var providers: [Provider]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        providerContext.delegate = self
-        providers = providerContext.providers
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-    }
-
-    func providerContextDidChangeProviders(_ context: ProviderContext) {
-        DispatchQueue.main.async {
-            self.providers = context.providers
-            self.tableView.reloadData()
+        
+        providerCanceller = providerContext.fetchProviders { [unowned self] result in
+            DispatchQueue.main.async {
+                do {
+                    self.providers = try result.get()
+                    self.tableView.reloadData()
+                } catch {
+                    <#Error Handling#>
+                }
+            }
         }
     }
 
