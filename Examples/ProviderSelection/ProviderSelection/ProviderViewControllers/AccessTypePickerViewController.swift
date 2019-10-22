@@ -3,7 +3,7 @@ import UIKit
 
 /// Example of how to use the provider grouped by access type
 final class AccessTypePickerViewController: UITableViewController {
-    var providerAccessTypeGroups: [AccessTypeGroup] = []
+    var accessTypeGroups: [AccessTypeGroup] = []
 }
 
 // MARK: - View Lifecycle
@@ -23,19 +23,19 @@ extension AccessTypePickerViewController {
 
 extension AccessTypePickerViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return providerAccessTypeGroups.count
+        return accessTypeGroups.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = providerAccessTypeGroups[indexPath.row].accessType.description
+        cell.textLabel?.text = accessTypeGroups[indexPath.row].accessType.description
         cell.accessoryType = .disclosureIndicator
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let providerAccessTypeGroup = providerAccessTypeGroups[indexPath.row]
-        switch providerAccessTypeGroup {
+        let accessTypeGroup = accessTypeGroups[indexPath.row]
+        switch accessTypeGroup {
         case .credentialKinds(let groups):
             showCredentialKindPicker(for: groups)
         case .provider(let provider):
@@ -49,7 +49,7 @@ extension AccessTypePickerViewController {
 extension AccessTypePickerViewController {
     func showCredentialKindPicker(for groups: [CredentialKindGroup]) {
         let viewController = CredentialKindPickerViewController(style: .plain)
-        viewController.providerCredentialKindGroups = groups
+        viewController.credentialKindGroups = groups
         show(viewController, sender: nil)
     }
 
