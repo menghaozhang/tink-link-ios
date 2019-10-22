@@ -5,9 +5,13 @@ final class FinishedCredentialUpdatedViewController: UIViewController {
     private let credential: Credential
     private var activityIndicator: UIActivityIndicatorView?
     private var authenticationResultLabel: UILabel?
+    private var accessToken: AccessToken
+    private var authenticationContext: AuthenticationContext
 
-    init(credential: Credential) {
+    init(credential: Credential, accessToken: AccessToken) {
         self.credential = credential
+        self.accessToken = accessToken
+        self.authenticationContext = AuthenticationContext(accessToken: accessToken)
         super.init(nibName: nil, bundle: nil)
         title = "Success!"
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
@@ -72,7 +76,7 @@ final class FinishedCredentialUpdatedViewController: UIViewController {
             TinkLink.Scope.User.read,
             TinkLink.Scope.Transactions.read
         ])
-        TinkLink.shared.authorize(scope: scope) { [weak self] (result) in
+        authenticationContext.authorize(scope: scope) { [weak self] (result) in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 self.activityIndicator?.stopAnimating()

@@ -7,6 +7,7 @@ final class AddCredentialViewController: UITableViewController {
     let credentialContext: CredentialContext
     let provider: Provider
 
+    private let accessToken: AccessToken
     private var form: Form
     private var formError: Form.ValidationError? {
         didSet {
@@ -21,9 +22,10 @@ final class AddCredentialViewController: UITableViewController {
 
     private lazy var helpLabel = UITextView()
 
-    init(provider: Provider) {
-        self.credentialContext = CredentialContext()
+    init(provider: Provider, accessToken: AccessToken) {
+        self.credentialContext = CredentialContext(accessToken: accessToken)
         self.provider = provider
+        self.accessToken = accessToken
         self.form = Form(provider: provider)
 
         if #available(iOS 13.0, *) {
@@ -249,7 +251,7 @@ extension AddCredentialViewController {
 
     private func showCredentialUpdated(for credential: Credential) {
         hideUpdatingView()
-        let finishedCredentialUpdatedViewController = FinishedCredentialUpdatedViewController(credential: credential)
+        let finishedCredentialUpdatedViewController = FinishedCredentialUpdatedViewController(credential: credential, accessToken: accessToken)
         show(finishedCredentialUpdatedViewController, sender: nil)
     }
 
