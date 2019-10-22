@@ -24,10 +24,10 @@ public class ProviderContext {
 
     /// Creates a context to access providers that matches the provided attributes.
     /// - Parameter tinkLink: TinkLink instance, will use the shared instance if nothing is provided.
-    public init(tinkLink: TinkLink = .shared) {
+    public init(tinkLink: TinkLink = .shared, accessToken: AccessToken) {
         self.market = tinkLink.client.market
         self.authenticationManager = tinkLink.authenticationManager
-        self.service = tinkLink.client.providerService
+        self.service = ProviderService(tinkLink: tinkLink, accessToken: accessToken)
         self.locale = tinkLink.client.locale
     }
 

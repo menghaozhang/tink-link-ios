@@ -49,15 +49,15 @@ public class AddCredentialTask {
     /// Task will execute it's completion handler if the credential's status changes to match this predicate.
     public let completionPredicate: CompletionPredicate
 
-    private let tinkLink: TinkLink
+    private let credentialService: CredentialService
     let progressHandler: (Status) -> Void
     let completion: (Result<Credential, Swift.Error>) -> Void
     let credentialUpdateHandler: (Result<Credential, Swift.Error>) -> Void
 
     var callCanceller: Cancellable?
 
-    init(tinkLink: TinkLink = .shared, completionPredicate: CompletionPredicate = .updated, progressHandler: @escaping (Status) -> Void, completion: @escaping (Result<Credential, Swift.Error>) -> Void, credentialUpdateHandler: @escaping (Result<Credential, Swift.Error>) -> Void) {
-        self.tinkLink = tinkLink
+    init(credentialService: CredentialService, completionPredicate: CompletionPredicate = .updated, progressHandler: @escaping (Status) -> Void, completion: @escaping (Result<Credential, Swift.Error>) -> Void, credentialUpdateHandler: @escaping (Result<Credential, Swift.Error>) -> Void) {
+        self.credentialService = credentialService
         self.completionPredicate = completionPredicate
         self.progressHandler = progressHandler
         self.completion = completion
@@ -68,7 +68,7 @@ public class AddCredentialTask {
         self.credential = credential
 
         handleUpdate(for: .success(credential))
-        credentialStatusPollingTask = CredentialStatusPollingTask(tinkLink: tinkLink, credential: credential) { [weak self] result in
+        credentialStatusPollingTask = CredentialStatusPollingTask(credentialService: credentialService, credential: credential) { [weak self] result in
             self?.handleUpdate(for: result)
         }
 
@@ -89,11 +89,11 @@ public class AddCredentialTask {
             case .authenticating:
                 progressHandler(.authenticating)
             case .awaitingSupplementalInformation:
-                let supplementInformationTask = SupplementInformationTask(tinkLink: tinkLink, credential: credential) { [weak self] result in
+                let supplementInformationTask = SupplementInformationTask(credentialService: credentialService, credential: credential) { [weak self] result in
                     guard let self = self else { return }
                     do {
                         try result.get()
-                        self.credentialStatusPollingTask = CredentialStatusPollingTask(tinkLink: self.tinkLink, credential: credential, updateHandler: self.handleUpdate)
+                        self.credentialStatusPollingTask = CredentialStatusPollingTask(credentialService: self.credentialService, credential: credential, updateHandler: self.handleUpdate)
                         self.credentialStatusPollingTask?.pollStatus()
                     } catch {
                         self.completion(.failure(error))
@@ -109,7 +109,7 @@ public class AddCredentialTask {
                     guard let self = self else { return }
                     do {
                         try result.get()
-                        self.credentialStatusPollingTask = CredentialStatusPollingTask(tinkLink: self.tinkLink, credential: credential, updateHandler: self.handleUpdate)
+                        self.credentialStatusPollingTask = CredentialStatusPollingTask(credentialService: self.credentialService, credential: credential, updateHandler: self.handleUpdate)
                         self.credentialStatusPollingTask?.pollStatus()
                     } catch {
                         self.completion(.failure(error))

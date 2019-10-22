@@ -26,8 +26,8 @@ class CredentialStatusPollingTask {
         }
     }
 
-    init(tinkLink: TinkLink = .shared, credential: Credential, backoffStrategy: PollingBackoffStrategy = .linear, updateHandler: @escaping (Result<Credential, Error>) -> Void) {
-        self.service = tinkLink.client.credentialService
+    init(credentialService: CredentialService, credential: Credential, backoffStrategy: PollingBackoffStrategy = .linear, updateHandler: @escaping (Result<Credential, Error>) -> Void) {
+        self.service = credentialService
         self.credential = credential
         self.backoffStrategy = backoffStrategy
         self.updateHandler = updateHandler

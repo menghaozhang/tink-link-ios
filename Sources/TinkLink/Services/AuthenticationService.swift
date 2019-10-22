@@ -9,6 +9,18 @@ final class AuthenticationService: TokenConfigurableService {
     private var session: URLSession
     private var sessionDelegate: URLSessionDelegate?
 
+    convenience init(tinkLink: TinkLink = .shared, accessToken: AccessToken) {
+        let metadata = tinkLink.client.metadata.copy()
+        try? metadata.addAccessToken(accessToken.rawValue)
+        let client = tinkLink.client
+        self.init(
+            channel: client.channel,
+            metadata: metadata,
+            restURL: client.restURL,
+            certificates: client.restCertificate.map { [$0] } ?? []
+        )
+    }
+
     init(channel: Channel, metadata: Metadata, restURL: URL, certificates: [Data]) {
         self.channel = channel
         self.metadata = metadata
