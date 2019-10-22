@@ -3,13 +3,29 @@ import UIKit
 
 /// Example of how to use the provider grouped by names
 final class ProviderListViewController: UITableViewController {
-    private let providerContext = ProviderContext()
+    private let userContext = UserContext()
+    private var accessToken: AccessToken? {
+        didSet {
+            if let accessToken = accessToken {
+                fetchProvider(with: accessToken)
+                DispatchQueue.main.async {
+                    if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                        appDelegate.tinkAccessToken = accessToken
+                    }
+                }
+            }
+        }
+    }
+    private var providerContext: ProviderContext?
+    private var retryCancellable: RetryCancellable?
     
     private let searchController = UISearchController(searchResultsController: nil)
 
     private var providerGroups: [ProviderGroup] = [] {
         didSet {
-            tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
 
@@ -21,6 +37,15 @@ final class ProviderListViewController: UITableViewController {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    private func fetchProvider(with accessToken: AccessToken) {
+        providerContext = ProviderContext(accessToken: accessToken)
+        retryCancellable = providerContext?.fetchProviders(completion: { [weak self] result in
+            if let providers = try? result.get() {
+                self?.providerGroups = ProviderGroup.makeGroups(providers: providers)
+            }
+        })
     }
 }
 
@@ -41,16 +66,10 @@ extension ProviderListViewController {
 
         title = "Choose Bank"
 
-        let attributes = ProviderContext.Attributes(capabilities: .all, kinds: Provider.Kind.all, accessTypes: Provider.AccessType.all)
-        providerCanceller = providerContext.fetchProviders(attributes: attributes) { [weak self] result in
-            DispatchQueue.main.async {
-                do {
-                    let providers = try result.get()
-                    self?.providerGroups = ProviderGroup.makeGroups(providers: providers)
-                } catch {
-                    // TODO: Handle Error
-                    print(error.localizedDescription)
-                }
+        let configuration = TinkLink.shared.configuration
+        retryCancellable = userContext.authenticateIfNeeded(for: configuration.market, locale: configuration.locale) { [weak self] result in
+            if let accessToken = try? result.get() {
+                self?.accessToken = accessToken
             }
         }
 
@@ -93,28 +112,36 @@ extension ProviderListViewController {
 
 extension ProviderListViewController {
     func showFinancialInstitution(for groups: [FinancialInstitutionGroup], title: String?) {
-        let viewController = FinancialInstitutionPickerViewController(style: .plain)
-        viewController.title = title
-        viewController.financialInstitutionGroups = groups
-        show(viewController, sender: nil)
+        if let accessToken = accessToken {
+            let viewController = FinancialInstitutionPickerViewController(accessToken: accessToken, style: .plain)
+            viewController.title = title
+            viewController.financialInstitutionGroups = groups
+            show(viewController, sender: nil)
+        }
     }
 
     func showAccessTypePicker(for groups: [ProviderAccessTypeGroup], title: String?) {
-        let viewController = AccessTypePickerViewController(style: .plain)
-        viewController.title = title
-        viewController.providerAccessTypeGroups = groups
-        show(viewController, sender: nil)
+        if let accessToken = accessToken {
+            let viewController = AccessTypePickerViewController(accessToken: accessToken,style: .plain)
+            viewController.title = title
+            viewController.providerAccessTypeGroups = groups
+            show(viewController, sender: nil)
+        }
     }
 
     func showCredentialKindPicker(for providers: [Provider]) {
-        let viewController = CredentialKindPickerViewController(style: .plain)
-        viewController.providers = providers
-        show(viewController, sender: nil)
+        if let accessToken = accessToken {
+            let viewController = CredentialKindPickerViewController(accessToken: accessToken, style: .plain)
+            viewController.providers = providers
+            show(viewController, sender: nil)
+        }
     }
 
     func showAddCredential(for provider: Provider) {
-        let addCredentialViewController = AddCredentialViewController(provider: provider)
-        show(addCredentialViewController, sender: nil)
+        if let accessToken = accessToken {
+            let addCredentialViewController = AddCredentialViewController(provider: provider, accessToken: accessToken)
+            show(addCredentialViewController, sender: nil)
+        }
     }
 }
 
