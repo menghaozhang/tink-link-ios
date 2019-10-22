@@ -13,6 +13,8 @@ public class ProviderContext {
             self.kinds = kinds
             self.accessTypes = accessTypes
         }
+
+        public static let `default` = Attributes(capabilities: .all, kinds: Provider.Kind.excludingTest, accessTypes: Provider.AccessType.all)
     }
 
     private let market: Market
@@ -33,7 +35,7 @@ public class ProviderContext {
     ///
     /// - Parameter attributes: Attributes for providers to fetch
     /// - Parameter completion: A result representing either a list of providers or an error.
-    public func fetchProviders(attributes: Attributes, completion: @escaping (Result<[Provider], Error>) -> Void) -> RetryCancellable {
+    public func fetchProviders(attributes: Attributes = .default, completion: @escaping (Result<[Provider], Error>) -> Void) -> RetryCancellable {
         let multiHandler = MultiHandler()
 
         let authCanceller = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self, attributes, market] authenticationResult in
