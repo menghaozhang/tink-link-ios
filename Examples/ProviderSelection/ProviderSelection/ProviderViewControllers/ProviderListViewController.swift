@@ -71,7 +71,7 @@ extension ProviderListViewController {
         case .accessTypes(let accessTypeGroups):
             showAccessTypePicker(for: accessTypeGroups, title: providerGroup.displayName)
         case .credentialKinds(let groups):
-            showCredentialTypePicker(for: groups)
+            showCredentialKindPicker(for: groups)
         case .provider(let provider):
             showAddCredential(for: provider)
         }
@@ -95,8 +95,8 @@ extension ProviderListViewController {
         show(viewController, sender: nil)
     }
 
-    func showCredentialTypePicker(for groups: [ProviderCredentialKindGroup]) {
-        let viewController = CredentialTypePickerViewController(style: .plain)
+    func showCredentialKindPicker(for groups: [ProviderCredentialKindGroup]) {
+        let viewController = CredentialKindPickerViewController(style: .plain)
         viewController.providerCredentialKindGroups = groups
         show(viewController, sender: nil)
     }

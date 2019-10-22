@@ -2,18 +2,18 @@ import TinkLink
 import UIKit
 
 /// Example of how to use the provider grouped by credential type
-final class CredentialTypePickerViewController: UITableViewController {
-    var providerCredentialKindGroups: [ProviderCredentialKindGroup] = []
+final class CredentialKindPickerViewController: UITableViewController {
+    var providerCredentialKindGroup: [ProviderCredentialKindGroup] = []
 }
 
 // MARK: - View Lifecycle
 
-extension CredentialTypePickerViewController {
+extension CredentialKindPickerViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationItem.prompt = "Choose Credential Type"
-        navigationItem.title = providerCredentialKindGroups.first?.provider.displayName
+        navigationItem.title = providerCredentialKindGroup.first?.provider.displayName
         navigationItem.largeTitleDisplayMode = .never
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
@@ -22,27 +22,27 @@ extension CredentialTypePickerViewController {
 
 // MARK: - UITableViewDataSource
 
-extension CredentialTypePickerViewController {
+extension CredentialKindPickerViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return providerCredentialKindGroups.count
+        return providerCredentialKindGroup.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = providerCredentialKindGroups[indexPath.row].displayDescription
+        cell.textLabel?.text = providerCredentialKindGroup[indexPath.row].displayDescription
         cell.accessoryType = .disclosureIndicator
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let group = providerCredentialKindGroups[indexPath.row]
-        showAddCredential(for: group.provider)
+        let provider = providerCredentialKindGroup[indexPath.row]
+        showAddCredential(for: providerCredentialKindGroup.provider)
     }
 }
 
 // MARK: - Navigation
 
-extension CredentialTypePickerViewController {
+extension CredentialKindPickerViewController {
     func showAddCredential(for provider: Provider) {
         let addCredentialViewController = AddCredentialViewController(provider: provider)
         show(addCredentialViewController, sender: nil)

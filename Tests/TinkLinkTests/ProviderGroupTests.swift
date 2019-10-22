@@ -136,7 +136,7 @@ class ProviderGroupTests: XCTestCase {
         XCTAssertEqual(groups.count, 1)
         for group in groups {
             switch group {
-            case .credentialTypes(let providers):
+            case .credentialKinds(let providers):
                 XCTAssertEqual(providers.count, 2)
             default:
                 XCTFail("Expected credential types group.")
@@ -164,7 +164,7 @@ class ProviderGroupTests: XCTestCase {
                 }
                 if let otherAccessTypeGroup = accessTypeGroups.first(where: { $0.accessType == .other }) {
                     switch otherAccessTypeGroup {
-                    case .credentialTypes(let providers):
+                    case .credentialKinds(let providers):
                         XCTAssertEqual(providers.count, 2)
                     default:
                         XCTFail("Expected credential types group.")
@@ -193,7 +193,7 @@ class ProviderGroupTests: XCTestCase {
 
         let nordeaGroup = groups[0]
         switch nordeaGroup {
-        case .credentialTypes(let providers):
+        case .credentialKinds(let providers):
             XCTAssertEqual(providers.count, 2)
         default:
             XCTFail("Expected credential types group.")
@@ -201,7 +201,7 @@ class ProviderGroupTests: XCTestCase {
 
         let swedbankAndSparbankernaGroup = groups[1]
         switch swedbankAndSparbankernaGroup {
-        case .credentialTypes(let providers):
+        case .credentialKinds(let providers):
             XCTAssertEqual(providers.count, 2)
         default:
             XCTFail("Expected credential types group.")
@@ -224,7 +224,7 @@ class ProviderGroupTests: XCTestCase {
 
         let nordeaGroup = groups[0]
         switch nordeaGroup {
-        case .credentialTypes(let providers):
+        case .credentialKinds(let providers):
             XCTAssertEqual(providers.count, 2)
         default:
             XCTFail("Expected credential types group.")
@@ -236,7 +236,7 @@ class ProviderGroupTests: XCTestCase {
             XCTAssertEqual(financialInstitutions.count, 2)
             for financialInstitution in financialInstitutions {
                 switch financialInstitution {
-                case .credentialTypes(let providers):
+                case .credentialKinds(let providers):
                     XCTAssertEqual(providers.count, 2)
                 default:
                     XCTFail("Expected credential types group.")

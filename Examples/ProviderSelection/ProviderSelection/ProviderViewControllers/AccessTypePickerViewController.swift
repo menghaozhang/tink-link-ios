@@ -37,7 +37,7 @@ extension AccessTypePickerViewController {
         let providerAccessTypeGroup = providerAccessTypeGroups[indexPath.row]
         switch providerAccessTypeGroup {
         case .credentialKinds(let groups):
-            showCredentialTypePicker(for: groups)
+            showCredentialKindPicker(for: groups)
         case .provider(let provider):
             showAddCredential(for: provider)
         }
@@ -47,8 +47,8 @@ extension AccessTypePickerViewController {
 // MARK: - Navigation
 
 extension AccessTypePickerViewController {
-    func showCredentialTypePicker(for groups: [ProviderCredentialKindGroup]) {
-        let viewController = CredentialTypePickerViewController(style: .plain)
+    func showCredentialKindPicker(for groups: [ProviderCredentialKindGroup]) {
+        let viewController = CredentialKindPickerViewController(style: .plain)
         viewController.providerCredentialKindGroups = groups
         show(viewController, sender: nil)
     }

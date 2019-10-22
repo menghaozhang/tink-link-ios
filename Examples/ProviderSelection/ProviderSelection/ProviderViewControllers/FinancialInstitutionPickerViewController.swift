@@ -39,7 +39,7 @@ extension FinancialInstitutionPickerViewController {
         case .accessTypes(let accessTypeGroups):
             showAccessTypePicker(for: accessTypeGroups, title: financialInstitutionGroup.financialInstitution.name)
         case .credentialKinds(let groups):
-            showCredentialTypePicker(for: groups, title: financialInstitutionGroup.financialInstitution.name)
+            showCredentialKindPicker(for: groups, title: financialInstitutionGroup.financialInstitution.name)
         case .provider(let provider):
             showAddCredential(for: provider)
         }
@@ -56,8 +56,8 @@ extension FinancialInstitutionPickerViewController {
         show(viewController, sender: nil)
     }
 
-    func showCredentialTypePicker(for groups: [ProviderCredentialKindGroup], title: String?) {
-        let viewController = CredentialTypePickerViewController(style: .plain)
+    func showCredentialKindPicker(for groups: [ProviderCredentialKindGroup], title: String?) {
+        let viewController = CredentialKindPickerViewController(style: .plain)
         viewController.title = title
         viewController.providerCredentialKindGroups = groups
         show(viewController, sender: nil)
