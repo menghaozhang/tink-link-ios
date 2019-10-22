@@ -46,7 +46,7 @@ extension ProviderListViewController {
             DispatchQueue.main.async {
                 do {
                     let providers = try result.get()
-                    self?.providerGroups = ProviderGroup.makeGroups(providers: providers)
+                    self?.financialInstitutionGroups = FinancialInstitutionGroup.makeGroups(providers: providers)
                 } catch {
                     // TODO: Handle Error
                     print(error.localizedDescription)
