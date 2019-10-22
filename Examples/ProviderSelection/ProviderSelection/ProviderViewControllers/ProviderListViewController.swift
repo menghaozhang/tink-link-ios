@@ -7,7 +7,7 @@ final class ProviderListViewController: UITableViewController {
     
     private let searchController = UISearchController(searchResultsController: nil)
 
-    private var providerGroups: [FinancialInstitutionGroup] = [] {
+    private var financialInstitutionGroups: [FinancialInstitutionGroup] = [] {
         didSet {
             tableView.reloadData()
         }
@@ -63,19 +63,19 @@ extension ProviderListViewController {
 
 extension ProviderListViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return providerGroups.count
+        return financialInstitutionGroups.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let group = providerGroups[indexPath.row]
+        let group = financialInstitutionGroups[indexPath.row]
         cell.textLabel?.text = group.displayName
         cell.accessoryType = .disclosureIndicator
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let providerGroup = providerGroups[indexPath.row]
+        let providerGroup = financialInstitutionGroups[indexPath.row]
         switch providerGroup {
         case .financialInstitutions(let financialInstitutionGroups):
             showFinancialInstitution(for: financialInstitutionGroups, title: providerGroup.displayName)
@@ -123,7 +123,7 @@ extension ProviderListViewController {
 extension ProviderListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if let text = searchController.searchBar.text {
-            providerGroups = providerGroups.filter { $0.displayName.localizedCaseInsensitiveContains(text) }
+            financialInstitutionGroups = financialInstitutionGroups.filter { $0.displayName.localizedCaseInsensitiveContains(text) }
         }
     }
 }
