@@ -87,9 +87,7 @@ public class CredentialContext {
         return multiHandler
     }
 
-    /// The user's credentials.
-    ///
-    /// - Note: The credentials could be empty at first or change as credentials are added or updated. Use the delegate to get notified when credentials change.
+    /// Gets the user's credentials.
     public func fetchCredentials(completion: @escaping (Result<[Credential], Error>) -> Void) -> RetryCancellable {
         let multiHandler = MultiHandler()
 
