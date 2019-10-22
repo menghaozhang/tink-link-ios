@@ -45,7 +45,7 @@ public class TinkLink {
     private var thirdPartyCallbackCanceller: Cancellable?
 
     @available(iOS 9.0, *)
-    public func open(_ url: URL, completion: ((Result<Void, Error>) -> Void)? = nil) -> Bool {
+    public func open(_ url: URL, accessToken: AccessToken?, completion: ((Result<Void, Error>) -> Void)? = nil) -> Bool {
         guard let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false),
             urlComponents.scheme == configuration.redirectURI.scheme
             else { return false }
@@ -56,11 +56,14 @@ public class TinkLink {
         let stateParameterName = "state"
         guard let state = parameters.removeValue(forKey: stateParameterName) else { return false }
 
-        thirdPartyCallbackCanceller = client.credentialService.thirdPartyCallback(
-            state: state,
-            parameters: parameters,
-            completion: completion ?? { _ in }
-        )
+        if let accessToken = accessToken {
+            let credentialService = CredentialService(tinkLink: self, accessToken: accessToken)
+            thirdPartyCallbackCanceller = credentialService.thirdPartyCallback(
+                state: state,
+                parameters: parameters,
+                completion: completion ?? { _ in }
+            )
+        }
 
         return true
     }
