@@ -1,20 +1,8 @@
 import SwiftGRPC
 
-public class ProviderService: TokenConfigurableService {
+class ProviderService: TokenConfigurableService {
     let channel: Channel
     let metadata: Metadata
-
-    /// Creates a `ProviderService` to get providers from Tink API.
-    /// - Parameter tinkLink: TinkLink instance, will use the shared instance if nothing is provided.
-    /// - Parameter accessToken: The access token that can be used to communicate with the TInk API
-    public convenience init(tinkLink: TinkLink = .shared, accessToken: AccessToken) {
-        do {
-            try tinkLink.client.metadata.addAccessToken(accessToken.rawValue)
-        } catch {
-            assertionFailure(error.localizedDescription)
-        }
-        self.init(channel: tinkLink.client.channel, metadata: tinkLink.client.metadata)
-    }
 
     init(channel: Channel, metadata: Metadata) {
         self.channel = channel
@@ -31,7 +19,7 @@ public class ProviderService: TokenConfigurableService {
     ///   - includeTestProviders: If set to true, Providers of TEST financial financial institution kind will be added in the response list. Defaults to false.
     ///   - completion: The completion handler to call when the load request is complete.
     /// - Returns: A Cancellable instance. Call cancel() on this instance if you no longer need the result of the request. Deinitializing this instance will also cancel the request.
-    public func providers(market: Market? = nil, capabilities: Provider.Capabilities = .all, includeTestProviders: Bool = false, completion: @escaping (Result<[Provider], Error>) -> Void) -> RetryCancellable {
+    func providers(market: Market? = nil, capabilities: Provider.Capabilities = .all, includeTestProviders: Bool = false, completion: @escaping (Result<[Provider], Error>) -> Void) -> RetryCancellable {
         var request = GRPCProviderListRequest()
         request.marketCode = market?.code ?? ""
         request.capability = .unknown
