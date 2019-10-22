@@ -13,7 +13,6 @@
 		201D551B230AC95E00641102 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 201D5519230AC95E00641102 /* LaunchScreen.storyboard */; };
 		2023EB1F232268C400B219A3 /* AddCredentialStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2023EB1E232268C400B219A3 /* AddCredentialStatusViewController.swift */; };
 		20A409442338F20500FC035E /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A409432338F20500FC035E /* CheckmarkView.swift */; };
-		7C4076BB87A7E08D9AF89D2B /* Pods_ProviderSelection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 721C3816EEFC9F33462E6DCE /* Pods_ProviderSelection.framework */; };
 		8F576A2923228BE300A81E8E /* ValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F576A2823228BE300A81E8E /* ValueTableViewCell.swift */; };
 		8FA5F824230BD13800226C02 /* FinancialInstitutionPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F823230BD13800226C02 /* FinancialInstitutionPickerViewController.swift */; };
 		8FA5F826230BE85100226C02 /* AccessTypePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F825230BE85100226C02 /* AccessTypePickerViewController.swift */; };
@@ -22,6 +21,12 @@
 		8FA5F834230D84B900226C02 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F833230D84B900226C02 /* TextFieldCell.swift */; };
 		8FA5F836230E9DEF00226C02 /* SupplementalInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F835230E9DEF00226C02 /* SupplementalInformationViewController.swift */; };
 		8FA5F83E230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F83D230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift */; };
+		9D1C2138235F2A5000D89F34 /* SwiftProtobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D1C2133235F2A5000D89F34 /* SwiftProtobuf.framework */; };
+		9D1C2139235F2A5000D89F34 /* TinkLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D1C2134235F2A5000D89F34 /* TinkLink.framework */; };
+		9D1C213A235F2A5000D89F34 /* SwiftGRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D1C2135235F2A5000D89F34 /* SwiftGRPC.framework */; };
+		9D1C213B235F2A5000D89F34 /* BoringSSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D1C2136235F2A5000D89F34 /* BoringSSL.framework */; };
+		9D1C213C235F2A5000D89F34 /* CgRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D1C2137235F2A5000D89F34 /* CgRPC.framework */; };
+		9D1C213F235F2EB200D89F34 /* SwiftyMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D1C213E235F2EB200D89F34 /* SwiftyMarkdown.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,8 +38,6 @@
 		201D551C230AC95E00641102 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2023EB1E232268C400B219A3 /* AddCredentialStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCredentialStatusViewController.swift; sourceTree = "<group>"; };
 		20A409432338F20500FC035E /* CheckmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkView.swift; sourceTree = "<group>"; };
-		61B26BF5DAF2FC35AB93DC98 /* Pods-ProviderSelection.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProviderSelection.debug.xcconfig"; path = "Target Support Files/Pods-ProviderSelection/Pods-ProviderSelection.debug.xcconfig"; sourceTree = "<group>"; };
-		721C3816EEFC9F33462E6DCE /* Pods_ProviderSelection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProviderSelection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F576A2823228BE300A81E8E /* ValueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueTableViewCell.swift; sourceTree = "<group>"; };
 		8FA5F823230BD13800226C02 /* FinancialInstitutionPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialInstitutionPickerViewController.swift; sourceTree = "<group>"; };
 		8FA5F825230BE85100226C02 /* AccessTypePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTypePickerViewController.swift; sourceTree = "<group>"; };
@@ -43,7 +46,12 @@
 		8FA5F833230D84B900226C02 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		8FA5F835230E9DEF00226C02 /* SupplementalInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementalInformationViewController.swift; sourceTree = "<group>"; };
 		8FA5F83D230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishedCredentialUpdatedViewController.swift; sourceTree = "<group>"; };
-		C2228129CC6DE436D8BA8417 /* Pods-ProviderSelection.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProviderSelection.release.xcconfig"; path = "Target Support Files/Pods-ProviderSelection/Pods-ProviderSelection.release.xcconfig"; sourceTree = "<group>"; };
+		9D1C2133235F2A5000D89F34 /* SwiftProtobuf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftProtobuf.framework; path = Carthage/Build/iOS/SwiftProtobuf.framework; sourceTree = "<group>"; };
+		9D1C2134235F2A5000D89F34 /* TinkLink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TinkLink.framework; path = Carthage/Build/iOS/TinkLink.framework; sourceTree = "<group>"; };
+		9D1C2135235F2A5000D89F34 /* SwiftGRPC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftGRPC.framework; path = Carthage/Build/iOS/SwiftGRPC.framework; sourceTree = "<group>"; };
+		9D1C2136235F2A5000D89F34 /* BoringSSL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BoringSSL.framework; path = Carthage/Build/iOS/BoringSSL.framework; sourceTree = "<group>"; };
+		9D1C2137235F2A5000D89F34 /* CgRPC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CgRPC.framework; path = Carthage/Build/iOS/CgRPC.framework; sourceTree = "<group>"; };
+		9D1C213E235F2EB200D89F34 /* SwiftyMarkdown.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyMarkdown.framework; path = Carthage/Build/iOS/SwiftyMarkdown.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +59,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7C4076BB87A7E08D9AF89D2B /* Pods_ProviderSelection.framework in Frameworks */,
+				9D1C2139235F2A5000D89F34 /* TinkLink.framework in Frameworks */,
+				9D1C2138235F2A5000D89F34 /* SwiftProtobuf.framework in Frameworks */,
+				9D1C213B235F2A5000D89F34 /* BoringSSL.framework in Frameworks */,
+				9D1C213C235F2A5000D89F34 /* CgRPC.framework in Frameworks */,
+				9D1C213A235F2A5000D89F34 /* SwiftGRPC.framework in Frameworks */,
+				9D1C213F235F2EB200D89F34 /* SwiftyMarkdown.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,7 +76,6 @@
 			children = (
 				201D550F230AC95D00641102 /* ProviderSelection */,
 				201D550E230AC95D00641102 /* Products */,
-				66C7AAAAEC3C93F6A5F2CA94 /* Pods */,
 				220375E318466B44E90DA3AA /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -93,18 +105,14 @@
 		220375E318466B44E90DA3AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				721C3816EEFC9F33462E6DCE /* Pods_ProviderSelection.framework */,
+				9D1C213E235F2EB200D89F34 /* SwiftyMarkdown.framework */,
+				9D1C2136235F2A5000D89F34 /* BoringSSL.framework */,
+				9D1C2137235F2A5000D89F34 /* CgRPC.framework */,
+				9D1C2135235F2A5000D89F34 /* SwiftGRPC.framework */,
+				9D1C2133235F2A5000D89F34 /* SwiftProtobuf.framework */,
+				9D1C2134235F2A5000D89F34 /* TinkLink.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		66C7AAAAEC3C93F6A5F2CA94 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				61B26BF5DAF2FC35AB93DC98 /* Pods-ProviderSelection.debug.xcconfig */,
-				C2228129CC6DE436D8BA8417 /* Pods-ProviderSelection.release.xcconfig */,
-			);
-			path = Pods;
 			sourceTree = "<group>";
 		};
 		8FA35583231D3E690054115D /* ProviderViewControllers */ = {
@@ -146,11 +154,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 201D551F230AC95E00641102 /* Build configuration list for PBXNativeTarget "ProviderSelection" */;
 			buildPhases = (
-				901A1053DAA1D6E71DDD8ECB /* [CP] Check Pods Manifest.lock */,
 				201D5509230AC95D00641102 /* Sources */,
 				201D550A230AC95D00641102 /* Frameworks */,
 				201D550B230AC95D00641102 /* Resources */,
-				A2E3DF986DF82F43F0C4193E /* [CP] Embed Pods Frameworks */,
+				9D1C213D235F2AB700D89F34 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -207,7 +214,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		901A1053DAA1D6E71DDD8ECB /* [CP] Check Pods Manifest.lock */ = {
+		9D1C213D235F2AB700D89F34 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -215,34 +222,26 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
+				"$(SRCROOT)/Carthage/Build/iOS/TinkLink.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftProtobuf.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/BoringSSL.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CgRPC.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftGRPC.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyMarkdown.framework",
 			);
-			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ProviderSelection-checkManifestLockResult.txt",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/TinkLink.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftProtobuf.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BoringSSL.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CgRPC.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftGRPC.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftyMarkdown.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A2E3DF986DF82F43F0C4193E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ProviderSelection/Pods-ProviderSelection-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -398,10 +397,14 @@
 		};
 		201D5520230AC95E00641102 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 61B26BF5DAF2FC35AB93DC98 /* Pods-ProviderSelection.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ProviderSelection/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -409,6 +412,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tink.ProviderSelection;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -416,10 +420,14 @@
 		};
 		201D5521230AC95E00641102 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C2228129CC6DE436D8BA8417 /* Pods-ProviderSelection.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = ProviderSelection/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -427,6 +435,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tink.ProviderSelection;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
