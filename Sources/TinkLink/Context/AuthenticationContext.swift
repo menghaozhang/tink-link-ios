@@ -5,6 +5,9 @@ public final class AuthenticationContext {
     private var authenticationService: AuthenticationService
     private var retryCancellable: RetryCancellable?
 
+    /// Creates a context to authorize for an authorization code for a user with requested scopes.
+    /// - Parameter tinkLink: TinkLink instance, will use the shared instance if nothing is provided.
+    /// - Parameter accessToken: `AccessToken` that will be used for authorizing scope with the Tink API.
     public init(tinkLink: TinkLink = .shared, accessToken: AccessToken) {
         self.tinkLink = tinkLink
         self.authenticationService = AuthenticationService(tinkLink: tinkLink, accessToken: accessToken)

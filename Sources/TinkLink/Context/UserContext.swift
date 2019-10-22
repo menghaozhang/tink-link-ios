@@ -5,6 +5,8 @@ public final class UserContext {
     private var retryCancellable: RetryCancellable?
     public private(set) var accessToken: AccessToken?
 
+    /// Creates a context to register for an access token that will be used in other TinkLink APIs.
+    /// - Parameter tinkLink: TinkLink instance, will use the shared instance if nothing is provided.
     public init(tinkLink: TinkLink = .shared) {
         self.userService = UserService(tinkLink: tinkLink)
     }
