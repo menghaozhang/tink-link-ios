@@ -41,9 +41,13 @@ final class ProviderListViewController: UITableViewController {
     private func fetchProvider(with accessToken: AccessToken) {
         providerContext = ProviderContext(accessToken: accessToken)
         providerCancellable = providerContext?.fetchProviders(completion: { [weak self] result in
-            if let providers = try? result.get() {
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                do {
+                    let providers = try result.get()
                     self?.financialInstitutionGroups = FinancialInstitutionGroup.makeGroups(providers: providers)
+                } catch {
+                    // TODO: Handle Error
+                    print(error.localizedDescription)
                 }
             }
             self?.providerCancellable = nil
@@ -75,7 +79,6 @@ extension ProviderListViewController {
             }
             self?.userCancellable = nil
         }
-
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
     }
@@ -114,32 +117,32 @@ extension ProviderListViewController {
 // MARK: - Navigation
 
 extension ProviderListViewController {
-    func showFinancialInstitution(for groups: [FinancialInstitution], title: String?) {
+    func showFinancialInstitution(for FinancialInstitutions: [FinancialInstitution], title: String?) {
         guard let accessToken = accessToken else {
             preconditionFailure("accessToken should not be nil")
         }
         let viewController = FinancialInstitutionPickerViewController(accessToken: accessToken, style: .plain)
         viewController.title = title
-        viewController.financialInstitutionGroups = groups
+        viewController.financialInstitutionGroups = FinancialInstitutions
         show(viewController, sender: nil)
     }
 
-    func showAccessTypePicker(for groups: [ProviderAccessTypeGroup], title: String?) {
+    func showAccessTypePicker(for accessTypeGroups: [AccessTypeGroup], title: String?) {
         guard let accessToken = accessToken else {
             preconditionFailure("accessToken should not be nil")
         }
         let viewController = AccessTypePickerViewController(accessToken: accessToken,style: .plain)
         viewController.title = title
-        viewController.providerAccessTypeGroups = groups
+        viewController.accessTypeGroups = accessTypeGroups
         show(viewController, sender: nil)
     }
 
-    func showCredentialKindPicker(for groups: [ProviderCredentialKindGroup]) {
+    func showCredentialKindPicker(for credentialKindGroups: [CredentialKindGroup]) {
         guard let accessToken = accessToken else {
             preconditionFailure("accessToken should not be nil")
         }
         let viewController = CredentialKindPickerViewController(accessToken: accessToken, style: .plain)
-        viewController.providerCredentialKindGroups = groups
+        viewController.credentialKindGroups = credentialKindGroups
         show(viewController, sender: nil)
     }
 
