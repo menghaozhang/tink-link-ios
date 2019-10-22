@@ -5,7 +5,6 @@ public class CredentialContext {
     private let tinkLink: TinkLink
 
     private var credentialService: CredentialService
-    private let authenticationManager: AuthenticationManager
     private let market: Market
     private let locale: Locale
 
@@ -14,7 +13,6 @@ public class CredentialContext {
     /// - Parameter tinkLink: TinkLink instance, defaults to `shared` if not provided.
     public init(tinkLink: TinkLink = .shared, accessToken: AccessToken) {
         self.tinkLink = tinkLink
-        self.authenticationManager = tinkLink.authenticationManager
         self.credentialService = CredentialService(tinkLink: tinkLink, accessToken: accessToken)
         self.market = tinkLink.client.market
         self.locale = tinkLink.client.locale
@@ -69,43 +67,21 @@ public class CredentialContext {
     }
 
     private func addCredentialAndAuthenticateIfNeeded(for provider: Provider, fields: [String: String], appURI: URL, completion: @escaping (Result<Credential, Error>) -> Void) -> RetryCancellable {
-        let multiHandler = MultiHandler()
-        let market = Market(code: provider.marketCode)
 
-        let authHandler = authenticationManager.authenticateIfNeeded(service: credentialService, for: market, locale: locale) { result in
-            do {
-                try result.get()
-                let handler = self.credentialService.createCredential(providerID: provider.id, fields: fields, appURI: appURI, completion: completion)
-                multiHandler.add(handler)
-            } catch {
-                completion(.failure(error))
-            }
-        }
-        if let handler = authHandler {
-            multiHandler.add(handler)
-        }
-        return multiHandler
+        return credentialService.createCredential(providerID: provider.id, fields: fields, appURI: appURI, completion: completion)
     }
 
     /// Gets the user's credentials.
     public func fetchCredentials(completion: @escaping (Result<[Credential], Error>) -> Void) -> RetryCancellable {
-        let multiHandler = MultiHandler()
-
-        let authHandler = authenticationManager.authenticateIfNeeded(service: credentialService, for: market, locale: locale) { result in
-            let handler = self.credentialService.credentials { result in
-                do {
-                    let credentials = try result.get()
-                    let storedCredentials = credentials.sorted(by: { $0.id.value < $1.id.value })
-                    completion(.success(storedCredentials))
-                } catch {
-                    completion(.failure(error))
-                }
+        let handler = credentialService.credentials { result in
+            do {
+                let credentials = try result.get()
+                let storedCredentials = credentials.sorted(by: { $0.id.value < $1.id.value })
+                completion(.success(storedCredentials))
+            } catch {
+                completion(.failure(error))
             }
-            multiHandler.add(handler)
         }
-        if let handler = authHandler {
-            multiHandler.add(handler)
-        }
-        return multiHandler
+        return handler
     }
 }

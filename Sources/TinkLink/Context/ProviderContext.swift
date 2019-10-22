@@ -18,7 +18,6 @@ public class ProviderContext {
     }
 
     private let market: Market
-    private let authenticationManager: AuthenticationManager
     private let locale: Locale
     private let service: ProviderService
 
@@ -26,7 +25,6 @@ public class ProviderContext {
     /// - Parameter tinkLink: TinkLink instance, will use the shared instance if nothing is provided.
     public init(tinkLink: TinkLink = .shared, accessToken: AccessToken) {
         self.market = tinkLink.client.market
-        self.authenticationManager = tinkLink.authenticationManager
         self.service = ProviderService(tinkLink: tinkLink, accessToken: accessToken)
         self.locale = tinkLink.client.locale
     }
@@ -36,30 +34,17 @@ public class ProviderContext {
     /// - Parameter attributes: Attributes for providers to fetch
     /// - Parameter completion: A result representing either a list of providers or an error.
     public func fetchProviders(attributes: Attributes = .default, completion: @escaping (Result<[Provider], Error>) -> Void) -> RetryCancellable {
-        let multiHandler = MultiHandler()
 
-        let authCanceller = authenticationManager.authenticateIfNeeded(service: service, for: market, locale: locale) { [weak self, attributes, market] authenticationResult in
-            guard let self = self, !multiHandler.isCancelled else { return }
+        let fetchCanceller = service.providers(market: market, capabilities: attributes.capabilities, includeTestProviders: attributes.kinds.contains(.test)) { result in
             do {
-                try authenticationResult.get()
-                let fetchCanceller = self.service.providers(market: market, capabilities: attributes.capabilities, includeTestProviders: attributes.kinds.contains(.test)) { result in
-                    do {
-                        let fetchedProviders = try result.get()
-                        let filteredProviders = fetchedProviders.filter { attributes.accessTypes.contains($0.accessType) && attributes.kinds.contains($0.kind) }
-                        completion(.success(filteredProviders))
-                    } catch {
-                        completion(.failure(error))
-                    }
-                }
-                multiHandler.add(fetchCanceller)
+                let fetchedProviders = try result.get()
+                let filteredProviders = fetchedProviders.filter { attributes.accessTypes.contains($0.accessType) && attributes.kinds.contains($0.kind) }
+                completion(.success(filteredProviders))
             } catch {
                 completion(.failure(error))
             }
         }
-        if let canceller = authCanceller {
-            multiHandler.add(canceller)
-        }
 
-        return multiHandler
+        return fetchCanceller
     }
 }

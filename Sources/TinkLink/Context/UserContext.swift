@@ -1,0 +1,30 @@
+import Foundation
+
+public final class UserContext {
+    private var userService: UserService
+    private var retryCancellable: RetryCancellable?
+    public private(set) var accessToken: AccessToken?
+
+    public init(tinkLink: TinkLink = .shared) {
+        self.userService = UserService(tinkLink: tinkLink)
+    }
+
+    public func authenticateIfNeeded(for market: Market, locale: Locale, completion: @escaping (Result<AccessToken, Error>) -> Void) -> RetryCancellable? {
+        if let accessToken = accessToken {
+            completion(.success(accessToken))
+        } else if retryCancellable == nil {
+            retryCancellable = userService.createAnonymous(market: market, locale: locale) { [weak self] result in
+                guard let self = self else { return }
+                do {
+                    let accessToken = try result.get()
+                    self.accessToken = accessToken
+                    completion(.success((accessToken)))
+                } catch {
+                    completion(.failure(error))
+                }
+                self.retryCancellable = nil
+            }
+        }
+        return retryCancellable
+    }
+}
