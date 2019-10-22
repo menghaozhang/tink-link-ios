@@ -46,7 +46,7 @@ extension ProviderListViewController {
             DispatchQueue.main.async {
                 do {
                     let providers = try result.get()
-                    self?.providerGroups = ProviderGroup.makeGroups(providers: providers)
+                    self?.financialInstitutionGroups = FinancialInstitutionGroup.makeGroups(providers: providers)
                 } catch {
                     // TODO: Handle Error
                     print(error.localizedDescription)
@@ -92,23 +92,23 @@ extension ProviderListViewController {
 // MARK: - Navigation
 
 extension ProviderListViewController {
-    func showFinancialInstitution(for groups: [FinancialInstitution], title: String?) {
+    func showFinancialInstitution(for FinancialInstitutions: [FinancialInstitution], title: String?) {
         let viewController = FinancialInstitutionPickerViewController(style: .plain)
         viewController.title = title
-        viewController.financialInstitutionGroups = groups
+        viewController.financialInstitutionGroups = FinancialInstitutions
         show(viewController, sender: nil)
     }
 
-    func showAccessTypePicker(for groups: [ProviderAccessTypeGroup], title: String?) {
+    func showAccessTypePicker(for accessTypeGroups: [AccessTypeGroup], title: String?) {
         let viewController = AccessTypePickerViewController(style: .plain)
         viewController.title = title
-        viewController.providerAccessTypeGroups = groups
+        viewController.accessTypeGroups = accessTypeGroups
         show(viewController, sender: nil)
     }
 
-    func showCredentialKindPicker(for groups: [ProviderCredentialKindGroup]) {
+    func showCredentialKindPicker(for credentialKindGroups: [CredentialKindGroup]) {
         let viewController = CredentialKindPickerViewController(style: .plain)
-        viewController.providerCredentialKindGroups = groups
+        viewController.credentialKindGroups = credentialKindGroups
         show(viewController, sender: nil)
     }
 
