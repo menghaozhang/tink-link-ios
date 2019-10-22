@@ -17,7 +17,7 @@ public final class UserContext {
     ///
     /// - Parameter market: Register a `Market` for authentication,  will use the default market if nothing is provided.
     /// - Parameter locale: Register a `Locale` for authentication,  will use the default locale in TinkLink if nothing is provided.
-    public func authenticateIfNeeded(for market: Market, locale: Locale, completion: @escaping (Result<AccessToken, Error>) -> Void) -> RetryCancellable? {
+    public func authenticateIfNeeded(for market: Market = .defaultMarket, locale: Locale = TinkLink.defaultLocale, completion: @escaping (Result<AccessToken, Error>) -> Void) -> RetryCancellable? {
         if let accessToken = accessToken {
             completion(.success(accessToken))
         } else if retryCancellable == nil {
