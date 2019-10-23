@@ -3,7 +3,7 @@ import UIKit
 
 /// Example of how to use the provider grouped by credential type
 final class CredentialKindPickerViewController: UITableViewController {
-    var credentialKindGroups: [ProviderTree.CredentialKindGroup] = []
+    var credentialKindNodes: [ProviderTree.CredentialKindNode] = []
 }
 
 // MARK: - View Lifecycle
@@ -13,7 +13,7 @@ extension CredentialKindPickerViewController {
         super.viewDidLoad()
 
         navigationItem.prompt = "Choose Credential Type"
-        navigationItem.title = credentialKindGroups.first?.provider.displayName
+        navigationItem.title = credentialKindNodes.first?.provider.displayName
         navigationItem.largeTitleDisplayMode = .never
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
@@ -24,18 +24,18 @@ extension CredentialKindPickerViewController {
 
 extension CredentialKindPickerViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return credentialKindGroups.count
+        return credentialKindNodes.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = credentialKindGroups[indexPath.row].displayDescription
+        cell.textLabel?.text = credentialKindNodes[indexPath.row].displayDescription
         cell.accessoryType = .disclosureIndicator
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let credentialKindGroup = credentialKindGroups[indexPath.row]
+        let credentialKindGroup = credentialKindNodes[indexPath.row]
         showAddCredential(for: credentialKindGroup.provider)
     }
 }
