@@ -35,8 +35,8 @@ public struct ProviderTree {
 
         public var providers: [Provider] {
             switch self {
-            case .credentialKinds(let groups):
-                return groups.map { $0.provider }
+            case .credentialKinds(let nodes):
+                return nodes.map { $0.provider }
             case .provider(let provider):
                 return [provider]
             }
@@ -44,8 +44,8 @@ public struct ProviderTree {
 
         private var firstProvider: Provider {
             switch self {
-            case .credentialKinds(let groups):
-                return groups[0].provider
+            case .credentialKinds(let nodes):
+                return nodes[0].provider
             case .provider(let provider):
                 return provider
             }
@@ -77,10 +77,10 @@ public struct ProviderTree {
 
         public var providers: [Provider] {
             switch self {
-            case .accessTypes(let providerGroupByAccessTypes):
-                return providerGroupByAccessTypes.flatMap { $0.providers }
-            case .credentialKinds(let groups):
-                return groups.map { $0.provider }
+            case .accessTypes(let nodes):
+                return nodes.flatMap { $0.providers }
+            case .credentialKinds(let nodes):
+                return nodes.map { $0.provider }
             case .provider(let provider):
                 return [provider]
             }
@@ -135,12 +135,12 @@ public struct ProviderTree {
 
         public var providers: [Provider] {
             switch self {
-            case .financialInstitutions(let providerGroupedByFinancialInstitutions):
-                return providerGroupedByFinancialInstitutions.flatMap { $0.providers }
-            case .accessTypes(let providerGroupByAccessTypes):
-                return providerGroupByAccessTypes.flatMap { $0.providers }
-            case .credentialKinds(let groups):
-                return groups.map { $0.provider }
+            case .financialInstitutions(let nodes):
+                return nodes.flatMap { $0.providers }
+            case .accessTypes(let nodes):
+                return nodes.flatMap { $0.providers }
+            case .credentialKinds(let nodes):
+                return nodes.map { $0.provider }
             case .provider(let provider):
                 return [provider]
             }
@@ -148,29 +148,29 @@ public struct ProviderTree {
 
         private var firstProvider: Provider {
             switch self {
-            case .financialInstitutions(let financialInstitutionGroups):
-                switch financialInstitutionGroups[0] {
-                case .accessTypes(let providerAccessTypeGroups):
-                    switch providerAccessTypeGroups[0] {
-                    case .credentialKinds(let groups):
-                        return groups[0].provider
+            case .financialInstitutions(let nodes):
+                switch nodes[0] {
+                case .accessTypes(let nodes):
+                    switch nodes[0] {
+                    case .credentialKinds(let nodes):
+                        return nodes[0].provider
                     case .provider(let provider):
                         return provider
                     }
-                case .credentialKinds(let groups):
-                    return groups[0].provider
+                case .credentialKinds(let nodes):
+                    return nodes[0].provider
                 case .provider(let provider):
                     return provider
                 }
-            case .accessTypes(let providerAccessTypeGroups):
-                switch providerAccessTypeGroups[0] {
-                case .credentialKinds(let groups):
-                    return groups[0].provider
+            case .accessTypes(let nodes):
+                switch nodes[0] {
+                case .credentialKinds(let nodes):
+                    return nodes[0].provider
                 case .provider(let provider):
                     return provider
                 }
-            case .credentialKinds(let groups):
-                return groups[0].provider
+            case .credentialKinds(let nodes):
+                return nodes[0].provider
             case .provider(let provider):
                 return provider
             }
