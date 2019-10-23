@@ -1,6 +1,6 @@
 # Provider Selection - Example Project 
 
-This example project shows how to make a simple integration with Tink using TinkLink on iOS. The project demonstrates how display and allow users to connect to providers (banks) using their bank credentials. 
+This example project shows how to make a simple integration with Tink using TinkLink on iOS. The project demonstrates how display and allow users to connect to providers (financial institutions) using their credentials. 
 
 ## Getting started
 
