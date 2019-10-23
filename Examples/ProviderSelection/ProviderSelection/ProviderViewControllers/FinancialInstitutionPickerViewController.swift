@@ -4,17 +4,6 @@ import UIKit
 /// Example of how to use the provider grouped by financialInstitution
 final class FinancialInstitutionPickerViewController: UITableViewController {
     var financialInstitutionGroups: [FinancialInstitution] = []
-
-    private let user: User
-
-    init(user: User, style: UITableView.Style) {
-        self.user = user
-        super.init(style: style)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 }
 
 // MARK: - View Lifecycle
@@ -61,21 +50,21 @@ extension FinancialInstitutionPickerViewController {
 
 extension FinancialInstitutionPickerViewController {
     func showAccessTypePicker(for accessTypeGroups: [AccessTypeGroup], title: String?) {
-        let viewController = AccessTypePickerViewController(user: user, style: .plain)
+        let viewController = AccessTypePickerViewController(style: .plain)
         viewController.title = title
         viewController.accessTypeGroups = accessTypeGroups
         show(viewController, sender: nil)
     }
 
     func showCredentialKindPicker(for credentialKindGroups: [CredentialKindGroup], title: String?) {
-        let viewController = CredentialKindPickerViewController(user: user, style: .plain)
+        let viewController = CredentialKindPickerViewController(style: .plain)
         viewController.title = title
         viewController.credentialKindGroups = credentialKindGroups
         show(viewController, sender: nil)
     }
 
     func showAddCredential(for provider: Provider) {
-        let addCredentialViewController = AddCredentialViewController(provider: provider, user: user)
+        let addCredentialViewController = AddCredentialViewController(provider: provider)
         show(addCredentialViewController, sender: nil)
     }
 }

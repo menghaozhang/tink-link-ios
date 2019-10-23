@@ -3,20 +3,7 @@ import UIKit
 
 /// Example of how to use the provider grouped by names
 final class ProviderListViewController: UITableViewController {
-    private let userContext = UserContext()
-    private var user: User? {
-        didSet {
-            if let user = user {
-                DispatchQueue.main.async {
-                    if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-                        appDelegate.tinkUser = user
-                    }
-                }
-                fetchProvider(with: user)
-            }
-        }
-    }
-    private var providerContext: ProviderContext?
+    private let providerContext = ProviderContext()
     private var userCancellable: RetryCancellable?
     private var providerCancellable: RetryCancellable?
     
@@ -38,9 +25,8 @@ final class ProviderListViewController: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func fetchProvider(with user: User) {
-        providerContext = ProviderContext(user: user)
-        providerCancellable = providerContext?.fetchProviders(completion: { [weak self] result in
+    private func fetchProviders() {
+        providerCancellable = providerContext.fetchProviders(completion: { [weak self] result in
             DispatchQueue.main.async {
                 do {
                     let providers = try result.get()
@@ -72,15 +58,10 @@ extension ProviderListViewController {
 
         title = "Choose Bank"
 
-        let configuration = TinkLink.shared.configuration
-        userCancellable = userContext.createUserIfNeeded(for: configuration.market, locale: configuration.locale) { [weak self] result in
-            if let user = try? result.get() {
-                self?.user = user
-            }
-            self?.userCancellable = nil
-        }
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
+
+        fetchProviders()
     }
 }
 
@@ -118,39 +99,27 @@ extension ProviderListViewController {
 
 extension ProviderListViewController {
     func showFinancialInstitution(for FinancialInstitutions: [FinancialInstitution], title: String?) {
-        guard let user = user else {
-            preconditionFailure("user should not be nil")
-        }
-        let viewController = FinancialInstitutionPickerViewController(user: user, style: .plain)
+        let viewController = FinancialInstitutionPickerViewController(style: .plain)
         viewController.title = title
         viewController.financialInstitutionGroups = FinancialInstitutions
         show(viewController, sender: nil)
     }
 
     func showAccessTypePicker(for accessTypeGroups: [AccessTypeGroup], title: String?) {
-        guard let user = user else {
-            preconditionFailure("user should not be nil")
-        }
-        let viewController = AccessTypePickerViewController(user: user, style: .plain)
+        let viewController = AccessTypePickerViewController(style: .plain)
         viewController.title = title
         viewController.accessTypeGroups = accessTypeGroups
         show(viewController, sender: nil)
     }
 
     func showCredentialKindPicker(for credentialKindGroups: [CredentialKindGroup]) {
-        guard let user = user else {
-            preconditionFailure("user should not be nil")
-        }
-        let viewController = CredentialKindPickerViewController(user: user, style: .plain)
+        let viewController = CredentialKindPickerViewController(style: .plain)
         viewController.credentialKindGroups = credentialKindGroups
         show(viewController, sender: nil)
     }
 
     func showAddCredential(for provider: Provider) {
-        guard let user = user else {
-            preconditionFailure("user should not be nil")
-        }
-        let addCredentialViewController = AddCredentialViewController(provider: provider, user: user)
+        let addCredentialViewController = AddCredentialViewController(provider: provider)
         show(addCredentialViewController, sender: nil)
     }
 }
