@@ -1,3 +1,7 @@
 import Foundation
 
-extension URLSessionDataTask: Cancellable {}
+extension URLSessionDataTask: RetryCancellable {
+    public func retry() {
+        resume()
+    }
+}

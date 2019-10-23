@@ -47,29 +47,29 @@ public class ProviderContext {
     ///
     /// - Parameter attributes: Attributes for providers to fetch
     /// - Parameter completion: A result representing either a list of providers or an error.
-    public func fetchProviders(attributes: Attributes = .default, completion: @escaping (Result<[Provider], Error>) -> Void) -> RetryCancellable {
-        let multiHandler = MultiHandler()
-
+    public func fetchProviders(attributes: Attributes = .default, completion: @escaping (Result<[Provider], Error>) -> Void) -> RetryCancellable? {
         let authenticationCanceller = tinkLink.authenticateIfNeeded(with: userCreationStrategy) { [service, market] (userResult) in
             do {
                 let user = try userResult.get()
                 service.accessToken = user.accessToken
-                let fetchCanceller = service.providers(market: market, capabilities: attributes.capabilities, includeTestProviders: attributes.kinds.contains(.test)) { result in
+                let fetchCancellable = service.providers(market: market, capabilities: attributes.capabilities, includeTestProviders: attributes.kinds.contains(.test)) { result in
                     do {
                         let fetchedProviders = try result.get()
                         let filteredProviders = fetchedProviders.filter { attributes.accessTypes.contains($0.accessType) && attributes.kinds.contains($0.kind) }
                         completion(.success(filteredProviders))
+//                        let error = NSError(domain: CocoaError.errorDomain, code: CocoaError.coderInvalidValue.rawValue, userInfo: nil)
+//                        completion(.failure(error))
                     } catch {
                         completion(.failure(error))
                     }
                 }
-                multiHandler.add(fetchCanceller)
+                return fetchCancellable
             } catch {
                 completion(.failure(error))
+                return nil
             }
         }
-        multiHandler.add(authenticationCanceller)
 
-        return multiHandler
+        return authenticationCanceller
     }
 }

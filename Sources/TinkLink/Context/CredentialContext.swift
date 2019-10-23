@@ -7,6 +7,8 @@ public class CredentialContext {
     private let service: CredentialService
     private let market: Market
     private let locale: Locale
+    private var credentialCanceller: RetryCancellable?
+    private var fetchCredentials: RetryCancellable?
 
     /// Creates a new CredentialContext for the given TinkLink instance.
     ///
@@ -76,30 +78,35 @@ public class CredentialContext {
         return task
     }
 
-    private func addCredentialAndAuthenticateIfNeeded(for provider: Provider, fields: [String: String], appURI: URL, completion: @escaping (Result<Credential, Error>) -> Void) -> RetryCancellable {
-        let multiHandler = MultiHandler()
-        let authenticationCanceller = tinkLink.authenticateIfNeeded(with: userCreationStrategy) { [service] (userResult) in
+    private func addCredentialAndAuthenticateIfNeeded(for provider: Provider, fields: [String: String], appURI: URL, completion: @escaping (Result<Credential, Error>) -> Void) -> RetryCancellable? {
+        let authenticationCanceller = tinkLink.authenticateIfNeeded(with: userCreationStrategy) { [weak self, service] (userResult) in
             do {
                 let user = try userResult.get()
                 service.accessToken = user.accessToken
-                let credentialCanceller = service.createCredential(providerID: provider.id, fields: fields, appURI: appURI, completion: completion)
-                multiHandler.add(credentialCanceller)
+                let credentialCanceller = service.createCredential(providerID: provider.id, fields: fields, appURI: appURI, completion: { result in
+                    do {
+                        let credential = try result.get()
+                        completion(.success(credential))
+                    } catch {
+                        completion(.failure(error))
+                    }
+                })
+                return credentialCanceller
             } catch {
                 completion(.failure(error))
+                return nil
             }
         }
-        multiHandler.add(authenticationCanceller)
-        return multiHandler
+        return authenticationCanceller
     }
 
     /// Gets the user's credentials.
-    public func fetchCredentials(completion: @escaping (Result<[Credential], Error>) -> Void) -> RetryCancellable {
-        let multiHandler = MultiHandler()
-        let authenticationCanceller = tinkLink.authenticateIfNeeded(with: userCreationStrategy) { [service] (userResult) in
+    public func fetchCredentials(completion: @escaping (Result<[Credential], Error>) -> Void) -> RetryCancellable? {
+        let authenticationCanceller = tinkLink.authenticateIfNeeded(with: userCreationStrategy) { [weak self, service] (userResult) in
             do {
                 let user = try userResult.get()
                 service.accessToken = user.accessToken
-                let handler = service.credentials { result in
+                let fetchCredentials = service.credentials { result in
                     do {
                         let credentials = try result.get()
                         let storedCredentials = credentials.sorted(by: { $0.id.value < $1.id.value })
@@ -108,12 +115,12 @@ public class CredentialContext {
                         completion(.failure(error))
                     }
                 }
-                multiHandler.add(handler)
+                return fetchCredentials
             } catch {
                 completion(.failure(error))
+                return nil
             }
         }
-        multiHandler.add(authenticationCanceller)
-        return multiHandler
+        return authenticationCanceller
     }
 }

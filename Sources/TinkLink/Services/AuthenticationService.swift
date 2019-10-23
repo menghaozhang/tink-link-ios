@@ -57,7 +57,7 @@ final class AuthenticationService: TokenConfigurableService {
 }
 
 extension AuthenticationService {
-    func authorize(redirectURI: URL, scope: TinkLink.Scope, completion: @escaping (Result<AuthorizationResponse, Error>) -> Void) -> Cancellable? {
+    func authorize(redirectURI: URL, scope: TinkLink.Scope, completion: @escaping (Result<AuthorizationResponse, Error>) -> Void) -> RetryCancellable? {
         guard let clientID = metadata[Metadata.HeaderKey.oauthClientID.key] else {
             preconditionFailure("No client id")
         }
