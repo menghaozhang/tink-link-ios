@@ -1,3 +1,6 @@
+// This type represents a tree structure of providers.
+///
+/// This tree eventually leads to a leaf of type `Provider` that contains more detailed data about a provider.
 public struct ProviderTree {
     public let financialInstitutionGroups: [FinancialInstitutionGroup]
 
