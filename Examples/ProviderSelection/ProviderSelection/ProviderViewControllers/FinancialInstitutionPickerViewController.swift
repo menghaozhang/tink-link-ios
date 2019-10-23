@@ -5,10 +5,10 @@ import UIKit
 final class FinancialInstitutionPickerViewController: UITableViewController {
     var financialInstitutionGroups: [FinancialInstitution] = []
 
-    private let accessToken: AccessToken
+    private let user: User
 
-    init(accessToken: AccessToken, style: UITableView.Style) {
-        self.accessToken = accessToken
+    init(user: User, style: UITableView.Style) {
+        self.user = user
         super.init(style: style)
     }
 
@@ -61,21 +61,21 @@ extension FinancialInstitutionPickerViewController {
 
 extension FinancialInstitutionPickerViewController {
     func showAccessTypePicker(for accessTypeGroups: [AccessTypeGroup], title: String?) {
-        let viewController = AccessTypePickerViewController(accessToken: accessToken, style: .plain)
+        let viewController = AccessTypePickerViewController(user: user, style: .plain)
         viewController.title = title
         viewController.accessTypeGroups = accessTypeGroups
         show(viewController, sender: nil)
     }
 
     func showCredentialKindPicker(for credentialKindGroups: [CredentialKindGroup], title: String?) {
-        let viewController = CredentialKindPickerViewController(accessToken: accessToken, style: .plain)
+        let viewController = CredentialKindPickerViewController(user: user, style: .plain)
         viewController.title = title
         viewController.credentialKindGroups = credentialKindGroups
         show(viewController, sender: nil)
     }
 
     func showAddCredential(for provider: Provider) {
-        let addCredentialViewController = AddCredentialViewController(provider: provider, accessToken: accessToken)
+        let addCredentialViewController = AddCredentialViewController(provider: provider, user: user)
         show(addCredentialViewController, sender: nil)
     }
 }

@@ -4,15 +4,15 @@ import UIKit
 /// Example of how to use the provider grouped by names
 final class ProviderListViewController: UITableViewController {
     private let userContext = UserContext()
-    private var accessToken: AccessToken? {
+    private var user: User? {
         didSet {
-            if let accessToken = accessToken {
+            if let user = user {
                 DispatchQueue.main.async {
                     if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-                        appDelegate.tinkAccessToken = accessToken
+                        appDelegate.tinkUser = user
                     }
                 }
-                fetchProvider(with: accessToken)
+                fetchProvider(with: user)
             }
         }
     }
@@ -38,8 +38,8 @@ final class ProviderListViewController: UITableViewController {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func fetchProvider(with accessToken: AccessToken) {
-        providerContext = ProviderContext(accessToken: accessToken)
+    private func fetchProvider(with user: User) {
+        providerContext = ProviderContext(user: user)
         providerCancellable = providerContext?.fetchProviders(completion: { [weak self] result in
             DispatchQueue.main.async {
                 do {
@@ -73,9 +73,9 @@ extension ProviderListViewController {
         title = "Choose Bank"
 
         let configuration = TinkLink.shared.configuration
-        userCancellable = userContext.authenticateIfNeeded(for: configuration.market, locale: configuration.locale) { [weak self] result in
-            if let accessToken = try? result.get() {
-                self?.accessToken = accessToken
+        userCancellable = userContext.createUserIfNeeded(for: configuration.market, locale: configuration.locale) { [weak self] result in
+            if let user = try? result.get() {
+                self?.user = user
             }
             self?.userCancellable = nil
         }
@@ -118,39 +118,39 @@ extension ProviderListViewController {
 
 extension ProviderListViewController {
     func showFinancialInstitution(for FinancialInstitutions: [FinancialInstitution], title: String?) {
-        guard let accessToken = accessToken else {
+        guard let user = user else {
             preconditionFailure("accessToken should not be nil")
         }
-        let viewController = FinancialInstitutionPickerViewController(accessToken: accessToken, style: .plain)
+        let viewController = FinancialInstitutionPickerViewController(user: user, style: .plain)
         viewController.title = title
         viewController.financialInstitutionGroups = FinancialInstitutions
         show(viewController, sender: nil)
     }
 
     func showAccessTypePicker(for accessTypeGroups: [AccessTypeGroup], title: String?) {
-        guard let accessToken = accessToken else {
+        guard let user = user else {
             preconditionFailure("accessToken should not be nil")
         }
-        let viewController = AccessTypePickerViewController(accessToken: accessToken,style: .plain)
+        let viewController = AccessTypePickerViewController(user: user, style: .plain)
         viewController.title = title
         viewController.accessTypeGroups = accessTypeGroups
         show(viewController, sender: nil)
     }
 
     func showCredentialKindPicker(for credentialKindGroups: [CredentialKindGroup]) {
-        guard let accessToken = accessToken else {
+        guard let user = user else {
             preconditionFailure("accessToken should not be nil")
         }
-        let viewController = CredentialKindPickerViewController(accessToken: accessToken, style: .plain)
+        let viewController = CredentialKindPickerViewController(user: user, style: .plain)
         viewController.credentialKindGroups = credentialKindGroups
         show(viewController, sender: nil)
     }
 
     func showAddCredential(for provider: Provider) {
-        guard let accessToken = accessToken else {
+        guard let user = user else {
             preconditionFailure("accessToken should not be nil")
         }
-        let addCredentialViewController = AddCredentialViewController(provider: provider, accessToken: accessToken)
+        let addCredentialViewController = AddCredentialViewController(provider: provider, user: user)
         show(addCredentialViewController, sender: nil)
     }
 }
