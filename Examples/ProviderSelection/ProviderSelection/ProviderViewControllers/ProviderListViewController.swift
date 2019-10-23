@@ -119,7 +119,7 @@ extension ProviderListViewController {
 extension ProviderListViewController {
     func showFinancialInstitution(for FinancialInstitutions: [FinancialInstitution], title: String?) {
         guard let user = user else {
-            preconditionFailure("accessToken should not be nil")
+            preconditionFailure("user should not be nil")
         }
         let viewController = FinancialInstitutionPickerViewController(user: user, style: .plain)
         viewController.title = title
@@ -129,7 +129,7 @@ extension ProviderListViewController {
 
     func showAccessTypePicker(for accessTypeGroups: [AccessTypeGroup], title: String?) {
         guard let user = user else {
-            preconditionFailure("accessToken should not be nil")
+            preconditionFailure("user should not be nil")
         }
         let viewController = AccessTypePickerViewController(user: user, style: .plain)
         viewController.title = title
@@ -139,7 +139,7 @@ extension ProviderListViewController {
 
     func showCredentialKindPicker(for credentialKindGroups: [CredentialKindGroup]) {
         guard let user = user else {
-            preconditionFailure("accessToken should not be nil")
+            preconditionFailure("user should not be nil")
         }
         let viewController = CredentialKindPickerViewController(user: user, style: .plain)
         viewController.credentialKindGroups = credentialKindGroups
@@ -148,7 +148,7 @@ extension ProviderListViewController {
 
     func showAddCredential(for provider: Provider) {
         guard let user = user else {
-            preconditionFailure("accessToken should not be nil")
+            preconditionFailure("user should not be nil")
         }
         let addCredentialViewController = AddCredentialViewController(provider: provider, user: user)
         show(addCredentialViewController, sender: nil)
