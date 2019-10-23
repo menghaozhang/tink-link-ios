@@ -157,7 +157,7 @@
 				201D5509230AC95D00641102 /* Sources */,
 				201D550A230AC95D00641102 /* Frameworks */,
 				201D550B230AC95D00641102 /* Resources */,
-				9D1C213D235F2AB700D89F34 /* ShellScript */,
+				9D1C213D235F2AB700D89F34 /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -214,7 +214,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		9D1C213D235F2AB700D89F34 /* ShellScript */ = {
+		9D1C213D235F2AB700D89F34 /* Copy Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -229,6 +229,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftGRPC.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyMarkdown.framework",
 			);
+			name = "Copy Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
