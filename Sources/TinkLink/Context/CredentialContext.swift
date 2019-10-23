@@ -3,8 +3,8 @@ import Foundation
 /// An object that you use to access the user's credentials and supports the flow for adding credentials.
 public class CredentialContext {
     private let tinkLink: TinkLink
-
-    private var credentialService: CredentialService
+    private let userCreationStrategy: UserCreationStrategy
+    private let service: CredentialService
     private let market: Market
     private let locale: Locale
 
@@ -12,9 +12,14 @@ public class CredentialContext {
     ///
     /// - Parameter tinkLink: TinkLink instance, defaults to `shared` if not provided.
     /// - Parameter user: `User` that will be used for adding credentials with the Tink API.
-    public init(tinkLink: TinkLink = .shared, user: User) {
+    public convenience init(tinkLink: TinkLink = .shared, user: User) {
+        self.init(tinkLink: tinkLink, userCreationStrategy: .existing(user))
+    }
+
+    public init(tinkLink: TinkLink = .shared, userCreationStrategy: UserCreationStrategy = .automaticAnonymous) {
         self.tinkLink = tinkLink
-        self.credentialService = CredentialService(tinkLink: tinkLink, accessToken: user.accessToken)
+        self.userCreationStrategy = userCreationStrategy
+        self.service = CredentialService(tinkLink: tinkLink)
         self.market = tinkLink.client.market
         self.locale = tinkLink.client.locale
     }
@@ -47,7 +52,7 @@ public class CredentialContext {
     /// - Returns: The add credential task.
     public func addCredential(for provider: Provider, form: Form, completionPredicate: AddCredentialTask.CompletionPredicate = .updated, progressHandler: @escaping (_ status: AddCredentialTask.Status) -> Void, completion: @escaping (_ result: Result<Credential, Error>) -> Void) -> AddCredentialTask {
         let task = AddCredentialTask(
-            credentialService: credentialService,
+            credentialService: service,
             completionPredicate: completionPredicate,
             progressHandler: progressHandler,
             completion: completion,
@@ -68,21 +73,43 @@ public class CredentialContext {
     }
 
     private func addCredentialAndAuthenticateIfNeeded(for provider: Provider, fields: [String: String], appURI: URL, completion: @escaping (Result<Credential, Error>) -> Void) -> RetryCancellable {
-
-        return credentialService.createCredential(providerID: provider.id, fields: fields, appURI: appURI, completion: completion)
-    }
-
-    /// Gets the user's credentials.
-    public func fetchCredentials(completion: @escaping (Result<[Credential], Error>) -> Void) -> RetryCancellable {
-        let handler = credentialService.credentials { result in
+        let multiHandler = MultiHandler()
+        let authenticationCanceller = tinkLink.authenticateIfNeeded(with: userCreationStrategy) { [service] (userResult) in
             do {
-                let credentials = try result.get()
-                let storedCredentials = credentials.sorted(by: { $0.id.value < $1.id.value })
-                completion(.success(storedCredentials))
+                let user = try userResult.get()
+                service.accessToken = user.accessToken
+                let credentialCanceller = service.createCredential(providerID: provider.id, fields: fields, appURI: appURI, completion: completion)
+                multiHandler.add(credentialCanceller)
             } catch {
                 completion(.failure(error))
             }
         }
-        return handler
+        multiHandler.add(authenticationCanceller)
+        return multiHandler
+    }
+
+    /// Gets the user's credentials.
+    public func fetchCredentials(completion: @escaping (Result<[Credential], Error>) -> Void) -> RetryCancellable {
+        let multiHandler = MultiHandler()
+        let authenticationCanceller = tinkLink.authenticateIfNeeded(with: userCreationStrategy) { [service] (userResult) in
+            do {
+                let user = try userResult.get()
+                service.accessToken = user.accessToken
+                let handler = service.credentials { result in
+                    do {
+                        let credentials = try result.get()
+                        let storedCredentials = credentials.sorted(by: { $0.id.value < $1.id.value })
+                        completion(.success(storedCredentials))
+                    } catch {
+                        completion(.failure(error))
+                    }
+                }
+                multiHandler.add(handler)
+            } catch {
+                completion(.failure(error))
+            }
+        }
+        multiHandler.add(authenticationCanceller)
+        return multiHandler
     }
 }

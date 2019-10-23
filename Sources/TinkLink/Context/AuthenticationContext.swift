@@ -3,15 +3,21 @@ import Foundation
 /// An object that you use to authorize for a user with requested scopes.
 public final class AuthenticationContext {
     private var tinkLink: TinkLink
-    private var authenticationService: AuthenticationService
+    private let userCreationStrategy: UserCreationStrategy
+    private var service: AuthenticationService
     private var retryCancellable: RetryCancellable?
 
     /// Creates a context to authorize for an authorization code for a user with requested scopes.
     /// - Parameter tinkLink: TinkLink instance, will use the shared instance if nothing is provided.
     /// - Parameter user: `User` that will be used for authorizing scope with the Tink API.
-    public init(tinkLink: TinkLink = .shared, user: User) {
+    public convenience init(tinkLink: TinkLink = .shared, user: User) {
+        self.init(tinkLink: tinkLink, userCreationStrategy: .existing(user))
+    }
+
+    public init(tinkLink: TinkLink = .shared, userCreationStrategy: UserCreationStrategy = .automaticAnonymous) {
         self.tinkLink = tinkLink
-        self.authenticationService = AuthenticationService(tinkLink: tinkLink, accessToken: user.accessToken)
+        self.userCreationStrategy = userCreationStrategy
+        self.service = AuthenticationService(tinkLink: tinkLink)
     }
 
     /// Creates an authorization code with the requested scopes for the current user
@@ -25,9 +31,26 @@ public final class AuthenticationContext {
     /// - Parameter result: Represents either an authorization code if authorization was successful or an error if authorization failed.
     @discardableResult
     public func authorize(scope: TinkLink.Scope, completion: @escaping (_ result: Result<AuthorizationCode, Error>) -> Void) -> Cancellable? {
+        let multiHandler = MultiCanceller()
 
-        return authenticationService.authorize(redirectURI: tinkLink.configuration.redirectURI, scope: scope) { (result) in
-            completion(result.map({ $0.code }))
+        let redirectURI = tinkLink.configuration.redirectURI
+
+        let authenticationCanceller = tinkLink.authenticateIfNeeded(with: userCreationStrategy) { [service] (userResult) in
+            do {
+                let user = try userResult.get()
+                service.accessToken = user.accessToken
+
+                let fetchCanceller = service.authorize(redirectURI: redirectURI, scope: scope) { (result) in
+                    completion(result.map({ $0.code }))
+                }
+                multiHandler.add(fetchCanceller)
+            } catch {
+                completion(.failure(error))
+            }
         }
+
+        multiHandler.add(authenticationCanceller)
+
+        return multiHandler
     }
 }
