@@ -35,8 +35,8 @@ extension CredentialKindPickerViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let credentialKindGroup = credentialKindNodes[indexPath.row]
-        showAddCredential(for: credentialKindGroup.provider)
+        let credentialKindNode = credentialKindNodes[indexPath.row]
+        showAddCredential(for: credentialKindNode.provider)
     }
 }
 
