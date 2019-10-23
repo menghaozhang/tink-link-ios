@@ -3,7 +3,7 @@ import UIKit
 
 /// Example of how to use the provider grouped by credential type
 final class CredentialKindPickerViewController: UITableViewController {
-    var credentialKindGroups: [CredentialKindGroup] = []
+    var credentialKindGroups: [ProviderTree.CredentialKindGroup] = []
 }
 
 // MARK: - View Lifecycle

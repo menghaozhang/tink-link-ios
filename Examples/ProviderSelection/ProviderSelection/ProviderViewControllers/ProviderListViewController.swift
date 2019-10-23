@@ -9,7 +9,7 @@ final class ProviderListViewController: UITableViewController {
     
     private let searchController = UISearchController(searchResultsController: nil)
 
-    private var financialInstitutionGroups: [FinancialInstitutionGroup] = [] {
+    private var financialInstitutionGroups: [ProviderTree.FinancialInstitutionGroup] = [] {
         didSet {
             self.tableView.reloadData()
         }
@@ -31,7 +31,7 @@ final class ProviderListViewController: UITableViewController {
             DispatchQueue.main.async {
                 do {
                     let providers = try result.get()
-                    self?.financialInstitutionGroups = FinancialInstitutionGroup.makeGroups(providers: providers)
+                    self?.financialInstitutionGroups = ProviderTree(providers: providers).financialInstitutionGroups
                 } catch {
                     // TODO: Handle Error
                     print(error.localizedDescription)
@@ -99,21 +99,21 @@ extension ProviderListViewController {
 // MARK: - Navigation
 
 extension ProviderListViewController {
-    func showFinancialInstitution(for FinancialInstitutions: [FinancialInstitution], title: String?) {
+    func showFinancialInstitution(for FinancialInstitutions: [ProviderTree.FinancialInstitution], title: String?) {
         let viewController = FinancialInstitutionPickerViewController(style: .plain)
         viewController.title = title
         viewController.financialInstitutionGroups = FinancialInstitutions
         show(viewController, sender: nil)
     }
 
-    func showAccessTypePicker(for accessTypeGroups: [AccessTypeGroup], title: String?) {
+    func showAccessTypePicker(for accessTypeGroups: [ProviderTree.AccessTypeGroup], title: String?) {
         let viewController = AccessTypePickerViewController(style: .plain)
         viewController.title = title
         viewController.accessTypeGroups = accessTypeGroups
         show(viewController, sender: nil)
     }
 
-    func showCredentialKindPicker(for credentialKindGroups: [CredentialKindGroup]) {
+    func showCredentialKindPicker(for credentialKindGroups: [ProviderTree.CredentialKindGroup]) {
         let viewController = CredentialKindPickerViewController(style: .plain)
         viewController.credentialKindGroups = credentialKindGroups
         show(viewController, sender: nil)
