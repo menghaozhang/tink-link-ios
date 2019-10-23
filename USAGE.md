@@ -197,6 +197,24 @@ func application(_ application: UIApplication, open url: URL, options: [UIApplic
 }
 ```
 
+## Users
+
+### Creating users
+To e.g. fetch providers or create credentials you need to first create a user. By default TinkLink will create an anonymous user when needed but you can also create one and use it in a `ProviderContext` like this: 
+
+```swift
+let userContext = UserContext()
+let userCanceller = userContext.createUserIfNeeded(completion: { result in
+    do {
+        let user = try result.get()
+        let providerContext = ProviderContext(user: user)
+        <#Code using providerContext#>
+    } catch {
+        <#Error Handling#>
+    }
+})
+```
+
 ## Advanced usage 
 In some cases, you may want to have multiple `TinkLink` instances, you can create your custom `TinkLink` instance like this:
 
