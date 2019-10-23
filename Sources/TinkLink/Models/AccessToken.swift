@@ -1,7 +1,7 @@
-public struct AccessToken: Hashable, RawRepresentable {
-    public let rawValue: String
+struct AccessToken: Hashable, RawRepresentable {
+    let rawValue: String
 
-    public init?(rawValue: String) {
+    init?(rawValue: String) {
         self.rawValue = rawValue
     }
 
