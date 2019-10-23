@@ -10,6 +10,7 @@ public struct ProviderTree {
             .map { FinancialInstitutionGroupNode(providers: $0.value) }
     }
 
+    /// A parent node of the tree structure, with a `Provider` as it's leaf node.
     public struct CredentialKindNode {
         public let provider: Provider
 
@@ -18,6 +19,7 @@ public struct ProviderTree {
         public var displayDescription: String { provider.displayDescription.isEmpty ? provider.credentialKind.description : provider.displayDescription }
     }
 
+    /// A parent node of the tree structure, with a list of either `CredentialKindNode` children or a single `Provider`.
     public enum AccessTypeNode {
         case provider(Provider)
         case credentialKinds([CredentialKindNode])
@@ -52,6 +54,7 @@ public struct ProviderTree {
         public var accessType: Provider.AccessType { firstProvider.accessType }
     }
 
+    /// A parent node of the tree structure, with a list of either `AccessTypeNode`, `CredentialKindNode` children or a single `Provider`.
     public enum FinancialInstitutionNode {
         case provider(Provider)
         case credentialKinds([CredentialKindNode])
@@ -102,6 +105,7 @@ public struct ProviderTree {
         public var financialInstitution: Provider.FinancialInstitution { firstProvider.financialInstitution }
     }
 
+    /// A parent node of the tree structure, with a list of either `FinancialInstitutionNode`, `AccessTypeNode`, `CredentialKindNode` children or a single `Provider`.
     public enum FinancialInstitutionGroupNode {
         case provider(Provider)
         case credentialKinds([CredentialKindNode])
