@@ -8,12 +8,17 @@ public final class AuthenticationContext {
     private var retryCancellable: RetryCancellable?
 
     /// Creates a context to authorize for an authorization code for a user with requested scopes.
+    ///
     /// - Parameter tinkLink: TinkLink instance, will use the shared instance if nothing is provided.
     /// - Parameter user: `User` that will be used for authorizing scope with the Tink API.
     public convenience init(tinkLink: TinkLink = .shared, user: User) {
         self.init(tinkLink: tinkLink, userCreationStrategy: .existing(user))
     }
 
+    /// Creates a context to authorize for an authorization code for a user with requested scopes.
+    ///
+    /// - Parameter tinkLink: TinkLink instance, will use the shared instance if nothing is provided.
+    /// - Parameter userCreationStrategy: The strategy for creating users. Defaults to automatically creating a anonymous user.
     public init(tinkLink: TinkLink = .shared, userCreationStrategy: UserCreationStrategy = .automaticAnonymous) {
         self.tinkLink = tinkLink
         self.userCreationStrategy = userCreationStrategy
