@@ -16,11 +16,11 @@ class ProviderListViewController: UITableViewController {
         super.viewDidLoad()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
-        self?.providerCanceller = providerContext.fetchProviders(completion: { result in
+        providerCanceller = providerContext.fetchProviders(completion: { [weak self] result in
             DispatchQueue.main.async {
                 if let providers = try result.get() {
-                    self.providers = providers
-                    self.tableView.reloadData()
+                    self?.providers = providers
+                    self?.tableView.reloadData()
                 } catch {
                     <#Error Handling#>
                 }
