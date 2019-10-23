@@ -44,8 +44,25 @@ public class TinkLink {
 
     private var thirdPartyCallbackCanceller: Cancellable?
 
+    private lazy var automaticAnonymousUserContext = UserContext(tinkLink: self)
+
+    func authenticateIfNeeded(with userCreationStrategy: UserCreationStrategy, completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {
+        switch userCreationStrategy {
+        case .automaticAnonymous:
+            let userCanceller = automaticAnonymousUserContext.createUserIfNeeded(for: configuration.market, locale: configuration.locale, completion: completion)
+            return userCanceller
+        case .existing(let user):
+            completion(.success(user))
+            return nil
+        }
+    }
+
     @available(iOS 9.0, *)
-    public func open(_ url: URL, user: User?, completion: ((Result<Void, Error>) -> Void)? = nil) -> Bool {
+    public func open(_ url: URL, user: User, completion: ((Result<Void, Error>) -> Void)? = nil) -> Bool {
+        return open(url, userCreationStrategy: .existing(user), completion: completion)
+    }
+
+    public func open(_ url: URL, userCreationStrategy: UserCreationStrategy = .automaticAnonymous, completion: ((Result<Void, Error>) -> Void)? = nil) -> Bool {
         guard let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false),
             urlComponents.scheme == configuration.redirectURI.scheme
             else { return false }
@@ -56,13 +73,18 @@ public class TinkLink {
         let stateParameterName = "state"
         guard let state = parameters.removeValue(forKey: stateParameterName) else { return false }
 
-        if let user = user {
-            let credentialService = CredentialService(tinkLink: self, accessToken: user.accessToken)
-            thirdPartyCallbackCanceller = credentialService.thirdPartyCallback(
-                state: state,
-                parameters: parameters,
-                completion: completion ?? { _ in }
-            )
+        authenticateIfNeeded(with: userCreationStrategy) { (userResult) in
+            do {
+                let user = try userResult.get()
+                let credentialService = CredentialService(tinkLink: self, accessToken: user.accessToken)
+                self.thirdPartyCallbackCanceller = credentialService.thirdPartyCallback(
+                    state: state,
+                    parameters: parameters,
+                    completion: completion ?? { _ in }
+                )
+            } catch {
+                completion?(.failure(error))
+            }
         }
 
         return true

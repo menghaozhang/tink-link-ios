@@ -4,10 +4,9 @@ import UIKit
 
 /// Example of how to use the provider field specification to add credential
 final class AddCredentialViewController: UITableViewController {
-    let credentialContext: CredentialContext
+    let credentialContext = CredentialContext()
     let provider: Provider
 
-    private let user: User
     private var form: Form
     private var formError: Form.ValidationError? {
         didSet {
@@ -22,10 +21,8 @@ final class AddCredentialViewController: UITableViewController {
 
     private lazy var helpLabel = UITextView()
 
-    init(provider: Provider, user: User) {
-        self.credentialContext = CredentialContext(user: user)
+    init(provider: Provider) {
         self.provider = provider
-        self.user = user
         self.form = Form(provider: provider)
 
         if #available(iOS 13.0, *) {
@@ -251,7 +248,7 @@ extension AddCredentialViewController {
 
     private func showCredentialUpdated(for credential: Credential) {
         hideUpdatingView()
-        let finishedCredentialUpdatedViewController = FinishedCredentialUpdatedViewController(credential: credential, user: user)
+        let finishedCredentialUpdatedViewController = FinishedCredentialUpdatedViewController(credential: credential)
         show(finishedCredentialUpdatedViewController, sender: nil)
     }
 

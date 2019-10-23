@@ -9,9 +9,19 @@ final class AuthenticationService: TokenConfigurableService {
     private var session: URLSession
     private var sessionDelegate: URLSessionDelegate?
 
-    convenience init(tinkLink: TinkLink = .shared, accessToken: AccessToken) {
+    var accessToken: AccessToken? {
+        didSet {
+            if let accessToken = accessToken {
+                try? metadata.addAccessToken(accessToken.rawValue)
+            }
+        }
+    }
+
+    convenience init(tinkLink: TinkLink = .shared, accessToken: AccessToken? = nil) {
         let metadata = tinkLink.client.metadata.copy()
-        try? metadata.addAccessToken(accessToken.rawValue)
+        if let accessToken = accessToken {
+            try? metadata.addAccessToken(accessToken.rawValue)
+        }
         let client = tinkLink.client
         self.init(
             channel: client.channel,
@@ -19,6 +29,7 @@ final class AuthenticationService: TokenConfigurableService {
             restURL: client.restURL,
             certificates: client.restCertificate.map { [$0] } ?? []
         )
+        self.accessToken = accessToken
     }
 
     init(channel: Channel, metadata: Metadata, restURL: URL, certificates: [Data]) {
