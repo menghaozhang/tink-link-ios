@@ -37,7 +37,6 @@
 		20E6886D234F0B7800B4E04F /* insight_models.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E6886C234F0B7800B4E04F /* insight_models.pb.swift */; };
 		20E68871234F0B7F00B4E04F /* date.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E68870234F0B7F00B4E04F /* date.pb.swift */; };
 		20E6887B234F570C00B4E04F /* AuthorizationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E6887A234F570C00B4E04F /* AuthorizationError.swift */; };
-		20E6DCD123336AE700476B8F /* MultiHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E6DCD023336AE700476B8F /* MultiHandler.swift */; };
 		20ED852A2303FA48006213BB /* TinkLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85202303FA48006213BB /* TinkLink.framework */; };
 		20ED85412303FAEC006213BB /* rpc.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED853D2303FAEC006213BB /* rpc.pb.swift */; };
 		20ED85422303FAEC006213BB /* models.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED853E2303FAEC006213BB /* models.pb.swift */; };
@@ -113,7 +112,6 @@
 		20E6886C234F0B7800B4E04F /* insight_models.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = insight_models.pb.swift; sourceTree = "<group>"; };
 		20E68870234F0B7F00B4E04F /* date.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = date.pb.swift; sourceTree = "<group>"; };
 		20E6887A234F570C00B4E04F /* AuthorizationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationError.swift; sourceTree = "<group>"; };
-		20E6DCD023336AE700476B8F /* MultiHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiHandler.swift; sourceTree = "<group>"; };
 		20ED85202303FA48006213BB /* TinkLink.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinkLink.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		20ED85242303FA48006213BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20ED85292303FA48006213BB /* TinkLinkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinkLinkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -305,7 +303,6 @@
 				3373C0D623574CFE00555FC7 /* RetryCancellable.swift */,
 				8F0CE77A2332151700FB84B0 /* CallCanceller.swift */,
 				8F0CE77B2332151700FB84B0 /* Cancellable.swift */,
-				20E6DCD023336AE700476B8F /* MultiHandler.swift */,
 				8F0CE77C2332151700FB84B0 /* Client.swift */,
 				20ED85702304004C006213BB /* ProviderService.swift */,
 				8F84A775232B8B6500EA878F /* TokenConfigurableService.swift */,
@@ -524,7 +521,6 @@
 				20ED856F2304003A006213BB /* Environment.swift in Sources */,
 				20E68871234F0B7F00B4E04F /* date.pb.swift in Sources */,
 				8F0CE77D2332151700FB84B0 /* CallCanceller.swift in Sources */,
-				20E6DCD123336AE700476B8F /* MultiHandler.swift in Sources */,
 				8FA35592231EADAB0054115D /* CredentialContext.swift in Sources */,
 				8FA35590231EA3820054115D /* ProviderContext.swift in Sources */,
 				20ED859623045896006213BB /* Credential.swift in Sources */,
