@@ -22,7 +22,7 @@
 		2049259A232A3AF000D4461D /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20492599232A3AF000D4461D /* Form.swift */; };
 		206B8DCF23350A8300693ED5 /* FormTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206B8DCD2335001000693ED5 /* FormTests.swift */; };
 		209D69282326878800B4DBB8 /* SupplementInformationTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209D69272326878800B4DBB8 /* SupplementInformationTask.swift */; };
-		20A5AF57234DC22F00063701 /* ProviderGroupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A5AF55234DC21200063701 /* ProviderGroupTests.swift */; };
+		20A5AF57234DC22F00063701 /* ProviderTreeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A5AF55234DC21200063701 /* ProviderTreeTests.swift */; };
 		20C300E92341D44F0004E284 /* ConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C300E72341D43B0004E284 /* ConfigurationTests.swift */; };
 		20C3A7782354584F0048EBA4 /* FinancialInstitution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C3A7772354584F0048EBA4 /* FinancialInstitution.swift */; };
 		20C3A77A2355B87A0048EBA4 /* ThirdPartyAppAuthenticationTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C3A7792355B87A0048EBA4 /* ThirdPartyAppAuthenticationTask.swift */; };
@@ -70,7 +70,7 @@
 		8F84A776232B8B6500EA878F /* TokenConfigurableService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F84A775232B8B6500EA878F /* TokenConfigurableService.swift */; };
 		8F84A77C2330D39600EA878F /* Locale+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F84A77B2330D39600EA878F /* Locale+Extensions.swift */; };
 		8FA35586231E673B0054115D /* TinkLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA35585231E673B0054115D /* TinkLink.swift */; };
-		8FA3558E231EA1840054115D /* ProviderGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA3558D231EA1840054115D /* ProviderGroup.swift */; };
+		8FA3558E231EA1840054115D /* ProviderTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA3558D231EA1840054115D /* ProviderTree.swift */; };
 		8FA35590231EA3820054115D /* ProviderContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA3558F231EA3820054115D /* ProviderContext.swift */; };
 		8FA35592231EADAB0054115D /* CredentialContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA35591231EADAB0054115D /* CredentialContext.swift */; };
 		8FA5E0ED23547FF100717D74 /* Scope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5E0EC23547FF100717D74 /* Scope.swift */; };
@@ -102,7 +102,7 @@
 		20492599232A3AF000D4461D /* Form.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Form.swift; sourceTree = "<group>"; };
 		206B8DCD2335001000693ED5 /* FormTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTests.swift; sourceTree = "<group>"; };
 		209D69272326878800B4DBB8 /* SupplementInformationTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplementInformationTask.swift; sourceTree = "<group>"; };
-		20A5AF55234DC21200063701 /* ProviderGroupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderGroupTests.swift; sourceTree = "<group>"; };
+		20A5AF55234DC21200063701 /* ProviderTreeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderTreeTests.swift; sourceTree = "<group>"; };
 		20C300E72341D43B0004E284 /* ConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationTests.swift; sourceTree = "<group>"; };
 		20C3A7772354584F0048EBA4 /* FinancialInstitution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialInstitution.swift; sourceTree = "<group>"; };
 		20C3A7792355B87A0048EBA4 /* ThirdPartyAppAuthenticationTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartyAppAuthenticationTask.swift; sourceTree = "<group>"; };
@@ -149,7 +149,7 @@
 		8F84A775232B8B6500EA878F /* TokenConfigurableService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenConfigurableService.swift; sourceTree = "<group>"; };
 		8F84A77B2330D39600EA878F /* Locale+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+Extensions.swift"; sourceTree = "<group>"; };
 		8FA35585231E673B0054115D /* TinkLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinkLink.swift; sourceTree = "<group>"; };
-		8FA3558D231EA1840054115D /* ProviderGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderGroup.swift; sourceTree = "<group>"; };
+		8FA3558D231EA1840054115D /* ProviderTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderTree.swift; sourceTree = "<group>"; };
 		8FA3558F231EA3820054115D /* ProviderContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderContext.swift; sourceTree = "<group>"; };
 		8FA35591231EADAB0054115D /* CredentialContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialContext.swift; sourceTree = "<group>"; };
 		8FA5E0EC23547FF100717D74 /* Scope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scope.swift; sourceTree = "<group>"; };
@@ -267,7 +267,7 @@
 				20C300E72341D43B0004E284 /* ConfigurationTests.swift */,
 				20D129E0234E1732005C2D34 /* CredentialGRPCTests.swift */,
 				206B8DCD2335001000693ED5 /* FormTests.swift */,
-				20A5AF55234DC21200063701 /* ProviderGroupTests.swift */,
+				20A5AF55234DC21200063701 /* ProviderTreeTests.swift */,
 				20ED85302303FA48006213BB /* Info.plist */,
 			);
 			name = TinkLinkTests;
@@ -340,7 +340,7 @@
 				200FD63C23154AFC0077181A /* AccessToken.swift */,
 				20ED8579230407B3006213BB /* Provider.swift */,
 				20C3A7772354584F0048EBA4 /* FinancialInstitution.swift */,
-				8FA3558D231EA1840054115D /* ProviderGroup.swift */,
+				8FA3558D231EA1840054115D /* ProviderTree.swift */,
 				20ED859523045896006213BB /* Credential.swift */,
 				20492599232A3AF000D4461D /* Form.swift */,
 				8FA5E0EC23547FF100717D74 /* Scope.swift */,
@@ -503,7 +503,7 @@
 				8F84A776232B8B6500EA878F /* TokenConfigurableService.swift in Sources */,
 				20EE138123053B2700C92D65 /* Credential+GRPC.swift in Sources */,
 				2049259A232A3AF000D4461D /* Form.swift in Sources */,
-				8FA3558E231EA1840054115D /* ProviderGroup.swift in Sources */,
+				8FA3558E231EA1840054115D /* ProviderTree.swift in Sources */,
 				8FA5E0ED23547FF100717D74 /* Scope.swift in Sources */,
 				20C3A7782354584F0048EBA4 /* FinancialInstitution.swift in Sources */,
 				20E6886D234F0B7800B4E04F /* insight_models.pb.swift in Sources */,
@@ -562,7 +562,7 @@
 				20ED8588230408E6006213BB /* ClientTests.swift in Sources */,
 				20C300E92341D44F0004E284 /* ConfigurationTests.swift in Sources */,
 				206B8DCF23350A8300693ED5 /* FormTests.swift in Sources */,
-				20A5AF57234DC22F00063701 /* ProviderGroupTests.swift in Sources */,
+				20A5AF57234DC22F00063701 /* ProviderTreeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -3,7 +3,7 @@ import UIKit
 
 /// Example of how to use the provider grouped by financialInstitution
 final class FinancialInstitutionPickerViewController: UITableViewController {
-    var financialInstitutionGroups: [FinancialInstitution] = []
+    var financialInstitutionNodes: [ProviderTree.FinancialInstitutionNode] = []
 }
 
 // MARK: - View Lifecycle
@@ -23,23 +23,23 @@ extension FinancialInstitutionPickerViewController {
 
 extension FinancialInstitutionPickerViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return financialInstitutionGroups.count
+        return financialInstitutionNodes.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = financialInstitutionGroups[indexPath.row].financialInstitution.name
+        cell.textLabel?.text = financialInstitutionNodes[indexPath.row].financialInstitution.name
         cell.accessoryType = .disclosureIndicator
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let financialInstitutionGroup = financialInstitutionGroups[indexPath.row]
-        switch financialInstitutionGroup {
+        let financialInstitutionNode = financialInstitutionNodes[indexPath.row]
+        switch financialInstitutionNode {
         case .accessTypes(let accessTypeGroups):
-            showAccessTypePicker(for: accessTypeGroups, title: financialInstitutionGroup.financialInstitution.name)
+            showAccessTypePicker(for: accessTypeGroups, title: financialInstitutionNode.financialInstitution.name)
         case .credentialKinds(let groups):
-            showCredentialKindPicker(for: groups, title: financialInstitutionGroup.financialInstitution.name)
+            showCredentialKindPicker(for: groups, title: financialInstitutionNode.financialInstitution.name)
         case .provider(let provider):
             showAddCredential(for: provider)
         }
@@ -49,17 +49,17 @@ extension FinancialInstitutionPickerViewController {
 // MARK: - Navigation
 
 extension FinancialInstitutionPickerViewController {
-    func showAccessTypePicker(for accessTypeGroups: [AccessTypeGroup], title: String?) {
+    func showAccessTypePicker(for accessTypeNodes: [ProviderTree.AccessTypeNode], title: String?) {
         let viewController = AccessTypePickerViewController(style: .plain)
         viewController.title = title
-        viewController.accessTypeGroups = accessTypeGroups
+        viewController.accessTypeNodes = accessTypeNodes
         show(viewController, sender: nil)
     }
 
-    func showCredentialKindPicker(for credentialKindGroups: [CredentialKindGroup], title: String?) {
+    func showCredentialKindPicker(for credentialKindNodes: [ProviderTree.CredentialKindNode], title: String?) {
         let viewController = CredentialKindPickerViewController(style: .plain)
         viewController.title = title
-        viewController.credentialKindGroups = credentialKindGroups
+        viewController.credentialKindNodes = credentialKindNodes
         show(viewController, sender: nil)
     }
 
