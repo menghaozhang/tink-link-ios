@@ -8,32 +8,24 @@ Here's how you can list all providers with a `UITableViewController` subclass.
 
 ```swift
 class ProviderListViewController: UITableViewController {
-    let userContext = UserContext()
-    var userCancellable: RetryCancellable?
-    var providerContext: ProviderContext?
+    let providerContext = ProviderContext()
     var providerCanceller: Cancellable?
-    var providers: [Provider]
+    var providers: [Provider] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
-        
-        userCancellable = userContext.authenticateIfNeeded(for: configuration.market, locale: configuration.locale) { [weak self] result in
-            if let accessToken = try? result.get() {
-                providerContext = ProviderContext(accessToken: accessToken)
-                self?.providerCanceller = providerContext?.fetchProviders(completion: { [weak self] result in
-                    DispatchQueue.main.async {
-                        if let providers = try result.get() {
-                            self?.providers = providers
-                            self.tableView.reloadData()
-                        } catch {
-                            <#Error Handling#>
-                        }
-                    }
-                })
+        self?.providerCanceller = providerContext.fetchProviders(completion: { result in
+            DispatchQueue.main.async {
+                if let providers = try result.get() {
+                    self.providers = providers
+                    self.tableView.reloadData()
+                } catch {
+                    <#Error Handling#>
+                }
             }
-        }
+        })
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
