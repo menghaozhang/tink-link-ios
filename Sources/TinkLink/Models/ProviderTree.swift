@@ -2,15 +2,15 @@
 ///
 /// This tree eventually leads to a leaf of type `Provider` that contains more detailed data about a provider.
 public struct ProviderTree {
-    public let financialInstitutionGroups: [FinancialInstitutionGroup]
+    public let financialInstitutionGroups: [FinancialInstitutionGroupNode]
 
     public init(providers: [Provider]) {
         self.financialInstitutionGroups = Dictionary(grouping: providers, by: { $0.groupDisplayName.isEmpty ? $0.financialInstitution.id.value : $0.groupDisplayName })
             .sorted(by: { $0.key < $1.key })
-            .map { FinancialInstitutionGroup(providers: $0.value) }
+            .map { FinancialInstitutionGroupNode(providers: $0.value) }
     }
 
-    public struct CredentialKindGroup {
+    public struct CredentialKindNode {
         public let provider: Provider
 
         public var credentialKind: Credential.Kind { provider.credentialKind }
@@ -18,16 +18,16 @@ public struct ProviderTree {
         public var displayDescription: String { provider.displayDescription.isEmpty ? provider.credentialKind.description : provider.displayDescription }
     }
 
-    public enum AccessTypeGroup {
+    public enum AccessTypeNode {
         case provider(Provider)
-        case credentialKinds([CredentialKindGroup])
+        case credentialKinds([CredentialKindNode])
 
         init(providers: [Provider]) {
             precondition(!providers.isEmpty)
             if providers.count == 1, let provider = providers.first {
                 self = .provider(provider)
             } else {
-                self = .credentialKinds(providers.map(CredentialKindGroup.init(provider:)))
+                self = .credentialKinds(providers.map(CredentialKindNode.init(provider:)))
             }
         }
 
@@ -52,10 +52,10 @@ public struct ProviderTree {
         public var accessType: Provider.AccessType { firstProvider.accessType }
     }
 
-    public enum FinancialInstitution {
+    public enum FinancialInstitutionNode {
         case provider(Provider)
-        case credentialKinds([CredentialKindGroup])
-        case accessTypes([AccessTypeGroup])
+        case credentialKinds([CredentialKindNode])
+        case accessTypes([AccessTypeNode])
 
         init(providers: [Provider]) {
             precondition(!providers.isEmpty)
@@ -64,9 +64,9 @@ public struct ProviderTree {
             } else {
                 let providersGroupedByAccessTypes = Dictionary(grouping: providers, by: { $0.accessType })
                 if providersGroupedByAccessTypes.count == 1, let providers = providersGroupedByAccessTypes.values.first {
-                    self = .credentialKinds(providers.map(CredentialKindGroup.init(provider:)))
+                    self = .credentialKinds(providers.map(CredentialKindNode.init(provider:)))
                 } else {
-                    let providersGroupedByAccessType = providersGroupedByAccessTypes.values.map(AccessTypeGroup.init(providers:))
+                    let providersGroupedByAccessType = providersGroupedByAccessTypes.values.map(AccessTypeNode.init(providers:))
                     self = .accessTypes(providersGroupedByAccessType)
                 }
             }
@@ -102,11 +102,11 @@ public struct ProviderTree {
         public var financialInstitution: Provider.FinancialInstitution { firstProvider.financialInstitution }
     }
 
-    public enum FinancialInstitutionGroup {
+    public enum FinancialInstitutionGroupNode {
         case provider(Provider)
-        case credentialKinds([CredentialKindGroup])
-        case accessTypes([AccessTypeGroup])
-        case financialInstitutions([FinancialInstitution])
+        case credentialKinds([CredentialKindNode])
+        case accessTypes([AccessTypeNode])
+        case financialInstitutions([FinancialInstitutionNode])
 
         init(providers: [Provider]) {
             precondition(!providers.isEmpty)
@@ -117,13 +117,13 @@ public struct ProviderTree {
                 if providersGroupedByFinancialInstitution.count == 1, let providers = providersGroupedByFinancialInstitution.values.first {
                     let providersGroupedByAccessTypes = Dictionary(grouping: providers, by: { $0.accessType })
                     if providersGroupedByAccessTypes.count == 1, let providers = providersGroupedByAccessTypes.values.first {
-                        self = .credentialKinds(providers.map(CredentialKindGroup.init(provider:)))
+                        self = .credentialKinds(providers.map(CredentialKindNode.init(provider:)))
                     } else {
-                        let providersGroupedByAccessType = providersGroupedByAccessTypes.values.map(AccessTypeGroup.init(providers:))
+                        let providersGroupedByAccessType = providersGroupedByAccessTypes.values.map(AccessTypeNode.init(providers:))
                         self = .accessTypes(providersGroupedByAccessType)
                     }
                 } else {
-                    let providersGroupedByFinancialInstitution = providersGroupedByFinancialInstitution.values.map(FinancialInstitution.init(providers:))
+                    let providersGroupedByFinancialInstitution = providersGroupedByFinancialInstitution.values.map(FinancialInstitutionNode.init(providers:))
                     self = .financialInstitutions(providersGroupedByFinancialInstitution)
                 }
             }
