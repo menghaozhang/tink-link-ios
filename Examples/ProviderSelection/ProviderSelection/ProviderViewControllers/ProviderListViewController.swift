@@ -8,7 +8,7 @@ final class ProviderListViewController: UITableViewController {
     
     private let searchController = UISearchController(searchResultsController: nil)
 
-    private var financialInstitutionGroups: [FinancialInstitutionGroup] = [] {
+    private var financialInstitutionGroupNodes: [ProviderTree.FinancialInstitutionGroupNode] = [] {
         didSet {
             self.tableView.reloadData()
         }
@@ -23,16 +23,15 @@ final class ProviderListViewController: UITableViewController {
     }
 
     private func fetchProviders() {
-        let attributes = ProviderContext.Attributes(capabilities: .all, kinds: Provider.Kind.all, accessTypes: Provider.AccessType.all)
+        let attributes = ProviderContext.Attributes(capabilities: .all, kinds: .all, accessTypes: .all)
         providerCancellable = providerContext.fetchProviders(attributes: attributes, completion: { [weak self] result in
             DispatchQueue.main.async {
                 do {
                     let providers = try result.get()
-                    self?.financialInstitutionGroups = FinancialInstitutionGroup.makeGroups(providers: providers)
+                    self?.financialInstitutionGroupNodes = ProviderTree(providers: providers).financialInstitutionGroups
                     self?.providerCancellable = nil
                 } catch {
                     // TODO: Handle Error
-                    self?.providerCancellable?.retry()
                     print(error.localizedDescription)
                 }
             }
@@ -68,24 +67,24 @@ extension ProviderListViewController {
 
 extension ProviderListViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return financialInstitutionGroups.count
+        return financialInstitutionGroupNodes.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let group = financialInstitutionGroups[indexPath.row]
+        let group = financialInstitutionGroupNodes[indexPath.row]
         cell.textLabel?.text = group.displayName
         cell.accessoryType = .disclosureIndicator
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let providerGroup = financialInstitutionGroups[indexPath.row]
-        switch providerGroup {
+        let financialInstitutionGroupNode = financialInstitutionGroupNodes[indexPath.row]
+        switch financialInstitutionGroupNode {
         case .financialInstitutions(let financialInstitutionGroups):
-            showFinancialInstitution(for: financialInstitutionGroups, title: providerGroup.displayName)
+            showFinancialInstitution(for: financialInstitutionGroups, title: financialInstitutionGroupNode.displayName)
         case .accessTypes(let accessTypeGroups):
-            showAccessTypePicker(for: accessTypeGroups, title: providerGroup.displayName)
+            showAccessTypePicker(for: accessTypeGroups, title: financialInstitutionGroupNode.displayName)
         case .credentialKinds(let groups):
             showCredentialKindPicker(for: groups)
         case .provider(let provider):
@@ -97,23 +96,23 @@ extension ProviderListViewController {
 // MARK: - Navigation
 
 extension ProviderListViewController {
-    func showFinancialInstitution(for FinancialInstitutions: [FinancialInstitution], title: String?) {
+    func showFinancialInstitution(for financialInstitutionNodes: [ProviderTree.FinancialInstitutionNode], title: String?) {
         let viewController = FinancialInstitutionPickerViewController(style: .plain)
         viewController.title = title
-        viewController.financialInstitutionGroups = FinancialInstitutions
+        viewController.financialInstitutionNodes = financialInstitutionNodes
         show(viewController, sender: nil)
     }
 
-    func showAccessTypePicker(for accessTypeGroups: [AccessTypeGroup], title: String?) {
+    func showAccessTypePicker(for accessTypeNodes: [ProviderTree.AccessTypeNode], title: String?) {
         let viewController = AccessTypePickerViewController(style: .plain)
         viewController.title = title
-        viewController.accessTypeGroups = accessTypeGroups
+        viewController.accessTypeNodes = accessTypeNodes
         show(viewController, sender: nil)
     }
 
-    func showCredentialKindPicker(for credentialKindGroups: [CredentialKindGroup]) {
+    func showCredentialKindPicker(for credentialKindNodes: [ProviderTree.CredentialKindNode]) {
         let viewController = CredentialKindPickerViewController(style: .plain)
-        viewController.credentialKindGroups = credentialKindGroups
+        viewController.credentialKindNodes = credentialKindNodes
         show(viewController, sender: nil)
     }
 
@@ -128,7 +127,7 @@ extension ProviderListViewController {
 extension ProviderListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         if let text = searchController.searchBar.text {
-            financialInstitutionGroups = financialInstitutionGroups.filter { $0.displayName.localizedCaseInsensitiveContains(text) }
+            financialInstitutionGroupNodes = financialInstitutionGroupNodes.filter { $0.displayName.localizedCaseInsensitiveContains(text) }
         }
     }
 }

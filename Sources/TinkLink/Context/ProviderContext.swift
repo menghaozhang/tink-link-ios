@@ -14,7 +14,7 @@ public class ProviderContext {
             self.accessTypes = accessTypes
         }
 
-        public static let `default` = Attributes(capabilities: .all, kinds: Provider.Kind.excludingTest, accessTypes: Provider.AccessType.all)
+        public static let `default` = Attributes(capabilities: .all, kinds: .excludingTest, accessTypes: .all)
     }
 
     private let tinkLink: TinkLink

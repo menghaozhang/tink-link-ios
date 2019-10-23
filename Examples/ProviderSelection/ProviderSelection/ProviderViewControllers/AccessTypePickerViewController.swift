@@ -3,7 +3,7 @@ import UIKit
 
 /// Example of how to use the provider grouped by access type
 final class AccessTypePickerViewController: UITableViewController {
-    var accessTypeGroups: [AccessTypeGroup] = []
+    var accessTypeNodes: [ProviderTree.AccessTypeNode] = []
 }
 
 // MARK: - View Lifecycle
@@ -23,19 +23,19 @@ extension AccessTypePickerViewController {
 
 extension AccessTypePickerViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return accessTypeGroups.count
+        return accessTypeNodes.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = accessTypeGroups[indexPath.row].accessType.description
+        cell.textLabel?.text = accessTypeNodes[indexPath.row].accessType.description
         cell.accessoryType = .disclosureIndicator
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let accessTypeGroup = accessTypeGroups[indexPath.row]
-        switch accessTypeGroup {
+        let accessTypeNode = accessTypeNodes[indexPath.row]
+        switch accessTypeNode {
         case .credentialKinds(let groups):
             showCredentialKindPicker(for: groups)
         case .provider(let provider):
@@ -47,9 +47,9 @@ extension AccessTypePickerViewController {
 // MARK: - Navigation
 
 extension AccessTypePickerViewController {
-    func showCredentialKindPicker(for credentialKindGroups: [CredentialKindGroup]) {
+    func showCredentialKindPicker(for credentialKindNodes: [ProviderTree.CredentialKindNode]) {
         let viewController = CredentialKindPickerViewController(style: .plain)
-        viewController.credentialKindGroups = credentialKindGroups
+        viewController.credentialKindNodes = credentialKindNodes
         show(viewController, sender: nil)
     }
 

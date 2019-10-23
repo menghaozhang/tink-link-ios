@@ -147,3 +147,12 @@ public struct Provider {
     /// The financial institution.
     public let financialInstitution: FinancialInstitution
 }
+
+public extension Set where Element == Provider.Kind {
+    static var all: Set<Provider.Kind> { Provider.Kind.all }
+    static var excludingTest: Set<Provider.Kind> { Provider.Kind.excludingTest }
+}
+
+public extension Set where Element == Provider.AccessType {
+    static var all: Set<Provider.AccessType> { Provider.AccessType.all }
+}
