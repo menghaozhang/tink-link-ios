@@ -44,6 +44,19 @@ public class TinkLink {
 
     private var thirdPartyCallbackCanceller: Cancellable?
 
+    private lazy var automaticAnonymousUserContext = UserContext(tinkLink: self)
+
+    func authenticateIfNeeded(with userCreationStrategy: UserCreationStrategy, completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {
+        switch userCreationStrategy {
+        case .automaticAnonymous:
+            let userCanceller = automaticAnonymousUserContext.createUserIfNeeded(for: configuration.market, locale: configuration.locale, completion: completion)
+            return userCanceller
+        case .existing(let user):
+            completion(.success(user))
+            return nil
+        }
+    }
+
     @available(iOS 9.0, *)
     public func open(_ url: URL, user: User?, completion: ((Result<Void, Error>) -> Void)? = nil) -> Bool {
         guard let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false),
