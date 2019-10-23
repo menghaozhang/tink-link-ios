@@ -26,7 +26,8 @@ final class ProviderListViewController: UITableViewController {
     }
 
     private func fetchProviders() {
-        providerCancellable = providerContext.fetchProviders(completion: { [weak self] result in
+        let attributes = ProviderContext.Attributes(capabilities: .all, kinds: Provider.Kind.all, accessTypes: Provider.AccessType.all)
+        providerCancellable = providerContext.fetchProviders(attributes: attributes, completion: { [weak self] result in
             DispatchQueue.main.async {
                 do {
                     let providers = try result.get()
