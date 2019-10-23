@@ -1,7 +1,7 @@
 import XCTest
 @testable import TinkLink
 
-class ProviderGroupTests: XCTestCase {
+class ProviderTreeTests: XCTestCase {
     let nordeaBankID = Provider(
         id: "nordea-bankid",
         displayName: "Nordea",
@@ -131,7 +131,8 @@ class ProviderGroupTests: XCTestCase {
     func testCredentialTypesGrouping() {
         let providers = [nordeaBankID, nordeaPassword]
 
-        let groups = FinancialInstitutionGroup.makeGroups(providers: providers)
+        let tree = ProviderTree(providers: providers)
+        let groups = tree.financialInstitutionGroups
 
         XCTAssertEqual(groups.count, 1)
         for group in groups {
@@ -147,7 +148,8 @@ class ProviderGroupTests: XCTestCase {
     func testAccessTypeGrouping() {
         let providers = [nordeaOpenBanking, nordeaBankID, nordeaPassword]
 
-        let groups = FinancialInstitutionGroup.makeGroups(providers: providers)
+        let tree = ProviderTree(providers: providers)
+        let groups = tree.financialInstitutionGroups
 
         XCTAssertEqual(groups.count, 1)
         if let nordeaGroup = groups.first {
@@ -187,7 +189,8 @@ class ProviderGroupTests: XCTestCase {
             swedbankPassword
         ]
 
-        let groups = FinancialInstitutionGroup.makeGroups(providers: providers)
+        let tree = ProviderTree(providers: providers)
+        let groups = tree.financialInstitutionGroups
 
         XCTAssertEqual(groups.count, 2)
 
@@ -218,7 +221,8 @@ class ProviderGroupTests: XCTestCase {
             swedbankPassword
         ]
 
-        let groups = FinancialInstitutionGroup.makeGroups(providers: providers)
+        let tree = ProviderTree(providers: providers)
+        let groups = tree.financialInstitutionGroups
 
         XCTAssertEqual(groups.count, 2)
 
