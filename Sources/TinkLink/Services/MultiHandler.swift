@@ -24,3 +24,22 @@ class MultiHandler: Cancellable, Retriable {
         }
     }
 }
+
+class MultiCanceller: Cancellable {
+    private var handlers: [Cancellable] = []
+
+    private(set) var isCancelled: Bool = false
+
+    func add(_ handler: Cancellable?) {
+        if let handler = handler {
+            handlers.append(handler)
+        }
+    }
+
+    func cancel() {
+        isCancelled = true
+        for handler in handlers {
+            handler.cancel()
+        }
+    }
+}
