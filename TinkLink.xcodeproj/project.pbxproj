@@ -27,6 +27,7 @@
 		20C3A7782354584F0048EBA4 /* FinancialInstitution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C3A7772354584F0048EBA4 /* FinancialInstitution.swift */; };
 		20C3A77A2355B87A0048EBA4 /* ThirdPartyAppAuthenticationTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C3A7792355B87A0048EBA4 /* ThirdPartyAppAuthenticationTask.swift */; };
 		20C48F9523602479009CA39C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C48F9423602479009CA39C /* User.swift */; };
+		20C48F9E2360358E009CA39C /* UserCreationStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C48F9D2360358E009CA39C /* UserCreationStrategy.swift */; };
 		20D129E2234E1737005C2D34 /* CredentialGRPCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D129E0234E1732005C2D34 /* CredentialGRPCTests.swift */; };
 		20D8125F2330DAD7000B3A30 /* Service+Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D8125E2330DAD7000B3A30 /* Service+Metadata.swift */; };
 		20E19DB22306E59900BF053A /* BoringSSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85462303FD85006213BB /* BoringSSL.framework */; };
@@ -106,6 +107,7 @@
 		20C3A7772354584F0048EBA4 /* FinancialInstitution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialInstitution.swift; sourceTree = "<group>"; };
 		20C3A7792355B87A0048EBA4 /* ThirdPartyAppAuthenticationTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartyAppAuthenticationTask.swift; sourceTree = "<group>"; };
 		20C48F9423602479009CA39C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		20C48F9D2360358E009CA39C /* UserCreationStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCreationStrategy.swift; sourceTree = "<group>"; };
 		20D129E0234E1732005C2D34 /* CredentialGRPCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialGRPCTests.swift; sourceTree = "<group>"; };
 		20D8125E2330DAD7000B3A30 /* Service+Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Service+Metadata.swift"; sourceTree = "<group>"; };
 		20E6886C234F0B7800B4E04F /* insight_models.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = insight_models.pb.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				8FA35585231E673B0054115D /* TinkLink.swift */,
 				20FAE679233DFB4E003C73BA /* Configuration.swift */,
 				20ED856E23040039006213BB /* Environment.swift */,
+				20C48F9D2360358E009CA39C /* UserCreationStrategy.swift */,
 				20D8125D2330DAC7000B3A30 /* Extensions */,
 				8F36724723057E0700B92936 /* Models */,
 				8FA35595231EB14C0054115D /* Context */,
@@ -505,6 +508,7 @@
 				20C3A7782354584F0048EBA4 /* FinancialInstitution.swift in Sources */,
 				20E6886D234F0B7800B4E04F /* insight_models.pb.swift in Sources */,
 				20D8125F2330DAD7000B3A30 /* Service+Metadata.swift in Sources */,
+				20C48F9E2360358E009CA39C /* UserCreationStrategy.swift in Sources */,
 				20ED85432303FAEC006213BB /* services.grpc.swift in Sources */,
 				2027F02A234637920025473A /* CertificatePinningDelegate.swift in Sources */,
 				20FAE67A233DFB4E003C73BA /* Configuration.swift in Sources */,
