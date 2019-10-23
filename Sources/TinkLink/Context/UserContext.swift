@@ -4,7 +4,7 @@ import Foundation
 public final class UserContext {
     private var userService: UserService
     private var retryCancellable: RetryCancellable?
-    public private(set) var accessToken: AccessToken?
+    public private(set) var user: User?
 
     /// Creates a context to register for an access token that will be used in other TinkLink APIs.
     /// - Parameter tinkLink: TinkLink instance, will use the shared instance if nothing is provided.
@@ -17,16 +17,17 @@ public final class UserContext {
     ///
     /// - Parameter market: Register a `Market` for authentication,  will use the default market if nothing is provided.
     /// - Parameter locale: Register a `Locale` for authentication,  will use the default locale in TinkLink if nothing is provided.
-    public func authenticateIfNeeded(for market: Market = .defaultMarket, locale: Locale = TinkLink.defaultLocale, completion: @escaping (Result<AccessToken, Error>) -> Void) -> RetryCancellable? {
-        if let accessToken = accessToken {
-            completion(.success(accessToken))
+    public func authenticateIfNeeded(for market: Market = .defaultMarket, locale: Locale = TinkLink.defaultLocale, completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {
+        if let user = user {
+            completion(.success(user))
         } else if retryCancellable == nil {
             retryCancellable = userService.createAnonymous(market: market, locale: locale) { [weak self] result in
                 guard let self = self else { return }
                 do {
                     let accessToken = try result.get()
-                    self.accessToken = accessToken
-                    completion(.success((accessToken)))
+                    let user = User(accessToken: accessToken)
+                    self.user = user
+                    completion(.success(user))
                 } catch {
                     completion(.failure(error))
                 }
