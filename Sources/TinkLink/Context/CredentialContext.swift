@@ -11,10 +11,10 @@ public class CredentialContext {
     /// Creates a new CredentialContext for the given TinkLink instance.
     ///
     /// - Parameter tinkLink: TinkLink instance, defaults to `shared` if not provided.
-    /// - Parameter accessToken: `AccessToken` that will be used for adding credentials with the Tink API.
-    public init(tinkLink: TinkLink = .shared, accessToken: AccessToken) {
+    /// - Parameter user: `User` that will be used for adding credentials with the Tink API.
+    public init(tinkLink: TinkLink = .shared, user: User) {
         self.tinkLink = tinkLink
-        self.credentialService = CredentialService(tinkLink: tinkLink, accessToken: accessToken)
+        self.credentialService = CredentialService(tinkLink: tinkLink, accessToken: user.accessToken)
         self.market = tinkLink.client.market
         self.locale = tinkLink.client.locale
     }

@@ -5,10 +5,10 @@ import UIKit
 final class AccessTypePickerViewController: UITableViewController {
     var accessTypeGroups: [AccessTypeGroup] = []
 
-    private var accessToken: AccessToken
+    private var user: User
 
-    init(accessToken: AccessToken, style: UITableView.Style) {
-        self.accessToken = accessToken
+    init(user: User, style: UITableView.Style) {
+        self.user = user
         super.init(style: style)
     }
 
@@ -59,13 +59,13 @@ extension AccessTypePickerViewController {
 
 extension AccessTypePickerViewController {
     func showCredentialKindPicker(for credentialKindGroups: [CredentialKindGroup]) {
-        let viewController = CredentialKindPickerViewController(accessToken: accessToken, style: .plain)
+        let viewController = CredentialKindPickerViewController(user: user, style: .plain)
         viewController.credentialKindGroups = credentialKindGroups
         show(viewController, sender: nil)
     }
 
     func showAddCredential(for provider: Provider) {
-        let addCredentialViewController = AddCredentialViewController(provider: provider, accessToken: accessToken)
+        let addCredentialViewController = AddCredentialViewController(provider: provider, user: user)
         show(addCredentialViewController, sender: nil)
     }
 }

@@ -8,10 +8,10 @@ public final class AuthenticationContext {
 
     /// Creates a context to authorize for an authorization code for a user with requested scopes.
     /// - Parameter tinkLink: TinkLink instance, will use the shared instance if nothing is provided.
-    /// - Parameter accessToken: `AccessToken` that will be used for authorizing scope with the Tink API.
-    public init(tinkLink: TinkLink = .shared, accessToken: AccessToken) {
+    /// - Parameter user: `User` that will be used for authorizing scope with the Tink API.
+    public init(tinkLink: TinkLink = .shared, user: User) {
         self.tinkLink = tinkLink
-        self.authenticationService = AuthenticationService(tinkLink: tinkLink, accessToken: accessToken)
+        self.authenticationService = AuthenticationService(tinkLink: tinkLink, accessToken: user.accessToken)
     }
 
     /// Creates an authorization code with the requested scopes for the current user
