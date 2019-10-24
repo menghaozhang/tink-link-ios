@@ -1,7 +1,7 @@
 import Foundation
 
 extension TinkLink {
-    /// Available locales for Tink link
+    /// Available locales for TinkLink
     public static var availableLocales: [Locale] {
         let locales = [
             Locale(identifier: "da_DK"),
@@ -17,11 +17,11 @@ extension TinkLink {
         return locales
     }
 
-    public static func availableLocaleWith(languageCode: String) -> Locale? {
+    static func availableLocaleWith(languageCode: String) -> Locale? {
         availableLocales.first { $0.languageCode == languageCode }
     }
 
-    public static func availableLocaleWith(regionCode: String) -> Locale? {
+    static func availableLocaleWith(regionCode: String) -> Locale? {
         availableLocales.first { $0.regionCode == regionCode }
     }
 

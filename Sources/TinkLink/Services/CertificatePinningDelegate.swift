@@ -1,6 +1,6 @@
 import Foundation
 
-class CertificatePinningDelegate: NSObject {
+final class CertificatePinningDelegate: NSObject {
     let certificates: [Data]
 
     init(certificates: [Data]) {

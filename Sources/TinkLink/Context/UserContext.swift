@@ -2,8 +2,9 @@ import Foundation
 
 /// An object that you use to create a user that will be used in other TinkLink APIs.
 public final class UserContext {
-    private var userService: UserService
+    private let userService: UserService
     private var retryCancellable: RetryCancellable?
+    /// The user associated with this `UserContext` if there is one.
     public private(set) var user: User?
 
     /// Creates a context to register for an access token that will be used in other TinkLink APIs.
