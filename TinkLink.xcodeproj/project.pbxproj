@@ -14,7 +14,6 @@
 		201D5523230AEAA500641102 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201D5522230AEAA500641102 /* UserService.swift */; };
 		2027F01F2345E4850025473A /* AuthorizationCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2027F01E2345E4850025473A /* AuthorizationCode.swift */; };
 		2027F0242345E5FD0025473A /* AuthorizationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2027F0232345E5FD0025473A /* AuthorizationResponse.swift */; };
-		2027F0262345E62C0025473A /* URLSessionDataTask+Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2027F0252345E62C0025473A /* URLSessionDataTask+Cancellable.swift */; };
 		2027F02A234637920025473A /* CertificatePinningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2027F029234637920025473A /* CertificatePinningDelegate.swift */; };
 		2027F02C2346421F0025473A /* SecTrust+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2027F02B2346421F0025473A /* SecTrust+Swift.swift */; };
 		2027F02E2346423C0025473A /* SecCertificate+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2027F02D2346423C0025473A /* SecCertificate+Swift.swift */; };
@@ -95,7 +94,6 @@
 		201D5522230AEAA500641102 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		2027F01E2345E4850025473A /* AuthorizationCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationCode.swift; sourceTree = "<group>"; };
 		2027F0232345E5FD0025473A /* AuthorizationResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorizationResponse.swift; sourceTree = "<group>"; };
-		2027F0252345E62C0025473A /* URLSessionDataTask+Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSessionDataTask+Cancellable.swift"; sourceTree = "<group>"; };
 		2027F029234637920025473A /* CertificatePinningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CertificatePinningDelegate.swift; sourceTree = "<group>"; };
 		2027F02B2346421F0025473A /* SecTrust+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecTrust+Swift.swift"; sourceTree = "<group>"; };
 		2027F02D2346423C0025473A /* SecCertificate+Swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecCertificate+Swift.swift"; sourceTree = "<group>"; };
@@ -200,7 +198,6 @@
 				200A3FA1230C3E7800BEF935 /* Metadata+Tink.swift */,
 				20FAE67C233DFBE9003C73BA /* ProcessInfo+TinkEnvironmentVariables.swift */,
 				8F84A77B2330D39600EA878F /* Locale+Extensions.swift */,
-				2027F0252345E62C0025473A /* URLSessionDataTask+Cancellable.swift */,
 				2027F02B2346421F0025473A /* SecTrust+Swift.swift */,
 				2027F02D2346423C0025473A /* SecCertificate+Swift.swift */,
 			);
@@ -545,7 +542,6 @@
 				209D69282326878800B4DBB8 /* SupplementInformationTask.swift in Sources */,
 				8F313E68235F001C0046D5DD /* UserContext.swift in Sources */,
 				20C48F9523602479009CA39C /* User.swift in Sources */,
-				2027F0262345E62C0025473A /* URLSessionDataTask+Cancellable.swift in Sources */,
 				20E6887B234F570C00B4E04F /* AuthorizationError.swift in Sources */,
 				20ED857A230407B3006213BB /* Provider.swift in Sources */,
 				203BE969232784440033F879 /* AddCredentialTask.swift in Sources */,
