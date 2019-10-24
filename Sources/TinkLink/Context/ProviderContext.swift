@@ -57,8 +57,6 @@ public class ProviderContext {
                         let fetchedProviders = try result.get()
                         let filteredProviders = fetchedProviders.filter { attributes.accessTypes.contains($0.accessType) && attributes.kinds.contains($0.kind) }
                         completion(.success(filteredProviders))
-//                        let error = NSError(domain: CocoaError.errorDomain, code: CocoaError.coderInvalidValue.rawValue, userInfo: nil)
-//                        completion(.failure(error))
                     } catch {
                         completion(.failure(error))
                     }
