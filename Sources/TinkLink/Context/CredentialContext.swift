@@ -7,8 +7,6 @@ public class CredentialContext {
     private let service: CredentialService
     private let market: Market
     private let locale: Locale
-    private var credentialCanceller: RetryCancellable?
-    private var fetchCredentials: RetryCancellable?
 
     /// Creates a new CredentialContext for the given TinkLink instance.
     ///

@@ -87,9 +87,9 @@ extension AuthenticationService {
             return nil
         }
 
-        let serviceRetryCancellabel = URLSessionRequestRetryCancellable(session: session, request: urlRequest, completion: completion)
-        serviceRetryCancellabel.start()
+        let serviceRetryCanceller = URLSessionRequestRetryCancellable(session: session, request: urlRequest, completion: completion)
+        serviceRetryCanceller.start()
 
-        return serviceRetryCancellabel
+        return serviceRetryCanceller
     }
 }
