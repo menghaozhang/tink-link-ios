@@ -79,7 +79,7 @@ public class CredentialContext {
     }
 
     private func addCredentialAndAuthenticateIfNeeded(for provider: Provider, fields: [String: String], appURI: URL, completion: @escaping (Result<Credential, Error>) -> Void) -> RetryCancellable? {
-        let authenticationCanceller = tinkLink.authenticateIfNeeded(with: userCreationStrategy) { [weak self, service] (userResult) in
+        let authenticationCanceller = tinkLink.authenticateIfNeeded(with: userCreationStrategy) { [service] (userResult) in
             do {
                 let user = try userResult.get()
                 service.accessToken = user.accessToken
@@ -102,7 +102,7 @@ public class CredentialContext {
 
     /// Gets the user's credentials.
     public func fetchCredentials(completion: @escaping (Result<[Credential], Error>) -> Void) -> RetryCancellable? {
-        let authenticationCanceller = tinkLink.authenticateIfNeeded(with: userCreationStrategy) { [weak self, service] (userResult) in
+        let authenticationCanceller = tinkLink.authenticateIfNeeded(with: userCreationStrategy) { [service] (userResult) in
             do {
                 let user = try userResult.get()
                 service.accessToken = user.accessToken
