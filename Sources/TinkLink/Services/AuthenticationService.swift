@@ -87,24 +87,9 @@ extension AuthenticationService {
             return nil
         }
 
-        let task = session.dataTask(with: urlRequest) { data, _, error in
-            if let data = data {
-                do {
-                    let authorizationResponse = try JSONDecoder().decode(AuthorizationResponse.self, from: data)
-                    completion(.success(authorizationResponse))
-                } catch {
-                    let authorizationError = try? JSONDecoder().decode(AuthorizationError.self, from: data)
-                    completion(.failure(authorizationError ?? error))
-                }
-            } else if let error = error {
-                completion(.failure(error))
-            } else {
-                completion(.failure(URLError(.unknown)))
-            }
-        }
+        let serviceRetryCancellabel = URLSessionRequestRetryCancellable(session: session, request: urlRequest, completion: completion)
+        serviceRetryCancellabel.start()
 
-        task.resume()
-
-        return task
+        return serviceRetryCancellabel
     }
 }
