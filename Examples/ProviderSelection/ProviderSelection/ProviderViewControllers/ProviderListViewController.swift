@@ -4,7 +4,6 @@ import UIKit
 /// Example of how to use the provider grouped by names
 final class ProviderListViewController: UITableViewController {
     private let providerContext = ProviderContext()
-    private var userCancellable: RetryCancellable?
     private var providerCancellable: RetryCancellable?
     
     private let searchController = UISearchController(searchResultsController: nil)
@@ -14,8 +13,6 @@ final class ProviderListViewController: UITableViewController {
             self.tableView.reloadData()
         }
     }
-
-    private var providerCanceller: Cancellable?
 
     override init(style: UITableView.Style) {
         super.init(style: style)
@@ -32,12 +29,12 @@ final class ProviderListViewController: UITableViewController {
                 do {
                     let providers = try result.get()
                     self?.financialInstitutionGroupNodes = ProviderTree(providers: providers).financialInstitutionGroups
+                    self?.providerCancellable = nil
                 } catch {
                     // TODO: Handle Error
                     print(error.localizedDescription)
                 }
             }
-            self?.providerCancellable = nil
         })
     }
 }

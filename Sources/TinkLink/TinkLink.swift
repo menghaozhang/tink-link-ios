@@ -59,14 +59,13 @@ public class TinkLink {
 
     private lazy var automaticAnonymousUserContext = UserContext(tinkLink: self)
 
-    func authenticateIfNeeded(with userCreationStrategy: UserCreationStrategy, completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {
+    func authenticateIfNeeded(with userCreationStrategy: UserCreationStrategy, completion: @escaping (Result<User, Error>) -> RetryCancellable?) -> RetryCancellable? {
         switch userCreationStrategy {
         case .automaticAnonymous:
             let userCanceller = automaticAnonymousUserContext.createUserIfNeeded(for: configuration.market, locale: configuration.locale, completion: completion)
             return userCanceller
         case .existing(let user):
-            completion(.success(user))
-            return nil
+            return completion(.success(user))
         }
     }
 
@@ -90,13 +89,16 @@ public class TinkLink {
             do {
                 let user = try userResult.get()
                 let credentialService = CredentialService(tinkLink: self, accessToken: user.accessToken)
-                self.thirdPartyCallbackCanceller = credentialService.thirdPartyCallback(
+                let thirdPartyCallbackCanceller = credentialService.thirdPartyCallback(
                     state: state,
                     parameters: parameters,
                     completion: completion ?? { _ in }
                 )
+                self.thirdPartyCallbackCanceller = thirdPartyCallbackCanceller
+                return thirdPartyCallbackCanceller
             } catch {
                 completion?(.failure(error))
+                return nil
             }
         }
 

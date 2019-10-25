@@ -6,6 +6,7 @@ final class FinishedCredentialUpdatedViewController: UIViewController {
     private var activityIndicator: UIActivityIndicatorView?
     private var authenticationResultLabel: UILabel?
     private let authenticationContext = AuthenticationContext()
+    private var retryCancellable: RetryCancellable?
 
     init(credential: Credential) {
         self.credential = credential
@@ -73,7 +74,7 @@ final class FinishedCredentialUpdatedViewController: UIViewController {
             TinkLink.Scope.User.read,
             TinkLink.Scope.Transactions.read
         ])
-        authenticationContext.authorize(scope: scope) { [weak self] (result) in
+        retryCancellable = authenticationContext.authorize(scope: scope) { [weak self] (result) in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 self.activityIndicator?.stopAnimating()
@@ -84,6 +85,7 @@ final class FinishedCredentialUpdatedViewController: UIViewController {
                 } catch {
                     self.authenticationResultLabel?.text = "Error: \n\(error.localizedDescription)"
                 }
+                self.retryCancellable = nil
             }
         }
     }

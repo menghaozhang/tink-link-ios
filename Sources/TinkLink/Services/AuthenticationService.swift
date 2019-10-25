@@ -57,7 +57,7 @@ final class AuthenticationService: TokenConfigurableService {
 }
 
 extension AuthenticationService {
-    func authorize(redirectURI: URL, scope: TinkLink.Scope, completion: @escaping (Result<AuthorizationResponse, Error>) -> Void) -> Cancellable? {
+    func authorize(redirectURI: URL, scope: TinkLink.Scope, completion: @escaping (Result<AuthorizationResponse, Error>) -> Void) -> RetryCancellable? {
         guard let clientID = metadata[Metadata.HeaderKey.oauthClientID.key] else {
             preconditionFailure("No client id")
         }
@@ -87,24 +87,9 @@ extension AuthenticationService {
             return nil
         }
 
-        let task = session.dataTask(with: urlRequest) { data, _, error in
-            if let data = data {
-                do {
-                    let authorizationResponse = try JSONDecoder().decode(AuthorizationResponse.self, from: data)
-                    completion(.success(authorizationResponse))
-                } catch {
-                    let authorizationError = try? JSONDecoder().decode(AuthorizationError.self, from: data)
-                    completion(.failure(authorizationError ?? error))
-                }
-            } else if let error = error {
-                completion(.failure(error))
-            } else {
-                completion(.failure(URLError(.unknown)))
-            }
-        }
+        let serviceRetryCanceller = URLSessionRequestRetryCancellable(session: session, request: urlRequest, completion: completion)
+        serviceRetryCanceller.start()
 
-        task.resume()
-
-        return task
+        return serviceRetryCanceller
     }
 }

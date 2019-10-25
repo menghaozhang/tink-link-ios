@@ -35,9 +35,7 @@ public final class AuthenticationContext {
     /// - Parameter completion: The block to execute when the authorization is complete.
     /// - Parameter result: Represents either an authorization code if authorization was successful or an error if authorization failed.
     @discardableResult
-    public func authorize(scope: TinkLink.Scope, completion: @escaping (_ result: Result<AuthorizationCode, Error>) -> Void) -> Cancellable? {
-        let multiHandler = MultiCanceller()
-
+    public func authorize(scope: TinkLink.Scope, completion: @escaping (_ result: Result<AuthorizationCode, Error>) -> Void) -> RetryCancellable? {
         let redirectURI = tinkLink.configuration.redirectURI
 
         let authenticationCanceller = tinkLink.authenticateIfNeeded(with: userCreationStrategy) { [service] (userResult) in
@@ -48,14 +46,13 @@ public final class AuthenticationContext {
                 let fetchCanceller = service.authorize(redirectURI: redirectURI, scope: scope) { (result) in
                     completion(result.map({ $0.code }))
                 }
-                multiHandler.add(fetchCanceller)
+                return fetchCanceller
             } catch {
                 completion(.failure(error))
+                return nil
             }
         }
 
-        multiHandler.add(authenticationCanceller)
-
-        return multiHandler
+        return authenticationCanceller
     }
 }

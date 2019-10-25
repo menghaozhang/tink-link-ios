@@ -207,7 +207,7 @@ To e.g. fetch providers or create credentials you need to first create a user. B
 
 ```swift
 let userContext = UserContext()
-let userCanceller = userContext.createUserIfNeeded(completion: { result in
+let userCanceller = userContext.createUser(completion: { result in
     do {
         let user = try result.get()
         let providerContext = ProviderContext(user: user)
