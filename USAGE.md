@@ -8,32 +8,24 @@ Here's how you can list all providers with a `UITableViewController` subclass.
 
 ```swift
 class ProviderListViewController: UITableViewController {
-    let userContext = UserContext()
-    var userCancellable: RetryCancellable?
-    var providerContext: ProviderContext?
+    let providerContext = ProviderContext()
     var providerCanceller: Cancellable?
-    var providers: [Provider]
+    var providers: [Provider] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
-        
-        userCancellable = userContext.authenticateIfNeeded(for: configuration.market, locale: configuration.locale) { [weak self] result in
-            if let accessToken = try? result.get() {
-                providerContext = ProviderContext(accessToken: accessToken)
-                self?.providerCanceller = providerContext?.fetchProviders(completion: { [weak self] result in
-                    DispatchQueue.main.async {
-                        if let providers = try result.get() {
-                            self?.providers = providers
-                            self.tableView.reloadData()
-                        } catch {
-                            <#Error Handling#>
-                        }
-                    }
-                })
+        providerCanceller = providerContext.fetchProviders(completion: { [weak self] result in
+            DispatchQueue.main.async {
+                if let providers = try result.get() {
+                    self?.providers = providers
+                    self?.tableView.reloadData()
+                } catch {
+                    <#Error Handling#>
+                }
             }
-        }
+        })
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -51,20 +43,23 @@ class ProviderListViewController: UITableViewController {
 
 ### Provider groups
 
-Use the `providerGroups` property on `ProviderContext` to get providers grouped by financial institution, access type and credential kind.
+Use the `ProviderTree` to group providers by financial institution, access type and credential kind.
+```swift
+let providerTree = ProviderTree(providers: <#T##Providers#>)
+```
 
 Handle selection of a provider group by switching on the group to decide which screen should be shown next.
 
 ```swift
 override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let providerGroup = providerGroups[indexPath.row]
-    switch providerGroup {
-    case .financialInsititutions(let financialInsititutionGroups):
-        showFinancialInstitution(for: financialInsititutionGroups)
-    case .accessTypes(let accessTypeGroups):
-        showAccessTypePicker(for: accessTypeGroups)
-    case .credentialKinds(let providers):
-        showCredentialKindPicker(for: providers)
+    let financialInstitutionGroupNode = providerTree.financialInstitutionGroupNodes[indexPath.row]
+    switch financialInstitutionGroupNode {
+    case .financialInsititutions(let financialInsititutionNodes):
+        showFinancialInstitution(for: financialInsititutionNodes)
+    case .accessTypes(let accessTypeNodes):
+        showAccessTypePicker(for: accessTypeNodes)
+    case .credentialKinds(let credentialKindNodes):
+        showCredentialKindPicker(for: credentialKindNodes)
     case .provider(let provider):
         showAddCredentialFlow(for: provider)
     }
@@ -203,6 +198,24 @@ After the redirect to the third party app, some providers requires additional in
 func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
     return TinkLink.shared.open(url, accessToken: accessToken)
 }
+```
+
+## Users
+
+### Creating users
+To e.g. fetch providers or create credentials you need to first create a user. By default TinkLink will create an anonymous user when needed but you can also create one and use it in a `ProviderContext` like this: 
+
+```swift
+let userContext = UserContext()
+let userCanceller = userContext.createUserIfNeeded(completion: { result in
+    do {
+        let user = try result.get()
+        let providerContext = ProviderContext(user: user)
+        <#Code using providerContext#>
+    } catch {
+        <#Error Handling#>
+    }
+})
 ```
 
 ## Advanced usage 

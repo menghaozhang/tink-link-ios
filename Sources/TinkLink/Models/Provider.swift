@@ -2,6 +2,7 @@ import Foundation
 
 /// The provider model represents financial institutions to where Tink can connect. It specifies how Tink accesses the financial institution, metadata about the financialinstitution, and what financial information that can be accessed.
 public struct Provider {
+    /// A unique identifier of a `Provider`.
     public struct ID: Hashable, ExpressibleByStringLiteral {
         public init(stringLiteral value: String) {
             self.value = value
@@ -23,9 +24,13 @@ public struct Provider {
 
     /// Indicates what kind of financial institution the provider represents.
     public enum Kind {
+        /// The kind of the provider is unknown.
         case unknown
+        /// The provider is a bank.
         case bank
+        /// The provider is a credit card.
         case creditCard
+        /// The provider is a broker.
         case broker
         case other
 
@@ -33,7 +38,9 @@ public struct Provider {
         case test
         case fraud
 
+        /// A set of all providers kinds except for the test providers.
         public static var excludingTest: Set<Provider.Kind> = [.unknown, .bank, .creditCard, .broker, .other, .fraud]
+        /// A set of all providers kinds. Note that this also includes test providers.
         public static var all: Set<Provider.Kind> = [.unknown, .bank, .creditCard, .broker, .other, .test, .fraud]
     }
 
@@ -42,10 +49,15 @@ public struct Provider {
 
     /// Indicates the current status of a provider.
     public enum Status {
+        /// The status of the provider is unknown.
         case unknown
+        /// The provider is enabled.
         case enabled
+        /// The provider is disabled.
         case disabled
+        /// The provider is temporarily disabled.
         case temporaryDisabled
+        /// The provider is obsolute.
         case obsolete
     }
 
@@ -87,6 +99,7 @@ public struct Provider {
     /// A display name for providers which are branches of a bigger group.
     public let groupDisplayName: String
 
+    /// A `URL` to an image representing the provider.
     public let image: URL?
 
     /// Short displayable description of the authentication type used.
@@ -99,18 +112,28 @@ public struct Provider {
         public init(rawValue: Int) {
             self.rawValue = rawValue
         }
-
+        /// The provider can perform transfers.
         public static let transfers = Capabilities(rawValue: 1 << 1)
+        /// The provider has mortgage aggregation.
         public static let mortgageAggregation = Capabilities(rawValue: 1 << 2)
+        /// The provider can aggregate checkings accounts.
         public static let checkingAccounts = Capabilities(rawValue: 1 << 3)
+        /// The provider can aggregate savings accounts.
         public static let savingsAccounts = Capabilities(rawValue: 1 << 4)
+        /// The provider can aggregate credit cards.
         public static let creditCards = Capabilities(rawValue: 1 << 5)
+        /// The provider can aggregate investments.
         public static let investments = Capabilities(rawValue: 1 << 6)
+        /// The provider can aggregate loans.
         public static let loans = Capabilities(rawValue: 1 << 7)
+        /// The provider can perform payments.
         public static let payments = Capabilities(rawValue: 1 << 8)
+        /// The provider can aggregate mortgage loans.
         public static let mortgageLoan = Capabilities(rawValue: 1 << 9)
+        /// The provider can fetch identity data.
         public static let identityData = Capabilities(rawValue: 1 << 10)
 
+        /// A list representing all possible capabilities.
         public static let all: Capabilities = [.transfers, .mortgageAggregation, .checkingAccounts, .savingsAccounts, .creditCards, .investments, .loans, .payments, .mortgageLoan, .identityData]
     }
 
@@ -134,6 +157,7 @@ public struct Provider {
             }
         }
 
+        /// A set of all access types.
         public static let all: Set<AccessType> = [.openBanking, .other, .unknown]
     }
 
@@ -149,10 +173,13 @@ public struct Provider {
 }
 
 public extension Set where Element == Provider.Kind {
+    /// A set of all providers kinds. Note that this also includes test providers.
     static var all: Set<Provider.Kind> { Provider.Kind.all }
+    /// A set of all providers kinds except for the test providers.
     static var excludingTest: Set<Provider.Kind> { Provider.Kind.excludingTest }
 }
 
 public extension Set where Element == Provider.AccessType {
+    /// A set of all access types.
     static var all: Set<Provider.AccessType> { Provider.AccessType.all }
 }

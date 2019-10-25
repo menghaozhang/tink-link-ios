@@ -1,6 +1,7 @@
 extension Provider {
     /// The FinancialInstitution model represents a financial institution.
     public struct FinancialInstitution: Hashable {
+        /// A unique identifier of a `FinancialInstitution`.
         public struct ID: Hashable, ExpressibleByStringLiteral {
             public init(stringLiteral value: String) {
                 self.value = value

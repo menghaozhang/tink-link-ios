@@ -1,6 +1,6 @@
 import SwiftGRPC
 
-class CallCanceller: Cancellable {
+final class CallCanceller: Cancellable {
     var call: ClientCall?
 
     deinit {

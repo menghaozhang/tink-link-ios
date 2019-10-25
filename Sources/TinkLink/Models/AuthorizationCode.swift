@@ -1,3 +1,4 @@
+/// An authorization code from the Tink backend.
 public struct AuthorizationCode: Hashable, RawRepresentable, Decodable {
     public let rawValue: String
 

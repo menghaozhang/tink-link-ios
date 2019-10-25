@@ -1,7 +1,7 @@
 import Foundation
 
 /// An object that you use to access the user's credentials and supports the flow for adding credentials.
-public class CredentialContext {
+public final class CredentialContext {
     private let tinkLink: TinkLink
     private let userCreationStrategy: UserCreationStrategy
     private let service: CredentialService
@@ -99,7 +99,9 @@ public class CredentialContext {
     }
 
     /// Gets the user's credentials.
-    public func fetchCredentials(completion: @escaping (Result<[Credential], Error>) -> Void) -> RetryCancellable? {
+    /// - Parameter completion: The block to execute when the call is completed.
+    /// - Parameter result: A result that either contain a list of the user credentials or an error if the fetch failed.
+    public func fetchCredentials(completion: @escaping (_ result: Result<[Credential], Error>) -> Void) -> RetryCancellable? {
         let authenticationCanceller = tinkLink.authenticateIfNeeded(with: userCreationStrategy) { [service] (userResult) in
             do {
                 let user = try userResult.get()

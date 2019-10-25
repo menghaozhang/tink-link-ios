@@ -2,8 +2,11 @@ import Foundation
 
 /// Represents which endpoints TinkLink will use.
 public enum Environment {
-    /// Default environment is production
+    /// The production environment.
     case production
+    /// A custom environment.
+    /// - grpcURL: The URL for the gRPC endpoints
+    /// - restURL: The URL for the REST endpoints
     case custom(grpcURL: URL, restURL: URL)
 
     var grpcURL: URL {

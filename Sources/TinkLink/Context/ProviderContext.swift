@@ -1,19 +1,27 @@
 import Foundation
 
 /// An object that accesses providers for a specific market and supports the grouping of providers.
-public class ProviderContext {
+public final class ProviderContext {
     /// Attributes representing which providers a context should access.
     public struct Attributes: Hashable {
+        /// The capabilities that the providers have.
         public let capabilities: Provider.Capabilities
+        /// The different kinds of providers that should be retreived.
         public let kinds: Set<Provider.Kind>
+        /// The access types that should be retreived.
         public let accessTypes: Set<Provider.AccessType>
 
+        /// Creates a set of attributes that is used to determine which providers should be retreived by a `ProviderContext`.
+        /// - Parameter capabilities: The capabilities that the providers have.
+        /// - Parameter kinds: The different kind of providers that should be retreived.
+        /// - Parameter accessTypes: The access types that should be retreived.
         public init(capabilities: Provider.Capabilities, kinds: Set<Provider.Kind>, accessTypes: Set<Provider.AccessType>) {
             self.capabilities = capabilities
             self.kinds = kinds
             self.accessTypes = accessTypes
         }
 
+        /// A default set of atttributes that contain all capabilities, all non-test kinds and all access types.
         public static let `default` = Attributes(capabilities: .all, kinds: .excludingTest, accessTypes: .all)
     }
 

@@ -2,11 +2,12 @@ import Foundation
 
 /// An object that you use to create a user that will be used in other TinkLink APIs.
 public final class UserContext {
-    private var userService: UserService
+    private let userService: UserService
     private var retryCancellable: RetryCancellable?
     private var multiRetryCancellables = MultiHandler()
     private var group = DispatchGroup()
     private var canLeaveDispatchGroup = false
+    /// The user associated with this `UserContext` if there is one.
     public private(set) var user: User?
     private var error: Error?
 

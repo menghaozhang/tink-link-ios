@@ -1,6 +1,6 @@
 import SwiftGRPC
 
-class CallHandler<Request, Response, Model>: Cancellable, Retriable {
+final class CallHandler<Request, Response, Model>: Cancellable, Retriable {
     typealias Method = (Request, @escaping (Response?, CallResult) -> Void) throws -> ClientCall
     typealias ResponseMap = (Response) -> Model
     typealias CallCompletionHandler<Model> = (Result<Model, Error>) -> Void
