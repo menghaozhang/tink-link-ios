@@ -30,6 +30,7 @@ public struct Market: Hashable, RawRepresentable, ExpressibleByStringLiteral {
         return Locale.current.localizedString(forRegionCode: code)
     }
 
+    /// The default market that is used. 
     public static var defaultMarket: Market {
         return Market(code: "SE")
     }

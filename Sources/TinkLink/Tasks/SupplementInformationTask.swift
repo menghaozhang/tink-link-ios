@@ -5,7 +5,7 @@
 /// When a credential's status is `awaitingSupplementalInformation` the user needs to provide additional information to finish adding the credential.
 
 /// - Note: If the user dismiss supplementing information, by e.g. closing the form, you need to call `cancel()` to stop adding the credential.
-public class SupplementInformationTask {
+public final class SupplementInformationTask {
     private let credentialService: CredentialService
     private var callRetryCancellable: RetryCancellable?
 

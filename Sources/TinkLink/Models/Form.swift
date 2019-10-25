@@ -77,10 +77,18 @@ public struct Form {
         return fieldValues
     }
 
+    /// A `Field` represent one specific input (usually a text field) that the user need to enter in order to add a credential.
     public struct Field {
+        /// The current text input of the field. Update this to reflect the user's input.
         public var text: String
+        /// The name of the field.
         public let name: String
+        /// The validation rules that determines whether the `text` property is valid.
         public let validationRules: ValidationRules
+        /// The attributes of the field.
+        ///
+        /// You can use the attributes to set up a text field properly. They contain properties
+        /// like input type, placeholder and description.
         public let attributes: Attributes
 
         internal init(fieldSpecification: Provider.FieldSpecification) {
@@ -140,8 +148,9 @@ public struct Form {
         /// Attributes to apply to a UI element that will represent a field.
         public struct Attributes {
             public enum InputType {
+                /// An input type suitable for normal text input.
                 case `default`
-                /// A input type suitable for e.g. PIN entry.
+                /// An input type suitable for e.g. PIN entry.
                 case numeric
             }
 

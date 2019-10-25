@@ -2,6 +2,7 @@ import Foundation
 
 /// The credentials model represents users connected providers from where financial data is accessed.
 public struct Credential {
+    /// A unique identifier of a `Credential`.
     public struct ID: Hashable, ExpressibleByStringLiteral {
         public init(stringLiteral value: String) {
             self.value = value
@@ -14,7 +15,7 @@ public struct Credential {
         public let value: String
     }
 
-    /// The unique identifier of the credentials.
+    /// The unique identifier of the credential.
     public let id: ID
 
     /// The provider (financial institution) that the credentials is connected to.

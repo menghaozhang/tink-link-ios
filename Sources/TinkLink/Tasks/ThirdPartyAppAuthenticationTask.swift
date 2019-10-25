@@ -12,8 +12,11 @@ import UIKit
 /// - Note: If the app couldn't be opened you need to handle the `AddCredentialTask` completion result and check for a `ThirdPartyAppAuthenticationTask.Error`.
 /// This error can tell you if the user needs to download the app.
 public class ThirdPartyAppAuthenticationTask {
+    /// Error associated with the `ThirdPartyAppAuthenticationTask`.
     public enum Error: Swift.Error, LocalizedError {
+        /// The `ThirdPartyAppAuthenticationTask` have no deep link URL.
         case deeplinkURLNotFound
+        /// The `UIApplication` could not open the application. It is most likely missing and needs to be downloaded.
         case downloadRequired(title: String, message: String, appStoreURL: URL?)
 
         public var errorDescription: String? {
@@ -70,7 +73,7 @@ public class ThirdPartyAppAuthenticationTask {
             appStoreURL: thirdPartyAppAuthentication.appStoreURL
         )
 
-        guard UIApplication.shared.canOpenURL(url) else {
+        guard application.canOpenURL(url) else {
             completionHandler(.failure(downloadRequiredError))
             return
         }

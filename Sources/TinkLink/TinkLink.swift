@@ -3,12 +3,21 @@ import Foundation
 import UIKit
 #endif
 
+/// The `TinkLink` class encapsulates a connection to the Tink API.
+///
+/// By default a shared `TinkLink` instance will be used, but you can also create your own
+/// instance and use that instead. This allows you to use multiple `TinkLink` instances at the
+/// same time.
 public class TinkLink {
     static var _shared: TinkLink?
 
+    /// The shared `TinkLink` instance.
+    ///
+    /// Note: You need to configure the shared instance by calling `TinkLink.configure(with:)`
+    /// before accessing the shared instance. Not doing so will cause a run-time error.
     public static var shared: TinkLink {
         guard let shared = _shared else {
-            fatalError("Configure Tink Link by calling `TinkLink.configure()` before accessing the shared instance")
+            fatalError("Configure Tink Link by calling `TinkLink.configure(with:)` before accessing the shared instance")
         }
         return shared
     }
@@ -27,6 +36,8 @@ public class TinkLink {
     }
 
     /// Create a TinkLink instance with a custom configuration.
+    /// - Parameters:
+    ///   - configuration: The configuration to be used.
     public init(configuration: Configuration) {
         self.configuration = configuration
     }
@@ -38,6 +49,8 @@ public class TinkLink {
     ///     let configuration = Configuration(clientID: "<#clientID#>", redirectURI: <#URL#>, market: "<#SE#>", locale: .current)
     ///     TinkLink.configure(with: configuration)
     ///
+    /// - Parameters:
+    ///   - configuration: The configuration to be used for the shared instance.
     public static func configure(with configuration: TinkLink.Configuration) {
         _shared = TinkLink(configuration: configuration)
     }

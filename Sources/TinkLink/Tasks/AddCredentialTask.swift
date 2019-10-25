@@ -3,7 +3,7 @@ import Foundation
 /// A task that manages progress of adding a credential.
 ///
 /// Use `CredentialContext` to create a task.
-public class AddCredentialTask {
+public final class AddCredentialTask {
     /// Indicates the state of a credential being added.
     ///
     /// - Note: For some states there are actions which need to be performed on the credentials.
@@ -24,9 +24,13 @@ public class AddCredentialTask {
         case awaitingThirdPartyAppAuthentication(ThirdPartyAppAuthenticationTask)
     }
 
+    /// Error that the `AddCredentialTask` can throw.
     public enum Error: Swift.Error {
+        /// The authentication failed.
         case authenticationFailed
+        /// A temporary failure occurred.
         case temporaryFailure
+        /// A permanent failure occurred.
         case permanentFailure
     }
 

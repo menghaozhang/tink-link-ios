@@ -1,6 +1,6 @@
 import SwiftGRPC
 
-class ProviderService: TokenConfigurableService {
+final class ProviderService: TokenConfigurableService {
     let channel: Channel
     let metadata: Metadata
 
