@@ -23,7 +23,14 @@ public final class UserContext {
     /// - Parameter market: Register a `Market` for creating the user, will use the default market if nothing is provided.
     /// - Parameter locale: Register a `Locale` for creating the user, will use the default locale in TinkLink if nothing is provided.
     /// - Parameter completion: A result representing either a user info object or an error.
-    public func createUserIfNeeded(for market: Market = .defaultMarket, locale: Locale = TinkLink.defaultLocale, completion: @escaping (Result<User, Error>) -> RetryCancellable?) -> RetryCancellable? {
+    public func createUser(for market: Market = .defaultMarket, locale: Locale = TinkLink.defaultLocale, completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {
+        createUserIfNeeded(for: market, locale: locale) { result -> RetryCancellable? in
+            completion(result)
+            return nil
+        }
+    }
+
+    func createUserIfNeeded(for market: Market = .defaultMarket, locale: Locale = TinkLink.defaultLocale, completion: @escaping (Result<User, Error>) -> RetryCancellable?) -> RetryCancellable? {
         if let user = user {
             return completion(.success(user))
         } else if retryCancellable == nil {
