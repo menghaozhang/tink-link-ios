@@ -67,14 +67,14 @@ public final class UserContext {
         }
     }
 
-    public func authenticate(with authorizationCode: String, completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {
+    public func authenticate(with authorizationCode: AuthorizationCode, completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {
         return authenticateIfNeeded(with: authorizationCode) { result -> RetryCancellable? in
             completion(result)
             return nil
         }
     }
 
-    func authenticateIfNeeded(with authorizationCode: String, completion: @escaping (Result<User, Error>) -> RetryCancellable?) -> RetryCancellable? {
+    func authenticateIfNeeded(with authorizationCode: AuthorizationCode, completion: @escaping (Result<User, Error>) -> RetryCancellable?) -> RetryCancellable? {
         if let user = user {
             return completion(.success(user))
         } else if retryCancellable == nil {

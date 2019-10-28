@@ -43,7 +43,7 @@ final class UserService {
         return CallHandler(for: request, method: service.createAnonymous, responseMap: { AccessToken($0.accessToken) }, completion: completion)
     }
 
-    func authenticate(code: String, completion: @escaping (Result<AccessToken, Error>) -> Void) -> RetryCancellable? {
+    func authenticate(code: AuthorizationCode, completion: @escaping (Result<AccessToken, Error>) -> Void) -> RetryCancellable? {
         guard var urlComponents = URLComponents(url: restURL, resolvingAgainstBaseURL: false) else {
             preconditionFailure("Invalid restURL")
         }
@@ -53,7 +53,7 @@ final class UserService {
         urlRequest.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
 
         do {
-            let body = ["code": code]
+            let body = ["code": code.rawValue]
             urlRequest.httpBody = try JSONEncoder().encode(body)
         } catch {
             completion(.failure(error))
