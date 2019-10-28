@@ -87,7 +87,31 @@ extension AuthenticationService {
             return nil
         }
 
-        let serviceRetryCanceller = URLSessionRequestRetryCancellable(session: session, request: urlRequest, completion: completion)
+        let serviceRetryCanceller = URLSessionRequestRetryCancellable<AuthorizationResponse, AuthorizationError>(session: session, request: urlRequest, completion: completion)
+        serviceRetryCanceller.start()
+
+        return serviceRetryCanceller
+    }
+
+
+    func authenticate(code: String, completion: @escaping (Result<Access, Error>) -> Void) -> RetryCancellable? {
+        guard var urlComponents = URLComponents(url: restURL, resolvingAgainstBaseURL: false) else {
+            preconditionFailure("Invalid restURL")
+        }
+
+        urlComponents.path = "/api/v1/oauth/authentication/token"
+        var urlRequest = URLRequest(url: urlComponents.url!)
+        urlRequest.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+
+        do {
+            let body = ["code": code]
+            urlRequest.httpBody = try JSONEncoder().encode(body)
+        } catch {
+            completion(.failure(error))
+            return nil
+        }
+        // TODO: Make AuthorizationError interpretable
+        let serviceRetryCanceller = URLSessionRequestRetryCancellable<String, AuthorizationError>(session: session, request: urlRequest, completion: completion)
         serviceRetryCanceller.start()
 
         return serviceRetryCanceller
