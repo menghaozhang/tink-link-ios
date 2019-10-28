@@ -23,14 +23,14 @@ public final class UserContext {
     /// - Parameter market: Register a `Market` for creating the user, will use the default market if nothing is provided.
     /// - Parameter locale: Register a `Locale` for creating the user, will use the default locale in TinkLink if nothing is provided.
     /// - Parameter completion: A result representing either a user info object or an error.
-    public func createUser(for market: Market = .defaultMarket, locale: Locale = TinkLink.defaultLocale, completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {
-        createUserIfNeeded(for: market, locale: locale) { result -> RetryCancellable? in
+    public func createTemporaryUser(for market: Market = .defaultMarket, locale: Locale = TinkLink.defaultLocale, completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {
+        createTemporaryUserIfNeeded(for: market, locale: locale) { result -> RetryCancellable? in
             completion(result)
             return nil
         }
     }
 
-    func createUserIfNeeded(for market: Market = .defaultMarket, locale: Locale = TinkLink.defaultLocale, completion: @escaping (Result<User, Error>) -> RetryCancellable?) -> RetryCancellable? {
+    func createTemporaryUserIfNeeded(for market: Market = .defaultMarket, locale: Locale = TinkLink.defaultLocale, completion: @escaping (Result<User, Error>) -> RetryCancellable?) -> RetryCancellable? {
         if let user = user {
             return completion(.success(user))
         } else if retryCancellable == nil {
@@ -59,7 +59,7 @@ public final class UserContext {
                 if let user = self.user {
                     self.multiRetryCancellables.add(completion(.success(user)))
                 } else {
-                    let retryCancellable = self.createUserIfNeeded(for: market, locale: locale, completion: completion)
+                    let retryCancellable = self.createTemporaryUserIfNeeded(for: market, locale: locale, completion: completion)
                     self.multiRetryCancellables.add(retryCancellable)
                 }
             })

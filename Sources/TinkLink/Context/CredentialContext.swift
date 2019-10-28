@@ -20,7 +20,7 @@ public final class CredentialContext {
     ///
     /// - Parameter tinkLink: TinkLink instance, defaults to `shared` if not provided.
     /// - Parameter userCreationStrategy: The strategy for creating users. Defaults to automatically creating a anonymous user.
-    public init(tinkLink: TinkLink = .shared, userCreationStrategy: UserCreationStrategy = .automaticAnonymous) {
+    public init(tinkLink: TinkLink = .shared, userCreationStrategy: UserCreationStrategy = .automaticTemporary) {
         self.tinkLink = tinkLink
         self.userCreationStrategy = userCreationStrategy
         self.service = CredentialService(tinkLink: tinkLink)

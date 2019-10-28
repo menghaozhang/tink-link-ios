@@ -61,10 +61,10 @@ public class TinkLink {
 
     func authenticateIfNeeded(with userCreationStrategy: UserCreationStrategy, completion: @escaping (Result<User, Error>) -> RetryCancellable?) -> RetryCancellable? {
         switch userCreationStrategy {
-        case .automaticAnonymous:
-            let userCanceller = automaticAnonymousUserContext.createUserIfNeeded(for: configuration.market, locale: configuration.locale, completion: completion)
+        case .automaticTemporary:
+            let userCanceller = automaticAnonymousUserContext.createTemporaryUserIfNeeded(for: configuration.market, locale: configuration.locale, completion: completion)
             return userCanceller
-        case .automaticDelegation(let code):
+        case .automaticAuthorize(let code):
             let authorizationCode = AuthorizationCode(code)
             let userCanceller = automaticAnonymousUserContext.authenticateIfNeeded(with: authorizationCode, completion: completion)
             return userCanceller
@@ -78,7 +78,7 @@ public class TinkLink {
         return open(url, userCreationStrategy: .existing(user), completion: completion)
     }
 
-    public func open(_ url: URL, userCreationStrategy: UserCreationStrategy = .automaticAnonymous, completion: ((Result<Void, Error>) -> Void)? = nil) -> Bool {
+    public func open(_ url: URL, userCreationStrategy: UserCreationStrategy = .automaticTemporary, completion: ((Result<Void, Error>) -> Void)? = nil) -> Bool {
         guard let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false),
             urlComponents.scheme == configuration.redirectURI.scheme
             else { return false }

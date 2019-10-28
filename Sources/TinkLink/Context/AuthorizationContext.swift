@@ -19,7 +19,7 @@ public final class AuthorizationContext {
     ///
     /// - Parameter tinkLink: TinkLink instance, will use the shared instance if nothing is provided.
     /// - Parameter userCreationStrategy: The strategy for creating users. Defaults to automatically creating a anonymous user.
-    public init(tinkLink: TinkLink = .shared, userCreationStrategy: UserCreationStrategy = .automaticAnonymous) {
+    public init(tinkLink: TinkLink = .shared, userCreationStrategy: UserCreationStrategy = .automaticTemporary) {
         self.tinkLink = tinkLink
         self.userCreationStrategy = userCreationStrategy
         self.service = AuthenticationService(tinkLink: tinkLink)
