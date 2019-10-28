@@ -200,6 +200,17 @@ func application(_ application: UIApplication, open url: URL, options: [UIApplic
 }
 ```
 
+### Handling Universal Links
+```swift
+func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+    if userActivity.activityType == NSUserActivityTypeBrowsingWeb, let url = userActivity.webpageURL {
+        return TinkLink.shared.open(url)
+    } else {
+        return false
+    }
+}
+```
+
 ## Users
 
 ### Creating users
