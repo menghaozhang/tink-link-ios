@@ -1,4 +1,4 @@
-struct AccessToken: Hashable, RawRepresentable {
+struct AccessToken: Hashable, RawRepresentable, Decodable {
     let rawValue: String
 
     init?(rawValue: String) {

@@ -66,4 +66,48 @@ public final class UserContext {
             return multiRetryCancellables
         }
     }
+
+    public func authenticate(with authorizationCode: String, completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {
+        return authenticateIfNeeded(with: authorizationCode) { result -> RetryCancellable? in
+            completion(result)
+            return nil
+        }
+    }
+
+    func authenticateIfNeeded(with authorizationCode: String, completion: @escaping (Result<User, Error>) -> RetryCancellable?) -> RetryCancellable? {
+        if let user = user {
+            return completion(.success(user))
+        } else if retryCancellable == nil {
+            group.enter()
+            canLeaveDispatchGroup = true
+            retryCancellable = userService.authenticate(code: authorizationCode) { [weak self] result in
+                guard let self = self else { return }
+                do {
+                    let accessToken = try result.get()
+                    let user = User(accessToken: accessToken)
+                    self.user = user
+                    self.retryCancellable = completion(.success(user))
+                } catch {
+                    self.error = error
+                    self.retryCancellable = completion(.failure(error))
+                }
+                if self.canLeaveDispatchGroup {
+                    self.canLeaveDispatchGroup = false
+                    self.group.leave()
+                }
+            }
+            return retryCancellable
+        } else {
+            group.notify(queue: .main, execute: { [weak self] in
+                guard let self = self else { return }
+                if let user = self.user {
+                    self.multiRetryCancellables.add(completion(.success(user)))
+                } else {
+                    let retryCancellable = self.authenticateIfNeeded(with: authorizationCode, completion: completion)
+                    self.multiRetryCancellables.add(retryCancellable)
+                }
+            })
+            return multiRetryCancellables
+        }
+    }
 }
