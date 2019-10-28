@@ -83,8 +83,8 @@ public final class UserContext {
             retryCancellable = userService.authenticate(code: authorizationCode) { [weak self] result in
                 guard let self = self else { return }
                 do {
-                    let accessToken = try result.get()
-                    let user = User(accessToken: accessToken)
+                    let authenticateResponse = try result.get()
+                    let user = User(accessToken: authenticateResponse.accessToken)
                     self.user = user
                     self.retryCancellable = completion(.success(user))
                 } catch {

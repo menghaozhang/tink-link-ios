@@ -43,7 +43,7 @@ final class UserService {
         return CallHandler(for: request, method: service.createAnonymous, responseMap: { AccessToken($0.accessToken) }, completion: completion)
     }
 
-    func authenticate(code: AuthorizationCode, completion: @escaping (Result<AccessToken, Error>) -> Void) -> RetryCancellable? {
+    func authenticate(code: AuthorizationCode, completion: @escaping (Result<AuthenticateResponse, Error>) -> Void) -> RetryCancellable? {
         guard var urlComponents = URLComponents(url: restURL, resolvingAgainstBaseURL: false) else {
             preconditionFailure("Invalid restURL")
         }
@@ -60,8 +60,7 @@ final class UserService {
             return nil
         }
         // TODO: Make AuthorizationError interpretable
-        // TODO: Create an object to be able to parse response JSON to AccessToken
-        let serviceRetryCanceller = URLSessionRequestRetryCancellable<AccessToken, AuthorizationError>(session: session, request: urlRequest, completion: completion)
+        let serviceRetryCanceller = URLSessionRequestRetryCancellable<AuthenticateResponse, AuthorizationError>(session: session, request: urlRequest, completion: completion)
         serviceRetryCanceller.start()
 
         return serviceRetryCanceller
