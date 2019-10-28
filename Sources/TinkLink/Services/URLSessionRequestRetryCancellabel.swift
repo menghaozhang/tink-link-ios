@@ -1,13 +1,13 @@
 import Foundation
 
-class URLSessionRequestRetryCancellable: RetryCancellable {
+class URLSessionRequestRetryCancellable<T: Decodable, E: Decodable & Error>: RetryCancellable {
     private var session: URLSession
     private let request: URLRequest
     private var task: URLSessionTask?
     private var currentTask: URLSessionTask?
-    private var completion: (Result<AuthorizationResponse, Error>) -> Void
+    private var completion: (Result<T, Error>) -> Void
 
-    init(session: URLSession, request: URLRequest, completion: @escaping (Result<AuthorizationResponse, Error>) -> Void) {
+    init(session: URLSession, request: URLRequest, completion: @escaping (Result<T, Error>) -> Void) {
         self.session = session
         self.request = request
         self.completion = completion
@@ -25,10 +25,10 @@ class URLSessionRequestRetryCancellable: RetryCancellable {
     private func handle(data: Data?, error: Error?) {
         if let data = data {
             do {
-                let authorizationResponse = try JSONDecoder().decode(AuthorizationResponse.self, from: data)
+                let authorizationResponse = try JSONDecoder().decode(T.self, from: data)
                 completion(.success(authorizationResponse))
             } catch {
-                let authorizationError = try? JSONDecoder().decode(AuthorizationError.self, from: data)
+                let authorizationError = try? JSONDecoder().decode(E.self, from: data)
                 completion(.failure(authorizationError ?? error))
             }
         } else if let error = error {
