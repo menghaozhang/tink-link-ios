@@ -64,6 +64,10 @@ public class TinkLink {
         case .automaticAnonymous:
             let userCanceller = automaticAnonymousUserContext.createUserIfNeeded(for: configuration.market, locale: configuration.locale, completion: completion)
             return userCanceller
+        case .delegation(let code):
+            let authorizationCode = AuthorizationCode(code)
+            let userCanceller = automaticAnonymousUserContext.authenticateIfNeeded(with: authorizationCode, completion: completion)
+            return userCanceller
         case .existing(let user):
             return completion(.success(user))
         }
