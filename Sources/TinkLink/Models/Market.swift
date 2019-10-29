@@ -18,7 +18,7 @@ public struct Market: Hashable, RawRepresentable, ExpressibleByStringLiteral {
         self.rawValue = value
     }
 
-    /// A two-letter country code.
+    /// An ISO 3166-1 alpha-2 formatted country code.
     public var code: String {
         return rawValue
     }

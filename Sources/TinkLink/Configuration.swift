@@ -66,9 +66,9 @@ extension TinkLink.Configuration {
         var errorDescription: String? {
             switch self {
             case .clientIDNotFound:
-                return "`TINK_CLIENT_ID` was not found in environment variable. Please configure a Tink Link client before using it."
+                return "`TINK_CLIENT_ID` was not found in environment variable. Please configure a Tink Link client identifer before using it."
             case .redirectURINotFound:
-                return "`TINK_REDIRECT_URI` was not found in environment variable. Please configure a Tink Link client before using it."
+                return "`TINK_REDIRECT_URI` was not found in environment variable. Please configure a Tink Link redirect URI before using it."
             }
         }
     }
