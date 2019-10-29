@@ -41,9 +41,3 @@ extension TinkLink {
         }
     }
 }
-
-extension Locale {
-    public static var defaultTinkLocale: Locale {
-        TinkLink.defaultLocale
-    }
-}
