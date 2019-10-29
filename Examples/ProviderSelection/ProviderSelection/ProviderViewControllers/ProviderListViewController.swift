@@ -8,6 +8,8 @@ final class ProviderListViewController: UITableViewController {
     
     private let searchController = UISearchController(searchResultsController: nil)
 
+    private var originalFinancialInstitutionGroupNodes : [ProviderTree.FinancialInstitutionGroupNode] = []
+
     private var financialInstitutionGroupNodes: [ProviderTree.FinancialInstitutionGroupNode] = [] {
         didSet {
             self.tableView.reloadData()
@@ -29,6 +31,7 @@ final class ProviderListViewController: UITableViewController {
                 do {
                     let providers = try result.get()
                     self?.financialInstitutionGroupNodes = ProviderTree(providers: providers).financialInstitutionGroups
+                    self?.originalFinancialInstitutionGroupNodes = ProviderTree(providers: providers).financialInstitutionGroups
                     self?.providerCancellable = nil
                 } catch {
                     // TODO: Handle Error
@@ -126,8 +129,10 @@ extension ProviderListViewController {
 
 extension ProviderListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        if let text = searchController.searchBar.text {
-            financialInstitutionGroupNodes = financialInstitutionGroupNodes.filter { $0.displayName.localizedCaseInsensitiveContains(text) }
+        if let text = searchController.searchBar.text, !text.isEmpty {
+            financialInstitutionGroupNodes = originalFinancialInstitutionGroupNodes.filter { $0.displayName.localizedCaseInsensitiveContains(text) }
+        } else {
+            financialInstitutionGroupNodes = originalFinancialInstitutionGroupNodes
         }
     }
 }

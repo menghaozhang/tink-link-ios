@@ -238,7 +238,10 @@ extension AddCredentialViewController {
     }
 
     private func hideUpdatingView(animated: Bool = false, completion: (() -> Void)? = nil) {
-        guard statusViewController != nil else { return }
+        guard statusViewController != nil else {
+            completion?()
+            return
+        }
         UIView.animate(withDuration: 0.3) {
             self.view.tintAdjustmentMode = .automatic
         }
