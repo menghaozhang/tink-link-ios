@@ -25,26 +25,16 @@ class ConfigurationTests: XCTestCase {
         TinkLink.configure(with: configuration)
         XCTAssertEqual(TinkLink.shared.configuration.market.rawValue, "SE")
         XCTAssertEqual(TinkLink.shared.client.market.rawValue, "SE")
-        XCTAssertEqual(TinkLink.shared.configuration.redirectURI, URL(string: "my-customer-app:///authentication")!)
+        XCTAssertEqual(TinkLink.shared.configuration.redirectURI, URL(string: "my-customer-app://authentication")!)
     }
 
-    func testConfigureSharedTinkLinkWithConfigurationWithAppURIStartWithHttp() {
+    func testConfigureSharedTinkLinkWithConfigurationWithAppURIWithoutPath() {
         TinkLink._shared = nil
-        let redirectURI = URL(string: "http-my-customer-app://authentication")!
+        let redirectURI = URL(string: "http-my-customer-app://")!
         let configuration = TinkLink.Configuration(clientID: "abc", redirectURI: redirectURI, market: "SE")
         TinkLink.configure(with: configuration)
         XCTAssertEqual(TinkLink.shared.configuration.market.rawValue, "SE")
         XCTAssertEqual(TinkLink.shared.client.market.rawValue, "SE")
-        XCTAssertEqual(TinkLink.shared.configuration.redirectURI, URL(string: "http-my-customer-app:///authentication")!)
-    }
-
-    func testConfigureSharedTinkLinkWithConfigurationWithHttps() {
-        TinkLink._shared = nil
-        let redirectURI = URL(string: "https://authentication")!
-        let configuration = TinkLink.Configuration(clientID: "abc", redirectURI: redirectURI, market: "SE")
-        TinkLink.configure(with: configuration)
-        XCTAssertEqual(TinkLink.shared.configuration.market.rawValue, "SE")
-        XCTAssertEqual(TinkLink.shared.client.market.rawValue, "SE")
-        XCTAssertEqual(TinkLink.shared.configuration.redirectURI, URL(string: "https://authentication")!)
+        XCTAssertEqual(TinkLink.shared.configuration.redirectURI, URL(string: "http-my-customer-app:///")!)
     }
 }
