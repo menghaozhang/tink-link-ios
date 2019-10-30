@@ -196,7 +196,7 @@ present(alertController, animated: true)
 After the redirect to the third party app, some providers requires additional information to be sent to Tink after the user authenticates with the third party app for the credential to be added successfully. This information is passed to your app via the redirect URI. Use the open method in your `UIApplicationDelegate` to let TinkLink send the information to Tink if needed.
 ```swift
 func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-    return TinkLink.shared.open(url, accessToken: accessToken)
+    return TinkLink.shared.open(url)
 }
 ```
 
