@@ -3,29 +3,36 @@ import Foundation
 /// An object that you use to access the user's credentials and supports the flow for adding credentials.
 public final class CredentialContext {
     private let tinkLink: TinkLink
-    private let userCreationStrategy: UserCreationStrategy
     private let service: CredentialService
-    private let market: Market
-    private let locale: Locale
+    private var user: User
+    private var credentialThirdPartyCallbackObserver: Any?
+    private var thirdPartyCallbackCanceller: RetryCancellable?
 
     /// Creates a new CredentialContext for the given TinkLink instance.
     ///
     /// - Parameter tinkLink: TinkLink instance, defaults to `shared` if not provided.
     /// - Parameter user: `User` that will be used for adding credentials with the Tink API.
-    public convenience init(tinkLink: TinkLink = .shared, user: User) {
-        self.init(tinkLink: tinkLink, userCreationStrategy: .existing(user))
+    public init(tinkLink: TinkLink = .shared, user: User) {
+        self.tinkLink = tinkLink
+        self.user = user
+        self.service = CredentialService(tinkLink: tinkLink)
+        addStoreObservers()
     }
 
-    /// Creates a new CredentialContext for the given TinkLink instance.
-    ///
-    /// - Parameter tinkLink: TinkLink instance, defaults to `shared` if not provided.
-    /// - Parameter userCreationStrategy: The strategy for creating users. Defaults to automatically creating a anonymous user.
-    public init(tinkLink: TinkLink = .shared, userCreationStrategy: UserCreationStrategy = .automaticAnonymous) {
-        self.tinkLink = tinkLink
-        self.userCreationStrategy = userCreationStrategy
-        self.service = CredentialService(tinkLink: tinkLink)
-        self.market = tinkLink.client.market
-        self.locale = tinkLink.client.locale
+    private func addStoreObservers() {
+        credentialThirdPartyCallbackObserver = NotificationCenter.default.addObserver(forName: .credentialThirdPartyCallback, object: nil, queue: .main) { [weak self] notification in
+            guard let self = self else { return }
+            if let userInfo = notification.userInfo as? [String: String] {
+                var parameters = userInfo
+                let stateParameterName = "state"
+                guard let state = parameters.removeValue(forKey: stateParameterName) else { return }
+                self.thirdPartyCallbackCanceller = self.service.thirdPartyCallback(
+                    state: state,
+                    parameters: parameters,
+                    completion: { _ in }
+                )
+            }
+        }
     }
 
     /// Adds a credential for the user.
@@ -77,50 +84,36 @@ public final class CredentialContext {
     }
 
     private func addCredentialAndAuthenticateIfNeeded(for provider: Provider, fields: [String: String], appURI: URL, completion: @escaping (Result<Credential, Error>) -> Void) -> RetryCancellable? {
-        let authenticationCanceller = tinkLink.authenticateIfNeeded(with: userCreationStrategy) { [service] (userResult) in
+        service.accessToken = user.accessToken
+        let credentialCanceller = service.createCredential(providerID: provider.id, fields: fields, appURI: appURI, completion: { result in
             do {
-                let user = try userResult.get()
-                service.accessToken = user.accessToken
-                let credentialCanceller = service.createCredential(providerID: provider.id, fields: fields, appURI: appURI, completion: { result in
-                    do {
-                        let credential = try result.get()
-                        completion(.success(credential))
-                    } catch {
-                        completion(.failure(error))
-                    }
-                })
-                return credentialCanceller
+                let credential = try result.get()
+                completion(.success(credential))
             } catch {
                 completion(.failure(error))
-                return nil
             }
-        }
-        return authenticationCanceller
+        })
+        return credentialCanceller
     }
 
     /// Gets the user's credentials.
     /// - Parameter completion: The block to execute when the call is completed.
     /// - Parameter result: A result that either contain a list of the user credentials or an error if the fetch failed.
     public func fetchCredentials(completion: @escaping (_ result: Result<[Credential], Error>) -> Void) -> RetryCancellable? {
-        let authenticationCanceller = tinkLink.authenticateIfNeeded(with: userCreationStrategy) { [service] (userResult) in
+        service.accessToken = user.accessToken
+        let fetchCredentials = service.credentials { result in
             do {
-                let user = try userResult.get()
-                service.accessToken = user.accessToken
-                let fetchCredentials = service.credentials { result in
-                    do {
-                        let credentials = try result.get()
-                        let storedCredentials = credentials.sorted(by: { $0.id.value < $1.id.value })
-                        completion(.success(storedCredentials))
-                    } catch {
-                        completion(.failure(error))
-                    }
-                }
-                return fetchCredentials
+                let credentials = try result.get()
+                let storedCredentials = credentials.sorted(by: { $0.id.value < $1.id.value })
+                completion(.success(storedCredentials))
             } catch {
                 completion(.failure(error))
-                return nil
             }
         }
-        return authenticationCanceller
+        return fetchCredentials
     }
+}
+
+extension Notification.Name {
+    static let credentialThirdPartyCallback = Notification.Name("TinkLinkCredentialThirdPartyCallbackNotificationName")
 }
