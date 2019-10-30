@@ -44,7 +44,7 @@ extension TinkLink {
             locale: Locale? = nil
         ) {
             self.clientID = clientID
-            self.redirectURI = redirectURI.tinLinkAppURI
+            self.redirectURI = redirectURI.tinkLinkAppURI
             self.environment = .production
             self.grpcCertificate = grpcCertificateURL.flatMap { try? Data(contentsOf: $0) }
             self.restCertificate = restCertificateURL.flatMap { try? Data(contentsOf: $0) }
