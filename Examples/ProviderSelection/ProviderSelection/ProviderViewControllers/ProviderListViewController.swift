@@ -5,10 +5,10 @@ import UIKit
 final class ProviderListViewController: UITableViewController {
     private let providerContext = ProviderContext()
     private var providerCancellable: RetryCancellable?
-    
+
     private let searchController = UISearchController(searchResultsController: nil)
 
-    private var originalFinancialInstitutionGroupNodes : [ProviderTree.FinancialInstitutionGroupNode] = []
+    private var originalFinancialInstitutionGroupNodes: [ProviderTree.FinancialInstitutionGroupNode] = []
 
     private var financialInstitutionGroupNodes: [ProviderTree.FinancialInstitutionGroupNode] = [] {
         didSet {
