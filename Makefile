@@ -58,3 +58,7 @@ build-alpha:
 	carthage archive
 	mkdir -p build
 	mv TinkLink.framework.zip build/
+
+	# Copy input output files
+	cp input.xcfilelist build/
+	cp output.xcfilelist build/
