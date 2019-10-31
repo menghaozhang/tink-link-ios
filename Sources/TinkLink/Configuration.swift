@@ -44,7 +44,7 @@ extension TinkLink {
             locale: Locale? = nil
         ) {
             self.clientID = clientID
-            self.redirectURI = redirectURI.tinkLinkAppURI
+            self.redirectURI = Self.sanitizeURI(redirectURI)
             self.environment = .production
             self.grpcCertificate = grpcCertificateURL.flatMap { try? Data(contentsOf: $0) }
             self.restCertificate = restCertificateURL.flatMap { try? Data(contentsOf: $0) }
@@ -53,6 +53,15 @@ extension TinkLink {
                 self.locale = locale
             } else {
                 self.locale = TinkLink.defaultLocale
+            }
+        }
+
+        private static func sanitizeURI(_ uri: URL) -> URL {
+            if let scheme = uri.scheme, uri.absoluteString == "\(scheme)://" {
+                guard let sanitizedURI = URL(string: "\(scheme):///") else { fatalError("Invalid URI: \(uri.absoluteString)") }
+                return sanitizedURI
+            } else {
+                return uri
             }
         }
     }
