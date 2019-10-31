@@ -4,7 +4,7 @@ import Foundation
 public final class CredentialContext {
     private let tinkLink: TinkLink
     private let service: CredentialService
-    private var user: User
+    private let user: User
     private var credentialThirdPartyCallbackObserver: Any?
     private var thirdPartyCallbackCanceller: RetryCancellable?
 
