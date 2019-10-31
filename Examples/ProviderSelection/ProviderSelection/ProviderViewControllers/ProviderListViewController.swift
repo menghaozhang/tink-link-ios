@@ -4,7 +4,7 @@ import UIKit
 /// Example of how to use the provider grouped by names
 final class ProviderListViewController: UITableViewController {
     private var providerContext: ProviderContext?
-    private var userContext = UserContext()
+    private let userContext = UserContext()
     private var providerCancellable: RetryCancellable?
     private var userCancellable: RetryCancellable?
     
