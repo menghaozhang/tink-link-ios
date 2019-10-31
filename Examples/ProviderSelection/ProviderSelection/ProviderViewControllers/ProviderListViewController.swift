@@ -3,8 +3,10 @@ import UIKit
 
 /// Example of how to use the provider grouped by names
 final class ProviderListViewController: UITableViewController {
-    private let providerContext = ProviderContext()
+    private var providerContext: ProviderContext?
+    private var userContext = UserContext()
     private var providerCancellable: RetryCancellable?
+    private var userCancellable: RetryCancellable?
     
     private let searchController = UISearchController(searchResultsController: nil)
 
@@ -26,7 +28,7 @@ final class ProviderListViewController: UITableViewController {
 
     private func fetchProviders() {
         let attributes = ProviderContext.Attributes(capabilities: .all, kinds: .all, accessTypes: .all)
-        providerCancellable = providerContext.fetchProviders(attributes: attributes, completion: { [weak self] result in
+        providerCancellable = providerContext?.fetchProviders(attributes: attributes, completion: { [weak self] result in
             DispatchQueue.main.async {
                 do {
                     let providers = try result.get()
@@ -48,6 +50,18 @@ extension ProviderListViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        userCancellable = userContext.createUser(for: .defaultMarket, locale: TinkLink.defaultLocale) { [weak self] result in
+            do {
+                let user = try result.get()
+                self?.providerContext = ProviderContext(user: user)
+                self?.fetchProviders()
+                self?.userCancellable = nil
+            } catch {
+                // TODO: Handle Error
+                print(error.localizedDescription)
+            }
+        }
+
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search"
         searchController.searchResultsUpdater = self
@@ -61,8 +75,6 @@ extension ProviderListViewController {
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
-
-        fetchProviders()
     }
 }
 
