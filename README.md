@@ -16,31 +16,16 @@ github "grpc/grpc-swift" ~> 0.9.1
 1. Run `carthage bootstrap --platform iOS`
 1. Unzip the `TinkLink.framework.zip` provided by Tink, move the `TinkLink.framework` binary to generated `Carthage/Build/iOS/` folder
 1. Drag the built `.framework` binaries (TinkLink, SwiftProtobuf, BoringSSL, CgRPC and SwiftGRPC) from `Carthage/Build/iOS` into the _Linked Binary With Libraries_ section on your application targets’ _Build Phases_ tab.
+1. Copy the `input.xcfilelist` and `output.xcfilelist` files provided by Tink into the root of your Xcode project.
 1. On your application targets’ _Build Phases_ settings tab, click the _+_ icon and choose _New Run Script Phase_. Create a Run Script in which you specify your shell (ex: `/bin/sh`), add the following contents to the script area below the shell:
 
    ```sh
    /usr/local/bin/carthage copy-frameworks
    ```
 
-- Add the paths to the frameworks under "Input Files":
+- Add the `input.xcfilelist` to the _Input File Lists_ section of the run script phase
 
-  ```
-  $(SRCROOT)/Carthage/Build/iOS/TinkLink.framework
-  $(SRCROOT)/Carthage/Build/iOS/SwiftProtobuf.framework
-  $(SRCROOT)/Carthage/Build/iOS/BoringSSL.framework
-  $(SRCROOT)/Carthage/Build/iOS/CgRPC.framework
-  $(SRCROOT)/Carthage/Build/iOS/SwiftGRPC.framework
-  ```
-
-- Also add the paths to the frameworks under "Output Files":
-
-  ```
-  $(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/TinkLink.framework
-  $(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftProtobuf.framework
-  $(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/BoringSSL.framework
-  $(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CgRPC.framework
-  $(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftGRPC.framework
-  ```
+- Add the `output.xcfilelist` to the _Output File Lists_ section of the run script phase
 
   - You should now be able to use TinkLink within your project.
 
