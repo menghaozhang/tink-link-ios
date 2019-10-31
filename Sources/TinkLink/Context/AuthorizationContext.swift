@@ -5,7 +5,7 @@ public final class AuthorizationContext {
     private let tinkLink: TinkLink
     private let service: AuthenticationService
     private var retryCancellable: RetryCancellable?
-    private var user: User
+    private let user: User
 
     /// Creates a context to authorize for an authorization code for a user with requested scopes.
     ///
