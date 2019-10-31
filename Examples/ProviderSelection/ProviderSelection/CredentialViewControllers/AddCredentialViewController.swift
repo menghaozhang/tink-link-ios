@@ -4,7 +4,7 @@ import UIKit
 
 /// Example of how to use the provider field specification to add credential
 final class AddCredentialViewController: UITableViewController {
-    let credentialContext = CredentialContext()
+    var credentialContext: CredentialContext?
     let provider: Provider
 
     private var form: Form
@@ -42,6 +42,10 @@ final class AddCredentialViewController: UITableViewController {
 extension AddCredentialViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        if let user = TinkLinkUser.shared.user {
+            credentialContext = CredentialContext(user: user)
+        }
 
         tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
         tableView.allowsSelection = false
@@ -161,7 +165,7 @@ extension AddCredentialViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
         do {
             try form.validateFields()
-            task = credentialContext.addCredential(
+            task = credentialContext?.addCredential(
                 for: provider,
                 form: form,
                 progressHandler: { [weak self] status in

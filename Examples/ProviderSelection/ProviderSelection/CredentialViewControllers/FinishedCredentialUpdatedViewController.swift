@@ -5,7 +5,7 @@ final class FinishedCredentialUpdatedViewController: UIViewController {
     private let credential: Credential
     private var activityIndicator: UIActivityIndicatorView?
     private var authenticationResultLabel: UILabel?
-    private let authorizationContext = AuthorizationContext()
+    private var authorizationContext: AuthorizationContext?
     private var retryCancellable: RetryCancellable?
 
     init(credential: Credential) {
@@ -60,6 +60,10 @@ final class FinishedCredentialUpdatedViewController: UIViewController {
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
 
+        if let user = TinkLinkUser.shared.user {
+            authorizationContext = AuthorizationContext(user: user)
+        }
+
         authorize()
     }
 
@@ -74,7 +78,7 @@ final class FinishedCredentialUpdatedViewController: UIViewController {
             TinkLink.Scope.User.read,
             TinkLink.Scope.Transactions.read
         ])
-        retryCancellable = authorizationContext.authorize(scope: scope) { [weak self] (result) in
+        retryCancellable = authorizationContext?.authorize(scope: scope) { [weak self] (result) in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 self.activityIndicator?.stopAnimating()

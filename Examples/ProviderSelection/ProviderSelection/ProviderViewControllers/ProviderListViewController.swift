@@ -53,6 +53,7 @@ extension ProviderListViewController {
         userCancellable = userContext.createUser(for: .defaultMarket, locale: TinkLink.defaultLocale) { [weak self] result in
             do {
                 let user = try result.get()
+                TinkLinkUser.shared.user = user
                 self?.providerContext = ProviderContext(user: user)
                 self?.fetchProviders()
                 self?.userCancellable = nil
