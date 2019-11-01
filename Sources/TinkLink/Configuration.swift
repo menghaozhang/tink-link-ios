@@ -18,14 +18,6 @@ extension TinkLink {
         /// Certificate to use with REST API.
         public var restCertificate: Data?
 
-        /// The market to use.
-        ///
-        /// This is used by TinkLink when creating an anonymous user and when fetching providers.
-        public var market: Market
-
-        /// The locale to use.
-        public var locale: Locale
-
         /// - Parameters:
         ///   - clientId: The client id for your app.
         ///   - redirectURI: The URI you've setup in Console.
@@ -39,21 +31,13 @@ extension TinkLink {
             redirectURI: URL,
             environment: Environment = .production,
             grpcCertificateURL: URL? = nil,
-            restCertificateURL: URL? = nil,
-            market: Market? = nil,
-            locale: Locale? = nil
+            restCertificateURL: URL? = nil
         ) {
             self.clientID = clientID
             self.redirectURI = Self.sanitizeURI(redirectURI)
             self.environment = .production
             self.grpcCertificate = grpcCertificateURL.flatMap { try? Data(contentsOf: $0) }
             self.restCertificate = restCertificateURL.flatMap { try? Data(contentsOf: $0) }
-            self.market = market ?? .defaultMarket
-            if let locale = locale, TinkLink.availableLocales.contains(locale) {
-                self.locale = locale
-            } else {
-                self.locale = TinkLink.defaultLocale
-            }
         }
 
         private static func sanitizeURI(_ uri: URL) -> URL {
@@ -90,7 +74,5 @@ extension TinkLink.Configuration {
         self.environment = processInfo.tinkEnvironment ?? .production
         self.grpcCertificate = processInfo.tinkGrpcCertificate.flatMap { Data(base64Encoded: $0) }
         self.restCertificate = processInfo.tinkRestCertificate.flatMap { Data(base64Encoded: $0) }
-        self.market = processInfo.tinkMarket ?? TinkLink.defaultMarket
-        self.locale = processInfo.tinkLocale ?? TinkLink.defaultLocale
     }
 }

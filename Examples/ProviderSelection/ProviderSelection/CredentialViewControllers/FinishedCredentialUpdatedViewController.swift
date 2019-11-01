@@ -3,13 +3,17 @@ import UIKit
 
 final class FinishedCredentialUpdatedViewController: UIViewController {
     private let credential: Credential
+    private let user: User
     private var activityIndicator: UIActivityIndicatorView?
     private var authenticationResultLabel: UILabel?
-    private let authorizationContext = AuthorizationContext()
+    private var authorizationContext: AuthorizationContext
     private var retryCancellable: RetryCancellable?
 
-    init(credential: Credential) {
+    init(credential: Credential, user: User) {
         self.credential = credential
+        self.user = user
+        self.authorizationContext = AuthorizationContext(user: user)
+
         super.init(nibName: nil, bundle: nil)
         title = "Success!"
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
