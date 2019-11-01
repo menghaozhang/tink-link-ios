@@ -6,7 +6,7 @@ This example project shows how to make a simple integration with Tink using Tink
 
 1. Follow the [getting started guide](https://docs.tink.com/resources/getting-started/set-up-your-account) to create your developer account and retrieve your Client ID.
 2. Register the Redirect URI for your app (e.g. `myapp://callback`) in the list of allowed redirect URIs.
-Note: The `TinkLink.Configuration` has been prefilled with the default redirectURI `http://localhost:3000/callback`, you can also config the redirectURI at [TinkLink Console](`https://console.tink.com`), the value at the sample app has to match the value defined at TinkLink Console. 
+Note: The `TinkLink.Configuration` has been prefilled with `link-demo://`, you need add the deeplink  `link-demo://` at [TinkLink Console](`https://console.tink.com`)  as redirectURI. This redirectURI should be the same as the deep link in the info.plist (link-demo://).
 
 ## Getting started
 
