@@ -7,6 +7,7 @@ final class ProviderListViewController: UITableViewController {
     private let userContext = UserContext()
     private var providerCancellable: RetryCancellable?
     private var userCancellable: RetryCancellable?
+    private var user: User?
     
     private let searchController = UISearchController(searchResultsController: nil)
 
@@ -53,7 +54,7 @@ extension ProviderListViewController {
         userCancellable = userContext.createUser(for: .defaultMarket, locale: TinkLink.defaultLocale) { [weak self] result in
             do {
                 let user = try result.get()
-                TinkLinkUser.shared.user = user
+                self?.user = user
                 self?.providerContext = ProviderContext(user: user)
                 self?.fetchProviders()
                 self?.userCancellable = nil
@@ -113,27 +114,31 @@ extension ProviderListViewController {
 
 extension ProviderListViewController {
     func showFinancialInstitution(for financialInstitutionNodes: [ProviderTree.FinancialInstitutionNode], title: String?) {
-        let viewController = FinancialInstitutionPickerViewController(style: .plain)
+        guard let user = user else { return }
+        let viewController = FinancialInstitutionPickerViewController(style: .plain, user: user)
         viewController.title = title
         viewController.financialInstitutionNodes = financialInstitutionNodes
         show(viewController, sender: nil)
     }
 
     func showAccessTypePicker(for accessTypeNodes: [ProviderTree.AccessTypeNode], title: String?) {
-        let viewController = AccessTypePickerViewController(style: .plain)
+        guard let user = user else { return }
+        let viewController = AccessTypePickerViewController(style: .plain, user: user)
         viewController.title = title
         viewController.accessTypeNodes = accessTypeNodes
         show(viewController, sender: nil)
     }
 
     func showCredentialKindPicker(for credentialKindNodes: [ProviderTree.CredentialKindNode]) {
-        let viewController = CredentialKindPickerViewController(style: .plain)
+        guard let user = user else { return }
+        let viewController = CredentialKindPickerViewController(style: .plain, user: user)
         viewController.credentialKindNodes = credentialKindNodes
         show(viewController, sender: nil)
     }
 
     func showAddCredential(for provider: Provider) {
-        let addCredentialViewController = AddCredentialViewController(provider: provider)
+        guard let user = user else { return }
+        let addCredentialViewController = AddCredentialViewController(provider: provider, user: user)
         show(addCredentialViewController, sender: nil)
     }
 }

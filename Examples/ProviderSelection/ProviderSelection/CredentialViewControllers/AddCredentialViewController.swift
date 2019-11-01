@@ -4,9 +4,10 @@ import UIKit
 
 /// Example of how to use the provider field specification to add credential
 final class AddCredentialViewController: UITableViewController {
-    var credentialContext: CredentialContext?
+    var credentialContext: CredentialContext
     let provider: Provider
 
+    private let user: User
     private var form: Form
     private var formError: Form.ValidationError? {
         didSet {
@@ -21,9 +22,11 @@ final class AddCredentialViewController: UITableViewController {
 
     private lazy var helpLabel = UITextView()
 
-    init(provider: Provider) {
+    init(provider: Provider, user: User) {
         self.provider = provider
         self.form = Form(provider: provider)
+        self.user = user
+        self.credentialContext = CredentialContext(user: user)
 
         if #available(iOS 13.0, *) {
             super.init(style: .insetGrouped)
@@ -42,10 +45,6 @@ final class AddCredentialViewController: UITableViewController {
 extension AddCredentialViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if let user = TinkLinkUser.shared.user {
-            credentialContext = CredentialContext(user: user)
-        }
 
         tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
         tableView.allowsSelection = false
@@ -165,7 +164,7 @@ extension AddCredentialViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)
         do {
             try form.validateFields()
-            task = credentialContext?.addCredential(
+            task = credentialContext.addCredential(
                 for: provider,
                 form: form,
                 progressHandler: { [weak self] status in
@@ -255,7 +254,7 @@ extension AddCredentialViewController {
 
     private func showCredentialUpdated(for credential: Credential) {
         hideUpdatingView()
-        let finishedCredentialUpdatedViewController = FinishedCredentialUpdatedViewController(credential: credential)
+        let finishedCredentialUpdatedViewController = FinishedCredentialUpdatedViewController(credential: credential, user: user)
         show(finishedCredentialUpdatedViewController, sender: nil)
     }
 

@@ -37,6 +37,7 @@ public final class ProviderContext {
         self.user = user
         self.tinkLink = tinkLink
         self.service = ProviderService(tinkLink: tinkLink)
+        service.accessToken = user.accessToken
     }
 
     /// Fetches providers matching the provided attributes.
@@ -44,7 +45,6 @@ public final class ProviderContext {
     /// - Parameter attributes: Attributes for providers to fetch
     /// - Parameter completion: A result representing either a list of providers or an error.
     public func fetchProviders(attributes: Attributes = .default, completion: @escaping (Result<[Provider], Error>) -> Void) -> RetryCancellable? {
-        service.accessToken = user.accessToken
         let fetchCancellable = service.providers(market: user.market, capabilities: attributes.capabilities, includeTestProviders: attributes.kinds.contains(.test)) { result in
             do {
                 let fetchedProviders = try result.get()

@@ -4,7 +4,6 @@ import Foundation
 public final class CredentialContext {
     private let tinkLink: TinkLink
     private let service: CredentialService
-    private let user: User
     private var credentialThirdPartyCallbackObserver: Any?
     private var thirdPartyCallbackCanceller: RetryCancellable?
 
@@ -14,8 +13,8 @@ public final class CredentialContext {
     /// - Parameter user: `User` that will be used for adding credentials with the Tink API.
     public init(tinkLink: TinkLink = .shared, user: User) {
         self.tinkLink = tinkLink
-        self.user = user
         self.service = CredentialService(tinkLink: tinkLink)
+        service.accessToken = user.accessToken
         addStoreObservers()
     }
 
@@ -84,7 +83,6 @@ public final class CredentialContext {
     }
 
     private func addCredentialAndAuthenticateIfNeeded(for provider: Provider, fields: [String: String], appURI: URL, completion: @escaping (Result<Credential, Error>) -> Void) -> RetryCancellable? {
-        service.accessToken = user.accessToken
         let credentialCanceller = service.createCredential(providerID: provider.id, fields: fields, appURI: appURI, completion: { result in
             do {
                 let credential = try result.get()
@@ -100,7 +98,6 @@ public final class CredentialContext {
     /// - Parameter completion: The block to execute when the call is completed.
     /// - Parameter result: A result that either contain a list of the user credentials or an error if the fetch failed.
     public func fetchCredentials(completion: @escaping (_ result: Result<[Credential], Error>) -> Void) -> RetryCancellable? {
-        service.accessToken = user.accessToken
         let fetchCredentials = service.credentials { result in
             do {
                 let credentials = try result.get()

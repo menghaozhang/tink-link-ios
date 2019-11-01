@@ -3,13 +3,17 @@ import UIKit
 
 final class FinishedCredentialUpdatedViewController: UIViewController {
     private let credential: Credential
+    private let user: User
     private var activityIndicator: UIActivityIndicatorView?
     private var authenticationResultLabel: UILabel?
-    private var authorizationContext: AuthorizationContext?
+    private var authorizationContext: AuthorizationContext
     private var retryCancellable: RetryCancellable?
 
-    init(credential: Credential) {
+    init(credential: Credential, user: User) {
         self.credential = credential
+        self.user = user
+        self.authorizationContext = AuthorizationContext(user: user)
+
         super.init(nibName: nil, bundle: nil)
         title = "Success!"
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
@@ -60,10 +64,6 @@ final class FinishedCredentialUpdatedViewController: UIViewController {
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
 
-        if let user = TinkLinkUser.shared.user {
-            authorizationContext = AuthorizationContext(user: user)
-        }
-
         authorize()
     }
 
@@ -78,7 +78,7 @@ final class FinishedCredentialUpdatedViewController: UIViewController {
             TinkLink.Scope.User.read,
             TinkLink.Scope.Transactions.read
         ])
-        retryCancellable = authorizationContext?.authorize(scope: scope) { [weak self] (result) in
+        retryCancellable = authorizationContext.authorize(scope: scope) { [weak self] (result) in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 self.activityIndicator?.stopAnimating()
