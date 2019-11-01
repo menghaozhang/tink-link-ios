@@ -13,7 +13,7 @@ public final class CredentialContext {
     /// - Parameter user: `User` that will be used for adding credentials with the Tink API.
     public init(tinkLink: TinkLink = .shared, user: User) {
         self.tinkLink = tinkLink
-        self.service = CredentialService(tinkLink: tinkLink)
+        self.service = CredentialService(tinkLink: tinkLink, accessToken: user.accessToken)
         service.accessToken = user.accessToken
         addStoreObservers()
     }
@@ -32,6 +32,15 @@ public final class CredentialContext {
                 )
             }
         }
+    }
+
+    private func removeObservers() {
+        credentialThirdPartyCallbackObserver = nil
+    }
+
+
+    deinit {
+        removeObservers()
     }
 
     /// Adds a credential for the user.

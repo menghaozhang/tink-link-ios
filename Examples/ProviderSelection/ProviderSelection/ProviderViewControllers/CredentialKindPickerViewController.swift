@@ -6,10 +6,10 @@ final class CredentialKindPickerViewController: UITableViewController {
     var credentialKindNodes: [ProviderTree.CredentialKindNode] = []
     private let user: User
 
-    init(style: UITableView.Style, user: User) {
+    init(user: User) {
         self.user = user
 
-        super.init(style: style)
+        super.init(style: .plain)
     }
 
     required init?(coder: NSCoder) {

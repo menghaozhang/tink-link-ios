@@ -6,10 +6,10 @@ final class FinancialInstitutionPickerViewController: UITableViewController {
     var financialInstitutionNodes: [ProviderTree.FinancialInstitutionNode] = []
     private let user: User
 
-    init(style: UITableView.Style, user: User) {
+    init(user: User) {
         self.user = user
 
-        super.init(style: style)
+        super.init(style: .plain)
     }
 
     required init?(coder: NSCoder) {
@@ -61,14 +61,14 @@ extension FinancialInstitutionPickerViewController {
 
 extension FinancialInstitutionPickerViewController {
     func showAccessTypePicker(for accessTypeNodes: [ProviderTree.AccessTypeNode], title: String?) {
-        let viewController = AccessTypePickerViewController(style: .plain, user: user)
+        let viewController = AccessTypePickerViewController(user: user)
         viewController.title = title
         viewController.accessTypeNodes = accessTypeNodes
         show(viewController, sender: nil)
     }
 
     func showCredentialKindPicker(for credentialKindNodes: [ProviderTree.CredentialKindNode], title: String?) {
-        let viewController = CredentialKindPickerViewController(style: .plain, user: user)
+        let viewController = CredentialKindPickerViewController(user: user)
         viewController.title = title
         viewController.credentialKindNodes = credentialKindNodes
         show(viewController, sender: nil)
