@@ -9,6 +9,6 @@ public struct User {
     /// This is used by TinkLink when creating an anonymous user and when fetching providers.
     let market: Market
 
-    /// The locale to use.
+    /// The locale with which the user was created.
     let locale: Locale
 }
