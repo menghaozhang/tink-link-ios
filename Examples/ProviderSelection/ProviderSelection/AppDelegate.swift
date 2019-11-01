@@ -6,7 +6,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let configuration = TinkLink.Configuration(clientID: <#T##String#>, redirectURI: <#URL#>, environment: .production, market: Market(code: "SE"))
+        let configuration = TinkLink.Configuration(clientID: <#T##String#>, redirectURI: URL(string: "http://localhost:3000/callback")!, environment: .production, market: Market(code: "SE"))
         TinkLink.configure(with: configuration)
         window = UIWindow(frame: UIScreen.main.bounds)
         let providerListViewController = ProviderListViewController(style: .plain)
