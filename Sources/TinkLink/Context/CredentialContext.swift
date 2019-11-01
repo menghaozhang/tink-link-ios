@@ -34,6 +34,15 @@ public final class CredentialContext {
         }
     }
 
+    private func removeObservers() {
+        credentialThirdPartyCallbackObserver = nil
+    }
+
+
+    deinit {
+        removeObservers()
+    }
+
     /// Adds a credential for the user.
     ///
     /// You need to handle status changes in `progressHandler` to successfuly add a credential for some providers.
