@@ -17,7 +17,7 @@ public final class UserContext {
     /// - Parameter market: Register a `Market` for creating the user, will use the default market if nothing is provided.
     /// - Parameter locale: Register a `Locale` for creating the user, will use the default locale in TinkLink if nothing is provided.
     /// - Parameter completion: A result representing either a user info object or an error.
-    public func createUser(for market: Market, locale: Locale = TinkLink.defaultLocale, completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {
+    public func createTemporaryUser(for market: Market, locale: Locale = TinkLink.defaultLocale, completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {
         if retryCancellable == nil {
             retryCancellable = userService.createAnonymous(market: market, locale: locale) { [weak self] result in
                 guard let self = self else { return }
@@ -31,5 +31,30 @@ public final class UserContext {
             }
         }
         return retryCancellable
+    }
+
+    public func authenticateUser(authorizationCode: AuthorizationCode, completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {
+        if retryCancellable == nil {
+            retryCancellable = userService.authenticate(code: authorizationCode, completion: { result in
+                do {
+                    let authenticateResponse = try result.get()
+                    // TODO: how to get Market and Locale?
+                    let accessToken = authenticateResponse.accessToken
+                    let user = User(accessToken: accessToken, market: .init(code: "SE"), locale: TinkLink.defaultLocale)
+                    completion(.success(user))
+                } catch {
+                    completion(.failure(error))
+                }
+            })
+        }
+        return retryCancellable
+    }
+
+    public func authenticateUser(accessToken: String, completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {
+        let accessToken = AccessToken(accessToken)
+        // TODO: how to get Market and Locale?
+        let user = User(accessToken: accessToken, market: .init(code: "SE"), locale: TinkLink.defaultLocale)
+        completion(.success(user))
+        return nil
     }
 }

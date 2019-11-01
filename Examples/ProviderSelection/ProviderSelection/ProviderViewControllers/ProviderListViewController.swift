@@ -51,7 +51,7 @@ extension ProviderListViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        userCancellable = userContext.createUser(for: Market(code: "SE"), locale: TinkLink.defaultLocale) { [weak self] result in
+        userCancellable = userContext.createTemporaryUser(for: Market(code: "SE"), locale: TinkLink.defaultLocale) { [weak self] result in
             do {
                 let user = try result.get()
                 self?.user = user
