@@ -6,10 +6,10 @@ final class AccessTypePickerViewController: UITableViewController {
     var accessTypeNodes: [ProviderTree.AccessTypeNode] = []
     private let user: User
 
-    init(style: UITableView.Style, user: User) {
+    init(user: User) {
         self.user = user
 
-        super.init(style: style)
+        super.init(style: .plain)
     }
 
     required init?(coder: NSCoder) {
@@ -59,7 +59,7 @@ extension AccessTypePickerViewController {
 
 extension AccessTypePickerViewController {
     func showCredentialKindPicker(for credentialKindNodes: [ProviderTree.CredentialKindNode]) {
-        let viewController = CredentialKindPickerViewController(style: .plain, user: user)
+        let viewController = CredentialKindPickerViewController(user: user)
         viewController.credentialKindNodes = credentialKindNodes
         show(viewController, sender: nil)
     }

@@ -115,7 +115,7 @@ extension ProviderListViewController {
 extension ProviderListViewController {
     func showFinancialInstitution(for financialInstitutionNodes: [ProviderTree.FinancialInstitutionNode], title: String?) {
         guard let user = user else { return }
-        let viewController = FinancialInstitutionPickerViewController(style: .plain, user: user)
+        let viewController = FinancialInstitutionPickerViewController(user: user)
         viewController.title = title
         viewController.financialInstitutionNodes = financialInstitutionNodes
         show(viewController, sender: nil)
@@ -123,7 +123,7 @@ extension ProviderListViewController {
 
     func showAccessTypePicker(for accessTypeNodes: [ProviderTree.AccessTypeNode], title: String?) {
         guard let user = user else { return }
-        let viewController = AccessTypePickerViewController(style: .plain, user: user)
+        let viewController = AccessTypePickerViewController(user: user)
         viewController.title = title
         viewController.accessTypeNodes = accessTypeNodes
         show(viewController, sender: nil)
@@ -131,7 +131,7 @@ extension ProviderListViewController {
 
     func showCredentialKindPicker(for credentialKindNodes: [ProviderTree.CredentialKindNode]) {
         guard let user = user else { return }
-        let viewController = CredentialKindPickerViewController(style: .plain, user: user)
+        let viewController = CredentialKindPickerViewController(user: user)
         viewController.credentialKindNodes = credentialKindNodes
         show(viewController, sender: nil)
     }

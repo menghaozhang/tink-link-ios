@@ -12,8 +12,7 @@ public final class AuthorizationContext {
     /// - Parameter user: `User` that will be used for authorizing scope with the Tink API.
     public init(tinkLink: TinkLink = .shared, user: User) {
         self.tinkLink = tinkLink
-        self.service = AuthenticationService(tinkLink: tinkLink)
-        service.accessToken = user.accessToken
+        self.service = AuthenticationService(tinkLink: tinkLink, accessToken: user.accessToken)
     }
 
     /// Creates an authorization code with the requested scopes for the current user

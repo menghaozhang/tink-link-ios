@@ -6,7 +6,7 @@ final class FinishedCredentialUpdatedViewController: UIViewController {
     private let user: User
     private var activityIndicator: UIActivityIndicatorView?
     private var authenticationResultLabel: UILabel?
-    private var authorizationContext: AuthorizationContext
+    private let authorizationContext: AuthorizationContext
     private var retryCancellable: RetryCancellable?
 
     init(credential: Credential, user: User) {

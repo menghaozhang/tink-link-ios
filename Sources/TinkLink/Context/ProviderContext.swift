@@ -36,8 +36,7 @@ public final class ProviderContext {
     public init(tinkLink: TinkLink = .shared, user: User) {
         self.user = user
         self.tinkLink = tinkLink
-        self.service = ProviderService(tinkLink: tinkLink)
-        service.accessToken = user.accessToken
+        self.service = ProviderService(tinkLink: tinkLink, accessToken: user.accessToken)
     }
 
     /// Fetches providers matching the provided attributes.

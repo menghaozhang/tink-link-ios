@@ -4,10 +4,10 @@ import UIKit
 
 /// Example of how to use the provider field specification to add credential
 final class AddCredentialViewController: UITableViewController {
-    var credentialContext: CredentialContext
     let provider: Provider
 
     private let user: User
+    private let credentialContext: CredentialContext
     private var form: Form
     private var formError: Form.ValidationError? {
         didSet {
