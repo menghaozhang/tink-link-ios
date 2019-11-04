@@ -1,4 +1,5 @@
 steps:
   - name: ':pipeline: Test'
     command: 'make build'
-
+    agents:
+      queue: 'macos'
