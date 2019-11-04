@@ -32,7 +32,7 @@ public final class ProviderContext {
     private let locale: Locale
 
     /// Creates a context to access providers that matches the provided attributes.
-    /// 
+    ///
     /// - Parameter tinkLink: TinkLink instance, will use the shared instance if nothing is provided.
     /// - Parameter user: `User` that will be used for fetching providers with the Tink API.
     public convenience init(tinkLink: TinkLink = .shared, user: User) {
@@ -56,7 +56,7 @@ public final class ProviderContext {
     /// - Parameter attributes: Attributes for providers to fetch
     /// - Parameter completion: A result representing either a list of providers or an error.
     public func fetchProviders(attributes: Attributes = .default, completion: @escaping (Result<[Provider], Error>) -> Void) -> RetryCancellable? {
-        let authenticationCanceller = tinkLink.authenticateIfNeeded(with: userCreationStrategy) { [service, market] (userResult) in
+        let authenticationCanceller = tinkLink.authenticateIfNeeded(with: userCreationStrategy) { [service, market] userResult in
             do {
                 let user = try userResult.get()
                 service.accessToken = user.accessToken

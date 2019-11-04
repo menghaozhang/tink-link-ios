@@ -38,13 +38,13 @@ public final class AuthorizationContext {
     public func authorize(scope: TinkLink.Scope, completion: @escaping (_ result: Result<AuthorizationCode, Error>) -> Void) -> RetryCancellable? {
         let redirectURI = tinkLink.configuration.redirectURI
 
-        let authenticationCanceller = tinkLink.authenticateIfNeeded(with: userCreationStrategy) { [service] (userResult) in
+        let authenticationCanceller = tinkLink.authenticateIfNeeded(with: userCreationStrategy) { [service] userResult in
             do {
                 let user = try userResult.get()
                 service.accessToken = user.accessToken
 
-                let fetchCanceller = service.authorize(redirectURI: redirectURI, scope: scope) { (result) in
-                    completion(result.map({ $0.code }))
+                let fetchCanceller = service.authorize(redirectURI: redirectURI, scope: scope) { result in
+                    completion(result.map { $0.code })
                 }
                 return fetchCanceller
             } catch {

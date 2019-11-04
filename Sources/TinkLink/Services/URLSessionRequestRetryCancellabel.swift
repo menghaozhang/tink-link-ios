@@ -39,11 +39,13 @@ class URLSessionRequestRetryCancellable: RetryCancellable {
     }
 
     // MARK: - Cancellable
+
     func cancel() {
         task?.cancel()
     }
 
     // MARK: - Retriable
+
     func retry() {
         start()
     }

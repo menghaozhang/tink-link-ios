@@ -77,7 +77,7 @@ public final class CredentialContext {
     }
 
     private func addCredentialAndAuthenticateIfNeeded(for provider: Provider, fields: [String: String], appURI: URL, completion: @escaping (Result<Credential, Error>) -> Void) -> RetryCancellable? {
-        let authenticationCanceller = tinkLink.authenticateIfNeeded(with: userCreationStrategy) { [service] (userResult) in
+        let authenticationCanceller = tinkLink.authenticateIfNeeded(with: userCreationStrategy) { [service] userResult in
             do {
                 let user = try userResult.get()
                 service.accessToken = user.accessToken
@@ -102,7 +102,7 @@ public final class CredentialContext {
     /// - Parameter completion: The block to execute when the call is completed.
     /// - Parameter result: A result that either contain a list of the user credentials or an error if the fetch failed.
     public func fetchCredentials(completion: @escaping (_ result: Result<[Credential], Error>) -> Void) -> RetryCancellable? {
-        let authenticationCanceller = tinkLink.authenticateIfNeeded(with: userCreationStrategy) { [service] (userResult) in
+        let authenticationCanceller = tinkLink.authenticateIfNeeded(with: userCreationStrategy) { [service] userResult in
             do {
                 let user = try userResult.get()
                 service.accessToken = user.accessToken
