@@ -1,4 +1,4 @@
-VERSION = 0.1.0
+VERSION = $(shell egrep -o "MARKETING_VERSION = ([0-9.]+)" TinkLink.xcodeproj/project.pbxproj | head -n 1 | cut -d " " -f 3)
 
 all:
 
