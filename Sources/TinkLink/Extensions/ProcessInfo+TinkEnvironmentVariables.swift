@@ -16,10 +16,6 @@ extension ProcessInfo {
         return Environment.custom(grpcURL: grpcEndpoint, restURL: restEndpoint)
     }
 
-    var tinkDeviceID: String? {
-        return environment["TINK_DEVICE_ID"]
-    }
-
     var tinkGrpcCertificate: String? {
         return environment["TINK_GRPC_CERTIFICATE"]
     }
