@@ -4,16 +4,15 @@ This example project shows how to make a simple integration with Tink using Tink
 
 ## Prerequisites
 
-1. Follow the [getting started guide](https://docs.tink.com/resources/getting-started/set-up-your-account) to create your developer account and retrieve your Client ID.
-2. Register the Redirect URI for your app (e.g. `myapp://callback`) in the list of allowed redirect URIs.
-Note: The `TinkLink.Configuration` has been prefilled with `link-demo://`, you need add the deeplink  `link-demo://` at [TinkLink Console](`https://console.tink.com`)  as redirectURI. This redirectURI should be the same as the deep link in the info.plist (link-demo://).
+1. Create your developer account at [Tink Console](https://console.tink.com)
+1. Follow the [getting started guide](https://docs.tink.com/resources/getting-started/set-up-your-account) to retrieve your `client_id` and `client_secret`
+1. Add the custom URL scheme for this app (`link-demo://`) to the [list of redirect URIs under your app's settings](https://console.tink.com/overview)
 
 ## Getting started
 
 1. To run the example project, you will need to set it up using [Carthage](https://github.com/Carthage/Carthage#quick-start). 
 1. In the example app directory, setup all the dependencies by running `carthage bootstrap --platform iOS`.
 1. Find the `TinkLink.framework` provided by Tink and move it to the generated `Carthage/Build/iOS/` folder.
-1. Drag the built `.framework` binaries (TinkLink, SwiftyMarkdown, SwiftProtobuf, BoringSSL, CgRPC and SwiftGRPC) from `Carthage/Build/iOS` into the _Linked Binary With Libraries_ section on your application targets’ _Build Phases_ tab. Please select `Do Not Embed`
 
 After that you need to open `AppDelegate.swift` and add your client id and redirect uri to the `TinkLink.Configuration` initializer.
 
