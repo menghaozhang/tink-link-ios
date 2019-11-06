@@ -3,9 +3,12 @@ import UIKit
 
 /// Example of how to use the provider grouped by names
 final class ProviderListViewController: UITableViewController {
-    private let providerContext = ProviderContext()
+    private var providerContext: ProviderContext?
+    private let userContext = UserContext()
     private var providerCancellable: RetryCancellable?
-
+    private var userCancellable: RetryCancellable?
+    private var user: User?
+    
     private let searchController = UISearchController(searchResultsController: nil)
 
     private var originalFinancialInstitutionGroupNodes: [ProviderTree.FinancialInstitutionGroupNode] = []
@@ -26,7 +29,7 @@ final class ProviderListViewController: UITableViewController {
 
     private func fetchProviders() {
         let attributes = ProviderContext.Attributes(capabilities: .all, kinds: .all, accessTypes: .all)
-        providerCancellable = providerContext.fetchProviders(attributes: attributes, completion: { [weak self] result in
+        providerCancellable = providerContext?.fetchProviders(attributes: attributes, completion: { [weak self] result in
             DispatchQueue.main.async {
                 do {
                     let providers = try result.get()
@@ -48,6 +51,19 @@ extension ProviderListViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        userCancellable = userContext.createUser(for: Market(code: "SE"), locale: TinkLink.defaultLocale) { [weak self] result in
+            do {
+                let user = try result.get()
+                self?.user = user
+                self?.providerContext = ProviderContext(user: user)
+                self?.fetchProviders()
+                self?.userCancellable = nil
+            } catch {
+                // TODO: Handle Error
+                print(error.localizedDescription)
+            }
+        }
+
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Search"
         searchController.searchResultsUpdater = self
@@ -61,8 +77,6 @@ extension ProviderListViewController {
 
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.register(TextFieldCell.self, forCellReuseIdentifier: TextFieldCell.reuseIdentifier)
-
-        fetchProviders()
     }
 }
 
@@ -100,27 +114,31 @@ extension ProviderListViewController {
 
 extension ProviderListViewController {
     func showFinancialInstitution(for financialInstitutionNodes: [ProviderTree.FinancialInstitutionNode], title: String?) {
-        let viewController = FinancialInstitutionPickerViewController(style: .plain)
+        guard let user = user else { return }
+        let viewController = FinancialInstitutionPickerViewController(user: user)
         viewController.title = title
         viewController.financialInstitutionNodes = financialInstitutionNodes
         show(viewController, sender: nil)
     }
 
     func showAccessTypePicker(for accessTypeNodes: [ProviderTree.AccessTypeNode], title: String?) {
-        let viewController = AccessTypePickerViewController(style: .plain)
+        guard let user = user else { return }
+        let viewController = AccessTypePickerViewController(user: user)
         viewController.title = title
         viewController.accessTypeNodes = accessTypeNodes
         show(viewController, sender: nil)
     }
 
     func showCredentialKindPicker(for credentialKindNodes: [ProviderTree.CredentialKindNode]) {
-        let viewController = CredentialKindPickerViewController(style: .plain)
+        guard let user = user else { return }
+        let viewController = CredentialKindPickerViewController(user: user)
         viewController.credentialKindNodes = credentialKindNodes
         show(viewController, sender: nil)
     }
 
     func showAddCredential(for provider: Provider) {
-        let addCredentialViewController = AddCredentialViewController(provider: provider)
+        guard let user = user else { return }
+        let addCredentialViewController = AddCredentialViewController(provider: provider, user: user)
         show(addCredentialViewController, sender: nil)
     }
 }

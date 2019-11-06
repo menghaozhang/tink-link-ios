@@ -4,17 +4,13 @@ import SwiftGRPC
 final class Client {
     let channel: Channel
     var metadata = Metadata()
-    var market: Market
-    var locale: Locale
     var restURL: URL
     var restCertificate: Data?
 
     private let clientKey = "e0e2c59be49f40a2ac3f21ae6893cbe7"
 
-    init(environment: Environment, clientID: String, userAgent: String? = nil, grpcCertificate: Data? = nil, restCertificate: Data? = nil, market: Market, locale: Locale) {
+    init(environment: Environment, clientID: String, userAgent: String? = nil, grpcCertificate: Data? = nil, restCertificate: Data? = nil) {
         var arguments: [Channel.Argument] = []
-        self.market = market
-        self.locale = locale
         self.restURL = environment.restURL
         self.restCertificate = restCertificate
 
@@ -45,9 +41,7 @@ extension Client {
             environment: configuration.environment,
             clientID: configuration.clientID,
             grpcCertificate: configuration.grpcCertificate,
-            restCertificate: configuration.restCertificate,
-            market: configuration.market,
-            locale: configuration.locale
+            restCertificate: configuration.restCertificate
         )
     }
 }
