@@ -1,6 +1,6 @@
 import Foundation
 #if os(iOS)
-import UIKit
+    import UIKit
 #endif
 
 /// A task that handles opening third party apps.
@@ -58,40 +58,40 @@ public class ThirdPartyAppAuthenticationTask {
     }
 
     #if os(iOS)
-    /// Tries to open the third party app.
-    ///
-    /// - Parameter application: The object that controls and coordinates your app. Defaults to the shared instance.
-    public func openThirdPartyApp(with application: UIApplication = .shared) {
-        guard let url = thirdPartyAppAuthentication.deepLinkURL else {
-            completionHandler(.failure(Error.deeplinkURLNotFound))
-            return
-        }
+        /// Tries to open the third party app.
+        ///
+        /// - Parameter application: The object that controls and coordinates your app. Defaults to the shared instance.
+        public func openThirdPartyApp(with application: UIApplication = .shared) {
+            guard let url = thirdPartyAppAuthentication.deepLinkURL else {
+                completionHandler(.failure(Error.deeplinkURLNotFound))
+                return
+            }
 
-        let downloadRequiredError = Error.downloadRequired(
-            title: thirdPartyAppAuthentication.downloadTitle,
-            message: thirdPartyAppAuthentication.downloadMessage,
-            appStoreURL: thirdPartyAppAuthentication.appStoreURL
-        )
+            let downloadRequiredError = Error.downloadRequired(
+                title: thirdPartyAppAuthentication.downloadTitle,
+                message: thirdPartyAppAuthentication.downloadMessage,
+                appStoreURL: thirdPartyAppAuthentication.appStoreURL
+            )
 
-        guard application.canOpenURL(url) else {
-            completionHandler(.failure(downloadRequiredError))
-            return
-        }
+            guard application.canOpenURL(url) else {
+                completionHandler(.failure(downloadRequiredError))
+                return
+            }
 
-        application.open(url, options: [.universalLinksOnly: NSNumber(value: true)]) { (didOpenUniversalLink) in
-            if didOpenUniversalLink {
-                self.completionHandler(.success(()))
-            } else {
-                application.open(url, options: [:], completionHandler: { (didOpen) in
-                    if didOpen {
-                        self.completionHandler(.success(()))
-                    } else {
-                        self.completionHandler(.failure(downloadRequiredError))
-                    }
-                })
+            application.open(url, options: [.universalLinksOnly: NSNumber(value: true)]) { didOpenUniversalLink in
+                if didOpenUniversalLink {
+                    self.completionHandler(.success(()))
+                } else {
+                    application.open(url, options: [:], completionHandler: { didOpen in
+                        if didOpen {
+                            self.completionHandler(.success(()))
+                        } else {
+                            self.completionHandler(.failure(downloadRequiredError))
+                        }
+                    })
+                }
             }
         }
-    }
     #endif
 
     /// Tells the task to stop waiting for third party app authentication.

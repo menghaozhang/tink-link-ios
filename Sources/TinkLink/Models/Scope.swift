@@ -12,7 +12,7 @@ extension TinkLink {
             precondition(!scopes.isEmpty, "Tinklink scope is empty.")
             self.scopes = scopes
 
-            description = scopes.map({ $0.description }).joined(separator: ",")
+            self.description = scopes.map { $0.description }.joined(separator: ",")
         }
     }
 }
@@ -28,6 +28,7 @@ extension TinkLink.Scope {
         public var description: String {
             return Self.name + ":" + access.rawValue
         }
+
         private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
@@ -39,6 +40,7 @@ extension TinkLink.Scope {
         public var description: String {
             return Self.name + ":" + access.rawValue
         }
+
         private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
@@ -49,6 +51,7 @@ extension TinkLink.Scope {
         public var description: String {
             return Self.name + ":" + access.rawValue
         }
+
         private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
@@ -61,6 +64,7 @@ extension TinkLink.Scope {
         public var description: String {
             return Self.name + ":" + access.rawValue
         }
+
         private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
@@ -72,6 +76,7 @@ extension TinkLink.Scope {
         public var description: String {
             return Self.name + ":" + access.rawValue
         }
+
         private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
@@ -82,6 +87,7 @@ extension TinkLink.Scope {
         public var description: String {
             return Self.name + ":" + access.rawValue
         }
+
         private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
@@ -92,6 +98,7 @@ extension TinkLink.Scope {
         public var description: String {
             return Self.name + ":" + access.rawValue
         }
+
         private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
@@ -103,6 +110,7 @@ extension TinkLink.Scope {
         public var description: String {
             return Self.name + ":" + access.rawValue
         }
+
         private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
@@ -115,6 +123,7 @@ extension TinkLink.Scope {
         public var description: String {
             return Self.name + ":" + access.rawValue
         }
+
         private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
@@ -126,6 +135,7 @@ extension TinkLink.Scope {
         public var description: String {
             return Self.name + ":" + access.rawValue
         }
+
         private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
@@ -137,6 +147,7 @@ extension TinkLink.Scope {
         public var description: String {
             return Self.name + ":" + access.rawValue
         }
+
         private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
@@ -149,6 +160,7 @@ extension TinkLink.Scope {
         public var description: String {
             return Self.name + ":" + access.rawValue
         }
+
         private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
@@ -160,6 +172,7 @@ extension TinkLink.Scope {
         public var description: String {
             return Self.name + ":" + access.rawValue
         }
+
         private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
@@ -172,6 +185,7 @@ extension TinkLink.Scope {
         public var description: String {
             return Self.name + ":" + access.rawValue
         }
+
         private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
@@ -182,6 +196,7 @@ extension TinkLink.Scope {
         public var description: String {
             return Self.name + ":" + access.rawValue
         }
+
         private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
@@ -193,6 +208,7 @@ extension TinkLink.Scope {
         public var description: String {
             return Self.name + ":" + access.rawValue
         }
+
         private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
@@ -204,6 +220,7 @@ extension TinkLink.Scope {
         public var description: String {
             return Self.name + ":" + access.rawValue
         }
+
         private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
@@ -215,6 +232,7 @@ extension TinkLink.Scope {
         public var description: String {
             return Self.name + ":" + access.rawValue
         }
+
         private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
@@ -225,6 +243,7 @@ extension TinkLink.Scope {
         public var description: String {
             return Self.name + ":" + access.rawValue
         }
+
         private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
@@ -236,6 +255,7 @@ extension TinkLink.Scope {
         public var description: String {
             return Self.name + ":" + access.rawValue
         }
+
         private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
@@ -248,6 +268,7 @@ extension TinkLink.Scope {
         public var description: String {
             return Self.name + ":" + access.rawValue
         }
+
         private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
@@ -260,6 +281,7 @@ extension TinkLink.Scope {
         public var description: String {
             return Self.name + ":" + access.rawValue
         }
+
         private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
@@ -268,5 +290,4 @@ extension TinkLink.Scope {
         public static let delete = Self(access: .delete)
         public static let webHooks = Self(access: .webHooks)
     }
-
 }

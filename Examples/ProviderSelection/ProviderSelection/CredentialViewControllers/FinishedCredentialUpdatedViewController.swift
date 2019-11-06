@@ -74,7 +74,7 @@ final class FinishedCredentialUpdatedViewController: UIViewController {
             TinkLink.Scope.User.read,
             TinkLink.Scope.Transactions.read
         ])
-        retryCancellable = authorizationContext.authorize(scope: scope) { [weak self] (result) in
+        retryCancellable = authorizationContext.authorize(scope: scope) { [weak self] result in
             guard let self = self else { return }
             DispatchQueue.main.async {
                 self.activityIndicator?.stopAnimating()
