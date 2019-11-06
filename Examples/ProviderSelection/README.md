@@ -12,7 +12,7 @@ Note: The `TinkLink.Configuration` has been prefilled with `link-demo://`, you n
 
 1. To run the example project, you need to set it up using Carthage. [Quick start guide for Carthage](https://github.com/Carthage/Carthage#quick-start)
 1. Go to the sample app directory, setup all the dependencies by running `carthage bootstrap --platform iOS` in your terminal.
-1. Find the `TinkLink.framework` provided by Tink, move the `TinkLink.framework` binary to generated `Carthage/Build/iOS/` folder.
+1. Find the `TinkLink.framework` provided by Tink and move it to the generated `Carthage/Build/iOS/` folder.
 1. Drag the built `.framework` binaries (TinkLink, SwiftyMarkdown, SwiftProtobuf, BoringSSL, CgRPC and SwiftGRPC) from `Carthage/Build/iOS` into the _Linked Binary With Libraries_ section on your application targets’ _Build Phases_ tab. Please select `Do Not Embed`
 
 After that you need to open `AppDelegate.swift` and add your client id and redirect uri to the `TinkLink.Configuration` initializer.
