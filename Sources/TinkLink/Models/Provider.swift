@@ -112,6 +112,7 @@ public struct Provider {
         public init(rawValue: Int) {
             self.rawValue = rawValue
         }
+
         /// The provider can perform transfers.
         public static let transfers = Capabilities(rawValue: 1 << 1)
         /// The provider has mortgage aggregation.

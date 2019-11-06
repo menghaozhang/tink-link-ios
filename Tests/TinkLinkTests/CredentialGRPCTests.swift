@@ -1,5 +1,5 @@
-import XCTest
 @testable import TinkLink
+import XCTest
 
 class CredentialGRPCTests: XCTestCase {
     func testCreatedCapabilitiesMapping() {

@@ -1,8 +1,7 @@
-import XCTest
 @testable import TinkLink
+import XCTest
 
 class ConfigurationTests: XCTestCase {
-
     func testConfiguration() {
         let redirectURI = URL(string: "http://my-customer-app.com/authentication")!
         let configuration = TinkLink.Configuration(clientID: "abc", redirectURI: redirectURI)

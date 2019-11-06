@@ -1,5 +1,5 @@
-import TinkLink
 import SwiftyMarkdown
+import TinkLink
 import UIKit
 
 /// Example of how to use the provider field specification to add credential

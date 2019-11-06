@@ -39,11 +39,13 @@ class URLSessionRequestRetryCancellable<T: Decodable, E: Decodable & Error>: Ret
     }
 
     // MARK: - Cancellable
+
     func cancel() {
         task?.cancel()
     }
 
     // MARK: - Retriable
+
     func retry() {
         start()
     }

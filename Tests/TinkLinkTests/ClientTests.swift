@@ -1,6 +1,6 @@
-import XCTest
-@testable import TinkLink
 import SwiftGRPC
+@testable import TinkLink
+import XCTest
 
 class ServiceTests: XCTestCase {
     func testInvalidClient() {

@@ -4,7 +4,7 @@ import Foundation
 public struct User {
     let accessToken: AccessToken
 
-    /// The market to use.
+    /// The market with which the user was created.
     ///
     /// This is used by TinkLink when creating an anonymous user and when fetching providers.
     let market: Market

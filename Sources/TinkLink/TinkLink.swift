@@ -1,6 +1,6 @@
 import Foundation
 #if os(iOS)
-import UIKit
+    import UIKit
 #endif
 
 /// The `TinkLink` class encapsulates a connection to the Tink API.
@@ -63,7 +63,7 @@ public class TinkLink {
     public func open(_ url: URL, userCreationStrategy: UserCreationStrategy = .automaticTemporary, completion: ((Result<Void, Error>) -> Void)? = nil) -> Bool {
         guard let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false),
             urlComponents.scheme == configuration.redirectURI.scheme
-            else { return false }
+        else { return false }
 
         let parameters = Dictionary(grouping: urlComponents.queryItems ?? [], by: { $0.name })
             .compactMapValues { $0.first?.value }
