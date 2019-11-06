@@ -41,19 +41,16 @@ final class Client {
         }
         
         self.clientNetworkMonitor = ClientNetworkMonitor(callback: { [weak self] state in
-            if state.isReachable {
+            switch state.lastChange {
+            case .cellularTechnology, .cellularToWifi, .wifiToCellular:
                 self?.setupChannel()
-            } else {
-                self?.shutdownChannel()
+            default: break
             }
         })
     }
     
-    func shutdownChannel() {
+    private func setupChannel() {
         channel.shutdown()
-    }
-    
-    func setupChannel() {
         if let certificateContents = grpcCertificate?.base64EncodedString() {
             self.channel = Channel(address: grpcURL.absoluteString, certificates: certificateContents, clientCertificates: nil, clientKey: clientKey, arguments: arguments)
         } else {
