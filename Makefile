@@ -2,26 +2,6 @@ VERSION = $(shell egrep -o "MARKETING_VERSION = ([0-9.]+)" TinkLink.xcodeproj/pr
 
 all:
 
-generate:
-	mkdir ./Sources/TinkLink/GRPC/
-	./GRPC/vendor/protoc \
-		--proto_path=./GRPC/proto \
-		--proto_path=./GRPC/third-party \
-		./GRPC/proto/*.proto ./GRPC/third-party/google/type/*.proto \
-		--swift_out=./Sources/TinkLink/GRPC/ \
-		--swiftgrpc_out=./Sources/TinkLink/GRPC/ \
-		--swift_opt=Visibility=Internal \
-		--swiftgrpc_opt=Visibility=Internal,Sync=false,Server=false \
-		--plugin=protoc-gen-swift=./GRPC/vendor/protoc-gen-swift \
-		--plugin=protoc-gen-swiftgrpc=./GRPC/vendor/protoc-gen-swiftgrpc
-
-test:
-	carthage bootstrap --platform iOS
-	xcodebuild -project TinkLink.xcodeproj -scheme TinkLink -destination 'platform=iOS Simulator,name=iPhone 11' test 
-
-clean: 
-	-rm -rf ./Sources/TinkLink/GRPC/
-
 bootstrap:
 ifeq ($(strip $(shell command -v brew 2> /dev/null)),)
 	$(error "`brew` is not available, please install homebrew")
@@ -40,11 +20,18 @@ ifeq ($(strip $(shell command -v bundle 2> /dev/null)),)
 endif
 	bundle install > /dev/null
 
-lint:
-	swiftlint 2> /dev/null
-
-format:
-	swiftformat . 2> /dev/null
+generate:
+	mkdir ./Sources/TinkLink/GRPC/
+	./GRPC/vendor/protoc \
+		--proto_path=./GRPC/proto \
+		--proto_path=./GRPC/third-party \
+		./GRPC/proto/*.proto ./GRPC/third-party/google/type/*.proto \
+		--swift_out=./Sources/TinkLink/GRPC/ \
+		--swiftgrpc_out=./Sources/TinkLink/GRPC/ \
+		--swift_opt=Visibility=Internal \
+		--swiftgrpc_opt=Visibility=Internal,Sync=false,Server=false \
+		--plugin=protoc-gen-swift=./GRPC/vendor/protoc-gen-swift \
+		--plugin=protoc-gen-swiftgrpc=./GRPC/vendor/protoc-gen-swiftgrpc
 
 docs:
 	bundle exec jazzy \
@@ -56,8 +43,21 @@ docs:
 		--module-version $(VERSION) \
 		--build-tool-arguments -scheme,TinkLink \
 		--module TinkLink \
-		--root-url https://tink-link-ios-docs.s3.amazonaws.com/$(VERSION)/ \
 		--output docs
+
+lint:
+	swiftlint 2> /dev/null
+
+format:
+	swiftformat . 2> /dev/null
+
+test:
+	carthage bootstrap --platform iOS
+	xcodebuild -project TinkLink.xcodeproj -scheme TinkLink -destination 'platform=iOS Simulator,name=iPhone 11' test 
+
+clean: 
+	rm -rf ./Sources/TinkLink/GRPC/
+	rm -rf ./docs
 
 release: format lint
 
