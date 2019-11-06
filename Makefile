@@ -14,7 +14,8 @@ generate:
 		--plugin=protoc-gen-swiftgrpc=./GRPC/vendor/protoc-gen-swiftgrpc
 
 test:
-	swift test -Xcc -ISources/BoringSSL/include -Xlinker -lz
+	carthage bootstrap --platform iOS
+	xcodebuild -project TinkLink.xcodeproj -scheme TinkLink -destination 'platform=iOS Simulator,name=iPhone 11' test 
 
 clean: 
 	-rm -rf ./Sources/TinkLink/GRPC/

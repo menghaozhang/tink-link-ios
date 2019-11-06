@@ -11,7 +11,8 @@ let package = Package(
     products: [
         .library(
             name: "TinkLink",
-            targets: ["TinkLink"]),
+            targets: ["TinkLink"]
+        ),
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-protobuf.git", .upToNextMajor(from: "1.5.0")),
@@ -20,9 +21,11 @@ let package = Package(
     targets: [
         .target(
             name: "TinkLink",
-            dependencies: ["SwiftProtobuf", "SwiftGRPC"]),
+            dependencies: ["SwiftProtobuf", "SwiftGRPC"]
+        ),
         .testTarget(
             name: "TinkLinkTests",
-            dependencies: ["TinkLink"]),
+            dependencies: ["TinkLink"]
+        ),
     ]
 )

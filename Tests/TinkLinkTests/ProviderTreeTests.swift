@@ -1,5 +1,5 @@
-import XCTest
 @testable import TinkLink
+import XCTest
 
 class ProviderTreeTests: XCTestCase {
     let nordeaBankID = Provider(
@@ -179,7 +179,6 @@ class ProviderTreeTests: XCTestCase {
             XCTFail()
         }
     }
-
 
     func testGroupDisplayNameGrouping() {
         let providers = [
