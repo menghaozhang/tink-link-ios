@@ -2,17 +2,24 @@ import Foundation
 import SwiftGRPC
 
 final class Client {
-    let channel: Channel
+    var channel: Channel
     var metadata = Metadata()
     var restURL: URL
+    var grpcURL: URL
     var restCertificate: Data?
+    var grpcCertificate: Data?
+    var arguments: [Channel.Argument]
+    
+    var clientNetworkMonitor: ClientNetworkMonitor?
 
     private let clientKey = "e0e2c59be49f40a2ac3f21ae6893cbe7"
 
     init(environment: Environment, clientID: String, userAgent: String? = nil, grpcCertificate: Data? = nil, restCertificate: Data? = nil) {
-        var arguments: [Channel.Argument] = []
+        self.arguments = []
         self.restURL = environment.restURL
+        self.grpcURL = environment.grpcURL
         self.restCertificate = restCertificate
+        self.grpcCertificate = grpcCertificate
 
         arguments.append(.maxReceiveMessageLength(20 * 1024 * 1024))
 
@@ -21,9 +28,9 @@ final class Client {
         }
 
         if let certificateContents = grpcCertificate?.base64EncodedString() {
-            self.channel = Channel(address: environment.grpcURL.absoluteString, certificates: certificateContents, clientCertificates: nil, clientKey: clientKey, arguments: arguments)
+            self.channel = Channel(address: grpcURL.absoluteString, certificates: certificateContents, clientCertificates: nil, clientKey: clientKey, arguments: arguments)
         } else {
-            self.channel = Channel(address: environment.grpcURL.absoluteString, secure: true, arguments: arguments)
+            self.channel = Channel(address: grpcURL.absoluteString, secure: true, arguments: arguments)
         }
 
         do {
@@ -31,6 +38,23 @@ final class Client {
             try metadata.add(key: Metadata.HeaderKey.clientKey.key, value: clientKey)
         } catch {
             assertionFailure(error.localizedDescription)
+        }
+        
+        self.clientNetworkMonitor = ClientNetworkMonitor(callback: { [weak self] state in
+            switch state.lastChange {
+            case .cellularTechnology, .cellularToWifi, .wifiToCellular:
+                self?.setupChannel()
+            default: break
+            }
+        })
+    }
+    
+    private func setupChannel() {
+        channel.shutdown()
+        if let certificateContents = grpcCertificate?.base64EncodedString() {
+            self.channel = Channel(address: grpcURL.absoluteString, certificates: certificateContents, clientCertificates: nil, clientKey: clientKey, arguments: arguments)
+        } else {
+            self.channel = Channel(address: grpcURL.absoluteString, secure: true, arguments: arguments)
         }
     }
 }
