@@ -17,6 +17,7 @@ public final class UserContext {
     /// - Parameter market: Register a `Market` for creating the user, will use the default market if nothing is provided.
     /// - Parameter locale: Register a `Locale` for creating the user, will use the default locale in TinkLink if nothing is provided.
     /// - Parameter completion: A result representing either a user info object or an error.
+    @discardableResult
     public func createUser(for market: Market, locale: Locale = TinkLink.defaultLocale, completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {
         if retryCancellable == nil {
             retryCancellable = userService.createAnonymous(market: market, locale: locale) { [weak self] result in
