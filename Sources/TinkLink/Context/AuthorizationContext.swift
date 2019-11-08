@@ -27,9 +27,13 @@ public final class AuthorizationContext {
     @discardableResult
     public func authorize(scope: TinkLink.Scope, completion: @escaping (_ result: Result<AuthorizationCode, Error>) -> Void) -> RetryCancellable? {
         let redirectURI = tinkLink.configuration.redirectURI
-        let fetchCanceller = service.authorize(redirectURI: redirectURI, scope: scope) { (result) in
-            completion(result.map({ $0.code }))
+        if retryCancellable == nil {
+            retryCancellable = service.authorize(redirectURI: redirectURI, scope: scope) { [weak self] result in
+                completion(result.map({ $0.code }))
+                self?.retryCancellable = nil
+            }
         }
-        return fetchCanceller
+
+        return retryCancellable
     }
 }
