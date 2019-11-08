@@ -27,6 +27,7 @@ public final class ProviderContext {
 
     private let tinkLink: TinkLink
     private let service: ProviderService
+    private var retryCancellable: RetryCancellable?
     private let user: User
 
     /// Creates a context to access providers that matches the provided attributes.
@@ -45,15 +46,19 @@ public final class ProviderContext {
     /// - Parameter completion: A result representing either a list of providers or an error.
     @discardableResult
     public func fetchProviders(attributes: Attributes = .default, completion: @escaping (Result<[Provider], Error>) -> Void) -> RetryCancellable? {
-        let fetchCancellable = service.providers(market: user.market, capabilities: attributes.capabilities, includeTestProviders: attributes.kinds.contains(.test)) { result in
-            do {
-                let fetchedProviders = try result.get()
-                let filteredProviders = fetchedProviders.filter { attributes.accessTypes.contains($0.accessType) && attributes.kinds.contains($0.kind) }
-                completion(.success(filteredProviders))
-            } catch {
-                completion(.failure(error))
+        if retryCancellable == nil {
+            retryCancellable = service.providers(market: user.market, capabilities: attributes.capabilities, includeTestProviders: attributes.kinds.contains(.test)) { [weak self] result in
+                do {
+                    let fetchedProviders = try result.get()
+                    let filteredProviders = fetchedProviders.filter { attributes.accessTypes.contains($0.accessType) && attributes.kinds.contains($0.kind) }
+                    completion(.success(filteredProviders))
+                } catch {
+                    completion(.failure(error))
+                }
+                self?.retryCancellable = nil
             }
         }
-        return fetchCancellable
+
+        return retryCancellable
     }
 }

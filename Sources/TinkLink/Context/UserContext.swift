@@ -29,6 +29,7 @@ public final class UserContext {
                 } catch {
                     completion(.failure(error))
                 }
+                self.retryCancellable = nil
             }
         }
         return retryCancellable

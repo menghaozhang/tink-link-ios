@@ -6,6 +6,7 @@ public final class CredentialContext {
     private let service: CredentialService
     private var credentialThirdPartyCallbackObserver: Any?
     private var thirdPartyCallbackCanceller: RetryCancellable?
+    private var fetchCredentialsCanceller: RetryCancellable?
 
     /// Creates a new CredentialContext for the given TinkLink instance.
     ///
@@ -109,16 +110,20 @@ public final class CredentialContext {
     /// - Parameter result: A result that either contain a list of the user credentials or an error if the fetch failed.
     @discardableResult
     public func fetchCredentials(completion: @escaping (_ result: Result<[Credential], Error>) -> Void) -> RetryCancellable? {
-        let fetchCredentials = service.credentials { result in
-            do {
-                let credentials = try result.get()
-                let storedCredentials = credentials.sorted(by: { $0.id.value < $1.id.value })
-                completion(.success(storedCredentials))
-            } catch {
-                completion(.failure(error))
+        if fetchCredentialsCanceller == nil {
+            fetchCredentialsCanceller = service.credentials { [weak self] result in
+                do {
+                    let credentials = try result.get()
+                    let storedCredentials = credentials.sorted(by: { $0.id.value < $1.id.value })
+                    completion(.success(storedCredentials))
+                } catch {
+                    completion(.failure(error))
+                }
+                self?.fetchCredentialsCanceller = nil
             }
         }
-        return fetchCredentials
+
+        return fetchCredentialsCanceller
     }
 }
 
