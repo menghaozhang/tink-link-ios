@@ -15,12 +15,7 @@ final class Client {
     private let clientKey = "e0e2c59be49f40a2ac3f21ae6893cbe7"
     let tinkLinkName = "Tink Link iOS"
     var tinkLinkVersion: String {
-        let tinkLinkBundle = Bundle.allFrameworks.first { bundle -> Bool in
-            // bundleIdentifier will be different when using Carthage and CocoaPods, but will all contain TinkLink
-            bundle.bundleIdentifier?.contains("TinkLink") ?? false
-        }
-        if let version = tinkLinkBundle?.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
-            print(version)
+        if let version = Bundle(for: Client.self).object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
             return version
         } else {
             return "0.1.0"
