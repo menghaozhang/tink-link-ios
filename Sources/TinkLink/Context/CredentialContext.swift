@@ -109,7 +109,7 @@ public final class CredentialContext {
     /// - Parameter result: A result that either contain a list of the user credentials or an error if the fetch failed.
     @discardableResult
     public func fetchCredentials(completion: @escaping (_ result: Result<[Credential], Error>) -> Void) -> RetryCancellable? {
-        let fetchCredentialsCanceller = service.credentials { [weak self] result in
+        let fetchCredentialsCanceller = service.credentials { result in
             do {
                 let credentials = try result.get()
                 let storedCredentials = credentials.sorted(by: { $0.id.value < $1.id.value })
