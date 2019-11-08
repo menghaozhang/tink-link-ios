@@ -19,17 +19,14 @@ public final class UserContext {
     /// - Parameter completion: A result representing either a user info object or an error.
     @discardableResult
     public func createUser(for market: Market, locale: Locale = TinkLink.defaultLocale, completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {
-        if retryCancellable == nil {
-            retryCancellable = userService.createAnonymous(market: market, locale: locale) { [weak self] result in
-                guard let self = self else { return }
-                do {
-                    let accessToken = try result.get()
-                    let user = User(accessToken: accessToken, market: market, locale: locale)
-                    completion(.success(user))
-                } catch {
-                    completion(.failure(error))
-                }
-                self.retryCancellable = nil
+        let retryCancellable = userService.createAnonymous(market: market, locale: locale) { [weak self] result in
+            guard let self = self else { return }
+            do {
+                let accessToken = try result.get()
+                let user = User(accessToken: accessToken, market: market, locale: locale)
+                completion(.success(user))
+            } catch {
+                completion(.failure(error))
             }
         }
         return retryCancellable
