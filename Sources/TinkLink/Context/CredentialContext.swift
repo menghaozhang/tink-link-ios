@@ -92,15 +92,7 @@ public final class CredentialContext {
     }
 
     private func addCredentialAndAuthenticateIfNeeded(for provider: Provider, fields: [String: String], appURI: URL, completion: @escaping (Result<Credential, Error>) -> Void) -> RetryCancellable? {
-        let credentialCanceller = service.createCredential(providerID: provider.id, fields: fields, appURI: appURI, completion: { result in
-            do {
-                let credential = try result.get()
-                completion(.success(credential))
-            } catch {
-                completion(.failure(error))
-            }
-        })
-        return credentialCanceller
+        return service.createCredential(providerID: provider.id, fields: fields, appURI: appURI, completion: completion)
     }
 
     /// Gets the user's credentials.
@@ -117,6 +109,13 @@ public final class CredentialContext {
             }
         }
         return fetchCredentials
+    }
+
+    /// Refresh the user's credentials.
+    /// - Parameter completion: The block to execute when the call is completed.
+    /// - Parameter result: A result that either void when refresh successed or an error if failed.
+    public func refreshCredentials(credentialIDs: [Credential.ID], completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable? {
+        return service.refreshCredentials(credentialIDs: credentialIDs, completion: completion)
     }
 }
 
