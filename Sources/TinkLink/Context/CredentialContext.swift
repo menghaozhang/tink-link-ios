@@ -93,15 +93,7 @@ public final class CredentialContext {
     }
 
     private func addCredentialAndAuthenticateIfNeeded(for provider: Provider, fields: [String: String], appURI: URL, completion: @escaping (Result<Credential, Error>) -> Void) -> RetryCancellable? {
-        let credentialCanceller = service.createCredential(providerID: provider.id, fields: fields, appURI: appURI, completion: { result in
-            do {
-                let credential = try result.get()
-                completion(.success(credential))
-            } catch {
-                completion(.failure(error))
-            }
-        })
-        return credentialCanceller
+        return service.createCredential(providerID: provider.id, fields: fields, appURI: appURI, completion: completion)
     }
 
     /// Gets the user's credentials.
@@ -109,7 +101,7 @@ public final class CredentialContext {
     /// - Parameter result: A result that either contain a list of the user credentials or an error if the fetch failed.
     @discardableResult
     public func fetchCredentials(completion: @escaping (_ result: Result<[Credential], Error>) -> Void) -> RetryCancellable? {
-        let fetchCredentials = service.credentials { result in
+        return service.credentials { result in
             do {
                 let credentials = try result.get()
                 let storedCredentials = credentials.sorted(by: { $0.id.value < $1.id.value })
@@ -118,7 +110,6 @@ public final class CredentialContext {
                 completion(.failure(error))
             }
         }
-        return fetchCredentials
     }
 }
 

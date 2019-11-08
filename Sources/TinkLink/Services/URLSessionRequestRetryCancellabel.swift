@@ -14,28 +14,24 @@ class URLSessionRequestRetryCancellable: RetryCancellable {
     }
 
     func start() {
-        let task = session.dataTask(with: request) { [weak self] data, _, error in
-            self?.handle(data: data, error: error)
+        let task = session.dataTask(with: request) { [completion] data, _, error in
+            if let data = data {
+                do {
+                    let authorizationResponse = try JSONDecoder().decode(AuthorizationResponse.self, from: data)
+                    completion(.success(authorizationResponse))
+                } catch {
+                    let authorizationError = try? JSONDecoder().decode(AuthorizationError.self, from: data)
+                    completion(.failure(authorizationError ?? error))
+                }
+            } else if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.failure(URLError(.unknown)))
+            }
         }
 
         task.resume()
         self.task = task
-    }
-
-    private func handle(data: Data?, error: Error?) {
-        if let data = data {
-            do {
-                let authorizationResponse = try JSONDecoder().decode(AuthorizationResponse.self, from: data)
-                completion(.success(authorizationResponse))
-            } catch {
-                let authorizationError = try? JSONDecoder().decode(AuthorizationError.self, from: data)
-                completion(.failure(authorizationError ?? error))
-            }
-        } else if let error = error {
-            completion(.failure(error))
-        } else {
-            completion(.failure(URLError(.unknown)))
-        }
     }
 
     // MARK: - Cancellable

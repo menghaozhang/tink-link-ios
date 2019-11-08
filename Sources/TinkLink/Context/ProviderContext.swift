@@ -45,7 +45,7 @@ public final class ProviderContext {
     /// - Parameter completion: A result representing either a list of providers or an error.
     @discardableResult
     public func fetchProviders(attributes: Attributes = .default, completion: @escaping (Result<[Provider], Error>) -> Void) -> RetryCancellable? {
-        let fetchCancellable = service.providers(market: user.market, capabilities: attributes.capabilities, includeTestProviders: attributes.kinds.contains(.test)) { result in
+        return service.providers(market: user.market, capabilities: attributes.capabilities, includeTestProviders: attributes.kinds.contains(.test)) { result in
             do {
                 let fetchedProviders = try result.get()
                 let filteredProviders = fetchedProviders.filter { attributes.accessTypes.contains($0.accessType) && attributes.kinds.contains($0.kind) }
@@ -54,6 +54,5 @@ public final class ProviderContext {
                 completion(.failure(error))
             }
         }
-        return fetchCancellable
     }
 }
