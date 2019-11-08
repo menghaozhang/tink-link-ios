@@ -7,6 +7,8 @@ extension Metadata {
         case deviceID = "X-Tink-Device-ID"
         case authorization = "Authorization"
         case oauthClientID = "X-Tink-OAuth-Client-ID"
+        case sdkName = "X-Tink-SDK-Name"
+        case sdkVersion = "X-Tink-SDK-Version"
 
         var key: String {
             return rawValue.lowercased()
