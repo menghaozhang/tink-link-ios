@@ -65,4 +65,14 @@ final class UserService {
 
         return serviceRetryCanceller
     }
+
+
+    func getUserProfile(completion: @escaping (Result<(Market, Locale), Error>) -> Void) -> RetryCancellable? {
+        var request = GRPCGetProfileRequest()
+        return CallHandler(for: request, method: service.getProfile, responseMap: { response -> (Market, Locale) in
+            let profile = response.userProfile
+            return (Market(code: profile.market), Locale(identifier: profile.locale))
+        }, completion: completion)
+        return nil
+    }
 }

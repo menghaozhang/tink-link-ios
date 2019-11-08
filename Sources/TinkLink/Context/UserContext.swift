@@ -12,7 +12,6 @@ public final class UserContext {
     }
 
     /// Create a user for a specific market and locale.
-    ///  - Note: If a user has been created by this `UserContext` already then the completion will be triggered immediately.
     ///
     /// - Parameter market: Register a `Market` for creating the user, will use the default market if nothing is provided.
     /// - Parameter locale: Register a `Locale` for creating the user, will use the default locale in TinkLink if nothing is provided.
@@ -20,7 +19,6 @@ public final class UserContext {
     public func createTemporaryUser(for market: Market, locale: Locale = TinkLink.defaultLocale, completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {
         if retryCancellable == nil {
             retryCancellable = userService.createAnonymous(market: market, locale: locale) { [weak self] result in
-                guard let self = self else { return }
                 do {
                     let accessToken = try result.get()
                     let user = User(accessToken: accessToken, market: market, locale: locale)
@@ -28,33 +26,61 @@ public final class UserContext {
                 } catch {
                     completion(.failure(error))
                 }
+                self?.retryCancellable == nil
             }
         }
         return retryCancellable
     }
 
+    /// Authenticate a permanent user with authorization code.
+    ///
+    /// - Parameter authorizationCode: Authenticate with a `AuthorizationCode` that delegated from Tink to exchanged for a user object.
+    /// - Parameter completion: A result representing either a user info object or an error.
     public func authenticateUser(authorizationCode: AuthorizationCode, completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {
         if retryCancellable == nil {
-            retryCancellable = userService.authenticate(code: authorizationCode, completion: { result in
+            retryCancellable = userService.authenticate(code: authorizationCode, completion: { [weak self] result in
                 do {
                     let authenticateResponse = try result.get()
-                    // TODO: how to get Market and Locale?
                     let accessToken = authenticateResponse.accessToken
-                    let user = User(accessToken: accessToken, market: .init(code: "SE"), locale: TinkLink.defaultLocale)
-                    completion(.success(user))
+                    self?.retryCancellable = self?.userService.getUserProfile { [weak self] result in
+                        do {
+                            let market = try result.get().0
+                            let locale = try result.get().1
+                            let user = User(accessToken: accessToken, market: market, locale: locale)
+                            completion(.success(user))
+                        } catch {
+                            completion(.failure(error))
+                        }
+                        self?.retryCancellable == nil
+                    }
                 } catch {
                     completion(.failure(error))
+                    self?.retryCancellable = nil
                 }
             })
         }
         return retryCancellable
     }
 
+    /// Authenticate a permanent user with accessToken.
+    ///
+    /// - Parameter accessToken: Authenticate with an accessToken `String` that generated for the permanent user.
+    /// - Parameter completion: A result representing either a user info object or an error.
     public func authenticateUser(accessToken: String, completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {
         let accessToken = AccessToken(accessToken)
-        // TODO: how to get Market and Locale?
-        let user = User(accessToken: accessToken, market: .init(code: "SE"), locale: TinkLink.defaultLocale)
-        completion(.success(user))
-        return nil
+        if retryCancellable == nil {
+            retryCancellable = userService.getUserProfile { [weak self] result in
+                do {
+                    let market = try result.get().0
+                    let locale = try result.get().1
+                    let user = User(accessToken: accessToken, market: market, locale: locale)
+                    completion(.success(user))
+                } catch {
+                    completion(.failure(error))
+                }
+                self?.retryCancellable == nil
+            }
+        }
+        return retryCancellable
     }
 }
