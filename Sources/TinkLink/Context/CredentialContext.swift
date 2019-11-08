@@ -69,6 +69,7 @@ public final class CredentialContext {
     ///   - completion: The block to execute when the credential has been added successfuly or if it failed.
     ///   - result: Represents either a successfully added credential or an error if adding the credential failed.
     /// - Returns: The add credential task.
+    @discardableResult
     public func addCredential(for provider: Provider, form: Form, completionPredicate: AddCredentialTask.CompletionPredicate = .updated, progressHandler: @escaping (_ status: AddCredentialTask.Status) -> Void, completion: @escaping (_ result: Result<Credential, Error>) -> Void) -> AddCredentialTask {
         let task = AddCredentialTask(
             credentialService: service,
@@ -98,6 +99,7 @@ public final class CredentialContext {
     /// Gets the user's credentials.
     /// - Parameter completion: The block to execute when the call is completed.
     /// - Parameter result: A result that either contain a list of the user credentials or an error if the fetch failed.
+    @discardableResult
     public func fetchCredentials(completion: @escaping (_ result: Result<[Credential], Error>) -> Void) -> RetryCancellable? {
         let fetchCredentials = service.credentials { result in
             do {
