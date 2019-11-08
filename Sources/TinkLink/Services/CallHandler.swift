@@ -19,10 +19,6 @@ final class CallHandler<Request, Response, Model>: Cancellable, Retriable {
 
     var call: ClientCall?
 
-    deinit {
-        cancel()
-    }
-
     func retry() {
         call?.cancel()
         startCall()
