@@ -30,10 +30,9 @@ final class CallHandler<Request, Response, Model>: Cancellable, Retriable {
 
     private func startCall() {
         do {
-            call = try method(request) { [weak self] response, result in
-                guard let self = self else { return }
+            call = try method(request) { [responseMap] response, result in
                 if let response = response {
-                    self.completion(.success(self.responseMap(response)))
+                    self.completion(.success(responseMap(response)))
                 } else {
                     let error = RPCError.callError(result)
                     self.completion(.failure(error))

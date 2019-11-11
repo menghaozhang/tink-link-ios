@@ -5,8 +5,6 @@ import UIKit
 final class ProviderListViewController: UITableViewController {
     private var providerContext: ProviderContext?
     private let userContext = UserContext()
-    private var providerCancellable: RetryCancellable?
-    private var userCancellable: RetryCancellable?
     private var user: User?
     
     private let searchController = UISearchController(searchResultsController: nil)
@@ -29,13 +27,12 @@ final class ProviderListViewController: UITableViewController {
 
     private func fetchProviders() {
         let attributes = ProviderContext.Attributes(capabilities: .all, kinds: .all, accessTypes: .all)
-        providerCancellable = providerContext?.fetchProviders(attributes: attributes, completion: { [weak self] result in
+        providerContext?.fetchProviders(attributes: attributes, completion: { [weak self] result in
             DispatchQueue.main.async {
                 do {
                     let providers = try result.get()
                     self?.financialInstitutionGroupNodes = ProviderTree(providers: providers).financialInstitutionGroups
                     self?.originalFinancialInstitutionGroupNodes = ProviderTree(providers: providers).financialInstitutionGroups
-                    self?.providerCancellable = nil
                 } catch {
                     // TODO: Handle Error
                     print(error.localizedDescription)
@@ -51,13 +48,12 @@ extension ProviderListViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        userCancellable = userContext.createTemporaryUser(for: Market(code: "SE"), locale: TinkLink.defaultLocale) { [weak self] result in
+        userContext.createUser(for: Market(code: "SE"), locale: TinkLink.defaultLocale) { [weak self] result in
             do {
                 let user = try result.get()
                 self?.user = user
                 self?.providerContext = ProviderContext(user: user)
                 self?.fetchProviders()
-                self?.userCancellable = nil
             } catch {
                 // TODO: Handle Error
                 print(error.localizedDescription)
