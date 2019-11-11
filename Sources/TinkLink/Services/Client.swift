@@ -14,12 +14,9 @@ final class Client {
 
     private let clientKey = "e0e2c59be49f40a2ac3f21ae6893cbe7"
     let tinkLinkName = "Tink Link iOS"
-    var tinkLinkVersion: String {
-        if let version = Bundle(for: Client.self).object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
-            return version
-        } else {
-            return "0.1.0"
-        }
+    var tinkLinkVersion: String? {
+        let version = Bundle(for: Client.self).object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+        return version
     }
 
     init(environment: Environment, clientID: String, userAgent: String? = nil, grpcCertificate: Data? = nil, restCertificate: Data? = nil) {
@@ -45,7 +42,9 @@ final class Client {
             try metadata.add(key: Metadata.HeaderKey.oauthClientID.key, value: clientID)
             try metadata.add(key: Metadata.HeaderKey.clientKey.key, value: clientKey)
             try metadata.add(key: Metadata.HeaderKey.sdkName.key, value: tinkLinkName)
-            try metadata.add(key: Metadata.HeaderKey.sdkVersion.key, value: tinkLinkVersion)
+            if let tinkLinkVersion = tinkLinkVersion {
+                try metadata.add(key: Metadata.HeaderKey.sdkVersion.key, value: tinkLinkVersion)
+            }
         } catch {
             assertionFailure(error.localizedDescription)
         }
