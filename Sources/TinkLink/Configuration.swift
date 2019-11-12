@@ -18,8 +18,6 @@ extension TinkLink {
         /// Certificate to use with REST API.
         public var restCertificate: Data?
 
-        internal var sanitizedURI: URL
-
         /// - Parameters:
         ///   - clientId: The client id for your app.
         ///   - redirectURI: The URI you've setup in Console.
@@ -34,22 +32,15 @@ extension TinkLink {
             environment: Environment = .production,
             grpcCertificateURL: URL? = nil,
             restCertificateURL: URL? = nil
-        ) {
+        ) throws {
+            guard let host = redirectURI.host, !host.isEmpty else {
+                throw NSError(domain: URLError.errorDomain, code: URLError.cannotFindHost.rawValue)
+            }
             self.clientID = clientID
             self.redirectURI = redirectURI
-            self.sanitizedURI = Self.sanitizeURI(redirectURI)
             self.environment = .production
             self.grpcCertificate = grpcCertificateURL.flatMap { try? Data(contentsOf: $0) }
             self.restCertificate = restCertificateURL.flatMap { try? Data(contentsOf: $0) }
-        }
-
-        private static func sanitizeURI(_ uri: URL) -> URL {
-            if let scheme = uri.scheme, uri.absoluteString == "\(scheme)://" {
-                guard let sanitizedURI = URL(string: "\(scheme):///") else { fatalError("Invalid URI: \(uri.absoluteString)") }
-                return sanitizedURI
-            } else {
-                return uri
-            }
         }
     }
 }
@@ -77,6 +68,5 @@ extension TinkLink.Configuration {
         self.environment = processInfo.tinkEnvironment ?? .production
         self.grpcCertificate = processInfo.tinkGrpcCertificate.flatMap { Data(base64Encoded: $0) }
         self.restCertificate = processInfo.tinkRestCertificate.flatMap { Data(base64Encoded: $0) }
-        self.sanitizedURI = Self.sanitizeURI(redirectURI)
     }
 }
