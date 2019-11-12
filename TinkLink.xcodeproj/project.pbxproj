@@ -73,6 +73,7 @@
 		8FA35590231EA3820054115D /* ProviderContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA3558F231EA3820054115D /* ProviderContext.swift */; };
 		8FA35592231EADAB0054115D /* CredentialContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA35591231EADAB0054115D /* CredentialContext.swift */; };
 		8FA5E0ED23547FF100717D74 /* Scope.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5E0EC23547FF100717D74 /* Scope.swift */; };
+		8FBAE71B237AD2230016DC6C /* ThirdPartyCallbackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBAE71A237AD2230016DC6C /* ThirdPartyCallbackTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,6 +152,7 @@
 		8FA3558F231EA3820054115D /* ProviderContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderContext.swift; sourceTree = "<group>"; };
 		8FA35591231EADAB0054115D /* CredentialContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialContext.swift; sourceTree = "<group>"; };
 		8FA5E0EC23547FF100717D74 /* Scope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scope.swift; sourceTree = "<group>"; };
+		8FBAE71A237AD2230016DC6C /* ThirdPartyCallbackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartyCallbackTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +266,7 @@
 				20D129E0234E1732005C2D34 /* CredentialGRPCTests.swift */,
 				206B8DCD2335001000693ED5 /* FormTests.swift */,
 				20A5AF55234DC21200063701 /* ProviderTreeTests.swift */,
+				8FBAE71A237AD2230016DC6C /* ThirdPartyCallbackTests.swift */,
 				20ED85302303FA48006213BB /* Info.plist */,
 			);
 			name = TinkLinkTests;
@@ -556,6 +559,7 @@
 				20ED859023041679006213BB /* ProviderGRPCTests.swift in Sources */,
 				20D129E2234E1737005C2D34 /* CredentialGRPCTests.swift in Sources */,
 				20ED8588230408E6006213BB /* ClientTests.swift in Sources */,
+				8FBAE71B237AD2230016DC6C /* ThirdPartyCallbackTests.swift in Sources */,
 				20C300E92341D44F0004E284 /* ConfigurationTests.swift in Sources */,
 				206B8DCF23350A8300693ED5 /* FormTests.swift in Sources */,
 				20A5AF57234DC22F00063701 /* ProviderTreeTests.swift in Sources */,
