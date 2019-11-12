@@ -18,7 +18,7 @@ extension TinkLink {
         /// Certificate to use with REST API.
         public var restCertificate: Data?
 
-        internal var sanitizeURI: URL
+        internal var sanitizedURI: URL
 
         /// - Parameters:
         ///   - clientId: The client id for your app.
@@ -37,7 +37,7 @@ extension TinkLink {
         ) {
             self.clientID = clientID
             self.redirectURI = redirectURI
-            self.sanitizeURI = Self.sanitizeURI(redirectURI)
+            self.sanitizedURI = Self.sanitizeURI(redirectURI)
             self.environment = .production
             self.grpcCertificate = grpcCertificateURL.flatMap { try? Data(contentsOf: $0) }
             self.restCertificate = restCertificateURL.flatMap { try? Data(contentsOf: $0) }
@@ -77,5 +77,6 @@ extension TinkLink.Configuration {
         self.environment = processInfo.tinkEnvironment ?? .production
         self.grpcCertificate = processInfo.tinkGrpcCertificate.flatMap { Data(base64Encoded: $0) }
         self.restCertificate = processInfo.tinkRestCertificate.flatMap { Data(base64Encoded: $0) }
+        self.sanitizedURI = Self.sanitizeURI(redirectURI)
     }
 }

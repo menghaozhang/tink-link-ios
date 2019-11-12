@@ -79,7 +79,7 @@ public final class CredentialContext {
             credentialUpdateHandler: { _ in }
         )
 
-        let appURI = tinkLink.configuration.sanitizeURI
+        let appURI = tinkLink.configuration.sanitizedURI
 
         task.callCanceller = addCredentialAndAuthenticateIfNeeded(for: provider, fields: form.makeFields(), appURI: appURI) { [weak task] result in
             do {
