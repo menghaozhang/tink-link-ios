@@ -6,7 +6,7 @@ This example project shows how to make a simple integration with Tink using Tink
 
 1. Create your developer account at [Tink Console](https://console.tink.com)
 1. Follow the [getting started guide](https://docs.tink.com/resources/getting-started/set-up-your-account) to retrieve your `client_id` and `client_secret`
-1. Add the custom URL scheme for this app (`link-demo://`) to the [list of redirect URIs under your app's settings](https://console.tink.com/overview)
+1. Add the custom URL scheme for this app (`link-demo://tink`) to the [list of redirect URIs under your app's settings](https://console.tink.com/overview)
 
 ## Getting started
 
