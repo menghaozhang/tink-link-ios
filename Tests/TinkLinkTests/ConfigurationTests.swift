@@ -14,6 +14,7 @@ class ConfigurationTests: XCTestCase {
         let configuration = TinkLink.Configuration(clientID: "abc", redirectURI: redirectURI)
         let link = TinkLink(configuration: configuration)
         XCTAssertEqual(link.configuration.redirectURI, URL(string: "http://my-customer-app.com/authentication")!)
+        XCTAssertEqual(link.configuration.sanitizedURI, URL(string: "http://my-customer-app.com/authentication")!)
     }
 
     func testConfigureSharedTinkLinkWithConfigurationWithAppURI() {
@@ -22,7 +23,7 @@ class ConfigurationTests: XCTestCase {
         let configuration = TinkLink.Configuration(clientID: "abc", redirectURI: redirectURI)
         TinkLink.configure(with: configuration)
         XCTAssertEqual(TinkLink.shared.configuration.redirectURI, redirectURI)
-        XCTAssertEqual(TinkLink.shared.configuration.redirectURI, URL(string: "my-customer-app://authentication")!)
+        XCTAssertEqual(TinkLink.shared.configuration.sanitizedURI, URL(string: "my-customer-app://authentication")!)
     }
 
     func testConfigureSharedTinkLinkWithConfigurationWithAppURIWithoutPath() {
@@ -30,6 +31,7 @@ class ConfigurationTests: XCTestCase {
         let redirectURI = URL(string: "http-my-customer-app://")!
         let configuration = TinkLink.Configuration(clientID: "abc", redirectURI: redirectURI)
         TinkLink.configure(with: configuration)
-        XCTAssertEqual(TinkLink.shared.configuration.redirectURI, URL(string: "http-my-customer-app:///")!)
+        XCTAssertEqual(TinkLink.shared.configuration.redirectURI, URL(string: "http-my-customer-app://")!)
+        XCTAssertEqual(TinkLink.shared.configuration.sanitizedURI, URL(string: "http-my-customer-app:///")!)
     }
 }
