@@ -242,7 +242,7 @@ let userCanceller = userContext.createTemporaryUser(market: Market(code: "SE"), 
 ```
 
 ### Permanent user
-If you use the access token directly, you can authenticate your permanent user and use it in a `ProviderContext` like this:
+1. If you use the access token directly, you can authenticate your permanent user and use it in a `ProviderContext` like this:
 ```swift
 let userContext = UserContext()
 let userCanceller = userContext.authenticateUser(accessToken: <#Access Token#>, completion: { result in
@@ -255,7 +255,19 @@ let userCanceller = userContext.authenticateUser(accessToken: <#Access Token#>, 
     }
 })
 ```
-
+2. If you delegate the access token with Tink, then you can authenticate your permanent user with the authorization code like this: 
+```swift
+let userContext = UserContext()
+let userCanceller = userContext.authenticateUser(authorizationCode: <#AuthorizationCode#>, completion: { result in
+    do {
+        let user = try result.get()
+        let providerContext = ProviderContext(user: user)
+        <#Code using providerContext#>
+    } catch {
+        <#Error Handling#>
+    }
+})
+```
 
 ## Advanced usage 
 In some cases, you may want to have multiple `TinkLink` instances, you can create your custom `TinkLink` instance like this:
