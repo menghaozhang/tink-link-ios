@@ -75,6 +75,11 @@ extension AuthenticationService {
         urlRequest.setValue(authorization, forHTTPHeaderField: "Authorization")
         urlRequest.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
 
+        let sdkName = metadata.dictionaryRepresentation[Metadata.HeaderKey.sdkName.key]
+        let sdkVersion = metadata.dictionaryRepresentation[Metadata.HeaderKey.sdkVersion.key]
+        urlRequest.setValue(sdkName, forHTTPHeaderField: Metadata.HeaderKey.sdkName.key)
+        urlRequest.setValue(sdkVersion, forHTTPHeaderField: Metadata.HeaderKey.sdkVersion.key)
+
         do {
             let body = [
                 "clientId": clientID,
