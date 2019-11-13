@@ -48,8 +48,9 @@ final class UserService {
             preconditionFailure("Invalid restURL")
         }
 
-        urlComponents.path = "/api/v1/oauth/authentication/token"
+        urlComponents.path = "/link/v1/authentication/token"
         var urlRequest = URLRequest(url: urlComponents.url!)
+        urlRequest.httpMethod = "POST"
         urlRequest.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
 
         do {
