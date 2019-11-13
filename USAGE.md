@@ -12,7 +12,7 @@ class ProviderListViewController: UITableViewController {
     private var providerContext: ProviderContext?
     private let userContext = UserContext()
     
-    var financialInstitutionGroups: [ProviderTree.FinancialInstitutionGroupNode] = []
+    private var financialInstitutionGroupNodes: [ProviderTree.FinancialInstitutionGroupNode] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ class ProviderListViewController: UITableViewController {
                     DispatchQueue.main.async {
                         do {
                             let providers = try result.get()
-                            self?.financialInstitutionGroups = ProviderTree(providers: providers).financialInstitutionGroups
+                            self?.financialInstitutionGroupNodes = ProviderTree(providers: providers).financialInstitutionGroups
                         } catch {
                             <#Error Handling#>
                         }
@@ -39,12 +39,12 @@ class ProviderListViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return financialInstitutionGroups.count
+        return financialInstitutionGroupNodes.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let providerGroup = financialInstitutionGroups[indexPath.row]
+        let providerGroup = financialInstitutionGroupNodes[indexPath.row]
         cell.textLabel?.text = providerGroup.displayName
         return cell
     }
@@ -62,16 +62,16 @@ Handle selection of a provider group by switching on the group to decide which s
 
 ```swift
 override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let financialInstitutionGroup = providerTree.financialInstitutionGroups[indexPath.row]
-    switch financialInstitutionGroup {
+    let financialInstitutionGroupNode = financialInstitutionGroupNodes[indexPath.row]
+    switch financialInstitutionGroupNode {
     case .financialInstitutions(let financialInstitutionGroups):
-        showFinancialInstitution(for: financialInstitutionGroups)
-    case .accessTypes(let accessTypeNodes):
-        showAccessTypePicker(for: accessTypeNodes)
-    case .credentialKinds(let credentialKindNodes):
-        showCredentialKindPicker(for: credentialKindNodes)
+        showFinancialInstitution(for: financialInstitutionGroups, title: financialInstitutionGroupNode.displayName)
+    case .accessTypes(let accessTypeGroups):
+        showAccessTypePicker(for: accessTypeGroups, title: financialInstitutionGroupNode.displayName)
+    case .credentialKinds(let groups):
+        showCredentialKindPicker(for: groups)
     case .provider(let provider):
-        showAddCredentialFlow(for: provider)
+        showAddCredential(for: provider)
     }
 }
 ```
