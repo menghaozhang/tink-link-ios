@@ -599,6 +599,8 @@ message UserProfile {
     // The login methods that are available on the market, for example `EMAIL_AND_PASSWORD` and `BANKID`.
     repeated AuthenticationMethod available_login_methods = 4;
     google.protobuf.Timestamp created_date = 5;
+    string market = 6;
+    string locale = 7;
 }
 
 message UserConfiguration {
