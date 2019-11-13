@@ -12,7 +12,7 @@ class ProviderListViewController: UITableViewController {
     private var providerContext: ProviderContext?
     private let userContext = UserContext()
     
-    var financialInstitutionGroups: [ProviderTree.financialInstitutionGroups] = []
+    var financialInstitutionGroups: [ProviderTree.FinancialInstitutionGroupNode] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
