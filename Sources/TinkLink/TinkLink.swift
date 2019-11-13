@@ -56,7 +56,6 @@ public class TinkLink {
     }
 
     @available(iOS 9.0, *)
-
     public func open(_ url: URL, completion: ((Result<Void, Error>) -> Void)? = nil) -> Bool {
         guard let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false),
             (urlComponents.string?.starts(with: configuration.redirectURI.absoluteString) ?? false)

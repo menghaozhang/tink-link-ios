@@ -4,38 +4,48 @@
 
 ### Listing and responding to changes
 
-Here's how you can list all providers with a `UITableViewController` subclass.
+Before fetching providers, you need to create a temporary user via TinkLink first, then use it to fetch the providers. 
+Here's how you can list all providers with a `UITableViewController` subclass.  
 
 ```swift
 class ProviderListViewController: UITableViewController {
-    let providerContext = ProviderContext()
-    var providerCanceller: Cancellable?
-    var providers: [Provider] = []
+    private var providerContext: ProviderContext?
+    private let userContext = UserContext()
+    
+    var financialInstitutionGroups: [ProviderTree.financialInstitutionGroups] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
-        providerCanceller = providerContext.fetchProviders(completion: { [weak self] result in
-            DispatchQueue.main.async {
-                if let providers = try result.get() {
-                    self?.providers = providers
-                    self?.tableView.reloadData()
-                } catch {
-                    <#Error Handling#>
-                }
+        userContext.createTemporaryUser(for: Market(code: "SE"), locale: TinkLink.defaultLocale) { [weak self] result in
+            do {
+                let user = try result.get()
+                self?.providerContext = ProviderContext(user: user)
+                self?.providerContext?.fetchProviders(completion: { [weak self] result in
+                    DispatchQueue.main.async {
+                        do {
+                            let providers = try result.get()
+                            self?.financialInstitutionGroups = ProviderTree(providers: providers).financialInstitutionGroups
+                        } catch {
+                            <#Error Handling#>
+                        }
+                    }
+                })
+            } catch {
+                <#Error Handling#>
             }
-        })
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return providers.count
+        return financialInstitutionGroups.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let provider = providers[indexPath.row]
-        cell.textLabel?.text = provider.displayName
+        let providerGroup = financialInstitutionGroups[indexPath.row]
+        cell.textLabel?.text = providerGroup.displayName
         return cell
     }
 }
@@ -52,14 +62,14 @@ Handle selection of a provider group by switching on the group to decide which s
 
 ```swift
 override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let financialInstitutionGroupNode = providerTree.financialInstitutionGroupNodes[indexPath.row]
-    switch financialInstitutionGroupNode {
-    case .financialInsititutions(let financialInsititutionNodes):
-        showFinancialInstitution(for: financialInsititutionNodes)
+    let financialInstitutionGroup = providerTree.financialInstitutionGroups[indexPath.row]
+    switch financialInstitutionGroup {
+    case .financialInstitutions(let financialInstitutionGroups):
+        showFinancialInstitution(for: financialInstitutionGroups)
     case .accessTypes(let accessTypeNodes):
-        showAccessTypePicker(for: accessTypeNodes)
+        showAccessTypePicker(for: accessTypeGroups)
     case .credentialKinds(let credentialKindNodes):
-        showCredentialKindPicker(for: credentialKindNodes)
+        showCredentialKindPicker(for: groups)
     case .provider(let provider):
         showAddCredentialFlow(for: provider)
     }
@@ -215,12 +225,12 @@ func application(_ application: UIApplication, continue userActivity: NSUserActi
 
 ## Users
 
-### Creating users
-To e.g. fetch providers or create credentials you need to first create a user. By default TinkLink will create an anonymous user when needed but you can also create one and use it in a `ProviderContext` like this: 
+### Creating temporary users
+To e.g. fetch providers or create credentials you need to first create a user. You can create a temporary TinkLink user and use it in a `ProviderContext` like this: 
 
 ```swift
 let userContext = UserContext()
-let userCanceller = userContext.createUser(completion: { result in
+let userCanceller = userContext.createTemporaryUser(market: Market(code: "SE"), locale: Locale(identifier: "sv_SE"), completion: { result in
     do {
         let user = try result.get()
         let providerContext = ProviderContext(user: user)
@@ -230,6 +240,22 @@ let userCanceller = userContext.createUser(completion: { result in
     }
 })
 ```
+
+### Permanent user
+If you use the access token directly, you can authenticate your permanent user and use it in a `ProviderContext` like this:
+```swift
+let userContext = UserContext()
+let userCanceller = userContext.authenticateUser(accessToken: <#Access Token#>, completion: { result in
+    do {
+        let user = try result.get()
+        let providerContext = ProviderContext(user: user)
+        <#Code using providerContext#>
+    } catch {
+        <#Error Handling#>
+    }
+})
+```
+
 
 ## Advanced usage 
 In some cases, you may want to have multiple `TinkLink` instances, you can create your custom `TinkLink` instance like this:
