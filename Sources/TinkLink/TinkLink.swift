@@ -56,13 +56,10 @@ public class TinkLink {
     }
 
     @available(iOS 9.0, *)
-    public func open(_ url: URL, user: User, completion: ((Result<Void, Error>) -> Void)? = nil) -> Bool {
-        return open(url, userCreationStrategy: .existing(user), completion: completion)
-    }
 
-    public func open(_ url: URL, userCreationStrategy: UserCreationStrategy = .automaticTemporary, completion: ((Result<Void, Error>) -> Void)? = nil) -> Bool {
+    public func open(_ url: URL, completion: ((Result<Void, Error>) -> Void)? = nil) -> Bool {
         guard let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false),
-            urlComponents.scheme == configuration.redirectURI.scheme
+            (urlComponents.string?.starts(with: configuration.redirectURI.absoluteString) ?? false)
         else { return false }
 
         let parameters = Dictionary(grouping: urlComponents.queryItems ?? [], by: { $0.name })

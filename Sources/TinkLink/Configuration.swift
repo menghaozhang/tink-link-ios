@@ -32,21 +32,15 @@ extension TinkLink {
             environment: Environment = .production,
             grpcCertificateURL: URL? = nil,
             restCertificateURL: URL? = nil
-        ) {
+        ) throws {
+            guard let host = redirectURI.host, !host.isEmpty else {
+                throw NSError(domain: URLError.errorDomain, code: URLError.cannotFindHost.rawValue)
+            }
             self.clientID = clientID
-            self.redirectURI = Self.sanitizeURI(redirectURI)
+            self.redirectURI = redirectURI
             self.environment = .production
             self.grpcCertificate = grpcCertificateURL.flatMap { try? Data(contentsOf: $0) }
             self.restCertificate = restCertificateURL.flatMap { try? Data(contentsOf: $0) }
-        }
-
-        private static func sanitizeURI(_ uri: URL) -> URL {
-            if let scheme = uri.scheme, uri.absoluteString == "\(scheme)://" {
-                guard let sanitizedURI = URL(string: "\(scheme):///") else { fatalError("Invalid URI: \(uri.absoluteString)") }
-                return sanitizedURI
-            } else {
-                return uri
-            }
         }
     }
 }

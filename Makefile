@@ -1,4 +1,24 @@
+VERSION = $(shell egrep -o "MARKETING_VERSION = ([0-9.]+)" TinkLink.xcodeproj/project.pbxproj | head -n 1 | cut -d " " -f 3)
+
 all:
+
+bootstrap:
+ifeq ($(strip $(shell command -v brew 2> /dev/null)),)
+	$(error "`brew` is not available, please install homebrew")
+endif
+ifeq ($(strip $(shell command -v gem 2> /dev/null)),)
+	$(error "`gem` is not available, please install ruby")
+endif
+ifeq ($(strip $(shell command -v swiftlint 2> /dev/null)),)
+	brew install swiftlint
+endif
+ifeq ($(strip $(shell command -v swiftformat 2> /dev/null)),)
+	brew install swiftformat
+endif
+ifeq ($(strip $(shell command -v bundle 2> /dev/null)),)
+	gem install bundler
+endif
+	bundle install > /dev/null
 
 generate:
 	mkdir ./Sources/TinkLink/GRPC/
@@ -13,30 +33,31 @@ generate:
 		--plugin=protoc-gen-swift=./GRPC/vendor/protoc-gen-swift \
 		--plugin=protoc-gen-swiftgrpc=./GRPC/vendor/protoc-gen-swiftgrpc
 
+docs:
+	bundle exec jazzy \
+		--clean \
+		--author Tink \
+		--author_url https://tink.com \
+		--github_url https://github.com/tink-ab/tink-link-ios \
+		--github-file-prefix https://github.com/tink-ab/tink-link-ios/tree/v$(VERSION) \
+		--module-version $(VERSION) \
+		--build-tool-arguments -scheme,TinkLink \
+		--module TinkLink \
+		--output docs
+
+lint:
+	swiftlint 2> /dev/null
+
+format:
+	swiftformat . 2> /dev/null
+
 test:
 	carthage bootstrap --platform iOS
 	xcodebuild -project TinkLink.xcodeproj -scheme TinkLink -destination 'platform=iOS Simulator,name=iPhone 11' test 
 
 clean: 
-	-rm -rf ./Sources/TinkLink/GRPC/
-
-bootstrap:
-ifeq ($(strip $(shell command -v brew 2> /dev/null)),)
-	$(error "`brew` is not available, please install homebrew")
-endif
-	brew install swiftlint swiftformat > /dev/null
-
-lint:
-ifeq ($(strip $(shell command -v swiftlint 2> /dev/null)),)
-	$(error "`swiftlint` is not available, please run `make bootstrap` first")
-endif
-	swiftlint 2> /dev/null
-
-format:
-ifeq ($(strip $(shell command -v swiftformat 2> /dev/null)),)
-	$(error "`swiftformat` is not available, please run `make bootstrap` first")
-endif
-	swiftformat . 2> /dev/null
+	rm -rf ./Sources/TinkLink/GRPC/
+	rm -rf ./docs
 
 release: format lint
 
@@ -63,3 +84,5 @@ build-alpha:
 	# Copy input output files
 	cp input.xcfilelist build/
 	cp output.xcfilelist build/
+
+.PHONY: all docs
