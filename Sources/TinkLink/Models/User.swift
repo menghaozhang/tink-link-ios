@@ -7,10 +7,10 @@ public struct User {
     /// The market with which the user was created.
     ///
     /// This is used by TinkLink when creating an anonymous user and when fetching providers.
-    let market: Market
+    public let market: Market
 
     /// The locale with which the user was created.
-    let locale: Locale
+    public let locale: Locale
 }
 
 extension User {
