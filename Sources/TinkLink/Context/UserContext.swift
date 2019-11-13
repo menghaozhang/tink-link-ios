@@ -39,7 +39,7 @@ public final class UserContext {
             do {
                 let authenticateResponse = try result.get()
                 let accessToken = authenticateResponse.accessToken
-                self?.retryCancellable = self?.userService.getUserProfile { [accessToken] result in
+                self?.retryCancellable = self?.userService.marketAndLocale { [accessToken] result in
                     do {
                         let (market, locale) = try result.get()
                         let user = User(accessToken: accessToken, market: market, locale: locale)
@@ -60,7 +60,7 @@ public final class UserContext {
     /// - Parameter completion: A result representing either a user info object or an error.
     @discardableResult
     public func authenticateUser(accessToken: AccessToken, completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {
-        return userService.getUserProfile { [accessToken] result in
+        return userService.marketAndLocale { [accessToken] result in
             do {
                 let (market, locale) = try result.get()
                 let user = User(accessToken: accessToken, market: market, locale: locale)
