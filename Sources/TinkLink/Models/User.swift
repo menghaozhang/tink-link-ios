@@ -14,7 +14,7 @@ public struct User {
 }
 
 extension User {
-    public init(accessToken: String, market: Market, locale: Locale) {
+    init(accessToken: String, market: Market, locale: Locale) {
         self.accessToken = AccessToken(accessToken)
         self.market = market
         self.locale = locale

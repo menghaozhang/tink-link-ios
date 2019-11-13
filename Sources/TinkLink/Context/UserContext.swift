@@ -18,7 +18,7 @@ public final class UserContext {
     /// - Parameter completion: A result representing either a user info object or an error.
     @discardableResult
     public func createTemporaryUser(for market: Market, locale: Locale = TinkLink.defaultLocale, completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {
-        return userService.createAnonymous(market: market, locale: locale) { result in
+        return userService.createAnonymous(market: market, locale: locale) { [market, locale] result in
             do {
                 let accessToken = try result.get()
                 let user = User(accessToken: accessToken, market: market, locale: locale)
@@ -39,7 +39,7 @@ public final class UserContext {
             do {
                 let authenticateResponse = try result.get()
                 let accessToken = authenticateResponse.accessToken
-                self?.retryCancellable = self?.userService.getUserProfile { result in
+                self?.retryCancellable = self?.userService.getUserProfile { [accessToken] result in
                     do {
                         let (market, locale) = try result.get()
                         let user = User(accessToken: accessToken, market: market, locale: locale)
@@ -59,9 +59,8 @@ public final class UserContext {
     /// - Parameter accessToken: Authenticate with an accessToken `String` that generated for the permanent user.
     /// - Parameter completion: A result representing either a user info object or an error.
     @discardableResult
-    public func authenticateUser(accessToken: String, completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {
-        let accessToken = AccessToken(accessToken)
-        return userService.getUserProfile { result in
+    public func authenticateUser(accessToken: AccessToken, completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {
+        return userService.getUserProfile { [accessToken] result in
             do {
                 let (market, locale) = try result.get()
                 let user = User(accessToken: accessToken, market: market, locale: locale)

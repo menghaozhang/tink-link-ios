@@ -59,7 +59,7 @@ final class UserService {
             completion(.failure(error))
             return nil
         }
-        // TODO: Make AuthorizationError interpretable
+
         let serviceRetryCanceller = URLSessionRequestRetryCancellable<AuthenticateResponse, AuthorizationError>(session: session, request: urlRequest, completion: completion)
         serviceRetryCanceller.start()
 
