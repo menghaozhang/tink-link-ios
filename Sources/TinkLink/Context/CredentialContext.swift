@@ -111,6 +111,13 @@ public final class CredentialContext {
             }
         }
     }
+
+    /// Refresh the user's credentials.
+    /// - Parameter completion: The block to execute when the call is completed.
+    /// - Parameter result: A result that either void when refresh successed or an error if failed.
+    public func refreshCredentials(credentialIDs: [Credential.ID], completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable? {
+        return service.refreshCredentials(credentialIDs: credentialIDs, completion: completion)
+    }
 }
 
 extension Notification.Name {

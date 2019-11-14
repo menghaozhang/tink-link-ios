@@ -3702,6 +3702,16 @@ struct GRPCUserProfile {
   /// Clears the value of `createdDate`. Subsequent reads from it will return its default value.
   mutating func clearCreatedDate() {_uniqueStorage()._createdDate = nil}
 
+  var market: String {
+    get {return _storage._market}
+    set {_uniqueStorage()._market = newValue}
+  }
+
+  var locale: String {
+    get {return _storage._locale}
+    set {_uniqueStorage()._locale = newValue}
+  }
+
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
   init() {}
@@ -9830,6 +9840,8 @@ extension GRPCUserProfile: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
     3: .standard(proto: "authorized_login_methods"),
     4: .standard(proto: "available_login_methods"),
     5: .standard(proto: "created_date"),
+    6: .same(proto: "market"),
+    7: .same(proto: "locale"),
   ]
 
   fileprivate class _StorageClass {
@@ -9838,6 +9850,8 @@ extension GRPCUserProfile: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
     var _authorizedLoginMethods: [GRPCAuthenticationMethod] = []
     var _availableLoginMethods: [GRPCAuthenticationMethod] = []
     var _createdDate: SwiftProtobuf.Google_Protobuf_Timestamp? = nil
+    var _market: String = String()
+    var _locale: String = String()
 
     static let defaultInstance = _StorageClass()
 
@@ -9849,6 +9863,8 @@ extension GRPCUserProfile: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
       _authorizedLoginMethods = source._authorizedLoginMethods
       _availableLoginMethods = source._availableLoginMethods
       _createdDate = source._createdDate
+      _market = source._market
+      _locale = source._locale
     }
   }
 
@@ -9869,6 +9885,8 @@ extension GRPCUserProfile: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
         case 3: try decoder.decodeRepeatedEnumField(value: &_storage._authorizedLoginMethods)
         case 4: try decoder.decodeRepeatedEnumField(value: &_storage._availableLoginMethods)
         case 5: try decoder.decodeSingularMessageField(value: &_storage._createdDate)
+        case 6: try decoder.decodeSingularStringField(value: &_storage._market)
+        case 7: try decoder.decodeSingularStringField(value: &_storage._locale)
         default: break
         }
       }
@@ -9892,6 +9910,12 @@ extension GRPCUserProfile: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
       if let v = _storage._createdDate {
         try visitor.visitSingularMessageField(value: v, fieldNumber: 5)
       }
+      if !_storage._market.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._market, fieldNumber: 6)
+      }
+      if !_storage._locale.isEmpty {
+        try visitor.visitSingularStringField(value: _storage._locale, fieldNumber: 7)
+      }
     }
     try unknownFields.traverse(visitor: &visitor)
   }
@@ -9906,6 +9930,8 @@ extension GRPCUserProfile: SwiftProtobuf.Message, SwiftProtobuf._MessageImplemen
         if _storage._authorizedLoginMethods != rhs_storage._authorizedLoginMethods {return false}
         if _storage._availableLoginMethods != rhs_storage._availableLoginMethods {return false}
         if _storage._createdDate != rhs_storage._createdDate {return false}
+        if _storage._market != rhs_storage._market {return false}
+        if _storage._locale != rhs_storage._locale {return false}
         return true
       }
       if !storagesAreEqual {return false}

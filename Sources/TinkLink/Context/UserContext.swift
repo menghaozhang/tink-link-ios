@@ -12,16 +12,59 @@ public final class UserContext {
     }
 
     /// Create a user for a specific market and locale.
-    ///  - Note: If a user has been created by this `UserContext` already then the completion will be triggered immediately.
     ///
     /// - Parameter market: Register a `Market` for creating the user, will use the default market if nothing is provided.
     /// - Parameter locale: Register a `Locale` for creating the user, will use the default locale in TinkLink if nothing is provided.
     /// - Parameter completion: A result representing either a user info object or an error.
     @discardableResult
-    public func createUser(for market: Market, locale: Locale = TinkLink.defaultLocale, completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {
+    public func createTemporaryUser(for market: Market, locale: Locale = TinkLink.defaultLocale, completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {
         return userService.createAnonymous(market: market, locale: locale) { result in
             do {
                 let accessToken = try result.get()
+                let user = User(accessToken: accessToken, market: market, locale: locale)
+                completion(.success(user))
+            } catch {
+                completion(.failure(error))
+            }
+        }
+    }
+
+    /// Authenticate a permanent user with authorization code.
+    ///
+    /// - Parameter authorizationCode: Authenticate with a `AuthorizationCode` that delegated from Tink to exchanged for a user object.
+    /// - Parameter completion: A result representing either a user info object or an error.
+    @discardableResult
+    public func authenticateUser(authorizationCode: AuthorizationCode, completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {
+        return userService.authenticate(code: authorizationCode, completion: { [weak self] result in
+            do {
+                let authenticateResponse = try result.get()
+                let accessToken = authenticateResponse.accessToken
+                try? self?.userService.metadata.addAccessToken(accessToken.rawValue)
+                self?.retryCancellable = self?.userService.marketAndLocale { result in
+                    do {
+                        let (market, locale) = try result.get()
+                        let user = User(accessToken: accessToken, market: market, locale: locale)
+                        completion(.success(user))
+                    } catch {
+                        completion(.failure(error))
+                    }
+                }
+            } catch {
+                completion(.failure(error))
+            }
+        })
+    }
+
+    /// Authenticate a permanent user with accessToken.
+    ///
+    /// - Parameter accessToken: Authenticate with an accessToken `String` that generated for the permanent user.
+    /// - Parameter completion: A result representing either a user info object or an error.
+    @discardableResult
+    public func authenticateUser(accessToken: AccessToken, completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {
+        try? userService.metadata.addAccessToken(accessToken.rawValue)
+        return userService.marketAndLocale { result in
+            do {
+                let (market, locale) = try result.get()
                 let user = User(accessToken: accessToken, market: market, locale: locale)
                 completion(.success(user))
             } catch {
