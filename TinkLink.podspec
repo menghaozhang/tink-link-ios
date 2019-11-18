@@ -6,9 +6,11 @@ Pod::Spec.new do |s|
   s.homepage = 'https://tink.com'
   s.summary = 'Tink Link SDK.'
   s.source = { :git => 'https://github.com/tink-ab/tink-link-ios' }
+  s.swift_version = '5.0'
 
   s.ios.deployment_target = '10.0'
   s.osx.deployment_target = '10.13'
+  s.platform = :ios, '10.0'
 
   s.source_files = 'Sources/TinkLink/**/*.swift'
   s.dependency 'SwiftGRPC', '~> 0.9.1'
