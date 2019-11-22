@@ -1,4 +1,4 @@
-import SwiftyMarkdown
+import Down
 import TinkLink
 import UIKit
 
@@ -79,9 +79,9 @@ extension AddCredentialViewController {
 
 extension AddCredentialViewController {
     private func setupHelpFootnote() {
-        let markdown = SwiftyMarkdown(string: provider.helpText)
-        markdown.body.fontName = UIFont.preferredFont(forTextStyle: .footnote).fontName
-        helpLabel.attributedText = markdown.attributedString()
+
+        let markdown = Down(markdownString: provider.helpText)
+        helpLabel.attributedText = try? markdown.toAttributedString()
         helpLabel.backgroundColor = .clear
         helpLabel.isScrollEnabled = false
         helpLabel.isEditable = false
