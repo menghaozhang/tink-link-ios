@@ -21,8 +21,7 @@ public final class UserContext {
         return userService.createAnonymous(market: market, locale: locale) { result in
             do {
                 let accessToken = try result.get()
-                let user = User(accessToken: accessToken, market: market, locale: locale)
-                completion(.success(user))
+                completion(.success(User(accessToken: accessToken)))
             } catch {
                 completion(.failure(error))
             }
@@ -39,16 +38,7 @@ public final class UserContext {
             do {
                 let authenticateResponse = try result.get()
                 let accessToken = authenticateResponse.accessToken
-                try? self?.userService.metadata.addAccessToken(accessToken.rawValue)
-                self?.retryCancellable = self?.userService.marketAndLocale { result in
-                    do {
-                        let (market, locale) = try result.get()
-                        let user = User(accessToken: accessToken, market: market, locale: locale)
-                        completion(.success(user))
-                    } catch {
-                        completion(.failure(error))
-                    }
-                }
+                completion(.success(User(accessToken: accessToken)))
             } catch {
                 completion(.failure(error))
             }
@@ -61,15 +51,7 @@ public final class UserContext {
     /// - Parameter completion: A result representing either a user info object or an error.
     @discardableResult
     public func authenticateUser(accessToken: AccessToken, completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {
-        try? userService.metadata.addAccessToken(accessToken.rawValue)
-        return userService.marketAndLocale { result in
-            do {
-                let (market, locale) = try result.get()
-                let user = User(accessToken: accessToken, market: market, locale: locale)
-                completion(.success(user))
-            } catch {
-                completion(.failure(error))
-            }
-        }
+        completion(.success(User(accessToken: accessToken)))
+        return nil
     }
 }
