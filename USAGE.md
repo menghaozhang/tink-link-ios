@@ -1,10 +1,57 @@
 # Usage Examples
 
+## Users
+
+### Creating temporary users
+To e.g. fetch providers or create credentials you need to first create a user. You can create a temporary TinkLink user and use it in a `ProviderContext` like this: 
+
+```swift
+let userContext = UserContext()
+let userCanceller = userContext.createTemporaryUser(market: Market(code: "SE"), locale: Locale(identifier: "sv_SE"), completion: { result in
+    do {
+        let user = try result.get()
+        let providerContext = ProviderContext(user: user)
+        <#Code using providerContext#>
+    } catch {
+        <#Error Handling#>
+    }
+})
+```
+Currently, end users' data is deleted after a short period of time (24 hours). Creating permanent users in Tink database is limited to our Enterprise customers.
+
+### Permanent user
+1. If you use the access token directly, you can authenticate your permanent user and use it in a `ProviderContext` like this:
+```swift
+let userContext = UserContext()
+let userCanceller = userContext.authenticateUser(accessToken: <#Access Token#>, completion: { result in
+    do {
+        let user = try result.get()
+        let providerContext = ProviderContext(user: user)
+        <#Code using providerContext#>
+    } catch {
+        <#Error Handling#>
+    }
+})
+```
+2. If you delegate the access token with Tink, then you can authenticate your permanent user with the authorization code like this: 
+```swift
+let userContext = UserContext()
+let userCanceller = userContext.authenticateUser(authorizationCode: <#AuthorizationCode#>, completion: { result in
+    do {
+        let user = try result.get()
+        let providerContext = ProviderContext(user: user)
+        <#Code using providerContext#>
+    } catch {
+        <#Error Handling#>
+    }
+})
+```
+
 ## How to list and select providers
 
 ### Listing and responding to changes
 
-Before fetching providers, you need to create a temporary user via TinkLink first, then use it to fetch the providers. 
+As mentioned at the first section, before fetching providers, you need to create a temporary user via TinkLink first, then use it to fetch the providers. 
 Here's how you can list all providers with a `UITableViewController` subclass.  
 
 ```swift
@@ -221,52 +268,6 @@ func application(_ application: UIApplication, continue userActivity: NSUserActi
         return false
     }
 }
-```
-
-## Users
-
-### Creating temporary users
-To e.g. fetch providers or create credentials you need to first create a user. You can create a temporary TinkLink user and use it in a `ProviderContext` like this: 
-
-```swift
-let userContext = UserContext()
-let userCanceller = userContext.createTemporaryUser(market: Market(code: "SE"), locale: Locale(identifier: "sv_SE"), completion: { result in
-    do {
-        let user = try result.get()
-        let providerContext = ProviderContext(user: user)
-        <#Code using providerContext#>
-    } catch {
-        <#Error Handling#>
-    }
-})
-```
-
-### Permanent user
-1. If you use the access token directly, you can authenticate your permanent user and use it in a `ProviderContext` like this:
-```swift
-let userContext = UserContext()
-let userCanceller = userContext.authenticateUser(accessToken: <#Access Token#>, completion: { result in
-    do {
-        let user = try result.get()
-        let providerContext = ProviderContext(user: user)
-        <#Code using providerContext#>
-    } catch {
-        <#Error Handling#>
-    }
-})
-```
-2. If you delegate the access token with Tink, then you can authenticate your permanent user with the authorization code like this: 
-```swift
-let userContext = UserContext()
-let userCanceller = userContext.authenticateUser(authorizationCode: <#AuthorizationCode#>, completion: { result in
-    do {
-        let user = try result.get()
-        let providerContext = ProviderContext(user: user)
-        <#Code using providerContext#>
-    } catch {
-        <#Error Handling#>
-    }
-})
 ```
 
 ## Advanced usage 
