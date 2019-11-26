@@ -8,3 +8,8 @@ target 'ProviderSelection' do
 	pod 'Down', '~> 0.8.1'
 	pod 'TinkLink', :path => '../../', :testspecs => ['Tests'] 
 end
+
+post_install do | installer |
+  require 'fileutils'
+  FileUtils.cp_r('Pods/Target Support Files/Pods-ProviderSelection/Pods-ProviderSelection-acknowledgements.plist', 'ProviderSelection/Settings.bundle/Acknowledgements.plist', :remove_destination => true)
+end
