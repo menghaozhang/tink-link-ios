@@ -17,9 +17,10 @@ let userCanceller = userContext.createTemporaryUser(market: Market(code: "SE"), 
     }
 })
 ```
-Currently, end users' data is deleted after a short period of time (24 hours). Creating permanent users in Tink database is limited to our Enterprise customers.
+Currently, end users' data is deleted after a short period of time (24 hours).
 
 ### Permanent user
+Creating permanent users in Tink database is limited to our Enterprise customers.
 1. If you use the access token directly, you can authenticate your permanent user and use it in a `ProviderContext` like this:
 ```swift
 let userContext = UserContext()
