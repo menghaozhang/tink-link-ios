@@ -13,6 +13,7 @@
 		201D551B230AC95E00641102 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 201D5519230AC95E00641102 /* LaunchScreen.storyboard */; };
 		2023EB1F232268C400B219A3 /* AddCredentialStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2023EB1E232268C400B219A3 /* AddCredentialStatusViewController.swift */; };
 		20A409442338F20500FC035E /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A409432338F20500FC035E /* CheckmarkView.swift */; };
+		8F345944238EC6C8007DCD75 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8F345943238EC6C8007DCD75 /* Settings.bundle */; };
 		8F576A2923228BE300A81E8E /* ValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F576A2823228BE300A81E8E /* ValueTableViewCell.swift */; };
 		8FA5F824230BD13800226C02 /* FinancialInstitutionPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F823230BD13800226C02 /* FinancialInstitutionPickerViewController.swift */; };
 		8FA5F826230BE85100226C02 /* AccessTypePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F825230BE85100226C02 /* AccessTypePickerViewController.swift */; };
@@ -38,6 +39,7 @@
 		201D551C230AC95E00641102 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2023EB1E232268C400B219A3 /* AddCredentialStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCredentialStatusViewController.swift; sourceTree = "<group>"; };
 		20A409432338F20500FC035E /* CheckmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkView.swift; sourceTree = "<group>"; };
+		8F345943238EC6C8007DCD75 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		8F576A2823228BE300A81E8E /* ValueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueTableViewCell.swift; sourceTree = "<group>"; };
 		8FA5F823230BD13800226C02 /* FinancialInstitutionPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialInstitutionPickerViewController.swift; sourceTree = "<group>"; };
 		8FA5F825230BE85100226C02 /* AccessTypePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTypePickerViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				8FA35583231D3E690054115D /* ProviderViewControllers */,
 				8FBA6C582313E8A900A98BA8 /* CredentialViewControllers */,
 				8FBA6C572313DE8F00A98BA8 /* Cell */,
+				8F345943238EC6C8007DCD75 /* Settings.bundle */,
 				201D5517230AC95E00641102 /* Assets.xcassets */,
 				201D5519230AC95E00641102 /* LaunchScreen.storyboard */,
 				201D551C230AC95E00641102 /* Info.plist */,
@@ -207,6 +210,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				201D551B230AC95E00641102 /* LaunchScreen.storyboard in Resources */,
+				8F345944238EC6C8007DCD75 /* Settings.bundle in Resources */,
 				201D5518230AC95E00641102 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
