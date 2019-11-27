@@ -273,7 +273,7 @@ func application(_ application: UIApplication, continue userActivity: NSUserActi
 
 ### Initiate an Authorization in Tink Link
 After you added a credential for the temporary user, you need to authorize the `User` with TinkLink to get an `Authorization Code`. 
-Once you have received the `Authorization Code`, you can send it to your backend, then use it to continue exchange for another `Access token` with more sopces with the TinkLink backend.
+Once you have received the `Authorization Code`, send it to your backend and exchange it with the TinkLink backend to get another `Access token` that has the scopes you requested when authorizing the `User`.
 
 ## Advanced usage 
 In some cases, you may want to have multiple `TinkLink` instances, you can create your custom `TinkLink` instance like this:
