@@ -70,19 +70,36 @@ build-alpha:
 	rm -rf Examples/ProviderSelection/Pods/
 	rm -rf Examples/ProviderSelection/ProviderSelection/ProviderSelection.xcworkspace
 
-	# Build with Carthage
-	echo 'Building...'
+		# Build with Carthage
+	echo 'Building dependencies...'
 	carthage bootstrap --platform ios
-	carthage build --no-skip-current
 
-	# Put together the different build files into a zip
-	echo 'Packaging...'
-	carthage archive
-	mkdir -p build
-	mv TinkLink.framework.zip build/
+	# Archive with xcodebuild
+	echo 'Build iOS Framework...'
+	xcodebuild archive \
+		-scheme TinkLink \
+		-destination="iOS" \
+		-archivePath ./build/ios.xcarchive \
+		-derivedDataPath /tmp/iphoneos \
+		-sdk iphoneos \
+		SKIP_INSTALL=NO \
+		BUILD_LIBRARIES_FOR_DISTRIBUTION=YES
 
-	# Copy input output files
-	cp input.xcfilelist build/
-	cp output.xcfilelist build/
+	echo 'Build iOS Simulator Framework...'
+	xcodebuild archive \
+		-scheme TinkLink \
+		-destination="iOS Simulator" \
+		-archivePath ./build/iossimulator.xcarchive \
+		-derivedDataPath /tmp/iphoneos \
+		-sdk iphonesimulator \
+		SKIP_INSTALL=NO \
+		BUILD_LIBRARIES_FOR_DISTRIBUTION=YES
+
+	# Create XCFramework
+	echo 'Assemble Frameworks...'
+	xcodebuild -create-xcframework \
+		-framework ./build/ios.xcarchive/Products/Library/Frameworks/TinkLink.framework \
+		-framework ./build/iossimulator.xcarchive/Products/Library/Frameworks/TinkLink.framework \
+		-output ./build/TinkLink.xcframework
 
 .PHONY: all docs
