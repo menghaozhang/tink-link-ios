@@ -115,8 +115,24 @@ public final class CredentialContext {
     /// Refresh the user's credentials.
     /// - Parameter completion: The block to execute when the call is completed.
     /// - Parameter result: A result that either void when refresh successed or an error if failed.
-    public func refreshCredentials(credentialIDs: [Credential.ID], completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable? {
-        return service.refreshCredentials(credentialIDs: credentialIDs, completion: completion)
+    public func refreshCredentials(credentialIDs: [Credential.ID], completion: @escaping (Result<[Credential], Error>) -> Void) -> RetryCancellable? {
+        return service.refreshCredentials(credentialIDs: credentialIDs, completion: { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success:
+                self.service.credentials { credentialsResult in
+                    do {
+                        let fetchedCredentials = try credentialsResult.get()
+                        let filteredCrednetials = fetchedCredentials.filter { credentialIDs.contains($0.id) }
+                        completion(.success(filteredCrednetials))
+                    } catch {
+                        completion(.failure(error))
+                    }
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        })
     }
 }
 
