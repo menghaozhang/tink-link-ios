@@ -6,7 +6,7 @@ class ServiceTests: XCTestCase {
     func testInvalidClient() {
         let requestExpectation = expectation(description: "Providers Request")
 
-        let canceller = UserService().createAnonymous(locale: TinkLink.defaultLocale) { result in
+        let canceller = UserService().createAnonymous(locale: Link.defaultLocale) { result in
             do {
                 _ = try result.get()
                 XCTFail("Shouldn't receive access token when clientId is not valid.")

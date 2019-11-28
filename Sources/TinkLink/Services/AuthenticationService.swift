@@ -17,7 +17,7 @@ final class AuthenticationService: TokenConfigurableService {
         }
     }
 
-    convenience init(tinkLink: TinkLink = .shared, accessToken: AccessToken? = nil) {
+    convenience init(tinkLink: Link = .shared, accessToken: AccessToken? = nil) {
         let metadata = tinkLink.client.metadata.copy()
         if let accessToken = accessToken {
             try? metadata.addAccessToken(accessToken.rawValue)
@@ -57,7 +57,7 @@ final class AuthenticationService: TokenConfigurableService {
 }
 
 extension AuthenticationService {
-    func authorize(redirectURI: URL, scope: TinkLink.Scope, completion: @escaping (Result<AuthorizationResponse, Error>) -> Void) -> RetryCancellable? {
+    func authorize(redirectURI: URL, scope: Link.Scope, completion: @escaping (Result<AuthorizationResponse, Error>) -> Void) -> RetryCancellable? {
         guard let clientID = metadata[Metadata.HeaderKey.oauthClientID.key] else {
             preconditionFailure("No client id")
         }

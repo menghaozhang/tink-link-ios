@@ -1,6 +1,6 @@
 import Foundation
 
-extension TinkLink {
+extension Link {
     /// Available locales for TinkLink
     public static var availableLocales: [Locale] {
         let locales = [
