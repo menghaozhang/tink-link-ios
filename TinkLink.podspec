@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.platform = :ios, '10.0'
 
   s.source_files = 'Sources/TinkLink/**/*.swift'
-  s.dependency 'SwiftGRPC', '~> 0.9.1'
+  s.dependency 'SwiftGRPC', '0.9.1'
 
   s.test_spec 'Tests' do |test_spec|
     test_spec.source_files = 'Tests/**/*.swift'
