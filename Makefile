@@ -77,7 +77,7 @@ build-alpha:
 	# Archive with xcodebuild
 	echo 'Build iOS Framework...'
 	xcodebuild archive \
-		-scheme TinkLink \
+		-scheme TinkLinkSDK \
 		-destination="iOS" \
 		-archivePath ./build/ios.xcarchive \
 		-derivedDataPath /tmp/iphoneos \
@@ -87,7 +87,7 @@ build-alpha:
 
 	echo 'Build iOS Simulator Framework...'
 	xcodebuild archive \
-		-scheme TinkLink \
+		-scheme TinkLinkSDK \
 		-destination="iOS Simulator" \
 		-archivePath ./build/iossimulator.xcarchive \
 		-derivedDataPath /tmp/iphoneos \
@@ -98,8 +98,8 @@ build-alpha:
 	# Create XCFramework
 	echo 'Assemble Frameworks...'
 	xcodebuild -create-xcframework \
-		-framework ./build/ios.xcarchive/Products/Library/Frameworks/TinkLink.framework \
-		-framework ./build/iossimulator.xcarchive/Products/Library/Frameworks/TinkLink.framework \
-		-output ./build/TinkLink.xcframework
+		-framework ./build/ios.xcarchive/Products/Library/Frameworks/TinkLinkSDK.framework \
+		-framework ./build/iossimulator.xcarchive/Products/Library/Frameworks/TinkLinkSDK.framework \
+		-output ./build/TinkLinkSDK.xcframework
 
 .PHONY: all docs

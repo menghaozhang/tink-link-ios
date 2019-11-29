@@ -1,4 +1,4 @@
-import TinkLink
+import TinkLinkSDK
 import UIKit
 
 protocol SupplementalInformationViewControllerDelegate: AnyObject {
