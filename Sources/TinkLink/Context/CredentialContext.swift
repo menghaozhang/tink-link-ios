@@ -111,10 +111,15 @@ public final class CredentialContext {
         }
     }
 
-    // TODO: Doc
     /// Refresh the user's credentials.
-    /// - Parameter completion: The block to execute when the call is completed.
-    /// - Parameter result: A result that either void when refresh successed or an error if failed.
+    /// - Parameters:
+    ///   - credentials: List fo credential that needs to be refreshed.
+    ///   - completionPredicate: Predicate for when credential task should complete.
+    ///   - progressHandler: The block to execute with progress information about the credential's status.
+    ///   - status: Indicates the state of a credential being refreshed.
+    ///   - completion: The block to execute when the credential has been refreshed successfuly or if it failed.
+    ///   - result: A result that either void when refresh successed or an error if failed.
+    /// - Returns: The refresh credential task.
     public func refreshCredentials(credentials: [Credential],
                                    completionPredicate: RefreshCredentialTask.CompletionPredicate = .updated,
                                    progressHandler: @escaping (_ status: RefreshCredentialTask.Status) -> Void,
