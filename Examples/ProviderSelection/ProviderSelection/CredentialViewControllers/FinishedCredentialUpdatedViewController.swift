@@ -71,11 +71,11 @@ final class FinishedCredentialUpdatedViewController: UIViewController {
     }
 
     private func authorize() {
-        let scope = Link.Scope(scopes: [
-            Link.Scope.Accounts.read,
-            Link.Scope.Investments.read,
-            Link.Scope.User.read,
-            Link.Scope.Transactions.read
+        let scope = TinkLink.Scope(scopes: [
+            TinkLink.Scope.Accounts.read,
+            TinkLink.Scope.Investments.read,
+            TinkLink.Scope.User.read,
+            TinkLink.Scope.Transactions.read
         ])
         authorizationContext.authorize(scope: scope) { [weak self] result in
             guard let self = self else { return }

@@ -6,8 +6,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let configuration = try! Link.Configuration(clientID: <#T##String#>, redirectURI: URL(string: "link-demo://tink")!, environment: .production)
-        Link.configure(with: configuration)
+        let configuration = try! TinkLink.Configuration(clientID: <#T##String#>, redirectURI: URL(string: "link-demo://tink")!, environment: .production)
+        TinkLink.configure(with: configuration)
         window = UIWindow(frame: UIScreen.main.bounds)
         let providerListViewController = ProviderListViewController(style: .plain)
         let navigationController = UINavigationController(rootViewController: providerListViewController)
@@ -20,6 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
-        return Link.shared.open(url)
+        return TinkLink.shared.open(url)
     }
 }
