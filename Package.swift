@@ -3,15 +3,15 @@
 import PackageDescription
 
 let package = Package(
-    name: "TinkLink",
+    name: "TinkLinkSDK",
     platforms: [
         .iOS(.v10),
         .macOS(.v10_13)
     ],
     products: [
         .library(
-            name: "TinkLink",
-            targets: ["TinkLink"]
+            name: "TinkLinkSDK",
+            targets: ["TinkLinkSDK"]
         ),
     ],
     dependencies: [
@@ -20,12 +20,12 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "TinkLink",
+            name: "TinkLinkSDK",
             dependencies: ["SwiftProtobuf", "SwiftGRPC"]
         ),
         .testTarget(
-            name: "TinkLinkTests",
-            dependencies: ["TinkLink"]
+            name: "TinkLinkSDKTests",
+            dependencies: ["TinkLinkSDK"]
         ),
     ]
 )

@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name     = 'TinkLink'
+  s.name     = 'TinkLinkSDK'
   s.version  = '0.1.0'
   s.license  = 'Tink AB'
   s.authors  = { 'Tink AB' => 'support@tink.se' }
