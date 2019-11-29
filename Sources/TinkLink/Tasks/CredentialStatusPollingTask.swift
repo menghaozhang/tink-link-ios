@@ -48,8 +48,12 @@ class CredentialStatusPollingTask {
                             self.updateHandler(.success(updatedCredential))
                             self.retry()
                         case self.credential.status:
-                            // TODO: Should not keep polling while receiving status error, but maybe should poll for the authenticationError of an old error that has not been updated?
-                            self.retry()
+                            if let credentialStatusUpdated = self.credential.statusUpdated, let updatedCredentialStatusUpdated = updatedCredential.statusUpdated, credentialStatusUpdated != updatedCredentialStatusUpdated {
+                                self.updateHandler(.success(updatedCredential))
+                                self.callRetryCancellable = nil
+                            } else {
+                                self.retry()
+                            }
                         default:
                             self.updateHandler(.success(updatedCredential))
                             self.callRetryCancellable = nil
