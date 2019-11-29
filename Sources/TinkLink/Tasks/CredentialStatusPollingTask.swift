@@ -40,22 +40,17 @@ class CredentialStatusPollingTask {
                 do {
                     let credentials = try result.get()
                     if let updatedCredential = credentials.first(where: { $0.id == self.credential.id }) {
-                        if updatedCredential.status == .updating {
+                        switch updatedCredential.status {
+                        case .updated, .awaitingSupplementalInformation, .awaitingMobileBankIDAuthentication, .awaitingThirdPartyAppAuthentication:
+                            self.updateHandler(.success(updatedCredential))
+                            self.callRetryCancellable = nil
+                        case .updating:
                             self.updateHandler(.success(updatedCredential))
                             self.retry()
-                        } else if updatedCredential.status == .awaitingSupplementalInformation {
-                            self.updateHandler(.success(updatedCredential))
-                            self.callRetryCancellable = nil
-                        } else if updatedCredential.status == .awaitingThirdPartyAppAuthentication {
-                            self.updateHandler(.success(updatedCredential))
-                            self.callRetryCancellable = nil
-                        } else if updatedCredential.status == .awaitingMobileBankIDAuthentication {
-                            self.updateHandler(.success(updatedCredential))
-                            self.callRetryCancellable = nil
-                            // TODO: Should not keep polling while receiving status error
-                        } else if updatedCredential.status == self.credential.status {
+                        case self.credential.status:
+                            // TODO: Should not keep polling while receiving status error, but maybe should poll for the authenticationError of an old error that has not been updated?
                             self.retry()
-                        } else {
+                        default:
                             self.updateHandler(.success(updatedCredential))
                             self.callRetryCancellable = nil
                         }

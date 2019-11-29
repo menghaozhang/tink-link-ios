@@ -73,11 +73,6 @@ public class ThirdPartyAppAuthenticationTask {
                 appStoreURL: thirdPartyAppAuthentication.appStoreURL
             )
 
-            guard application.canOpenURL(url) else {
-                completionHandler(.failure(downloadRequiredError))
-                return
-            }
-
             application.open(url, options: [.universalLinksOnly: NSNumber(value: true)]) { didOpenUniversalLink in
                 if didOpenUniversalLink {
                     self.completionHandler(.success(()))
@@ -86,6 +81,7 @@ public class ThirdPartyAppAuthenticationTask {
                         if didOpen {
                             self.completionHandler(.success(()))
                         } else {
+                            // TODO: Maybe we should not return failure, to keep the polling, since the third party app can be in another device
                             self.completionHandler(.failure(downloadRequiredError))
                         }
                     })
