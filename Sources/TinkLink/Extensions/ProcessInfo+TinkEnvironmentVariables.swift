@@ -30,7 +30,7 @@ extension ProcessInfo {
 
     var tinkLocale: Locale? {
         if let locale = environment["TINK_LOCALE_IDENTIFIER"].flatMap(Locale.init(identifier:)) {
-            if Link.availableLocales.contains(locale) {
+            if TinkLink.availableLocales.contains(locale) {
                 return locale
             }
         }

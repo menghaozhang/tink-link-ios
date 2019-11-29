@@ -9,7 +9,7 @@ final class UserService {
     private var session: URLSession
     private var sessionDelegate: URLSessionDelegate?
 
-    convenience init(tinkLink: Link = .shared) {
+    convenience init(tinkLink: TinkLink = .shared) {
         let metadata = tinkLink.client.metadata.copy()
         let client = tinkLink.client
         self.init(

@@ -3,14 +3,14 @@ import XCTest
 
 class ThirdPartyCallbackTests: XCTestCase {
     func testValidCallbackURL() {
-        var redirectURI = Link.shared.configuration.redirectURI
+        var redirectURI = TinkLink.shared.configuration.redirectURI
         redirectURI.appendPathComponent("someValue")
-        XCTAssert(Link.shared.open(redirectURI))
+        XCTAssert(TinkLink.shared.open(redirectURI))
     }
 
     func testInvalidCallbackURL() {
-        if let scheme = Link.shared.configuration.redirectURI.scheme, let url = URL(string: "\(scheme)://randomHost/randomPath") {
-            XCTAssert(!Link.shared.open(url))
+        if let scheme = TinkLink.shared.configuration.redirectURI.scheme, let url = URL(string: "\(scheme)://randomHost/randomPath") {
+            XCTAssert(!TinkLink.shared.open(url))
         }
     }
 }

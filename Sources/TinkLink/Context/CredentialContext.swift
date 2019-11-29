@@ -2,7 +2,7 @@ import Foundation
 
 /// An object that you use to access the user's credentials and supports the flow for adding credentials.
 public final class CredentialContext {
-    private let tinkLink: Link
+    private let tinkLink: TinkLink
     private let service: CredentialService
     private var credentialThirdPartyCallbackObserver: Any?
     private var thirdPartyCallbackCanceller: RetryCancellable?
@@ -11,7 +11,7 @@ public final class CredentialContext {
     ///
     /// - Parameter tinkLink: TinkLink instance, defaults to `shared` if not provided.
     /// - Parameter user: `User` that will be used for adding credentials with the Tink API.
-    public init(tinkLink: Link = .shared, user: User) {
+    public init(tinkLink: TinkLink = .shared, user: User) {
         self.tinkLink = tinkLink
         self.service = CredentialService(tinkLink: tinkLink, accessToken: user.accessToken)
         service.accessToken = user.accessToken

@@ -4,7 +4,7 @@ public protocol ScopeType: CustomStringConvertible {
 }
 
 /// Access to Tink is divided into scopes. The available scopes for Tink's APIs can be found in Tink console
-extension Link {
+extension TinkLink {
     public struct Scope: CustomStringConvertible {
         public let scopes: [ScopeType]
         public let description: String
@@ -17,7 +17,7 @@ extension Link {
     }
 }
 
-extension Link.Scope {
+extension TinkLink.Scope {
     enum Access: String {
         case read, write, grant, revoke, refresh, categorize, execute, create, delete, webHooks = "web_hooks"
     }
@@ -29,7 +29,7 @@ extension Link.Scope {
             return Self.name + ":" + access.rawValue
         }
 
-        private let access: Link.Scope.Access
+        private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
         public static let write = Self(access: .write)
@@ -41,7 +41,7 @@ extension Link.Scope {
             return Self.name + ":" + access.rawValue
         }
 
-        private let access: Link.Scope.Access
+        private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
     }
@@ -52,7 +52,7 @@ extension Link.Scope {
             return Self.name + ":" + access.rawValue
         }
 
-        private let access: Link.Scope.Access
+        private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
         public static let grant = Self(access: .grant)
@@ -65,7 +65,7 @@ extension Link.Scope {
             return Self.name + ":" + access.rawValue
         }
 
-        private let access: Link.Scope.Access
+        private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
         public static let write = Self(access: .write)
@@ -77,7 +77,7 @@ extension Link.Scope {
             return Self.name + ":" + access.rawValue
         }
 
-        private let access: Link.Scope.Access
+        private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
     }
@@ -88,7 +88,7 @@ extension Link.Scope {
             return Self.name + ":" + access.rawValue
         }
 
-        private let access: Link.Scope.Access
+        private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
     }
@@ -99,7 +99,7 @@ extension Link.Scope {
             return Self.name + ":" + access.rawValue
         }
 
-        private let access: Link.Scope.Access
+        private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
     }
@@ -111,7 +111,7 @@ extension Link.Scope {
             return Self.name + ":" + access.rawValue
         }
 
-        private let access: Link.Scope.Access
+        private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
         public static let write = Self(access: .write)
@@ -124,7 +124,7 @@ extension Link.Scope {
             return Self.name + ":" + access.rawValue
         }
 
-        private let access: Link.Scope.Access
+        private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
         public static let write = Self(access: .write)
@@ -136,7 +136,7 @@ extension Link.Scope {
             return Self.name + ":" + access.rawValue
         }
 
-        private let access: Link.Scope.Access
+        private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
         public static let write = Self(access: .write)
@@ -148,7 +148,7 @@ extension Link.Scope {
             return Self.name + ":" + access.rawValue
         }
 
-        private let access: Link.Scope.Access
+        private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
         public static let write = Self(access: .write)
@@ -161,7 +161,7 @@ extension Link.Scope {
             return Self.name + ":" + access.rawValue
         }
 
-        private let access: Link.Scope.Access
+        private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
         public static let write = Self(access: .write)
@@ -173,7 +173,7 @@ extension Link.Scope {
             return Self.name + ":" + access.rawValue
         }
 
-        private let access: Link.Scope.Access
+        private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
         public static let write = Self(access: .write)
@@ -186,7 +186,7 @@ extension Link.Scope {
             return Self.name + ":" + access.rawValue
         }
 
-        private let access: Link.Scope.Access
+        private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
     }
@@ -197,7 +197,7 @@ extension Link.Scope {
             return Self.name + ":" + access.rawValue
         }
 
-        private let access: Link.Scope.Access
+        private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
         public static let write = Self(access: .write)
@@ -209,7 +209,7 @@ extension Link.Scope {
             return Self.name + ":" + access.rawValue
         }
 
-        private let access: Link.Scope.Access
+        private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
         public static let write = Self(access: .write)
@@ -221,7 +221,7 @@ extension Link.Scope {
             return Self.name + ":" + access.rawValue
         }
 
-        private let access: Link.Scope.Access
+        private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
     }
@@ -233,7 +233,7 @@ extension Link.Scope {
             return Self.name + ":" + access.rawValue
         }
 
-        private let access: Link.Scope.Access
+        private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
     }
@@ -244,7 +244,7 @@ extension Link.Scope {
             return Self.name + ":" + access.rawValue
         }
 
-        private let access: Link.Scope.Access
+        private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
     }
@@ -256,7 +256,7 @@ extension Link.Scope {
             return Self.name + ":" + access.rawValue
         }
 
-        private let access: Link.Scope.Access
+        private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
         public static let write = Self(access: .write)
@@ -269,7 +269,7 @@ extension Link.Scope {
             return Self.name + ":" + access.rawValue
         }
 
-        private let access: Link.Scope.Access
+        private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
         public static let execute = Self(access: .execute)
@@ -282,7 +282,7 @@ extension Link.Scope {
             return Self.name + ":" + access.rawValue
         }
 
-        private let access: Link.Scope.Access
+        private let access: TinkLink.Scope.Access
 
         public static let read = Self(access: .read)
         public static let write = Self(access: .write)

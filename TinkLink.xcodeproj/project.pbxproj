@@ -69,7 +69,7 @@
 		8F84A776232B8B6500EA878F /* TokenConfigurableService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F84A775232B8B6500EA878F /* TokenConfigurableService.swift */; };
 		8F84A77C2330D39600EA878F /* Locale+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F84A77B2330D39600EA878F /* Locale+Extensions.swift */; };
 		8F9D0D9723671C680009EA3A /* AuthenticateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9D0D9623671C680009EA3A /* AuthenticateResponse.swift */; };
-		8FA35586231E673B0054115D /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA35585231E673B0054115D /* Link.swift */; };
+		8FA35586231E673B0054115D /* TinkLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA35585231E673B0054115D /* TinkLink.swift */; };
 		8FA3558E231EA1840054115D /* ProviderTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA3558D231EA1840054115D /* ProviderTree.swift */; };
 		8FA35590231EA3820054115D /* ProviderContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA3558F231EA3820054115D /* ProviderContext.swift */; };
 		8FA35592231EADAB0054115D /* CredentialContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA35591231EADAB0054115D /* CredentialContext.swift */; };
@@ -149,7 +149,7 @@
 		8F84A775232B8B6500EA878F /* TokenConfigurableService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenConfigurableService.swift; sourceTree = "<group>"; };
 		8F84A77B2330D39600EA878F /* Locale+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+Extensions.swift"; sourceTree = "<group>"; };
 		8F9D0D9623671C680009EA3A /* AuthenticateResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticateResponse.swift; sourceTree = "<group>"; };
-		8FA35585231E673B0054115D /* Link.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
+		8FA35585231E673B0054115D /* TinkLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinkLink.swift; sourceTree = "<group>"; };
 		8FA3558D231EA1840054115D /* ProviderTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderTree.swift; sourceTree = "<group>"; };
 		8FA3558F231EA3820054115D /* ProviderContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderContext.swift; sourceTree = "<group>"; };
 		8FA35591231EADAB0054115D /* CredentialContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialContext.swift; sourceTree = "<group>"; };
@@ -244,7 +244,7 @@
 		20ED85222303FA48006213BB /* TinkLink */ = {
 			isa = PBXGroup;
 			children = (
-				8FA35585231E673B0054115D /* Link.swift */,
+				8FA35585231E673B0054115D /* TinkLink.swift */,
 				20FAE679233DFB4E003C73BA /* Configuration.swift */,
 				20ED856E23040039006213BB /* Environment.swift */,
 				20D8125D2330DAC7000B3A30 /* Extensions */,
@@ -533,7 +533,7 @@
 				20ED859623045896006213BB /* Credential.swift in Sources */,
 				2027F01F2345E4850025473A /* AuthorizationCode.swift in Sources */,
 				2027F0242345E5FD0025473A /* AuthorizationResponse.swift in Sources */,
-				8FA35586231E673B0054115D /* Link.swift in Sources */,
+				8FA35586231E673B0054115D /* TinkLink.swift in Sources */,
 				3373C0D723574CFE00555FC7 /* Retriable.swift in Sources */,
 				20ED85712304004C006213BB /* ProviderService.swift in Sources */,
 				20ED858E2304151B006213BB /* CredentialService.swift in Sources */,
@@ -726,7 +726,7 @@
 				);
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tink.TinkLink;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = TinkLink;
 				SKIP_INSTALL = YES;
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -756,7 +756,7 @@
 				);
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tink.TinkLink;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = TinkLink;
 				SKIP_INSTALL = YES;
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_VERSION = 5.0;

@@ -1,6 +1,6 @@
 import Foundation
 
-extension Link {
+extension TinkLink {
     /// Configuration used to set up the TinkLink
     public struct Configuration {
         /// The client id for your app.
@@ -45,7 +45,7 @@ extension Link {
     }
 }
 
-extension Link.Configuration {
+extension TinkLink.Configuration {
     enum Error: Swift.Error, LocalizedError {
         case clientIDNotFound
         case redirectURINotFound

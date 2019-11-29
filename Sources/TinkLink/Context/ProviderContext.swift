@@ -25,7 +25,7 @@ public final class ProviderContext {
         public static let `default` = Attributes(capabilities: .all, kinds: .excludingTest, accessTypes: .all)
     }
 
-    private let tinkLink: Link
+    private let tinkLink: TinkLink
     private let service: ProviderService
     private let user: User
 
@@ -33,7 +33,7 @@ public final class ProviderContext {
     /// 
     /// - Parameter tinkLink: TinkLink instance, will use the shared instance if nothing is provided.
     /// - Parameter user: `User` that will be used for fetching providers with the Tink API.
-    public init(tinkLink: Link = .shared, user: User) {
+    public init(tinkLink: TinkLink = .shared, user: User) {
         self.user = user
         self.tinkLink = tinkLink
         self.service = ProviderService(tinkLink: tinkLink, accessToken: user.accessToken)

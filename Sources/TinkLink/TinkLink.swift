@@ -8,14 +8,14 @@ import Foundation
 /// By default a shared `TinkLink` instance will be used, but you can also create your own
 /// instance and use that instead. This allows you to use multiple `TinkLink` instances at the
 /// same time.
-public class Link {
-    static var _shared: Link?
+public class TinkLink {
+    static var _shared: TinkLink?
 
     /// The shared `TinkLink` instance.
     ///
     /// Note: You need to configure the shared instance by calling `TinkLink.configure(with:)`
     /// before accessing the shared instance. Not doing so will cause a run-time error.
-    public static var shared: Link {
+    public static var shared: TinkLink {
         guard let shared = _shared else {
             fatalError("Configure Tink Link by calling `TinkLink.configure(with:)` before accessing the shared instance")
         }
@@ -51,8 +51,8 @@ public class Link {
     ///
     /// - Parameters:
     ///   - configuration: The configuration to be used for the shared instance.
-    public static func configure(with configuration: Link.Configuration) {
-        _shared = Link(configuration: configuration)
+    public static func configure(with configuration: TinkLink.Configuration) {
+        _shared = TinkLink(configuration: configuration)
     }
 
     @available(iOS 9.0, *)
