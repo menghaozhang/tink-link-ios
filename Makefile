@@ -70,7 +70,7 @@ build-alpha:
 	rm -rf Examples/ProviderSelection/Pods/
 	rm -rf Examples/ProviderSelection/ProviderSelection/ProviderSelection.xcworkspace
 
-		# Build with Carthage
+	# Build with Carthage
 	echo 'Building dependencies...'
 	carthage bootstrap --platform ios
 
