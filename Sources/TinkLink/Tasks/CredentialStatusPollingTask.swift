@@ -3,7 +3,7 @@ import SwiftGRPC
 
 class CredentialStatusPollingTask {
     private var service: CredentialService
-    private var callRetryCancellable: RetryCancellable?
+    var callRetryCancellable: RetryCancellable?
     private var retryInterval: TimeInterval = 1
     private(set) var credential: Credential
     private var updateHandler: (Result<Credential, Error>) -> Void

@@ -75,8 +75,7 @@ public final class CredentialContext {
             credentialService: service,
             completionPredicate: completionPredicate,
             progressHandler: progressHandler,
-            completion: completion,
-            credentialUpdateHandler: { _ in }
+            completion: completion
         )
 
         let appURI = tinkLink.configuration.redirectURI
@@ -112,27 +111,26 @@ public final class CredentialContext {
         }
     }
 
+    // TODO: Doc
     /// Refresh the user's credentials.
     /// - Parameter completion: The block to execute when the call is completed.
     /// - Parameter result: A result that either void when refresh successed or an error if failed.
-    public func refreshCredentials(credentialIDs: [Credential.ID], completion: @escaping (Result<[Credential], Error>) -> Void) -> RetryCancellable? {
-        return service.refreshCredentials(credentialIDs: credentialIDs, completion: { [weak self] result in
-            guard let self = self else { return }
+    public func refreshCredentials(credentials: [Credential],
+                                   completionPredicate: RefreshCredentialTask.CompletionPredicate = .updated,
+                                   progressHandler: @escaping (_ status: RefreshCredentialTask.Status) -> Void,
+                                   completion: @escaping (Result<Credential, Swift.Error>) -> Void) -> [RefreshCredentialTask] {
+        let tasks = credentials.map { RefreshCredentialTask(credential: $0, credentialService: self.service, completionPredicate: completionPredicate, progressHandler: progressHandler, completion: completion) }
+
+        service.refreshCredentials(credentialIDs: credentials.map({ $0.id }), completion: { result in
             switch result {
             case .success:
-                self.service.credentials { credentialsResult in
-                    do {
-                        let fetchedCredentials = try credentialsResult.get()
-                        let filteredCrednetials = fetchedCredentials.filter { credentialIDs.contains($0.id) }
-                        completion(.success(filteredCrednetials))
-                    } catch {
-                        completion(.failure(error))
-                    }
-                }
+                tasks.forEach { $0.startObserving() }
             case .failure(let error):
                 completion(.failure(error))
             }
         })
+
+        return tasks
     }
 }
 

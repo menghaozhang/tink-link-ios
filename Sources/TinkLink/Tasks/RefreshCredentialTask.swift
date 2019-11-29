@@ -78,6 +78,8 @@ public final class RefreshCredentialTask {
         }
 
         credentialStatusPollingTask?.pollStatus()
+        // Set the callCanceller to cancel the polling
+        callCanceller = credentialStatusPollingTask?.callRetryCancellable
     }
 
     /// Cancel the task.
