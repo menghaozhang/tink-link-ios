@@ -18,13 +18,17 @@ public final class RefreshCredentialTask {
         case updating(credential: Credential, status: String)
 
         /// Trigger for the client to prompt the user to fill out supplemental information.
-        case awaitingSupplementalInformation(credential: Credential, SupplementInformationTask)
+        case awaitingSupplementalInformation(credential: Credential, task: SupplementInformationTask)
 
         /// Trigger for the client to prompt the user to open the third party authentication flow
-        case awaitingThirdPartyAppAuthentication(credential: Credential, ThirdPartyAppAuthenticationTask)
+        case awaitingThirdPartyAppAuthentication(credential: Credential, task: ThirdPartyAppAuthenticationTask)
 
         /// The session has expired.
         case sessionExpired(credential: Credential)
+
+        case updated(credential: Credential)
+
+        case error(credential: Credential, error: Error)
     }
 
     /// Error that the `RefreshCredentialTask` can throw.
@@ -37,9 +41,9 @@ public final class RefreshCredentialTask {
         case permanentFailure
     }
 
-    private var credentialStatusPollingTask: CredentialStatusPollingTask?
+    private var credentialStatusPollingTask: CredentialsListStatusPollingTask?
 
-    private(set) public var credential: Credential
+    private(set) public var credentials: [Credential]
 
     /// Cases to evaluate when credential status changes.
     ///
@@ -54,28 +58,26 @@ public final class RefreshCredentialTask {
     /// Predicate for when credential task is completed.
     ///
     /// Task will execute it's completion handler if the credential's status changes to match this predicate.
-    public let completionPredicate: CompletionPredicate
 
     private let credentialService: CredentialService
-    private var previousStatus: Credential.Status?
     let progressHandler: (Status) -> Void
-    let completion: (Result<Credential, Swift.Error>) -> Void
+    let completion: (Result<[Credential], Swift.Error>) -> Void
 
     var callCanceller: Cancellable?
 
-    init(credential: Credential, credentialService: CredentialService, completionPredicate: CompletionPredicate = .updated, progressHandler: @escaping (Status) -> Void, completion: @escaping (Result<Credential, Swift.Error>) -> Void) {
-        self.credential = credential
+    init(credentials: [Credential], credentialService: CredentialService, progressHandler: @escaping (Status) -> Void, completion: @escaping (Result<[Credential], Swift.Error>) -> Void) {
+        self.credentials = credentials
         self.credentialService = credentialService
-        self.completionPredicate = completionPredicate
         self.progressHandler = progressHandler
         self.completion = completion
     }
 
     func startObserving() {
-
-        credentialStatusPollingTask = CredentialStatusPollingTask(credentialService: credentialService, credential: credential) { [weak self] result in
-            self?.handleUpdate(for: result)
-        }
+        credentialStatusPollingTask = CredentialsListStatusPollingTask(
+            credentialService: credentialService,
+            credentials: credentials,
+            updateHandler: { [weak self] result in self?.handleUpdate(for: result) },
+            completion: completion)
 
         credentialStatusPollingTask?.pollStatus()
         // Set the callCanceller to cancel the polling
@@ -96,57 +98,50 @@ public final class RefreshCredentialTask {
             case .authenticating:
                 progressHandler(.authenticating(credential: credential))
             case .awaitingSupplementalInformation:
+                credentialStatusPollingTask?.pauseTask()
                 let supplementInformationTask = SupplementInformationTask(credentialService: credentialService, credential: credential) { [weak self] result in
                     guard let self = self else { return }
                     do {
                         try result.get()
-                        self.credentialStatusPollingTask = CredentialStatusPollingTask(credentialService: self.credentialService, credential: credential, updateHandler: self.handleUpdate)
-                        self.credentialStatusPollingTask?.pollStatus()
+                        self.credentialStatusPollingTask?.continueTask()
                     } catch {
                         self.completion(.failure(error))
                     }
                 }
-                progressHandler(.awaitingSupplementalInformation(credential: credential, supplementInformationTask))
+                progressHandler(.awaitingSupplementalInformation(credential: credential, task: supplementInformationTask))
             case .awaitingThirdPartyAppAuthentication, .awaitingMobileBankIDAuthentication:
                 guard let thirdPartyAppAuthentication = credential.thirdPartyAppAuthentication else {
                     assertionFailure("Missing third pary app authentication deeplink URL!")
                     return
                 }
+                credentialStatusPollingTask?.pauseTask()
                 let task = ThirdPartyAppAuthenticationTask(thirdPartyAppAuthentication: thirdPartyAppAuthentication) { [weak self] result in
                     guard let self = self else { return }
                     do {
                         try result.get()
-                        self.credentialStatusPollingTask = CredentialStatusPollingTask(credentialService: self.credentialService, credential: credential, updateHandler: self.handleUpdate)
-                        self.credentialStatusPollingTask?.pollStatus()
+                        self.credentialStatusPollingTask?.continueTask()
                     } catch {
                         self.completion(.failure(error))
                     }
                 }
-                progressHandler(.awaitingThirdPartyAppAuthentication(credential: credential, task))
+                progressHandler(.awaitingThirdPartyAppAuthentication(credential: credential, task: task))
             case .updating:
-                if completionPredicate == .updating {
-                    completion(.success(credential))
-                } else {
-                    progressHandler(.updating(credential: credential, status: credential.statusPayload))
-                }
+                progressHandler(.updating(credential: credential, status: credential.statusPayload))
             case .updated:
-                if completionPredicate == .updated {
-                    completion(.success(credential))
-                }
+                progressHandler(.updated(credential: credential))
             case .sessionExpired:
                 progressHandler(.sessionExpired(credential: credential))
             case .authenticationError:
-                completion(.failure(RefreshCredentialTask.Error.authenticationFailed))
+                progressHandler(.error(credential: credential, error: .authenticationFailed))
             case .permanentError:
-                completion(.failure(RefreshCredentialTask.Error.permanentFailure))
+                progressHandler(.error(credential: credential, error: .permanentFailure))
             case .temporaryError:
-                completion(.failure(RefreshCredentialTask.Error.temporaryFailure))
+                progressHandler(.error(credential: credential, error: .temporaryFailure))
             case .disabled:
                 fatalError("Credential shouldn't be disabled during creation.")
             case .unknown:
                 assertionFailure("Unknown credential status!")
             }
-            previousStatus = credential.status
         } catch {
             completion(.failure(error))
         }

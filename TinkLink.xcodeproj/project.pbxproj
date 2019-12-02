@@ -66,6 +66,7 @@
 		8F313E68235F001C0046D5DD /* UserContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F313E67235F001C0046D5DD /* UserContext.swift */; };
 		8F313E6A235F085A0046D5DD /* AuthorizationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F313E69235F085A0046D5DD /* AuthorizationContext.swift */; };
 		8F34596323900428007DCD75 /* RefreshCredentialTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F34596223900428007DCD75 /* RefreshCredentialTask.swift */; };
+		8F34597C23951B6A007DCD75 /* CredentialsListStatusPollingTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F34597B23951B6A007DCD75 /* CredentialsListStatusPollingTask.swift */; };
 		8F613A002334CB2D00BFB04D /* CredentialStatusPollingTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6139FF2334CB2C00BFB04D /* CredentialStatusPollingTask.swift */; };
 		8F84A776232B8B6500EA878F /* TokenConfigurableService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F84A775232B8B6500EA878F /* TokenConfigurableService.swift */; };
 		8F84A77C2330D39600EA878F /* Locale+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F84A77B2330D39600EA878F /* Locale+Extensions.swift */; };
@@ -147,6 +148,7 @@
 		8F313E67235F001C0046D5DD /* UserContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserContext.swift; sourceTree = "<group>"; };
 		8F313E69235F085A0046D5DD /* AuthorizationContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationContext.swift; sourceTree = "<group>"; };
 		8F34596223900428007DCD75 /* RefreshCredentialTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshCredentialTask.swift; sourceTree = "<group>"; };
+		8F34597B23951B6A007DCD75 /* CredentialsListStatusPollingTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsListStatusPollingTask.swift; sourceTree = "<group>"; };
 		8F6139FF2334CB2C00BFB04D /* CredentialStatusPollingTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialStatusPollingTask.swift; sourceTree = "<group>"; };
 		8F84A775232B8B6500EA878F /* TokenConfigurableService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenConfigurableService.swift; sourceTree = "<group>"; };
 		8F84A77B2330D39600EA878F /* Locale+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+Extensions.swift"; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 				8F34596223900428007DCD75 /* RefreshCredentialTask.swift */,
 				209D69272326878800B4DBB8 /* SupplementInformationTask.swift */,
 				8F6139FF2334CB2C00BFB04D /* CredentialStatusPollingTask.swift */,
+				8F34597B23951B6A007DCD75 /* CredentialsListStatusPollingTask.swift */,
 				20C3A7792355B87A0048EBA4 /* ThirdPartyAppAuthenticationTask.swift */,
 			);
 			path = Tasks;
@@ -517,6 +520,7 @@
 				20E6886D234F0B7800B4E04F /* insight_models.pb.swift in Sources */,
 				20D8125F2330DAD7000B3A30 /* Service+Metadata.swift in Sources */,
 				20ED85432303FAEC006213BB /* services.grpc.swift in Sources */,
+				8F34597C23951B6A007DCD75 /* CredentialsListStatusPollingTask.swift in Sources */,
 				2027F02A234637920025473A /* CertificatePinningDelegate.swift in Sources */,
 				20FAE67A233DFB4E003C73BA /* Configuration.swift in Sources */,
 				8F313E6A235F085A0046D5DD /* AuthorizationContext.swift in Sources */,

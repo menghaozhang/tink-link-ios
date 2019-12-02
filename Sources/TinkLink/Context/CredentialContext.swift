@@ -123,19 +123,20 @@ public final class CredentialContext {
     public func refreshCredentials(credentials: [Credential],
                                    completionPredicate: RefreshCredentialTask.CompletionPredicate = .updated,
                                    progressHandler: @escaping (_ status: RefreshCredentialTask.Status) -> Void,
-                                   completion: @escaping (Result<Credential, Swift.Error>) -> Void) -> [RefreshCredentialTask] {
-        let tasks = credentials.map { RefreshCredentialTask(credential: $0, credentialService: self.service, completionPredicate: completionPredicate, progressHandler: progressHandler, completion: completion) }
+                                   completion: @escaping (Result<[Credential], Swift.Error>) -> Void) -> RefreshCredentialTask {
+
+        let task = RefreshCredentialTask(credentials: credentials, credentialService: service, progressHandler: progressHandler, completion: completion)
 
         service.refreshCredentials(credentialIDs: credentials.map({ $0.id }), completion: { result in
             switch result {
             case .success:
-                tasks.forEach { $0.startObserving() }
+                task.startObserving()
             case .failure(let error):
                 completion(.failure(error))
             }
         })
 
-        return tasks
+        return task
     }
 }
 
