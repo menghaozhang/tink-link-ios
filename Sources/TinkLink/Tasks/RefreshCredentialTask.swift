@@ -27,7 +27,7 @@ public final class RefreshCredentialTask {
         case sessionExpired(credential: Credential)
     }
 
-    /// Error that the `AddCredentialTask` can throw.
+    /// Error that the `RefreshCredentialTask` can throw.
     public enum Error: Swift.Error {
         /// The authentication failed.
         case authenticationFailed

@@ -44,7 +44,7 @@ class CredentialStatusPollingTask {
                         case .awaitingSupplementalInformation, .awaitingMobileBankIDAuthentication, .awaitingThirdPartyAppAuthentication:
                             self.updateHandler(.success(updatedCredential))
                             self.callRetryCancellable = nil
-                        case .updating:
+                        case .created, .authenticating, .updating:
                             self.updateHandler(.success(updatedCredential))
                             self.retry()
                         case self.credential.status where self.credential.kind == .thirdPartyAuthentication || self.credential.kind == .mobileBankID:
