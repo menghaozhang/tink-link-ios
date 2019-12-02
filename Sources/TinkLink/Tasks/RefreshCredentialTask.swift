@@ -26,8 +26,10 @@ public final class RefreshCredentialTask {
         /// The session has expired.
         case sessionExpired(credential: Credential)
 
+        /// The status has been updated.
         case updated(credential: Credential)
 
+        /// The refresh error.
         case error(credential: Credential, error: Error)
     }
 
