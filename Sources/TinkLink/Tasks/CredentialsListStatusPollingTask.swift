@@ -37,12 +37,12 @@ class CredentialsListStatusPollingTask {
         self.completion = completion
     }
 
-    func pauseTask() {
+    func pausePolling() {
         retryInterval = 1
         hasPaused = true
     }
 
-    func continueTask() {
+    func continuePolling() {
         hasPaused = false
         pollStatus()
     }

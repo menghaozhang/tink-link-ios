@@ -47,20 +47,6 @@ public final class RefreshCredentialTask {
 
     private(set) public var credentials: [Credential]
 
-    /// Cases to evaluate when credential status changes.
-    ///
-    /// Use with `CredentialContext.refreshCredentials(for:form:completionPredicate:progressHandler:completion:)` to set when add credential task should call completion handler if successful.
-    public enum CompletionPredicate {
-        /// A predicate that indicates the credential's status is `updating`.
-        case updating
-        /// A predicate that indicates the credential's status is `updated`.
-        case updated
-    }
-
-    /// Predicate for when credential task is completed.
-    ///
-    /// Task will execute it's completion handler if the credential's status changes to match this predicate.
-
     private let credentialService: CredentialService
     let progressHandler: (Status) -> Void
     let completion: (Result<[Credential], Swift.Error>) -> Void
@@ -100,12 +86,12 @@ public final class RefreshCredentialTask {
             case .authenticating:
                 progressHandler(.authenticating(credential: credential))
             case .awaitingSupplementalInformation:
-                credentialStatusPollingTask?.pauseTask()
+                credentialStatusPollingTask?.pausePolling()
                 let supplementInformationTask = SupplementInformationTask(credentialService: credentialService, credential: credential) { [weak self] result in
                     guard let self = self else { return }
                     do {
                         try result.get()
-                        self.credentialStatusPollingTask?.continueTask()
+                        self.credentialStatusPollingTask?.continuePolling()
                     } catch {
                         self.completion(.failure(error))
                     }
@@ -116,12 +102,12 @@ public final class RefreshCredentialTask {
                     assertionFailure("Missing third pary app authentication deeplink URL!")
                     return
                 }
-                credentialStatusPollingTask?.pauseTask()
+                credentialStatusPollingTask?.pausePolling()
                 let task = ThirdPartyAppAuthenticationTask(thirdPartyAppAuthentication: thirdPartyAppAuthentication) { [weak self] result in
                     guard let self = self else { return }
                     do {
                         try result.get()
-                        self.credentialStatusPollingTask?.continueTask()
+                        self.credentialStatusPollingTask?.continuePolling()
                     } catch {
                         self.completion(.failure(error))
                     }
