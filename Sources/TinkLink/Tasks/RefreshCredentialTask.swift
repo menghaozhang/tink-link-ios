@@ -43,7 +43,7 @@ public final class RefreshCredentialTask {
         case permanentFailure
     }
 
-    public let returnRequireAuthAppError: Bool
+    public let shouldFailOnThirdPartyAppAuthenticationDownloadRequired: Bool
 
     private var credentialStatusPollingTask: CredentialsListStatusPollingTask?
 
@@ -55,11 +55,11 @@ public final class RefreshCredentialTask {
 
     var callCanceller: Cancellable?
 
-    init(credentials: [Credential], credentialService: CredentialService, returnRequireAuthAppError: Bool, progressHandler: @escaping (Status) -> Void, completion: @escaping (Result<[Credential], Swift.Error>) -> Void) {
+    init(credentials: [Credential], credentialService: CredentialService, shouldFailOnThirdPartyAppAuthenticationDownloadRequired: Bool, progressHandler: @escaping (Status) -> Void, completion: @escaping (Result<[Credential], Swift.Error>) -> Void) {
         self.credentials = credentials
         self.credentialService = credentialService
         self.progressHandler = progressHandler
-        self.returnRequireAuthAppError = returnRequireAuthAppError
+        self.shouldFailOnThirdPartyAppAuthenticationDownloadRequired = shouldFailOnThirdPartyAppAuthenticationDownloadRequired
         self.completion = completion
     }
 
@@ -114,7 +114,7 @@ public final class RefreshCredentialTask {
                     } catch {
                         let taskError = error as? ThirdPartyAppAuthenticationTask.Error
                         switch taskError {
-                        case .downloadRequired where !self.returnRequireAuthAppError:
+                        case .downloadRequired where !self.shouldFailOnThirdPartyAppAuthenticationDownloadRequired:
                             self.credentialStatusPollingTask?.continuePolling()
                         default:
                             self.completion(.failure(error))
