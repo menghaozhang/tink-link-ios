@@ -48,12 +48,21 @@ class CredentialsListStatusPollingTask {
     }
 
     func pollStatus() {
+        // Check the ablility for update the credential, if not, call update handler immediately.
+        // Remove the credentials that cannot be updated from the updating list.
+        credentialsToUpdate = credentialsToUpdate.filter {
+            let updatable = $0.isManuallyUpdatable
+            if !updatable {
+                updateHandler(.success($0))
+            }
+            return updatable
+        }
         DispatchQueue.main.asyncAfter(deadline: .now() + retryInterval) {
             self.callRetryCancellable = self.service.credentials { [weak self] result in
                 guard let self = self else { return }
                 do {
                     let credentials = try result.get()
-                    self.credentialsToUpdate = self.checkCredentialsForUpdate(credentials)
+                    self.credentialsToUpdate = self.checkCredentialsToUpdate(credentials)
 
                     if self.credentialsToUpdate.isEmpty {
                         self.completion(.success(self.updatedCredentials))
@@ -68,7 +77,7 @@ class CredentialsListStatusPollingTask {
         }
     }
 
-    private func checkCredentialsForUpdate(_ fetchedCredentials: [Credential]) -> [Credential] {
+    private func checkCredentialsToUpdate(_ fetchedCredentials: [Credential]) -> [Credential] {
         // Remove the credentials that have been updated
         return credentialsToUpdate.filter { credential -> Bool in
             if let updatedCredential = fetchedCredentials.first(where: { $0.id == credential.id }) {
@@ -84,15 +93,8 @@ class CredentialsListStatusPollingTask {
                         updateHandler(.success(updatedCredential))
                         return true
                     }
-                } else {
-                    // Noticed that the credential will not get updated if it hs been updated recently, should remove the credential from refreshing list
-                    if updatedCredential.status == .updated {
-                        updateHandler(.success(updatedCredential))
-                        updatedCredentials.append(updatedCredential)
-                        return false
-                    }
-                    return true
                 }
+                return true
             } else {
                 fatalError("No such credential with " + credential.id.value)
             }

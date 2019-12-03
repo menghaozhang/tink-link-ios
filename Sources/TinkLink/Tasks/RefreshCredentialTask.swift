@@ -61,11 +61,6 @@ public final class RefreshCredentialTask {
     }
 
     func startObserving() {
-        // Check the ablility for update the credential, if not, call progress handler immediately.
-        credentials.filter { !$0.isManuallyUpdatable }.forEach { handleUpdate(for: .success($0)) }
-        // Remove the credentials that cannot be updated
-        credentials = credentials.filter { $0.isManuallyUpdatable }
-
         credentialStatusPollingTask = CredentialsListStatusPollingTask(
             credentialService: credentialService,
             credentials: credentials,
