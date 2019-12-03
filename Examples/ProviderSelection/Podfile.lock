@@ -14,24 +14,24 @@ PODS:
     - gRPC-Core/Interface (= 1.19.0)
     - nanopb (~> 0.3)
   - gRPC-Core/Interface (1.19.0)
-  - nanopb (0.3.901):
-    - nanopb/decode (= 0.3.901)
-    - nanopb/encode (= 0.3.901)
-  - nanopb/decode (0.3.901)
-  - nanopb/encode (0.3.901)
+  - nanopb (0.3.9011):
+    - nanopb/decode (= 0.3.9011)
+    - nanopb/encode (= 0.3.9011)
+  - nanopb/decode (0.3.9011)
+  - nanopb/encode (0.3.9011)
   - SwiftGRPC (0.9.1):
     - gRPC-Core (~> 1.19.0)
     - SwiftProtobuf (~> 1.5.0)
   - SwiftProtobuf (1.5.0)
-  - TinkLink (0.1.0):
+  - TinkLinkSDK (0.1.0):
     - SwiftGRPC (= 0.9.1)
-  - TinkLink/Tests (0.1.0):
+  - TinkLinkSDK/Tests (0.1.0):
     - SwiftGRPC (= 0.9.1)
 
 DEPENDENCIES:
   - Down (~> 0.8.1)
-  - TinkLink (from `../../`)
-  - TinkLink/Tests (from `../../`)
+  - TinkLinkSDK (from `../../`)
+  - TinkLinkSDK/Tests (from `../../`)
 
 SPEC REPOS:
   trunk:
@@ -43,18 +43,18 @@ SPEC REPOS:
     - SwiftProtobuf
 
 EXTERNAL SOURCES:
-  TinkLink:
+  TinkLinkSDK:
     :path: "../../"
 
 SPEC CHECKSUMS:
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
   Down: 3c758f2388fa739663023f400e742a988fa1e21d
   gRPC-Core: bd9472c8daa2e414b9f8038ba667bf56ce0e02b8
-  nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   SwiftGRPC: 43d3e8db88f97e7386bd44f159ecdfad02ce3362
   SwiftProtobuf: 241400280f912735c1e1b9fe675fdd2c6c4d42e2
-  TinkLink: 37e43e5dcfd58cc671cddf2cd9dfe04a8d306c5d
+  TinkLinkSDK: 788c459f90b6bcf5250630ceec7da4c271910ed7
 
-PODFILE CHECKSUM: 9770b177512a69e543dcef26ab5ae21cd26a8f47
+PODFILE CHECKSUM: 894cb461ac70e7ade233f9a6c028971264a25467
 
 COCOAPODS: 1.8.4
