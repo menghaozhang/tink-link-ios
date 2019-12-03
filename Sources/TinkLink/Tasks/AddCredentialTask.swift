@@ -41,19 +41,20 @@ public final class AddCredentialTask {
     /// Cases to evaluate when credential status changes.
     ///
     /// Use with `CredentialContext.addCredential(for:form:completionPredicate:progressHandler:completion:)` to set when add credential task should call completion handler if successful.
-    public enum CompletionPredicate {
-        /// A predicate that indicates the credential's status is `updating`.
-        case updating(returnRequireAuthAppError: Bool)
-        /// A predicate that indicates the credential's status is `updated`.
-        case updated(returnRequireAuthAppError: Bool)
+    public struct CompletionPredicate {
+        public enum SuccessPredicate {
+            /// A predicate that indicates the credential's status is `updating`.
+            case updating
+            /// A predicate that indicates the credential's status is `updated`.
+            case updated
+        }
 
-        var shouldReturnDownloadRequiredError: Bool {
-            switch self {
-            case .updated(let returnRequireAuthAppError):
-                return returnRequireAuthAppError
-            case .updating(let returnRequireAuthAppError):
-                return returnRequireAuthAppError
-            }
+        public let successPredicate: SuccessPredicate
+        public let shouldFailOnThirdPartyAppAuthenticationDownloadRequired: Bool
+
+        public init(successPredicate: SuccessPredicate, shouldFailOnThirdPartyAppAuthenticationDownloadRequired: Bool) {
+            self.successPredicate = successPredicate
+            self.shouldFailOnThirdPartyAppAuthenticationDownloadRequired = shouldFailOnThirdPartyAppAuthenticationDownloadRequired
         }
     }
 
@@ -68,7 +69,7 @@ public final class AddCredentialTask {
 
     var callCanceller: Cancellable?
 
-    init(credentialService: CredentialService, completionPredicate: CompletionPredicate = .updated(returnRequireAuthAppError: true), progressHandler: @escaping (Status) -> Void, completion: @escaping (Result<Credential, Swift.Error>) -> Void) {
+    init(credentialService: CredentialService, completionPredicate: CompletionPredicate, progressHandler: @escaping (Status) -> Void, completion: @escaping (Result<Credential, Swift.Error>) -> Void) {
         self.credentialService = credentialService
         self.completionPredicate = completionPredicate
         self.progressHandler = progressHandler
@@ -125,7 +126,7 @@ public final class AddCredentialTask {
                     } catch {
                         let taskError = error as? ThirdPartyAppAuthenticationTask.Error
                         switch taskError {
-                        case .downloadRequired where !self.completionPredicate.shouldReturnDownloadRequiredError:
+                        case .downloadRequired where !self.completionPredicate.shouldFailOnThirdPartyAppAuthenticationDownloadRequired:
                             self.credentialStatusPollingTask = CredentialStatusPollingTask(credentialService: self.credentialService, credential: credential, updateHandler: self.handleUpdate)
                             self.credentialStatusPollingTask?.pollStatus()
                         default:
@@ -135,18 +136,14 @@ public final class AddCredentialTask {
                 }
                 progressHandler(.awaitingThirdPartyAppAuthentication(task))
             case .updating:
-                switch completionPredicate {
-                case .updating:
+                if completionPredicate.successPredicate == .updating {
                     completion(.success(credential))
-                case .updated:
+                } else {
                     progressHandler(.updating(status: credential.statusPayload))
                 }
             case .updated:
-                switch completionPredicate {
-                case .updated:
+                if completionPredicate.successPredicate == .updated {
                     completion(.success(credential))
-                case .updating:
-                    break
                 }
             case .permanentError:
                 completion(.failure(AddCredentialTask.Error.permanentFailure))

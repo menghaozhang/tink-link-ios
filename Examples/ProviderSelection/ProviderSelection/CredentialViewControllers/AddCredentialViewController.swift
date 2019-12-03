@@ -167,7 +167,7 @@ extension AddCredentialViewController {
             task = credentialContext.addCredential(
                 for: provider,
                 form: form,
-                completionPredicate: .updated(returnRequireAuthAppError: false),
+                completionPredicate: .init(successPredicate: .updated, shouldFailOnThirdPartyAppAuthenticationDownloadRequired: false),
                 progressHandler: { [weak self] status in
                     DispatchQueue.main.async {
                         self?.onUpdate(for: status)

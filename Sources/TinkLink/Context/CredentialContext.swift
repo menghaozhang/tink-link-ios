@@ -70,7 +70,10 @@ public final class CredentialContext {
     ///   - result: Represents either a successfully added credential or an error if adding the credential failed.
     /// - Returns: The add credential task.
     @discardableResult
-    public func addCredential(for provider: Provider, form: Form, completionPredicate: AddCredentialTask.CompletionPredicate = .updated(returnRequireAuthAppError: false), progressHandler: @escaping (_ status: AddCredentialTask.Status) -> Void, completion: @escaping (_ result: Result<Credential, Error>) -> Void) -> AddCredentialTask {
+    public func addCredential(for provider: Provider, form: Form,
+                              completionPredicate: AddCredentialTask.CompletionPredicate = .init(successPredicate: .updated, shouldFailOnThirdPartyAppAuthenticationDownloadRequired: true),
+                              progressHandler: @escaping (_ status: AddCredentialTask.Status) -> Void,
+                              completion: @escaping (_ result: Result<Credential, Error>) -> Void) -> AddCredentialTask {
         let task = AddCredentialTask(
             credentialService: service,
             completionPredicate: completionPredicate,
