@@ -43,6 +43,8 @@ public final class RefreshCredentialTask {
         case permanentFailure
     }
 
+    public let shouldFailOnThirdPartyAppAuthenticationDownloadRequired: Bool
+
     private var credentialStatusPollingTask: CredentialsListStatusPollingTask?
 
     private(set) public var credentials: [Credential]
@@ -53,10 +55,11 @@ public final class RefreshCredentialTask {
 
     var callCanceller: Cancellable?
 
-    init(credentials: [Credential], credentialService: CredentialService, progressHandler: @escaping (Status) -> Void, completion: @escaping (Result<[Credential], Swift.Error>) -> Void) {
+    init(credentials: [Credential], credentialService: CredentialService, shouldFailOnThirdPartyAppAuthenticationDownloadRequired: Bool, progressHandler: @escaping (Status) -> Void, completion: @escaping (Result<[Credential], Swift.Error>) -> Void) {
         self.credentials = credentials
         self.credentialService = credentialService
         self.progressHandler = progressHandler
+        self.shouldFailOnThirdPartyAppAuthenticationDownloadRequired = shouldFailOnThirdPartyAppAuthenticationDownloadRequired
         self.completion = completion
     }
 
@@ -109,7 +112,13 @@ public final class RefreshCredentialTask {
                         try result.get()
                         self.credentialStatusPollingTask?.continuePolling()
                     } catch {
-                        self.completion(.failure(error))
+                        let taskError = error as? ThirdPartyAppAuthenticationTask.Error
+                        switch taskError {
+                        case .downloadRequired where !self.shouldFailOnThirdPartyAppAuthenticationDownloadRequired:
+                            self.credentialStatusPollingTask?.continuePolling()
+                        default:
+                            self.completion(.failure(error))
+                        }
                     }
                 }
                 progressHandler(.awaitingThirdPartyAppAuthentication(credential: credential, task: task))

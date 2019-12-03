@@ -70,7 +70,10 @@ public final class CredentialContext {
     ///   - result: Represents either a successfully added credential or an error if adding the credential failed.
     /// - Returns: The add credential task.
     @discardableResult
-    public func addCredential(for provider: Provider, form: Form, completionPredicate: AddCredentialTask.CompletionPredicate = .updated, progressHandler: @escaping (_ status: AddCredentialTask.Status) -> Void, completion: @escaping (_ result: Result<Credential, Error>) -> Void) -> AddCredentialTask {
+    public func addCredential(for provider: Provider, form: Form,
+                              completionPredicate: AddCredentialTask.CompletionPredicate = .init(successPredicate: .updated, shouldFailOnThirdPartyAppAuthenticationDownloadRequired: true),
+                              progressHandler: @escaping (_ status: AddCredentialTask.Status) -> Void,
+                              completion: @escaping (_ result: Result<Credential, Error>) -> Void) -> AddCredentialTask {
         let task = AddCredentialTask(
             credentialService: service,
             completionPredicate: completionPredicate,
@@ -120,10 +123,11 @@ public final class CredentialContext {
     ///   - result: A result that either a list of updated credentials when refresh successed or an error if failed.
     /// - Returns: The refresh credential task.
     public func refreshCredentials(credentials: [Credential],
+                                   shouldFailOnThirdPartyAppAuthenticationDownloadRequired: Bool = true,
                                    progressHandler: @escaping (_ status: RefreshCredentialTask.Status) -> Void,
                                    completion: @escaping (_ result: Result<[Credential], Swift.Error>) -> Void) -> RefreshCredentialTask {
 
-        let task = RefreshCredentialTask(credentials: credentials, credentialService: service, progressHandler: progressHandler, completion: completion)
+        let task = RefreshCredentialTask(credentials: credentials, credentialService: service, shouldFailOnThirdPartyAppAuthenticationDownloadRequired: shouldFailOnThirdPartyAppAuthenticationDownloadRequired, progressHandler: progressHandler, completion: completion)
 
         service.refreshCredentials(credentialIDs: credentials.map({ $0.id }), completion: { result in
             switch result {

@@ -41,11 +41,21 @@ public final class AddCredentialTask {
     /// Cases to evaluate when credential status changes.
     ///
     /// Use with `CredentialContext.addCredential(for:form:completionPredicate:progressHandler:completion:)` to set when add credential task should call completion handler if successful.
-    public enum CompletionPredicate {
-        /// A predicate that indicates the credential's status is `updating`.
-        case updating
-        /// A predicate that indicates the credential's status is `updated`.
-        case updated
+    public struct CompletionPredicate {
+        public enum SuccessPredicate {
+            /// A predicate that indicates the credential's status is `updating`.
+            case updating
+            /// A predicate that indicates the credential's status is `updated`.
+            case updated
+        }
+
+        public let successPredicate: SuccessPredicate
+        public let shouldFailOnThirdPartyAppAuthenticationDownloadRequired: Bool
+
+        public init(successPredicate: SuccessPredicate, shouldFailOnThirdPartyAppAuthenticationDownloadRequired: Bool) {
+            self.successPredicate = successPredicate
+            self.shouldFailOnThirdPartyAppAuthenticationDownloadRequired = shouldFailOnThirdPartyAppAuthenticationDownloadRequired
+        }
     }
 
     /// Predicate for when credential task is completed.
@@ -59,7 +69,7 @@ public final class AddCredentialTask {
 
     var callCanceller: Cancellable?
 
-    init(credentialService: CredentialService, completionPredicate: CompletionPredicate = .updated, progressHandler: @escaping (Status) -> Void, completion: @escaping (Result<Credential, Swift.Error>) -> Void) {
+    init(credentialService: CredentialService, completionPredicate: CompletionPredicate, progressHandler: @escaping (Status) -> Void, completion: @escaping (Result<Credential, Swift.Error>) -> Void) {
         self.credentialService = credentialService
         self.completionPredicate = completionPredicate
         self.progressHandler = progressHandler
@@ -114,18 +124,25 @@ public final class AddCredentialTask {
                         self.credentialStatusPollingTask = CredentialStatusPollingTask(credentialService: self.credentialService, credential: credential, updateHandler: self.handleUpdate)
                         self.credentialStatusPollingTask?.pollStatus()
                     } catch {
-                        self.completion(.failure(error))
+                        let taskError = error as? ThirdPartyAppAuthenticationTask.Error
+                        switch taskError {
+                        case .downloadRequired where !self.completionPredicate.shouldFailOnThirdPartyAppAuthenticationDownloadRequired:
+                            self.credentialStatusPollingTask = CredentialStatusPollingTask(credentialService: self.credentialService, credential: credential, updateHandler: self.handleUpdate)
+                            self.credentialStatusPollingTask?.pollStatus()
+                        default:
+                            self.completion(.failure(error))
+                        }
                     }
                 }
                 progressHandler(.awaitingThirdPartyAppAuthentication(task))
             case .updating:
-                if completionPredicate == .updating {
+                if completionPredicate.successPredicate == .updating {
                     completion(.success(credential))
                 } else {
                     progressHandler(.updating(status: credential.statusPayload))
                 }
             case .updated:
-                if completionPredicate == .updated {
+                if completionPredicate.successPredicate == .updated {
                     completion(.success(credential))
                 }
             case .permanentError:
