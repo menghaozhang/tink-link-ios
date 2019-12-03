@@ -68,11 +68,11 @@ class CredentialsListStatusPollingTask {
         }
     }
 
-    private func checkCredentialsForUpdate(_ fetchedCredentials: [Credential]) -> [Credential]{
+    private func checkCredentialsForUpdate(_ fetchedCredentials: [Credential]) -> [Credential] {
         // Remove the credentials that have been updated
         return credentialsToUpdate.filter { credential -> Bool in
             if let updatedCredential = fetchedCredentials.first(where: { $0.id == credential.id }) {
-                if credential.statusUpdated != updatedCredential.statusUpdated {
+                if credential.statusUpdated != updatedCredential.statusUpdated || credential.status != updatedCredential.status {
                     switch updatedCredential.status {
                     // When status is updated, or changed to error, move the credential to updated credential list
                     case .updated, .permanentError, .temporaryError, .authenticationError, .unknown, .disabled, .sessionExpired:
