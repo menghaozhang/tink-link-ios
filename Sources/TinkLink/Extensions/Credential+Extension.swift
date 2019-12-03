@@ -1,7 +1,7 @@
 import Foundation
 
 extension Credential {
-    public var isManuallyUpdatable: Bool {
+    var isManuallyUpdatable: Bool {
            switch kind {
            case .mobileBankID:
                switch status {
