@@ -121,7 +121,7 @@ public final class CredentialContext {
     /// - Returns: The refresh credential task.
     public func refreshCredentials(credentials: [Credential],
                                    progressHandler: @escaping (_ status: RefreshCredentialTask.Status) -> Void,
-                                   completion: @escaping (Result<[Credential], Swift.Error>) -> Void) -> RefreshCredentialTask {
+                                   completion: @escaping (_ result: Result<[Credential], Swift.Error>) -> Void) -> RefreshCredentialTask {
 
         let task = RefreshCredentialTask(credentials: credentials, credentialService: service, progressHandler: progressHandler, completion: completion)
 
