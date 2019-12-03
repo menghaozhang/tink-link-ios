@@ -24,9 +24,9 @@ PODS:
     - SwiftProtobuf (~> 1.5.0)
   - SwiftProtobuf (1.5.0)
   - TinkLink (0.1.0):
-    - SwiftGRPC (~> 0.9.1)
+    - SwiftGRPC (= 0.9.1)
   - TinkLink/Tests (0.1.0):
-    - SwiftGRPC (~> 0.9.1)
+    - SwiftGRPC (= 0.9.1)
 
 DEPENDENCIES:
   - Down (~> 0.8.1)
@@ -53,8 +53,8 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   SwiftGRPC: 43d3e8db88f97e7386bd44f159ecdfad02ce3362
   SwiftProtobuf: 241400280f912735c1e1b9fe675fdd2c6c4d42e2
-  TinkLink: 28b983ed474dc59e3fc69b1d7cbe281de29e673e
+  TinkLink: 37e43e5dcfd58cc671cddf2cd9dfe04a8d306c5d
 
-PODFILE CHECKSUM: aafac96a07bea4934486b8b06603908fea90ca6f
+PODFILE CHECKSUM: 9770b177512a69e543dcef26ab5ae21cd26a8f47
 
 COCOAPODS: 1.8.4

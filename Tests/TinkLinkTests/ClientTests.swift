@@ -1,5 +1,5 @@
 import SwiftGRPC
-@testable import TinkLink
+@testable import TinkLinkSDK
 import XCTest
 
 class ServiceTests: XCTestCase {

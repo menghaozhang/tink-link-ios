@@ -14,6 +14,7 @@
 		2023EB1F232268C400B219A3 /* AddCredentialStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2023EB1E232268C400B219A3 /* AddCredentialStatusViewController.swift */; };
 		20A409442338F20500FC035E /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A409432338F20500FC035E /* CheckmarkView.swift */; };
 		8F345944238EC6C8007DCD75 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8F345943238EC6C8007DCD75 /* Settings.bundle */; };
+		8F34594E238FE135007DCD75 /* Down.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F345949238FE0AC007DCD75 /* Down.framework */; };
 		8F576A2923228BE300A81E8E /* ValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F576A2823228BE300A81E8E /* ValueTableViewCell.swift */; };
 		8FA5F824230BD13800226C02 /* FinancialInstitutionPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F823230BD13800226C02 /* FinancialInstitutionPickerViewController.swift */; };
 		8FA5F826230BE85100226C02 /* AccessTypePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F825230BE85100226C02 /* AccessTypePickerViewController.swift */; };
@@ -23,11 +24,9 @@
 		8FA5F836230E9DEF00226C02 /* SupplementalInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F835230E9DEF00226C02 /* SupplementalInformationViewController.swift */; };
 		8FA5F83E230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA5F83D230EDA5B00226C02 /* FinishedCredentialUpdatedViewController.swift */; };
 		9D1C2138235F2A5000D89F34 /* SwiftProtobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D1C2133235F2A5000D89F34 /* SwiftProtobuf.framework */; };
-		9D1C2139235F2A5000D89F34 /* TinkLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D1C2134235F2A5000D89F34 /* TinkLink.framework */; };
 		9D1C213A235F2A5000D89F34 /* SwiftGRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D1C2135235F2A5000D89F34 /* SwiftGRPC.framework */; };
 		9D1C213B235F2A5000D89F34 /* BoringSSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D1C2136235F2A5000D89F34 /* BoringSSL.framework */; };
 		9D1C213C235F2A5000D89F34 /* CgRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D1C2137235F2A5000D89F34 /* CgRPC.framework */; };
-		9D1C213F235F2EB200D89F34 /* SwiftyMarkdown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D1C213E235F2EB200D89F34 /* SwiftyMarkdown.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +39,7 @@
 		2023EB1E232268C400B219A3 /* AddCredentialStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCredentialStatusViewController.swift; sourceTree = "<group>"; };
 		20A409432338F20500FC035E /* CheckmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckmarkView.swift; sourceTree = "<group>"; };
 		8F345943238EC6C8007DCD75 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		8F345949238FE0AC007DCD75 /* Down.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Down.framework; path = Carthage/Build/iOS/Down.framework; sourceTree = "<group>"; };
 		8F576A2823228BE300A81E8E /* ValueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueTableViewCell.swift; sourceTree = "<group>"; };
 		8FA5F823230BD13800226C02 /* FinancialInstitutionPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancialInstitutionPickerViewController.swift; sourceTree = "<group>"; };
 		8FA5F825230BE85100226C02 /* AccessTypePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTypePickerViewController.swift; sourceTree = "<group>"; };
@@ -61,12 +61,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D1C2139235F2A5000D89F34 /* TinkLink.framework in Frameworks */,
 				9D1C2138235F2A5000D89F34 /* SwiftProtobuf.framework in Frameworks */,
 				9D1C213B235F2A5000D89F34 /* BoringSSL.framework in Frameworks */,
+				8F34594E238FE135007DCD75 /* Down.framework in Frameworks */,
 				9D1C213C235F2A5000D89F34 /* CgRPC.framework in Frameworks */,
 				9D1C213A235F2A5000D89F34 /* SwiftGRPC.framework in Frameworks */,
-				9D1C213F235F2EB200D89F34 /* SwiftyMarkdown.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +107,7 @@
 		220375E318466B44E90DA3AA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8F345949238FE0AC007DCD75 /* Down.framework */,
 				9D1C213E235F2EB200D89F34 /* SwiftyMarkdown.framework */,
 				9D1C2136235F2A5000D89F34 /* BoringSSL.framework */,
 				9D1C2137235F2A5000D89F34 /* CgRPC.framework */,

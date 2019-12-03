@@ -1,4 +1,4 @@
-import TinkLink
+import TinkLinkSDK
 import UIKit
 
 /// Example of how to use the provider grouped by names

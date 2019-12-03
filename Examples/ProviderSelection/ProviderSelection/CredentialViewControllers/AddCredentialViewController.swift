@@ -1,5 +1,5 @@
 import Down
-import TinkLink
+import TinkLinkSDK
 import UIKit
 
 /// Example of how to use the provider field specification to add credential
