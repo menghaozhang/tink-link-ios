@@ -75,8 +75,7 @@ public final class CredentialContext {
             credentialService: service,
             completionPredicate: completionPredicate,
             progressHandler: progressHandler,
-            completion: completion,
-            credentialUpdateHandler: { _ in }
+            completion: completion
         )
 
         let appURI = tinkLink.configuration.redirectURI
@@ -113,10 +112,29 @@ public final class CredentialContext {
     }
 
     /// Refresh the user's credentials.
-    /// - Parameter completion: The block to execute when the call is completed.
-    /// - Parameter result: A result that either void when refresh successed or an error if failed.
-    public func refreshCredentials(credentialIDs: [Credential.ID], completion: @escaping (Result<Void, Error>) -> Void) -> RetryCancellable? {
-        return service.refreshCredentials(credentialIDs: credentialIDs, completion: completion)
+    /// - Parameters:
+    ///   - credentials: List fo credential that needs to be refreshed.
+    ///   - progressHandler: The block to execute with progress information about the credential's status.
+    ///   - status: Indicates the state of a credential being refreshed.
+    ///   - completion: The block to execute when the credential has been refreshed successfuly or if it failed.
+    ///   - result: A result that either a list of updated credentials when refresh successed or an error if failed.
+    /// - Returns: The refresh credential task.
+    public func refreshCredentials(credentials: [Credential],
+                                   progressHandler: @escaping (_ status: RefreshCredentialTask.Status) -> Void,
+                                   completion: @escaping (_ result: Result<[Credential], Swift.Error>) -> Void) -> RefreshCredentialTask {
+
+        let task = RefreshCredentialTask(credentials: credentials, credentialService: service, progressHandler: progressHandler, completion: completion)
+
+        service.refreshCredentials(credentialIDs: credentials.map({ $0.id }), completion: { result in
+            switch result {
+            case .success:
+                task.startObserving()
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        })
+
+        return task
     }
 }
 

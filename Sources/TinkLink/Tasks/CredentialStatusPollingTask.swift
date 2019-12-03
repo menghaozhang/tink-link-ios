@@ -3,7 +3,7 @@ import SwiftGRPC
 
 class CredentialStatusPollingTask {
     private var service: CredentialService
-    private var callRetryCancellable: RetryCancellable?
+    var callRetryCancellable: RetryCancellable?
     private var retryInterval: TimeInterval = 1
     private(set) var credential: Credential
     private var updateHandler: (Result<Credential, Error>) -> Void
@@ -40,22 +40,21 @@ class CredentialStatusPollingTask {
                 do {
                     let credentials = try result.get()
                     if let updatedCredential = credentials.first(where: { $0.id == self.credential.id }) {
-                        if updatedCredential.status == .updating {
+                        switch updatedCredential.status {
+                        case .awaitingSupplementalInformation, .awaitingMobileBankIDAuthentication, .awaitingThirdPartyAppAuthentication:
+                            self.updateHandler(.success(updatedCredential))
+                            self.callRetryCancellable = nil
+                        case .created, .authenticating, .updating:
                             self.updateHandler(.success(updatedCredential))
                             self.retry()
-                        } else if updatedCredential.status == .awaitingSupplementalInformation {
-                            self.updateHandler(.success(updatedCredential))
-                            self.callRetryCancellable = nil
-                        } else if updatedCredential.status == .awaitingThirdPartyAppAuthentication {
-                            self.updateHandler(.success(updatedCredential))
-                            self.callRetryCancellable = nil
-                        } else if updatedCredential.status == .awaitingMobileBankIDAuthentication {
-                            self.updateHandler(.success(updatedCredential))
-                            self.callRetryCancellable = nil
-                            // TODO: Should not keep polling while receiving status error
-                        } else if updatedCredential.status == self.credential.status {
-                            self.retry()
-                        } else {
+                        case self.credential.status where self.credential.kind == .thirdPartyAuthentication || self.credential.kind == .mobileBankID:
+                            if self.credential.statusUpdated != updatedCredential.statusUpdated {
+                                self.updateHandler(.success(updatedCredential))
+                                self.callRetryCancellable = nil
+                            } else {
+                                self.retry()
+                            }
+                        default:
                             self.updateHandler(.success(updatedCredential))
                             self.callRetryCancellable = nil
                         }

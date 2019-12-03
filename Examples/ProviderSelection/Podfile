@@ -6,7 +6,7 @@ install! 'cocoapods', :disable_input_output_paths => true
 
 target 'ProviderSelection' do
 	pod 'Down', '~> 0.8.1'
-	pod 'TinkLink', :path => '../../', :testspecs => ['Tests'] 
+	pod 'TinkLinkSDK', :path => '../../', :testspecs => ['Tests'] 
 end
 
 post_install do | installer |

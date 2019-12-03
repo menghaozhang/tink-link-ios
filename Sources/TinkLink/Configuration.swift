@@ -29,7 +29,7 @@ extension TinkLink {
         public init(
             clientID: String,
             redirectURI: URL,
-            environment: Environment = .production,
+            environment: Environment,
             grpcCertificateURL: URL? = nil,
             restCertificateURL: URL? = nil
         ) throws {
@@ -38,7 +38,7 @@ extension TinkLink {
             }
             self.clientID = clientID
             self.redirectURI = redirectURI
-            self.environment = .production
+            self.environment = environment
             self.grpcCertificate = grpcCertificateURL.flatMap { try? Data(contentsOf: $0) }
             self.restCertificate = restCertificateURL.flatMap { try? Data(contentsOf: $0) }
         }

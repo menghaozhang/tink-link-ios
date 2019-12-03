@@ -56,16 +56,14 @@ public final class AddCredentialTask {
     private let credentialService: CredentialService
     let progressHandler: (Status) -> Void
     let completion: (Result<Credential, Swift.Error>) -> Void
-    let credentialUpdateHandler: (Result<Credential, Swift.Error>) -> Void
 
     var callCanceller: Cancellable?
 
-    init(credentialService: CredentialService, completionPredicate: CompletionPredicate = .updated, progressHandler: @escaping (Status) -> Void, completion: @escaping (Result<Credential, Swift.Error>) -> Void, credentialUpdateHandler: @escaping (Result<Credential, Swift.Error>) -> Void) {
+    init(credentialService: CredentialService, completionPredicate: CompletionPredicate = .updated, progressHandler: @escaping (Status) -> Void, completion: @escaping (Result<Credential, Swift.Error>) -> Void) {
         self.credentialService = credentialService
         self.completionPredicate = completionPredicate
         self.progressHandler = progressHandler
         self.completion = completion
-        self.credentialUpdateHandler = credentialUpdateHandler
     }
 
     func startObserving(_ credential: Credential) {
@@ -146,6 +144,5 @@ public final class AddCredentialTask {
         } catch {
             completion(.failure(error))
         }
-        credentialUpdateHandler(result)
     }
 }
