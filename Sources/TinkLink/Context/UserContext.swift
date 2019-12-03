@@ -34,7 +34,7 @@ public final class UserContext {
     /// - Parameter completion: A result representing either a user info object or an error.
     @discardableResult
     public func authenticateUser(authorizationCode: AuthorizationCode, completion: @escaping (Result<User, Error>) -> Void) -> RetryCancellable? {
-        return userService.authenticate(code: authorizationCode, completion: { [weak self] result in
+        return userService.authenticate(code: authorizationCode, completion: { result in
             do {
                 let authenticateResponse = try result.get()
                 let accessToken = authenticateResponse.accessToken

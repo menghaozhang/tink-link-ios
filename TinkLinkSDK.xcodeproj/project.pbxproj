@@ -36,7 +36,7 @@
 		20E68871234F0B7F00B4E04F /* date.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E68870234F0B7F00B4E04F /* date.pb.swift */; };
 		20E6887B234F570C00B4E04F /* AuthorizationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E6887A234F570C00B4E04F /* AuthorizationError.swift */; };
 		20E6DCD123336AE700476B8F /* MultiHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20E6DCD023336AE700476B8F /* MultiHandler.swift */; };
-		20ED852A2303FA48006213BB /* TinkLink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85202303FA48006213BB /* TinkLink.framework */; };
+		20ED852A2303FA48006213BB /* TinkLinkSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20ED85202303FA48006213BB /* TinkLinkSDK.framework */; };
 		20ED85412303FAEC006213BB /* rpc.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED853D2303FAEC006213BB /* rpc.pb.swift */; };
 		20ED85422303FAEC006213BB /* models.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED853E2303FAEC006213BB /* models.pb.swift */; };
 		20ED85432303FAEC006213BB /* services.grpc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20ED853F2303FAEC006213BB /* services.grpc.swift */; };
@@ -116,9 +116,9 @@
 		20E68870234F0B7F00B4E04F /* date.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = date.pb.swift; sourceTree = "<group>"; };
 		20E6887A234F570C00B4E04F /* AuthorizationError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationError.swift; sourceTree = "<group>"; };
 		20E6DCD023336AE700476B8F /* MultiHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiHandler.swift; sourceTree = "<group>"; };
-		20ED85202303FA48006213BB /* TinkLink.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinkLink.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		20ED85202303FA48006213BB /* TinkLinkSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TinkLinkSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		20ED85242303FA48006213BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		20ED85292303FA48006213BB /* TinkLinkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinkLinkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		20ED85292303FA48006213BB /* TinkLinkSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinkLinkSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20ED85302303FA48006213BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		20ED853D2303FAEC006213BB /* rpc.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rpc.pb.swift; sourceTree = "<group>"; };
 		20ED853E2303FAEC006213BB /* models.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = models.pb.swift; sourceTree = "<group>"; };
@@ -179,7 +179,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20ED852A2303FA48006213BB /* TinkLink.framework in Frameworks */,
+				20ED852A2303FA48006213BB /* TinkLinkSDK.framework in Frameworks */,
 				20E19DB22306E59900BF053A /* BoringSSL.framework in Frameworks */,
 				20E19DB32306E59900BF053A /* CgRPC.framework in Frameworks */,
 				20E19DB42306E59900BF053A /* SwiftGRPC.framework in Frameworks */,
@@ -242,8 +242,8 @@
 		20ED85212303FA48006213BB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				20ED85202303FA48006213BB /* TinkLink.framework */,
-				20ED85292303FA48006213BB /* TinkLinkTests.xctest */,
+				20ED85202303FA48006213BB /* TinkLinkSDK.framework */,
+				20ED85292303FA48006213BB /* TinkLinkSDKTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -385,9 +385,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		20ED851F2303FA48006213BB /* TinkLink */ = {
+		20ED851F2303FA48006213BB /* TinkLinkSDK */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 20ED85342303FA48006213BB /* Build configuration list for PBXNativeTarget "TinkLink" */;
+			buildConfigurationList = 20ED85342303FA48006213BB /* Build configuration list for PBXNativeTarget "TinkLinkSDK" */;
 			buildPhases = (
 				20ED851B2303FA48006213BB /* Headers */,
 				20ED851C2303FA48006213BB /* Sources */,
@@ -398,14 +398,14 @@
 			);
 			dependencies = (
 			);
-			name = TinkLink;
+			name = TinkLinkSDK;
 			productName = TinkLink;
-			productReference = 20ED85202303FA48006213BB /* TinkLink.framework */;
+			productReference = 20ED85202303FA48006213BB /* TinkLinkSDK.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		20ED85282303FA48006213BB /* TinkLinkTests */ = {
+		20ED85282303FA48006213BB /* TinkLinkSDKTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 20ED85372303FA48006213BB /* Build configuration list for PBXNativeTarget "TinkLinkTests" */;
+			buildConfigurationList = 20ED85372303FA48006213BB /* Build configuration list for PBXNativeTarget "TinkLinkSDKTests" */;
 			buildPhases = (
 				20ED85252303FA48006213BB /* Sources */,
 				20ED85262303FA48006213BB /* Frameworks */,
@@ -417,9 +417,9 @@
 			dependencies = (
 				20ED852C2303FA48006213BB /* PBXTargetDependency */,
 			);
-			name = TinkLinkTests;
+			name = TinkLinkSDKTests;
 			productName = TinkLinkTests;
-			productReference = 20ED85292303FA48006213BB /* TinkLinkTests.xctest */;
+			productReference = 20ED85292303FA48006213BB /* TinkLinkSDKTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -441,7 +441,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 20ED851A2303FA48006213BB /* Build configuration list for PBXProject "TinkLink" */;
+			buildConfigurationList = 20ED851A2303FA48006213BB /* Build configuration list for PBXProject "TinkLinkSDK" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -453,8 +453,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				20ED851F2303FA48006213BB /* TinkLink */,
-				20ED85282303FA48006213BB /* TinkLinkTests */,
+				20ED851F2303FA48006213BB /* TinkLinkSDK */,
+				20ED85282303FA48006213BB /* TinkLinkSDKTests */,
 			);
 		};
 /* End PBXProject section */
@@ -587,7 +587,7 @@
 /* Begin PBXTargetDependency section */
 		20ED852C2303FA48006213BB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 20ED851F2303FA48006213BB /* TinkLink */;
+			target = 20ED851F2303FA48006213BB /* TinkLinkSDK */;
 			targetProxy = 20ED852B2303FA48006213BB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -597,6 +597,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -661,6 +662,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -736,7 +738,7 @@
 				);
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tink.TinkLink;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = TinkLinkSDK;
 				SKIP_INSTALL = YES;
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -766,7 +768,7 @@
 				);
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tink.TinkLink;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = TinkLinkSDK;
 				SKIP_INSTALL = YES;
 				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_VERSION = 5.0;
@@ -821,7 +823,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		20ED851A2303FA48006213BB /* Build configuration list for PBXProject "TinkLink" */ = {
+		20ED851A2303FA48006213BB /* Build configuration list for PBXProject "TinkLinkSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				20ED85322303FA48006213BB /* Debug */,
@@ -830,7 +832,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		20ED85342303FA48006213BB /* Build configuration list for PBXNativeTarget "TinkLink" */ = {
+		20ED85342303FA48006213BB /* Build configuration list for PBXNativeTarget "TinkLinkSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				20ED85352303FA48006213BB /* Debug */,
@@ -839,7 +841,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		20ED85372303FA48006213BB /* Build configuration list for PBXNativeTarget "TinkLinkTests" */ = {
+		20ED85372303FA48006213BB /* Build configuration list for PBXNativeTarget "TinkLinkSDKTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				20ED85382303FA48006213BB /* Debug */,

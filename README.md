@@ -21,9 +21,10 @@ github "grpc/grpc-swift" ~> 0.9.1
 
 2. Run `carthage bootstrap --platform iOS`
 3. Move the `TinkLink.framework` binary to the generated `Carthage/Build/iOS/` folder
-4. Drag the built `.framework` binaries (BoringSSL, CgRPC, SwiftGRPC, SwiftProtobuf and TinkLink) from `Carthage/Build/iOS` into the _Linked Binary With Libraries_ section on your application targets’ _Build Phases_ tab
-5. Move the `input.xcfilelist` and `output.xcfilelist` files into the root of your Xcode project
-6. On your application targets’ _Build Phases_ settings tab, click the _+_ icon and choose _New Run Script Phase_ with the following contents:
+4. Drag the built `TinkLinkSDK.xcframework` into the _Frameworks, Libraries, and Embedded Content_ section on your application targets’ _General_ tab
+5. Drag the built `.framework` binaries (BoringSSL, CgRPC, SwiftGRPC, SwiftProtobuf) from `Carthage/Build/iOS` into the _Linked Binary With Libraries_ section on your application targets’ _Build Phases_ tab
+6. Move the `input.xcfilelist` and `output.xcfilelist` files into the root of your Xcode project
+7. On your application targets’ _Build Phases_ settings tab, click the _+_ icon and choose _New Run Script Phase_ with the following contents:
 
 ```sh
 /usr/local/bin/carthage copy-frameworks

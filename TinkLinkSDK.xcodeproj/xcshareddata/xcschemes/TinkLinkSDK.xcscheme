@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "20ED851F2303FA48006213BB"
-               BuildableName = "TinkLink.framework"
-               BlueprintName = "TinkLink"
-               ReferencedContainer = "container:TinkLink.xcodeproj">
+               BuildableName = "TinkLinkSDK.framework"
+               BlueprintName = "TinkLinkSDK"
+               ReferencedContainer = "container:TinkLinkSDK.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -31,9 +31,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "20ED851F2303FA48006213BB"
-            BuildableName = "TinkLink.framework"
-            BlueprintName = "TinkLink"
-            ReferencedContainer = "container:TinkLink.xcodeproj">
+            BuildableName = "TinkLinkSDK.framework"
+            BlueprintName = "TinkLinkSDK"
+            ReferencedContainer = "container:TinkLinkSDK.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
@@ -42,9 +42,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "20ED85282303FA48006213BB"
-               BuildableName = "TinkLinkTests.xctest"
-               BlueprintName = "TinkLinkTests"
-               ReferencedContainer = "container:TinkLink.xcodeproj">
+               BuildableName = "TinkLinkSDKTests.xctest"
+               BlueprintName = "TinkLinkSDKTests"
+               ReferencedContainer = "container:TinkLinkSDK.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -63,9 +63,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "20ED851F2303FA48006213BB"
-            BuildableName = "TinkLink.framework"
-            BlueprintName = "TinkLink"
-            ReferencedContainer = "container:TinkLink.xcodeproj">
+            BuildableName = "TinkLinkSDK.framework"
+            BlueprintName = "TinkLinkSDK"
+            ReferencedContainer = "container:TinkLinkSDK.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </LaunchAction>
@@ -79,9 +79,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "20ED851F2303FA48006213BB"
-            BuildableName = "TinkLink.framework"
-            BlueprintName = "TinkLink"
-            ReferencedContainer = "container:TinkLink.xcodeproj">
+            BuildableName = "TinkLinkSDK.framework"
+            BlueprintName = "TinkLinkSDK"
+            ReferencedContainer = "container:TinkLinkSDK.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
