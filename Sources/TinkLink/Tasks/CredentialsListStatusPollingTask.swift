@@ -85,8 +85,8 @@ class CredentialsListStatusPollingTask {
                         return true
                     }
                 } else {
-                    // Noticed that for password type, the credential will not get updated if the refresh is too close to the previous refresh, should remove the credential from refreshing list
-                    if updatedCredential.kind == .password {
+                    // Noticed that the credential will not get updated if it hs been updated recently, should remove the credential from refreshing list
+                    if updatedCredential.status == .updated {
                         updateHandler(.success(updatedCredential))
                         updatedCredentials.append(updatedCredential)
                         return false
