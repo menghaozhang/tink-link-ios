@@ -120,10 +120,11 @@ public final class CredentialContext {
     ///   - result: A result that either a list of updated credentials when refresh successed or an error if failed.
     /// - Returns: The refresh credential task.
     public func refreshCredentials(credentials: [Credential],
+                                   returnRequireAuthAppError: Bool = true,
                                    progressHandler: @escaping (_ status: RefreshCredentialTask.Status) -> Void,
                                    completion: @escaping (_ result: Result<[Credential], Swift.Error>) -> Void) -> RefreshCredentialTask {
 
-        let task = RefreshCredentialTask(credentials: credentials, credentialService: service, progressHandler: progressHandler, completion: completion)
+        let task = RefreshCredentialTask(credentials: credentials, credentialService: service, returnRequireAuthAppError: returnRequireAuthAppError, progressHandler: progressHandler, completion: completion)
 
         service.refreshCredentials(credentialIDs: credentials.map({ $0.id }), completion: { result in
             switch result {
