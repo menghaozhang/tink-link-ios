@@ -12,7 +12,7 @@ This example project shows how to make a simple integration with Tink using Tink
 
 1. To run the example project, you will need to set it up using [Carthage](https://github.com/Carthage/Carthage#quick-start). 
 1. In the example app directory, setup all the dependencies by running `carthage bootstrap --platform iOS`.
-1. Find the built `TinkLinkSDK.xcframework` and drag the binarie into the _Linked Binary With Libraries_ section on your application targets’ _Build Phases_ tab
+1. Find the built `TinkLinkSDK.xcframework` and drag it into the _Frameworks, Libraries, and Embedded Content_  section on your application targets’ _General_ tab
 
 After that you need to open `AppDelegate.swift` and add your client id and redirect uri to the `TinkLink.Configuration` initializer.
 
