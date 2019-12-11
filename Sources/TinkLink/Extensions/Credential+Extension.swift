@@ -27,7 +27,7 @@ extension Credential {
                    return true
                default:
                    let now = Date()
-                   if let date = statusUpdated, let oneWeekBeforeSessionExpires = Calendar.current.date(byAdding: .day, value: -7, to: date) {
+                   if let date = sessionExpiryDate, let oneWeekBeforeSessionExpires = Calendar.current.date(byAdding: .day, value: -7, to: date) {
                        return now > oneWeekBeforeSessionExpires
                    } else {
                        return false
@@ -41,7 +41,7 @@ extension Credential {
                    return true
                default:
                    let now = Date()
-                   if let date = statusUpdated, let oneWeekBeforeSessionExpires = Calendar.current.date(byAdding: .day, value: -7, to: date) {
+                   if let date = sessionExpiryDate, let oneWeekBeforeSessionExpires = Calendar.current.date(byAdding: .day, value: -7, to: date) {
                        return now > oneWeekBeforeSessionExpires
                    } else {
                        return false
